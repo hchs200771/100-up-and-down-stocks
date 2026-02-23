@@ -1,0 +1,5 @@
+{
+  "name": "台股資金流向監控",
+  "description": "透過 AI 分析台股盤後數據，自動分類強弱勢族群並生成盤後總結。",
+  "requestFramePermissions": []
+}
