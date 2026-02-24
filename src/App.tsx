@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Activity, TrendingUp, TrendingDown, RefreshCw, AlertCircle, FileText, Download } from 'lucide-react';
-import { classifyStocks, generateSummary, Stock, CategoryGroup } from './services/aiService';
+import { classifyStocks, generateSummary, fetchCategoryStory, Stock, CategoryGroup } from './services/aiService';
 
 interface MarketData {
   gainers: Stock[];
@@ -39,11 +39,28 @@ export default function App() {
         classifyStocks(data.gainers, '強勢股'),
         classifyStocks(data.losers, '弱勢股')
       ]);
-      setGainersStructure(gainers);
+
+      setPhase('Fetching Industry Stories for Gainers...');
+      const gainersWithStories = await Promise.all(
+        gainers.map(async (g) => {
+          if (g.stocks.length >= 3) {
+            try {
+              const story = await fetchCategoryStory(g.category, g.stocks);
+              return { ...g, story };
+            } catch (e) {
+              console.error(`Failed to fetch story for ${g.category}`, e);
+              return g;
+            }
+          }
+          return g;
+        })
+      );
+
+      setGainersStructure(gainersWithStories);
       setLosersStructure(losers);
 
       setPhase('AI Generating Market Summary...');
-      const marketSummary = await generateSummary(gainers, losers);
+      const marketSummary = await generateSummary(gainersWithStories, losers);
       setSummary(marketSummary);
 
       setPhase('');
@@ -95,7 +112,7 @@ export default function App() {
               </span>
               {group.category}
             </h4>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 mb-3">
               {group.stocks.map((stockStr, sIdx) => {
                 const match = stockStr.match(/\((.*?)\)/);
                 let code = '';
@@ -120,6 +137,17 @@ export default function App() {
                 );
               })}
             </div>
+            {group.story && type === 'gainer' && (
+              <div className="mt-3 p-3 bg-indigo-50/50 rounded-lg border border-indigo-100">
+                <div className="flex items-start gap-2">
+                  <FileText className="w-4 h-4 text-indigo-600 mt-0.5 shrink-0" />
+                  <div>
+                    <h5 className="text-xs font-semibold text-indigo-900 mb-1">產業故事與上漲原因</h5>
+                    <p className="text-sm text-gray-700 leading-relaxed">{group.story}</p>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         ))}
       </div>

@@ -14,6 +14,7 @@ export interface Stock {
 export interface CategoryGroup {
   category: string;
   stocks: string[];
+  story?: string;
 }
 
 function formatBillions(rawAmount: string) {
@@ -88,6 +89,25 @@ export async function classifyStocks(stocks: Stock[], type: '強勢股' | '弱�
     }
   }
   return [];
+}
+
+export async function fetchCategoryStory(category: string, stocks: string[]): Promise<string> {
+  const prompt = `
+  台股今日「${category}」族群表現強勢，包含以下股票：${stocks.join(', ')}。
+  請使用 Google 搜尋最近的新聞與產業動態，總結這個族群今日上漲的主要原因與產業故事（約 100 字以內）。
+  如果沒有明顯的新聞，請根據產業基本面給出可能的上漲邏輯。
+  `;
+
+  const response = await ai.models.generateContent({
+    model: 'gemini-2.5-flash',
+    contents: prompt,
+    config: {
+      temperature: 0.3,
+      tools: [{ googleSearch: {} }]
+    }
+  });
+
+  return response.text || "無法取得產業故事。";
 }
 
 export async function generateSummary(gainers: CategoryGroup[], losers: CategoryGroup[]): Promise<string> {
