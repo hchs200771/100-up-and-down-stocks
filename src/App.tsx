@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Activity, TrendingUp, TrendingDown, RefreshCw, AlertCircle, FileText, Download } from 'lucide-react';
+import { Activity, TrendingUp, TrendingDown, RefreshCw, AlertCircle, FileText, Download, CheckCircle2, Circle, Loader2 } from 'lucide-react';
 import { classifyStocks, generateSummary, fetchCategoryStory, Stock, CategoryGroup } from './services/aiService';
 
 interface MarketData {
@@ -12,7 +12,7 @@ interface MarketData {
 
 export default function App() {
   const [loading, setLoading] = useState(false);
-  const [phase, setPhase] = useState<string>('');
+  const [currentStep, setCurrentStep] = useState<number>(-1);
   const [error, setError] = useState<string | null>(null);
   const [marketData, setMarketData] = useState<MarketData | null>(null);
   const [gainersStructure, setGainersStructure] = useState<CategoryGroup[] | null>(null);
@@ -28,19 +28,19 @@ export default function App() {
     setSummary(null);
 
     try {
-      setPhase('Fetching Market Data...');
+      setCurrentStep(0); // 正在抓取證交所 API
       const res = await fetch('/api/market-data');
       if (!res.ok) throw new Error('Failed to fetch market data');
       const data: MarketData = await res.json();
       setMarketData(data);
 
-      setPhase('AI Classifying Gainers & Losers...');
+      setCurrentStep(1); // 正在分析強弱勢股
       const [gainers, losers] = await Promise.all([
         classifyStocks(data.gainers, '強勢股'),
         classifyStocks(data.losers, '弱勢股')
       ]);
 
-      setPhase('Fetching Industry Stories for Gainers...');
+      setCurrentStep(2); // 正在找產業故事
       const gainersWithStories = await Promise.all(
         gainers.map(async (g) => {
           if (g.stocks.length >= 3) {
@@ -59,13 +59,14 @@ export default function App() {
       setGainersStructure(gainersWithStories);
       setLosersStructure(losers);
 
-      setPhase('AI Generating Market Summary...');
+      setCurrentStep(3); // 正在生成盤後總結
       const marketSummary = await generateSummary(gainersWithStories, losers);
       setSummary(marketSummary);
 
-      setPhase('');
+      setCurrentStep(-1);
     } catch (err: any) {
       setError(err.message || 'An error occurred during analysis.');
+      setCurrentStep(-1);
     } finally {
       setLoading(false);
     }
@@ -202,14 +203,34 @@ export default function App() {
           <motion.div 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 mb-8 flex flex-col items-center justify-center py-12"
+            className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 mb-8 max-w-2xl mx-auto"
           >
-            <div className="relative w-16 h-16 mb-4">
-              <div className="absolute inset-0 border-4 border-indigo-100 rounded-full"></div>
-              <div className="absolute inset-0 border-4 border-indigo-600 rounded-full border-t-transparent animate-spin"></div>
+            <h3 className="text-xl font-bold text-gray-900 mb-6 text-center">AI 正在處理數據</h3>
+            <div className="space-y-4">
+              {[
+                '正在抓取證交所與櫃買中心 API',
+                '正在分析強弱勢股 (Gemini 3.1 Pro)',
+                '正在找產業故事 (Gemini 2.5 Flash)',
+                '正在生成盤後總結 (Gemini 3.1 Pro)'
+              ].map((stepLabel, index) => {
+                const isActive = currentStep === index;
+                const isPast = currentStep > index;
+                return (
+                  <div key={index} className={`flex items-center gap-4 p-3 rounded-lg transition-colors ${isActive ? 'bg-indigo-50 border border-indigo-100' : ''}`}>
+                    {isPast ? (
+                      <CheckCircle2 className="w-6 h-6 text-green-500 shrink-0" />
+                    ) : isActive ? (
+                      <Loader2 className="w-6 h-6 text-indigo-600 animate-spin shrink-0" />
+                    ) : (
+                      <Circle className="w-6 h-6 text-gray-300 shrink-0" />
+                    )}
+                    <span className={`font-medium ${isActive ? 'text-indigo-900' : isPast ? 'text-gray-900' : 'text-gray-400'}`}>
+                      {stepLabel}
+                    </span>
+                  </div>
+                );
+              })}
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-1">AI 正在處理數據</h3>
-            <p className="text-sm text-gray-500 font-mono">{phase}</p>
           </motion.div>
         )}
 
