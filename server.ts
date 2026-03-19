@@ -159,12 +159,12 @@ async function startServer() {
 
       gainersWithStories.forEach(g => {
         html += `
-          <div style="border: 1px solid #fee2e2; background-color: #fff5f5; padding: 16px; border-radius: 12px; margin-bottom: 16px;">
-            <h4 style="margin-top: 0; margin-bottom: 12px; color: #111827; font-size: 16px; display: flex; align-items: center;">
-              <span style="background-color: #fecaca; color: #991b1b; padding: 2px 8px; border-radius: 12px; font-size: 12px; margin-right: 8px; font-weight: normal;">${g.stocks.length}檔</span>
+          <div style="border: 1px solid #fee2e2; background-color: #fef2f2; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+            <h4 style="margin-top: 0; color: #991b1b; display: flex; align-items: center;">
+              <span style="background-color: #fecaca; padding: 2px 8px; border-radius: 12px; font-size: 12px; margin-right: 8px;">${g.stocks.length}檔</span>
               ${g.category}
             </h4>
-            <div style="margin-bottom: 0;">
+            <div style="margin-bottom: 10px;">
         `;
         
         g.stocks.forEach(stockStr => {
@@ -184,8 +184,8 @@ async function startServer() {
           const cleanName = stockStr.replace(/\(.*?\)/, '');
           const futuresHtml = futuresInfo ? `<span style="font-size: 10px; background-color: #e0e7ff; color: #4338ca; padding: 2px 4px; border-radius: 4px; margin-left: 4px;">期貨(${futuresInfo.margin})</span>` : '';
           
-          html += `<a href="https://tw.stock.yahoo.com/quote/${code}.TW/technical-analysis" target="_blank" style="text-decoration: none; display: inline-block; background-color: #ffffff; border: 1px solid #e5e7eb; padding: 4px 8px; border-radius: 6px; margin: 0 6px 6px 0; font-size: 14px;">
-            <strong style="color: #1f2937; font-weight: 500;">${cleanName}</strong> <span style="color: #6b7280; font-size: 12px;">${code}</span> 
+          html += `<a href="https://tw.stock.yahoo.com/quote/${code}.TW/technical-analysis" target="_blank" style="text-decoration: none; display: inline-block; background-color: white; border: 1px solid #fca5a5; padding: 4px 8px; border-radius: 6px; margin: 0 6px 6px 0; font-size: 14px;">
+            <strong style="color: #1f2937;">${cleanName}</strong> <span style="color: #6b7280; font-size: 12px;">${code}</span> 
             <span style="color: #dc2626; font-weight: bold; margin-left: 4px;">${pct}</span>
             ${futuresHtml}
           </a>`;
@@ -195,9 +195,9 @@ async function startServer() {
 
         if (g.story) {
           html += `
-            <div style="background-color: transparent; padding: 12px; border-radius: 8px; border: 1px solid #fca5a5; margin-top: 12px;">
-              <strong style="color: #991b1b; font-size: 13px; display: block; margin-bottom: 4px;">💡 產業故事與上漲原因：</strong>
-              <p style="margin: 0; font-size: 13px; color: #374151; line-height: 1.6;">${g.story}</p>
+            <div style="background-color: #fef2f2; padding: 10px; border-radius: 6px; border: 1px solid #fecaca;">
+              <strong style="color: #991b1b; font-size: 13px;">💡 產業故事與上漲原因：</strong>
+              <p style="margin: 5px 0 0 0; font-size: 13px; color: #b91c1c; line-height: 1.5;">${g.story}</p>
             </div>
           `;
         }
@@ -211,12 +211,12 @@ async function startServer() {
 
       losersWithStories.forEach(g => {
         html += `
-          <div style="border: 1px solid #dcfce7; background-color: #f0fdf4; padding: 16px; border-radius: 12px; margin-bottom: 16px;">
-            <h4 style="margin-top: 0; margin-bottom: 12px; color: #111827; font-size: 16px; display: flex; align-items: center;">
-              <span style="background-color: #bbf7d0; color: #166534; padding: 2px 8px; border-radius: 12px; font-size: 12px; margin-right: 8px; font-weight: normal;">${g.stocks.length}檔</span>
+          <div style="border: 1px solid #dcfce7; background-color: #f0fdf4; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+            <h4 style="margin-top: 0; color: #166534; display: flex; align-items: center;">
+              <span style="background-color: #bbf7d0; padding: 2px 8px; border-radius: 12px; font-size: 12px; margin-right: 8px;">${g.stocks.length}檔</span>
               ${g.category}
             </h4>
-            <div style="margin-bottom: 0;">
+            <div style="margin-bottom: 10px;">
         `;
         
         g.stocks.forEach(stockStr => {
@@ -236,8 +236,8 @@ async function startServer() {
           const cleanName = stockStr.replace(/\(.*?\)/, '');
           const futuresHtml = futuresInfo ? `<span style="font-size: 10px; background-color: #e0e7ff; color: #4338ca; padding: 2px 4px; border-radius: 4px; margin-left: 4px;">期貨(${futuresInfo.margin})</span>` : '';
           
-          html += `<a href="https://tw.stock.yahoo.com/quote/${code}.TW/technical-analysis" target="_blank" style="text-decoration: none; display: inline-block; background-color: #ffffff; border: 1px solid #e5e7eb; padding: 4px 8px; border-radius: 6px; margin: 0 6px 6px 0; font-size: 14px;">
-            <strong style="color: #1f2937; font-weight: 500;">${cleanName}</strong> <span style="color: #6b7280; font-size: 12px;">${code}</span> 
+          html += `<a href="https://tw.stock.yahoo.com/quote/${code}.TW/technical-analysis" target="_blank" style="text-decoration: none; display: inline-block; background-color: white; border: 1px solid #86efac; padding: 4px 8px; border-radius: 6px; margin: 0 6px 6px 0; font-size: 14px;">
+            <strong style="color: #1f2937;">${cleanName}</strong> <span style="color: #6b7280; font-size: 12px;">${code}</span> 
             <span style="color: #16a34a; font-weight: bold; margin-left: 4px;">${pct}</span>
             ${futuresHtml}
           </a>`;
@@ -247,9 +247,9 @@ async function startServer() {
 
         if (g.story) {
           html += `
-            <div style="background-color: transparent; padding: 12px; border-radius: 8px; border: 1px solid #86efac; margin-top: 12px;">
-              <strong style="color: #166534; font-size: 13px; display: block; margin-bottom: 4px;">💡 產業故事與下跌原因：</strong>
-              <p style="margin: 0; font-size: 13px; color: #374151; line-height: 1.6;">${g.story}</p>
+            <div style="background-color: #f0fdf4; padding: 10px; border-radius: 6px; border: 1px solid #bbf7d0;">
+              <strong style="color: #166534; font-size: 13px;">💡 產業故事與下跌原因：</strong>
+              <p style="margin: 5px 0 0 0; font-size: 13px; color: #15803d; line-height: 1.5;">${g.story}</p>
             </div>
           `;
         }
