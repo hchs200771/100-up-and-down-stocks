@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.maxhuang.daily-stock-report</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/max/Desktop/Projects/100-up-and-down-stocks/scripts/run-daily-report.sh</string>
+  </array>
+
+  <!-- Mon-Fri (Weekday 1-5) at 18:00. If Mac is off/asleep, launchd will
+       fire once on next wake. -->
+  <key>StartCalendarInterval</key>
+  <array>
+    <dict>
+      <key>Weekday</key><integer>1</integer>
+      <key>Hour</key><integer>18</integer>
+      <key>Minute</key><integer>0</integer>
+    </dict>
+    <dict>
+      <key>Weekday</key><integer>2</integer>
+      <key>Hour</key><integer>18</integer>
+      <key>Minute</key><integer>0</integer>
+    </dict>
+    <dict>
+      <key>Weekday</key><integer>3</integer>
+      <key>Hour</key><integer>18</integer>
+      <key>Minute</key><integer>0</integer>
+    </dict>
+    <dict>
+      <key>Weekday</key><integer>4</integer>
+      <key>Hour</key><integer>18</integer>
+      <key>Minute</key><integer>0</integer>
+    </dict>
+    <dict>
+      <key>Weekday</key><integer>5</integer>
+      <key>Hour</key><integer>18</integer>
+      <key>Minute</key><integer>0</integer>
+    </dict>
+  </array>
+
+  <key>StandardOutPath</key>
+  <string>/Users/max/Desktop/Projects/100-up-and-down-stocks/data/logs/launchd.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/max/Desktop/Projects/100-up-and-down-stocks/data/logs/launchd.err.log</string>
+
+  <key>RunAtLoad</key>
+  <false/>
+</dict>
+</plist>

@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsx scripts/fetch-market-data.ts*)",
+      "Bash(npx tsx scripts/send-report.ts*)",
+      "Bash(mkdir -p data/memory)"
+    ]
+  }
+}
