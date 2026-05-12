@@ -23,6 +23,10 @@ View your app in AI Studio: https://ai.studio/apps/5dd3b4df-4788-40bb-9fb0-054b9
 
 ## 盤後報告自動化（Claude Code Skill）
 
+> 目前標準每日入口：使用 Codex parallel 版，執行 `npm run report` 或 `npm run report:codex`。
+>
+> 一般版與 parallel 版的「流程目標」相同：抓市場資料、完成族群分析、寫入 `data/analysis-latest.json`、更新 memory/history、產生 `data/report-latest.html`，並在有 `GAS_WEBHOOK_URL` 時寄信。差異在執行引擎：一般版走 Claude Code Skill 單一路徑；parallel 版走 Codex controller / worker / finalizer，並把族群 research 平行化。之後手動與排程建議都以 parallel 版為準。
+
 這個專案另外提供一個 Claude Code Skill `daily-stock-report`，取代原本的 Gemini API 流程，改由 Claude 本地分析、再透過 Google Apps Script webhook 寄信。
 
 ### 環境變數（`.env.local`）
@@ -89,3 +93,117 @@ rm ~/Library/LaunchAgents/com.maxhuang.daily-stock-report.plist
 - HTML 預覽：`data/report-latest.html`
 - 歷史記憶（波段趨勢比對用）：`data/memory/YYYY-MM-DD.md`
 - 執行 log：`data/logs/`
+
+---
+
+## 盤後報告自動化（Codex）
+
+這是目前建議使用的每日報告入口。它與原本 Claude 流程產出的內容類型一致，但資料搜尋由 Codex 自己的 web search 完成，族群 research 會平行 fan-out 到多個 worker，再由 finalizer 彙總。
+
+### 新增檔案
+
+- task controller prompt：`scripts/prompts/group-task-controller.md`
+- group worker prompt：`scripts/prompts/group-research-worker.md`
+- finalizer prompt：`scripts/prompts/group-finalizer.md`
+- parallel worker runner：`scripts/run-codex-group-workers.sh`
+- Codex wrapper：`scripts/run-daily-report-codex-parallel.sh`
+- launchd plist：`scripts/launchd/com.maxhuang.daily-stock-report-codex.plist`
+
+### 手動執行
+
+先確認本機 `codex` 已安裝並完成登入，然後執行：
+
+```bash
+npm run report
+```
+
+等同於：
+
+```bash
+npm run report:codex
+```
+
+這個 wrapper 會：
+
+1. 先抓 `market-latest.json`
+2. 用 `codex exec -m gpt-5.5` 切出族群 task
+3. 用本地規則修正高風險誤分族群，例如低軌衛星、記憶體與矽晶圓拆分
+4. 用多個 `codex exec -m gpt-5.4-mini` worker 平行做最近 2 天新聞 research
+5. 再用 `codex exec -m gpt-5.5` 做 finalizer，寫入 `analysis-latest.json` / memory
+6. 最後由 shell 端寄信或產 HTML 預覽
+
+補充：
+
+- wrapper 會自動載入 `.env.local`，所以直接執行 `npm run report:codex` 也能吃到 `GAS_WEBHOOK_URL`
+- 每次從 `fetch` / `classify` 起跑時，會先清空 `data/tmp/group-results/`，避免舊 research 結果混進今天報告
+- task controller 成功後，wrapper 會自動備份一份 `data/tmp/group-tasks-backup/`，worker 與 finalizer 都以這份 snapshot 為準，避免中途 task 被覆寫
+- 若某個 `codex exec` 非零退出，但 task / analysis 檔已實際產出，wrapper 會優先以檔案存在與否決定是否繼續，而不是立刻整串失敗
+- `scripts/refine-group-tasks.ts` 會在 task controller 後自動執行，用 deterministic overrides 把已知容易誤分的股票拆出來，例如 `華通(2313)` 優先放到低軌衛星/HDI 高階 PCB，記憶體模組/控制 IC 不和矽晶圓混在一起
+
+### 調整並行數
+
+預設一次開 `4` 個 worker。需要時可在執行前調整：
+
+```bash
+CODEX_GROUP_MAX_CONCURRENCY=6 npm run report:codex
+```
+
+### 調整模型與成本
+
+預設模型：
+
+- task controller：`gpt-5.5`
+- group research worker：`gpt-5.4-mini`
+- finalizer：`gpt-5.5`
+
+需要時可用環境變數覆蓋：
+
+```bash
+CODEX_CONTROLLER_MODEL=gpt-5.4 CODEX_GROUP_WORKER_MODEL=gpt-5.4-mini CODEX_FINALIZER_MODEL=gpt-5.5 npm run report:codex
+```
+
+若要停用本地族群修正步驟：
+
+```bash
+CODEX_REFINE_GROUP_TASKS=0 npm run report:codex
+```
+
+### 斷點續跑
+
+若中途中斷，可用 `CODEX_REPORT_START_STAGE` 從指定階段接回：
+
+```bash
+CODEX_REPORT_START_STAGE=research npm run report:codex
+CODEX_REPORT_START_STAGE=finalize npm run report:codex
+CODEX_REPORT_START_STAGE=send npm run report:codex
+```
+
+可用值：
+
+- `fetch`：完整重跑全部流程（預設）
+- `classify`：跳過抓市場資料，從族群切 task 開始
+- `research`：沿用 `group-tasks-backup`，重跑 worker / finalizer / send
+- `finalize`：沿用 snapshot 與現有 results，直接重組 `analysis-latest.json`
+- `send`：只用現有 `analysis-latest.json` 產 HTML 並寄信
+
+### 排程執行
+
+首次安裝：
+
+```bash
+cp scripts/launchd/com.maxhuang.daily-stock-report-codex.plist ~/Library/LaunchAgents/
+launchctl load ~/Library/LaunchAgents/com.maxhuang.daily-stock-report-codex.plist
+```
+
+停用 / 移除：
+
+```bash
+launchctl unload ~/Library/LaunchAgents/com.maxhuang.daily-stock-report-codex.plist
+rm ~/Library/LaunchAgents/com.maxhuang.daily-stock-report-codex.plist
+```
+
+### 注意
+
+- Codex 版本依賴本機 `codex` CLI 與登入狀態
+- 族群搜尋與分析都由 Codex CLI 自行完成，不使用 `Gemini API`
+- 若未設定 `GAS_WEBHOOK_URL`，流程會退回只產 `data/report-latest.html`

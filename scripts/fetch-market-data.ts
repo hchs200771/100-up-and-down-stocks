@@ -55,6 +55,21 @@ function processTpexData(json: any): Stock[] {
     .filter((s: Stock | null): s is Stock => s !== null);
 }
 
+function deriveTradingDate(twseData: any, tpexData: any): { tradingDate: string; timestamp: string } {
+  const rawDate: string = twseData.date || tpexData.date || "";
+  if (!/^\d{8}$/.test(rawDate)) {
+    throw new Error("Market data response did not include a valid trading date.");
+  }
+
+  const y = rawDate.slice(0, 4);
+  const m = rawDate.slice(4, 6);
+  const d = rawDate.slice(6, 8);
+  return {
+    tradingDate: `${y}-${m}-${d}`,
+    timestamp: `${y}/${m}/${d}`,
+  };
+}
+
 async function main() {
   const [twseRes, tpexRes, futuresRes] = await Promise.all([
     fetch("https://www.twse.com.tw/rwd/zh/afterTrading/STOCK_DAY_ALL?response=json"),
@@ -100,20 +115,8 @@ async function main() {
   const gainers = [...allStocks].sort((a, b) => b.pct - a.pct).slice(0, 100);
   const losers = [...allStocks].sort((a, b) => a.pct - b.pct).slice(0, 100);
 
-  // Derive trading date from API response (handles holidays — TWSE returns last trading day)
-  const rawDate: string = twseData.date || tpexData.date || "";
-  let tradingDate = "";
-  let timestamp = "";
-  if (/^\d{8}$/.test(rawDate)) {
-    const y = rawDate.slice(0, 4);
-    const m = rawDate.slice(4, 6);
-    const d = rawDate.slice(6, 8);
-    tradingDate = `${y}-${m}-${d}`;
-    timestamp = `${y}/${m}/${d}`;
-  } else {
-    tradingDate = new Date().toISOString().slice(0, 10);
-    timestamp = new Date().toLocaleString("zh-TW", { timeZone: "Asia/Taipei" });
-  }
+  // Derive trading date from API response (handles holidays — TWSE/TPEx return latest trading day)
+  const { tradingDate, timestamp } = deriveTradingDate(twseData, tpexData);
   const result = { gainers, losers, stockMap, timestamp, tradingDate };
 
   const outPath = resolve(process.cwd(), "data/market-latest.json");

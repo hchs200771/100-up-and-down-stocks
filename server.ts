@@ -5,6 +5,21 @@ let cachedMarketData: any = null;
 let lastFetchTime: number = 0;
 const CACHE_TTL = 5 * 60 * 1000; // 5 minutes in milliseconds
 
+function deriveTradingDate(twseData: any, tpexData: any): { tradingDate: string; timestamp: string } {
+  const rawDate: string = twseData.date || tpexData.date || "";
+  if (!/^\d{8}$/.test(rawDate)) {
+    throw new Error("Market data response did not include a valid trading date.");
+  }
+
+  const y = rawDate.slice(0, 4);
+  const m = rawDate.slice(4, 6);
+  const d = rawDate.slice(6, 8);
+  return {
+    tradingDate: `${y}-${m}-${d}`,
+    timestamp: `${y}/${m}/${d}`,
+  };
+}
+
 async function fetchMarketData() {
   const now = Date.now();
   if (cachedMarketData && (now - lastFetchTime < CACHE_TTL)) {
@@ -59,12 +74,14 @@ async function fetchMarketData() {
 
   const gainers = [...allStocks].sort((a, b) => b.pct - a.pct).slice(0, 100);
   const losers = [...allStocks].sort((a, b) => a.pct - b.pct).slice(0, 100);
+  const { tradingDate, timestamp } = deriveTradingDate(twseData, tpexData);
 
   const result = {
     gainers,
     losers,
     stockMap,
-    timestamp: new Date().toLocaleString("zh-TW", { timeZone: "Asia/Taipei" })
+    timestamp,
+    tradingDate
   };
 
   cachedMarketData = result;

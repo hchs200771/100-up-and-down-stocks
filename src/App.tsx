@@ -9,6 +9,7 @@ interface MarketData {
   losers: Stock[];
   stockMap: Record<string, { pct: string, futures?: { level: string, margin: string } }>;
   timestamp: string;
+  tradingDate: string;
 }
 
 export default function App() {
@@ -88,10 +89,9 @@ export default function App() {
       const marketSummary = await generateSummary(gainersWithStories, losersWithStories, recentHistory);
       setSummary(marketSummary);
 
-      // 儲存今日紀錄
-      const todayDate = data.timestamp.split(' ')[0]; // 例如 "2026/3/13"
+      // 儲存交易日紀錄
       saveHistory({
-        date: todayDate,
+        date: data.tradingDate,
         summary: marketSummary,
         gainers: gainersWithStories.map(g => g.category),
         losers: losersWithStories.map(g => g.category)
@@ -276,7 +276,7 @@ export default function App() {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.setAttribute('href', url);
-    link.setAttribute('download', `台股資金流向_${marketData.timestamp.replace(/[\/ :]/g, '')}.csv`);
+    link.setAttribute('download', `台股資金流向_${marketData.tradingDate.replace(/-/g, '')}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

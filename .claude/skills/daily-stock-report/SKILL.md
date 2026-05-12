@@ -72,11 +72,12 @@ console.log(JSON.stringify({tradingDate: d.tradingDate, timestamp: d.timestamp, 
 對每一個**兩檔以上**的分類，用 Agent tool（`subagent_type: Explore`）平行 spawn 一個 Haiku subagent 產故事。（請使用 model: Haiku，省 token）
 上漲的族群，如果只有單檔，一律跳過，因為沒有族群性，不值得找故事。
 下跌的族群，要 3 檔以上，才視為族群，因為我注重在上漲的族群。只有 1, 2 檔就不用找故事了。
+另外，**弱勢股只需要挑成員數最多的前 3 個族群做第二階段 research**；其他弱勢族群直接沿用第一階段分類時的簡短盤面判讀，或留空即可，不要花時間再搜。
 
 **兩階段流程（重要）：**
 
 - **階段 A**：把所有**強勢（gainers）**的多檔分類，在**同一個 assistant message** 裡平行 spawn。等全部回來後，立刻寫一次 `data/analysis-latest.json`（此時 losers 可以先填空陣列或佔位），當成 checkpoint 存檔。這樣即使階段 B 失敗，漲的部分也已落地。
-- **階段 B**：接著把所有**弱勢（losers）**的多檔分類，在**另一個 assistant message** 裡平行 spawn。回來後再更新 `analysis-latest.json` 寫入 losers。
+- **階段 B**：接著只把**弱勢（losers）成員數最多的前 3 個多檔分類**，在**另一個 assistant message** 裡平行 spawn。其餘弱勢分類直接保留第一階段簡述或空白。回來後再更新 `analysis-latest.json` 寫入 losers。
 - 如果階段 B 因為 token、rate limit 或其他原因失敗，**losers 部分可以跳過**（losers 陣列維持空或佔位），直接進入 Step 5 用只有 gainers 的資料產出總結與寄信。優先確保 gainers 完整、報告能寄出。
 
 **關鍵：每一階段所有 spawn 必須放在同一個 assistant message 裡**，才是真平行；序列呼叫會浪費時間，失去改這步的意義。
@@ -93,7 +94,7 @@ console.log(JSON.stringify({tradingDate: d.tradingDate, timestamp: d.timestamp, 
 
 內容要求：
 1. 目標長度 300 字，不是 100。內容要紮實，以資深產業分析師身分撰寫。
-2. 用 WebSearch 找最近 3 天的台股相關新聞、法說會、月營收、外資評等、產業動態，作為撰寫依據。
+2. 用 WebSearch 找最近 2 天的台股相關新聞、法說會、月營收、外資評等、產業動態，作為撰寫依據。
 3. 結構：先講產業層面催化劑（技術趨勢、供需、政策、同業財報），再講族群內代表股發生了什麼（營收、訂單、新聞）。
 4. 若硬湊成同一族群但其實沒明顯產業共通性，就改談個股各自的月營收、財報、新聞、除權息、法人買賣超等，不要硬凹產業故事。
 5. 開頭不要「XX 族群今日表現強/弱勢」這種套話，直接切入產業或個股。

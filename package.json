@@ -9,7 +9,11 @@
     "build": "vite build",
     "preview": "vite preview",
     "clean": "rm -rf dist",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "report": "npm run report:codex",
+    "report:codex": "bash scripts/run-daily-report-codex-parallel.sh",
+    "report:fetch": "tsx scripts/fetch-market-data.ts",
+    "report:send": "tsx scripts/send-report.ts"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",

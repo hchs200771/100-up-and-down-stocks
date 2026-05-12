@@ -6,3 +6,12 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# Daily report generated artifacts
+data/market-latest.json
+data/analysis-latest.json
+data/report-latest.html
+data/history.json
+data/memory/
+data/tmp/
+data/logs/
