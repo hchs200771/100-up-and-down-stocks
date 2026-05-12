@@ -32,6 +32,8 @@ interface HistoryRecord {
 }
 
 const HISTORY_MAX = 5;
+const EMAIL_SUBJECT = "📈 台股盤後資金流向與 AI 總結";
+const EMAIL_TO = "hchs200771@gmail.com";
 
 function renderCategoryBlock(
   g: CategoryGroup,
@@ -136,7 +138,11 @@ async function sendEmail(html: string): Promise<void> {
   const res = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "text/plain;charset=utf-8" },
-    body: JSON.stringify({ htmlBody: html }),
+    body: JSON.stringify({
+      to: EMAIL_TO,
+      subject: EMAIL_SUBJECT,
+      htmlBody: html,
+    }),
   });
   if (!res.ok) {
     throw new Error(`GAS webhook returned ${res.status}: ${await res.text()}`);
