@@ -239,7 +239,7 @@ if stage_enabled research; then
 
   clear_dir_json "$RESULT_DIR"
   log "進度 3/5：開始做各分類/族群的個別研究報告"
-  if ! CODEX_GROUP_TASK_DIR="$TASK_SNAPSHOT_DIR" CODEX_GROUP_RESULT_DIR="$RESULT_DIR" bash "$WORKER_RUNNER" "${CODEX_GROUP_MAX_CONCURRENCY:-4}" > >(tee -a "$LOG_FILE") 2>&1; then
+  if ! CODEX_GROUP_TASK_DIR="$TASK_SNAPSHOT_DIR" CODEX_GROUP_RESULT_DIR="$RESULT_DIR" bash "$WORKER_RUNNER" "${CODEX_GROUP_MAX_CONCURRENCY:-6}" > >(tee -a "$LOG_FILE") 2>&1; then
     log "parallel workers exited non-zero; continuing with fallback stories where needed"
   fi
 

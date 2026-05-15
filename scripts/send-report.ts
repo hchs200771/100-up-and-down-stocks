@@ -15,6 +15,11 @@ interface StockMeta {
   futures?: { level: string; margin: string };
 }
 
+interface MarketStock {
+  code: string;
+  name: string;
+}
+
 interface Analysis {
   timestamp: string;
   date: string;
@@ -31,13 +36,45 @@ interface HistoryRecord {
   loserCategories: string[];
 }
 
+interface StockLookup {
+  code: string;
+  name: string;
+  meta?: StockMeta;
+}
+
 const HISTORY_MAX = 5;
 const EMAIL_SUBJECT = "📈 台股盤後資金流向與 AI 總結";
 const EMAIL_TO = "hchs200771@gmail.com";
 
+function buildStockLookup(market: { gainers?: MarketStock[]; losers?: MarketStock[] }): Map<string, string> {
+  const lookup = new Map<string, string>();
+  for (const stock of [...(market.gainers ?? []), ...(market.losers ?? [])]) {
+    lookup.set(stock.name, stock.code);
+  }
+  return lookup;
+}
+
+function resolveStock(stockStr: string, stockMap: Record<string, StockMeta>, codeByName: Map<string, string>): StockLookup {
+  const match = stockStr.match(/\((.*?)\)/);
+  const rawName = stockStr.replace(/\(.*?\)/, "").trim();
+  const code = match?.[1] ?? codeByName.get(rawName) ?? "";
+  return {
+    code,
+    name: rawName,
+    meta: code ? stockMap[code] : undefined,
+  };
+}
+
+function renderFuturesBadge(meta?: StockMeta): string {
+  if (!meta?.futures) return "";
+  const label = [meta.futures.level, meta.futures.margin].filter(Boolean).join(" ");
+  return `<span style="font-size: 10px; background-color: #e0e7ff; color: #4338ca; padding: 2px 4px; border-radius: 4px; margin-left: 4px;">期貨(${label})</span>`;
+}
+
 function renderCategoryBlock(
   g: CategoryGroup,
   stockMap: Record<string, StockMeta>,
+  codeByName: Map<string, string>,
   kind: "gainer" | "loser",
 ): string {
   const borderColor = kind === "gainer" ? "#fee2e2" : "#dcfce7";
@@ -54,16 +91,13 @@ function renderCategoryBlock(
 
   let stocksHtml = "";
   for (const stockStr of g.stocks) {
-    const match = stockStr.match(/\((.*?)\)/);
-    const code = match ? match[1] : "";
-    const meta = code ? stockMap[code] : undefined;
+    const { code, name, meta } = resolveStock(stockStr, stockMap, codeByName);
     const pct = meta?.pct ?? "";
-    const futuresHtml = meta?.futures
-      ? `<span style="font-size: 10px; background-color: #e0e7ff; color: #4338ca; padding: 2px 4px; border-radius: 4px; margin-left: 4px;">期貨(${meta.futures.margin})</span>`
-      : "";
-    const cleanName = stockStr.replace(/\(.*?\)/, "");
-    stocksHtml += `<a href="https://tw.stock.yahoo.com/quote/${code}.TW/technical-analysis" target="_blank" style="text-decoration: none; display: inline-block; background-color: white; border: 1px solid ${stockBorder}; padding: 4px 8px; border-radius: 6px; margin: 0 6px 6px 0; font-size: 14px;">
-      <strong style="color: #1f2937;">${cleanName}</strong> <span style="color: #6b7280; font-size: 12px;">${code}</span>
+    const futuresHtml = renderFuturesBadge(meta);
+    const href = code ? `https://tw.stock.yahoo.com/quote/${code}.TW/technical-analysis` : "#";
+    const codeHtml = code ? `<span style="color: #6b7280; font-size: 12px;">${code}</span>` : "";
+    stocksHtml += `<a href="${href}" target="_blank" style="text-decoration: none; display: inline-block; background-color: white; border: 1px solid ${stockBorder}; padding: 4px 8px; border-radius: 6px; margin: 0 6px 6px 0; font-size: 14px;">
+      <strong style="color: #1f2937;">${name}</strong> ${codeHtml}
       <span style="color: ${pctColor}; font-weight: bold; margin-left: 4px;">${pct}</span>
       ${futuresHtml}
     </a>`;
@@ -86,9 +120,9 @@ function renderCategoryBlock(
   </div>`;
 }
 
-function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>): string {
-  const gainersHtml = a.gainers.map((g) => renderCategoryBlock(g, stockMap, "gainer")).join("");
-  const losersHtml = a.losers.map((g) => renderCategoryBlock(g, stockMap, "loser")).join("");
+function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName: Map<string, string>): string {
+  const gainersHtml = a.gainers.map((g) => renderCategoryBlock(g, stockMap, codeByName, "gainer")).join("");
+  const losersHtml = a.losers.map((g) => renderCategoryBlock(g, stockMap, codeByName, "loser")).join("");
 
   return `<div style="font-family: sans-serif; max-width: 800px; margin: 0 auto; color: #333;">
     <h2 style="color: #4f46e5; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px;">📈 台股盤後資金流向與 AI 總結 (${a.timestamp})</h2>
@@ -161,16 +195,18 @@ async function main() {
 
   const marketPath = resolve(process.cwd(), "data/market-latest.json");
   let stockMap: Record<string, StockMeta> = analysis.stockMap ?? {};
+  let codeByName = new Map<string, string>();
   if (existsSync(marketPath)) {
     try {
       const market = JSON.parse(readFileSync(marketPath, "utf-8"));
       stockMap = market.stockMap ?? stockMap;
+      codeByName = buildStockLookup(market);
     } catch {
       // fall back to analysis.stockMap
     }
   }
 
-  const html = renderHtml(analysis, stockMap);
+  const html = renderHtml(analysis, stockMap, codeByName);
 
   const htmlOutPath = resolve(process.cwd(), "data/report-latest.html");
   writeFileSync(htmlOutPath, html, "utf-8");
