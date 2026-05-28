@@ -27,6 +27,7 @@ interface Analysis {
   gainers: CategoryGroup[];
   losers: CategoryGroup[];
   summary: string;
+  longTermStrategy?: string;
 }
 
 interface HistoryRecord {
@@ -123,6 +124,12 @@ function renderCategoryBlock(
 function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName: Map<string, string>): string {
   const gainersHtml = a.gainers.map((g) => renderCategoryBlock(g, stockMap, codeByName, "gainer")).join("");
   const losersHtml = a.losers.map((g) => renderCategoryBlock(g, stockMap, codeByName, "loser")).join("");
+  const longTermStrategyHtml = a.longTermStrategy
+    ? `<div style="background-color: #eef6ff; border: 1px solid #bfdbfe; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+      <h3 style="margin-top: 0; color: #1d4ed8;">🧭 長線策略與進出場</h3>
+      <p style="line-height: 1.7; margin-bottom: 0; color: #1e3a8a;">${a.longTermStrategy.replace(/\n/g, "<br>")}</p>
+    </div>`
+    : "";
 
   return `<div style="font-family: sans-serif; max-width: 800px; margin: 0 auto; color: #333;">
     <h2 style="color: #4f46e5; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px;">📈 台股盤後資金流向與 AI 總結 (${a.timestamp})</h2>
@@ -130,6 +137,7 @@ function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName
       <h3 style="margin-top: 0; color: #1f2937;">📝 盤後總結</h3>
       <p style="line-height: 1.6; margin-bottom: 0;">${a.summary.replace(/\n/g, "<br>")}</p>
     </div>
+    ${longTermStrategyHtml}
     <h3 style="color: #dc2626;">🔥 強勢焦點 (量大優先)</h3>
     ${gainersHtml}
     <h3 style="color: #16a34a; margin-top: 30px;">🧊 弱勢焦點 (量大優先)</h3>

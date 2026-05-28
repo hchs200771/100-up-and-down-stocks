@@ -29,6 +29,13 @@ Do not split the daily report task into alternate commands unless the user expli
 
 After completion, report the trading date and whether the report was sent.
 
+#### Choosing the runtime
+
+- **Codex CLI** (default): `npm run report` or `npm run report:codex`
+- **Claude Code CLI**: `npm run report:claude`
+
+Both run the same 5-stage pipeline (fetch → classify → research → finalize → send). The only difference is which AI CLI drives the controller, workers, and finalizer prompts.
+
 Skill to use: none by default. Use `.claude/skills/daily-stock-report/SKILL.md` only when the user explicitly wants the manual Claude skill path.
 
 ### "改分類", "改 worker 搜尋", "改 finalizer", "改盤後報告 prompt"
