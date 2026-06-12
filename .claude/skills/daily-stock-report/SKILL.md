@@ -65,50 +65,77 @@ console.log(JSON.stringify({tradingDate: d.tradingDate, timestamp: d.timestamp, 
 
 **輸出格式**：每一邊產出一個陣列 `[{category, stocks}]`，其中 `stocks` 陣列元素必須是 `股票名稱(四碼代號)`。
 
-### Step 4 — 族群故事（平行 subagent，每個 category 約 300 字）
+**分類完成後，寫 `data/tmp/classification.json`（這是後面組裝的唯一資料來源，故事文字不會再經過你的 output）：**
 
-**執行方式：分兩階段，每階段都平行 spawn**
+先 `rm -rf data/tmp/stories && mkdir -p data/tmp/stories`，再用 Write 寫：
 
-對每一個**兩檔以上**的分類，用 Agent tool（`subagent_type: Explore`）平行 spawn 一個 Haiku subagent 產故事。（請使用 model: Haiku，省 token）
-上漲的族群，如果只有單檔，一律跳過，因為沒有族群性，不值得找故事。
-下跌的族群，要 3 檔以上，才視為族群，因為我注重在上漲的族群。只有 1, 2 檔就不用找故事了。
-另外，**弱勢股只需要挑成員數最多的前 3 個族群做第二階段 research**；其他弱勢族群直接沿用第一階段分類時的簡短盤面判讀，或留空即可，不要花時間再搜。
+```json
+{
+  "timestamp": "<market-latest.json 的 timestamp>",
+  "date": "<tradingDate>",
+  "gainers": [
+    {"id": "g01", "category": "...", "stocks": ["名稱(代號)"], "story": ""},
+    ...
+  ],
+  "losers": [
+    {"id": "l01", "category": "...", "stocks": ["名稱(代號)"], "story": ""},
+    ...
+  ]
+}
+```
 
-**兩階段流程（重要）：**
+規則：
+- 每個 group 給穩定 `id`：gainers 用 `g01`、`g02`…；losers 用 `l01`、`l02`…（subagent 會把故事寫到 `data/tmp/stories/<id>.txt`，script 靠 id 對回來）。
+- **會 spawn subagent 的 group（見 Step 4 門檻）**：`story` 留 `""`，故事交給 subagent。
+- **不 spawn 的 group**（gainers 2 檔、losers 非前 3 大、各方單檔）：你直接在這裡把 `story` 寫成一句 30–50 字的盤面判讀；真的不值得寫就留 `""`。
+- `summary` 這裡先不寫，等 Step 5 再補。
 
-- **階段 A**：把所有**強勢（gainers）**的多檔分類，在**同一個 assistant message** 裡平行 spawn。等全部回來後，立刻寫一次 `data/analysis-latest.json`（此時 losers 可以先填空陣列或佔位），當成 checkpoint 存檔。這樣即使階段 B 失敗，漲的部分也已落地。
-- **階段 B**：接著只把**弱勢（losers）成員數最多的前 3 個多檔分類**，在**另一個 assistant message** 裡平行 spawn。其餘弱勢分類直接保留第一階段簡述或空白。回來後再更新 `analysis-latest.json` 寫入 losers。
-- 如果階段 B 因為 token、rate limit 或其他原因失敗，**losers 部分可以跳過**（losers 陣列維持空或佔位），直接進入 Step 5 用只有 gainers 的資料產出總結與寄信。優先確保 gainers 完整、報告能寄出。
+### Step 4 — 族群故事（平行 subagent，subagent 直接寫檔）
 
-**關鍵：每一階段所有 spawn 必須放在同一個 assistant message 裡**，才是真平行；序列呼叫會浪費時間，失去改這步的意義。
+**門檻（精簡後）：**
+- 強勢（gainers）：**3 檔以上**才 spawn subagent 寫故事。2 檔族群不 spawn，用 Step 3 在 classification 裡寫的一句判讀帶過；單檔跳過。
+- 弱勢（losers）：只挑**成員數最多、且 3 檔以上的前 3 個族群**做 research；其餘弱勢族群不 spawn，沿用 classification 裡的簡述或留空。
+
+**subagent 設定：** 用 Agent tool，`subagent_type: "general-purpose"`、`model: "haiku"`。
+（不要用 Explore——Explore 沒有 Write 工具，無法寫檔。）
+
+**兩階段流程：**
+- **階段 A**：所有符合門檻的**強勢**族群，在**同一個 assistant message** 裡平行 spawn。全部回來後跑一次 `npx tsx scripts/assemble-analysis.ts` 當 checkpoint（此時 losers 用 classification 的簡述/空白、summary 空）。
+- **階段 B**：弱勢前 3 大族群，在**另一個 assistant message** 裡平行 spawn。
+- 階段 B 若因 token / rate limit / 其他原因失敗，losers 直接沿用 classification 內容即可，不影響 gainers 與寄信。優先確保 gainers 完整、報告能寄出。
+
+**關鍵：每一階段所有 spawn 必須放在同一個 assistant message 裡**，才是真平行。
 
 每個 subagent 拿到的 prompt 樣板：
 
 ```
-你是資深台股產業分析師。為以下族群寫一段約 300 字的今日盤後故事。
+你是資深台股產業分析師。為以下族群寫一段約 300 字的今日盤後故事，並把結果「寫成檔案」。
 
+族群 id：<id>
 族群名稱：<category>
 族群成員（今日強勢/弱勢）：<stocks 列表，含代號>
 今日交易日：<tradingDate>
 漲/跌方向：<強勢 or 弱勢>
 
 內容要求：
-1. 目標長度 300 字，不是 100。內容要紮實，以資深產業分析師身分撰寫。
-2. 用 WebSearch 找最近 2 天的台股相關新聞、法說會、月營收、外資評等、產業動態，作為撰寫依據。
-3. 結構：先講產業層面催化劑（技術趨勢、供需、政策、同業財報），再講族群內代表股發生了什麼（營收、訂單、新聞）。
-4. 若硬湊成同一族群但其實沒明顯產業共通性，就改談個股各自的月營收、財報、新聞、除權息、法人買賣超等，不要硬凹產業故事。
+1. 約 300 字，內容紮實，以資深產業分析師身分撰寫。
+2. 用 WebSearch 找最近 2 天的新聞、法說會、月營收、外資評等、產業動態當依據；**最多 2 次 WebSearch**。查不到就用產業鏈邏輯與長線題材補足，不要硬湊新聞、也不要寫「查不到 / 沒有新聞」。
+3. 結構：先講產業層面催化劑（技術趨勢、供需、政策、同業財報），再講族群內代表股發生了什麼。
+4. 若硬湊成同一族群但其實沒明顯產業共通性，就改談個股各自的營收、財報、新聞、法人買賣超，不要硬凹產業故事。
 5. 開頭不要「XX 族群今日表現強/弱勢」這種套話，直接切入產業或個股。
-6. 基於可查證的基本面與市場動態，避免過度臆測。
+6. 基於可查證的基本面，避免過度臆測。
+7. **全文一律使用台灣繁體中文與台灣金融慣用語**（例如「記憶體／半導體／晶圓／伺服器／報價／庫存」，不要寫成「内存／存储芯片／服务器／价格／库存」等簡體或中國用語）。
 
-只回傳純故事文字，不要加標題、不要加 markdown 結構、不要引用來源。
+完成後用 Write 工具，把「純故事文字」（不要標題、不要 markdown、不要來源清單）寫到：
+data/tmp/stories/<id>.txt
+
+最後只回覆一行：done <id>
 ```
 
-**彙總：** 所有 subagent 回傳後，把各自的故事字串寫進對應 category 的 `story` 欄位。
-
 **為什麼這樣做：**
-- 真平行：wall-clock 時間約等於最慢那個 subagent（而非 N 個序列累加）
-- 故事品質更好：每個 subagent 獨立 WebSearch，有真實新聞依據
-- 主對話 context 乾淨：不會被 N 組搜尋結果污染
+- 故事長文由 subagent 各自寫檔，**完全不經過主對話的 output**——這是省 token 與省生成時間的最大來源。
+- 真平行：wall-clock 約等於最慢那個 subagent。
+- 主對話 context 乾淨：不會被 N 組搜尋結果或 N 段故事污染。
 
 ### Step 5 — 盤後總結（250 字內）
 
@@ -123,19 +150,19 @@ console.log(JSON.stringify({tradingDate: d.tradingDate, timestamp: d.timestamp, 
 - 給建議的資金比例與策略，不要太激進
 - 弱勢族群著墨可少一些（只需點出是否拖累大盤），不用給做空建議
 
-### Step 6 — 寫 analysis-latest.json
+寫好後，用 Edit 把這段 summary 加進 `data/tmp/classification.json` 的 `"summary"` 欄位（這是 summary 唯一會經過你 output 的地方，250 字內，成本很低）。
 
-寫到 `data/analysis-latest.json`，結構要和 `scripts/send-report.ts` 期望的一致：
+### Step 6 — 組裝 analysis-latest.json（純 script，不用你重打故事）
 
-```json
-{
-  "timestamp": "<market-latest.json 的 timestamp>",
-  "date": "<market-latest.json 的 tradingDate，格式 YYYY-MM-DD>",
-  "gainers": [{"category", "stocks", "story"}, ...],
-  "losers":  [{"category", "stocks", "story"}, ...],
-  "summary": "..."
-}
 ```
+npx tsx scripts/assemble-analysis.ts
+```
+
+這支 script 讀 `data/tmp/classification.json` + `data/tmp/stories/<id>.txt`，機械合併成 `data/analysis-latest.json`（結構：`{timestamp, date, gainers:[{category,stocks,story}], losers:[...], summary}`），正是 `send-report.ts` 期望的格式。故事文字不會經過你的 output。
+
+> 簡轉繁保險：assemble 會用 `opencc-js`（s2twp）把每段 story 與 summary 自動轉成台灣繁體（含用語：`内存→記憶體`、`服务器→伺服器`），所以即使 subagent 偶爾寫出簡體或中國用語也會被擋下，不必再人工挑字。
+
+跑完看一眼它印出的統計（幾組有 story、summary 是否 set）確認沒漏。
 
 ### Step 7 — 寄信（POST 到 GAS）
 
@@ -192,5 +219,6 @@ timestamp: <同 analysis>
 
 - 所有檔案路徑用工作目錄相對路徑（`data/...`、`scripts/...`），不要寫絕對路徑
 - `data/memory/` 資料夾如果不存在，自己 mkdir
+- 中繼檔在 `data/tmp/`：`classification.json`（你寫的族群結構 + summary）、`stories/<id>.txt`（subagent 寫的故事）。Step 4 開始前先清空 `data/tmp/stories/`。analysis-latest.json 由 `assemble-analysis.ts` 從這兩者組出來，不要再手動逐段重打故事
 - 本流程不應修改 `src/services/aiService.ts`（前端 UI 還在用它）
 - 不需要 `GEMINI_API_KEY` 環境變數

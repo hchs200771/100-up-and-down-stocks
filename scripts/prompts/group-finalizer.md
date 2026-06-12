@@ -14,10 +14,11 @@
 - 不要執行寄信腳本。
 - `analysis.date` 與 memory 檔名一律使用 `data/market-latest.json` 內的 `tradingDate`
 - 若某些 worker 結果缺失，允許保留空 story，但不要讓整份報告失敗。
-- 合併 story 時，優先使用 `data/tmp/group-results/*.json` 的 `story`；若缺失，改用對應 task 檔中的 `preliminaryStory`，但必須先去除模板廢話並補成完整分析；若連 `preliminaryStory` 都沒有，才留空。
+- 弱勢族群只分析成員數最多的前 3 組；其他弱勢族群不要補 story、不要加註解，全部合併成一組 `其他弱勢`，只列股票。
+- 合併 story 時，優先使用 `data/tmp/group-results/*.json` 的 `story`；若強勢族群或前三大弱勢族群缺失，改用對應 task 檔中的 `preliminaryStory`，但必須先去除模板廢話並補成完整分析；若連 `preliminaryStory` 都沒有，才留空。
 - 報告中的 story 不可以出現這些模板句或同義句：`最近 2 天沒有`、`最近 3 天沒有`、`沒有查到`、`沒有看到`、`族群性較弱`、`較偏個股事件整理`、`同步轉強`、`同步轉弱`、`初步看`、`若缺乏`、`報告應`、`fallback`。
 - 不要重複畫面已經知道的方向：強勢區不要說「上漲/轉強」，弱勢區不要說「下跌/轉弱」。直接講原因、題材、籌碼與代表股。
-- 即使 worker 缺失，也要用 task 的 category、members、queryHints、最近 memory 與你的產業知識寫出 80 到 220 字的專業故事，不可只寫風險提示或空泛分類。
+- 即使強勢族群或前三大弱勢族群 worker 缺失，也要用 task 的 category、members、queryHints、最近 memory 與你的產業知識寫出 80 到 220 字的專業故事，不可只寫風險提示或空泛分類；非前三大弱勢族群除外，必須併入 `其他弱勢` 並保留空 story。
 
 策略判讀規則：
 - 報告核心不是找單一特例股，而是先判斷族群是否被資金青睞，再從族群內拆出龍頭、高純度彈性股與補漲/事件股。
@@ -51,7 +52,12 @@ Step 3. 依 `data/tmp/group-tasks/*.json` 的分類順序，將 `data/tmp/group-
 - `gainers`
 - `losers`
 - 每個 `stocks` 陣列必須保留 task 內的股票標籤格式 `名稱(代號)`，例如 `微星(2377)`；不可只輸出股票名稱，因為後續 HTML 會用代號補 Yahoo 股市連結、今日漲跌幅、個股期貨與保證金級距。
-- 每個 category 的 `story` 合併規則固定為：
+- 弱勢族群合併規則固定為：
+  1. 先依 `members` 數量由大到小排序，若數量相同則維持 task 檔排序，取前 3 組作為需要分析的弱勢族群
+  2. 前 3 組弱勢族群照一般 category 規則輸出 story
+  3. 第 4 組以後的弱勢族群全部合併成單一 category：`其他弱勢`
+  4. `其他弱勢.stocks` 依原本 task 檔順序串接所有股票，`story` 必須是空字串，不要補原因、註解或風險提示
+- 每個需要分析的 category 的 `story` 合併規則固定為：
   1. 先找同名 task 的 worker result `story`
   2. 找不到就將 task 內的 `preliminaryStory` 改寫成可讀報告文字
   3. 還是沒有才留空

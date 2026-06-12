@@ -94,7 +94,7 @@ fi
 printf '%s' "$FILTERED_TASKS_JSON" | node -e '
 const input = JSON.parse(require("fs").readFileSync(0, "utf8"));
 if (input.skippedLosers.length > 0) {
-  console.log("進度 3/5：以下弱勢族群不做個別 worker，只交給 finalizer fallback：");
+  console.log("進度 3/5：以下弱勢族群不做個別 worker，finalizer 會合併為其他弱勢：");
   for (const item of input.skippedLosers) {
     console.log(`- ${item.category} (${item.memberCount} 檔): ${item.file}`);
   }
