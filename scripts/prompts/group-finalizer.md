@@ -44,6 +44,33 @@
   - 追價風險：低價股、新掛牌、DR、槓桿商品、單一事件股只可當短線輪動，不要用長線主線的持股邏輯處理。
 - 進出場策略要用操盤語氣寫成判斷，不要變成教科書條列；但必須讓讀者看得出「哪些可追、哪些等回測、哪些要降級」。
 
+進場評分規則（只對「強勢族群」計算，弱勢族群不輸出評分欄位）：
+- 核心觀念：分數量化的是「現在進場的 risk/reward」，不是「今天有多強」。剛起漲、上檔空間大、下檔風險小 → 高分；已經漲多進入高潮、上檔有限下檔大 → 低分。所以最強勢、最熱門的族群常常分數中等甚至偏低，這是正確的。
+- 滿分 100，固定拆成四軸，`scoreBreakdown` 四項相加必須等於 `entryScore`：
+  - **A. 趨勢基底 `trend`（0-40）— 值不值得放錢 1-2 年**，依 `longTermStrategy` 同一套判斷：
+    - 35-40：結構性多年主線（供需瓶頸、規格升級、資本支出循環向上，如 AI 基建、記憶體循環、先進封裝、電力）。
+    - 20-30：真產業題材但屬中期、會有報價/庫存週期波動。
+    - 5-15：短線題材（補漲、單一公司事件、一次性政策利多）。
+    - 0：純籌碼投機（DR、槓桿反向、資產股、新掛牌炒作）。
+  - **B. 進場時機 `timing`（0-35）— 漲潮退潮**，優先吃 task 已標的 `stage`（或你判定的 stage）：
+    - `啟動` → 30-35（上檔最大、下檔最小，最佳佈局點）
+    - `擴散` → 20-28（主升段，可進但要有紀律）
+    - `高潮` → 5-12（上檔有限、下檔大，是減碼點不是進場點）
+    - `退潮` → 0-5（反向訊號，不放新錢）
+    - 沒標 stage 時，用 `consecutiveDaysInStrong`、`memberCountDelta`、`instVsPriceDivergence` 自行對應上述級距。
+  - **C. 籌碼確認 `chips`（0-25）— 有沒有真錢背書**，看 `chips` 與 `leaderConcentration`：
+    - 外資**且**投信同向買超、龍頭先動(`leader-only`) → 20-25
+    - 單一法人買、或法人 `mixed` → 10-15
+    - 法人淨賣 → 0-5
+  - **D. 風險扣分 `risk`（-30-0）— 是不是投機假象**，逐項累減（可疊加，下限 -30）：
+    - `avgDayTradeRatio > 40%`（隔日沖主導）→ -10
+    - `speculativeRatio` 偏高（投機/低流通股佔多）→ -5 ~ -10
+    - 成員含 `attention` / `disposition` / `lowLiquidity` 旗標 → -5
+    - 任一成員 `overnightDump`（昨漲停今爆當沖收黑）→ -10
+- `entryAction` 依 `entryScore` 機械對應：≥85 `核心加碼`、70-84 `標準持有`、55-69 `觀察不追`、<55 `不碰減碼`。
+- `entryRationale` 用一句操盤語氣交代分數從哪來＋現在該怎麼做，不要逐軸報數字、不要貼欄位名。
+- 若 `data/scorecard.json` 的 `aggregates` 顯示某 stage 的 T+5 報酬與直覺明顯背離，可在 `timing` 軸內微調 ±3，但不要大幅推翻規則。
+
 Step 1. 讀取 `data/market-latest.json`，取得：
 - `tradingDate`
 - `timestamp`
@@ -79,7 +106,7 @@ Step 4. 寫入 `data/analysis-latest.json`，格式必須是：
 {
   "timestamp": "...",
   "date": "YYYY-MM-DD",
-  "gainers": [{"category":"...","stocks":["名稱(代號)"],"story":"...","confidence":"high","stage":"擴散"}],
+  "gainers": [{"category":"...","stocks":["名稱(代號)"],"story":"...","confidence":"high","stage":"擴散","entryScore":81,"scoreBreakdown":{"trend":38,"timing":25,"chips":18,"risk":0},"entryAction":"標準持有","entryRationale":"..."}],
   "losers": [{"category":"...","stocks":["名稱(代號)"],"story":"...","confidence":"medium","retreatSignal":true}],
   "summary": "...",
   "longTermStrategy": "..."
@@ -90,6 +117,10 @@ Step 4. 寫入 `data/analysis-latest.json`，格式必須是：
 - `confidence`：沿用 worker result 的 `confidence` 值；若用 `preliminaryStory` fallback 則設 `"low"`；值限 `"high"` / `"medium"` / `"low"`
 - `stage`（可選）：只在有把握時加，值限 `"啟動"` / `"擴散"` / `"高潮"` / `"退潮"`；不確定就省略
 - `retreatSignal`（可選）：task JSON 帶有 `retreatSignal: true` 的弱勢族群必須在輸出物件加此欄
+- `entryScore`（強勢族群必填，弱勢族群不輸出）：0-100 整數進場評分，計算方式見下方「進場評分規則」
+- `scoreBreakdown`（有 `entryScore` 時必填）：物件 `{"trend":A,"timing":B,"chips":C,"risk":D}`，四項相加須等於 `entryScore`
+- `entryAction`（有 `entryScore` 時必填）：依分數對應 `"核心加碼"`(≥85) / `"標準持有"`(70-84) / `"觀察不追"`(55-69) / `"不碰減碼"`(<55)
+- `entryRationale`（有 `entryScore` 時必填）：一句話（繁中、40 字內）說明分數來源與當前動作，例如「長線主線＋擴散中、法人續買，可作底倉」
 
 Step 5. 撰寫 `summary`：
 - 用繁體中文

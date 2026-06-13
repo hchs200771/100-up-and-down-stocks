@@ -49,7 +49,41 @@ const toTW = OpenCC.Converter({ from: "cn", to: "twp" });
 const cwd = process.cwd();
 const classPath = resolve(cwd, "data/tmp/classification.json");
 const storiesDir = resolve(cwd, "data/tmp/stories");
+const intlMarketPath = resolve(cwd, "data/intl-market-latest.json");
+const intlBriefPath = resolve(cwd, "data/tmp/intl-brief.txt");
 const outPath = resolve(cwd, "data/analysis-latest.json");
+
+interface IntlIndex {
+  key: string;
+  name: string;
+  region: string;
+  close: number;
+  change: number;
+  pct: number;
+}
+
+/**
+ * 國際情勢區塊：數字（intl-market-latest.json）+ worker 寫的判讀（intl-brief.txt）。
+ * 兩者皆可缺；都缺就不附 intl 欄位，send-report 會自動略過該區塊。
+ */
+function buildIntl(): { summary: string; indices: IntlIndex[] } | undefined {
+  let indices: IntlIndex[] = [];
+  if (existsSync(intlMarketPath)) {
+    try {
+      const raw = JSON.parse(readFileSync(intlMarketPath, "utf8"));
+      if (Array.isArray(raw?.indices)) indices = raw.indices as IntlIndex[];
+    } catch {
+      console.warn("intl-market-latest.json unreadable, skipping intl numbers");
+    }
+  }
+  let summary = "";
+  if (existsSync(intlBriefPath)) {
+    const txt = readFileSync(intlBriefPath, "utf8").trim();
+    if (txt) summary = toTW(txt);
+  }
+  if (!summary && indices.length === 0) return undefined;
+  return { summary, indices };
+}
 
 function fill(groups: Group[] | undefined): { category: string; stocks: string[]; story: string }[] {
   return (groups ?? []).map((g) => {
@@ -74,12 +108,14 @@ function main() {
     throw new Error("classification.json missing timestamp/date");
   }
 
+  const intl = buildIntl();
   const out = {
     timestamp: cls.timestamp,
     date: cls.date,
     gainers: fill(cls.gainers),
     losers: fill(cls.losers),
     summary: toTW(typeof cls.summary === "string" ? cls.summary : ""),
+    ...(intl ? { intl } : {}),
   };
 
   writeFileSync(outPath, `${JSON.stringify(out, null, 2)}\n`, "utf8");
@@ -90,7 +126,8 @@ function main() {
     `Assembled analysis-latest.json: ` +
       `${out.gainers.length} gainer (${gWithStory} with story) / ` +
       `${out.losers.length} loser (${lWithStory} with story) groups, ` +
-      `summary ${out.summary ? "set" : "EMPTY"}`,
+      `summary ${out.summary ? "set" : "EMPTY"}, ` +
+      `intl ${intl ? `${intl.indices.length} idx / brief ${intl.summary ? "set" : "EMPTY"}` : "none"}`,
   );
 }
 

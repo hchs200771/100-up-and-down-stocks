@@ -49,6 +49,25 @@ npx tsx scripts/score-report.ts
 
 若此步驟失敗，**繼續流程**，不影響當日報告。
 
+### Step 1.6 — 抓國際市場數字（純 script，可跳過）
+
+執行：
+
+```
+npx tsx scripts/fetch-intl-market.ts
+```
+
+用 Yahoo Finance（免費、無金鑰）抓 13 個國際標的的最新收盤與漲跌幅，輸出 `data/intl-market-latest.json`：
+
+- **美股**：標普500、道瓊、那斯達克、費城半導體（費半）
+- **中國**：上證指數、滬深300、恒生指數
+- **日韓**：日經225、韓國KOSPI
+- **原物料/利率**：西德州原油、黃金、美元指數、美10年期殖利率
+
+各市場收盤時間不同：對台股傍晚跑的盤後報告，亞股是「當日」收盤，美股/費半/原油/殖利率是「隔夜」前一交易日。這些數字是 Step 4 國際情勢 worker 的判讀依據，也會直接呈現在報告的「🌐 國際情勢」表格。
+
+若此步驟失敗（Yahoo 掛掉），**繼續流程**：國際情勢 worker 會少掉精準數字、只能靠 WebSearch 敘述，但不影響台股報告與寄信。
+
 ### Step 2 — 讀取記憶
 
 列出 `data/memory/` 下最近 **2 份** markdown（依檔名日期排序，最新的在前）。
@@ -81,7 +100,7 @@ console.log(JSON.stringify({tradingDate: d.tradingDate, timestamp: d.timestamp, 
 
 **分類完成後，寫 `data/tmp/classification.json`（這是後面組裝的唯一資料來源，故事文字不會再經過你的 output）：**
 
-先 `rm -rf data/tmp/stories && mkdir -p data/tmp/stories`，再用 Write 寫：
+先 `rm -rf data/tmp/stories && mkdir -p data/tmp/stories && rm -f data/tmp/intl-brief.txt`，再用 Write 寫：
 
 ```json
 {
@@ -114,7 +133,7 @@ console.log(JSON.stringify({tradingDate: d.tradingDate, timestamp: d.timestamp, 
 （不要用 Explore——Explore 沒有 Write 工具，無法寫檔。）
 
 **兩階段流程：**
-- **階段 A**：所有符合門檻的**強勢**族群，在**同一個 assistant message** 裡平行 spawn。全部回來後跑一次 `npx tsx scripts/assemble-analysis.ts` 當 checkpoint（此時 losers 用 classification 的簡述/空白、summary 空）。
+- **階段 A**：所有符合門檻的**強勢**族群，**外加 1 個「國際情勢 worker」（見 Step 4.5）**，全部放在**同一個 assistant message** 裡平行 spawn。國際 worker 與台股族群 worker 同時跑，幾乎不增加整體 wall-clock。全部回來後跑一次 `npx tsx scripts/assemble-analysis.ts` 當 checkpoint（此時 losers 用 classification 的簡述/空白、summary 空）。
 - **階段 B**：弱勢前 3 大族群，在**另一個 assistant message** 裡平行 spawn。
 - 階段 B 若因 token / rate limit / 其他原因失敗，losers 直接沿用 classification 內容即可，不影響 gainers 與寄信。優先確保 gainers 完整、報告能寄出。
 
@@ -151,6 +170,42 @@ data/tmp/stories/<id>.txt
 - 真平行：wall-clock 約等於最慢那個 subagent。
 - 主對話 context 乾淨：不會被 N 組搜尋結果或 N 段故事污染。
 
+### Step 4.5 — 國際情勢 worker（與階段 A 同批平行 spawn）
+
+**這個 worker 必須跟 Step 4 階段 A 的強勢族群 worker 放在同一個 assistant message 裡一起 spawn**，這樣它跟台股族群故事同時在跑，不會拉長整體報告時間（使用者常在深夜執行，整體時間要短）。
+
+**worker 設定：** Agent tool，`subagent_type: "general-purpose"`、`model: "sonnet"`（這份要套總經分析框架，用 sonnet 判讀品質較穩；因為平行跑，不影響總時間）。只 spawn **1 個**。
+
+worker 拿到的 prompt 樣板：
+
+```
+你是「財經M平方」風格的總經研究員。請產出一段「國際情勢」盤後判讀，並把結果「寫成檔案」。
+
+**字數硬上限：全文嚴格 300 字以內（中文字計），最多 3 段。** 盤後快訊不是長文，寫超過就刪到 300 字內再寫檔；寧可濃縮成精華，不要流水帳。
+
+第一步：讀本專案的分析框架（一定要讀，當你的思考骨架）：
+- .claude/skills/macromicro-analyst/SKILL.md（核心三層分析：事件定性 → 影響鏈 → 勝率（紅線/歷史類比/痛苦指數）→ 數據確認）
+- 需要時可參考同目錄 fed-reading.md（Fed/利率）、data-reading.md（原油/黃金/數據）。
+
+第二步：讀國際數字 data/intl-market-latest.json（美股、費半、上證、滬深300、恒生、日經、KOSPI、原油、黃金、美元指數、美10年期殖利率的收盤與漲跌幅）。若檔案不存在就略過數字、純靠新聞。
+
+第三步：用 WebSearch 找最近 1–2 天「最會影響股市」的幾條國際政治經濟新聞（地緣衝突、Fed/各國央行、CPI/就業、關稅、重要財報、原物料）；**最多 3 次 WebSearch**。
+
+內容要求（用 macromicro 框架，不要只是流水帳）：
+1. 開頭一句帶過國際指數數字的重點（誰強誰弱、費半/美股隔夜、亞股當日）。
+2. 挑最關鍵的 2 條大事（最多 3 條），每條用一兩句濃縮框架：定性「消息面 vs 傷基本面」+ 影響鏈（例：油價→通膨→Fed利率→股市估值）+ 機率傾向（可用紅線：美10年殖利率 4.4–4.5%、油價 ~$100）。不要每條都展開成一大段。
+3. 收在「對台股的意涵」：隔夜美股/費半與殖利率怎麼影響今日台股估值與電子權值，是順風還是逆風。
+4. 全文台灣繁體中文與台灣金融慣用語（記憶體/半導體/晶圓/伺服器/殖利率/估值），不要簡體或中國用語。
+5. 是研究判讀、不是投資建議；基於可查證事實，不硬湊。
+
+完成後用 Write 工具，把「純判讀文字」（不要標題、不要 markdown、不要來源清單）寫到：
+data/tmp/intl-brief.txt
+
+最後只回覆一行：done intl
+```
+
+**為什麼這樣做：** 國際判讀長文由 worker 自己寫檔，不經過主對話 output（省 token）；與台股族群 worker 同批平行，整體時間幾乎不變。`intl-brief.txt` 連同 `intl-market-latest.json` 會在 Step 6 由 `assemble-analysis.ts` 自動併進 `analysis.intl`，報告裡呈現為「🌐 國際情勢」區塊。worker 失敗或檔案沒寫出來也沒關係——assemble 會只放數字表、或整段略過，不影響台股報告與寄信。
+
 ### Step 5 — 盤後總結（250 字內）
 
 以資深台股操盤手的口吻寫 250 字內總結。**使用者以做多為主，重點放在強勢族群的波段機會。**
@@ -177,6 +232,8 @@ npx tsx scripts/assemble-analysis.ts
 ```
 
 這支 script 讀 `data/tmp/classification.json` + `data/tmp/stories/<id>.txt`，機械合併成 `data/analysis-latest.json`（結構：`{timestamp, date, gainers:[{category,stocks,story}], losers:[...], summary}`），正是 `send-report.ts` 期望的格式。故事文字不會經過你的 output。
+
+**同時**它會讀 `data/intl-market-latest.json`（國際數字）+ `data/tmp/intl-brief.txt`（國際 worker 的判讀），併成 `analysis.intl = {summary, indices}`。兩者皆缺就不附 `intl`，報告自動略過國際區塊。看它印出的 `intl ... idx / brief ...` 統計確認有併進來。
 
 > 簡轉繁保險：assemble 會用 `opencc-js`（s2twp）把每段 story 與 summary 自動轉成台灣繁體（含用語：`内存→記憶體`、`服务器→伺服器`），所以即使 subagent 偶爾寫出簡體或中國用語也會被擋下，不必再人工挑字。
 
@@ -212,6 +269,10 @@ timestamp: <同 analysis>
 
 <summary 原文>
 
+## 國際情勢
+
+<intl-brief.txt 原文；若該日 worker 沒寫出來則略過這段>
+
 ## 強勢族群
 
 - <category>: <檔數>檔 — <代表股 1, 2, 3>
@@ -241,6 +302,7 @@ wrapper 在寄信完成後會執行 `scripts/publish-vercel.sh`，將 `data/repo
 
 - 所有檔案路徑用工作目錄相對路徑（`data/...`、`scripts/...`），不要寫絕對路徑
 - `data/memory/` 資料夾如果不存在，自己 mkdir
-- 中繼檔在 `data/tmp/`：`classification.json`（你寫的族群結構 + summary）、`stories/<id>.txt`（subagent 寫的故事）。Step 4 開始前先清空 `data/tmp/stories/`。analysis-latest.json 由 `assemble-analysis.ts` 從這兩者組出來，不要再手動逐段重打故事
+- 中繼檔在 `data/tmp/`：`classification.json`（你寫的族群結構 + summary）、`stories/<id>.txt`（subagent 寫的故事）、`intl-brief.txt`（國際 worker 的判讀）。Step 4 開始前先清空 `data/tmp/stories/` 與 `intl-brief.txt`。analysis-latest.json 由 `assemble-analysis.ts` 從這些檔組出來（含 `data/intl-market-latest.json` 的國際數字），不要再手動逐段重打故事
+- 國際數字源是 Yahoo Finance（`scripts/fetch-intl-market.ts`），免費無金鑰；stooq 已改成需瀏覽器驗證、不能用
 - 本流程不應修改 `src/services/aiService.ts`（前端 UI 還在用它）
 - 不需要 `GEMINI_API_KEY` 環境變數

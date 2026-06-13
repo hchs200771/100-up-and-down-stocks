@@ -12,6 +12,13 @@ interface MarketHistoryEntry {
   [key: string]: unknown;
 }
 
+interface ScoreBreakdown {
+  trend: number; // A 趨勢基底 0-40
+  timing: number; // B 進場時機 0-35
+  chips: number; // C 籌碼確認 0-25
+  risk: number; // D 風險扣分 -30-0
+}
+
 interface CategoryGroup {
   category: string;
   stocks: string[];
@@ -19,6 +26,10 @@ interface CategoryGroup {
   confidence?: "high" | "medium" | "low";
   stage?: "啟動" | "擴散" | "高潮" | "退潮";
   retreatSignal?: boolean;
+  entryScore?: number; // 0-100 進場評分
+  scoreBreakdown?: ScoreBreakdown;
+  entryAction?: string; // 核心加碼 / 標準持有 / 觀察不追 / 不碰減碼
+  entryRationale?: string; // 一句話說明分數來源與當前動作
 }
 
 interface StockMeta {
@@ -44,6 +55,20 @@ interface MarketBlock {
   microFuturesRetail?: { dataDate: string; totalOI: number; instLong: number; instShort: number; retailLong: number; retailShort: number; retailNetPct: number };
 }
 
+interface IntlIndex {
+  key: string;
+  name: string;
+  region: string;
+  close: number;
+  change: number;
+  pct: number;
+}
+
+interface IntlBlock {
+  summary: string;
+  indices: IntlIndex[];
+}
+
 interface Analysis {
   timestamp: string;
   date: string;
@@ -52,6 +77,7 @@ interface Analysis {
   losers: CategoryGroup[];
   summary: string;
   longTermStrategy?: string;
+  intl?: IntlBlock;
 }
 
 interface HistoryRecord {
@@ -132,6 +158,66 @@ function renderStockChipBadges(meta?: StockMeta): string {
   return badges;
 }
 
+function renderScorePanel(g: CategoryGroup): string {
+  if (typeof g.entryScore !== "number") return "";
+  const s = Math.round(g.entryScore);
+  const b = g.scoreBreakdown ?? { trend: 0, timing: 0, chips: 0, risk: 0 };
+
+  let tierBg: string, tierColor: string, tierLabel: string;
+  if (s >= 85) {
+    tierBg = "#dcfce7";
+    tierColor = "#15803d";
+    tierLabel = "核心加碼";
+  } else if (s >= 70) {
+    tierBg = "#dbeafe";
+    tierColor = "#1d4ed8";
+    tierLabel = "標準持有";
+  } else if (s >= 55) {
+    tierBg = "#fef9c3";
+    tierColor = "#a16207";
+    tierLabel = "觀察不追";
+  } else {
+    tierBg = "#f3f4f6";
+    tierColor = "#6b7280";
+    tierLabel = "不碰／減碼";
+  }
+  const action = g.entryAction || tierLabel;
+  const barFill = Math.max(0, Math.min(100, s));
+
+  const cell = (label: string, val: number, max: number | null, isRisk = false): string => {
+    const valColor = isRisk && val < 0 ? "#dc2626" : "#1f2937";
+    const maxStr = max ? `<span style="color:#9ca3af; font-size:11px;">/${max}</span>` : "";
+    return `<div style="display:inline-block; text-align:center; min-width:54px; margin:0 1px;">
+      <div style="font-size:11px; color:#6b7280;">${label}</div>
+      <div style="font-size:15px; font-weight:bold; color:${valColor};">${val}${maxStr}</div>
+    </div>`;
+  };
+
+  const rationaleHtml = g.entryRationale
+    ? `<p style="margin:8px 0 0 0; font-size:12px; color:#374151; line-height:1.5;">${g.entryRationale}</p>`
+    : "";
+
+  return `<div style="background-color:${tierBg}; border:1px solid ${tierColor}; padding:10px 12px; border-radius:6px; margin-bottom:10px;">
+    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+      <div>
+        <span style="font-size:24px; font-weight:bold; color:${tierColor};">${s}</span>
+        <span style="font-size:12px; color:#6b7280;"> / 100</span>
+        <span style="font-size:12px; background-color:${tierColor}; color:#fff; padding:2px 8px; border-radius:10px; margin-left:8px;">${action}</span>
+      </div>
+      <div style="text-align:right;">
+        ${cell("趨勢", b.trend, 40)}
+        ${cell("時機", b.timing, 35)}
+        ${cell("籌碼", b.chips, 25)}
+        ${cell("風險", b.risk, null, true)}
+      </div>
+    </div>
+    <div style="background-color:#ffffff; border-radius:4px; height:6px; margin-top:8px; overflow:hidden;">
+      <div style="width:${barFill}%; height:6px; background-color:${tierColor};"></div>
+    </div>
+    ${rationaleHtml}
+  </div>`;
+}
+
 function renderCategoryBlock(
   g: CategoryGroup,
   stockMap: Record<string, StockMeta>,
@@ -181,16 +267,17 @@ function renderCategoryBlock(
 
   const storyHtml = g.story
     ? `<div style="background-color: ${bgColor}; padding: 10px; border-radius: 6px; border: 1px solid ${storyBorder};">
-        <strong style="color: ${storyLabelColor}; font-size: 13px;">${storyLabel}</strong>
-        <p style="margin: 5px 0 0 0; font-size: 13px; color: ${storyTextColor}; line-height: 1.5;">${g.story}</p>
+        <strong style="color: ${storyLabelColor}; font-size: 14px;">${storyLabel}</strong>
+        <p style="margin: 5px 0 0 0; font-size: 14px; color: ${storyTextColor}; line-height: 1.6;">${g.story}</p>
       </div>`
     : "";
 
   return `<div style="border: 1px solid ${borderColor}; background-color: ${bgColor}; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
-    <h4 style="margin-top: 0; color: ${headerColor}; display: flex; align-items: center; flex-wrap: wrap;">
+    <h4 style="margin-top: 0; font-size: 16px; color: ${headerColor}; display: flex; align-items: center; flex-wrap: wrap;">
       <span style="background-color: ${chipBg}; padding: 2px 8px; border-radius: 12px; font-size: 12px; margin-right: 8px;">${g.stocks.length}檔</span>
       ${g.category}${headerBadges}
     </h4>
+    ${kind === "gainer" ? renderScorePanel(g) : ""}
     <div style="margin-bottom: 10px;">${stocksHtml}</div>
     ${storyHtml}
   </div>`;
@@ -429,6 +516,78 @@ function renderLegend(): string {
 </div>`;
 }
 
+function renderScoringRubric(): string {
+  const axis = (name: string, range: string, desc: string) =>
+    `<div style="margin-bottom: 6px;"><span style="font-weight:bold; color:#1f2937;">${name}</span> <span style="color:#9ca3af;">${range}</span><br><span style="color:#64748b;">${desc}</span></div>`;
+  const tier = (badge: string, desc: string) =>
+    `<div style="margin-bottom: 4px;">${badge} <span style="color:#64748b;">${desc}</span></div>`;
+  const chip = (bg: string, color: string, label: string) =>
+    `<span style="background-color:${bg}; color:${color}; padding:1px 6px; border-radius:10px; font-size:11px; white-space:nowrap;">${label}</span>`;
+
+  return `<div style="background-color: #f8fafc; border: 1px solid #e2e8f0; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+  <h3 style="margin-top: 0; color: #334155; font-size: 14px;">🧮 進場評分說明（強勢族群，0-100）</h3>
+  <p style="font-size: 12px; color: #64748b; line-height: 1.6; margin: 0 0 10px 0;">分數＝<strong>現在進場的 risk／reward</strong>，不是今天多強。剛起漲、上檔大下檔小→高分；漲多進入高潮→低分。四軸相加＝總分。</p>
+  <div style="font-size: 12px; line-height: 1.5;">
+    ${axis("趨勢", "0–40", "長線題材夠不夠硬：AI 基建、記憶體循環、先進封裝=高；補漲、單一事件、ETF=低")}
+    ${axis("時機", "0–35", "漲潮退潮階段，越早進場分越高。<strong>依榜單連續性＋籌碼判定，不看技術線型</strong>：啟動＝連續上榜≤1天、法人帶龍頭先動、尚未擴散；擴散＝連2天以上、成員增加或全面走強；高潮＝當沖飆高／投機股多／價漲但法人卻賣（過熱，是減碼點）；退潮＝前幾日強勢今天落入弱勢榜")}
+    ${axis("籌碼", "0–25", "法人是否真錢背書：外資＋投信同向買、龍頭先動加分")}
+    ${axis("風險", "−30–0", "投機假象扣分：當沖比高、投機股多、注意／處置／低流動、隔日沖")}
+  </div>
+  <div style="font-size: 12px; line-height: 1.6; margin-top: 10px; border-top: 1px solid #e2e8f0; padding-top: 8px;">
+    ${tier(chip("#dcfce7", "#15803d", "85+ 核心加碼"), "趨勢好＋剛啟動＋法人買，優先放錢")}
+    ${tier(chip("#dbeafe", "#1d4ed8", "70–84 標準持有"), "主升段、可續抱或加碼")}
+    ${tier(chip("#fef9c3", "#a16207", "55–69 觀察不追"), "等回測或擴散驗證再進")}
+    ${tier(chip("#f3f4f6", "#6b7280", "<55 不碰／減碼"), "高潮、退潮或純投機")}
+  </div>
+</div>`;
+}
+
+function renderIntl(intl: IntlBlock | null | undefined): string {
+  if (!intl) return "";
+  const { summary, indices } = intl;
+  if (!summary && (!indices || indices.length === 0)) return "";
+
+  let tableHtml = "";
+  if (indices && indices.length > 0) {
+    // 依出現順序保留 region 分組，每個 region 一列標題 + 各標的。
+    const order: string[] = [];
+    const byRegion = new Map<string, IntlIndex[]>();
+    for (const idx of indices) {
+      if (!byRegion.has(idx.region)) {
+        byRegion.set(idx.region, []);
+        order.push(idx.region);
+      }
+      byRegion.get(idx.region)!.push(idx);
+    }
+    const rows: string[] = [];
+    for (const region of order) {
+      const items = byRegion.get(region)!;
+      const cells = items
+        .map((i) => {
+          const up = i.pct >= 0;
+          const color = up ? "#dc2626" : "#16a34a";
+          const sign = up ? "+" : "";
+          return `<span style="display:inline-block; margin:0 10px 4px 0; white-space:nowrap;"><span style="color:#6b7280;">${i.name}</span> <strong>${i.close.toLocaleString()}</strong> <span style="color:${color}; font-weight:bold;">${sign}${i.pct.toFixed(2)}%</span></span>`;
+        })
+        .join("");
+      rows.push(
+        `<tr><td style="padding:4px 8px; color:#6b7280; vertical-align:top; white-space:nowrap;">${region}</td><td style="padding:4px 8px;">${cells}</td></tr>`,
+      );
+    }
+    tableHtml = `<table style="width:100%; border-collapse:collapse; font-size:13px; margin-bottom:${summary ? "10px" : "0"};"><tbody>${rows.join("")}</tbody></table>`;
+  }
+
+  const summaryHtml = summary
+    ? `<p style="line-height:1.6; margin:0;">${summary.replace(/\n/g, "<br>")}</p>`
+    : "";
+
+  return `<div style="background-color:#f0f9ff; border:1px solid #bae6fd; padding:15px; border-radius:8px; margin-bottom:20px;">
+      <h3 style="margin-top:0; color:#0369a1;">🌐 國際情勢</h3>
+      ${tableHtml}
+      ${summaryHtml}
+    </div>`;
+}
+
 function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName: Map<string, string>, market?: MarketBlock | null, retailHistory?: MarketHistoryEntry[]): string {
   const gainersHtml = a.gainers.map((g) => renderCategoryBlock(g, stockMap, codeByName, "gainer")).join("");
   const losersHtml = a.losers.map((g) => renderCategoryBlock(g, stockMap, codeByName, "loser")).join("");
@@ -439,21 +598,37 @@ function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName
     </div>`
     : "";
   const marketDashboardHtml = renderMarketDashboard(market, retailHistory);
+  const intlHtml = renderIntl(a.intl);
   const legendHtml = renderLegend();
+  const rubricHtml = renderScoringRubric();
 
-  return `<div style="font-family: sans-serif; max-width: 800px; margin: 0 auto; color: #333;">
-    <h2 style="color: #4f46e5; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px;">📈 台股盤後資金流向與 AI 總結 (${a.timestamp})</h2>
-    <div style="background-color: #f3f4f6; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+  const summaryHtml = `<div style="background-color: #f3f4f6; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
       <h3 style="margin-top: 0; color: #1f2937;">📝 盤後總結</h3>
       <p style="line-height: 1.6; margin-bottom: 0;">${a.summary.replace(/\n/g, "<br>")}</p>
-    </div>
-    ${marketDashboardHtml}
-    ${legendHtml}
-    ${longTermStrategyHtml}
-    <h3 style="color: #dc2626;">🔥 強勢焦點 (量大優先)</h3>
+    </div>`;
+
+  // 左欄：只放族群焦點；右欄 sidebar：總結、國際、台股儀表板、長線策略，最下面才是圖例與評分說明。
+  const leftCol = `
+    <h3 style="color: #dc2626; margin-top: 0;">🔥 強勢焦點 (量大優先)</h3>
     ${gainersHtml}
     <h3 style="color: #16a34a; margin-top: 30px;">🧊 弱勢焦點 (量大優先)</h3>
-    ${losersHtml}
+    ${losersHtml}`;
+
+  const rightCol = `
+    ${summaryHtml}
+    ${intlHtml}
+    ${marketDashboardHtml}
+    ${longTermStrategyHtml}
+    ${legendHtml}
+    ${rubricHtml}`;
+
+  // 兩欄：左 6 : 右 4，左右留白縮小（≈3%）。
+  return `<div style="font-family: sans-serif; max-width: 1500px; margin: 0 auto; color: #333; padding: 0 3%;">
+    <h2 style="color: #4f46e5; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px;">📈 台股盤後資金流向與 AI 總結 (${a.timestamp})</h2>
+    <table role="presentation" style="width: 100%; border-collapse: collapse; table-layout: fixed;"><tbody><tr>
+      <td style="vertical-align: top; width: 60%; padding-right: 28px;">${leftCol}</td>
+      <td style="vertical-align: top; width: 40%;">${rightCol}</td>
+    </tr></tbody></table>
     <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb; color: #9ca3af; font-size: 12px;">
       Generated via Claude Code workflow
     </div>

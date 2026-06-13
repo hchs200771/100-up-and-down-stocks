@@ -1,0 +1,123 @@
+{
+  "timestamp": "2026-06-13T08:54:08.481Z",
+  "tradingDate": "2026-06-13",
+  "indices": [
+    {
+      "key": "sp500",
+      "name": "標普500",
+      "region": "美股",
+      "close": 7431.46,
+      "change": 47.72,
+      "pct": 0.65,
+      "asOfEpoch": 1781297668
+    },
+    {
+      "key": "dji",
+      "name": "道瓊工業",
+      "region": "美股",
+      "close": 51202.26,
+      "change": 335.48,
+      "pct": 0.66,
+      "asOfEpoch": 1781297667
+    },
+    {
+      "key": "nasdaq",
+      "name": "那斯達克",
+      "region": "美股",
+      "close": 25888.84,
+      "change": 179.41,
+      "pct": 0.7,
+      "asOfEpoch": 1781298959
+    },
+    {
+      "key": "sox",
+      "name": "費城半導體",
+      "region": "美股",
+      "close": 13371.47,
+      "change": 1150.71,
+      "pct": 9.42,
+      "asOfEpoch": 1781298959
+    },
+    {
+      "key": "sse",
+      "name": "上證指數",
+      "region": "中國",
+      "close": 4031.51,
+      "change": 72.17,
+      "pct": 1.82,
+      "asOfEpoch": 1781247629
+    },
+    {
+      "key": "csi300",
+      "name": "滬深300",
+      "region": "中國",
+      "close": 4777.32,
+      "change": 63.68,
+      "pct": 1.35,
+      "asOfEpoch": 1781247629
+    },
+    {
+      "key": "hsi",
+      "name": "恒生指數",
+      "region": "中國",
+      "close": 24718.1,
+      "change": -243.85,
+      "pct": -0.98,
+      "asOfEpoch": 1781251726
+    },
+    {
+      "key": "nikkei",
+      "name": "日經225",
+      "region": "日韓",
+      "close": 66020.04,
+      "change": 1995.44,
+      "pct": 3.12,
+      "asOfEpoch": 1781246703
+    },
+    {
+      "key": "kospi",
+      "name": "韓國KOSPI",
+      "region": "日韓",
+      "close": 8123.62,
+      "change": -36.97,
+      "pct": -0.45,
+      "asOfEpoch": 1781255130
+    },
+    {
+      "key": "wti",
+      "name": "西德州原油",
+      "region": "原物料/利率",
+      "close": 84.88,
+      "change": -6.42,
+      "pct": -7.03,
+      "asOfEpoch": 1781297997
+    },
+    {
+      "key": "gold",
+      "name": "黃金",
+      "region": "原物料/利率",
+      "close": 4238.8,
+      "change": -97.1,
+      "pct": -2.24,
+      "asOfEpoch": 1781297996
+    },
+    {
+      "key": "dxy",
+      "name": "美元指數",
+      "region": "原物料/利率",
+      "close": 99.81,
+      "change": -0.24,
+      "pct": -0.24,
+      "asOfEpoch": 1781297999
+    },
+    {
+      "key": "us10y",
+      "name": "美10年期殖利率",
+      "region": "原物料/利率",
+      "close": 4.49,
+      "change": -0.06,
+      "pct": -1.43,
+      "asOfEpoch": 1781290794
+    }
+  ]
+}

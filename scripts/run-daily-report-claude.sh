@@ -6,6 +6,8 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 CONTROLLER_PROMPT="$PROJECT_DIR/scripts/prompts/group-task-controller.md"
 FINALIZER_PROMPT="$PROJECT_DIR/scripts/prompts/group-finalizer.md"
+INTL_PROMPT="$PROJECT_DIR/scripts/prompts/intl-brief-worker.md"
+INTL_MODEL="${CLAUDE_INTL_MODEL:-sonnet}"
 WORKER_RUNNER="$PROJECT_DIR/scripts/run-claude-group-workers.sh"
 TMP_DIR="$PROJECT_DIR/data/tmp"
 TASK_DIR="$TMP_DIR/group-tasks"
@@ -183,6 +185,9 @@ if stage_enabled fetch; then
     notify "每日股市報告 ❌" "抓市場資料失敗，請看 log: $LOG_FILE"
     exit 1
   fi
+
+  log "進度 1.6/5：抓國際市場數字 (Yahoo Finance)"
+  run_tsx scripts/fetch-intl-market.ts || log "[warn] fetch-intl-market.ts failed; 國際數字略過，不影響台股報告"
 fi
 
 if [ ! -f "$PROJECT_DIR/data/market-latest.json" ]; then
@@ -272,6 +277,15 @@ if stage_enabled research; then
   fi
 
   clear_dir_json "$RESULT_DIR"
+
+  # 國際情勢 worker：與台股族群 research 同時平行跑，幾乎不增加整體 wall-clock。
+  rm -f "$PROJECT_DIR/data/tmp/intl-brief.txt"
+  log "進度 3/5：背景平行啟動國際情勢 worker (model=$INTL_MODEL)"
+  claude -p --model "$INTL_MODEL" \
+    --allowedTools 'Bash(*)' 'Read(*)' 'Write(*)' 'Edit(*)' 'WebSearch(*)' 'WebFetch(*)' \
+    < "$INTL_PROMPT" >> "$LOG_FILE" 2>&1 &
+  INTL_PID="$!"
+
   log "進度 3/5：開始做各分類/族群的個別研究報告"
   if ! CLAUDE_REPORT_TASK_DIR="$TASK_SNAPSHOT_DIR" CLAUDE_REPORT_RESULT_DIR="$RESULT_DIR" bash "$WORKER_RUNNER" "${CLAUDE_REPORT_MAX_CONCURRENCY:-6}" > >(tee -a "$LOG_FILE") 2>&1; then
     log "parallel workers exited non-zero; continuing with fallback stories where needed"
@@ -279,6 +293,16 @@ if stage_enabled research; then
 
   RESULT_COUNT="$(count_json_files "$RESULT_DIR")"
   log "進度 3/5：個別研究報告完成，產出 $RESULT_COUNT 個 result 檔"
+
+  # 等國際 worker 收尾（通常已隨族群 research 一起跑完）
+  if ! wait "$INTL_PID"; then
+    log "[warn] 國際情勢 worker 非零退出；intl-brief 可能沒寫出來，attach-intl 會自動略過"
+  fi
+  if [ -f "$PROJECT_DIR/data/tmp/intl-brief.txt" ]; then
+    log "進度 3/5：國際情勢 worker 完成，已寫出 intl-brief.txt"
+  else
+    log "[warn] 國際情勢 worker 沒寫出 intl-brief.txt；報告國際區塊將只有數字表"
+  fi
 fi
 
 if stage_enabled finalize; then
@@ -299,6 +323,9 @@ if stage_enabled finalize; then
     exit 1
   fi
   log "進度 4/5：finalizer 已產出 data/analysis-latest.json"
+
+  # finalizer 自己寫 analysis-latest.json、不走 assemble，所以這裡再把國際情勢併進 intl 欄位
+  run_tsx scripts/attach-intl.ts || log "[warn] attach-intl.ts failed; 報告將沒有國際區塊"
 fi
 
 if [ ! -f "$PROJECT_DIR/data/analysis-latest.json" ]; then
