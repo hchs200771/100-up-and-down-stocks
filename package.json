@@ -15,7 +15,8 @@
     "report:codex": "bash scripts/run-daily-report-codex-parallel.sh",
     "report:claude": "bash scripts/run-daily-report-claude.sh",
     "report:fetch": "tsx scripts/fetch-market-data.ts",
-    "report:send": "tsx scripts/send-report.ts"
+    "report:send": "tsx scripts/send-report.ts",
+    "report:score": "tsx scripts/score-report.ts"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",

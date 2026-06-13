@@ -13,6 +13,8 @@ TASK_SNAPSHOT_DIR="$TMP_DIR/group-tasks-backup"
 RESULT_DIR="$TMP_DIR/group-results"
 START_STAGE="${CLAUDE_REPORT_START_STAGE:-fetch}"
 REFINE_GROUP_TASKS="${CLAUDE_REPORT_REFINE_GROUP_TASKS:-1}"
+CONTROLLER_MODEL="${CLAUDE_CONTROLLER_MODEL:-sonnet}"
+CONTROLLER_SPLIT="${CLAUDE_CONTROLLER_SPLIT:-1}"
 CONTROLLER_TIMEOUT_SECONDS="${CLAUDE_REPORT_CONTROLLER_TIMEOUT_SECONDS:-900}"
 cd "$PROJECT_DIR" || exit 1
 
@@ -49,9 +51,13 @@ run_claude_prompt() {
 run_claude_prompt_with_timeout() {
   local prompt_file="$1"
   local timeout_seconds="$2"
+  local model_arg="${3:-}"
   local pid elapsed
+  local model_flag=()
+  [ -n "$model_arg" ] && model_flag=(--model "$model_arg")
 
   claude -p \
+    "${model_flag[@]}" \
     --allowedTools 'Bash(*)' 'Read(*)' 'Write(*)' 'Edit(*)' 'WebSearch(*)' 'WebFetch(*)' \
     < "$prompt_file" >> "$LOG_FILE" 2>&1 &
   pid="$!"
@@ -132,15 +138,19 @@ stage_enabled() {
       return
       ;;
     research)
-      [ "$stage_name" = "research" ] || [ "$stage_name" = "finalize" ] || [ "$stage_name" = "send" ]
+      [ "$stage_name" = "research" ] || [ "$stage_name" = "finalize" ] || [ "$stage_name" = "send" ] || [ "$stage_name" = "publish" ]
       return
       ;;
     finalize)
-      [ "$stage_name" = "finalize" ] || [ "$stage_name" = "send" ]
+      [ "$stage_name" = "finalize" ] || [ "$stage_name" = "send" ] || [ "$stage_name" = "publish" ]
       return
       ;;
     send)
-      [ "$stage_name" = "send" ]
+      [ "$stage_name" = "send" ] || [ "$stage_name" = "publish" ]
+      return
+      ;;
+    publish)
+      [ "$stage_name" = "publish" ]
       return
       ;;
     *)
@@ -158,7 +168,7 @@ fi
 
 log "run-daily-report-claude.sh start"
 log "START_STAGE=$START_STAGE"
-log "CONTROLLER_TIMEOUT_SECONDS=$CONTROLLER_TIMEOUT_SECONDS"
+log "CONTROLLER_MODEL=$CONTROLLER_MODEL CONTROLLER_SPLIT=$CONTROLLER_SPLIT CONTROLLER_TIMEOUT_SECONDS=$CONTROLLER_TIMEOUT_SECONDS"
 
 if ! command -v claude >/dev/null 2>&1; then
   log "claude command not found"
@@ -183,15 +193,40 @@ fi
 
 log "進度 1/5：已經抓回上市/上櫃資料，交易日 $(market_trading_date)"
 
+# score-report: run after fetch/classify, skip when resuming from research or later
+if stage_enabled classify; then
+  log "進度 1.5/5：執行 score-report 快照與記分板更新"
+  run_tsx scripts/score-report.ts || log "[warn] score-report.ts failed; continuing"
+fi
+
 if stage_enabled classify; then
   log "進度 2/5：開始做全部分類與族群 task"
   clear_dir_json "$TASK_DIR"
   clear_dir_json "$TASK_SNAPSHOT_DIR"
   clear_dir_json "$RESULT_DIR"
 
-  log "進度 2/5：執行分類 controller"
-  if ! run_claude_prompt_with_timeout "$CONTROLLER_PROMPT" "$CONTROLLER_TIMEOUT_SECONDS"; then
-    log "task controller exited non-zero"
+  log "進度 2/6：執行分類 controller (SPLIT=$CONTROLLER_SPLIT)"
+  if [ "$CONTROLLER_SPLIT" = "1" ]; then
+    GAINER_PROMPT="$(mktemp /tmp/controller-gainer-XXXXXX.md)"
+    LOSER_PROMPT="$(mktemp /tmp/controller-loser-XXXXXX.md)"
+    cat "$CONTROLLER_PROMPT" > "$GAINER_PROMPT"
+    printf '\n\n## 本次執行範圍限制\n只處理 direction=gainer（強勢 100 檔），只輸出 gainer task 檔，檔名以 gainer 為主。完全不要處理 losers。不要清空 data/tmp/group-tasks/ 目錄（runner 已先清空，且此刻有另一個 process 正在同目錄切 loser task）。漏股檢查只需確認強勢 100 檔各出現一次。\n' >> "$GAINER_PROMPT"
+    cat "$CONTROLLER_PROMPT" > "$LOSER_PROMPT"
+    printf '\n\n## 本次執行範圍限制\n只處理 direction=loser（弱勢 100 檔），只輸出 loser task 檔，檔名以 loser 為主。完全不要處理 gainers。不要清空 data/tmp/group-tasks/ 目錄（runner 已先清空，且此刻有另一個 process 正在同目錄切 gainer task）。漏股檢查只需確認弱勢 100 檔各出現一次。\n' >> "$LOSER_PROMPT"
+
+    run_claude_prompt_with_timeout "$GAINER_PROMPT" "$CONTROLLER_TIMEOUT_SECONDS" "$CONTROLLER_MODEL" &
+    GAINER_PID="$!"
+    run_claude_prompt_with_timeout "$LOSER_PROMPT" "$CONTROLLER_TIMEOUT_SECONDS" "$CONTROLLER_MODEL" &
+    LOSER_PID="$!"
+
+    wait "$GAINER_PID" || log "gainer controller exited non-zero"
+    wait "$LOSER_PID" || log "loser controller exited non-zero"
+
+    rm -f "$GAINER_PROMPT" "$LOSER_PROMPT"
+  else
+    if ! run_claude_prompt_with_timeout "$CONTROLLER_PROMPT" "$CONTROLLER_TIMEOUT_SECONDS" "$CONTROLLER_MODEL"; then
+      log "task controller exited non-zero"
+    fi
   fi
 
   TASK_COUNT="$(count_json_files "$TASK_DIR")"
@@ -288,6 +323,13 @@ if stage_enabled send; then
       exit 1
     fi
     log "進度 5/5：未設定 GAS_WEBHOOK_URL，已產生 HTML 預覽但未寄信"
+  fi
+fi
+
+if stage_enabled publish; then
+  log "進度 6/6：部署到 Vercel"
+  if ! bash "$PROJECT_DIR/scripts/publish-vercel.sh" > >(tee -a "$LOG_FILE") 2>&1; then
+    log "[warn] publish-vercel.sh 失敗（不中斷整體流程）"
   fi
 fi
 

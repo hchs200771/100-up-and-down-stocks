@@ -35,6 +35,20 @@ npx tsx scripts/fetch-market-data.ts
 
 如果這一步失敗（例如 API 掛掉），停止流程並告訴使用者。
 
+### Step 1.5 — 更新記分板（幂等，可重跑）
+
+執行：
+
+```
+npx tsx scripts/score-report.ts
+```
+
+- 快照今日收盤價到 `data/price-history/<tradingDate>.json`
+- 快照昨日分析到 `data/analysis-history/<date>.json`（若已存在則跳過）
+- 重算 `data/scorecard.json`（族群 T+1 / T+5 勝率記分板）
+
+若此步驟失敗，**繼續流程**，不影響當日報告。
+
 ### Step 2 — 讀取記憶
 
 列出 `data/memory/` 下最近 **2 份** markdown（依檔名日期排序，最新的在前）。
@@ -141,6 +155,10 @@ data/tmp/stories/<id>.txt
 
 以資深台股操盤手的口吻寫 250 字內總結。**使用者以做多為主，重點放在強勢族群的波段機會。**
 
+分析前建議參考：
+- `data/market-latest.json` 的 `market` 區塊（三大法人、當沖比重、breadth、加權/櫃買指數、微臺散戶多空比、注意/處置股）
+- `data/scorecard.json`（若存在）—— 各族群的歷史 T+1 / T+5 勝率，可作為是否順勢加碼的輔助依據
+
 - **波段趨勢分析**：對比 Step 2 讀到的最近 2 天記憶，點名：
   - 哪些族群**連續 N 日**在強勢榜 → 主流，可順勢
   - 哪些是**今日新進場**的族群 → 需觀察是否只是一日行情
@@ -206,6 +224,10 @@ timestamp: <同 analysis>
 ```
 
 這份 markdown 是下一次執行 Skill 時的輸入（Step 2 會讀）。
+
+### Step 9 — 部署到 Vercel（wrapper 自動執行）
+
+wrapper 在寄信完成後會執行 `scripts/publish-vercel.sh`，將 `data/report-latest.html` 部署到 Vercel 靜態站台。需設定 `VERCEL_TOKEN`（於 `.env.local`）；未設定時此步驟自動跳過，不影響寄信流程。
 
 ## 結尾回報
 

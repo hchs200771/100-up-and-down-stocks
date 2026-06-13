@@ -125,12 +125,13 @@ npm run report:codex
 
 這個 wrapper 會：
 
-1. 先抓 `market-latest.json`
-2. 用 `codex exec -m gpt-5.5` 切出族群 task
-3. 用本地規則修正高風險誤分族群，例如低軌衛星、記憶體與矽晶圓拆分
-4. 用多個 `codex exec -m gpt-5.4-mini` worker 平行做最近 2 天新聞 research
-5. 再用 `codex exec -m gpt-5.5` 做 finalizer，寫入 `analysis-latest.json` / memory
-6. 最後由 shell 端寄信或產 HTML 預覽
+1. 先抓 `market-latest.json`（含三大法人、當沖比重、注意/處置、breadth、加權/櫃買指數、微臺散戶多空比）
+2. 執行 `npx tsx scripts/score-report.ts` 快照當日價格與前日分析、更新 `data/scorecard.json`（族群歷史勝率記分板）
+3. 用 `codex exec -m gpt-5.5` 切出族群 task
+4. 用本地規則修正高風險誤分族群，例如低軌衛星、記憶體與矽晶圓拆分
+5. 用多個 `codex exec -m gpt-5.4-mini` worker 平行做最近 2 天新聞 research
+6. 再用 `codex exec -m gpt-5.5` 做 finalizer，寫入 `analysis-latest.json` / memory；finalizer 可參考 `data/scorecard.json` 判斷族群歷史強弱
+7. 最後由 shell 端寄信或產 HTML 預覽；報告含市場儀表板（breadth、法人動向）與族群信心度/退潮 badge
 
 補充：
 
@@ -185,6 +186,7 @@ CODEX_REPORT_START_STAGE=send npm run report:codex
 - `research`：沿用 `group-tasks-backup`，重跑 worker / finalizer / send
 - `finalize`：沿用 snapshot 與現有 results，直接重組 `analysis-latest.json`
 - `send`：只用現有 `analysis-latest.json` 產 HTML 並寄信
+- `publish`：只跑部署步驟，執行 `scripts/publish-vercel.sh` 部署到 Vercel
 
 ### 排程執行
 
@@ -201,6 +203,27 @@ launchctl load ~/Library/LaunchAgents/com.maxhuang.daily-stock-report-codex.plis
 launchctl unload ~/Library/LaunchAgents/com.maxhuang.daily-stock-report-codex.plist
 rm ~/Library/LaunchAgents/com.maxhuang.daily-stock-report-codex.plist
 ```
+
+### 手動更新記分板
+
+只重算 scorecard（不重跑報告）：
+
+```bash
+npm run report:score
+```
+
+冪等：若當日快照已存在會跳過，直接重算 `data/scorecard.json`。
+
+### 退潮警訊（retreatSignal）
+
+`data/analysis-latest.json` 的族群記錄可包含 `retreatSignal` 欄位，finalizer 用來標記「昨強今弱」或連跌訊號。報告的族群 badge 會反映此狀態。
+
+### 檔案位置（Codex 版新增）
+
+- 族群分類/歷史積分：`data/taxonomy.json`（進版控）
+- 族群每日價格快照：`data/price-history/YYYY-MM-DD.json`
+- 每日分析快照：`data/analysis-history/YYYY-MM-DD.json`
+- 族群勝率記分板：`data/scorecard.json`
 
 ### 注意
 

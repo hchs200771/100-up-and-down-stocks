@@ -15,3 +15,6 @@ data/history.json
 data/memory/
 data/tmp/
 data/logs/
+data/price-history/
+data/analysis-history/
+data/scorecard.json

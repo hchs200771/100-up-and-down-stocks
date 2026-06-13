@@ -51,6 +51,7 @@ const tasks = files.map((file, index) => {
     direction: task.direction,
     category: task.category || '未命名族群',
     memberCount,
+    retreatSignal: task.retreatSignal === true,
   };
 });
 
@@ -65,18 +66,19 @@ const loserTop3 = tasks
 const loserTop3Set = new Set(loserTop3);
 
 const selected = tasks
-  .filter((task) => task.direction === 'gainer' || loserTop3Set.has(task.file))
+  .filter((task) => task.direction === 'gainer' || loserTop3Set.has(task.file) || task.retreatSignal === true)
   .map((task) => ({
     file: task.file,
     direction: task.direction,
     category: task.category,
     memberCount: task.memberCount,
+    retreatSignal: task.retreatSignal,
   }));
 
 process.stdout.write(JSON.stringify({
   selected,
   skippedLosers: tasks
-    .filter((task) => task.direction === 'loser' && !loserTop3Set.has(task.file))
+    .filter((task) => task.direction === 'loser' && !loserTop3Set.has(task.file) && task.retreatSignal !== true)
     .map((task) => ({ file: task.file, category: task.category, memberCount: task.memberCount })),
 }));
 NODE

@@ -1,0 +1,316 @@
+{
+  "updatedAt": "2026-06-13T05:40:42.154Z",
+  "records": [
+    {
+      "date": "2026-06-12",
+      "category": "低軌衛星/微波通訊",
+      "direction": "gainer",
+      "members": 2
+    },
+    {
+      "date": "2026-06-12",
+      "category": "DRAM/NAND記憶體模組與控制IC",
+      "direction": "gainer",
+      "members": 2,
+      "stage": "擴散"
+    },
+    {
+      "date": "2026-06-12",
+      "category": "化合物半導體/RF射頻",
+      "direction": "gainer",
+      "members": 1
+    },
+    {
+      "date": "2026-06-12",
+      "category": "綠能/太陽能與電力工程",
+      "direction": "gainer",
+      "members": 2
+    },
+    {
+      "date": "2026-06-12",
+      "category": "MCU/消費控制IC與音訊晶片",
+      "direction": "gainer",
+      "members": 2
+    },
+    {
+      "date": "2026-06-12",
+      "category": "工具機/CNC控制器",
+      "direction": "gainer",
+      "members": 4
+    },
+    {
+      "date": "2026-06-12",
+      "category": "半導體設備/測試介面",
+      "direction": "gainer",
+      "members": 13,
+      "stage": "擴散"
+    },
+    {
+      "date": "2026-06-12",
+      "category": "連接器/線束",
+      "direction": "gainer",
+      "members": 5
+    },
+    {
+      "date": "2026-06-12",
+      "category": "特用化學/電子材料",
+      "direction": "gainer",
+      "members": 5,
+      "stage": "啟動"
+    },
+    {
+      "date": "2026-06-12",
+      "category": "PCB軟板",
+      "direction": "gainer",
+      "members": 5
+    },
+    {
+      "date": "2026-06-12",
+      "category": "功率元件/電源管理IC",
+      "direction": "gainer",
+      "members": 6
+    },
+    {
+      "date": "2026-06-12",
+      "category": "被動元件",
+      "direction": "gainer",
+      "members": 9,
+      "stage": "高潮"
+    },
+    {
+      "date": "2026-06-12",
+      "category": "矽晶圓/半導體基板",
+      "direction": "gainer",
+      "members": 5
+    },
+    {
+      "date": "2026-06-12",
+      "category": "電源供應器/UPS",
+      "direction": "gainer",
+      "members": 1
+    },
+    {
+      "date": "2026-06-12",
+      "category": "光學鏡頭/影像模組",
+      "direction": "gainer",
+      "members": 2
+    },
+    {
+      "date": "2026-06-12",
+      "category": "一般網通/交換器",
+      "direction": "gainer",
+      "members": 1
+    },
+    {
+      "date": "2026-06-12",
+      "category": "車用電子/精密金屬",
+      "direction": "gainer",
+      "members": 3
+    },
+    {
+      "date": "2026-06-12",
+      "category": "AI伺服器散熱/機構件",
+      "direction": "gainer",
+      "members": 2,
+      "stage": "擴散"
+    },
+    {
+      "date": "2026-06-12",
+      "category": "工業電腦/嵌入式系統",
+      "direction": "gainer",
+      "members": 3
+    },
+    {
+      "date": "2026-06-12",
+      "category": "鋼鐵/金屬材料",
+      "direction": "gainer",
+      "members": 2
+    },
+    {
+      "date": "2026-06-12",
+      "category": "紡織成衣/化纖",
+      "direction": "gainer",
+      "members": 5
+    },
+    {
+      "date": "2026-06-12",
+      "category": "金融/證券",
+      "direction": "gainer",
+      "members": 3
+    },
+    {
+      "date": "2026-06-12",
+      "category": "零售電商/生活消費",
+      "direction": "gainer",
+      "members": 1
+    },
+    {
+      "date": "2026-06-12",
+      "category": "生技新藥/醫材",
+      "direction": "gainer",
+      "members": 1
+    },
+    {
+      "date": "2026-06-12",
+      "category": "ASIC/IP矽智財",
+      "direction": "gainer",
+      "members": 1
+    },
+    {
+      "date": "2026-06-12",
+      "category": "LED/顯示模組與電子紙",
+      "direction": "gainer",
+      "members": 3
+    },
+    {
+      "date": "2026-06-12",
+      "category": "半導體封測",
+      "direction": "gainer",
+      "members": 4,
+      "stage": "擴散"
+    },
+    {
+      "date": "2026-06-12",
+      "category": "其他強勢個股事件整理",
+      "direction": "gainer",
+      "members": 7
+    },
+    {
+      "date": "2026-06-12",
+      "category": "零售電商/生活消費",
+      "direction": "loser",
+      "members": 5
+    },
+    {
+      "date": "2026-06-12",
+      "category": "生技新藥/醫材",
+      "direction": "loser",
+      "members": 4
+    },
+    {
+      "date": "2026-06-12",
+      "category": "紡織成衣/化纖",
+      "direction": "loser",
+      "members": 4
+    },
+    {
+      "date": "2026-06-12",
+      "category": "綠能/太陽能與電力工程",
+      "direction": "loser",
+      "members": 4
+    },
+    {
+      "date": "2026-06-12",
+      "category": "半導體設備/測試介面",
+      "direction": "loser",
+      "members": 6
+    },
+    {
+      "date": "2026-06-12",
+      "category": "PCB鑽針/製程耗材",
+      "direction": "loser",
+      "members": 2
+    },
+    {
+      "date": "2026-06-12",
+      "category": "被動元件",
+      "direction": "loser",
+      "members": 8
+    },
+    {
+      "date": "2026-06-12",
+      "category": "營建資產/不動產開發",
+      "direction": "loser",
+      "members": 4
+    },
+    {
+      "date": "2026-06-12",
+      "category": "工業電腦/嵌入式系統",
+      "direction": "loser",
+      "members": 4
+    },
+    {
+      "date": "2026-06-12",
+      "category": "光學鏡頭/影像模組",
+      "direction": "loser",
+      "members": 4
+    },
+    {
+      "date": "2026-06-12",
+      "category": "連接器/線束",
+      "direction": "loser",
+      "members": 3
+    },
+    {
+      "date": "2026-06-12",
+      "category": "光通訊/CPO矽光子",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-06-12",
+      "category": "電子通路/零組件代理",
+      "direction": "loser",
+      "members": 4
+    },
+    {
+      "date": "2026-06-12",
+      "category": "金融/證券",
+      "direction": "loser",
+      "members": 10
+    },
+    {
+      "date": "2026-06-12",
+      "category": "線上遊戲/數位娛樂",
+      "direction": "loser",
+      "members": 3
+    },
+    {
+      "date": "2026-06-12",
+      "category": "食品餐飲/內需消費",
+      "direction": "loser",
+      "members": 2
+    },
+    {
+      "date": "2026-06-12",
+      "category": "其他弱勢",
+      "direction": "loser",
+      "members": 32
+    }
+  ],
+  "aggregates": {
+    "byDirection": {
+      "gainer": {
+        "n": 0,
+        "avgT1": 0,
+        "avgT5": 0,
+        "winRateT1": 0,
+        "winRateT5": 0
+      },
+      "loser": {
+        "n": 0,
+        "avgT1": 0,
+        "avgT5": 0,
+        "winRateT1": 0,
+        "winRateT5": 0
+      }
+    },
+    "byStage": {
+      "擴散": {
+        "n": 0,
+        "avgT1": 0,
+        "avgT5": 0
+      },
+      "啟動": {
+        "n": 0,
+        "avgT1": 0,
+        "avgT5": 0
+      },
+      "高潮": {
+        "n": 0,
+        "avgT1": 0,
+        "avgT5": 0
+      }
+    }
+  }
+}
