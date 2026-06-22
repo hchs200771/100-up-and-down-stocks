@@ -16,7 +16,8 @@
     "report:claude": "bash scripts/run-daily-report-claude.sh",
     "report:fetch": "tsx scripts/fetch-market-data.ts",
     "report:send": "tsx scripts/send-report.ts",
-    "report:score": "tsx scripts/score-report.ts"
+    "report:score": "tsx scripts/score-report.ts",
+    "positions": "tsx scripts/analyze-positions.ts"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",
