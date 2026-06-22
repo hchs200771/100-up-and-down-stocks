@@ -104,6 +104,31 @@ export function parseT86(json: any): Map<string, { foreignNet: number; trustNet:
   return map;
 }
 
+/**
+ * Parse TWSE BFI82U（上市三大法人買賣超）→ 各類別買賣差額（億元）。
+ * fields: ["單位名稱","買進金額","賣出金額","買賣差額"]，金額單位為元。
+ */
+export function parseBFI82U(
+  json: any,
+): { foreignNet: number; trustNet: number; dealerNet: number; totalNet: number } | null {
+  if (!json || json.stat !== "OK" || !Array.isArray(json.data)) return null;
+  const toYi = (s: string) => (parseInt((s || "0").replace(/,/g, ""), 10) || 0) / 1e8;
+  let foreign = 0, trust = 0, dealer = 0, total = 0;
+  let matched = false;
+  for (const row of json.data) {
+    if (!Array.isArray(row) || row.length < 4) continue;
+    const name = String(row[0] || "");
+    const net = toYi(row[3]);
+    if (name.includes("合計")) { total = net; matched = true; }
+    else if (name.includes("外資")) { foreign += net; matched = true; }
+    else if (name.includes("投信")) { trust += net; matched = true; }
+    else if (name.includes("自營商")) { dealer += net; matched = true; }
+  }
+  if (!matched) return null;
+  const r1 = (n: number) => Math.round(n * 10) / 10;
+  return { foreignNet: r1(foreign), trustNet: r1(trust), dealerNet: r1(dealer), totalNet: r1(total) };
+}
+
 /** Parse TPEx insti dailyTrade → map code → chips (張) */
 export function parseTpexInsti(json: any): Map<string, { foreignNet: number; trustNet: number; dealerNet: number; totalNet: number }> {
   const map = new Map<string, { foreignNet: number; trustNet: number; dealerNet: number; totalNet: number }>();
@@ -376,6 +401,7 @@ async function main() {
     tpexIndexRaw,
     twseIssuedSharesRaw,
     tpexIssuedSharesRaw,
+    bfi82uRaw,
   ] = await Promise.all([
     fetch(`https://www.twse.com.tw/rwd/zh/fund/T86?response=json&date=${rawDate}&selectType=ALL`)
       .then((r) => r.json())
@@ -419,6 +445,9 @@ async function main() {
     fetch("https://www.tpex.org.tw/openapi/v1/mopsfin_t187ap03_O")
       .then((r) => r.json())
       .catch((e) => { console.warn("[warn] TPEx issued shares failed:", e.message); return null; }),
+    fetch("https://www.twse.com.tw/rwd/zh/fund/BFI82U?response=json&type=day")
+      .then((r) => r.json())
+      .catch((e) => { console.warn("[warn] BFI82U failed:", e.message); return null; }),
   ]);
 
   // ---------------------------------------------------------------------------
@@ -711,6 +740,7 @@ async function main() {
       breadth,
       dayTrade: { twseVolumePct, tpexVolumePct },
       microFuturesRetail: microRetail,
+      institutional: bfi82uRaw ? parseBFI82U(bfi82uRaw) : null,
     },
   };
 

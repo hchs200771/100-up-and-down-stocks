@@ -1,0 +1,49 @@
+{
+  "fetchedAt": "2026-06-13T14:30:00+08:00",
+  "margin": {
+    "equity": 685000,
+    "initialMargin": 420000,
+    "maintenanceMargin": 322000,
+    "available": 265000,
+    "riskRatio": 162.5,
+    "currency": "TWD"
+  },
+  "positions": [
+    {
+      "type": "stock_future",
+      "contractCode": "CDF",
+      "contractName": "南亞科期貨",
+      "underlyingCode": "2408",
+      "underlyingName": "南亞科",
+      "side": "long",
+      "lots": 3,
+      "avgPrice": 92.5,
+      "marketPrice": 101.0,
+      "pnl": 51000
+    },
+    {
+      "type": "stock_future",
+      "contractCode": "DHF",
+      "contractName": "華邦電期貨",
+      "underlyingCode": "2344",
+      "underlyingName": "華邦電",
+      "side": "long",
+      "lots": 2,
+      "avgPrice": 38.2,
+      "marketPrice": 41.0,
+      "pnl": 11200
+    },
+    {
+      "type": "micro_taiex",
+      "contractCode": "MTX",
+      "contractName": "微型臺指期貨",
+      "underlyingCode": "",
+      "underlyingName": "加權指數",
+      "side": "short",
+      "lots": 2,
+      "avgPrice": 43800,
+      "marketPrice": 44169,
+      "pnl": -7380
+    }
+  ]
+}

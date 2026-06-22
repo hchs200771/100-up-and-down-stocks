@@ -41,6 +41,7 @@ const SYMBOLS: { symbol: string; key: string; name: string; region: string }[] =
   { symbol: "GC=F", key: "gold", name: "黃金", region: "原物料/利率" },
   { symbol: "DX-Y.NYB", key: "dxy", name: "美元指數", region: "原物料/利率" },
   { symbol: "^TNX", key: "us10y", name: "美10年期殖利率", region: "原物料/利率" },
+  { symbol: "TWD=X", key: "usdtwd", name: "美元/台幣", region: "匯率" },
 ];
 
 const HOSTS = [
@@ -48,8 +49,14 @@ const HOSTS = [
   "https://query2.finance.yahoo.com",
 ];
 
-async function fetchOne(symbol: string): Promise<{ close: number; prevClose: number; epoch: number | null } | null> {
-  const path = `/v8/finance/chart/${encodeURIComponent(symbol)}?interval=1d&range=5d`;
+interface Chart {
+  meta: any;
+  timestamps: number[];
+  closes: (number | null)[];
+}
+
+async function fetchChart(symbol: string, range: string): Promise<Chart | null> {
+  const path = `/v8/finance/chart/${encodeURIComponent(symbol)}?interval=1d&range=${range}`;
   for (const host of HOSTS) {
     try {
       const res = await fetch(host + path, {
@@ -58,17 +65,112 @@ async function fetchOne(symbol: string): Promise<{ close: number; prevClose: num
       });
       if (!res.ok) continue;
       const json = await res.json();
-      const meta = json?.chart?.result?.[0]?.meta;
-      if (!meta) continue;
-      const close = Number(meta.regularMarketPrice);
-      const prevClose = Number(meta.chartPreviousClose ?? meta.previousClose);
-      if (!isFinite(close) || !isFinite(prevClose) || prevClose === 0) continue;
-      return { close, prevClose, epoch: typeof meta.regularMarketTime === "number" ? meta.regularMarketTime : null };
+      const result = json?.chart?.result?.[0];
+      if (!result?.meta) continue;
+      return {
+        meta: result.meta,
+        timestamps: Array.isArray(result.timestamp) ? result.timestamp : [],
+        closes: Array.isArray(result.indicators?.quote?.[0]?.close) ? result.indicators.quote[0].close : [],
+      };
     } catch (e) {
       // try next host
     }
   }
   return null;
+}
+
+// 用各標的交易所時區把 epoch 轉成當地日期字串（YYYY-MM-DD），判斷某根 K 屬於哪一天。
+function localDate(epochSec: number, gmtoffsetSec: number): string {
+  return new Date((epochSec + gmtoffsetSec) * 1000).toISOString().slice(0, 10);
+}
+
+// 從日 K 陣列取「當地日期 < beforeDate」的已收完收盤（日期遞增），最後一根即最近前一交易日。
+function settledBarsBefore(chart: Chart, beforeDate: string, off: number): { d: string; c: number }[] {
+  const bars: { d: string; c: number }[] = [];
+  for (let i = 0; i < chart.timestamps.length; i++) {
+    const c = chart.closes[i];
+    if (typeof c !== "number" || !isFinite(c)) continue;
+    const d = localDate(chart.timestamps[i], off);
+    if (d < beforeDate) bars.push({ d, c });
+  }
+  bars.sort((a, b) => (a.d < b.d ? -1 : a.d > b.d ? 1 : 0));
+  return bars;
+}
+
+/**
+ * 決定前一交易日收盤。chartPreviousClose 多數時候就是對的（含資料源陣列裡為 null 的
+ * 假日後缺口日，如 06-15），但偶爾資料源會給到更舊的一根（如上證給到 06-11、跳過 06-12）。
+ * 對策：跟日 K 陣列裡「今天之前最近一根已收完收盤」交叉比對——若 chartPreviousClose
+ * 對得上某根「比陣列最近一根更舊」的 K，判定為錯位，改用陣列最近一根；否則沿用
+ * chartPreviousClose（它是缺口日或就等於陣列最近一根）。
+ */
+function resolvePrevClose(cpc: number, array: Chart | null, todayDate: string, off: number): number {
+  if (!array) return cpc;
+  const bars = settledBarsBefore(array, todayDate, off);
+  if (bars.length === 0) return cpc;
+  const arrayPrev = bars[bars.length - 1];
+  const eq = (a: number, b: number) => Math.abs(a - b) <= Math.max(1e-6, Math.abs(b) * 1e-5);
+  for (const b of bars) {
+    if (b.d < arrayPrev.d && eq(cpc, b.c)) return arrayPrev.c; // chartPreviousClose 錯位到更舊的一根
+  }
+  return cpc;
+}
+
+/**
+ * 取「最近一根已收完的日 K 收盤」與其「前一交易日收盤」算單日漲跌幅。
+ *
+ * 前一交易日收盤主要用 range=1d 的 meta.chartPreviousClose——它是「回傳的那根日 K
+ * 之前一根的收盤」，即真正的前一交易日收盤（已驗證對得上前一日報告數字）。
+ * 不要用多日 range 的 chartPreviousClose（那是整段區間起點之前、約 N 天前），
+ * 也不要用日 K 陣列逐根相減——此資料源某些交易日（如假日後）在陣列裡是 null，
+ * 逐根相減會跨過缺口、把數日漲跌誤算成單日。
+ *
+ * 兩種情況（以「該標的目前是否在 regular session 盤中」區分）：
+ *  - 已收盤（亞股對台股傍晚是當日收盤）：close=regularMarketPrice，prev=chartPreviousClose@1d。
+ *    但有時 range=1d 回傳的那根 K 不是今天（資料源不一致，如上證），此時 chartPreviousClose
+ *    會對到錯誤基準；用「range=1d 那根 K 的當地日期是否等於今天」判斷，不等於就改用
+ *    日 K 陣列裡今天之前最後一根已收完收盤當 prev。
+ *  - 盤中（美股/原油對台股傍晚多在盤中、即時非收盤）：抓隔夜最後收完那一根，
+ *    close=chartPreviousClose@1d（昨夜已收盤），prev=chartPreviousClose@2d（昨夜的前一交易日）。
+ */
+async function fetchOne(symbol: string): Promise<{ close: number; prevClose: number; epoch: number | null } | null> {
+  const c1 = await fetchChart(symbol, "1d");
+  if (!c1) return null;
+  const meta = c1.meta;
+  const off = typeof meta.gmtoffset === "number" ? meta.gmtoffset : 0;
+
+  const reg = meta?.currentTradingPeriod?.regular;
+  const nowSec = Date.now() / 1000;
+  const isLive =
+    reg &&
+    typeof reg.start === "number" &&
+    typeof reg.end === "number" &&
+    nowSec >= reg.start &&
+    nowSec < reg.end;
+
+  let close: number;
+  let prevClose: number;
+  let epoch: number | null;
+
+  if (!isLive) {
+    close = Number(meta.regularMarketPrice);
+    epoch = typeof meta.regularMarketTime === "number" ? meta.regularMarketTime : null;
+
+    const cpc = Number(meta.chartPreviousClose);
+    const todayDate = epoch !== null ? localDate(epoch, off) : null;
+    // 跟日 K 陣列交叉比對，擋掉 chartPreviousClose 偶爾錯位到更舊一根的情況。
+    const c10 = todayDate ? await fetchChart(symbol, "10d") : null;
+    prevClose = todayDate ? resolvePrevClose(cpc, c10, todayDate, off) : cpc;
+  } else {
+    const c2 = await fetchChart(symbol, "2d");
+    if (!c2) return null;
+    close = Number(meta.chartPreviousClose);
+    prevClose = Number(c2.meta.chartPreviousClose);
+    epoch = null; // 隔夜已收盤那一根，時間戳意義不大
+  }
+
+  if (!isFinite(close) || !isFinite(prevClose) || prevClose === 0) return null;
+  return { close, prevClose, epoch };
 }
 
 async function main() {

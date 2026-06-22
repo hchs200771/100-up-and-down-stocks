@@ -53,6 +53,7 @@ interface MarketBlock {
   breadth?: { up: number; down: number; flat: number; limitUp: number; limitDown: number };
   dayTrade?: { twseVolumePct: number; tpexVolumePct: number };
   microFuturesRetail?: { dataDate: string; totalOI: number; instLong: number; instShort: number; retailLong: number; retailShort: number; retailNetPct: number };
+  institutional?: { foreignNet: number; trustNet: number; dealerNet: number; totalNet: number } | null;
 }
 
 interface IntlIndex {
@@ -119,41 +120,41 @@ function resolveStock(stockStr: string, stockMap: Record<string, StockMeta>, cod
 function renderFuturesBadge(meta?: StockMeta): string {
   if (!meta?.futures) return "";
   const label = [meta.futures.level, meta.futures.margin].filter(Boolean).join(" ");
-  return `<span style="font-size: 10px; background-color: #e0e7ff; color: #4338ca; padding: 2px 4px; border-radius: 4px; margin-left: 4px;">期貨(${label})</span>`;
+  return `<span style="font-size: 12px; background-color: #e0e7ff; color: #4338ca; padding: 2px 4px; border-radius: 4px; margin-left: 4px;">期貨(${label})</span>`;
 }
 
 function renderStockChipBadges(meta?: StockMeta): string {
   if (!meta) return "";
   let badges = "";
   const flags = meta.flags ?? {};
-  if (flags.attention) badges += `<span style="font-size: 10px; color: #d97706; margin-left: 3px;">⚠</span>`;
-  if (flags.disposition) badges += `<span style="font-size: 10px; color: #dc2626; margin-left: 3px;">⛔</span>`;
+  if (flags.attention) badges += `<span style="font-size: 12px; color: #d97706; margin-left: 3px;">⚠</span>`;
+  if (flags.disposition) badges += `<span style="font-size: 12px; color: #dc2626; margin-left: 3px;">⛔</span>`;
   if (meta.chips) {
     const { foreignRatio, trustRatio, foreignBuyStreak, trustBuyStreak } = meta.chips;
     if (foreignRatio !== undefined && Math.abs(foreignRatio) >= 0.2) {
       const sign = foreignRatio > 0 ? "+" : "";
       const color = foreignRatio > 0 ? "#dc2626" : "#16a34a";
-      badges += `<span style="font-size: 10px; color: ${color}; margin-left: 3px;">外本比 ${sign}${foreignRatio.toFixed(2)}%</span>`;
+      badges += `<span style="font-size: 12px; color: ${color}; margin-left: 3px;">外本比 ${sign}${foreignRatio.toFixed(2)}%</span>`;
     }
     if (trustRatio !== undefined && Math.abs(trustRatio) >= 0.1) {
       const sign = trustRatio > 0 ? "+" : "";
       const color = trustRatio > 0 ? "#dc2626" : "#16a34a";
-      badges += `<span style="font-size: 10px; color: ${color}; margin-left: 3px;">投本比 ${sign}${trustRatio.toFixed(2)}%</span>`;
+      badges += `<span style="font-size: 12px; color: ${color}; margin-left: 3px;">投本比 ${sign}${trustRatio.toFixed(2)}%</span>`;
     }
     if (foreignBuyStreak !== undefined && foreignBuyStreak >= 3) {
-      badges += `<span style="font-size: 10px; background-color: #fee2e2; color: #991b1b; padding: 1px 4px; border-radius: 4px; margin-left: 3px;">外資連買${foreignBuyStreak}日</span>`;
+      badges += `<span style="font-size: 12px; background-color: #fee2e2; color: #991b1b; padding: 1px 4px; border-radius: 4px; margin-left: 3px;">外資連買${foreignBuyStreak}日</span>`;
     }
     if (trustBuyStreak !== undefined && trustBuyStreak >= 3) {
-      badges += `<span style="font-size: 10px; background-color: #fee2e2; color: #991b1b; padding: 1px 4px; border-radius: 4px; margin-left: 3px;">投信連買${trustBuyStreak}日</span>`;
+      badges += `<span style="font-size: 12px; background-color: #fee2e2; color: #991b1b; padding: 1px 4px; border-radius: 4px; margin-left: 3px;">投信連買${trustBuyStreak}日</span>`;
     }
   }
   if (meta.dayTradeRatio !== undefined && meta.dayTradeRatio >= 40) {
-    badges += `<span style="font-size: 10px; color: #6b7280; margin-left: 3px;">沖${Math.round(meta.dayTradeRatio)}%</span>`;
+    badges += `<span style="font-size: 12px; color: #6b7280; margin-left: 3px;">沖${Math.round(meta.dayTradeRatio)}%</span>`;
   }
   if (meta.overnightDumpRepeat) {
-    badges += `<span style="font-size: 10px; background-color: #dc2626; color: white; padding: 2px 4px; border-radius: 4px; margin-left: 3px;">隔日沖慣犯</span>`;
+    badges += `<span style="font-size: 12px; background-color: #dc2626; color: white; padding: 2px 4px; border-radius: 4px; margin-left: 3px;">隔日沖慣犯</span>`;
   } else if (meta.overnightDump) {
-    badges += `<span style="font-size: 10px; background-color: #e5e7eb; color: #374151; padding: 2px 4px; border-radius: 4px; margin-left: 3px;">疑似隔日沖</span>`;
+    badges += `<span style="font-size: 12px; background-color: #e5e7eb; color: #374151; padding: 2px 4px; border-radius: 4px; margin-left: 3px;">疑似隔日沖</span>`;
   }
   return badges;
 }
@@ -182,19 +183,18 @@ function renderScorePanel(g: CategoryGroup): string {
     tierLabel = "不碰／減碼";
   }
   const action = g.entryAction || tierLabel;
-  const barFill = Math.max(0, Math.min(100, s));
 
   const cell = (label: string, val: number, max: number | null, isRisk = false): string => {
     const valColor = isRisk && val < 0 ? "#dc2626" : "#1f2937";
-    const maxStr = max ? `<span style="color:#9ca3af; font-size:11px;">/${max}</span>` : "";
-    return `<div style="display:inline-block; text-align:center; min-width:54px; margin:0 1px;">
-      <div style="font-size:11px; color:#6b7280;">${label}</div>
-      <div style="font-size:15px; font-weight:bold; color:${valColor};">${val}${maxStr}</div>
+    const maxStr = max ? `<span style="color:#9ca3af; font-size:12px;">/${max}</span>` : "";
+    return `<div style="display:inline-block; text-align:center; min-width:62px; margin:0 2px;">
+      <div style="font-size:13px; color:#6b7280;">${label}</div>
+      <div style="font-size:18px; font-weight:bold; color:${valColor};">${val}${maxStr}</div>
     </div>`;
   };
 
   const rationaleHtml = g.entryRationale
-    ? `<p style="margin:8px 0 0 0; font-size:12px; color:#374151; line-height:1.5;">${g.entryRationale}</p>`
+    ? `<p style="margin:8px 0 0 0; font-size:14px; color:#374151; line-height:1.6;">${g.entryRationale}</p>`
     : "";
 
   return `<div style="background-color:${tierBg}; border:1px solid ${tierColor}; padding:10px 12px; border-radius:6px; margin-bottom:10px;">
@@ -210,9 +210,6 @@ function renderScorePanel(g: CategoryGroup): string {
         ${cell("籌碼", b.chips, 25)}
         ${cell("風險", b.risk, null, true)}
       </div>
-    </div>
-    <div style="background-color:#ffffff; border-radius:4px; height:6px; margin-top:8px; overflow:hidden;">
-      <div style="width:${barFill}%; height:6px; background-color:${tierColor};"></div>
     </div>
     ${rationaleHtml}
   </div>`;
@@ -277,9 +274,9 @@ function renderCategoryBlock(
       <span style="background-color: ${chipBg}; padding: 2px 8px; border-radius: 12px; font-size: 12px; margin-right: 8px;">${g.stocks.length}檔</span>
       ${g.category}${headerBadges}
     </h4>
-    ${kind === "gainer" ? renderScorePanel(g) : ""}
     <div style="margin-bottom: 10px;">${stocksHtml}</div>
     ${storyHtml}
+    ${kind === "gainer" ? renderScorePanel(g) : ""}
   </div>`;
 }
 
@@ -453,17 +450,20 @@ function renderMarketDashboard(market: MarketBlock | null | undefined, retailHis
 
   const rows: string[] = [];
 
+  const fmtIndexChange = (close: number, change: number) => {
+    const sign = change >= 0 ? "+" : "";
+    const color = change >= 0 ? "#dc2626" : "#16a34a";
+    const prevClose = close - change;
+    const pct = prevClose !== 0 ? (change / prevClose) * 100 : 0;
+    return `<td style="padding: 4px 8px; color: ${color}; font-weight: bold;">${sign}${change.toFixed(2)} <span style="font-size: 12px;">(${sign}${pct.toFixed(2)}%)</span></td>`;
+  };
   const taiex = market.taiex;
   if (taiex) {
-    const changeSign = taiex.change >= 0 ? "+" : "";
-    const changeColor = taiex.change >= 0 ? "#dc2626" : "#16a34a";
-    rows.push(`<tr><td style="padding: 4px 8px; color: #6b7280;">加權指數</td><td style="padding: 4px 8px; font-weight: bold;">${taiex.close.toLocaleString()}</td><td style="padding: 4px 8px; color: ${changeColor}; font-weight: bold;">${changeSign}${taiex.change.toFixed(2)}</td></tr>`);
+    rows.push(`<tr><td style="padding: 4px 8px; color: #6b7280;">加權指數</td><td style="padding: 4px 8px; font-weight: bold;">${taiex.close.toLocaleString()}</td>${fmtIndexChange(taiex.close, taiex.change)}</tr>`);
   }
   const tpex = market.tpex;
   if (tpex) {
-    const changeSign = tpex.change >= 0 ? "+" : "";
-    const changeColor = tpex.change >= 0 ? "#dc2626" : "#16a34a";
-    rows.push(`<tr><td style="padding: 4px 8px; color: #6b7280;">櫃買指數</td><td style="padding: 4px 8px; font-weight: bold;">${tpex.close.toLocaleString()}</td><td style="padding: 4px 8px; color: ${changeColor}; font-weight: bold;">${changeSign}${tpex.change.toFixed(2)}</td></tr>`);
+    rows.push(`<tr><td style="padding: 4px 8px; color: #6b7280;">櫃買指數</td><td style="padding: 4px 8px; font-weight: bold;">${tpex.close.toLocaleString()}</td>${fmtIndexChange(tpex.close, tpex.change)}</tr>`);
   }
   const breadth = market.breadth;
   if (breadth) {
@@ -471,7 +471,17 @@ function renderMarketDashboard(market: MarketBlock | null | undefined, retailHis
   }
   const dt = market.dayTrade;
   if (dt) {
-    rows.push(`<tr><td style="padding: 4px 8px; color: #6b7280;">當沖比重</td><td style="padding: 4px 8px;" colspan="2">上市 ${dt.twseVolumePct.toFixed(2)}%　上櫃 ${dt.tpexVolumePct.toFixed(2)}%</td></tr>`);
+    const dtPct = (v: number | null | undefined) => (typeof v === "number" && isFinite(v) ? `${v.toFixed(2)}%` : "—");
+    rows.push(`<tr><td style="padding: 4px 8px; color: #6b7280;">當沖比重</td><td style="padding: 4px 8px;" colspan="2">上市 ${dtPct(dt.twseVolumePct)}　上櫃 ${dtPct(dt.tpexVolumePct)}</td></tr>`);
+  }
+  const insti = market.institutional;
+  if (insti) {
+    const fmt = (n: number) => {
+      const color = n >= 0 ? "#dc2626" : "#16a34a";
+      const sign = n >= 0 ? "+" : "";
+      return `<span style="color: ${color}; font-weight: bold;">${sign}${n.toFixed(1)}</span>`;
+    };
+    rows.push(`<tr><td style="padding: 4px 8px; color: #6b7280;">三大法人(上市)</td><td style="padding: 4px 8px;" colspan="2">合計 ${fmt(insti.totalNet)} 億　<span style="color:#9ca3af; font-size:12px;">外資 ${fmt(insti.foreignNet)}／投信 ${fmt(insti.trustNet)}／自營 ${fmt(insti.dealerNet)}</span></td></tr>`);
   }
   const mfr = market.microFuturesRetail;
   if (mfr) {
@@ -498,8 +508,8 @@ function renderLegend(): string {
     `<div style="margin-bottom: 6px; display: flex; align-items: flex-start; gap: 6px;">${badge}<span style="color: #64748b;">${desc}</span></div>`;
 
   return `<div style="background-color: #f8fafc; border: 1px solid #e2e8f0; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-  <h3 style="margin-top: 0; color: #334155; font-size: 14px;">🔖 圖例說明</h3>
-  <div style="font-size: 12px; line-height: 1.6;">
+  <h3 style="margin-top: 0; color: #334155; font-size: 16px;">🔖 圖例說明</h3>
+  <div style="font-size: 13px; line-height: 1.7;">
     ${item(`<span style="background-color: #e0e7ff; color: #4338ca; padding: 1px 4px; border-radius: 4px; white-space: nowrap; font-size: 11px;">期貨(級距N XX%)</span>`, "個股有期貨合約；級距=保證金級距，%=原始保證金率")}
     ${item(`<span style="color: #dc2626; font-size: 11px;">外本比 +X%</span> / <span style="color: #16a34a; font-size: 11px;">外本比 −X%</span>`, "外資買賣超佔已發行股數比例（+買超紅、−賣超綠；顯示門檻 ≥ 0.2%）")}
     ${item(`<span style="color: #dc2626; font-size: 11px;">投本比 +X%</span> / <span style="color: #16a34a; font-size: 11px;">投本比 −X%</span>`, "投信買賣超佔已發行股數比例（與外本比同義，投信版；顯示門檻 ≥ 0.1%）")}
@@ -525,15 +535,15 @@ function renderScoringRubric(): string {
     `<span style="background-color:${bg}; color:${color}; padding:1px 6px; border-radius:10px; font-size:11px; white-space:nowrap;">${label}</span>`;
 
   return `<div style="background-color: #f8fafc; border: 1px solid #e2e8f0; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-  <h3 style="margin-top: 0; color: #334155; font-size: 14px;">🧮 進場評分說明（強勢族群，0-100）</h3>
-  <p style="font-size: 12px; color: #64748b; line-height: 1.6; margin: 0 0 10px 0;">分數＝<strong>現在進場的 risk／reward</strong>，不是今天多強。剛起漲、上檔大下檔小→高分；漲多進入高潮→低分。四軸相加＝總分。</p>
-  <div style="font-size: 12px; line-height: 1.5;">
+  <h3 style="margin-top: 0; color: #334155; font-size: 16px;">🧮 進場評分說明（強勢族群，0-100）</h3>
+  <p style="font-size: 13px; color: #64748b; line-height: 1.6; margin: 0 0 10px 0;">分數＝<strong>現在進場的 risk／reward</strong>，不是今天多強。剛起漲、上檔大下檔小→高分；漲多進入高潮→低分。四軸相加＝總分。</p>
+  <div style="font-size: 13px; line-height: 1.6;">
     ${axis("趨勢", "0–40", "長線題材夠不夠硬：AI 基建、記憶體循環、先進封裝=高；補漲、單一事件、ETF=低")}
     ${axis("時機", "0–35", "漲潮退潮階段，越早進場分越高。<strong>依榜單連續性＋籌碼判定，不看技術線型</strong>：啟動＝連續上榜≤1天、法人帶龍頭先動、尚未擴散；擴散＝連2天以上、成員增加或全面走強；高潮＝當沖飆高／投機股多／價漲但法人卻賣（過熱，是減碼點）；退潮＝前幾日強勢今天落入弱勢榜")}
     ${axis("籌碼", "0–25", "法人是否真錢背書：外資＋投信同向買、龍頭先動加分")}
     ${axis("風險", "−30–0", "投機假象扣分：當沖比高、投機股多、注意／處置／低流動、隔日沖")}
   </div>
-  <div style="font-size: 12px; line-height: 1.6; margin-top: 10px; border-top: 1px solid #e2e8f0; padding-top: 8px;">
+  <div style="font-size: 13px; line-height: 1.7; margin-top: 10px; border-top: 1px solid #e2e8f0; padding-top: 10px;">
     ${tier(chip("#dcfce7", "#15803d", "85+ 核心加碼"), "趨勢好＋剛啟動＋法人買，優先放錢")}
     ${tier(chip("#dbeafe", "#1d4ed8", "70–84 標準持有"), "主升段、可續抱或加碼")}
     ${tier(chip("#fef9c3", "#a16207", "55–69 觀察不追"), "等回測或擴散驗證再進")}
@@ -607,32 +617,61 @@ function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName
       <p style="line-height: 1.6; margin-bottom: 0;">${a.summary.replace(/\n/g, "<br>")}</p>
     </div>`;
 
-  // 左欄：只放族群焦點；右欄 sidebar：總結、國際、台股儀表板、長線策略，最下面才是圖例與評分說明。
-  const leftCol = `
-    <h3 style="color: #dc2626; margin-top: 0;">🔥 強勢焦點 (量大優先)</h3>
-    ${gainersHtml}
-    <h3 style="color: #16a34a; margin-top: 30px;">🧊 弱勢焦點 (量大優先)</h3>
-    ${losersHtml}`;
+  const groupGHtml = `<h3 style="color: #dc2626; margin-top: 0;">🔥 強勢焦點 (量大優先)</h3>${gainersHtml}`;
+  const groupLHtml = `<h3 style="color: #16a34a; margin-top: 0;">🧊 弱勢焦點 (量大優先)</h3>${losersHtml}`;
 
-  const rightCol = `
-    ${summaryHtml}
-    ${intlHtml}
-    ${marketDashboardHtml}
-    ${longTermStrategyHtml}
-    ${legendHtml}
-    ${rubricHtml}`;
+  // 每個區塊都是一個 tab panel；瀏覽器端由下方 script 產生頂部切換鈕、預設只顯示第一個（上漲族群）。
+  // email 無 JS 時所有 panel 都顯示（完整退回），不會壞。
+  const sections: Array<{ label: string; html: string }> = [
+    { label: "🔥 上漲族群", html: groupGHtml },
+    { label: "🧊 下跌族群", html: groupLHtml },
+    // 盤後總結與市場儀表板都是整體市場觀點，合併成一個「市場總覽」tab。
+    { label: "📊 市場總覽", html: `${summaryHtml}${marketDashboardHtml}` },
+    { label: "🌐 國際情勢", html: intlHtml },
+    { label: "🧭 長線策略", html: longTermStrategyHtml },
+    { label: "🔖 圖例說明", html: legendHtml },
+    { label: "🧮 評分說明", html: rubricHtml },
+  ].filter((s) => s.html && s.html.trim());
 
-  // 兩欄：左 6 : 右 4，左右留白縮小（≈3%）。
-  return `<div style="font-family: sans-serif; max-width: 1500px; margin: 0 auto; color: #333; padding: 0 3%;">
+  const panelsHtml = sections
+    .map((s) => `<div class="tabpanel" data-label="${s.label}">${s.html}</div>`)
+    .join("");
+
+  // 單欄 + RWD：viewport 讓手機正確縮放；容器 max-width 980、左右留白隨螢幕縮放。
+  return `<meta name="viewport" content="width=device-width, initial-scale=1">
+  <div style="font-family: sans-serif; max-width: 980px; margin: 0 auto; color: #333; padding: 0 16px;">
     <h2 style="color: #4f46e5; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px;">📈 台股盤後資金流向與 AI 總結 (${a.timestamp})</h2>
-    <table role="presentation" style="width: 100%; border-collapse: collapse; table-layout: fixed;"><tbody><tr>
-      <td style="vertical-align: top; width: 60%; padding-right: 28px;">${leftCol}</td>
-      <td style="vertical-align: top; width: 40%;">${rightCol}</td>
-    </tr></tbody></table>
+    <div id="tabbar" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;"></div>
+    ${panelsHtml}
     <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb; color: #9ca3af; font-size: 12px;">
       Generated via Claude Code workflow
     </div>
-  </div>`;
+  </div>
+  <script>
+  (function(){
+    var bar=document.getElementById('tabbar');
+    var panels=[].slice.call(document.querySelectorAll('.tabpanel'));
+    if(!bar||!panels.length)return;
+    var btns=[];
+    function activate(i){
+      panels.forEach(function(p,j){p.style.display=j===i?'':'none';});
+      btns.forEach(function(b,j){
+        var on=j===i;
+        b.style.background=on?'#4f46e5':'#fff';
+        b.style.color=on?'#fff':'#374151';
+        b.style.borderColor=on?'#4f46e5':'#e5e7eb';
+      });
+    }
+    panels.forEach(function(p,i){
+      var b=document.createElement('button');
+      b.textContent=p.getAttribute('data-label')||('Tab '+(i+1));
+      b.style.cssText='font-family:inherit;font-size:14px;font-weight:bold;cursor:pointer;border:1px solid #e5e7eb;border-radius:999px;padding:8px 14px;background:#fff;color:#374151;';
+      b.onclick=function(){activate(i);};
+      btns.push(b);bar.appendChild(b);
+    });
+    activate(0);
+  })();
+  </script>`;
 }
 
 function updateHistory(a: Analysis): void {

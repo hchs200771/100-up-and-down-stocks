@@ -1,0 +1,85 @@
+{
+  "generatedAt": "2026-06-13T17:39:09.227Z",
+  "sourceFetchedAt": "2026-06-13T14:30:00+08:00",
+  "marginRisk": {
+    "equity": 685000,
+    "initialMargin": 420000,
+    "maintenanceMargin": 322000,
+    "available": 265000,
+    "riskRatio": 162.5,
+    "currency": "TWD",
+    "level": "caution",
+    "message": "風險指標 162.5%，尚可但已用掉多數原始保證金，留意盤中急殺。",
+    "maintenanceUsagePct": 47
+  },
+  "positions": [
+    {
+      "type": "stock_future",
+      "contractCode": "CDF",
+      "contractName": "南亞科期貨",
+      "underlyingCode": "2408",
+      "underlyingName": "南亞科",
+      "side": "long",
+      "lots": 3,
+      "avgPrice": 92.5,
+      "marketPrice": 101,
+      "pnl": 51000,
+      "underlyingMarket": {
+        "pctToday": "+10.00%",
+        "foreignRatio": 0.73,
+        "trustRatio": 0.03,
+        "dayTradeRatio": 41.41888620638161,
+        "flags": null
+      },
+      "queryHints": [
+        "南亞科 今日新聞",
+        "南亞科 2408 利多 利空",
+        "南亞科 法人 籌碼"
+      ],
+      "directionNote": ""
+    },
+    {
+      "type": "stock_future",
+      "contractCode": "DHF",
+      "contractName": "華邦電期貨",
+      "underlyingCode": "2344",
+      "underlyingName": "華邦電",
+      "side": "long",
+      "lots": 2,
+      "avgPrice": 38.2,
+      "marketPrice": 41,
+      "pnl": 11200,
+      "underlyingMarket": {
+        "pctToday": "+9.90%",
+        "foreignRatio": 0.75,
+        "trustRatio": 0.07,
+        "dayTradeRatio": 46.52926847571052,
+        "flags": null
+      },
+      "queryHints": [
+        "華邦電 今日新聞",
+        "華邦電 2344 利多 利空",
+        "華邦電 法人 籌碼"
+      ],
+      "directionNote": ""
+    },
+    {
+      "type": "micro_taiex",
+      "contractCode": "MTX",
+      "contractName": "微型臺指期貨",
+      "underlyingCode": "",
+      "underlyingName": "加權指數",
+      "side": "short",
+      "lots": 2,
+      "avgPrice": 43800,
+      "marketPrice": 44169,
+      "pnl": -7380,
+      "underlyingMarket": null,
+      "queryHints": [
+        "台股加權指數 今日 盤勢",
+        "台指期 外資 籌碼"
+      ],
+      "directionNote": ""
+    }
+  ]
+}
