@@ -278,6 +278,40 @@ export function computeBreadth(stocks: Stock[]): Breadth {
 // Existing parsers (unchanged)
 // ---------------------------------------------------------------------------
 
+/**
+ * TWSE STOCK_DAY_ALL switched from JSON to CSV (response=json now ignored).
+ * Header: 日期,證券代號,證券名稱,成交股數,成交金額,開盤價,最高價,最低價,收盤價,漲跌價差,成交筆數
+ * Dropping the leading 日期 column makes each row align with the old JSON layout
+ * (code=0, name=1, volume=2, amount=3, close=7, change=8). Change is a plain
+ * signed decimal ("-0.0300" / "0.0800"), which processTwseData already handles.
+ */
+function parseTwseCsv(text: string): { date: string; data: any[] } {
+  const lines = text.split(/\r?\n/).filter((l) => l.trim().length > 0);
+  const data: any[] = [];
+  let rocDate = "";
+  for (const line of lines) {
+    if (line.startsWith("日期")) continue; // header
+    const cols = line.split(",").map((c) => c.replace(/^"|"$/g, "").trim());
+    if (cols.length < 11 || !/^\d{3,}$/.test(cols[0])) continue;
+    if (!rocDate) rocDate = cols[0];
+    data.push(cols.slice(1)); // drop leading date column
+  }
+  // ROC "1150625" -> AD "20260625"
+  let date = "";
+  const m = rocDate.match(/^(\d{3})(\d{2})(\d{2})$/);
+  if (m) date = `${parseInt(m[1], 10) + 1911}${m[2]}${m[3]}`;
+  return { date, data };
+}
+
+async function readTwseResponse(res: Response): Promise<any> {
+  const text = await res.text();
+  const trimmed = text.trimStart();
+  if (trimmed.startsWith("{") || trimmed.startsWith("[")) {
+    return JSON.parse(text);
+  }
+  return parseTwseCsv(text);
+}
+
 function processTwseData(json: any): Stock[] {
   if (!json.data) return [];
   return json.data
@@ -355,7 +389,7 @@ async function main() {
   ]);
 
   const [twseData, tpexData, futuresData] = await Promise.all([
-    twseRes.json(),
+    readTwseResponse(twseRes),
     tpexRes.json(),
     futuresRes.json().catch(() => []),
   ]);
