@@ -24,7 +24,8 @@ interface CategoryGroup {
   stocks: string[];
   story?: string;
   confidence?: "high" | "medium" | "low";
-  stage?: "啟動" | "擴散" | "高潮" | "退潮";
+  stage?: string; // "啟動/擴散/高潮/退潮"（finalizer）或 "連N日/回歸"（時間軸機械標籤）
+  call?: "順勢" | "觀察" | "反轉";
   retreatSignal?: boolean;
   entryScore?: number; // 0-100 進場評分
   scoreBreakdown?: ScoreBreakdown;
@@ -78,6 +79,7 @@ interface Analysis {
   losers: CategoryGroup[];
   summary: string;
   longTermStrategy?: string;
+  playbook?: string;
   intl?: IntlBlock;
 }
 
@@ -235,6 +237,15 @@ function renderCategoryBlock(
 
   // Header badges
   let headerBadges = "";
+  if (g.call) {
+    const callStyle: Record<string, string> = {
+      順勢: "background-color: #dc2626; color: white;",
+      觀察: "background-color: #fef3c7; color: #92400e;",
+      反轉: "background-color: #16a34a; color: white;",
+    };
+    const style = callStyle[g.call] ?? "background-color: #e5e7eb; color: #374151;";
+    headerBadges += `<span style="font-size: 11px; ${style} padding: 2px 6px; border-radius: 4px; margin-left: 6px; font-weight: bold;">${g.call}</span>`;
+  }
   if (g.confidence === "low") {
     headerBadges += `<span style="font-size: 11px; background-color: #e5e7eb; color: #6b7280; padding: 2px 6px; border-radius: 4px; margin-left: 6px;">⚠ 題材未經新聞驗證</span>`;
   }
@@ -519,6 +530,8 @@ function renderLegend(): string {
     ${item(`<span style="color: #dc2626; font-size: 11px;">⛔</span>`, "處置股")}
     ${item(`<span style="background-color: #fef9c3; color: #92400e; padding: 1px 4px; border-radius: 4px; white-space: nowrap; font-size: 11px;">🔻 退潮警訊</span>`, "前幾日強勢族群今天落入弱勢榜（換手/退潮）")}
     ${item(`<span style="background-color: #e5e7eb; color: #6b7280; padding: 1px 4px; border-radius: 4px; white-space: nowrap; font-size: 11px;">⚠ 題材未經新聞驗證</span>`, "該族群，因為沒有找到新聞，而是用 AI 模型裡的產業資料做推論，所以信心度比較低")}
+    ${item(`<span style="background-color: #dc2626; color: white; padding: 1px 4px; border-radius: 4px; white-space: nowrap; font-size: 11px; font-weight: bold;">順勢</span> / <span style="background-color: #fef3c7; color: #92400e; padding: 1px 4px; border-radius: 4px; white-space: nowrap; font-size: 11px; font-weight: bold;">觀察</span> / <span style="background-color: #16a34a; color: white; padding: 1px 4px; border-radius: 4px; white-space: nowrap; font-size: 11px; font-weight: bold;">反轉</span>`, "AI 操盤判斷（隔日記分板會回頭驗證勝率）：順勢=主流有連續性或法人認養，可加碼續抱；觀察=今日新進榜或訊號互相矛盾，先看一天再決定；反轉=當沖過熱、題材鬆散或預期熄火，不建議追價。沒把握的族群不標，避免灌水。有標記的族群排在最前面")}
+    ${item(`<span style="background-color: #e0e7ff; color: #4338ca; padding: 1px 4px; border-radius: 4px; white-space: nowrap; font-size: 11px;">連N日</span> / <span style="background-color: #e0e7ff; color: #4338ca; padding: 1px 4px; border-radius: 4px; white-space: nowrap; font-size: 11px;">回歸</span>`, "族群連續強勢天數（機械計算自歷史榜單）：連N日=連續 N 個交易日進強勢榜，天數越多主流地位越確立、但也越接近高潮；回歸=近 10 個交易日曾強勢、休息後再度進榜（二波行情，須觀察力道）；無此標籤=今日首次進榜的新面孔")}
     ${item(`<span style="background-color: #e0e7ff; color: #4338ca; padding: 1px 4px; border-radius: 4px; white-space: nowrap; font-size: 11px;">啟動／擴散／高潮／退潮</span>`, "族群資金階段：依族群連續性＋法人買賣方向＋量能/當沖/退潮訊號綜合判斷（非精密公式）。啟動=剛進場龍頭先動；擴散=連日且成員增加；高潮=補漲股噴出、當沖飆高或法人開始調節；退潮=龍頭轉弱、補漲取代龍頭")}
     ${item(`<span style="background-color: #e5e7eb; color: #374151; padding: 1px 4px; border-radius: 4px; white-space: nowrap; font-size: 11px;">疑似隔日沖</span>`, "昨漲停今爆當沖收黑的投機出貨足跡")}
     ${item(`<span style="background-color: #dc2626; color: white; padding: 1px 4px; border-radius: 4px; white-space: nowrap; font-size: 11px;">隔日沖慣犯</span>`, "近期重複出現的隔日沖出貨足跡")}
@@ -599,12 +612,23 @@ function renderIntl(intl: IntlBlock | null | undefined): string {
 }
 
 function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName: Map<string, string>, market?: MarketBlock | null, retailHistory?: MarketHistoryEntry[]): string {
-  const gainersHtml = a.gainers.map((g) => renderCategoryBlock(g, stockMap, codeByName, "gainer")).join("");
+  // 有 call 標記的族群排前面（順勢 → 觀察 → 反轉），其餘維持原順序（檔數多→少）
+  const callRank: Record<string, number> = { 順勢: 0, 觀察: 1, 反轉: 2 };
+  const sortedGainers = [...a.gainers].sort(
+    (x, y) => (x.call ? callRank[x.call] ?? 3 : 4) - (y.call ? callRank[y.call] ?? 3 : 4),
+  );
+  const gainersHtml = sortedGainers.map((g) => renderCategoryBlock(g, stockMap, codeByName, "gainer")).join("");
   const losersHtml = a.losers.map((g) => renderCategoryBlock(g, stockMap, codeByName, "loser")).join("");
   const longTermStrategyHtml = a.longTermStrategy
     ? `<div style="background-color: #eef6ff; border: 1px solid #bfdbfe; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
       <h3 style="margin-top: 0; color: #1d4ed8;">🧭 長線策略與進出場</h3>
       <p style="line-height: 1.7; margin-bottom: 0; color: #1e3a8a;">${a.longTermStrategy.replace(/\n/g, "<br>")}</p>
+    </div>`
+    : "";
+  const playbookHtml = a.playbook
+    ? `<div style="background-color: #fff7ed; border: 1px solid #fed7aa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+      <h3 style="margin-top: 0; color: #c2410c;">🎯 操作建議</h3>
+      <p style="line-height: 1.7; margin-bottom: 0; color: #7c2d12;">${a.playbook.replace(/\n/g, "<br>")}</p>
     </div>`
     : "";
   const marketDashboardHtml = renderMarketDashboard(market, retailHistory);
@@ -625,6 +649,8 @@ function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName
   const sections: Array<{ label: string; html: string }> = [
     { label: "🔥 上漲族群", html: groupGHtml },
     { label: "🧊 下跌族群", html: groupLHtml },
+    // 操作建議：可現在介入 / 需關注 / 避開，放在族群後、總覽前，方便快速決策。
+    { label: "🎯 操作建議", html: playbookHtml },
     // 盤後總結與市場儀表板都是整體市場觀點，合併成一個「市場總覽」tab。
     { label: "📊 市場總覽", html: `${summaryHtml}${marketDashboardHtml}` },
     { label: "🌐 國際情勢", html: intlHtml },

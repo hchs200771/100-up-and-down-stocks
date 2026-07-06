@@ -1,6 +1,7 @@
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import * as OpenCC from "opencc-js";
+import { loadTaxonomy, normalizeCategory, type Taxonomy } from "./lib/taxonomy.ts";
 
 /**
  * 把 data/tmp/classification.json（族群結構 + summary）與
@@ -32,6 +33,8 @@ interface Group {
   category: string;
   stocks: string[];
   story?: string;
+  stage?: string;
+  call?: string;
 }
 
 interface Classification {
@@ -44,13 +47,19 @@ interface Classification {
 
 // 簡轉繁（台灣用語）保險。即使 subagent 不小心寫出簡體或中國用語
 // （例：内存→記憶體、服务器→伺服器、双→雙），組裝時一律轉成台灣繁體。
-const toTW = OpenCC.Converter({ from: "cn", to: "twp" });
+const toTWraw = OpenCC.Converter({ from: "cn", to: "twp" });
+// s2twp 會把「台」正規化成「臺」（台積電→臺積電、台半→臺半、台股→臺股），
+// 但台股／財經寫作一律用「台」，故轉換後再把「臺」一律還原成「台」，避免公司名被改壞。
+const toTW = (s: string): string => toTWraw(s).replace(/臺/g, "台");
 
 const cwd = process.cwd();
 const classPath = resolve(cwd, "data/tmp/classification.json");
+const timelinePath = resolve(cwd, "data/group-timeline.json");
+const taxonomyPath = resolve(cwd, "data/taxonomy.json");
 const storiesDir = resolve(cwd, "data/tmp/stories");
 const intlMarketPath = resolve(cwd, "data/intl-market-latest.json");
 const intlBriefPath = resolve(cwd, "data/tmp/intl-brief.txt");
+const playbookPath = resolve(cwd, "data/tmp/playbook.txt");
 const outPath = resolve(cwd, "data/analysis-latest.json");
 
 interface IntlIndex {
@@ -85,7 +94,56 @@ function buildIntl(): { summary: string; indices: IntlIndex[] } | undefined {
   return { summary, indices };
 }
 
-function fill(groups: Group[] | undefined): { category: string; stocks: string[]; story: string }[] {
+/**
+ * 用 group-timeline.json（score-report 產出、asOf 為前一交易日）機械推算今日強勢族群的連續天數標籤。
+ * - 昨日 streak > 0（連續至昨日）→ 今日續強 = 連(streak+1)日
+ * - 昨日不連續、但近 10 個交易日曾在強勢榜 → 回歸（休息後二波）
+ * - 都不是 → 今日新進榜，不標（報告 legend 說明「無標籤＝今日新進榜」）
+ */
+function buildStreakLookup(reportDate: string): (category: string) => string | undefined {
+  if (!existsSync(timelinePath)) return () => undefined;
+  let taxonomy: Taxonomy = { categories: [] };
+  if (existsSync(taxonomyPath)) {
+    try {
+      taxonomy = loadTaxonomy(taxonomyPath);
+    } catch {
+      /* taxonomy unreadable → match raw names */
+    }
+  }
+  try {
+    const tl = JSON.parse(readFileSync(timelinePath, "utf8")) as {
+      asOf?: string | null;
+      tradingDates?: string[];
+      categories?: Array<{ canonical: string; strongDates: string[]; streak: number }>;
+    };
+    // timeline 已含今日快照（重跑情境）時，昨日 streak 要剔除今日再算
+    const dates = (tl.tradingDates ?? []).filter((d) => d < reportDate);
+    const recentDates = new Set(dates.slice(-10));
+    const byCanonical = new Map((tl.categories ?? []).map((c) => [c.canonical, c]));
+    return (category: string) => {
+      const { canonical } = normalizeCategory(category, taxonomy);
+      const entry = byCanonical.get(canonical);
+      if (!entry) return undefined;
+      const strong = new Set(entry.strongDates);
+      let streak = 0;
+      for (let i = dates.length - 1; i >= 0; i--) {
+        if (strong.has(dates[i])) streak++;
+        else break;
+      }
+      if (streak > 0) return `連${streak + 1}日`;
+      if (entry.strongDates.some((d) => recentDates.has(d))) return "回歸";
+      return undefined;
+    };
+  } catch {
+    console.warn("group-timeline.json unreadable, skipping streak badges");
+    return () => undefined;
+  }
+}
+
+function fill(
+  groups: Group[] | undefined,
+  streakFor?: (category: string) => string | undefined,
+): { category: string; stocks: string[]; story: string; stage?: string; call?: string }[] {
   return (groups ?? []).map((g) => {
     let story = typeof g.story === "string" ? g.story : "";
     if (g.id) {
@@ -95,7 +153,17 @@ function fill(groups: Group[] | undefined): { category: string; stocks: string[]
         if (txt) story = txt;
       }
     }
-    return { category: g.category, stocks: g.stocks ?? [], story: toTW(story) };
+    // stage 優先用 classification 明確標的；否則用時間軸機械推算（連N日/回歸）
+    const stage = g.stage ?? streakFor?.(g.category);
+    return {
+      category: g.category,
+      stocks: g.stocks ?? [],
+      story: toTW(story),
+      // stage/call 穿透到 analysis-latest.json：send-report 渲染 badge，
+      // score-report 用 call 打分（byCall 勝率）驗證當日判斷。
+      ...(stage ? { stage } : {}),
+      ...(g.call ? { call: g.call } : {}),
+    };
   });
 }
 
@@ -109,13 +177,25 @@ function main() {
   }
 
   const intl = buildIntl();
+
+  // 操作建議（🎯 操作建議 分頁）：由 finalizer 寫到 data/tmp/playbook.txt，純文字。
+  // 檔案不存在或空 → 不附 playbook 欄位，send-report 自動略過該分頁。
+  let playbook = "";
+  if (existsSync(playbookPath)) {
+    const txt = readFileSync(playbookPath, "utf8").trim();
+    if (txt) playbook = toTW(txt);
+  }
+
+  const streakFor = buildStreakLookup(cls.date);
+
   const out = {
     timestamp: cls.timestamp,
     date: cls.date,
-    gainers: fill(cls.gainers),
+    gainers: fill(cls.gainers, streakFor),
     losers: fill(cls.losers),
     summary: toTW(typeof cls.summary === "string" ? cls.summary : ""),
     ...(intl ? { intl } : {}),
+    ...(playbook ? { playbook } : {}),
   };
 
   writeFileSync(outPath, `${JSON.stringify(out, null, 2)}\n`, "utf8");
@@ -127,7 +207,8 @@ function main() {
       `${out.gainers.length} gainer (${gWithStory} with story) / ` +
       `${out.losers.length} loser (${lWithStory} with story) groups, ` +
       `summary ${out.summary ? "set" : "EMPTY"}, ` +
-      `intl ${intl ? `${intl.indices.length} idx / brief ${intl.summary ? "set" : "EMPTY"}` : "none"}`,
+      `intl ${intl ? `${intl.indices.length} idx / brief ${intl.summary ? "set" : "EMPTY"}` : "none"}, ` +
+      `playbook ${playbook ? "set" : "none"}`,
   );
 }
 

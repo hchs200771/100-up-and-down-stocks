@@ -8,10 +8,12 @@ TASK_DIR="${CLAUDE_REPORT_TASK_DIR:-$PROJECT_DIR/data/tmp/group-tasks}"
 RESULT_DIR="${CLAUDE_REPORT_RESULT_DIR:-$PROJECT_DIR/data/tmp/group-results}"
 PROMPT_DIR="$PROJECT_DIR/scripts/prompts"
 WORKER_TEMPLATE="$PROMPT_DIR/group-research-worker.md"
-MAX_CONCURRENCY="${1:-6}"
+MAX_CONCURRENCY="${1:-4}"
 POLL_INTERVAL="${CLAUDE_REPORT_POLL_INTERVAL:-1}"
 WORKER_TIMEOUT_SECONDS="${CLAUDE_REPORT_WORKER_TIMEOUT_SECONDS:-180}"
 WORKER_MAX_ATTEMPTS="${CLAUDE_REPORT_WORKER_MAX_ATTEMPTS:-2}"
+# 族群故事屬輕量研究工作，預設用小模型省 token；可用環境變數覆寫
+WORKER_MODEL="${CLAUDE_GROUP_WORKER_MODEL:-haiku}"
 
 cd "$PROJECT_DIR" || exit 1
 
@@ -132,6 +134,7 @@ run_worker() {
     exit_code=0
     echo "進度 3/5：${base_name} worker attempt ${attempt}/${WORKER_MAX_ATTEMPTS}，timeout ${WORKER_TIMEOUT_SECONDS}s"
     claude -p \
+      --model "$WORKER_MODEL" \
       --allowedTools 'Bash(*)' 'Read(*)' 'Write(*)' 'Edit(*)' 'WebSearch(*)' 'WebFetch(*)' \
       < "$prompt_file" &
     pid="$!"

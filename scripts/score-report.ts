@@ -1,5 +1,12 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { loadTaxonomy, normalizeCategory, type Taxonomy } from "./lib/taxonomy.ts";
+import {
+  buildGroupTimeline,
+  consecutiveStrongDays,
+  mechanicalStage,
+  type TimelineSnapshot,
+} from "./lib/group-timeline.ts";
 
 // ---------------------------------------------------------------------------
 // Market history types
@@ -30,6 +37,7 @@ interface AnalysisGroup {
   stocks: string[];
   story?: string;
   stage?: string;
+  call?: string;
 }
 
 interface AnalysisSnapshot {
@@ -51,6 +59,7 @@ interface ScorecardRecord {
   category: string;
   direction: "gainer" | "loser";
   stage?: string;
+  call?: string;
   members: number;
   t1?: number;
   t5?: number;
@@ -79,6 +88,7 @@ interface Scorecard {
       loser: DirectionStats;
     };
     byStage: Record<string, StageStats>;
+    byCall: Record<string, DirectionStats>;
   };
 }
 
@@ -173,6 +183,7 @@ export function buildAggregates(records: ScorecardRecord[]): Scorecard["aggregat
   };
   type StageAcc = { t1s: number[]; t5s: number[] };
   const stageAcc: Record<string, StageAcc> = {};
+  const callAcc: Record<string, DirAcc> = {};
 
   for (const r of records) {
     const dir = r.direction;
@@ -196,6 +207,23 @@ export function buildAggregates(records: ScorecardRecord[]): Scorecard["aggregat
       if (!stageAcc[r.stage]) stageAcc[r.stage] = { t1s: [], t5s: [] };
       if (r.t1 !== undefined) stageAcc[r.stage].t1s.push(r.t1);
       if (r.t5 !== undefined) stageAcc[r.stage].t5s.push(r.t5);
+    }
+
+    if (r.call) {
+      if (!callAcc[r.call]) {
+        callAcc[r.call] = { t1s: [], t5s: [], t1Wins: 0, t1Total: 0, t5Wins: 0, t5Total: 0 };
+      }
+      const ca = callAcc[r.call];
+      if (r.t1 !== undefined) {
+        ca.t1s.push(r.t1);
+        ca.t1Total++;
+        if (r.t1 > 0) ca.t1Wins++;
+      }
+      if (r.t5 !== undefined) {
+        ca.t5s.push(r.t5);
+        ca.t5Total++;
+        if (r.t5 > 0) ca.t5Wins++;
+      }
     }
   }
 
@@ -229,7 +257,20 @@ export function buildAggregates(records: ScorecardRecord[]): Scorecard["aggregat
     };
   }
 
-  return { byDirection, byStage };
+  const byCall: Record<string, DirectionStats> = {};
+  for (const [call, acc] of Object.entries(callAcc)) {
+    byCall[call] = {
+      n: acc.t1Total || acc.t5Total,
+      avgT1: avg(acc.t1s),
+      avgT5: avg(acc.t5s),
+      // call 一律標在強勢族群上：win = 續漲（>0）。
+      // 「順勢」勝率該高、「反轉」勝率該低，落差就是判斷力的成績單。
+      winRateT1: rate(acc.t1Wins, acc.t1Total),
+      winRateT5: rate(acc.t5Wins, acc.t5Total),
+    };
+  }
+
+  return { byDirection, byStage, byCall };
 }
 
 // ---------------------------------------------------------------------------
@@ -244,6 +285,8 @@ const MARKET_LATEST = resolve(DATA, "market-latest.json");
 const ANALYSIS_LATEST = resolve(DATA, "analysis-latest.json");
 const SCORECARD = resolve(DATA, "scorecard.json");
 const MARKET_HISTORY = resolve(DATA, "market-history.json");
+const TAXONOMY_PATH = resolve(DATA, "taxonomy.json");
+const GROUP_TIMELINE = resolve(DATA, "group-timeline.json");
 
 function readJson<T>(path: string): T {
   return JSON.parse(readFileSync(path, "utf8")) as T;
@@ -297,10 +340,25 @@ function main() {
     .filter((f) => f.endsWith(".json"))
     .sort();
 
+  const snapshots: AnalysisSnapshot[] = analysisFiles.map((file) =>
+    readJson<AnalysisSnapshot>(resolve(ANALYSIS_HISTORY_DIR, file)),
+  );
+
+  // ---- Step 3.5: Build group timeline (canonical category → dates in strong/weak lists) ----
+  let taxonomy: Taxonomy = { categories: [] };
+  if (existsSync(TAXONOMY_PATH)) {
+    try {
+      taxonomy = loadTaxonomy(TAXONOMY_PATH);
+    } catch {
+      console.warn("[score] taxonomy.json unreadable, timeline uses raw category names");
+    }
+  }
+  const timeline = buildGroupTimeline(snapshots as TimelineSnapshot[], taxonomy);
+  const snapDates = snapshots.map((s) => s.date).sort();
+
   const records: ScorecardRecord[] = [];
 
-  for (const file of analysisFiles) {
-    const snap = readJson<AnalysisSnapshot>(resolve(ANALYSIS_HISTORY_DIR, file));
+  for (const snap of snapshots) {
     const baseDate = snap.date;
 
     // Load T0 prices
@@ -327,7 +385,18 @@ function main() {
           direction: direction === "gainers" ? "gainer" : "loser",
           members: group.stocks.length,
         };
-        if (group.stage) record.stage = group.stage;
+        if (group.stage) {
+          // 精確天數標籤（連3日、連4日…）歸進「連3日+」統計桶，避免樣本碎片化
+          const m = group.stage.match(/^連(\d+)日$/);
+          record.stage = m && parseInt(m[1], 10) >= 3 ? "連3日+" : group.stage;
+        } else if (direction === "gainers") {
+          // 沒有明確 stage 時，用時間軸機械推算（連1日/連2日/連3日+/回歸）
+          const { canonical } = normalizeCategory(group.category, taxonomy);
+          const tl = timeline.get(canonical);
+          const stage = tl ? mechanicalStage(tl.strongDates, snapDates, baseDate) : null;
+          if (stage) record.stage = stage;
+        }
+        if (group.call) record.call = group.call;
         if (t1 !== null && t1 !== undefined) record.t1 = parseFloat(t1.toFixed(2));
         if (t5 !== null && t5 !== undefined) record.t5 = parseFloat(t5.toFixed(2));
 
@@ -347,12 +416,37 @@ function main() {
   writeFileSync(SCORECARD, JSON.stringify(scorecard, null, 2), "utf-8");
   console.log(`[score] Wrote scorecard: ${SCORECARD}`);
 
+  // ---- Step 4.5: Write group timeline (供 Step 5 總結判讀「連N日/新進場/回歸」用) ----
+  const latestDate = snapDates[snapDates.length - 1];
+  const timelineOut = {
+    updatedAt: new Date().toISOString(),
+    asOf: latestDate ?? null,
+    tradingDates: snapDates,
+    categories: [...timeline.values()]
+      .map((tl) => ({
+        canonical: tl.canonical,
+        strongDates: tl.strongDates,
+        weakDates: tl.weakDates,
+        streak: latestDate ? consecutiveStrongDays(tl.strongDates, snapDates, latestDate) : 0,
+        stage: latestDate ? mechanicalStage(tl.strongDates, snapDates, latestDate) : null,
+      }))
+      .sort((a, b) => b.streak - a.streak || a.canonical.localeCompare(b.canonical)),
+  };
+  writeFileSync(GROUP_TIMELINE, JSON.stringify(timelineOut, null, 2), "utf-8");
+  console.log(`[score] Wrote group timeline: ${GROUP_TIMELINE} (${timelineOut.categories.length} categories)`);
+
   // Summary
   const scorable = records.filter((r) => r.t1 !== undefined || r.t5 !== undefined).length;
   console.log(`[score] Analysis snapshots: ${analysisFiles.length}`);
   console.log(`[score] Scorable records: ${scorable}`);
   console.log(`[score] byDirection gainer: n=${aggregates.byDirection.gainer.n} avgT1=${aggregates.byDirection.gainer.avgT1} avgT5=${aggregates.byDirection.gainer.avgT5} winT1=${aggregates.byDirection.gainer.winRateT1}% winT5=${aggregates.byDirection.gainer.winRateT5}%`);
   console.log(`[score] byDirection loser:  n=${aggregates.byDirection.loser.n} avgT1=${aggregates.byDirection.loser.avgT1} avgT5=${aggregates.byDirection.loser.avgT5} winT1=${aggregates.byDirection.loser.winRateT1}% winT5=${aggregates.byDirection.loser.winRateT5}%`);
+  for (const [stage, s] of Object.entries(aggregates.byStage)) {
+    console.log(`[score] byStage ${stage}: n=${s.n} avgT1=${s.avgT1} avgT5=${s.avgT5}`);
+  }
+  for (const [call, s] of Object.entries(aggregates.byCall)) {
+    console.log(`[score] byCall ${call}: n=${s.n} avgT1=${s.avgT1} avgT5=${s.avgT5} winT1=${s.winRateT1}% winT5=${s.winRateT5}%`);
+  }
 
   // ---- Step 5: Upsert market history ----
   const mktRaw = readJson<{ tradingDate?: string; market?: Record<string, unknown> }>(MARKET_LATEST);

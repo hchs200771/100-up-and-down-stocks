@@ -5,7 +5,7 @@ set -u
 # Skips gracefully (exit 0) when VERCEL_TOKEN is absent, so the pipeline never
 # fails just because publishing is not configured.
 
-export PATH="/Users/max/.nvm/versions/node/v20.12.0/bin:/Users/max/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
+export PATH="/Users/huangguanxue/.nvm/versions/node/v20.20.2/bin:/Users/huangguanxue/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 cd "$PROJECT_DIR" || exit 1
