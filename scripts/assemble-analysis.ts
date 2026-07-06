@@ -140,6 +140,33 @@ function buildStreakLookup(reportDate: string): (category: string) => string | u
   }
 }
 
+// stage / call 標籤翻成人話，開頭一句寫進 story，讓評論本文也讀得到
+// badge 的意思（badge 只在 HTML 呈現，純文字轉貼時會消失）。
+const STAGE_DESC: Record<string, string> = {
+  啟動: "行情處於啟動階段",
+  擴散: "行情正向族群內擴散",
+  高潮: "行情進入高潮段，追價風險升高",
+  退潮: "行情已在退潮",
+  回歸: "休息數日後重回強勢榜（二波）",
+};
+const CALL_DESC: Record<string, string> = {
+  順勢: "操盤判斷順勢：主流具連續性或法人認養，可加碼續抱",
+  觀察: "操盤判斷觀察：今日新進榜或訊號矛盾，先看一天再決定",
+  反轉: "操盤判斷反轉：過熱或題材鬆散，不建議追價",
+};
+
+/** 例：「已連3日上強勢榜；操盤判斷順勢：…。」story 已提過的標籤不重複。 */
+function labelLead(story: string, stage?: string, call?: string): string {
+  const parts: string[] = [];
+  if (stage && !story.includes(stage)) {
+    const m = /^連(\d+)日/.exec(stage);
+    if (m) parts.push(`已連${m[1]}日上強勢榜`);
+    else if (STAGE_DESC[stage]) parts.push(STAGE_DESC[stage]);
+  }
+  if (call && !story.includes(call) && CALL_DESC[call]) parts.push(CALL_DESC[call]);
+  return parts.length ? `${parts.join("；")}。` : "";
+}
+
 function fill(
   groups: Group[] | undefined,
   streakFor?: (category: string) => string | undefined,
@@ -155,6 +182,8 @@ function fill(
     }
     // stage 優先用 classification 明確標的；否則用時間軸機械推算（連N日/回歸）
     const stage = g.stage ?? streakFor?.(g.category);
+    // story 為空的族群（如「其他弱勢」規則要求空字串）保持空，不硬加標籤句
+    if (story) story = labelLead(story, stage, g.call) + story;
     return {
       category: g.category,
       stocks: g.stocks ?? [],
