@@ -436,5 +436,50 @@
     "down": 938,
     "limitUp": 53,
     "limitDown": 9
+  },
+  {
+    "date": "2026-07-07",
+    "retailNetPct": 35.8107886717854,
+    "retailNetLots": 32788,
+    "twseDayTradePct": 23.23,
+    "tpexDayTradePct": 25.73,
+    "taiexClose": 45479.11,
+    "taiexChange": -1077.28,
+    "tpexClose": 419.47,
+    "tpexChange": -20.33,
+    "up": 330,
+    "down": 1784,
+    "limitUp": 12,
+    "limitDown": 42
+  },
+  {
+    "date": "2026-07-08",
+    "retailNetPct": 51.11952343222701,
+    "retailNetLots": 52260,
+    "twseDayTradePct": 27.74,
+    "tpexDayTradePct": 27.76,
+    "taiexClose": 45734.41,
+    "taiexChange": 255.3,
+    "tpexClose": 421.39,
+    "tpexChange": 1.92,
+    "up": 807,
+    "down": 1230,
+    "limitUp": 28,
+    "limitDown": 3
+  },
+  {
+    "date": "2026-07-09",
+    "retailNetPct": 49.66404021849471,
+    "retailNetLots": 51370,
+    "twseDayTradePct": 28.13,
+    "tpexDayTradePct": 27.67,
+    "taiexClose": 45354.61,
+    "taiexChange": -379.8,
+    "tpexClose": 424.99,
+    "tpexChange": 3.6,
+    "up": 866,
+    "down": 1120,
+    "limitUp": 36,
+    "limitDown": 8
   }
 ]
