@@ -367,7 +367,7 @@ timestamp: <同 analysis>
 
 ### Step 9 — 部署到 Vercel（wrapper 自動執行）
 
-wrapper 在寄信完成後會執行 `scripts/publish-vercel.sh`，將 `data/report-latest.html` 部署到 Vercel 靜態站台。需設定 `VERCEL_TOKEN`（於 `.env.local`）；未設定時此步驟自動跳過，不影響寄信流程。
+wrapper 在寄信完成後會執行 `scripts/publish-github-pages.sh`，將 `data/report-latest.html` 組進 `data/site/` 並 commit + push；GitHub Actions（.github/workflows/pages.yml）隨後把它部署到 https://hchs200771.github.io/100-up-and-down-stocks/ 。不需要任何 token（用本機既有的 git 權限）。
 
 ## 結尾回報
 

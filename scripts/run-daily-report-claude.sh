@@ -356,8 +356,8 @@ fi
 
 if stage_enabled publish; then
   log "進度 6/6：部署到 Vercel"
-  if ! bash "$PROJECT_DIR/scripts/publish-vercel.sh" > >(tee -a "$LOG_FILE") 2>&1; then
-    log "[warn] publish-vercel.sh 失敗（不中斷整體流程）"
+  if ! bash "$PROJECT_DIR/scripts/publish-github-pages.sh" > >(tee -a "$LOG_FILE") 2>&1; then
+    log "[warn] publish-github-pages.sh 失敗（不中斷整體流程）"
   fi
 fi
 

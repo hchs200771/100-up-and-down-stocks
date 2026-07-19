@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-09T19:28:09.003Z",
-  "asOf": "2026-07-08",
+  "updatedAt": "2026-07-18T04:47:36.615Z",
+  "asOf": "2026-07-16",
   "tradingDates": [
     "2026-06-29",
     "2026-06-30",
@@ -8,7 +8,9 @@
     "2026-07-03",
     "2026-07-06",
     "2026-07-07",
-    "2026-07-08"
+    "2026-07-08",
+    "2026-07-09",
+    "2026-07-16"
   ],
   "categories": [
     {
@@ -19,180 +21,168 @@
         "2026-07-03",
         "2026-07-06",
         "2026-07-07",
-        "2026-07-08"
+        "2026-07-08",
+        "2026-07-09",
+        "2026-07-16"
       ],
       "weakDates": [],
-      "streak": 5,
+      "streak": 7,
       "stage": "連3日+"
     },
     {
-      "canonical": "網通設備",
+      "canonical": "玻璃基板",
       "strongDates": [
-        "2026-07-06",
-        "2026-07-07",
-        "2026-07-08"
+        "2026-07-09",
+        "2026-07-16"
       ],
       "weakDates": [],
-      "streak": 3,
-      "stage": "連3日+"
-    },
-    {
-      "canonical": "光通訊/CPO矽光子",
-      "strongDates": [
-        "2026-07-03",
-        "2026-07-07",
-        "2026-07-08"
-      ],
-      "weakDates": [
-        "2026-07-06",
-        "2026-07-07"
-      ],
       "streak": 2,
       "stage": "連2日"
     },
     {
-      "canonical": "工業電腦",
+      "canonical": "PCB/軟板CCL",
       "strongDates": [
-        "2026-07-03",
-        "2026-07-07",
-        "2026-07-08"
+        "2026-07-16"
+      ],
+      "weakDates": [],
+      "streak": 1,
+      "stage": "連1日"
+    },
+    {
+      "canonical": "二極體/功率半導體(強勢)",
+      "strongDates": [
+        "2026-07-16"
+      ],
+      "weakDates": [],
+      "streak": 1,
+      "stage": "連1日"
+    },
+    {
+      "canonical": "人力資源服務",
+      "strongDates": [
+        "2026-07-16"
+      ],
+      "weakDates": [],
+      "streak": 1,
+      "stage": "連1日"
+    },
+    {
+      "canonical": "光學鏡頭/光學元件",
+      "strongDates": [
+        "2026-07-16"
+      ],
+      "weakDates": [],
+      "streak": 1,
+      "stage": "連1日"
+    },
+    {
+      "canonical": "半導體設備/測試儀器",
+      "strongDates": [
+        "2026-07-16"
+      ],
+      "weakDates": [],
+      "streak": 1,
+      "stage": "連1日"
+    },
+    {
+      "canonical": "塑化/石化原料",
+      "strongDates": [
+        "2026-07-16"
+      ],
+      "weakDates": [],
+      "streak": 1,
+      "stage": "連1日"
+    },
+    {
+      "canonical": "封測",
+      "strongDates": [
+        "2026-06-30",
+        "2026-07-06",
+        "2026-07-16"
       ],
       "weakDates": [
-        "2026-07-06"
-      ],
-      "streak": 2,
-      "stage": "連2日"
-    },
-    {
-      "canonical": "IC設計(連網/週邊)",
-      "strongDates": [
-        "2026-07-08"
-      ],
-      "weakDates": [],
-      "streak": 1,
-      "stage": "連1日"
-    },
-    {
-      "canonical": "MCU微控制器IC",
-      "strongDates": [
-        "2026-07-08"
-      ],
-      "weakDates": [],
-      "streak": 1,
-      "stage": "連1日"
-    },
-    {
-      "canonical": "PCB/載板/銅箔基板",
-      "strongDates": [
-        "2026-07-08"
-      ],
-      "weakDates": [],
-      "streak": 1,
-      "stage": "連1日"
-    },
-    {
-      "canonical": "二極體/功率半導體",
-      "strongDates": [
         "2026-07-02",
-        "2026-07-03",
-        "2026-07-06",
-        "2026-07-08"
-      ],
-      "weakDates": [
-        "2026-07-06",
         "2026-07-07"
       ],
       "streak": 1,
       "stage": "回歸"
     },
     {
-      "canonical": "光學鏡頭/背光",
+      "canonical": "機器人/精密減速機",
       "strongDates": [
-        "2026-07-08"
+        "2026-07-16"
       ],
       "weakDates": [],
       "streak": 1,
       "stage": "連1日"
     },
     {
-      "canonical": "半導體封測",
+      "canonical": "營建/資產/房仲",
       "strongDates": [
-        "2026-07-08"
+        "2026-07-16"
       ],
       "weakDates": [],
       "streak": 1,
       "stage": "連1日"
     },
     {
-      "canonical": "生技新藥/製藥",
+      "canonical": "特化材料",
       "strongDates": [
-        "2026-07-08"
+        "2026-07-16"
       ],
       "weakDates": [],
       "streak": 1,
       "stage": "連1日"
     },
     {
-      "canonical": "石油槓桿ETF",
+      "canonical": "精密機械/金屬加工",
       "strongDates": [
-        "2026-07-08"
+        "2026-07-16"
       ],
       "weakDates": [],
       "streak": 1,
       "stage": "連1日"
     },
     {
-      "canonical": "矽晶圓/半導體基板",
+      "canonical": "紡織/成衣",
       "strongDates": [
-        "2026-07-08"
-      ],
-      "weakDates": [
-        "2026-07-06"
-      ],
-      "streak": 1,
-      "stage": "連1日"
-    },
-    {
-      "canonical": "精密金屬/車用零件",
-      "strongDates": [
-        "2026-07-06",
-        "2026-07-08"
-      ],
-      "weakDates": [],
-      "streak": 1,
-      "stage": "回歸"
-    },
-    {
-      "canonical": "資安",
-      "strongDates": [
-        "2026-07-08"
+        "2026-07-16"
       ],
       "weakDates": [],
       "streak": 1,
       "stage": "連1日"
     },
     {
-      "canonical": "軍工/無人機造船",
+      "canonical": "自行車/傳動鏈條",
       "strongDates": [
-        "2026-07-08"
+        "2026-07-16"
       ],
       "weakDates": [],
       "streak": 1,
       "stage": "連1日"
     },
     {
-      "canonical": "連接器/精密線材",
+      "canonical": "連接器/精密五金",
       "strongDates": [
-        "2026-07-08"
+        "2026-07-16"
       ],
       "weakDates": [],
       "streak": 1,
       "stage": "連1日"
     },
     {
-      "canonical": "醫療影像/醫材",
+      "canonical": "運動休閒用品",
       "strongDates": [
-        "2026-07-08"
+        "2026-07-16"
+      ],
+      "weakDates": [],
+      "streak": 1,
+      "stage": "連1日"
+    },
+    {
+      "canonical": "醫療/生技美容",
+      "strongDates": [
+        "2026-07-16"
       ],
       "weakDates": [],
       "streak": 1,
@@ -201,30 +191,44 @@
     {
       "canonical": "陸港股槓桿ETF",
       "strongDates": [
-        "2026-07-08"
+        "2026-07-08",
+        "2026-07-16"
+      ],
+      "weakDates": [],
+      "streak": 1,
+      "stage": "回歸"
+    },
+    {
+      "canonical": "電信/通訊設備",
+      "strongDates": [
+        "2026-07-16"
       ],
       "weakDates": [],
       "streak": 1,
       "stage": "連1日"
     },
     {
-      "canonical": "電子通路/零組件代理",
+      "canonical": "電源供應器(強勢)",
       "strongDates": [
-        "2026-06-30",
-        "2026-07-03",
-        "2026-07-06",
-        "2026-07-08"
+        "2026-07-16"
       ],
-      "weakDates": [
-        "2026-07-07"
-      ],
+      "weakDates": [],
       "streak": 1,
-      "stage": "回歸"
+      "stage": "連1日"
     },
     {
-      "canonical": "電池模組",
+      "canonical": "面板/顯示與驅動IC",
       "strongDates": [
-        "2026-07-08"
+        "2026-07-16"
+      ],
+      "weakDates": [],
+      "streak": 1,
+      "stage": "連1日"
+    },
+    {
+      "canonical": "食品",
+      "strongDates": [
+        "2026-07-16"
       ],
       "weakDates": [],
       "streak": 1,
@@ -298,12 +302,30 @@
       "stage": null
     },
     {
+      "canonical": "DRAM/NAND記憶體",
+      "strongDates": [],
+      "weakDates": [
+        "2026-07-16"
+      ],
+      "streak": 0,
+      "stage": null
+    },
+    {
       "canonical": "DRAM/NAND記憶體模組與控制IC",
       "strongDates": [],
       "weakDates": [
         "2026-07-02",
         "2026-07-08"
       ],
+      "streak": 0,
+      "stage": null
+    },
+    {
+      "canonical": "DRAM/記憶體",
+      "strongDates": [
+        "2026-07-09"
+      ],
+      "weakDates": [],
       "streak": 0,
       "stage": null
     },
@@ -322,6 +344,15 @@
       "weakDates": [
         "2026-07-03"
       ],
+      "streak": 0,
+      "stage": null
+    },
+    {
+      "canonical": "IC設計(連網/週邊)",
+      "strongDates": [
+        "2026-07-08"
+      ],
+      "weakDates": [],
       "streak": 0,
       "stage": null
     },
@@ -394,10 +425,46 @@
       "stage": null
     },
     {
+      "canonical": "MCU/微控制器IC",
+      "strongDates": [],
+      "weakDates": [
+        "2026-07-16"
+      ],
+      "streak": 0,
+      "stage": null
+    },
+    {
+      "canonical": "MCU/消費性IC",
+      "strongDates": [
+        "2026-07-09"
+      ],
+      "weakDates": [],
+      "streak": 0,
+      "stage": null
+    },
+    {
+      "canonical": "MCU微控制器IC",
+      "strongDates": [
+        "2026-07-08"
+      ],
+      "weakDates": [],
+      "streak": 0,
+      "stage": null
+    },
+    {
       "canonical": "PCB(伺服器板)",
       "strongDates": [],
       "weakDates": [
         "2026-07-06"
+      ],
+      "streak": 0,
+      "stage": null
+    },
+    {
+      "canonical": "PCB/CCL",
+      "strongDates": [],
+      "weakDates": [
+        "2026-07-09"
       ],
       "streak": 0,
       "stage": null
@@ -413,11 +480,30 @@
       "stage": null
     },
     {
+      "canonical": "PCB/載板/CCL",
+      "strongDates": [],
+      "weakDates": [
+        "2026-07-16"
+      ],
+      "streak": 0,
+      "stage": null
+    },
+    {
       "canonical": "PCB/載板/PCB設備",
       "strongDates": [],
       "weakDates": [
         "2026-07-02"
       ],
+      "streak": 0,
+      "stage": null
+    },
+    {
+      "canonical": "PCB/載板/銅箔基板",
+      "strongDates": [
+        "2026-07-08",
+        "2026-07-09"
+      ],
+      "weakDates": [],
       "streak": 0,
       "stage": null
     },
@@ -476,6 +562,15 @@
       "stage": null
     },
     {
+      "canonical": "主動式ETF",
+      "strongDates": [],
+      "weakDates": [
+        "2026-07-16"
+      ],
+      "streak": 0,
+      "stage": null
+    },
+    {
       "canonical": "主機板",
       "strongDates": [],
       "weakDates": [
@@ -499,6 +594,23 @@
         "2026-06-30"
       ],
       "weakDates": [],
+      "streak": 0,
+      "stage": null
+    },
+    {
+      "canonical": "二極體/功率半導體",
+      "strongDates": [
+        "2026-07-02",
+        "2026-07-03",
+        "2026-07-06",
+        "2026-07-08"
+      ],
+      "weakDates": [
+        "2026-07-06",
+        "2026-07-07",
+        "2026-07-09",
+        "2026-07-16"
+      ],
       "streak": 0,
       "stage": null
     },
@@ -539,6 +651,15 @@
       "stage": null
     },
     {
+      "canonical": "儲存/SSD模組",
+      "strongDates": [],
+      "weakDates": [
+        "2026-07-16"
+      ],
+      "streak": 0,
+      "stage": null
+    },
+    {
       "canonical": "光學元件",
       "strongDates": [
         "2026-07-06"
@@ -558,9 +679,35 @@
     },
     {
       "canonical": "光學鏡頭/影像模組",
-      "strongDates": [],
+      "strongDates": [
+        "2026-07-09"
+      ],
       "weakDates": [
         "2026-06-29"
+      ],
+      "streak": 0,
+      "stage": null
+    },
+    {
+      "canonical": "光學鏡頭/背光",
+      "strongDates": [
+        "2026-07-08"
+      ],
+      "weakDates": [],
+      "streak": 0,
+      "stage": null
+    },
+    {
+      "canonical": "光通訊/CPO矽光子",
+      "strongDates": [
+        "2026-07-03",
+        "2026-07-07",
+        "2026-07-08"
+      ],
+      "weakDates": [
+        "2026-07-06",
+        "2026-07-07",
+        "2026-07-16"
       ],
       "streak": 0,
       "stage": null
@@ -593,7 +740,9 @@
         "2026-07-03",
         "2026-07-06",
         "2026-07-07",
-        "2026-07-08"
+        "2026-07-08",
+        "2026-07-09",
+        "2026-07-16"
       ],
       "streak": 0,
       "stage": null
@@ -697,6 +846,15 @@
       "stage": null
     },
     {
+      "canonical": "半導體封測",
+      "strongDates": [
+        "2026-07-08"
+      ],
+      "weakDates": [],
+      "streak": 0,
+      "stage": null
+    },
+    {
       "canonical": "半導體導線架/封裝材料",
       "strongDates": [
         "2026-07-02"
@@ -739,7 +897,18 @@
       "strongDates": [
         "2026-06-29"
       ],
-      "weakDates": [],
+      "weakDates": [
+        "2026-07-09"
+      ],
+      "streak": 0,
+      "stage": null
+    },
+    {
+      "canonical": "半導體設備/廠務工程",
+      "strongDates": [],
+      "weakDates": [
+        "2026-07-16"
+      ],
       "streak": 0,
       "stage": null
     },
@@ -815,6 +984,24 @@
       "stage": null
     },
     {
+      "canonical": "塑化/化纖",
+      "strongDates": [],
+      "weakDates": [
+        "2026-07-09"
+      ],
+      "streak": 0,
+      "stage": null
+    },
+    {
+      "canonical": "塑化/塑膠原料",
+      "strongDates": [],
+      "weakDates": [
+        "2026-07-09"
+      ],
+      "streak": 0,
+      "stage": null
+    },
+    {
       "canonical": "塑化/石化",
       "strongDates": [
         "2026-07-03"
@@ -842,23 +1029,13 @@
       "stage": null
     },
     {
-      "canonical": "封測",
-      "strongDates": [
-        "2026-06-30",
-        "2026-07-06"
-      ],
-      "weakDates": [
-        "2026-07-02",
-        "2026-07-07"
-      ],
-      "streak": 0,
-      "stage": null
-    },
-    {
       "canonical": "封測/測試介面",
-      "strongDates": [],
+      "strongDates": [
+        "2026-07-09"
+      ],
       "weakDates": [
-        "2026-07-08"
+        "2026-07-08",
+        "2026-07-16"
       ],
       "streak": 0,
       "stage": null
@@ -914,6 +1091,19 @@
         "2026-07-03"
       ],
       "weakDates": [],
+      "streak": 0,
+      "stage": null
+    },
+    {
+      "canonical": "工業電腦",
+      "strongDates": [
+        "2026-07-03",
+        "2026-07-07",
+        "2026-07-08"
+      ],
+      "weakDates": [
+        "2026-07-06"
+      ],
       "streak": 0,
       "stage": null
     },
@@ -1077,6 +1267,15 @@
       "stage": null
     },
     {
+      "canonical": "無人機/軍工",
+      "strongDates": [],
+      "weakDates": [
+        "2026-07-16"
+      ],
+      "streak": 0,
+      "stage": null
+    },
+    {
       "canonical": "無塵室/廠務工程",
       "strongDates": [],
       "weakDates": [
@@ -1109,6 +1308,15 @@
         "2026-07-02"
       ],
       "weakDates": [],
+      "streak": 0,
+      "stage": null
+    },
+    {
+      "canonical": "特化/電子化學品",
+      "strongDates": [],
+      "weakDates": [
+        "2026-07-16"
+      ],
       "streak": 0,
       "stage": null
     },
@@ -1158,6 +1366,17 @@
       "stage": null
     },
     {
+      "canonical": "生技新藥/製藥",
+      "strongDates": [
+        "2026-07-08"
+      ],
+      "weakDates": [
+        "2026-07-09"
+      ],
+      "streak": 0,
+      "stage": null
+    },
+    {
       "canonical": "生技新藥/醫材",
       "strongDates": [
         "2026-06-29",
@@ -1168,6 +1387,16 @@
       "weakDates": [
         "2026-07-08"
       ],
+      "streak": 0,
+      "stage": null
+    },
+    {
+      "canonical": "石油槓桿ETF",
+      "strongDates": [
+        "2026-07-08",
+        "2026-07-09"
+      ],
+      "weakDates": [],
       "streak": 0,
       "stage": null
     },
@@ -1204,6 +1433,19 @@
       "stage": null
     },
     {
+      "canonical": "矽晶圓/半導體基板",
+      "strongDates": [
+        "2026-07-08",
+        "2026-07-09"
+      ],
+      "weakDates": [
+        "2026-07-06",
+        "2026-07-16"
+      ],
+      "streak": 0,
+      "stage": null
+    },
+    {
       "canonical": "矽晶圓/磊晶",
       "strongDates": [
         "2026-07-02"
@@ -1235,6 +1477,16 @@
       "canonical": "精密機械/車用零件",
       "strongDates": [
         "2026-07-03"
+      ],
+      "weakDates": [],
+      "streak": 0,
+      "stage": null
+    },
+    {
+      "canonical": "精密金屬/車用零件",
+      "strongDates": [
+        "2026-07-06",
+        "2026-07-08"
       ],
       "weakDates": [],
       "streak": 0,
@@ -1331,6 +1583,15 @@
       "stage": null
     },
     {
+      "canonical": "網通/IC設計",
+      "strongDates": [],
+      "weakDates": [
+        "2026-07-16"
+      ],
+      "streak": 0,
+      "stage": null
+    },
+    {
       "canonical": "網通/IC通路",
       "strongDates": [
         "2026-07-02"
@@ -1370,6 +1631,18 @@
       "canonical": "網通IC",
       "strongDates": [
         "2026-07-06"
+      ],
+      "weakDates": [],
+      "streak": 0,
+      "stage": null
+    },
+    {
+      "canonical": "網通設備",
+      "strongDates": [
+        "2026-07-06",
+        "2026-07-07",
+        "2026-07-08",
+        "2026-07-09"
       ],
       "weakDates": [],
       "streak": 0,
@@ -1491,7 +1764,8 @@
         "2026-06-29"
       ],
       "weakDates": [
-        "2026-06-29"
+        "2026-06-29",
+        "2026-07-16"
       ],
       "streak": 0,
       "stage": null
@@ -1525,7 +1799,9 @@
     },
     {
       "canonical": "被動元件(電容/電阻)",
-      "strongDates": [],
+      "strongDates": [
+        "2026-07-09"
+      ],
       "weakDates": [
         "2026-07-06",
         "2026-07-07",
@@ -1590,6 +1866,15 @@
       "stage": null
     },
     {
+      "canonical": "資安",
+      "strongDates": [
+        "2026-07-08"
+      ],
+      "weakDates": [],
+      "streak": 0,
+      "stage": null
+    },
+    {
       "canonical": "資訊服務",
       "strongDates": [
         "2026-07-03"
@@ -1610,9 +1895,27 @@
       "stage": null
     },
     {
+      "canonical": "資訊服務/資安",
+      "strongDates": [
+        "2026-07-09"
+      ],
+      "weakDates": [],
+      "streak": 0,
+      "stage": null
+    },
+    {
       "canonical": "資訊軟體",
       "strongDates": [
         "2026-07-07"
+      ],
+      "weakDates": [],
+      "streak": 0,
+      "stage": null
+    },
+    {
+      "canonical": "車用/精密金屬件",
+      "strongDates": [
+        "2026-07-09"
       ],
       "weakDates": [],
       "streak": 0,
@@ -1623,7 +1926,8 @@
       "strongDates": [],
       "weakDates": [
         "2026-07-06",
-        "2026-07-08"
+        "2026-07-08",
+        "2026-07-09"
       ],
       "streak": 0,
       "stage": null
@@ -1665,6 +1969,15 @@
       "stage": null
     },
     {
+      "canonical": "軍工/無人機造船",
+      "strongDates": [
+        "2026-07-08"
+      ],
+      "weakDates": [],
+      "streak": 0,
+      "stage": null
+    },
+    {
       "canonical": "造船/航太國防",
       "strongDates": [
         "2026-07-03"
@@ -1677,6 +1990,15 @@
       "canonical": "造船/航太重工",
       "strongDates": [
         "2026-06-30"
+      ],
+      "weakDates": [],
+      "streak": 0,
+      "stage": null
+    },
+    {
+      "canonical": "連接器/精密線材",
+      "strongDates": [
+        "2026-07-08"
       ],
       "weakDates": [],
       "streak": 0,
@@ -1741,9 +2063,27 @@
       "stage": null
     },
     {
+      "canonical": "醫療影像/醫材",
+      "strongDates": [
+        "2026-07-08"
+      ],
+      "weakDates": [],
+      "streak": 0,
+      "stage": null
+    },
+    {
       "canonical": "醫美/生醫材料",
       "strongDates": [
         "2026-06-29"
+      ],
+      "weakDates": [],
+      "streak": 0,
+      "stage": null
+    },
+    {
+      "canonical": "醫美/美容保養",
+      "strongDates": [
+        "2026-07-09"
       ],
       "weakDates": [],
       "streak": 0,
@@ -1869,6 +2209,20 @@
       "stage": null
     },
     {
+      "canonical": "電子通路/零組件代理",
+      "strongDates": [
+        "2026-06-30",
+        "2026-07-03",
+        "2026-07-06",
+        "2026-07-08"
+      ],
+      "weakDates": [
+        "2026-07-07"
+      ],
+      "streak": 0,
+      "stage": null
+    },
+    {
       "canonical": "電池材料",
       "strongDates": [],
       "weakDates": [
@@ -1878,9 +2232,19 @@
       "stage": null
     },
     {
+      "canonical": "電池模組",
+      "strongDates": [
+        "2026-07-08"
+      ],
+      "weakDates": [],
+      "streak": 0,
+      "stage": null
+    },
+    {
       "canonical": "電池模組/正極材料",
       "strongDates": [
-        "2026-07-06"
+        "2026-07-06",
+        "2026-07-09"
       ],
       "weakDates": [],
       "streak": 0,
@@ -1894,7 +2258,8 @@
         "2026-07-07"
       ],
       "weakDates": [
-        "2026-07-07"
+        "2026-07-07",
+        "2026-07-16"
       ],
       "streak": 0,
       "stage": null
@@ -1913,6 +2278,16 @@
       "strongDates": [],
       "weakDates": [
         "2026-06-29"
+      ],
+      "streak": 0,
+      "stage": null
+    },
+    {
+      "canonical": "電源管理IC/類比IC",
+      "strongDates": [],
+      "weakDates": [
+        "2026-07-09",
+        "2026-07-16"
       ],
       "streak": 0,
       "stage": null
@@ -1948,7 +2323,8 @@
       "canonical": "面板/顯示模組",
       "strongDates": [
         "2026-06-29",
-        "2026-07-06"
+        "2026-07-06",
+        "2026-07-09"
       ],
       "weakDates": [],
       "streak": 0,

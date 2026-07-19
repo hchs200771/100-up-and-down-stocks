@@ -186,7 +186,7 @@ CODEX_REPORT_START_STAGE=send npm run report:codex
 - `research`：沿用 `group-tasks-backup`，重跑 worker / finalizer / send
 - `finalize`：沿用 snapshot 與現有 results，直接重組 `analysis-latest.json`
 - `send`：只用現有 `analysis-latest.json` 產 HTML 並寄信
-- `publish`：只跑部署步驟，執行 `scripts/publish-vercel.sh` 部署到 Vercel
+- `publish`：只跑部署步驟，執行 `scripts/publish-github-pages.sh` 部署到 GitHub Pages（https://hchs200771.github.io/100-up-and-down-stocks/）
 
 ### 排程執行
 
