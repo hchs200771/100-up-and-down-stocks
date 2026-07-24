@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-23T16:32:22.208Z",
+  "updatedAt": "2026-07-24T14:47:15.896Z",
   "records": [
     {
       "date": "2026-06-29",
@@ -3162,7 +3162,8 @@
       "members": 7,
       "stage": "連1日",
       "call": "觀察",
-      "t1": -0.2
+      "t1": -0.2,
+      "t5": -2.45
     },
     {
       "date": "2026-07-17",
@@ -3170,7 +3171,8 @@
       "direction": "gainer",
       "members": 14,
       "stage": "連1日",
-      "t1": -0.93
+      "t1": -0.93,
+      "t5": -2.23
     },
     {
       "date": "2026-07-17",
@@ -3178,7 +3180,8 @@
       "direction": "gainer",
       "members": 4,
       "stage": "連1日",
-      "t1": 0.61
+      "t1": 0.61,
+      "t5": 1.5
     },
     {
       "date": "2026-07-17",
@@ -3186,7 +3189,8 @@
       "direction": "gainer",
       "members": 7,
       "stage": "連1日",
-      "t1": 0.12
+      "t1": 0.12,
+      "t5": -1.68
     },
     {
       "date": "2026-07-17",
@@ -3194,7 +3198,8 @@
       "direction": "gainer",
       "members": 2,
       "stage": "連1日",
-      "t1": 1.09
+      "t1": 1.09,
+      "t5": 1.58
     },
     {
       "date": "2026-07-17",
@@ -3202,7 +3207,8 @@
       "direction": "gainer",
       "members": 3,
       "stage": "連1日",
-      "t1": -0.37
+      "t1": -0.37,
+      "t5": -3.76
     },
     {
       "date": "2026-07-17",
@@ -3210,7 +3216,8 @@
       "direction": "gainer",
       "members": 3,
       "stage": "連1日",
-      "t1": -2.15
+      "t1": -2.15,
+      "t5": -1.91
     },
     {
       "date": "2026-07-17",
@@ -3218,112 +3225,128 @@
       "direction": "gainer",
       "members": 34,
       "stage": "連3日+",
-      "t1": -1.1
+      "t1": -1.1,
+      "t5": -2.11
     },
     {
       "date": "2026-07-17",
       "category": "槓桿正2 ETF",
       "direction": "loser",
       "members": 5,
-      "t1": -2.18
+      "t1": -2.18,
+      "t5": 4.04
     },
     {
       "date": "2026-07-17",
       "category": "半導體/日本半導體主題ETF",
       "direction": "loser",
       "members": 3,
-      "t1": 2.88
+      "t1": 2.88,
+      "t5": 2.84
     },
     {
       "date": "2026-07-17",
       "category": "被動元件/石英元件",
       "direction": "loser",
       "members": 11,
-      "t1": -8.75
+      "t1": -8.75,
+      "t5": -11.44
     },
     {
       "date": "2026-07-17",
       "category": "半導體設備",
       "direction": "loser",
       "members": 11,
-      "t1": -5.07
+      "t1": -5.07,
+      "t5": -5.84
     },
     {
       "date": "2026-07-17",
       "category": "封測/測試介面",
       "direction": "loser",
       "members": 10,
-      "t1": -5.9
+      "t1": -5.9,
+      "t5": -4.4
     },
     {
       "date": "2026-07-17",
       "category": "PCB/載板/CCL",
       "direction": "loser",
       "members": 9,
-      "t1": -5.28
+      "t1": -5.28,
+      "t5": -2.66
     },
     {
       "date": "2026-07-17",
       "category": "DRAM/記憶體",
       "direction": "loser",
       "members": 5,
-      "t1": -4.72
+      "t1": -4.72,
+      "t5": 0.14
     },
     {
       "date": "2026-07-17",
       "category": "晶圓代工/成熟製程",
       "direction": "loser",
       "members": 4,
-      "t1": -5.41
+      "t1": -5.41,
+      "t5": -7.52
     },
     {
       "date": "2026-07-17",
       "category": "矽晶圓/再生晶圓",
       "direction": "loser",
       "members": 4,
-      "t1": -1.98
+      "t1": -1.98,
+      "t5": -11.91
     },
     {
       "date": "2026-07-17",
       "category": "光通訊/CPO矽光子",
       "direction": "loser",
       "members": 3,
-      "t1": -5.44
+      "t1": -5.44,
+      "t5": 8.35
     },
     {
       "date": "2026-07-17",
       "category": "二極體/功率半導體",
       "direction": "loser",
       "members": 4,
-      "t1": -6.39
+      "t1": -6.39,
+      "t5": -10.19
     },
     {
       "date": "2026-07-17",
       "category": "MCU/類比IC",
       "direction": "loser",
       "members": 4,
-      "t1": -3.75
+      "t1": -3.75,
+      "t5": -4.11
     },
     {
       "date": "2026-07-17",
       "category": "網通設備",
       "direction": "loser",
       "members": 2,
-      "t1": -3.96
+      "t1": -3.96,
+      "t5": -1.64
     },
     {
       "date": "2026-07-17",
       "category": "塑化/特化",
       "direction": "loser",
       "members": 5,
-      "t1": -7.13
+      "t1": -7.13,
+      "t5": -3.27
     },
     {
       "date": "2026-07-17",
       "category": "其他弱勢個股",
       "direction": "loser",
       "members": 20,
-      "t1": -4.55
+      "t1": -4.55,
+      "t5": -5.36
     },
     {
       "date": "2026-07-20",
@@ -4484,61 +4507,406 @@
       "direction": "loser",
       "members": 41,
       "t1": -0.38
+    },
+    {
+      "date": "2026-07-23",
+      "category": "光通訊/CPO矽光子",
+      "direction": "gainer",
+      "members": 8,
+      "stage": "連3日+",
+      "call": "順勢",
+      "t1": -3.47
+    },
+    {
+      "date": "2026-07-23",
+      "category": "工業電腦/嵌入式系統",
+      "direction": "gainer",
+      "members": 7,
+      "stage": "連3日+",
+      "call": "順勢",
+      "t1": -1.31
+    },
+    {
+      "date": "2026-07-23",
+      "category": "半導體設備/測試介面",
+      "direction": "gainer",
+      "members": 5,
+      "stage": "連3日+",
+      "call": "順勢",
+      "t1": -2.73
+    },
+    {
+      "date": "2026-07-23",
+      "category": "塑化/化工",
+      "direction": "gainer",
+      "members": 4,
+      "stage": "連3日+",
+      "call": "觀察",
+      "t1": -3.64
+    },
+    {
+      "date": "2026-07-23",
+      "category": "生技醫療",
+      "direction": "gainer",
+      "members": 6,
+      "stage": "回歸",
+      "call": "觀察",
+      "t1": -0.61
+    },
+    {
+      "date": "2026-07-23",
+      "category": "工具機/CNC與自動化零組件",
+      "direction": "gainer",
+      "members": 3,
+      "stage": "連1日",
+      "call": "觀察",
+      "t1": -7
+    },
+    {
+      "date": "2026-07-23",
+      "category": "光學鏡頭",
+      "direction": "gainer",
+      "members": 2,
+      "stage": "回歸",
+      "call": "觀察",
+      "t1": -6.49
+    },
+    {
+      "date": "2026-07-23",
+      "category": "化合物半導體/RF射頻",
+      "direction": "gainer",
+      "members": 2,
+      "stage": "回歸",
+      "call": "觀察",
+      "t1": -3.92
+    },
+    {
+      "date": "2026-07-23",
+      "category": "連接器/線束",
+      "direction": "gainer",
+      "members": 2,
+      "stage": "連3日+",
+      "call": "順勢",
+      "t1": -3.3
+    },
+    {
+      "date": "2026-07-23",
+      "category": "AI伺服器散熱/機構件",
+      "direction": "gainer",
+      "members": 2,
+      "stage": "連3日+",
+      "call": "順勢",
+      "t1": -5
+    },
+    {
+      "date": "2026-07-23",
+      "category": "AI伺服器/系統組裝",
+      "direction": "gainer",
+      "members": 2,
+      "stage": "連3日+",
+      "call": "順勢",
+      "t1": 2.27
+    },
+    {
+      "date": "2026-07-23",
+      "category": "電池材料/正負極",
+      "direction": "gainer",
+      "members": 2,
+      "stage": "連1日",
+      "t1": -1.1
+    },
+    {
+      "date": "2026-07-23",
+      "category": "LED/背光模組",
+      "direction": "gainer",
+      "members": 2,
+      "stage": "連1日",
+      "t1": -1.15
+    },
+    {
+      "date": "2026-07-23",
+      "category": "RFID/自動辨識",
+      "direction": "gainer",
+      "members": 3,
+      "stage": "連1日",
+      "t1": -0.28
+    },
+    {
+      "date": "2026-07-23",
+      "category": "紡織成衣/化纖",
+      "direction": "gainer",
+      "members": 3,
+      "stage": "回歸",
+      "t1": 4.32
+    },
+    {
+      "date": "2026-07-23",
+      "category": "食品飲料",
+      "direction": "gainer",
+      "members": 3,
+      "stage": "連1日",
+      "t1": -2.7
+    },
+    {
+      "date": "2026-07-23",
+      "category": "太陽能/綠能",
+      "direction": "gainer",
+      "members": 3,
+      "stage": "回歸",
+      "t1": -1.61
+    },
+    {
+      "date": "2026-07-23",
+      "category": "建設營造",
+      "direction": "gainer",
+      "members": 2,
+      "stage": "連1日",
+      "t1": -1.47
+    },
+    {
+      "date": "2026-07-23",
+      "category": "車用零組件",
+      "direction": "gainer",
+      "members": 4,
+      "stage": "連2日",
+      "t1": 5.91
+    },
+    {
+      "date": "2026-07-23",
+      "category": "被動元件",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "連3日+",
+      "t1": -8.18
+    },
+    {
+      "date": "2026-07-23",
+      "category": "IC通路",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "連1日",
+      "t1": -0.96
+    },
+    {
+      "date": "2026-07-23",
+      "category": "PI薄膜/軟板材料",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "連1日",
+      "t1": -6.25
+    },
+    {
+      "date": "2026-07-23",
+      "category": "光學膜/面板材料",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "連2日",
+      "t1": 9.76
+    },
+    {
+      "date": "2026-07-23",
+      "category": "航運",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "連1日",
+      "t1": -0.62
+    },
+    {
+      "date": "2026-07-23",
+      "category": "原油ETF",
+      "direction": "gainer",
+      "members": 2,
+      "stage": "連1日",
+      "t1": 4.79
+    },
+    {
+      "date": "2026-07-23",
+      "category": "其他強勢個股",
+      "direction": "gainer",
+      "members": 21,
+      "stage": "回歸",
+      "t1": -0.71
+    },
+    {
+      "date": "2026-07-23",
+      "category": "功率半導體/二極體",
+      "direction": "loser",
+      "members": 11,
+      "t1": -4.47
+    },
+    {
+      "date": "2026-07-23",
+      "category": "半導體設備/廠務",
+      "direction": "loser",
+      "members": 8,
+      "t1": -3.6
+    },
+    {
+      "date": "2026-07-23",
+      "category": "被動元件",
+      "direction": "loser",
+      "members": 7,
+      "t1": -3.98
+    },
+    {
+      "date": "2026-07-23",
+      "category": "IC設計/MCU",
+      "direction": "loser",
+      "members": 6,
+      "t1": 1.49
+    },
+    {
+      "date": "2026-07-23",
+      "category": "DRAM/NAND記憶體",
+      "direction": "loser",
+      "members": 3,
+      "t1": -4.72
+    },
+    {
+      "date": "2026-07-23",
+      "category": "半導體封測",
+      "direction": "loser",
+      "members": 4,
+      "t1": -5.56
+    },
+    {
+      "date": "2026-07-23",
+      "category": "電源管理IC",
+      "direction": "loser",
+      "members": 4,
+      "t1": 0.09
+    },
+    {
+      "date": "2026-07-23",
+      "category": "太陽能/綠能",
+      "direction": "loser",
+      "members": 4,
+      "t1": -0.67
+    },
+    {
+      "date": "2026-07-23",
+      "category": "PCB/CCL/軟板",
+      "direction": "loser",
+      "members": 5,
+      "t1": -7.2
+    },
+    {
+      "date": "2026-07-23",
+      "category": "生技製藥",
+      "direction": "loser",
+      "members": 4,
+      "t1": 0.22
+    },
+    {
+      "date": "2026-07-23",
+      "category": "網通設備",
+      "direction": "loser",
+      "members": 3,
+      "t1": -0.86
+    },
+    {
+      "date": "2026-07-23",
+      "category": "連接器/線材",
+      "direction": "loser",
+      "members": 3,
+      "t1": -6.14
+    },
+    {
+      "date": "2026-07-23",
+      "category": "工具機",
+      "direction": "loser",
+      "members": 3,
+      "t1": 0.82
+    },
+    {
+      "date": "2026-07-23",
+      "category": "車用電子/精密金屬",
+      "direction": "loser",
+      "members": 3,
+      "t1": -4.13
+    },
+    {
+      "date": "2026-07-23",
+      "category": "矽晶圓/半導體基板",
+      "direction": "loser",
+      "members": 2,
+      "t1": -9
+    },
+    {
+      "date": "2026-07-23",
+      "category": "航太/軍工/造船",
+      "direction": "loser",
+      "members": 2,
+      "t1": 3.37
+    },
+    {
+      "date": "2026-07-23",
+      "category": "工業自動化/機器人",
+      "direction": "loser",
+      "members": 2,
+      "t1": 0.44
+    },
+    {
+      "date": "2026-07-23",
+      "category": "其他弱勢個股",
+      "direction": "loser",
+      "members": 26,
+      "t1": -1.21
     }
   ],
   "aggregates": {
     "byDirection": {
       "gainer": {
-        "n": 325,
-        "avgT1": -0.29,
-        "avgT5": -5.09,
-        "winRateT1": 43.08,
-        "winRateT5": 23.38
+        "n": 351,
+        "avgT1": -0.37,
+        "avgT5": -4.97,
+        "winRateT1": 41.31,
+        "winRateT5": 23.43
       },
       "loser": {
-        "n": 206,
-        "avgT1": -1.39,
-        "avgT5": -8.58,
-        "winRateT1": 63.11,
-        "winRateT5": 82.31
+        "n": 224,
+        "avgT1": -1.48,
+        "avgT5": -8.05,
+        "winRateT1": 63.39,
+        "winRateT5": 81.38
       }
     },
     "byStage": {
       "連1日": {
-        "n": 231,
-        "avgT1": -0.3,
-        "avgT5": -4.31
+        "n": 241,
+        "avgT1": -0.36,
+        "avgT5": -4.19
       },
       "連2日": {
-        "n": 41,
-        "avgT1": 0.23,
+        "n": 43,
+        "avgT1": 0.58,
         "avgT5": -5.6
       },
       "回歸": {
-        "n": 37,
-        "avgT1": -0.83,
+        "n": 43,
+        "avgT1": -0.92,
         "avgT5": -10.38
       },
       "連3日+": {
-        "n": 16,
-        "avgT1": -0.21,
-        "avgT5": -6.61
+        "n": 24,
+        "avgT1": -1.2,
+        "avgT5": -6.24
       }
     },
     "byCall": {
       "順勢": {
-        "n": 23,
-        "avgT1": -2.38,
+        "n": 29,
+        "avgT1": -2.36,
         "avgT5": -10.06,
-        "winRateT1": 26.09,
+        "winRateT1": 24.14,
         "winRateT5": 8.33
       },
       "觀察": {
-        "n": 41,
-        "avgT1": -0.86,
-        "avgT5": -9.83,
-        "winRateT1": 36.59,
-        "winRateT5": 10
+        "n": 46,
+        "avgT1": -1.24,
+        "avgT5": -9.48,
+        "winRateT1": 32.61,
+        "winRateT5": 9.52
       },
       "反轉": {
         "n": 4,
