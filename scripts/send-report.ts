@@ -702,9 +702,11 @@ function renderRrg(rrg: RrgBlock | null | undefined): string {
           style="display:block; width:100%; height:1180px; border:0;"></iframe>
       </div>
       <p style="font-size:11px; color:#9ca3af; margin:0 0 14px;">
-        圖上方可切換 120／60／20 日視窗與軌跡長度。Email 版不會顯示互動圖，請點
+        圖上方可切換四個市場（台股族群／全球資產／美股板塊／全球市場）、120／60／20 日視窗與軌跡長度；
+        勾選框控制是否畫在圖上，點族群名稱可展開成分股並連到 Yahoo 股市。
+        Email 版不會顯示互動圖，請點
         <a href="rrg.html" style="color:#7e22ce; font-weight:bold;">→ 開啟獨立輪動圖頁</a>；
-        下方文字結論不看圖也讀得懂。
+        下方文字結論不看圖也讀得懂（結論只針對台股族群）。
       </p>
       <table style="width:100%; border-collapse:collapse; margin-bottom:14px;"><tbody>${quadHtml}</tbody></table>
       ${regimeHtml}

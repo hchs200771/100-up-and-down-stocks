@@ -115,9 +115,11 @@ npx tsx scripts/build-rrg-alerts.ts
 npx tsx scripts/render-tw-rrg.ts
 ```
 
-- `build-tw-rrg.ts`：讀 `data/sector-baskets.json` 的**固定**族群籃子，抓 Yahoo Finance 2 年還原收盤價（`.TW`／`.TWO` 自動偵測，本機快取 12 小時），編成等權指數，對加權指數 `^TWII` 算 RS-Ratio / RS-Momentum，輸出 `data/tw-rrg-data.json`。
-- `build-rrg-alerts.ts`：找出值得講的象限異動，輸出 `data/tw-rrg-alerts.json`。多族群同時觸發同一訊號時會收斂成「市場狀態」，避免真訊號被淹沒。
-- `render-tw-rrg.ts`：注入 `../rrg-radar/template.html` 產出 `data/tw-rrg.html`（互動圖，可切 120/60/20 日）。**需要 rrg-radar 專案在同一層目錄**，不在就會失敗——這時跳過本步驟即可。
+- `build-tw-rrg.ts`：輸出 `data/tw-rrg-data.json`，含**四組** universe：
+  - `tw_sectors` 台股族群輪動——讀 `data/sector-baskets.json` 的**固定**籃子，抓 Yahoo 還原收盤（`.TW`／`.TWO` 自動偵測並記錄，本機快取 12 小時），編成等權指數，對 `^TWII` 算 RS-Ratio / RS-Momentum
+  - `assets` 全球資產、`us_sectors` 美股板塊、`markets` 全球市場——標的定義沿用隔壁 rrg-radar 的 `build_data.py`，但**用本專案的 TS 管線重跑**，四組出自同一份資料與同一時間戳。任一組失敗只跳過該組。
+- `build-rrg-alerts.ts`：只讀 `tw_sectors`，找出值得講的象限異動，輸出 `data/tw-rrg-alerts.json`。多族群同時觸發同一訊號時會收斂成「市場狀態」，避免真訊號被淹沒。
+- `render-tw-rrg.ts`：注入 `templates/rrg-tw.html`（**本專案自己的 fork**，不再依賴 rrg-radar 專案存在）產出 `data/tw-rrg.html`。頁面可切四個市場、120/60/20 日視窗；每個族群有勾選框（是否畫在圖上）與可點的名稱（展開成分股、連到 Yahoo 股市），並有 Gmail 式的全選／全不選。
 
 Step 6 的 `assemble-analysis.ts` 會自動把 alerts 併進 `analysis.rrg`，報告出現「🔄 族群輪動」分頁；Step 9 的 publish 腳本會把 `tw-rrg.html` 複製成網站的 `rrg.html` 獨立頁。
 
@@ -125,7 +127,8 @@ Step 6 的 `assemble-analysis.ts` 會自動把 alerts 併進 `analysis.rrg`，�
 
 **重要提醒：**
 - `data/sector-baskets.json` 的成分要**長期穩定**，每季 review 一次就好。它跟每日分類（`classification.json`）是**刻意分開**的兩套東西：每日分類要動態抓當日題材，RRG 籃子要固定才能跨日比較軌跡。**不要把每日分類的結果寫回籃子。**
-- RRG 的 `asOf` 來自 Yahoo 日線，當日盤後若 Yahoo 尚未更新，會是前一個交易日；報告會照實顯示，不要當成錯誤。
+- RRG 的 `asOf` 來自 Yahoo 日線，當日盤後若 Yahoo 尚未更新，會是前一個交易日；報告會照實顯示，不要當成錯誤。Yahoo 對「最新一根」有時長區間查不到、短區間查得到（甚至同一天內又消失），所以 `fetchYahoo` 會把 `range=2y` 與 `range=1mo` 疊起來取值。
+- 個股缺值會往 benchmark 日期軸前向填補（最多 3 天），但**若最新一天有超過 20% 的成分股都靠補**，該日會整個丟掉。理由：那代表資料源當日尚未落檔，硬補會讓族群指數在大漲/大跌日原地不動，做出與事實相反的相對強弱。
 
 ### Step 2 — 讀取記憶
 

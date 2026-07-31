@@ -21,9 +21,8 @@ type Prices = Record<string, number>; // date -> adjusted close
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
-/** 抓單一 Yahoo ticker 的 2 年日線還原收盤。回 null 表示查無資料。 */
-async function fetchYahoo(ticker: string): Promise<Prices | null> {
-  const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(ticker)}?range=2y&interval=1d`;
+async function fetchRange(ticker: string, range: string): Promise<Prices | null> {
+  const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(ticker)}?range=${range}&interval=1d`;
   const res = await fetch(url, { headers: { 'User-Agent': UA } });
   if (!res.ok) return null;
   const j: any = await res.json();
@@ -40,13 +39,94 @@ async function fetchYahoo(ticker: string): Promise<Prices | null> {
   return Object.keys(out).length ? out : null;
 }
 
+/**
+ * 抓單一 Yahoo ticker 的 2 年日線還原收盤。回 null 表示查無資料。
+ *
+ * 為什麼要再抓一次 range=1mo 疊上去：Yahoo 的長區間查詢對「最新一根」常常回 null
+ * （同一支用 range=1mo 查就有值）。只用 2y 的話全部標的都會缺當日，
+ * 族群指數在大漲/大跌日原地不動、RRG 會做出完全相反的判讀。短區間優先覆蓋。
+ */
+async function fetchYahoo(ticker: string): Promise<Prices | null> {
+  const long = await fetchRange(ticker, '2y');
+  if (!long) return null;
+  const recent = await fetchRange(ticker, '1mo');
+  if (recent) Object.assign(long, recent);
+  return Object.keys(long).length ? long : null;
+}
+
+/** 哪一檔在上市(.TW)、哪一檔在上櫃(.TWO) —— 給前端組 Yahoo 股市連結用。 */
+const suffixOf: Record<string, string> = {};
+
+/**
+ * 全球／美股的三組輪動（標的定義沿用隔壁 rrg-radar 專案的 build_data.py）。
+ * 改用本專案的 TS 管線重跑，是為了讓四組 universe 出自同一份資料、同一個時間戳，
+ * 而不是一半新一半舊——rrg-radar 是手動跑的 Python，它的 rrg_data.json 常常過期。
+ * 這些成分是單一 ETF（不是籃子），所以 members 只有自己一檔，連到美股 Yahoo。
+ */
+const GLOBAL_UNIVERSES: {
+  key: string; name: string; benchmark: string; benchmarkName: string;
+  members: [string, string][];
+}[] = [
+  {
+    key: 'assets', name: '全球資產輪動', benchmark: 'ACWI', benchmarkName: '全球股票 ACWI',
+    members: [
+      ['SPY', '美股'], ['EFA', '成熟市場股'], ['EEM', '新興市場股'],
+      ['VNQ', '房地產REIT'], ['GLD', '黃金'], ['DBC', '大宗商品'],
+      ['TLT', '美長天期公債'], ['LQD', '投資級公司債'], ['HYG', '高收益債'],
+      ['UUP', '美元'], ['BTC-USD', '比特幣'],
+    ],
+  },
+  {
+    key: 'us_sectors', name: '美股板塊輪動', benchmark: 'SPY', benchmarkName: '標普500 SPY',
+    members: [
+      ['XLK', '科技'], ['XLC', '通訊'], ['XLY', '非必需消費'],
+      ['XLP', '必需消費'], ['XLV', '醫療保健'], ['XLF', '金融'],
+      ['XLI', '工業'], ['XLE', '能源'], ['XLB', '原物料'],
+      ['XLU', '公用事業'], ['XLRE', '房地產'],
+    ],
+  },
+  {
+    key: 'markets', name: '全球市場輪動', benchmark: 'ACWI', benchmarkName: '全球股票 ACWI',
+    members: [
+      ['SPY', '美股'], ['VGK', '歐股'], ['EWJ', '日股'], ['EWT', '台股'],
+      ['MCHI', '陸股'], ['EWY', '韓股'], ['INDA', '印度'],
+    ],
+  },
+];
+
+const US_CACHE_DIR = path.join(ROOT, 'data', 'cache', 'yahoo-us');
+
+/** 美股/全球標的：單純快取版的 fetchYahoo。 */
+async function fetchUs(ticker: string): Promise<Prices | null> {
+  const cacheFile = path.join(US_CACHE_DIR, `${ticker.replace(/[^\w.-]/g, '_')}.json`);
+  if (fs.existsSync(cacheFile)) {
+    const st = fs.statSync(cacheFile);
+    if (Date.now() - st.mtimeMs < 12 * 3600 * 1000) return JSON.parse(fs.readFileSync(cacheFile, 'utf-8'));
+  }
+  const p = await fetchYahoo(ticker);
+  if (p && Object.keys(p).length > 300) {
+    fs.mkdirSync(US_CACHE_DIR, { recursive: true });
+    fs.writeFileSync(cacheFile, JSON.stringify(p));
+    return p;
+  }
+  console.log(`  ${ticker}: NOT FOUND — skipped`);
+  return null;
+}
+
 /** 台股代號不知道在上市還上櫃 → 先試 .TW 再試 .TWO。帶本機快取。 */
 async function fetchTwStock(code: string, label: string): Promise<Prices | null> {
   const cacheFile = path.join(CACHE_DIR, `${code}.json`);
   if (fs.existsSync(cacheFile)) {
     const st = fs.statSync(cacheFile);
     if (Date.now() - st.mtimeMs < 12 * 3600 * 1000) {
-      return JSON.parse(fs.readFileSync(cacheFile, 'utf-8'));
+      const cached = JSON.parse(fs.readFileSync(cacheFile, 'utf-8'));
+      // 舊版快取直接存價格表、沒有 suffix；讀到就先當上市，下次過期重抓時會補正。
+      if (cached && typeof cached === 'object' && cached.prices) {
+        suffixOf[code] = cached.suffix || '.TW';
+        return cached.prices;
+      }
+      suffixOf[code] = '.TW';
+      return cached;
     }
   }
   for (const suffix of ['.TW', '.TWO']) {
@@ -54,7 +134,8 @@ async function fetchTwStock(code: string, label: string): Promise<Prices | null>
       const p = await fetchYahoo(code + suffix);
       if (p && Object.keys(p).length > 300) {
         fs.mkdirSync(CACHE_DIR, { recursive: true });
-        fs.writeFileSync(cacheFile, JSON.stringify(p));
+        fs.writeFileSync(cacheFile, JSON.stringify({ suffix, prices: p }));
+        suffixOf[code] = suffix;
         console.log(`  ${code} ${label}: ${Object.keys(p).length} days (${suffix})`);
         return p;
       }
@@ -122,6 +203,72 @@ function rrgSeries(sec: number[], bench: number[], w: number) {
   return { ratio, mom: ema(mom, 3) };
 }
 
+/**
+ * 把「若干單一標的 vs 一個 benchmark」組成一個 universe。
+ * closeUtcMin：該市場收盤的 UTC 分鐘數（+緩衝）；當天還沒收完就丟掉最後一根。
+ * 美股 16:00 ET ≈ 20:00/21:00 UTC，而盤後報告多在 15:00 UTC 前後跑，所以正常會丟掉當日。
+ */
+async function buildGlobalUniverse(def: (typeof GLOBAL_UNIVERSES)[number], closeUtcMin: number) {
+  console.log(`\n[${def.name}] benchmark ${def.benchmark}`);
+  const benchPrices = await fetchUs(def.benchmark);
+  if (!benchPrices) { console.log(`  SKIP ${def.key}: benchmark fetch failed`); return null; }
+
+  const bd = Object.keys(benchPrices).sort();
+  const now = new Date();
+  const todayUtc = now.toISOString().slice(0, 10);
+  const utcMinutes = now.getUTCHours() * 60 + now.getUTCMinutes();
+  const last = bd[bd.length - 1];
+  if (last > todayUtc || (last === todayUtc && utcMinutes < closeUtcMin)) {
+    delete benchPrices[last];
+    console.log(`  dropped incomplete last bar (${last})`);
+  }
+
+  const prices: Record<string, Prices> = {};
+  for (const [t, label] of def.members) {
+    const p = await fetchUs(t);
+    if (p) prices[t] = p;
+    else console.log(`  ${t} ${label}: missing`);
+    await sleep(200);
+  }
+  const members = def.members.filter(([t]) => prices[t]);
+  if (members.length < 3) { console.log(`  SKIP ${def.key}: only ${members.length} members`); return null; }
+
+  let dates = Object.keys(benchPrices);
+  for (const [t] of members) dates = dates.filter((d) => prices[t][d] != null);
+  dates.sort();
+  if (dates.length < 200) { console.log(`  SKIP ${def.key}: only ${dates.length} common days`); return null; }
+  const bench = dates.map((d) => benchPrices[d]);
+
+  const series = members.map(([t, label]) => {
+    const sec = dates.map((d) => prices[t][d]);
+    const tf: Record<string, ([number, number] | null)[]> = {};
+    for (const w of WINDOWS) {
+      const { ratio, mom } = rrgSeries(sec, bench, w);
+      const pts: ([number, number] | null)[] = [];
+      for (let i = dates.length - TAIL_POINTS; i < dates.length; i++) {
+        pts.push(ratio[i] == null || mom[i] == null
+          ? null
+          : [+(ratio[i] as number).toFixed(3), +(mom[i] as number).toFixed(3)]);
+      }
+      tf[String(w)] = pts;
+    }
+    // 'US' 是給前端判斷要連到哪個 Yahoo 網域的標記，不是交易所後綴。
+    return { ticker: t, label, tf, members: [[t, label, 'US']] };
+  });
+
+  console.log(`  ${series.length} series, ${dates.length} days (${dates[0]} → ${dates[dates.length - 1]})`);
+  return {
+    key: def.key,
+    uni: {
+      name: def.name,
+      benchmark: def.benchmark,
+      benchmark_name: def.benchmarkName,
+      dates: dates.slice(-TAIL_POINTS),
+      series,
+    },
+  };
+}
+
 async function main() {
   const cfg = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'sector-baskets.json'), 'utf-8'));
 
@@ -159,6 +306,7 @@ async function main() {
   // 不補的話：只要有【一檔】成分股在 Yahoo 落檔較慢，全部 25 個族群的最新一天就會一起消失
   // ——實際發生過（寶雅 5904 慢一天，整份 RRG 就停在前一個交易日）。
   const MAX_FFILL = 3;
+  const filledOn: Record<string, number> = {}; // 日期 -> 有幾檔是補出來的
   {
     const axis = Object.keys(benchPrices).sort();
     for (const code of Object.keys(priceCache)) {
@@ -172,8 +320,20 @@ async function main() {
         } else if (prev != null && gap < MAX_FFILL) {
           p[d] = prev;
           gap++;
+          filledOn[d] = (filledOn[d] || 0) + 1;
         }
       }
+    }
+    // 前向填補只該用來補「個別落檔慢的股票」。若最新一天有一大票個股都靠補，
+    // 代表整個資料源當日尚未落檔——此時填補會讓族群指數在大漲日原地不動，
+    // 做出與事實相反的相對強弱。寧可不出這一天。
+    const nCodes = Object.keys(priceCache).length;
+    const FILL_LIMIT = 0.2;
+    for (let i = axis.length - 1; i >= 0; i--) {
+      const d = axis[i];
+      if ((filledOn[d] || 0) / nCodes <= FILL_LIMIT) break;
+      console.log(`  dropped ${d}: ${filledOn[d]}/${nCodes} 檔靠前向填補，資料源當日尚未落檔`);
+      delete benchPrices[d];
     }
   }
 
@@ -199,7 +359,13 @@ async function main() {
     for (const d of dates) {
       idx[d] = mean(members.map(([c]: [string, string]) => (100 * priceCache[c][d]) / base[c]));
     }
-    basketSeries.push({ canonical: b.canonical, prices: idx, n: members.length });
+    basketSeries.push({
+      canonical: b.canonical,
+      prices: idx,
+      n: members.length,
+      // 成分股帶到前端：點族群時要列出個股並連到 Yahoo 股市，上市/上櫃網址不同所以帶 suffix。
+      members: members.map(([c, l]: [string, string]) => [c, l, suffixOf[c] || '.TW']),
+    });
   }
 
   // 全族群 + benchmark 的共同交易日
@@ -222,25 +388,39 @@ async function main() {
       }
       tf[String(w)] = pts;
     }
-    return { ticker: b.canonical, label: `${b.canonical} (${b.n})`, tf };
+    return { ticker: b.canonical, label: `${b.canonical} (${b.n})`, tf, members: b.members };
   });
+
+  // 台股族群一定要排在最前面：前端預設取第一個 key，這是每日報告的主角。
+  const universes: Record<string, unknown> = {
+    tw_sectors: {
+      name: '台股族群輪動',
+      benchmark: cfg.benchmark.code,
+      benchmark_name: cfg.benchmark.label,
+      dates: dates.slice(-TAIL_POINTS),
+      series,
+    },
+  };
+
+  // 全球／美股三組：任何一組失敗就跳過該組，不影響台股族群與整份報告。
+  const US_CLOSE_UTC_MIN = 21 * 60 + 30; // 16:00 ET + 緩衝（夏令 20:00 UTC、冬令 21:00 UTC）
+  for (const def of GLOBAL_UNIVERSES) {
+    try {
+      const r = await buildGlobalUniverse(def, US_CLOSE_UTC_MIN);
+      if (r) universes[r.key] = r.uni;
+    } catch (e) {
+      console.log(`  SKIP ${def.key}: ${(e as Error).message}`);
+    }
+  }
 
   const out = {
     generated: new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UTC',
     windows: WINDOWS,
-    universes: {
-      tw_sectors: {
-        name: '台股族群輪動',
-        benchmark: cfg.benchmark.code,
-        benchmark_name: cfg.benchmark.label,
-        dates: dates.slice(-TAIL_POINTS),
-        series,
-      },
-    },
+    universes,
   };
   const outPath = path.join(ROOT, 'data', 'tw-rrg-data.json');
   fs.writeFileSync(outPath, JSON.stringify(out, null, 0));
-  console.log(`\nWrote ${outPath}: ${series.length} sectors, basket version ${cfg.version}`);
+  console.log(`\nWrote ${outPath}: ${series.length} sectors + ${Object.keys(universes).length - 1} global universes, basket version ${cfg.version}`);
 
   // 落地檢查：印出 120 日視窗最新象限，方便肉眼驗證是否合理
   const quad = (x: number, y: number) =>
