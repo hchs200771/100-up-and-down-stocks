@@ -1,132 +1,132 @@
 {
-  "timestamp": "2026-07-18T04:47:39.381Z",
-  "tradingDate": "2026-07-18",
+  "timestamp": "2026-07-31T15:26:49.517Z",
+  "tradingDate": "2026-07-31",
   "indices": [
     {
       "key": "sp500",
       "name": "標普500",
       "region": "美股",
-      "close": 7457.69,
-      "change": -76.08,
-      "pct": -1.01,
-      "asOfEpoch": 1784321010
+      "close": 7437.63,
+      "change": 121.48,
+      "pct": 1.66,
+      "asOfEpoch": null
     },
     {
       "key": "dji",
       "name": "道瓊工業",
       "region": "美股",
-      "close": 52146.42,
-      "change": -406.55,
-      "pct": -0.77,
-      "asOfEpoch": 1784321010
+      "close": 52208.06,
+      "change": 613.92,
+      "pct": 1.19,
+      "asOfEpoch": null
     },
     {
       "key": "nasdaq",
       "name": "那斯達克",
       "region": "美股",
-      "close": 25520.24,
-      "change": -361.7,
-      "pct": -1.4,
-      "asOfEpoch": 1784322959
+      "close": 25122.18,
+      "change": 679.24,
+      "pct": 2.78,
+      "asOfEpoch": null
     },
     {
       "key": "sox",
       "name": "費城半導體",
       "region": "美股",
-      "close": 11673.89,
-      "change": -193.61,
-      "pct": -1.63,
-      "asOfEpoch": 1784322959
+      "close": 11302.99,
+      "change": 855.5,
+      "pct": 8.19,
+      "asOfEpoch": null
     },
     {
       "key": "sse",
       "name": "上證指數",
       "region": "中國",
-      "close": 3764.16,
-      "change": -118.25,
-      "pct": -3.05,
-      "asOfEpoch": 1784271624
+      "close": 3832.26,
+      "change": 27.57,
+      "pct": 0.72,
+      "asOfEpoch": 1785481224
     },
     {
       "key": "csi300",
       "name": "滬深300",
       "region": "中國",
-      "close": 4529.1,
-      "change": -169.34,
-      "pct": -3.6,
-      "asOfEpoch": 1784271624
+      "close": 4588.2,
+      "change": 38.48,
+      "pct": 0.85,
+      "asOfEpoch": 1785481224
     },
     {
       "key": "hsi",
       "name": "恒生指數",
       "region": "中國",
-      "close": 24562.24,
-      "change": -446.36,
-      "pct": -1.78,
-      "asOfEpoch": 1784275716
+      "close": 25884.43,
+      "change": 25.55,
+      "pct": 0.1,
+      "asOfEpoch": 1785485344
     },
     {
       "key": "nikkei",
       "name": "日經225",
       "region": "日韓",
-      "close": 64141.12,
-      "change": -2694.42,
-      "pct": -4.03,
-      "asOfEpoch": 1784270703
+      "close": 64362.02,
+      "change": 2494.59,
+      "pct": 4.03,
+      "asOfEpoch": 1785480303
     },
     {
       "key": "kospi",
       "name": "韓國KOSPI",
       "region": "日韓",
-      "close": 6820.6,
-      "change": -463.81,
-      "pct": -6.37,
-      "asOfEpoch": 1784192740
+      "close": 6595.45,
+      "change": 1001.89,
+      "pct": 17.91,
+      "asOfEpoch": 1785488730
     },
     {
       "key": "wti",
       "name": "西德州原油",
       "region": "原物料/利率",
-      "close": 81.78,
-      "change": 3.5,
-      "pct": 4.47,
-      "asOfEpoch": 1784321998
+      "close": 83.59,
+      "change": 0,
+      "pct": 0,
+      "asOfEpoch": null
     },
     {
       "key": "gold",
       "name": "黃金",
       "region": "原物料/利率",
-      "close": 4018.8,
-      "change": 26.7,
-      "pct": 0.67,
-      "asOfEpoch": 1784321999
+      "close": 4160.6,
+      "change": 60.5,
+      "pct": 1.48,
+      "asOfEpoch": null
     },
     {
       "key": "dxy",
       "name": "美元指數",
       "region": "原物料/利率",
-      "close": 100.76,
-      "change": -0.01,
-      "pct": -0.01,
-      "asOfEpoch": 1784321999
+      "close": 99.86,
+      "change": -0.15,
+      "pct": -0.15,
+      "asOfEpoch": null
     },
     {
       "key": "us10y",
       "name": "美10年期殖利率",
       "region": "原物料/利率",
-      "close": 4.54,
-      "change": -0.03,
-      "pct": -0.61,
-      "asOfEpoch": 1784314794
+      "close": 4.66,
+      "change": 0,
+      "pct": 0,
+      "asOfEpoch": null
     },
     {
       "key": "usdtwd",
       "name": "美元/台幣",
       "region": "匯率",
-      "close": 32.37,
-      "change": 0.1,
-      "pct": 0.31,
-      "asOfEpoch": 1784323413
+      "close": 32.39,
+      "change": 0.04,
+      "pct": 0.14,
+      "asOfEpoch": null
     }
   ]
 }

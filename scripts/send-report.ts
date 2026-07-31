@@ -628,8 +628,9 @@ function renderIntl(intl: IntlBlock | null | undefined): string {
 }
 
 /**
- * 族群輪動（RRG）區塊：只呈現「文字結論」——象限分佈 + 值得注意的異動。
- * 互動圖表是獨立一頁（rrg.html），這裡只放連結，使用者不必看圖也能拿到判讀。
+ * 族群輪動（RRG）區塊：先圖後結論——上方嵌入可切換 120/60/20 日的互動圖，下方才是
+ * 象限分佈與異動判讀（不看圖也拿得到結論）。
+ * iframe 只在網站版會渲染；Email 用戶端會擋掉，所以一定要保留獨立頁連結當退路。
  */
 function renderRrg(rrg: RrgBlock | null | undefined): string {
   if (!rrg || !rrg.quadrants) return "";
@@ -692,10 +693,18 @@ function renderRrg(rrg: RrgBlock | null | undefined): string {
 
   return `<div style="background-color:#faf5ff; border:1px solid #e9d5ff; padding:15px; border-radius:8px; margin-bottom:20px;">
       <h3 style="margin-top:0; color:#7e22ce;">🔄 族群輪動 RRG</h3>
-      <p style="font-size:12px; color:#6b7280; margin:0 0 12px;">
+      <p style="font-size:12px; color:#6b7280; margin:0 0 10px;">
         以加權指數為基準、${mainWindow} 日視窗計算相對強弱與動能，資料截至 <strong>${asOf}</strong>。
         族群成分是固定籃子（與每日分類分開維護），所以軌跡可跨日比較。
-        <a href="rrg.html" style="color:#7e22ce; font-weight:bold;">→ 開啟互動輪動圖（可切換 120/60/20 日）</a>
+      </p>
+      <div style="border:1px solid #e9d5ff; border-radius:8px; overflow:hidden; background:#fff; margin-bottom:6px;">
+        <iframe src="rrg.html" title="台股族群輪動 RRG" loading="lazy"
+          style="display:block; width:100%; height:1180px; border:0;"></iframe>
+      </div>
+      <p style="font-size:11px; color:#9ca3af; margin:0 0 14px;">
+        圖上方可切換 120／60／20 日視窗與軌跡長度。Email 版不會顯示互動圖，請點
+        <a href="rrg.html" style="color:#7e22ce; font-weight:bold;">→ 開啟獨立輪動圖頁</a>；
+        下方文字結論不看圖也讀得懂。
       </p>
       <table style="width:100%; border-collapse:collapse; margin-bottom:14px;"><tbody>${quadHtml}</tbody></table>
       ${regimeHtml}

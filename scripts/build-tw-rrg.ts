@@ -129,12 +129,19 @@ async function main() {
   const benchPrices = await fetchYahoo(cfg.benchmark.code);
   if (!benchPrices) throw new Error('benchmark fetch failed');
 
-  // Yahoo 的最後一根可能是當日未收盤的即時報價 → 一律丟掉，避免污染。
+  // Yahoo 的最後一根若是「當日尚未收盤」的即時報價就要丟掉，否則會污染整條序列。
+  // 但台股 13:30 (TWT) = 05:30 UTC 就收盤了，盤後報告都在那之後才跑——
+  // 無條件丟掉當日會讓 RRG 永遠落後一個交易日（實際踩過這個坑）。
+  // 規則：只有在「台股當天還沒收完」時才丟。留 30 分鐘緩衝給 Yahoo 落檔。
   const benchDates = Object.keys(benchPrices).sort();
-  const todayUtc = new Date().toISOString().slice(0, 10);
-  if (benchDates[benchDates.length - 1] >= todayUtc) {
-    delete benchPrices[benchDates[benchDates.length - 1]];
-    console.log(`  dropped incomplete last bar (${benchDates[benchDates.length - 1]})`);
+  const now = new Date();
+  const todayUtc = now.toISOString().slice(0, 10);
+  const utcMinutes = now.getUTCHours() * 60 + now.getUTCMinutes();
+  const TW_CLOSE_UTC_MIN = 6 * 60; // 05:30 收盤 + 30 分鐘緩衝
+  const lastBar = benchDates[benchDates.length - 1];
+  if (lastBar > todayUtc || (lastBar === todayUtc && utcMinutes < TW_CLOSE_UTC_MIN)) {
+    delete benchPrices[lastBar];
+    console.log(`  dropped incomplete last bar (${lastBar})`);
   }
 
   const priceCache: Record<string, Prices> = {};
@@ -145,6 +152,28 @@ async function main() {
       const p = await fetchTwStock(code, label);
       if (p) priceCache[code] = p;
       await sleep(250);
+    }
+  }
+
+  // 個股缺值往 benchmark 的日期軸上補（沿用前一日收盤，最多補 MAX_FFILL 天）。
+  // 不補的話：只要有【一檔】成分股在 Yahoo 落檔較慢，全部 25 個族群的最新一天就會一起消失
+  // ——實際發生過（寶雅 5904 慢一天，整份 RRG 就停在前一個交易日）。
+  const MAX_FFILL = 3;
+  {
+    const axis = Object.keys(benchPrices).sort();
+    for (const code of Object.keys(priceCache)) {
+      const p = priceCache[code];
+      let prev: number | null = null;
+      let gap = 0;
+      for (const d of axis) {
+        if (p[d] != null) {
+          prev = p[d];
+          gap = 0;
+        } else if (prev != null && gap < MAX_FFILL) {
+          p[d] = prev;
+          gap++;
+        }
+      }
     }
   }
 
