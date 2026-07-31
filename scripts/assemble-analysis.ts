@@ -60,6 +60,7 @@ const storiesDir = resolve(cwd, "data/tmp/stories");
 const intlMarketPath = resolve(cwd, "data/intl-market-latest.json");
 const intlBriefPath = resolve(cwd, "data/tmp/intl-brief.txt");
 const playbookPath = resolve(cwd, "data/tmp/playbook.txt");
+const rrgAlertsPath = resolve(cwd, "data/tw-rrg-alerts.json");
 const outPath = resolve(cwd, "data/analysis-latest.json");
 
 interface IntlIndex {
@@ -92,6 +93,40 @@ function buildIntl(): { summary: string; indices: IntlIndex[] } | undefined {
   }
   if (!summary && indices.length === 0) return undefined;
   return { summary, indices };
+}
+
+/**
+ * 族群輪動（RRG）區塊：build-rrg-alerts.ts 產出的象限位置與異動訊號。
+ * 只帶「文字結論」進報告；互動圖表是獨立一頁（data/site/rrg.html）。
+ * 檔案不存在（沒跑 RRG）就不附 rrg 欄位，send-report 自動略過該區塊。
+ *
+ * 注意 asOf：RRG 用 Yahoo 日線，若當日尚未更新，asOf 會是前一個交易日。
+ * 報告會照實把 asOf 印出來，不要假裝它一定等於今日。
+ */
+function buildRrg():
+  | {
+      asOf: string;
+      mainWindow: number;
+      quadrants: Record<string, string[]>;
+      regime: { kind: string; sectors: string[]; note: string }[];
+      alerts: { kind: string; sector: string; detail: string; severity: string }[];
+    }
+  | undefined {
+  if (!existsSync(rrgAlertsPath)) return undefined;
+  try {
+    const raw = JSON.parse(readFileSync(rrgAlertsPath, "utf8"));
+    if (!raw?.quadrants) return undefined;
+    return {
+      asOf: String(raw.asOf ?? ""),
+      mainWindow: Number(raw.mainWindow ?? 60),
+      quadrants: raw.quadrants,
+      regime: Array.isArray(raw.regime) ? raw.regime : [],
+      alerts: Array.isArray(raw.alerts) ? raw.alerts : [],
+    };
+  } catch {
+    console.warn("tw-rrg-alerts.json unreadable, skipping RRG block");
+    return undefined;
+  }
 }
 
 /**
@@ -206,6 +241,7 @@ function main() {
   }
 
   const intl = buildIntl();
+  const rrg = buildRrg();
 
   // 操作建議（🎯 操作建議 分頁）：由 finalizer 寫到 data/tmp/playbook.txt，純文字。
   // 檔案不存在或空 → 不附 playbook 欄位，send-report 自動略過該分頁。
@@ -224,6 +260,7 @@ function main() {
     losers: fill(cls.losers),
     summary: toTW(typeof cls.summary === "string" ? cls.summary : ""),
     ...(intl ? { intl } : {}),
+    ...(rrg ? { rrg } : {}),
     ...(playbook ? { playbook } : {}),
   };
 
@@ -237,6 +274,7 @@ function main() {
       `${out.losers.length} loser (${lWithStory} with story) groups, ` +
       `summary ${out.summary ? "set" : "EMPTY"}, ` +
       `intl ${intl ? `${intl.indices.length} idx / brief ${intl.summary ? "set" : "EMPTY"}` : "none"}, ` +
+      `rrg ${rrg ? `${rrg.alerts.length} alerts / ${rrg.regime.length} regime @ ${rrg.asOf}` : "none"}, ` +
       `playbook ${playbook ? "set" : "none"}`,
   );
 }

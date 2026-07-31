@@ -105,6 +105,28 @@ worker prompt 樣板（把 `<今日強勢股前30名>` 換成 gainers 前 30 檔
 
 **為什麼這樣做：** 題材是不斷變化的（玻璃基板 TGV 就是活例——老公司跨新領域，靠傳統主業分類會全部歸錯）。這個 worker 把「理解現在什麼最紅」變成每天自動做的事，而不是等使用者提醒。背景平行跑，不拉長整體時間；失敗或沒寫出檔案就照常分類，不影響流程。
 
+### Step 1.8 — 族群輪動 RRG（純 script，可跳過）
+
+依序執行（第二支要吃第一支的產出）：
+
+```
+npx tsx scripts/build-tw-rrg.ts
+npx tsx scripts/build-rrg-alerts.ts
+npx tsx scripts/render-tw-rrg.ts
+```
+
+- `build-tw-rrg.ts`：讀 `data/sector-baskets.json` 的**固定**族群籃子，抓 Yahoo Finance 2 年還原收盤價（`.TW`／`.TWO` 自動偵測，本機快取 12 小時），編成等權指數，對加權指數 `^TWII` 算 RS-Ratio / RS-Momentum，輸出 `data/tw-rrg-data.json`。
+- `build-rrg-alerts.ts`：找出值得講的象限異動，輸出 `data/tw-rrg-alerts.json`。多族群同時觸發同一訊號時會收斂成「市場狀態」，避免真訊號被淹沒。
+- `render-tw-rrg.ts`：注入 `../rrg-radar/template.html` 產出 `data/tw-rrg.html`（互動圖，可切 120/60/20 日）。**需要 rrg-radar 專案在同一層目錄**，不在就會失敗——這時跳過本步驟即可。
+
+Step 6 的 `assemble-analysis.ts` 會自動把 alerts 併進 `analysis.rrg`，報告出現「🔄 族群輪動」分頁；Step 9 的 publish 腳本會把 `tw-rrg.html` 複製成網站的 `rrg.html` 獨立頁。
+
+**這一步失敗就跳過，不影響當日報告**——`analysis.rrg` 不存在時報告會自動略過該分頁。
+
+**重要提醒：**
+- `data/sector-baskets.json` 的成分要**長期穩定**，每季 review 一次就好。它跟每日分類（`classification.json`）是**刻意分開**的兩套東西：每日分類要動態抓當日題材，RRG 籃子要固定才能跨日比較軌跡。**不要把每日分類的結果寫回籃子。**
+- RRG 的 `asOf` 來自 Yahoo 日線，當日盤後若 Yahoo 尚未更新，會是前一個交易日；報告會照實顯示，不要當成錯誤。
+
 ### Step 2 — 讀取記憶
 
 列出 `data/memory/` 下最近 **2 份** markdown（依檔名日期排序，最新的在前）。
@@ -314,6 +336,8 @@ npx tsx scripts/assemble-analysis.ts
 
 **同時**它會讀 `data/intl-market-latest.json`（國際數字）+ `data/tmp/intl-brief.txt`（國際 worker 的判讀），併成 `analysis.intl = {summary, indices}`。兩者皆缺就不附 `intl`，報告自動略過國際區塊。看它印出的 `intl ... idx / brief ...` 統計確認有併進來。
 
+**也會**讀 `data/tw-rrg-alerts.json`（Step 1.8 的族群輪動訊號），併成 `analysis.rrg`，報告出現「🔄 族群輪動」分頁。檔案不存在就不附 `rrg`。看它印出的 `rrg N alerts / M regime @ <asOf>` 確認。
+
 > 簡轉繁保險：assemble 會用 `opencc-js`（s2twp）把每段 story 與 summary 自動轉成台灣繁體（含用語：`内存→記憶體`、`服务器→伺服器`），所以即使 subagent 偶爾寫出簡體或中國用語也會被擋下，不必再人工挑字。
 
 跑完看一眼它印出的統計（幾組有 story、summary 是否 set）確認沒漏。
@@ -365,9 +389,23 @@ timestamp: <同 analysis>
 
 這份 markdown 是下一次執行 Skill 時的輸入（Step 2 會讀）。
 
-### Step 9 — 部署到 Vercel（wrapper 自動執行）
+### Step 9 —（必做）部署到 GitHub Pages
 
-wrapper 在寄信完成後會執行 `scripts/publish-github-pages.sh`，將 `data/report-latest.html` 組進 `data/site/` 並 commit + push；GitHub Actions（.github/workflows/pages.yml）隨後把它部署到 https://hchs200771.github.io/100-up-and-down-stocks/ 。不需要任何 token（用本機既有的 git 權限）。
+> **這是流程的最後一步，一定要執行，不能只跑到寄信就當完成。** 寄信成功 ≠ 任務完成；報告網站沒更新等於沒發布。
+>
+> **本專案已於 2026-07 從 Vercel 全面改用 GitHub Pages，Vercel 已停用、不要再嘗試部署到 Vercel。**
+
+寄信（Step 7）完成後，**你（互動流程）要親自執行**這支腳本：
+
+```
+bash scripts/publish-github-pages.sh
+```
+
+它會將 `data/report-latest.html` 組進 `data/site/` 並 commit + push；GitHub Actions（.github/workflows/pages.yml）隨後把它部署到 https://hchs200771.github.io/100-up-and-down-stocks/ 。不需要任何 token（用本機既有的 git 權限）。
+
+若 Step 1.8 有跑，它也會把 `data/tw-rrg.html` 複製成 `data/site/rrg.html`（族群輪動獨立頁，網址 `.../rrg.html`），報告內「🔄 族群輪動」分頁的連結指向它。
+
+**執行後要確認**：看到腳本印出 `Pushed. GitHub Pages workflow will deploy: ...` 且 `git push` 成功（`main -> main`）才算部署完成。若 push 失敗，要在結尾回報明講「已寄信但網站未部署」，不可略過。
 
 ## 結尾回報
 
@@ -376,6 +414,7 @@ wrapper 在寄信完成後會執行 `scripts/publish-github-pages.sh`，將 `dat
 - 漲最多 / 跌最多的股票
 - 漲跌方各自分了幾個族群
 - 是否已寄信（或為何沒寄）
+- **是否已部署到 GitHub Pages（Step 9）**——附上 commit 與網址，push 失敗要明講
 
 ## 需要注意的
 

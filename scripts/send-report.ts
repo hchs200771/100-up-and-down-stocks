@@ -71,6 +71,21 @@ interface IntlBlock {
   indices: IntlIndex[];
 }
 
+interface RrgAlert {
+  kind: string;
+  sector: string;
+  detail: string;
+  severity: string;
+}
+
+interface RrgBlock {
+  asOf: string;
+  mainWindow: number;
+  quadrants: Record<string, string[]>;
+  regime: { kind: string; sectors: string[]; note: string }[];
+  alerts: RrgAlert[];
+}
+
 interface Analysis {
   timestamp: string;
   date: string;
@@ -81,6 +96,7 @@ interface Analysis {
   longTermStrategy?: string;
   playbook?: string;
   intl?: IntlBlock;
+  rrg?: RrgBlock;
 }
 
 interface HistoryRecord {
@@ -611,6 +627,83 @@ function renderIntl(intl: IntlBlock | null | undefined): string {
     </div>`;
 }
 
+/**
+ * 族群輪動（RRG）區塊：只呈現「文字結論」——象限分佈 + 值得注意的異動。
+ * 互動圖表是獨立一頁（rrg.html），這裡只放連結，使用者不必看圖也能拿到判讀。
+ */
+function renderRrg(rrg: RrgBlock | null | undefined): string {
+  if (!rrg || !rrg.quadrants) return "";
+  const { asOf, mainWindow, quadrants, regime, alerts } = rrg;
+
+  // 象限分佈：領先/改善 用紅（強）、弱化/落後 用綠（弱），與報告其餘部分的漲跌配色一致
+  const quadMeta: Record<string, { color: string; bg: string; desc: string }> = {
+    領先: { color: "#dc2626", bg: "#fef2f2", desc: "強於大盤且動能向上" },
+    改善: { color: "#2563eb", bg: "#eff6ff", desc: "仍弱於大盤但動能翻正" },
+    弱化: { color: "#d97706", bg: "#fffbeb", desc: "仍強於大盤但動能轉負" },
+    落後: { color: "#16a34a", bg: "#f0fdf4", desc: "弱於大盤且動能向下" },
+  };
+  const quadHtml = ["領先", "改善", "弱化", "落後"]
+    .map((q) => {
+      const m = quadMeta[q];
+      const list = quadrants[q] ?? [];
+      return `<tr>
+        <td style="padding:6px 8px; white-space:nowrap; vertical-align:top;">
+          <span style="display:inline-block; background:${m.bg}; color:${m.color}; border:1px solid ${m.color}33; border-radius:4px; padding:2px 8px; font-weight:bold;">${q}</span>
+          <span style="color:#9ca3af; font-size:11px;"> ${list.length}</span>
+        </td>
+        <td style="padding:6px 8px; font-size:13px; color:#374151;">${list.join("、") || "—"}<div style="color:#9ca3af; font-size:11px; margin-top:2px;">${m.desc}</div></td>
+      </tr>`;
+    })
+    .join("");
+
+  const sevMeta: Record<string, { color: string; label: string }> = {
+    high: { color: "#dc2626", label: "重要" },
+    medium: { color: "#d97706", label: "留意" },
+    low: { color: "#6b7280", label: "參考" },
+  };
+  const alertsHtml = alerts.length
+    ? alerts
+        .map((al) => {
+          const m = sevMeta[al.severity] ?? sevMeta.low;
+          return `<div style="border-left:3px solid ${m.color}; padding:6px 0 6px 10px; margin-bottom:10px;">
+            <div style="font-size:13px;">
+              <span style="color:${m.color}; font-weight:bold;">[${m.label}]</span>
+              <strong style="color:#1f2937;"> ${al.sector}</strong>
+              <span style="color:#6b7280;"> — ${al.kind}</span>
+            </div>
+            <div style="font-size:12px; color:#4b5563; line-height:1.6; margin-top:3px;">${al.detail}</div>
+          </div>`;
+        })
+        .join("")
+    : `<p style="font-size:13px; color:#6b7280; margin:0;">今日無明顯象限異動。</p>`;
+
+  // 市場狀態：多族群同時觸發同一訊號時的收斂結論，避免個別訊號被雜訊淹沒
+  const regimeHtml = regime.length
+    ? `<div style="background:#f9fafb; border:1px dashed #d1d5db; border-radius:6px; padding:10px 12px; margin-bottom:14px;">
+        <div style="font-size:12px; color:#6b7280; font-weight:bold; margin-bottom:6px;">📐 市場狀態（多族群同時出現，屬大盤特徵而非個別族群訊號）</div>
+        ${regime
+          .map(
+            (r) =>
+              `<div style="font-size:12px; color:#4b5563; line-height:1.6; margin-bottom:4px;">・<strong>${r.kind}</strong>（${r.sectors.length} 個族群）：${r.note}</div>`,
+          )
+          .join("")}
+      </div>`
+    : "";
+
+  return `<div style="background-color:#faf5ff; border:1px solid #e9d5ff; padding:15px; border-radius:8px; margin-bottom:20px;">
+      <h3 style="margin-top:0; color:#7e22ce;">🔄 族群輪動 RRG</h3>
+      <p style="font-size:12px; color:#6b7280; margin:0 0 12px;">
+        以加權指數為基準、${mainWindow} 日視窗計算相對強弱與動能，資料截至 <strong>${asOf}</strong>。
+        族群成分是固定籃子（與每日分類分開維護），所以軌跡可跨日比較。
+        <a href="rrg.html" style="color:#7e22ce; font-weight:bold;">→ 開啟互動輪動圖（可切換 120/60/20 日）</a>
+      </p>
+      <table style="width:100%; border-collapse:collapse; margin-bottom:14px;"><tbody>${quadHtml}</tbody></table>
+      ${regimeHtml}
+      <div style="font-size:12px; color:#6b7280; font-weight:bold; margin-bottom:8px;">🔔 值得注意的異動（近 5 個交易日）</div>
+      ${alertsHtml}
+    </div>`;
+}
+
 function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName: Map<string, string>, market?: MarketBlock | null, retailHistory?: MarketHistoryEntry[]): string {
   // 有 call 標記的族群排前面（順勢 → 觀察 → 反轉），其餘維持原順序（檔數多→少）
   const callRank: Record<string, number> = { 順勢: 0, 觀察: 1, 反轉: 2 };
@@ -633,6 +726,7 @@ function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName
     : "";
   const marketDashboardHtml = renderMarketDashboard(market, retailHistory);
   const intlHtml = renderIntl(a.intl);
+  const rrgHtml = renderRrg(a.rrg);
   const legendHtml = renderLegend();
   const rubricHtml = renderScoringRubric();
 
@@ -653,6 +747,8 @@ function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName
     { label: "🎯 操作建議", html: playbookHtml },
     // 盤後總結與市場儀表板都是整體市場觀點，合併成一個「市場總覽」tab。
     { label: "📊 市場總覽", html: `${summaryHtml}${marketDashboardHtml}` },
+    // 族群輪動：中期資金流向，放在市場總覽之後、國際情勢之前
+    { label: "🔄 族群輪動", html: rrgHtml },
     { label: "🌐 國際情勢", html: intlHtml },
     { label: "🧭 長線策略", html: longTermStrategyHtml },
     { label: "🔖 圖例說明", html: legendHtml },

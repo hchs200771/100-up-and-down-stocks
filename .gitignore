@@ -18,3 +18,7 @@ data/logs/
 data/price-history/
 data/analysis-history/
 data/scorecard.json
+
+# RRG：Yahoo 日線本機快取（可重抓）與 render 產物（已複製為 data/site/rrg.html）
+data/cache/
+data/tw-rrg.html

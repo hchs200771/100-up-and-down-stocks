@@ -22,9 +22,18 @@ fi
 # Assemble the static site directory
 rm -rf "$SITE_DIR"
 mkdir -p "$SITE_DIR"
-cp "$HTML" "$SITE_DIR/index.html"
+# Wrap the shared report fragment into a full HTML document with favicon + SEO
+# metadata (email body stays untouched). Fall back to a plain copy if it fails.
+if ! npx tsx "$SCRIPT_DIR/build-site-html.ts" "$HTML" "$SITE_DIR/index.html"; then
+  echo "[publish] build-site-html failed — falling back to plain copy." >&2
+  cp "$HTML" "$SITE_DIR/index.html"
+fi
 [ -f "$PROJECT_DIR/data/analysis-latest.json" ] && cp "$PROJECT_DIR/data/analysis-latest.json" "$SITE_DIR/analysis-latest.json"
 [ -f "$PROJECT_DIR/data/scorecard.json" ] && cp "$PROJECT_DIR/data/scorecard.json" "$SITE_DIR/scorecard.json"
+# 族群輪動 RRG 是獨立一頁（報告內的「🔄 族群輪動」分頁以相對連結 rrg.html 指向它）。
+# 沒跑 RRG 就不放，報告內的連結會失效但不影響其餘內容。
+[ -f "$PROJECT_DIR/data/tw-rrg.html" ] && cp "$PROJECT_DIR/data/tw-rrg.html" "$SITE_DIR/rrg.html"
+[ -f "$PROJECT_DIR/data/tw-rrg-alerts.json" ] && cp "$PROJECT_DIR/data/tw-rrg-alerts.json" "$SITE_DIR/tw-rrg-alerts.json"
 
 git add data/site
 
