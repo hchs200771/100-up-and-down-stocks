@@ -102,7 +102,18 @@
   .ctl-label { font-size: 12px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
   .ctl-group { display: flex; align-items: center; gap: 8px; }
 
-  .chips { display: flex; flex-wrap: wrap; gap: 6px 8px; margin: -4px 0 14px; align-items: center; }
+  /* 桌機：族群清單放在圖的左側（水平排一長列會把圖擠到很下面、也很難掃）。
+     窄螢幕才退回橫向排在圖的上方。 */
+  .board { display: flex; gap: 16px; align-items: flex-start; }
+  .board .side { flex: 0 0 236px; min-width: 0; }
+  .board .main { flex: 1 1 auto; min-width: 0; }
+  .side-hint { color: var(--muted); font-size: 11.5px; line-height: 1.5; margin: 0 0 8px; }
+  .chips { display: flex; flex-direction: column; align-items: stretch; gap: 4px; margin: 0; }
+  @media (max-width: 900px) {
+    .board { flex-direction: column; }
+    .board .side { flex: none; width: 100%; }
+    .chips { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
+  }
   /* chip 有兩個獨立的點擊區：勾選框控制「是否畫在圖上」，名稱控制「是否展開成分股」。 */
   .chip {
     display: inline-flex; align-items: center; gap: 6px;
@@ -114,8 +125,10 @@
   .chip .name {
     appearance: none; border: 0; background: transparent; color: inherit;
     font: inherit; font-size: 12.5px; padding: 1px 2px; cursor: pointer;
-    display: inline-flex; align-items: center; gap: 7px;
+    display: inline-flex; align-items: center; gap: 7px; text-align: left;
+    min-width: 0; flex: 1 1 auto;
   }
+  .chip .name .txt { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .chip .dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
   .chip.off { color: var(--muted); background: transparent; }
   .chip.off .dot { background: var(--axis) !important; }
@@ -240,13 +253,18 @@
     </div>
   </div>
 
-  <p class="sub" style="margin:-2px 0 8px">勾選框＝是否畫在圖上；點名稱＝展開成分股（可連到 Yahoo 股市）。</p>
-  <div class="chips" id="chips" role="group" aria-label="顯示或隱藏標的"></div>
-  <div class="members" id="members" aria-live="polite"></div>
-
-  <div class="chart-card">
-    <svg id="chart" viewBox="0 0 940 760" role="img" aria-label="相對輪動圖 RRG"></svg>
-    <div class="tooltip" id="tooltip"></div>
+  <div class="board">
+    <aside class="side">
+      <p class="side-hint">勾選框＝是否畫在圖上；點名稱＝展開成分股（可連到 Yahoo 股市）。</p>
+      <div class="chips" id="chips" role="group" aria-label="顯示或隱藏標的"></div>
+    </aside>
+    <div class="main">
+      <div class="members" id="members" aria-live="polite"></div>
+      <div class="chart-card">
+        <svg id="chart" viewBox="0 0 940 760" role="img" aria-label="相對輪動圖 RRG"></svg>
+        <div class="tooltip" id="tooltip"></div>
+      </div>
+    </div>
   </div>
 
   <div class="legend">
@@ -423,7 +441,8 @@
       name.className = "name";
       name.title = "展開成分股";
       name.setAttribute("aria-expanded", String(state.pinned === s.ticker));
-      name.innerHTML = `<span class="dot" style="background:var(--s${(idx % 11) + 1})"></span>${esc(s.label)}`;
+      name.innerHTML = `<span class="dot" style="background:var(--s${(idx % 11) + 1})"></span>` +
+        `<span class="txt">${esc(s.label)}</span>`;
       name.onclick = () => selectSector(s.ticker);
 
       wrap.appendChild(cb);
@@ -579,14 +598,16 @@
       E("circle", { cx: X(head[0]), cy: Y(head[1]), r: 6, fill: color,
         stroke: css("--surface"), "stroke-width": 2 }, g);
 
-      heads.push({ x: X(head[0]), y: Y(head[1]), ticker: s.ticker, label: s.label, p: head, q, color, prev5: s.prev5 });
+      heads.push({ x: X(head[0]), y: Y(head[1]), ticker: s.ticker, label: s.label,
+        short: s.short || s.label, p: head, q, color, prev5: s.prev5 });
     });
 
-    // direct labels with greedy vertical dodge
+    // 圖上只放短名、不帶檔數——25 個族群各拖一條長標籤時圖會被文字淹沒。
+    // 完整名稱與檔數留在左側清單、tooltip 與下方表格。
     const labels = heads.map(h => ({
       ...h,
       lx: h.x + 11, ly: h.y + 4,
-      w: (h.label.length * 13.5) + 8,
+      w: (h.short.length * 12) + 8,
     }));
     labels.sort((a, b) => a.ly - b.ly);
     for (let i = 0; i < labels.length; i++) {
@@ -599,10 +620,10 @@
     labels.forEach(l => {
       if (l.lx + l.w > W - 4) l.lx = l.x - 11 - l.w + 8; // flip left near right edge
       const faded = dim && state.pinned !== l.ticker;
-      const t = E("text", { x: l.lx, y: l.ly, "font-size": 13, "font-weight": 600,
+      const t = E("text", { x: l.lx, y: l.ly, "font-size": 11.5, "font-weight": 600,
         fill: css("--ink"), opacity: faded ? 0.14 : 0.95, "paint-order": "stroke",
         stroke: css("--surface"), "stroke-width": 3, "stroke-linejoin": "round" }, gLabels);
-      t.textContent = l.label;
+      t.textContent = l.short;
     });
 
     renderTable(seriesPts, dates);

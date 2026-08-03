@@ -361,6 +361,7 @@ async function main() {
     }
     basketSeries.push({
       canonical: b.canonical,
+      short: b.short || b.canonical,
       prices: idx,
       n: members.length,
       // 成分股帶到前端：點族群時要列出個股並連到 Yahoo 股市，上市/上櫃網址不同所以帶 suffix。
@@ -374,6 +375,17 @@ async function main() {
   dates.sort();
   const bench = dates.map((d) => benchPrices[d]);
   console.log(`\nCommon trading days: ${dates.length} (${dates[0]} → ${dates[dates.length - 1]})`);
+  // 共同起點由「上市最晚的那一檔」決定，全族群一起被截短。列出來，免得哪天歷史莫名變短查不到原因。
+  {
+    const start = dates[0];
+    const latecomers = Object.entries(priceCache)
+      .map(([c, p]) => [c, Object.keys(p).sort()[0]] as [string, string])
+      .filter(([, f]) => f >= start)
+      .sort((a, b) => b[1].localeCompare(a[1]));
+    if (latecomers.length) {
+      console.log(`  共同起點受限於：${latecomers.slice(0, 3).map(([c, f]) => `${c}(${f})`).join('、')}`);
+    }
+  }
 
   const series = basketSeries.map((b) => {
     const sec = dates.map((d) => b.prices[d]);
@@ -388,7 +400,7 @@ async function main() {
       }
       tf[String(w)] = pts;
     }
-    return { ticker: b.canonical, label: `${b.canonical} (${b.n})`, tf, members: b.members };
+    return { ticker: b.canonical, label: `${b.canonical} (${b.n})`, short: b.short, tf, members: b.members };
   });
 
   // 台股族群一定要排在最前面：前端預設取第一個 key，這是每日報告的主角。
