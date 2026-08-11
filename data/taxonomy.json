@@ -958,6 +958,42 @@
         "TGV玻璃基板",
         "玻璃基板/面板轉型"
       ]
+    },
+    {
+      "canonical": "精密金屬/關鍵礦物",
+      "aliases": [
+        "關鍵礦物/鎢與稀有金屬",
+        "精密機械/金屬加工",
+        "鎢金屬/稀有金屬"
+      ]
+    },
+    {
+      "canonical": "螺絲扣件/精密金屬件",
+      "aliases": []
+    },
+    {
+      "canonical": "重電/電力設備",
+      "aliases": []
+    },
+    {
+      "canonical": "軟體/資訊服務",
+      "aliases": []
+    },
+    {
+      "canonical": "包裝材料/紙品",
+      "aliases": []
+    },
+    {
+      "canonical": "觀光餐飲/內需消費",
+      "aliases": []
+    },
+    {
+      "canonical": "金融/租賃",
+      "aliases": []
+    },
+    {
+      "canonical": "RFID/物聯網標籤",
+      "aliases": []
     }
   ]
 }

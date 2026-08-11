@@ -21,6 +21,34 @@ type Prices = Record<string, number>; // date -> adjusted close
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
+/** 同時在跑的 Yahoo 請求數上限。抓價全是網路等待、CPU 閒置，序列跑純粹浪費 wall-clock。 */
+const FETCH_CONCURRENCY = 6;
+
+/**
+ * 有限併發的 map：開 `limit` 條 worker 從同一個 queue 取件，回傳結果順序與輸入一致。
+ *
+ * 為什麼需要：245 檔成分股原本是一檔接一檔抓、每檔之間還 sleep 250ms，
+ * 光這一段就佔掉整份 RRG 的絕大部分時間，而且全程只是在等網路。
+ * 不用無上限的 Promise.all 是怕一次打幾百個請求被 Yahoo 擋。
+ */
+async function mapPool<T, R>(
+  items: T[],
+  limit: number,
+  fn: (item: T, index: number) => Promise<R>,
+): Promise<R[]> {
+  const out = new Array<R>(items.length);
+  let next = 0;
+  const workers = Array.from({ length: Math.min(limit, items.length) }, async () => {
+    for (;;) {
+      const i = next++;
+      if (i >= items.length) return;
+      out[i] = await fn(items[i], i);
+    }
+  });
+  await Promise.all(workers);
+  return out;
+}
+
 async function fetchRange(ticker: string, range: string): Promise<Prices | null> {
   const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(ticker)}?range=${range}&interval=1d`;
   const res = await fetch(url, { headers: { 'User-Agent': UA } });
@@ -47,9 +75,9 @@ async function fetchRange(ticker: string, range: string): Promise<Prices | null>
  * 族群指數在大漲/大跌日原地不動、RRG 會做出完全相反的判讀。短區間優先覆蓋。
  */
 async function fetchYahoo(ticker: string): Promise<Prices | null> {
-  const long = await fetchRange(ticker, '2y');
+  // 兩個區間互不相依，同時發出、短區間覆蓋長區間，省掉一趟往返。
+  const [long, recent] = await Promise.all([fetchRange(ticker, '2y'), fetchRange(ticker, '1mo')]);
   if (!long) return null;
-  const recent = await fetchRange(ticker, '1mo');
   if (recent) Object.assign(long, recent);
   return Object.keys(long).length ? long : null;
 }
@@ -224,12 +252,12 @@ async function buildGlobalUniverse(def: (typeof GLOBAL_UNIVERSES)[number], close
   }
 
   const prices: Record<string, Prices> = {};
-  for (const [t, label] of def.members) {
-    const p = await fetchUs(t);
+  const fetchedUs = await mapPool(def.members, FETCH_CONCURRENCY, ([t]) => fetchUs(t));
+  def.members.forEach(([t, label], i) => {
+    const p = fetchedUs[i];
     if (p) prices[t] = p;
     else console.log(`  ${t} ${label}: missing`);
-    await sleep(200);
-  }
+  });
   const members = def.members.filter(([t]) => prices[t]);
   if (members.length < 3) { console.log(`  SKIP ${def.key}: only ${members.length} members`); return null; }
 
@@ -291,16 +319,29 @@ async function main() {
     console.log(`  dropped incomplete last bar (${lastBar})`);
   }
 
-  const priceCache: Record<string, Prices> = {};
+  // 成分股跨籃子會重複（例如權值股同時在好幾個籃子裡），先去重再併發抓。
+  // 去重與併發都不影響結果：fetchTwStock 是純讀取 + 本機快取，籃子的組成在後面才用得到。
+  const uniqueMembers: [string, string][] = [];
+  const seen = new Set<string>();
   for (const b of cfg.baskets) {
-    console.log(`\n[${b.canonical}]`);
-    for (const [code, label] of b.members) {
-      if (priceCache[code]) continue;
-      const p = await fetchTwStock(code, label);
-      if (p) priceCache[code] = p;
-      await sleep(250);
+    for (const [code, label] of b.members as [string, string][]) {
+      if (seen.has(code)) continue;
+      seen.add(code);
+      uniqueMembers.push([code, label]);
     }
   }
+
+  console.log(
+    `\nFetching ${uniqueMembers.length} unique constituents across ${cfg.baskets.length} baskets (concurrency ${FETCH_CONCURRENCY})...`,
+  );
+  const priceCache: Record<string, Prices> = {};
+  const fetchedTw = await mapPool(uniqueMembers, FETCH_CONCURRENCY, ([code, label]) =>
+    fetchTwStock(code, label),
+  );
+  uniqueMembers.forEach(([code], i) => {
+    const p = fetchedTw[i];
+    if (p) priceCache[code] = p;
+  });
 
   // 個股缺值往 benchmark 的日期軸上補（沿用前一日收盤，最多補 MAX_FFILL 天）。
   // 不補的話：只要有【一檔】成分股在 Yahoo 落檔較慢，全部 25 個族群的最新一天就會一起消失

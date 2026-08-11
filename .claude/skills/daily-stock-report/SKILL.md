@@ -8,7 +8,28 @@ description: 台股盤後分析工作流。抓當日漲跌幅前 100 名、用 C
 這個 Skill 取代了 `src/services/aiService.ts` 裡原本呼叫 Gemini API 的邏輯。
 AI 的工作（分類、族群故事、盤後總結）由 Claude 在對話裡直接完成，不呼叫任何 LLM API。
 
-工作目錄：`/Users/max/Projects/100-up-and-down-stocks`
+工作目錄：`/Users/huangguanxue/Desktop/Projects/100-up-and-down-stocks`
+
+## 執行順序總覽（先讀這段，決定什麼跟什麼平行）
+
+底下的 Step 編號是**閱讀順序，不是執行順序**。整條流程幾乎全是網路 I/O 等待、CPU 閒置，序列執行純粹是浪費 wall-clock（使用者常在深夜跑，總時間要短）。實際要照三條水線並行推進：
+
+| 水線 | 內容 | 何時開始 | 產出何時才被需要 |
+|---|---|---|---|
+| A 主線 | Step 1 抓盤 → Step 2 讀記憶 → Step 3 分類 → Step 4 spawn workers | 立刻 | 全程 |
+| B 背景 script | Step 1.8 RRG 三支（依序 chain） | **t=0，跟 Step 1 同時**，不必等抓盤 | Step 6 assemble |
+| C 背景 script | Step 1.5 記分板、Step 1.6 國際數字、Step 1.65 信用利差（三者互不相依，同時丟） | Step 1 一跑完 | 1.5 → Step 5 寫總結；1.6/1.65 → Step 6 assemble |
+
+**具體怎麼做**：用 Bash tool 的 `run_in_background: true` 把 B 和 C 丟出去，主對話繼續往下跑 Step 2 / Step 3。**不要**用 `;` 或 `&&` 把互不相依的 script 串成一條 bash 依序執行——那等於自己放棄平行。
+
+**關鍵相依（只有這幾條，其餘都可以並行）**：
+- Step 1.5 讀 `market-latest.json` → 必須在 Step 1 之後
+- Step 1.8 三支彼此 chain（build → alerts → render），但整組**不依賴當日盤後資料**（只讀 `sector-baskets.json` + Yahoo），所以可以最早開跑。它是整條鏈最慢的一塊，排最後跑是今天最大的浪費來源
+- Step 1.7 題材偵察 worker 要在 Step 3 分類前寫完檔 → Step 1 一跑完就 spawn
+- Step 5 寫總結前要有 `scorecard.json` / `group-timeline.json`（水線 C）
+- Step 6 assemble 前要有全部 stories、`intl-brief.txt`、RRG alerts
+
+B 和 C 的任一步驟失敗都**不阻斷主線**（各步驟原本就標「可跳過」），到 Step 5 / Step 6 時檔案不在就照原本的降級行為處理。
 
 ## 執行步驟
 
@@ -37,7 +58,7 @@ npx tsx scripts/fetch-market-data.ts
 
 ### Step 1.5 — 更新記分板（幂等，可重跑）
 
-執行：
+**水線 C，背景執行**：Step 1 一跑完就用 `run_in_background: true` 丟出去，**不要**等它，主線直接往 Step 2 / Step 3 走。它的產出到 Step 5 寫總結才需要。
 
 ```
 npx tsx scripts/score-report.ts
@@ -51,6 +72,8 @@ npx tsx scripts/score-report.ts
 若此步驟失敗，**繼續流程**，不影響當日報告。
 
 ### Step 1.6 — 抓國際市場數字（純 script，可跳過）
+
+**水線 C，背景執行**：跟 Step 1.5、Step 1.65 **同時**丟成三個獨立的背景 job（互不相依），不要串成一條 bash 依序跑。產出到 Step 4.5 的國際 worker 與 Step 6 assemble 才需要。
 
 執行：
 
@@ -68,6 +91,22 @@ npx tsx scripts/fetch-intl-market.ts
 各市場收盤時間不同：對台股傍晚跑的盤後報告，亞股是「當日」收盤，美股/費半/原油/殖利率是「隔夜」前一交易日。這些數字是 Step 4 國際情勢 worker 的判讀依據，也會直接呈現在報告的「🌐 國際情勢」表格。
 
 若此步驟失敗（Yahoo 掛掉），**繼續流程**：國際情勢 worker 會少掉精準數字、只能靠 WebSearch 敘述，但不影響台股報告與寄信。
+
+### Step 1.65 — 抓信用利差（純 script，可跳過）
+
+**水線 C，背景執行**：與 Step 1.5、Step 1.6 同批平行丟出，不要等。
+
+執行：
+
+```
+npx tsx scripts/fetch-credit-spreads.ts
+```
+
+從 FRED 抓 ICE BofA 的 OAS（免費 CSV、無金鑰），輸出 `data/credit-spreads-latest.json`：高收益債（`BAMLH0A0HYM2`）、投資等級（`BAMLC0A0CM`）、AAA（`BAMLC0A1CAAA`），每條含 bps、日／月變化與近一年百分位。
+
+**為什麼不是真 CDS**：CDX／iTraxx／主權 CDS 是 Markit 的商品，沒有免費可自動抓的來源；OAS 是公開資料裡最貼近、且天天更新的替代品，跟 CDX 高度同向。**為什麼用利差不用殖利率**：AAA 殖利率主要跟著無風險利率動，跟報告裡的美10年期殖利率重疊，看不出信用面；利差才是純風險溢酬。
+
+FRED 有 T+1 時差，`asOf` 通常是前一個美國交易日。數字會經 `attach-intl.ts` 併進 `analysis.intl.credit`，呈現在「🌐 國際情勢」表格的「信用利差」列，也是國際情勢 worker 判斷「資金鬆不鬆」的依據。此步驟失敗一樣**繼續流程**。
 
 ### Step 1.7 — 題材偵察 worker（背景 spawn，越早越好）
 
@@ -107,21 +146,21 @@ worker prompt 樣板（把 `<今日強勢股前30名>` 換成 gainers 前 30 檔
 
 ### Step 1.8 — 族群輪動 RRG（純 script，可跳過）
 
-依序執行（第二支要吃第一支的產出）：
+**水線 B，最早開跑**：這一組**不讀當日盤後資料**（只讀 `data/sector-baskets.json` 與 Yahoo 日線），所以**不必等 Step 1**——整條流程一開始就把它用 `run_in_background: true` 丟出去，跟 Step 1 抓盤同時進行。它是整條鏈裡最慢的一塊（要抓 27 個籃子的成分股日線），排在最後跑會白白拉長總時間。產出到 Step 6 assemble 才需要。
+
+三支彼此有相依（第二支吃第一支的產出），所以**這三支之間**要串成一條依序執行的背景指令：
 
 ```
-npx tsx scripts/build-tw-rrg.ts
-npx tsx scripts/build-rrg-alerts.ts
-npx tsx scripts/render-tw-rrg.ts
+npx tsx scripts/build-tw-rrg.ts && npx tsx scripts/build-rrg-alerts.ts && npx tsx scripts/render-tw-rrg.ts
 ```
 
 - `build-tw-rrg.ts`：輸出 `data/tw-rrg-data.json`，含**四組** universe：
   - `tw_sectors` 台股族群輪動——讀 `data/sector-baskets.json` 的**固定**籃子，抓 Yahoo 還原收盤（`.TW`／`.TWO` 自動偵測並記錄，本機快取 12 小時），編成等權指數，對 `^TWII` 算 RS-Ratio / RS-Momentum
   - `assets` 全球資產、`us_sectors` 美股板塊、`markets` 全球市場——標的定義沿用隔壁 rrg-radar 的 `build_data.py`，但**用本專案的 TS 管線重跑**，四組出自同一份資料與同一時間戳。任一組失敗只跳過該組。
 - `build-rrg-alerts.ts`：只讀 `tw_sectors`，找出值得講的象限異動，輸出 `data/tw-rrg-alerts.json`。多族群同時觸發同一訊號時會收斂成「市場狀態」，避免真訊號被淹沒。
-- `render-tw-rrg.ts`：注入 `templates/rrg-tw.html`（**本專案自己的 fork**，不再依賴 rrg-radar 專案存在）產出 `data/tw-rrg.html`。頁面可切四個市場、120/60/20 日視窗；每個族群有勾選框（是否畫在圖上）與可點的名稱（展開成分股、連到 Yahoo 股市），並有 Gmail 式的全選／全不選。
+- `render-tw-rrg.ts`：注入 `templates/rrg-tw.html`（**本專案自己的 fork**，不再依賴 rrg-radar 專案存在）產出 `data/tw-rrg.html`（整頁，本地預覽用）與 `data/tw-rrg-embed.html`（可內嵌片段，CSS 全鎖在 `.rrg-root` 底下）。頁面可切四個市場、120/60/20 日視窗；每個族群有勾選框（是否畫在圖上）與可點的名稱（展開成分股、連到 Yahoo 股市），並有 Gmail 式的全選／全不選。
 
-Step 6 的 `assemble-analysis.ts` 會自動把 alerts 併進 `analysis.rrg`，報告出現「🔄 族群輪動」分頁；Step 9 的 publish 腳本會把 `tw-rrg.html` 複製成網站的 `rrg.html` 獨立頁。
+Step 6 的 `assemble-analysis.ts` 會自動把 alerts 併進 `analysis.rrg`，報告出現「🔄 族群輪動」分頁；Step 9 的 `build-site-html.ts` 會把 `tw-rrg-embed.html` 直接塞進報告的 `<!--RRG_EMBED-->` 佔位處——互動圖就在同一頁的分頁裡，沒有 iframe、也沒有 `rrg.html` 子頁。
 
 **這一步失敗就跳過，不影響當日報告**——`analysis.rrg` 不存在時報告會自動略過該分頁。
 
@@ -221,12 +260,19 @@ rm -f data/tmp/playbook.txt
 **subagent 設定：** 用 Agent tool，`subagent_type: "general-purpose"`、`model: "haiku"`。
 （不要用 Explore——Explore 沒有 Write 工具，無法寫檔。）
 
-**兩階段流程：**
-- **階段 A**：所有符合門檻的**強勢**族群，**外加 1 個「國際情勢 worker」（見 Step 4.5）**，全部放在**同一個 assistant message** 裡平行 spawn。國際 worker 與台股族群 worker 同時跑，幾乎不增加整體 wall-clock。全部回來後跑一次 `npx tsx scripts/assemble-analysis.ts` 當 checkpoint（此時 losers 用 classification 的簡述/空白、summary 空）。
-- **階段 B**：弱勢前 3 大族群，在**另一個 assistant message** 裡平行 spawn。
-- 階段 B 若因 token / rate limit / 其他原因失敗，losers 直接沿用 classification 內容即可，不影響 gainers 與寄信。優先確保 gainers 完整、報告能寄出。
+**單一批次 spawn（不要再分兩階段）：**
 
-**關鍵：每一階段所有 spawn 必須放在同一個 assistant message 裡**，才是真平行。
+把**所有**符合門檻的強勢族群 + 弱勢前 3 大族群 + 1 個「國際情勢 worker」（見 Step 4.5），**全部放在同一個 assistant message 裡一次 spawn 完**（通常 15–18 個）。
+
+**關鍵：所有 spawn 必須在同一個 assistant message 裡**，才是真平行；wall-clock 等於最慢那一個 worker。
+
+以前這裡分「階段 A 強勢 / 階段 B 弱勢」兩批，理由是怕 B 失敗污染 A——但**每個 worker 各自寫自己的 `<id>.txt`、彼此完全隔離**，任一個失敗本來就只損失那一個檔案，分批並不會提供額外保護，卻硬生生多等一輪最慢 worker 的時間（實測約多 2 分鐘）。所以合併成一批。
+
+失敗處理不變：某個 worker 沒寫出檔，assemble 時該組就沿用 classification 裡的簡述或留空，不影響其他組與寄信。優先確保報告能寄出。
+
+**⚠️ spawn 完立刻核對數量（必做）**：spawn 是會偶發失敗的（曾遇到 classifier 暫時不可用，15 個裡有 1 個直接回 error）。送出後**當場數一遍成功啟動的數量是否等於預期數量**，對不上就**立刻補送缺的那一個**，不要等到 Step 6 才從 `ls data/tmp/stories/` 發現少檔——那時候補送等於整條流程多等一輪。
+
+注意錯誤是照 spawn 順序回報的，**不要用回報內容猜是哪一個失敗**（曾把失敗的族群 worker 誤判成國際 worker，結果國際 worker 重跑兩次、真正缺的那組完全沒補到）。按位置對，第 N 個結果就是第 N 個 spawn。
 
 每個 subagent 拿到的 prompt 樣板：
 
@@ -259,9 +305,9 @@ data/tmp/stories/<id>.txt
 - 真平行：wall-clock 約等於最慢那個 subagent。
 - 主對話 context 乾淨：不會被 N 組搜尋結果或 N 段故事污染。
 
-### Step 4.5 — 國際情勢 worker（與階段 A 同批平行 spawn）
+### Step 4.5 — 國際情勢 worker（與 Step 4 同批平行 spawn）
 
-**這個 worker 必須跟 Step 4 階段 A 的強勢族群 worker 放在同一個 assistant message 裡一起 spawn**，這樣它跟台股族群故事同時在跑，不會拉長整體報告時間（使用者常在深夜執行，整體時間要短）。
+**這個 worker 必須跟 Step 4 的所有族群 worker 放在同一個 assistant message 裡一起 spawn**，這樣它跟台股族群故事同時在跑，不會拉長整體報告時間（使用者常在深夜執行，整體時間要短）。它讀的 `intl-market-latest.json` / `credit-spreads-latest.json` 由水線 C 的背景 job 產出，spawn 前確認那兩支已經跑完；沒跑完也照 spawn，worker 會降級成純靠 WebSearch。
 
 **worker 設定：** Agent tool，`subagent_type: "general-purpose"`、`model: "sonnet"`（這份要套總經分析框架，用 sonnet 判讀品質較穩；因為平行跑，不影響總時間）。只 spawn **1 個**。
 
@@ -407,7 +453,7 @@ bash scripts/publish-github-pages.sh
 
 它會將 `data/report-latest.html` 組進 `data/site/` 並 commit + push；GitHub Actions（.github/workflows/pages.yml）隨後把它部署到 https://hchs200771.github.io/100-up-and-down-stocks/ 。不需要任何 token（用本機既有的 git 權限）。
 
-若 Step 1.8 有跑，它也會把 `data/tw-rrg.html` 複製成 `data/site/rrg.html`（族群輪動獨立頁，網址 `.../rrg.html`），報告內「🔄 族群輪動」分頁的連結指向它。
+若 Step 1.8 有跑，`build-site-html.ts` 會把 `data/tw-rrg-embed.html` 內嵌進 `data/site/index.html`，互動圖直接出現在「🔄 族群輪動」分頁裡（不另外發佈 `rrg.html`）。
 
 **執行後要確認**：看到腳本印出 `Pushed. GitHub Pages workflow will deploy: ...` 且 `git push` 成功（`main -> main`）才算部署完成。若 push 失敗，要在結尾回報明講「已寄信但網站未部署」，不可略過。
 
@@ -426,5 +472,7 @@ bash scripts/publish-github-pages.sh
 - `data/memory/` 資料夾如果不存在，自己 mkdir
 - 中繼檔在 `data/tmp/`：`classification.json`（你寫的族群結構 + summary + call）、`stories/<id>.txt`（subagent 寫的故事）、`intl-brief.txt`（國際 worker 的判讀）、`group-chips.json`（`group-chips.ts` 產出的族群籌碼彙總）。Step 4 開始前先清空 `data/tmp/stories/` 與 `intl-brief.txt`。analysis-latest.json 由 `assemble-analysis.ts` 從這些檔組出來（含 `data/intl-market-latest.json` 的國際數字），不要再手動逐段重打故事
 - 國際數字源是 Yahoo Finance（`scripts/fetch-intl-market.ts`），免費無金鑰；stooq 已改成需瀏覽器驗證、不能用
+- 信用利差源是 FRED 的 ICE BofA OAS（`scripts/fetch-credit-spreads.ts`），免費無金鑰、T+1；真 CDS 指數（CDX/iTraxx）是付費商品，不要為了「更正統」去接
 - 本流程不應修改 `src/services/aiService.ts`（前端 UI 還在用它）
 - 不需要 `GEMINI_API_KEY` 環境變數
+- **總時間就是這個 Skill 的品質指標之一**。回頭看「執行順序總覽」那張表：互不相依的 script 一律 `run_in_background` 平行丟、所有 worker 一次 spawn 完。判斷「這步能不能跟上一步同時跑」的方法是問「它讀的檔是誰寫的」——沒有相依就不要等。整條流程的 wall-clock 下限約等於「最慢的那個 worker + 分類時間」，跑出來明顯超過就是編排出了問題
