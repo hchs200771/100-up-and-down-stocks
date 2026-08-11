@@ -4,6 +4,9 @@ import "dotenv/config";
 import dotenv from "dotenv";
 dotenv.config({ path: resolve(process.cwd(), ".env.local"), override: true });
 
+// 網頁版報告（GitHub Pages）。Email 版沒有互動圖，用這個連結把讀者導回網頁版。
+const SITE_URL = "https://hchs200771.github.io/100-up-and-down-stocks/";
+
 interface MarketHistoryEntry {
   date: string;
   retailNetPct: number | null;
@@ -66,9 +69,21 @@ interface IntlIndex {
   pct: number;
 }
 
+interface CreditSpread {
+  key: string;
+  name: string;
+  note: string;
+  asOf: string;
+  bps: number;
+  chg1d: number | null;
+  chg1m: number | null;
+  pctile1y: number | null;
+}
+
 interface IntlBlock {
   summary: string;
   indices: IntlIndex[];
+  credit?: CreditSpread[];
 }
 
 interface RrgAlert {
@@ -581,13 +596,38 @@ function renderScoringRubric(): string {
 </div>`;
 }
 
+/**
+ * 信用利差：資金鬆緊的直接讀數。利差走闊＝市場要求更高的風險補償＝資金在收縮。
+ * 用 bps 呈現而不是百分比漲跌——利差本身就是「幾個百分點」，再算 % 變化沒有意義。
+ * 走闊用紅（風險升高）、收斂用綠，跟報告其餘部分的紅漲綠跌一致。
+ */
+function renderCredit(credit: CreditSpread[] | null | undefined): string {
+  if (!credit || credit.length === 0) return "";
+  const cells = credit
+    .map((c) => {
+      const d = c.chg1d;
+      const color = d === null ? "#6b7280" : d > 0 ? "#dc2626" : d < 0 ? "#16a34a" : "#6b7280";
+      const dTxt = d === null ? "—" : `${d > 0 ? "+" : ""}${d}bps`;
+      // 百分位是「這個利差在近一年裡的相對高低」，比絕對數字更好判斷是不是真的緊。
+      const p = c.pctile1y;
+      const pTxt = p === null ? "" : `<span style="color:#9ca3af;"> 近一年 ${p} 百分位</span>`;
+      const m = c.chg1m;
+      const mTxt = m === null ? "" : `<span style="color:#9ca3af;"> 月${m > 0 ? "+" : ""}${m}</span>`;
+      return `<span style="display:inline-block; margin:0 10px 4px 0; white-space:nowrap;" title="${c.note}"><span style="color:#6b7280;">${c.name}</span> <strong>${c.bps}bps</strong> <span style="color:${color}; font-weight:bold;">${dTxt}</span>${mTxt}${pTxt}</span>`;
+    })
+    .join("");
+  const asOf = credit[0]?.asOf ?? "";
+  return `<tr><td style="padding:4px 8px; color:#6b7280; vertical-align:top; white-space:nowrap;">信用利差<div style="font-size:11px; color:#9ca3af;">${asOf}</div></td><td style="padding:4px 8px;">${cells}<div style="font-size:11px; color:#9ca3af; margin-top:2px;">ICE BofA OAS（公司債對公債的風險溢酬，CDS 的公開替代品）；走闊＝資金收縮、風險偏好下降。資料源 FRED，比美股晚一天。</div></td></tr>`;
+}
+
 function renderIntl(intl: IntlBlock | null | undefined): string {
   if (!intl) return "";
-  const { summary, indices } = intl;
-  if (!summary && (!indices || indices.length === 0)) return "";
+  const { summary, indices, credit } = intl;
+  if (!summary && (!indices || indices.length === 0) && (!credit || credit.length === 0)) return "";
 
   let tableHtml = "";
-  if (indices && indices.length > 0) {
+  const creditRow = renderCredit(credit);
+  if ((indices && indices.length > 0) || creditRow) {
     // 依出現順序保留 region 分組，每個 region 一列標題 + 各標的。
     const order: string[] = [];
     const byRegion = new Map<string, IntlIndex[]>();
@@ -613,6 +653,8 @@ function renderIntl(intl: IntlBlock | null | undefined): string {
         `<tr><td style="padding:4px 8px; color:#6b7280; vertical-align:top; white-space:nowrap;">${region}</td><td style="padding:4px 8px;">${cells}</td></tr>`,
       );
     }
+    // 信用利差排在最後一列：它是「資金鬆緊」的背景條件，先看完各市場再看它。
+    if (creditRow) rows.push(creditRow);
     tableHtml = `<table style="width:100%; border-collapse:collapse; font-size:13px; margin-bottom:${summary ? "10px" : "0"};"><tbody>${rows.join("")}</tbody></table>`;
   }
 
@@ -628,9 +670,12 @@ function renderIntl(intl: IntlBlock | null | undefined): string {
 }
 
 /**
- * 族群輪動（RRG）區塊：先圖後結論——上方嵌入可切換 120/60/20 日的互動圖，下方才是
+ * 族群輪動（RRG）區塊：先圖後結論——上方是可切換 120/60/20 日的互動圖，下方才是
  * 象限分佈與異動判讀（不看圖也拿得到結論）。
- * iframe 只在網站版會渲染；Email 用戶端會擋掉，所以一定要保留獨立頁連結當退路。
+ *
+ * 互動圖本身不在這裡產生：這裡只留 <!--RRG_EMBED--> 佔位，發佈網站時由
+ * build-site-html.ts 把 data/tw-rrg-embed.html 整段塞進來（沒有 iframe、沒有子頁）。
+ * Email 沒有 JS，佔位符會維持空白，所以一定要保留下方文字結論與網頁版連結當退路。
  */
 function renderRrg(rrg: RrgBlock | null | undefined): string {
   if (!rrg || !rrg.quadrants) return "";
@@ -697,15 +742,12 @@ function renderRrg(rrg: RrgBlock | null | undefined): string {
         以加權指數為基準、${mainWindow} 日視窗計算相對強弱與動能，資料截至 <strong>${asOf}</strong>。
         族群成分是固定籃子（與每日分類分開維護），所以軌跡可跨日比較。
       </p>
-      <div style="border:1px solid #e9d5ff; border-radius:8px; overflow:hidden; background:#fff; margin-bottom:6px;">
-        <iframe src="rrg.html" title="台股族群輪動 RRG" loading="lazy"
-          style="display:block; width:100%; height:1180px; border:0;"></iframe>
-      </div>
+      <!--RRG_EMBED-->
       <p style="font-size:11px; color:#9ca3af; margin:0 0 14px;">
         圖上方可切換四個市場（台股族群／全球資產／美股板塊／全球市場）、120／60／20 日視窗與軌跡長度；
         勾選框控制是否畫在圖上，點族群名稱可展開成分股並連到 Yahoo 股市。
-        Email 版不會顯示互動圖，請點
-        <a href="rrg.html" style="color:#7e22ce; font-weight:bold;">→ 開啟獨立輪動圖頁</a>；
+        Email 版不會顯示互動圖，請開
+        <a href="${SITE_URL}" style="color:#7e22ce; font-weight:bold;">→ 網頁版報告</a>的「🔄 族群輪動」分頁；
         下方文字結論不看圖也讀得懂（結論只針對台股族群）。
       </p>
       <table style="width:100%; border-collapse:collapse; margin-bottom:14px;"><tbody>${quadHtml}</tbody></table>

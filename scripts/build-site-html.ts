@@ -18,10 +18,25 @@ const outPath = process.argv[3] ?? "data/site/index.html";
 
 // The fragment leads with a <meta viewport> (needed for the email body); drop it
 // here so it doesn't end up as an invalid meta-in-body — the head already has one.
-const fragment = readFileSync(resolve(process.cwd(), fragmentPath), "utf-8").replace(
+let fragment = readFileSync(resolve(process.cwd(), fragmentPath), "utf-8").replace(
   /^\s*<meta name="viewport"[^>]*>\s*/i,
   ""
 );
+
+// 族群輪動的互動圖：把 data/tw-rrg-embed.html 直接內嵌到報告的 <!--RRG_EMBED--> 佔位處，
+// 讓網頁版在同一頁就能看完（不開 iframe、不留獨立子頁）。
+// 沒跑過 RRG 就跳過——佔位符留白，該分頁的文字結論仍在。
+const rrgEmbedPath = resolve(process.cwd(), "data/tw-rrg-embed.html");
+if (fragment.includes("<!--RRG_EMBED-->")) {
+  if (existsSync(rrgEmbedPath)) {
+    const embed = readFileSync(rrgEmbedPath, "utf-8");
+    // 用函式形式取代，避免片段裡的 $ 被當成 replace 的特殊樣式
+    fragment = fragment.replace("<!--RRG_EMBED-->", () => embed);
+    console.log(`[build-site] Inlined RRG (${(embed.length / 1024).toFixed(0)} KB)`);
+  } else {
+    console.warn("[build-site] data/tw-rrg-embed.html not found — RRG chart omitted.");
+  }
+}
 
 // Pull timestamp + summary from the assembled analysis for dynamic title/description.
 let timestamp = "";

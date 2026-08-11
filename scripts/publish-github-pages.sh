@@ -30,9 +30,8 @@ if ! npx tsx "$SCRIPT_DIR/build-site-html.ts" "$HTML" "$SITE_DIR/index.html"; th
 fi
 [ -f "$PROJECT_DIR/data/analysis-latest.json" ] && cp "$PROJECT_DIR/data/analysis-latest.json" "$SITE_DIR/analysis-latest.json"
 [ -f "$PROJECT_DIR/data/scorecard.json" ] && cp "$PROJECT_DIR/data/scorecard.json" "$SITE_DIR/scorecard.json"
-# 族群輪動 RRG 是獨立一頁（報告內的「🔄 族群輪動」分頁以相對連結 rrg.html 指向它）。
-# 沒跑 RRG 就不放，報告內的連結會失效但不影響其餘內容。
-[ -f "$PROJECT_DIR/data/tw-rrg.html" ] && cp "$PROJECT_DIR/data/tw-rrg.html" "$SITE_DIR/rrg.html"
+# 族群輪動 RRG 已由 build-site-html.ts 直接內嵌進 index.html 的「🔄 族群輪動」分頁，
+# 不再發佈獨立的 rrg.html 子頁（data/tw-rrg.html 只留給本地預覽）。
 [ -f "$PROJECT_DIR/data/tw-rrg-alerts.json" ] && cp "$PROJECT_DIR/data/tw-rrg-alerts.json" "$SITE_DIR/tw-rrg-alerts.json"
 
 git add data/site

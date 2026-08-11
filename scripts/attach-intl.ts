@@ -18,6 +18,7 @@ const cwd = process.cwd();
 const analysisPath = resolve(cwd, "data/analysis-latest.json");
 const intlMarketPath = resolve(cwd, "data/intl-market-latest.json");
 const intlBriefPath = resolve(cwd, "data/tmp/intl-brief.txt");
+const creditPath = resolve(cwd, "data/credit-spreads-latest.json");
 
 const toTW = OpenCC.Converter({ from: "cn", to: "twp" });
 
@@ -37,22 +38,33 @@ function main() {
     }
   }
 
+  // 信用利差（fetch-credit-spreads.ts）：跟國際數字一起掛在 intl 底下，缺了就不掛。
+  let credit: unknown[] = [];
+  if (existsSync(creditPath)) {
+    try {
+      const raw = JSON.parse(readFileSync(creditPath, "utf8"));
+      if (Array.isArray(raw?.series)) credit = raw.series;
+    } catch {
+      console.warn("attach-intl: credit-spreads-latest.json unreadable");
+    }
+  }
+
   let summary = "";
   if (existsSync(intlBriefPath)) {
     const txt = readFileSync(intlBriefPath, "utf8").trim();
     if (txt) summary = toTW(txt);
   }
 
-  if (!summary && indices.length === 0) {
+  if (!summary && indices.length === 0 && credit.length === 0) {
     console.log("attach-intl: no intl data (no numbers, no brief), leaving analysis untouched");
     return;
   }
 
   const analysis = JSON.parse(readFileSync(analysisPath, "utf8"));
-  analysis.intl = { summary, indices };
+  analysis.intl = { summary, indices, credit };
   writeFileSync(analysisPath, `${JSON.stringify(analysis, null, 2)}\n`, "utf8");
   console.log(
-    `attach-intl: merged intl into analysis-latest.json (${indices.length} idx, brief ${summary ? "set" : "EMPTY"})`,
+    `attach-intl: merged intl into analysis-latest.json (${indices.length} idx, ${credit.length} credit, brief ${summary ? "set" : "EMPTY"})`,
   );
 }
 

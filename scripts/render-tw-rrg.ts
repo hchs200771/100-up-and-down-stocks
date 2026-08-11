@@ -34,6 +34,16 @@ const out = tpl
 
 const outPath = path.join(ROOT, 'data', 'tw-rrg.html');
 fs.writeFileSync(outPath, out, 'utf-8');
+
+// 另外輸出可內嵌的片段：盤後報告網頁版會把它直接塞進「族群輪動」分頁，
+// 不再開 iframe／獨立子頁（build-site-html.ts 負責注入）。
+// 片段 = 整頁扣掉 <meta>/<title> 與檔頭註解；CSS 已全部鎖在 .rrg-root 底下。
+const embed = out
+  .replace(/^<meta charset="utf-8">\n/, '')
+  .replace(/^<title>[^<]*<\/title>\n/m, '')
+  .replace(/^<!--[\s\S]*?-->\n/m, '');
+const embedPath = path.join(ROOT, 'data', 'tw-rrg-embed.html');
+fs.writeFileSync(embedPath, embed, 'utf-8');
 const unis = Object.entries(parsed.universes as Record<string, any>)
   .map(([k, u]) => `${k}(${u.series.length})`)
   .join(' ');

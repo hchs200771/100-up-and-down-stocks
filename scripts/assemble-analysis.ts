@@ -97,7 +97,7 @@ function buildIntl(): { summary: string; indices: IntlIndex[] } | undefined {
 
 /**
  * 族群輪動（RRG）區塊：build-rrg-alerts.ts 產出的象限位置與異動訊號。
- * 只帶「文字結論」進報告；互動圖表是獨立一頁（data/site/rrg.html）。
+ * 只帶「文字結論」進報告；互動圖表由 build-site-html.ts 內嵌進網頁版同一頁。
  * 檔案不存在（沒跑 RRG）就不附 rrg 欄位，send-report 自動略過該區塊。
  *
  * 注意 asOf：RRG 用 Yahoo 日線，若當日尚未更新，asOf 會是前一個交易日。

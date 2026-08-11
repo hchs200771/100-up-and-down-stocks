@@ -189,6 +189,9 @@ if stage_enabled fetch; then
 
   log "進度 1.6/5：抓國際市場數字 (Yahoo Finance)"
   run_tsx scripts/fetch-intl-market.ts || log "[warn] fetch-intl-market.ts failed; 國際數字略過，不影響台股報告"
+
+  log "進度 1.7/5：抓信用利差 (FRED, ICE BofA OAS)"
+  run_tsx scripts/fetch-credit-spreads.ts || log "[warn] fetch-credit-spreads.ts failed; 信用利差略過，不影響台股報告"
 fi
 
 if [ ! -f "$PROJECT_DIR/data/market-latest.json" ]; then

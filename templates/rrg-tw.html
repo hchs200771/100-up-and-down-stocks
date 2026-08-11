@@ -1,7 +1,14 @@
 <meta charset="utf-8">
 <title>資金輪動雷達 RRG</title>
+<!--
+  這份 template 同時服務兩種輸出（見 scripts/render-tw-rrg.ts）：
+  1. data/tw-rrg.html —— 獨立整頁（本地預覽用）
+  2. data/tw-rrg-embed.html —— 直接內嵌進盤後報告頁的片段
+  因為 2 會跟報告頁共用同一份 DOM，所有 CSS 都必須鎖在 .rrg-root 底下，
+  不能用 :root / body / 裸元素選擇器，否則會污染報告本身的表格與標題。
+-->
 <style>
-  :root {
+  .rrg-root {
     --page: #f9f9f7;
     --surface: #fcfcfb;
     --ink: #0b0b0b;
@@ -20,7 +27,7 @@
     --s6: #eb6834; --s7: #0e87ab; --s8: #6b8410; --s9: #e87ba4; --s10: #6a55b8; --s11: #1baf7a;
   }
   @media (prefers-color-scheme: dark) {
-    :root {
+    .rrg-root {
       --page: #0d0d0d;
       --surface: #1a1a19;
       --ink: #ffffff;
@@ -39,7 +46,7 @@
       --s6: #d95926; --s7: #2596b8; --s8: #7d9a15; --s9: #d55181; --s10: #8a71c9; --s11: #199e70;
     }
   }
-  :root[data-theme="light"] {
+  :root[data-theme="light"] .rrg-root {
     --page: #f9f9f7;
     --surface: #fcfcfb;
     --ink: #0b0b0b;
@@ -57,7 +64,7 @@
     --s1: #008300; --s2: #e34948; --s3: #2a78d6; --s4: #eda100; --s5: #4a3aa7;
     --s6: #eb6834; --s7: #0e87ab; --s8: #6b8410; --s9: #e87ba4; --s10: #6a55b8; --s11: #1baf7a;
   }
-  :root[data-theme="dark"] {
+  :root[data-theme="dark"] .rrg-root {
     --page: #0d0d0d;
     --surface: #1a1a19;
     --ink: #ffffff;
@@ -75,163 +82,164 @@
     --s1: #008300; --s2: #e66767; --s3: #3987e5; --s4: #c98500; --s5: #9085e9;
     --s6: #d95926; --s7: #2596b8; --s8: #7d9a15; --s9: #d55181; --s10: #8a71c9; --s11: #199e70;
   }
-  * { box-sizing: border-box; }
-  body {
+  .rrg-root, .rrg-root * { box-sizing: border-box; }
+  .rrg-root {
     margin: 0;
     background: var(--page);
     color: var(--ink);
     font-family: system-ui, -apple-system, "Segoe UI", "PingFang TC", "Noto Sans TC", sans-serif;
     line-height: 1.5;
+    border-radius: 8px;
   }
-  .wrap { max-width: 980px; margin: 0 auto; padding: 24px 20px 48px; }
+  .rrg-root .wrap { max-width: 980px; margin: 0 auto; padding: 24px 20px 48px; }
 
-  header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px; margin-bottom: 4px; }
-  h1 { font-size: 20px; font-weight: 700; margin: 0; letter-spacing: 0.02em; }
-  .asof { color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
-  .sub { color: var(--ink-2); font-size: 13px; margin: 0 0 16px; }
+  .rrg-root header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px; margin-bottom: 4px; }
+  .rrg-root h1 { font-size: 20px; font-weight: 700; margin: 0; letter-spacing: 0.02em; color: var(--ink); }
+  .rrg-root .asof { color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+  .rrg-root .sub { color: var(--ink-2); font-size: 13px; margin: 0 0 16px; }
 
-  .controls { display: flex; flex-wrap: wrap; gap: 10px 16px; margin-bottom: 14px; align-items: center; }
-  .seg { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--surface); }
-  .seg button {
+  .rrg-root .controls { display: flex; flex-wrap: wrap; gap: 10px 16px; margin-bottom: 14px; align-items: center; }
+  .rrg-root .seg { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--surface); }
+  .rrg-root .seg button {
     appearance: none; border: 0; background: transparent; color: var(--ink-2);
     font: inherit; font-size: 13px; padding: 6px 13px; cursor: pointer; white-space: nowrap;
   }
-  .seg button + button { border-left: 1px solid var(--border); }
-  .seg button[aria-pressed="true"] { background: var(--ink); color: var(--page); font-weight: 600; }
-  .seg button:focus-visible { outline: 2px solid var(--lead); outline-offset: -2px; }
-  .ctl-label { font-size: 12px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
-  .ctl-group { display: flex; align-items: center; gap: 8px; }
+  .rrg-root .seg button + button { border-left: 1px solid var(--border); }
+  .rrg-root .seg button[aria-pressed="true"] { background: var(--ink); color: var(--page); font-weight: 600; }
+  .rrg-root .seg button:focus-visible { outline: 2px solid var(--lead); outline-offset: -2px; }
+  .rrg-root .ctl-label { font-size: 12px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+  .rrg-root .ctl-group { display: flex; align-items: center; gap: 8px; }
 
   /* 桌機：族群清單放在圖的左側（水平排一長列會把圖擠到很下面、也很難掃）。
      窄螢幕才退回橫向排在圖的上方。 */
-  .board { display: flex; gap: 16px; align-items: flex-start; }
-  .board .side { flex: 0 0 236px; min-width: 0; }
-  .board .main { flex: 1 1 auto; min-width: 0; }
-  .side-hint { color: var(--muted); font-size: 11.5px; line-height: 1.5; margin: 0 0 8px; }
-  .chips { display: flex; flex-direction: column; align-items: stretch; gap: 4px; margin: 0; }
+  .rrg-root .board { display: flex; gap: 16px; align-items: flex-start; }
+  .rrg-root .board .side { flex: 0 0 236px; min-width: 0; }
+  .rrg-root .board .main { flex: 1 1 auto; min-width: 0; }
+  .rrg-root .side-hint { color: var(--muted); font-size: 11.5px; line-height: 1.5; margin: 0 0 8px; }
+  .rrg-root .chips { display: flex; flex-direction: column; align-items: stretch; gap: 4px; margin: 0; }
   @media (max-width: 900px) {
-    .board { flex-direction: column; }
-    .board .side { flex: none; width: 100%; }
-    .chips { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
+    .rrg-root .board { flex-direction: column; }
+    .rrg-root .board .side { flex: none; width: 100%; }
+    .rrg-root .chips { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
   }
   /* chip 有兩個獨立的點擊區：勾選框控制「是否畫在圖上」，名稱控制「是否展開成分股」。 */
-  .chip {
+  .rrg-root .chip {
     display: inline-flex; align-items: center; gap: 6px;
     font-size: 12.5px; padding: 3px 10px 3px 7px;
     border: 1px solid var(--border); border-radius: 99px;
     background: var(--surface); color: var(--ink);
   }
-  .chip input[type="checkbox"] { margin: 0; cursor: pointer; accent-color: var(--lead); width: 13px; height: 13px; }
-  .chip .name {
+  .rrg-root .chip input[type="checkbox"] { margin: 0; cursor: pointer; accent-color: var(--lead); width: 13px; height: 13px; }
+  .rrg-root .chip .name {
     appearance: none; border: 0; background: transparent; color: inherit;
     font: inherit; font-size: 12.5px; padding: 1px 2px; cursor: pointer;
     display: inline-flex; align-items: center; gap: 7px; text-align: left;
     min-width: 0; flex: 1 1 auto;
   }
-  .chip .name .txt { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .chip .dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
-  .chip.off { color: var(--muted); background: transparent; }
-  .chip.off .dot { background: var(--axis) !important; }
-  .chip.sel { border-color: var(--ink-2); box-shadow: 0 0 0 1px var(--ink-2) inset; }
-  .chip .name:focus-visible { outline: 2px solid var(--lead); outline-offset: 1px; border-radius: 4px; }
-  .chip-bulk {
+  .rrg-root .chip .name .txt { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .rrg-root .chip .dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+  .rrg-root .chip.off { color: var(--muted); background: transparent; }
+  .rrg-root .chip.off .dot { background: var(--axis) !important; }
+  .rrg-root .chip.sel { border-color: var(--ink-2); box-shadow: 0 0 0 1px var(--ink-2) inset; }
+  .rrg-root .chip .name:focus-visible { outline: 2px solid var(--lead); outline-offset: 1px; border-radius: 4px; }
+  .rrg-root .chip-bulk {
     appearance: none; font: inherit; font-size: 12.5px; padding: 4px 12px; cursor: pointer;
     border: 1px dashed var(--border); border-radius: 99px;
     background: transparent; color: var(--ink-2);
   }
-  .chip-bulk:hover { color: var(--ink); }
+  .rrg-root .chip-bulk:hover { color: var(--ink); }
 
   /* 成分股面板：點族群名稱後展開，個股連到 Yahoo 股市 */
-  .members {
+  .rrg-root .members {
     display: none; margin: -6px 0 14px; padding: 12px 14px;
     border: 1px solid var(--border); border-radius: 12px; background: var(--surface);
   }
-  .members.show { display: block; }
-  .members .m-head {
+  .rrg-root .members.show { display: block; }
+  .rrg-root .members .m-head {
     display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
     font-size: 13px; font-weight: 700; margin-bottom: 9px;
   }
-  .members .m-count { font-weight: 400; font-size: 12px; color: var(--muted); }
-  .members .m-close {
+  .rrg-root .members .m-count { font-weight: 400; font-size: 12px; color: var(--muted); }
+  .rrg-root .members .m-close {
     appearance: none; border: 1px solid var(--border); background: transparent; color: var(--muted);
     font: inherit; font-size: 11.5px; padding: 2px 9px; border-radius: 99px; cursor: pointer; margin-left: auto;
   }
-  .members .m-close:hover { color: var(--ink); }
-  .stk {
+  .rrg-root .members .m-close:hover { color: var(--ink); }
+  .rrg-root .stk {
     display: inline-block; text-decoration: none; margin: 0 6px 6px 0;
     padding: 4px 9px; border: 1px solid var(--border); border-radius: 6px;
     background: var(--page); color: var(--ink); font-size: 13px;
   }
-  .stk:hover { border-color: var(--ink-2); }
-  .stk .code { color: var(--muted); font-size: 12px; margin-left: 5px; font-variant-numeric: tabular-nums; }
-  .members .m-hint { color: var(--muted); font-size: 11.5px; margin-top: 4px; }
+  .rrg-root .stk:hover { border-color: var(--ink-2); }
+  .rrg-root .stk .code { color: var(--muted); font-size: 12px; margin-left: 5px; font-variant-numeric: tabular-nums; }
+  .rrg-root .members .m-hint { color: var(--muted); font-size: 11.5px; margin-top: 4px; }
 
-  .chart-card {
+  .rrg-root .chart-card {
     background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
     padding: 8px; position: relative;
   }
-  svg { display: block; width: 100%; height: auto; }
-  svg text { font-family: inherit; }
+  .rrg-root svg { display: block; width: 100%; height: auto; }
+  .rrg-root svg text { font-family: inherit; }
 
-  .tooltip {
+  .rrg-root .tooltip {
     position: absolute; pointer-events: none; z-index: 5; display: none;
     background: var(--tooltip-bg); border: 1px solid var(--border); border-radius: 8px;
     padding: 8px 11px; font-size: 12.5px; box-shadow: 0 4px 16px rgba(0,0,0,0.18);
     min-width: 150px;
   }
-  .tooltip .tt-name { font-weight: 700; margin-bottom: 2px; }
-  .tooltip .tt-row { display: flex; justify-content: space-between; gap: 14px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
-  .tooltip .tt-quad { font-weight: 600; margin-top: 3px; }
+  .rrg-root .tooltip .tt-name { font-weight: 700; margin-bottom: 2px; }
+  .rrg-root .tooltip .tt-row { display: flex; justify-content: space-between; gap: 14px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  .rrg-root .tooltip .tt-quad { font-weight: 600; margin-top: 3px; }
 
-  .legend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 12px 2px 4px; font-size: 12.5px; color: var(--ink-2); }
-  .legend .key { display: inline-flex; align-items: center; gap: 6px; }
-  .legend .dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
-  .legend .sq { width: 10px; height: 10px; border-radius: 3px; display: inline-block; opacity: 0.85; }
+  .rrg-root .legend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 12px 2px 4px; font-size: 12.5px; color: var(--ink-2); }
+  .rrg-root .legend .key { display: inline-flex; align-items: center; gap: 6px; }
+  .rrg-root .legend .dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+  .rrg-root .legend .sq { width: 10px; height: 10px; border-radius: 3px; display: inline-block; opacity: 0.85; }
 
-  details.guide { margin-top: 18px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
-  details.guide summary {
+  .rrg-root details.guide { margin-top: 18px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
+  .rrg-root details.guide summary {
     cursor: pointer; padding: 12px 16px; font-weight: 700; font-size: 14px;
     list-style: none; display: flex; align-items: center; gap: 9px;
   }
-  details.guide summary::-webkit-details-marker { display: none; }
-  details.guide summary::before { content: "\25B8"; color: var(--muted); transition: transform 0.15s; }
-  details.guide[open] summary::before { transform: rotate(90deg); }
-  @media (prefers-reduced-motion: reduce) { details.guide summary::before { transition: none; } }
-  details.guide summary:focus-visible { outline: 2px solid var(--lead); outline-offset: -2px; border-radius: 12px; }
-  .guide-body { padding: 0 18px 16px; font-size: 13.5px; color: var(--ink-2); max-width: 72ch; }
-  .guide-body h3 { font-size: 13px; color: var(--ink); margin: 16px 0 6px; letter-spacing: 0.02em; }
-  .guide-body p { margin: 6px 0; }
-  .guide-body ul { margin: 4px 0; padding-left: 20px; }
-  .guide-body li { margin: 4px 0; }
-  .guide-body .qtag { font-weight: 700; }
+  .rrg-root details.guide summary::-webkit-details-marker { display: none; }
+  .rrg-root details.guide summary::before { content: "\25B8"; color: var(--muted); transition: transform 0.15s; }
+  .rrg-root details.guide[open] summary::before { transform: rotate(90deg); }
+  @media (prefers-reduced-motion: reduce) { .rrg-root details.guide summary::before { transition: none; } }
+  .rrg-root details.guide summary:focus-visible { outline: 2px solid var(--lead); outline-offset: -2px; border-radius: 12px; }
+  .rrg-root .guide-body { padding: 0 18px 16px; font-size: 13.5px; color: var(--ink-2); max-width: 72ch; }
+  .rrg-root .guide-body h3 { font-size: 13px; color: var(--ink); margin: 16px 0 6px; letter-spacing: 0.02em; }
+  .rrg-root .guide-body p { margin: 6px 0; }
+  .rrg-root .guide-body ul { margin: 4px 0; padding-left: 20px; }
+  .rrg-root .guide-body li { margin: 4px 0; }
+  .rrg-root .guide-body .qtag { font-weight: 700; }
 
-  h2 { font-size: 14px; font-weight: 700; margin: 26px 0 10px; letter-spacing: 0.03em; }
-  .tbl-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
-  table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
-  th, td { padding: 8px 14px; text-align: right; white-space: nowrap; }
-  th:first-child, td:first-child { text-align: left; }
-  th:nth-child(2), td:nth-child(2) { text-align: left; }
-  thead th {
+  .rrg-root h2 { font-size: 14px; font-weight: 700; margin: 26px 0 10px; letter-spacing: 0.03em; }
+  .rrg-root .tbl-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
+  .rrg-root table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+  .rrg-root th, .rrg-root td { padding: 8px 14px; text-align: right; white-space: nowrap; }
+  .rrg-root th:first-child, .rrg-root td:first-child { text-align: left; }
+  .rrg-root th:nth-child(2), .rrg-root td:nth-child(2) { text-align: left; }
+  .rrg-root thead th {
     font-size: 11.5px; color: var(--muted); font-weight: 600; letter-spacing: 0.06em;
     text-transform: uppercase; border-bottom: 1px solid var(--grid);
   }
-  tbody td { border-bottom: 1px solid var(--grid); font-variant-numeric: tabular-nums; }
-  tbody tr:last-child td { border-bottom: 0; }
-  tbody tr { cursor: pointer; }
-  tbody tr:hover { background: color-mix(in srgb, var(--ink) 4%, transparent); }
-  tbody tr.pinned { background: color-mix(in srgb, var(--ink) 7%, transparent); }
-  .pill {
+  .rrg-root tbody td { border-bottom: 1px solid var(--grid); font-variant-numeric: tabular-nums; }
+  .rrg-root tbody tr:last-child td { border-bottom: 0; }
+  .rrg-root tbody tr { cursor: pointer; }
+  .rrg-root tbody tr:hover { background: color-mix(in srgb, var(--ink) 4%, transparent); }
+  .rrg-root tbody tr.pinned { background: color-mix(in srgb, var(--ink) 7%, transparent); }
+  .rrg-root .pill {
     display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600;
     padding: 2px 9px; border-radius: 99px; border: 1px solid;
   }
-  .pill .dot { width: 7px; height: 7px; border-radius: 50%; }
-  .delta { color: var(--muted); font-size: 12.5px; }
+  .rrg-root .pill .dot { width: 7px; height: 7px; border-radius: 50%; }
+  .rrg-root .delta { color: var(--muted); font-size: 12.5px; }
 
-  .footnote { color: var(--muted); font-size: 12px; margin-top: 18px; }
-  .footnote p { margin: 4px 0; }
+  .rrg-root .footnote { color: var(--muted); font-size: 12px; margin-top: 18px; }
+  .rrg-root .footnote p { margin: 4px 0; }
 </style>
 
-<div class="wrap">
+<div class="rrg-root"><div class="wrap">
   <header>
     <h1>資金輪動雷達</h1>
     <span class="asof" id="asof"></span>
@@ -340,14 +348,17 @@
     <p>RS-Ratio（橫軸）＝相對基準的強弱；RS-Momentum（縱軸）＝該強弱的動能。順時針輪動：改善 → 領先 → 弱化 → 落後。</p>
     <p>計算方式為 JdK RS-Ratio 的開源近似（滾動 z-score 標準化），非 StockCharts 官方數值；週期 120／60／20 日為標準化視窗。資料：Yahoo Finance 調整後收盤價。</p>
   </div>
-</div>
-
 <script id="rrg-data" type="application/json">__DATA__</script>
+</div></div>
 <script>
 (() => {
-  const DATA = JSON.parse(document.getElementById("rrg-data").textContent);
-  const svg = document.getElementById("chart");
-  const tooltip = document.getElementById("tooltip");
+  // 這段可能被內嵌進盤後報告頁，所以所有查詢都鎖在 .rrg-root 內，
+  // 不用 document.getElementById（會撞到報告本身的元素）。
+  const root = document.querySelector(".rrg-root");
+  const $ = (id) => root.querySelector("#" + id);
+  const DATA = JSON.parse($("rrg-data").textContent);
+  const svg = $("chart");
+  const tooltip = $("tooltip");
   const NS = "http://www.w3.org/2000/svg";
 
   const QUAD = {
@@ -380,7 +391,7 @@
   }
 
   function renderMembers() {
-    const el = document.getElementById("members");
+    const el = $("members");
     const uni = DATA.universes[state.uni];
     const s = state.pinned && uni.series.find(x => x.ticker === state.pinned);
     if (!s || !s.members || !s.members.length) { el.className = "members"; el.innerHTML = ""; return; }
@@ -396,11 +407,11 @@
       `<button type="button" class="m-close" id="m-close">關閉</button></div>` +
       `<div>${pills}</div>` +
       `<div class="m-hint">點個股可開啟 Yahoo 股市頁面。族群成分是固定籃子，不隨當日漲跌榜變動。</div>`;
-    document.getElementById("m-close").onclick = () => { state.pinned = null; render(); };
+    $("m-close").onclick = () => { state.pinned = null; render(); };
   }
 
   function renderChips() {
-    const el = document.getElementById("chips");
+    const el = $("chips");
     el.innerHTML = "";
     const uni = DATA.universes[state.uni];
     const hidden = hiddenSet();
@@ -468,9 +479,9 @@
     });
   }
   function refreshSegs() {
-    buildSeg(document.getElementById("seg-uni"), uniDefs, () => state.uni, v => { state.uni = v; state.pinned = null; });
-    buildSeg(document.getElementById("seg-tf"), tfDefs, () => state.tf, v => state.tf = v);
-    buildSeg(document.getElementById("seg-tail"), tailDefs, () => String(state.tail), v => state.tail = +v);
+    buildSeg($("seg-uni"), uniDefs, () => state.uni, v => { state.uni = v; state.pinned = null; });
+    buildSeg($("seg-tf"), tfDefs, () => state.tf, v => state.tf = v);
+    buildSeg($("seg-tail"), tailDefs, () => String(state.tail), v => state.tail = +v);
   }
 
   // ---- svg helpers ----
@@ -480,7 +491,7 @@
     if (parent) parent.appendChild(n);
     return n;
   }
-  const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const css = (v) => getComputedStyle(root).getPropertyValue(v).trim();
 
   const W = 940, H = 760, M = { l: 58, r: 24, t: 24, b: 52 };
   const PW = W - M.l - M.r, PH = H - M.t - M.b;
@@ -493,10 +504,10 @@
     const uni = DATA.universes[state.uni];
     const dates = uni.dates;
     const lastDate = dates[dates.length - 1];
-    document.getElementById("asof").textContent = "資料至 " + lastDate;
-    document.getElementById("bench-line").textContent =
+    $("asof").textContent = "資料至 " + lastDate;
+    $("bench-line").textContent =
       uni.name + "・基準：" + uni.benchmark_name + "・週期 " + state.tf + " 日";
-    document.getElementById("tbl-title").textContent = uni.name + "明細（" + state.tf + " 日）";
+    $("tbl-title").textContent = uni.name + "明細（" + state.tf + " 日）";
 
     // gather visible points
     const seriesPts = uni.series.map((s, idx) => {
@@ -632,7 +643,7 @@
   // ---- table ----
   const quadOrder = { lead: 0, impr: 1, weak: 2, lag: 3 };
   function renderTable(seriesPts, dates) {
-    const tbody = document.querySelector("#tbl tbody");
+    const tbody = root.querySelector("#tbl tbody");
     tbody.innerHTML = "";
     const rows = seriesPts.map(s => {
       const head = s.pts[s.pts.length - 1];
