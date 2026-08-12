@@ -1,93 +1,93 @@
 {
-  "timestamp": "2026-08-11T13:42:21.796Z",
-  "tradingDate": "2026-08-11",
+  "timestamp": "2026-08-12T12:46:40.139Z",
+  "tradingDate": "2026-08-12",
   "indices": [
     {
       "key": "sp500",
       "name": "標普500",
       "region": "美股",
-      "close": 7753.11,
-      "change": -4.53,
-      "pct": -0.06,
-      "asOfEpoch": null
+      "close": 7728.2,
+      "change": -24.91,
+      "pct": -0.32,
+      "asOfEpoch": 1786480445
     },
     {
       "key": "dji",
       "name": "道瓊工業",
       "region": "美股",
-      "close": 53975.98,
-      "change": -60.95,
-      "pct": -0.11,
-      "asOfEpoch": null
+      "close": 53791.85,
+      "change": -184.13,
+      "pct": -0.34,
+      "asOfEpoch": 1786480872
     },
     {
       "key": "nasdaq",
       "name": "那斯達克",
       "region": "美股",
-      "close": 26605.36,
-      "change": -85.26,
-      "pct": -0.32,
-      "asOfEpoch": null
+      "close": 26445.45,
+      "change": -159.91,
+      "pct": -0.6,
+      "asOfEpoch": 1786482959
     },
     {
       "key": "sox",
       "name": "費城半導體",
       "region": "美股",
-      "close": 11993.86,
-      "change": -362.93,
-      "pct": -2.94,
-      "asOfEpoch": null
+      "close": 12098.47,
+      "change": 104.61,
+      "pct": 0.87,
+      "asOfEpoch": 1786482959
     },
     {
       "key": "sse",
       "name": "上證指數",
       "region": "中國",
-      "close": 3934.09,
-      "change": -32.5,
-      "pct": -0.82,
-      "asOfEpoch": 1786431619
+      "close": 3946.68,
+      "change": 12.58,
+      "pct": 0.32,
+      "asOfEpoch": 1786518024
     },
     {
       "key": "csi300",
       "name": "滬深300",
       "region": "中國",
-      "close": 4663.79,
-      "change": -38.24,
-      "pct": -0.81,
-      "asOfEpoch": 1786431619
+      "close": 4690.92,
+      "change": 27.13,
+      "pct": 0.58,
+      "asOfEpoch": 1786518024
     },
     {
       "key": "hsi",
       "name": "恒生指數",
       "region": "中國",
-      "close": 25652.82,
-      "change": -284.67,
-      "pct": -1.1,
-      "asOfEpoch": 1786435714
+      "close": 25440.17,
+      "change": -212.65,
+      "pct": -0.83,
+      "asOfEpoch": 1786522114
     },
     {
       "key": "nikkei",
       "name": "日經225",
       "region": "日韓",
-      "close": 66970.22,
-      "change": 1363.51,
-      "pct": 2.08,
-      "asOfEpoch": 1786344303
+      "close": 67524.06,
+      "change": 553.84,
+      "pct": 0.83,
+      "asOfEpoch": 1786517102
     },
     {
       "key": "kospi",
       "name": "韓國KOSPI",
       "region": "日韓",
-      "close": 6345.53,
-      "change": 45.87,
-      "pct": 0.73,
-      "asOfEpoch": 1786439140
+      "close": 6579.04,
+      "change": 233.51,
+      "pct": 3.68,
+      "asOfEpoch": 1786525530
     },
     {
       "key": "wti",
       "name": "西德州原油",
       "region": "原物料/利率",
-      "close": 82.13,
+      "close": 83.2,
       "change": 0,
       "pct": 0,
       "asOfEpoch": null
@@ -96,8 +96,8 @@
       "key": "gold",
       "name": "黃金",
       "region": "原物料/利率",
-      "close": 4419.7,
-      "change": 57.9,
+      "close": 4441.1,
+      "change": 58.1,
       "pct": 1.33,
       "asOfEpoch": null
     },
@@ -105,16 +105,16 @@
       "key": "dxy",
       "name": "美元指數",
       "region": "原物料/利率",
-      "close": 99.81,
-      "change": 0,
-      "pct": 0,
+      "close": 99.83,
+      "change": 0.01,
+      "pct": 0.01,
       "asOfEpoch": null
     },
     {
       "key": "us10y",
       "name": "美10年期殖利率",
       "region": "原物料/利率",
-      "close": 4.7,
+      "close": 4.68,
       "change": 0,
       "pct": 0,
       "asOfEpoch": null
@@ -123,9 +123,9 @@
       "key": "usdtwd",
       "name": "美元/台幣",
       "region": "匯率",
-      "close": 32.24,
-      "change": 0,
-      "pct": 0,
+      "close": 32.22,
+      "change": -0.01,
+      "pct": -0.04,
       "asOfEpoch": null
     }
   ]

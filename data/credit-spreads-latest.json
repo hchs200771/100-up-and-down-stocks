@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-11T13:42:23.964Z",
+  "timestamp": "2026-08-12T12:46:41.932Z",
   "source": "FRED (ICE BofA OAS)",
   "series": [
     {
@@ -7,10 +7,10 @@
       "fredId": "BAMLH0A0HYM2",
       "name": "美國高收益債利差",
       "note": "風險偏好溫度計，最先反應",
-      "asOf": "2026-08-07",
+      "asOf": "2026-08-10",
       "bps": 270,
-      "chg1d": -1,
-      "chg1m": 0,
+      "chg1d": 0,
+      "chg1m": 1,
       "pctile1y": 9
     },
     {
@@ -18,10 +18,10 @@
       "fredId": "BAMLC0A0CM",
       "name": "投資等級公司債利差",
       "note": "擴散到投等債才算真的信用收縮",
-      "asOf": "2026-08-07",
+      "asOf": "2026-08-10",
       "bps": 78,
       "chg1d": 0,
-      "chg1m": 2,
+      "chg1m": 1,
       "pctile1y": 47
     },
     {
@@ -29,11 +29,11 @@
       "fredId": "BAMLC0A1CAAA",
       "name": "AAA 級公司債利差",
       "note": "最頂級信用的溢酬，動了代表壓力進到核心",
-      "asOf": "2026-08-07",
-      "bps": 39,
-      "chg1d": 0,
+      "asOf": "2026-08-10",
+      "bps": 40,
+      "chg1d": 1,
       "chg1m": 0,
-      "pctile1y": 86
+      "pctile1y": 89
     }
   ]
 }
