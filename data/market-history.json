@@ -754,17 +754,17 @@
   },
   {
     "date": "2026-08-14",
-    "retailNetPct": null,
-    "retailNetLots": null,
+    "retailNetPct": 15.58345731876958,
+    "retailNetLots": 12883,
     "twseDayTradePct": null,
     "tpexDayTradePct": 24.2,
-    "taiexClose": 46021.48,
-    "taiexChange": 503.41,
-    "tpexClose": 406.12,
-    "tpexChange": 4.1,
-    "up": 759,
-    "down": 1292,
-    "limitUp": 34,
-    "limitDown": 4
+    "taiexClose": 45811.01,
+    "taiexChange": -210.47,
+    "tpexClose": 400.95,
+    "tpexChange": -5.17,
+    "up": 659,
+    "down": 1395,
+    "limitUp": 24,
+    "limitDown": 5
   }
 ]
