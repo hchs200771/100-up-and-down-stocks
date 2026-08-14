@@ -493,6 +493,17 @@ async function main() {
   const tpexInstiMap = tpexInstiRaw ? parseTpexInsti(tpexInstiRaw) : new Map();
   console.log(`法人資料：TWSE ${twseInstiMap.size} 筆，TPEx ${tpexInstiMap.size} 筆`);
 
+  // 法人資料通常在收盤後（約 16:00）才落檔。任一交易所回 0 筆代表當日資料尚未
+  // 產出或 API 中斷——此時交易所其他端點也可能回上一個交易日的快照，寫出去的
+  // 檔案會看起來完整但指數漲跌與前 100 名全錯，且不會有任何錯誤訊號。寧可中止。
+  if (twseInstiMap.size === 0 || tpexInstiMap.size === 0) {
+    console.error(
+      `法人資料不完整（TWSE ${twseInstiMap.size} 筆 / TPEx ${tpexInstiMap.size} 筆），` +
+        `未寫入 market-latest.json。法人資料多在下午 4 點後才有，請稍後重跑。`,
+    );
+    process.exit(1);
+  }
+
   // Issued shares (for foreignRatio computation)
   const issuedSharesMap = parseIssuedShares(twseIssuedSharesRaw, tpexIssuedSharesRaw);
   console.log(`已發行股數：共 ${issuedSharesMap.size} 檔`);
