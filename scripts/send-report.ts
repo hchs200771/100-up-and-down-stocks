@@ -475,7 +475,7 @@ export function renderRetailTrend(history: MarketHistoryEntry[]): string {
 
   // Footer link (for email readers to jump to web)
   const footerLink = `<div style="font-size:11px; color:#94a3b8; margin-top:6px; text-align:center;">
-    <a href="https://daily-stock-report-coral.vercel.app" style="color:#4f46e5;">看完整互動圖表（含加權指數疊圖）→</a>
+    <a href="https://hchs200771.github.io/100-up-and-down-stocks/" style="color:#4f46e5;">看完整互動圖表（含加權指數疊圖）→</a>
   </div>`;
 
   return `<div style="background-color:#f8fafc; border:1px solid #e2e8f0; padding:12px 15px; border-radius:8px; margin-top:10px; margin-bottom:0;">
