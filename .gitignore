@@ -23,3 +23,14 @@ data/scorecard.json
 data/cache/
 data/tw-rrg.html
 data/tw-rrg-embed.html
+
+# 帳戶持倉（真實金額與部位，絕不進版控）
+data/kgi-positions.json
+data/position-analysis.json
+
+# 每日重抓/重算即可得的衍生產物（data/site/ 下的發佈副本仍追蹤）
+data/intl-market-latest.json
+data/credit-spreads-latest.json
+data/group-timeline.json
+data/tw-rrg-data.json
+data/tw-rrg-alerts.json
