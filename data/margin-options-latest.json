@@ -1,0 +1,61 @@
+{
+  "generatedAt": "2026-08-29T07:13:32.499Z",
+  "tradingDate": "2026-08-28",
+  "margin": {
+    "twseLots": 8892723,
+    "twseAmount": 5671.8,
+    "twsePrevAmount": 5599.2,
+    "dAmount": 72.6,
+    "twseShortLots": 213833,
+    "tpexLots": 2262782,
+    "maintenance": 194.3,
+    "maintenanceCoverage": {
+      "stocks": 1226,
+      "collateral": 11017
+    }
+  },
+  "options": {
+    "dataDate": "2026-08-28",
+    "prevDate": "2026-08-27",
+    "call": {
+      "buy": {
+        "lots": 3830,
+        "amount": 2.9,
+        "dLots": -1444,
+        "dAmount": -0.1
+      },
+      "sell": {
+        "lots": 8111,
+        "amount": 6,
+        "dLots": -656,
+        "dAmount": 0.1
+      }
+    },
+    "put": {
+      "buy": {
+        "lots": 5310,
+        "amount": 1.1,
+        "dLots": -1517,
+        "dAmount": -0.4
+      },
+      "sell": {
+        "lots": 5218,
+        "amount": 0.8,
+        "dLots": -1124,
+        "dAmount": -0.4
+      }
+    },
+    "bull": {
+      "lots": 9048,
+      "dLots": -2568,
+      "amount": 3.7,
+      "dAmount": -0.5
+    },
+    "bear": {
+      "lots": 13421,
+      "dLots": -2173,
+      "amount": 7.1,
+      "dAmount": -0.3
+    }
+  }
+}

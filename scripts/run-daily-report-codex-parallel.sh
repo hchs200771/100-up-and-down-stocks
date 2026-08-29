@@ -193,6 +193,7 @@ log "進度 1/5：已經抓回上市/上櫃資料，交易日 $(market_trading_d
 if stage_enabled fetch; then
   log "進度 1.2/5：拆解加權指數貢獻 (產業 / 個股)"
   run_tsx scripts/build-index-contribution.ts || log "[warn] build-index-contribution.ts failed; 指數貢獻分頁略過，不影響其他區塊"
+  run_tsx scripts/fetch-margin-options.ts || log "[warn] fetch-margin-options.ts failed; 融資與外資選擇權區塊略過，不影響其他區塊"
 
   # 週資料，抓取冪等（同一週已存過就跳過），每天跑只有週六會真的抓。
   log "進度 1.3/5：集保大戶持股週快照 + 背離篩選"

@@ -15,6 +15,40 @@ interface MarketHistoryEntry {
   [key: string]: unknown;
 }
 
+interface MarginHistoryEntry {
+  date: string;
+  marginAmount: number | null;
+  maintenance: number | null;
+}
+
+interface OptionSide {
+  lots: number;
+  amount: number;
+  dLots: number;
+  dAmount: number;
+}
+
+interface MarginOptionsReport {
+  tradingDate: string;
+  margin: {
+    twseLots: number;
+    twseAmount: number;
+    dAmount: number;
+    twseShortLots: number;
+    tpexLots: number | null;
+    maintenance: number | null;
+    maintenanceCoverage: { stocks: number; collateral: number } | null;
+  } | null;
+  options: {
+    dataDate: string;
+    prevDate: string;
+    call: { buy: OptionSide; sell: OptionSide };
+    put: { buy: OptionSide; sell: OptionSide };
+    bull: { lots: number; dLots: number; amount: number; dAmount: number };
+    bear: { lots: number; dLots: number; amount: number; dAmount: number };
+  } | null;
+}
+
 interface ScoreBreakdown {
   trend: number; // A 趨勢基底 0-40
   timing: number; // B 進場時機 0-35
@@ -354,13 +388,20 @@ function renderCategoryBlock(
 }
 
 /**
- * Render a retail net long/short trend chart for the last ~40 trading days.
- * Returns empty string if fewer than 2 data points have retailNetLots.
+ * 市場總覽的主圖：微臺散戶淨多空（長條）＋ 加權指數（線）＋ 融資餘額（線）。
  *
- * Email-safe: CSS diverging bar chart (Y-axis in 萬口).
- * Web-only: SVG dual-axis overlay (retail bars + TAIEX line).
+ * **雙軌渲染**，兩者都要維護：
+ * - 伺服器端先畫一張靜態 SVG（三條資料都畫上去），信件端看到的就是它，沒有 JS 也完整。
+ * - 網頁端 JS 接手後，打開「顯示哪些資料」的 checkbox 與滑鼠 hover 的十字線＋數值框，
+ *   並在勾選改變時整張重畫（Y 軸會跟著只剩下的序列重新縮放）。
+ *
+ * 為什麼 checkbox 預設 `display:none` 由 JS 打開：信件沒有 JS，一排點不動的核取方塊
+ * 比沒有更糟。同理 hover 提示只在網頁版出現。
+ *
+ * 融資餘額只有上市，且是**自己抓的另一條序列**（data/margin-history.json），
+ * 日期軸不一定跟微臺完全對齊；對不上的日子畫成斷點而不是內插，不要自作聰明補值。
  */
-export function renderRetailTrend(history: MarketHistoryEntry[]): string {
+export function renderRetailTrend(history: MarketHistoryEntry[], marginHistory?: MarginHistoryEntry[]): string {
   const points = history
     .filter((h) => h.retailNetLots !== null && h.retailNetLots !== undefined)
     .slice(-40);
@@ -370,8 +411,6 @@ export function renderRetailTrend(history: MarketHistoryEntry[]): string {
   const lotsValues = points.map((p) => p.retailNetLots as number);
   const maxAbsLots = Math.max(...lotsValues.map(Math.abs), 1);
 
-  // Y-axis tick values in lots (nice round numbers in 萬口)
-  // Pick ticks at approximately maxAbsLots, maxAbsLots/2, 0, -maxAbsLots/2, -maxAbsLots
   const tickUnit = (() => {
     const wan = maxAbsLots / 10000;
     if (wan >= 4) return 10000;
@@ -381,144 +420,303 @@ export function renderRetailTrend(history: MarketHistoryEntry[]): string {
   })();
   const maxTick = Math.ceil(maxAbsLots / tickUnit) * tickUnit;
   const halfTick = Math.round(maxTick / 2 / tickUnit) * tickUnit;
-
-  function fmtWan(lots: number): string {
-    return (lots / 10000).toFixed(1) + "萬";
-  }
+  const fmtWan = (lots: number) => `${(lots / 10000).toFixed(1)}萬`;
 
   const firstDate = points[0].date.slice(5);
   const lastDate = points[points.length - 1].date.slice(5);
   const lastLots = lotsValues[lotsValues.length - 1];
   const lastPct = points[points.length - 1].retailNetPct;
   const lastColor = lastLots >= 0 ? "#dc2626" : "#16a34a";
-  const lastSign = lastLots >= 0 ? "+" : "";
-  const lastLotsWan = fmtWan(Math.abs(lastLots));
-  const pctLabel = lastPct !== null && lastPct !== undefined ? ` (${lastPct >= 0 ? "+" : ""}${(lastPct as number).toFixed(2)}%)` : "";
+  const pctLabel =
+    lastPct !== null && lastPct !== undefined ? ` (${lastPct >= 0 ? "+" : ""}${(lastPct as number).toFixed(2)}%)` : "";
   const direction = lastLots >= 0 ? "散戶淨多" : "散戶淨空";
 
-  // Email-visible text stat (Gmail strips the SVG overlay below, so keep a plain line)
   const statLine = `<div style="font-size:12px; margin:6px 0; padding:6px 8px; background:#ffffff; border:1px solid #e2e8f0; border-radius:6px;">
-    最新（${lastDate}）：<strong style="color:${lastColor};">${direction} ${lastSign}${lastLotsWan}口${pctLabel}</strong>
+    最新（${lastDate}）：<strong style="color:${lastColor};">${direction} ${lastLots >= 0 ? "+" : ""}${fmtWan(Math.abs(lastLots))}口${pctLabel}</strong>
     <span style="color:#9ca3af; margin-left:6px;">近${points.length}日 ${firstDate}~${lastDate}</span>
   </div>`;
 
-  // ---- SVG dual-axis overlay (web only; Gmail strips SVG) ----
-  const svgW = 540;
-  const svgH = 160;
-  const padL = 48; // left axis
-  const padR = 52; // right axis (TAIEX)
-  const padT = 16;
-  const padB = 20;
+  // 融資餘額對齊到微臺的日期軸；對不上的留 null（畫成斷點）
+  const marginByDate = new Map((marginHistory ?? []).map((m) => [m.date, m]));
+  const marginSeries = points.map((p) => marginByDate.get(p.date)?.marginAmount ?? null);
+  const maintSeries = points.map((p) => marginByDate.get(p.date)?.maintenance ?? null);
+  const hasMargin = marginSeries.filter((v) => v !== null).length >= 2;
+
+  // ---- 幾何 ----
+  const svgW = 560;
+  const svgH = 190;
+  const padL = 48;
+  const padR = 54;
+  const padT = 14;
+  const padB = 34;
   const innerW = svgW - padL - padR;
   const innerH = svgH - padT - padB;
-
-  const lotsMax = maxTick;
   const lotsMin = -maxTick;
-  const lotsSpan = lotsMax - lotsMin || 1;
+  const lotsSpan = maxTick - lotsMin || 1;
 
-  function xSvg(i: number): number {
-    if (points.length === 1) return padL + innerW / 2;
-    return padL + (i / (points.length - 1)) * innerW;
-  }
-  function ySvgLots(v: number): number {
-    return padT + innerH - ((v - lotsMin) / lotsSpan) * innerH;
-  }
-  const zeroYSvg = ySvgLots(0);
+  const xSvg = (i: number) => (points.length === 1 ? padL + innerW / 2 : padL + (i / (points.length - 1)) * innerW);
+  const ySvgLots = (v: number) => padT + innerH - ((v - lotsMin) / lotsSpan) * innerH;
+  const zeroY = ySvgLots(0);
 
-  // Bars (SVG rects) - retail lots
   const barW = Math.max(2, Math.floor(innerW / points.length) - 1);
-  const svgBars = points.map((p, i) => {
-    const val = p.retailNetLots as number;
-    const x = xSvg(i) - barW / 2;
-    const yTop = val >= 0 ? ySvgLots(val) : zeroYSvg;
-    const h = Math.abs(ySvgLots(val) - zeroYSvg);
-    const col = val >= 0 ? "#dc2626" : "#16a34a";
-    return `<rect x="${x.toFixed(1)}" y="${yTop.toFixed(1)}" width="${barW}" height="${Math.max(1, h).toFixed(1)}" fill="${col}" fill-opacity="0.7"/>`;
-  }).join("");
+  const svgBars = points
+    .map((p, i) => {
+      const val = p.retailNetLots as number;
+      const y = val >= 0 ? ySvgLots(val) : zeroY;
+      const h = Math.max(1, Math.abs(ySvgLots(val) - zeroY));
+      return `<rect x="${(xSvg(i) - barW / 2).toFixed(1)}" y="${y.toFixed(1)}" width="${barW}" height="${h.toFixed(1)}" fill="${val >= 0 ? "#dc2626" : "#16a34a"}" fill-opacity="0.7"/>`;
+    })
+    .join("");
 
-  // Left Y-axis (lots) ticks
-  const leftTicks = [-maxTick, -halfTick, 0, halfTick, maxTick].map((v) => {
-    const y = ySvgLots(v).toFixed(1);
-    const label = v === 0 ? "0" : `${v >= 0 ? "+" : ""}${fmtWan(v)}`;
-    return `<line x1="${padL - 4}" y1="${y}" x2="${padL}" y2="${y}" stroke="#94a3b8" stroke-width="1"/>
+  const leftTicks = [-maxTick, -halfTick, 0, halfTick, maxTick]
+    .map((v) => {
+      const y = ySvgLots(v).toFixed(1);
+      const label = v === 0 ? "0" : `${v >= 0 ? "+" : ""}${fmtWan(v)}`;
+      return `<line x1="${padL - 4}" y1="${y}" x2="${padL}" y2="${y}" stroke="#94a3b8" stroke-width="1"/>
 <text x="${padL - 6}" y="${y}" text-anchor="end" dominant-baseline="middle" font-size="9" fill="#64748b">${label}</text>`;
-  }).join("\n");
+    })
+    .join("\n");
 
-  // TAIEX line (right axis)
-  const taiexPoints = points
-    .map((p, i) => ({ i, v: p.taiexClose as number | null | undefined }))
-    .filter((pt) => pt.v !== null && pt.v !== undefined) as Array<{ i: number; v: number }>;
-
-  let svgTaiex = "";
-  if (taiexPoints.length >= 2) {
-    const taiexMin = Math.min(...taiexPoints.map((t) => t.v));
-    const taiexMax = Math.max(...taiexPoints.map((t) => t.v));
-    const taiexSpan = taiexMax - taiexMin || 1;
-    // Pad 5% top/bottom for aesthetics
-    const taiexLo = taiexMin - taiexSpan * 0.05;
-    const taiexHi = taiexMax + taiexSpan * 0.05;
-    const taiexRange = taiexHi - taiexLo;
-
-    function ySvgTaiex(v: number): number {
-      return padT + innerH - ((v - taiexLo) / taiexRange) * innerH;
-    }
-
-    // Build polyline path (skip gaps)
-    const linePoints = taiexPoints.map((pt) =>
-      `${xSvg(pt.i).toFixed(1)},${ySvgTaiex(pt.v).toFixed(1)}`
-    ).join(" ");
-    svgTaiex = `<polyline points="${linePoints}" fill="none" stroke="#4f46e5" stroke-width="1.8" stroke-linejoin="round"/>`;
-
-    // Right Y-axis (TAIEX) — 3 ticks
-    const taiexTickValues = [taiexLo, (taiexLo + taiexHi) / 2, taiexHi];
-    const rightTicks = taiexTickValues.map((v) => {
-      const y = ySvgTaiex(v).toFixed(1);
-      // Show actual nice value
-      const label = Math.round(v).toLocaleString();
-      return `<line x1="${svgW - padR}" y1="${y}" x2="${svgW - padR + 4}" y2="${y}" stroke="#94a3b8" stroke-width="1"/>
-<text x="${svgW - padR + 6}" y="${y}" text-anchor="start" dominant-baseline="middle" font-size="9" fill="#4f46e5">${label}</text>`;
-    }).join("\n");
-
-    svgTaiex += `\n${rightTicks}`;
-    // Right axis label
-    svgTaiex += `\n<text x="${svgW - 4}" y="${padT + innerH / 2}" text-anchor="middle" dominant-baseline="middle" font-size="9" fill="#4f46e5" transform="rotate(-90 ${svgW - 4} ${padT + innerH / 2})">加權指數</text>`;
+  /** 把任一條序列（可含 null）畫成右軸折線，回傳 polyline 與刻度。 */
+  function rightAxisLine(values: (number | null)[], color: string, offset: number) {
+    const valid = values.map((v, i) => ({ i, v })).filter((p) => p.v !== null) as { i: number; v: number }[];
+    if (valid.length < 2) return { path: "", ticks: "", lo: 0, hi: 1 };
+    const min = Math.min(...valid.map((p) => p.v));
+    const max = Math.max(...valid.map((p) => p.v));
+    const span = max - min || 1;
+    const lo = min - span * 0.08;
+    const hi = max + span * 0.08;
+    const y = (v: number) => padT + innerH - ((v - lo) / (hi - lo)) * innerH;
+    // 斷點：連續的有效值才連線，中間有 null 就斷開，不內插
+    const segs: string[] = [];
+    let cur: string[] = [];
+    values.forEach((v, i) => {
+      if (v === null) {
+        if (cur.length > 1) segs.push(cur.join(" "));
+        cur = [];
+      } else cur.push(`${xSvg(i).toFixed(1)},${y(v).toFixed(1)}`);
+    });
+    if (cur.length > 1) segs.push(cur.join(" "));
+    const path = segs
+      .map((pts) => `<polyline points="${pts}" fill="none" stroke="${color}" stroke-width="1.8" stroke-linejoin="round"/>`)
+      .join("");
+    const ticks = [lo, (lo + hi) / 2, hi]
+      .map((v) => {
+        const yy = y(v).toFixed(1);
+        return `<text x="${svgW - padR + 6 + offset}" y="${yy}" text-anchor="start" dominant-baseline="middle" font-size="9" fill="${color}">${Math.round(v).toLocaleString()}</text>`;
+      })
+      .join("\n");
+    return { path, ticks, lo, hi };
   }
 
-  // Zero line
-  const zeroLine = `<line x1="${padL}" y1="${zeroYSvg.toFixed(1)}" x2="${svgW - padR}" y2="${zeroYSvg.toFixed(1)}" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4,2"/>`;
+  const taiexVals = points.map((p) => (p.taiexClose ?? null) as number | null);
+  const taiexLine = rightAxisLine(taiexVals, "#4f46e5", 0);
+  const marginLine = hasMargin ? rightAxisLine(marginSeries, "#ea580c", 0) : { path: "", ticks: "" };
 
-  // Legend
-  const legendY = svgH - 6;
-  const legend = `<rect x="${padL}" y="${legendY - 8}" width="10" height="8" fill="#dc2626" fill-opacity="0.7"/>
-<text x="${padL + 13}" y="${legendY}" font-size="9" fill="#64748b">散戶淨多空（萬口）</text>
-<line x1="${padL + 100}" y1="${legendY - 4}" x2="${padL + 116}" y2="${legendY - 4}" stroke="#4f46e5" stroke-width="1.8"/>
-<text x="${padL + 119}" y="${legendY}" font-size="9" fill="#4f46e5">加權指數</text>`;
+  const zeroLine = `<line x1="${padL}" y1="${zeroY.toFixed(1)}" x2="${svgW - padR}" y2="${zeroY.toFixed(1)}" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4,2"/>`;
 
-  const svgDual = `<div style="margin-top:8px; overflow-x:auto;">
-    <svg xmlns="http://www.w3.org/2000/svg" width="${svgW}" height="${svgH}" viewBox="0 0 ${svgW} ${svgH}" style="max-width:100%; overflow:visible;">
-      ${svgBars}
-      ${zeroLine}
-      ${leftTicks}
-      ${svgTaiex}
-      ${legend}
-    </svg>
-  </div>`;
+  const legendY = svgH - 16;
+  const legend =
+    `<rect x="${padL}" y="${legendY - 8}" width="10" height="8" fill="#dc2626" fill-opacity="0.7"/>` +
+    `<text x="${padL + 13}" y="${legendY}" font-size="9" fill="#64748b">散戶淨多空（萬口）</text>` +
+    `<line x1="${padL + 108}" y1="${legendY - 4}" x2="${padL + 124}" y2="${legendY - 4}" stroke="#4f46e5" stroke-width="1.8"/>` +
+    `<text x="${padL + 127}" y="${legendY}" font-size="9" fill="#4f46e5">加權指數</text>` +
+    (hasMargin
+      ? `<line x1="${padL + 190}" y1="${legendY - 4}" x2="${padL + 206}" y2="${legendY - 4}" stroke="#ea580c" stroke-width="1.8"/>` +
+        `<text x="${padL + 209}" y="${legendY}" font-size="9" fill="#ea580c">融資餘額（億）</text>`
+      : "");
 
-  // Footer link (for email readers to jump to web)
-  const footerLink = `<div style="font-size:11px; color:#94a3b8; margin-top:6px; text-align:center;">
-    <a href="https://hchs200771.github.io/100-up-and-down-stocks/" style="color:#4f46e5;">看完整互動圖表（含加權指數疊圖）→</a>
-  </div>`;
+  // 網頁版 hover 用的資料；短 key 控制體積
+  const payload = {
+    d: points.map((p) => p.date.slice(5)),
+    r: lotsValues,
+    p: points.map((p) => (p.retailNetPct ?? null)),
+    t: taiexVals,
+    m: hasMargin ? marginSeries : null,
+    n: hasMargin ? maintSeries : null,
+    g: { w: svgW, h: svgH, l: padL, rr: padR, t: padT, b: padB, zero: zeroY, min: lotsMin, span: lotsSpan, bw: barW },
+  };
 
-  return `<div style="background-color:#f8fafc; border:1px solid #e2e8f0; padding:12px 15px; border-radius:8px; margin-top:10px; margin-bottom:0;">
-    <div style="font-size:12px; font-weight:bold; color:#334155; margin-bottom:4px;">微臺散戶淨多空趨勢（近${points.length}日，淨口數）</div>
-    <div style="font-size:11px; color:#6b7280; margin-bottom:6px;">正值=散戶偏多（紅），負值=散戶偏空（綠）；單位：萬口</div>
+  const cb = (id: string, label: string, color: string, checked: boolean) =>
+    `<label style="font-size:11px; color:#475569; margin-right:12px; cursor:pointer; white-space:nowrap;">
+      <input type="checkbox" class="rt-cb" data-k="${id}"${checked ? " checked" : ""} style="vertical-align:-1px; margin-right:3px; accent-color:${color};">${label}
+    </label>`;
+
+  return `<div style="background-color:#f8fafc; border:1px solid #e2e8f0; padding:12px 15px; border-radius:8px; margin-top:10px; margin-bottom:0;" class="rt-root">
+    <div style="font-size:12px; font-weight:bold; color:#334155; margin-bottom:4px;">市場情緒趨勢（近${points.length}日）</div>
+    <div style="font-size:11px; color:#6b7280; margin-bottom:6px;">長條＝微臺散戶淨多空（正值紅＝偏多、負值綠＝偏空，單位萬口）；折線＝加權指數與上市融資餘額</div>
     ${statLine}
-    ${svgDual}
-    ${footerLink}
+    <div class="rt-ctrl" style="display:none; margin:4px 0 2px;">
+      ${cb("r", "微臺散戶口數", "#dc2626", true)}
+      ${cb("t", "加權指數", "#4f46e5", true)}
+      ${hasMargin ? cb("m", "融資餘額", "#ea580c", false) : ""}
+      ${hasMargin ? cb("n", "融資維持率", "#0891b2", false) : ""}
+    </div>
+    <div style="margin-top:8px; overflow-x:auto; position:relative;" class="rt-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" width="${svgW}" height="${svgH}" viewBox="0 0 ${svgW} ${svgH}" style="max-width:100%; overflow:visible;" class="rt-svg">
+        <g class="rt-bars">${svgBars}</g>
+        ${zeroLine}
+        ${leftTicks}
+        <g class="rt-taiex">${taiexLine.path}${taiexLine.ticks}</g>
+        <g class="rt-margin" style="display:none">${marginLine.path}</g>
+        <g class="rt-hover" style="display:none"><line class="rt-vline" y1="${padT}" y2="${padT + innerH}" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3,2"/></g>
+        <g class="rt-legend">${legend}</g>
+      </svg>
+      <div class="rt-tip" style="display:none; position:absolute; pointer-events:none; background:rgba(15,23,42,.92); color:#fff; font-size:11px; line-height:1.6; padding:6px 8px; border-radius:5px; white-space:nowrap; z-index:5;"></div>
+    </div>
+    <div style="font-size:11px; color:#94a3b8; margin-top:6px;" class="rt-hint">
+      融資餘額與維持率僅含<strong>上市</strong>；維持率是用「Σ個股融資餘額張數×收盤價 ÷ 融資金額」自算的，與券商公布值會有零點幾個百分點差異，看趨勢與 166%／130% 兩條線即可。
+    </div>
+    <script type="application/json" class="rt-data">${JSON.stringify(payload).replace(/</g, "\\u003c")}</script>
+    <script>
+    (function(){
+      var root=document.currentScript&&document.currentScript.parentNode; if(!root) return;
+      var raw=root.querySelector('.rt-data'); if(!raw) return;
+      var D=JSON.parse(raw.textContent), G=D.g;
+      var svg=root.querySelector('.rt-svg'), wrap=root.querySelector('.rt-wrap'), tip=root.querySelector('.rt-tip');
+      var ctrl=root.querySelector('.rt-ctrl'); if(ctrl) ctrl.style.display='block';
+      var on={r:true,t:true,m:false,n:false};
+      var innerW=G.w-G.l-G.rr, innerH=G.h-G.t-G.b;
+      var COL={r:'#dc2626',t:'#4f46e5',m:'#ea580c',n:'#0891b2'};
+      var NAME={r:'散戶淨多空',t:'加權指數',m:'融資餘額',n:'融資維持率'};
+      function x(i){return D.d.length===1?G.l+innerW/2:G.l+(i/(D.d.length-1))*innerW}
+      function fmtWan(v){return (v/10000).toFixed(1)+'萬'}
+      function seg(vals,color,lo,hi){
+        var y=function(v){return G.t+innerH-((v-lo)/(hi-lo))*innerH};
+        var out='',cur=[];
+        for(var i=0;i<vals.length;i++){
+          if(vals[i]===null){ if(cur.length>1) out+='<polyline points="'+cur.join(' ')+'" fill="none" stroke="'+color+'" stroke-width="1.8" stroke-linejoin="round"/>'; cur=[]; }
+          else cur.push(x(i).toFixed(1)+','+y(vals[i]).toFixed(1));
+        }
+        if(cur.length>1) out+='<polyline points="'+cur.join(' ')+'" fill="none" stroke="'+color+'" stroke-width="1.8" stroke-linejoin="round"/>';
+        return out;
+      }
+      function range(vals){
+        var v=vals.filter(function(a){return a!==null});
+        if(v.length<2) return null;
+        var mn=Math.min.apply(null,v), mx=Math.max.apply(null,v), sp=(mx-mn)||1;
+        return [mn-sp*0.08, mx+sp*0.08];
+      }
+      function paint(){
+        // 長條
+        var bars='';
+        if(on.r){
+          for(var i=0;i<D.r.length;i++){
+            var v=D.r[i], yv=G.t+innerH-((v-G.min)/G.span)*innerH;
+            var top=v>=0?yv:G.zero, h=Math.max(1,Math.abs(yv-G.zero));
+            bars+='<rect x="'+(x(i)-G.bw/2).toFixed(1)+'" y="'+top.toFixed(1)+'" width="'+G.bw+'" height="'+h.toFixed(1)+'" fill="'+(v>=0?'#dc2626':'#16a34a')+'" fill-opacity="0.7"/>';
+          }
+        }
+        root.querySelector('.rt-bars').innerHTML=bars;
+        // 右軸折線：一次只給一條完整刻度，多條時只畫線避免刻度打架
+        var lines=[], keys=['t','m','n'], drawn=[];
+        keys.forEach(function(k){
+          var vals=D[k]; if(!on[k]||!vals) return;
+          var r=range(vals); if(!r) return;
+          drawn.push({k:k,lo:r[0],hi:r[1]});
+          lines.push(seg(vals,COL[k],r[0],r[1]));
+        });
+        var ticks='';
+        if(drawn.length===1){
+          var d0=drawn[0], yy=function(v){return G.t+innerH-((v-d0.lo)/(d0.hi-d0.lo))*innerH};
+          [d0.lo,(d0.lo+d0.hi)/2,d0.hi].forEach(function(v){
+            ticks+='<text x="'+(G.w-G.rr+6)+'" y="'+yy(v).toFixed(1)+'" text-anchor="start" dominant-baseline="middle" font-size="9" fill="'+COL[d0.k]+'">'+(d0.k==='n'?v.toFixed(0)+'%':Math.round(v).toLocaleString())+'</text>';
+          });
+        }
+        root.querySelector('.rt-taiex').innerHTML=lines.join('')+ticks;
+        root.querySelector('.rt-margin').innerHTML='';
+        // 圖例
+        var lg='', lx=G.l, ly=G.h-16;
+        if(on.r){ lg+='<rect x="'+lx+'" y="'+(ly-8)+'" width="10" height="8" fill="#dc2626" fill-opacity="0.7"/><text x="'+(lx+13)+'" y="'+ly+'" font-size="9" fill="#64748b">散戶淨多空（萬口）</text>'; lx+=122; }
+        keys.forEach(function(k){
+          if(!on[k]||!D[k]) return;
+          lg+='<line x1="'+lx+'" y1="'+(ly-4)+'" x2="'+(lx+16)+'" y2="'+(ly-4)+'" stroke="'+COL[k]+'" stroke-width="1.8"/><text x="'+(lx+19)+'" y="'+ly+'" font-size="9" fill="'+COL[k]+'">'+NAME[k]+'</text>';
+          lx+=NAME[k].length*9+30;
+        });
+        root.querySelector('.rt-legend').innerHTML=lg;
+      }
+      function nearest(clientX){
+        var box=svg.getBoundingClientRect();
+        var sx=(clientX-box.left)/box.width*G.w;
+        var best=0,bd=1e9;
+        for(var i=0;i<D.d.length;i++){var dd=Math.abs(x(i)-sx); if(dd<bd){bd=dd;best=i}}
+        return best;
+      }
+      var hov=root.querySelector('.rt-hover'), vline=root.querySelector('.rt-vline');
+      function show(e){
+        var i=nearest(e.clientX);
+        hov.style.display=''; vline.setAttribute('x1',x(i).toFixed(1)); vline.setAttribute('x2',x(i).toFixed(1));
+        var h='<div style="color:#cbd5e1;margin-bottom:2px;">'+D.d[i]+'</div>';
+        if(on.r) h+='<div><span style="color:'+(D.r[i]>=0?'#f87171':'#4ade80')+'">■</span> 散戶淨'+(D.r[i]>=0?'多':'空')+' '+(D.r[i]>=0?'+':'-')+fmtWan(Math.abs(D.r[i]))+'口'+(D.p[i]!==null?'（'+(D.p[i]>=0?'+':'')+D.p[i].toFixed(2)+'%）':'')+'</div>';
+        if(on.t&&D.t[i]!==null) h+='<div><span style="color:#818cf8">—</span> 加權 '+D.t[i].toLocaleString()+'</div>';
+        if(on.m&&D.m&&D.m[i]!==null) h+='<div><span style="color:#fb923c">—</span> 融資 '+D.m[i].toLocaleString()+' 億</div>';
+        if(on.n&&D.n&&D.n[i]!==null) h+='<div><span style="color:#22d3ee">—</span> 維持率 '+D.n[i].toFixed(1)+'%</div>';
+        tip.innerHTML=h; tip.style.display='block';
+        var box=svg.getBoundingClientRect(), wb=wrap.getBoundingClientRect();
+        var px=box.left-wb.left+x(i)/G.w*box.width;
+        tip.style.left=Math.min(Math.max(0,px+10), wrap.clientWidth-tip.offsetWidth-4)+'px';
+        tip.style.top='6px';
+      }
+      svg.addEventListener('mousemove',show);
+      svg.addEventListener('mouseleave',function(){hov.style.display='none';tip.style.display='none'});
+      [].forEach.call(root.querySelectorAll('.rt-cb'),function(c){
+        c.addEventListener('change',function(){ on[c.getAttribute('data-k')]=c.checked; paint(); });
+      });
+      paint();
+    })();
+    </script>
   </div>`;
 }
 
-function renderMarketDashboard(market: MarketBlock | null | undefined, retailHistory?: MarketHistoryEntry[]): string {
+/**
+ * 外資臺指選擇權未平倉的四個象限。
+ *
+ * **選擇權的多空不能只看買方**：賣方是收權利金、賭「不會漲過去／不會跌破」，
+ * 所以「賣出賣權（Put 賣方）」是偏多，「賣出買權（Call 賣方）」才是偏空。
+ * 只看「外資買了多少 Call」會把避險部位讀成看多，這是最常見的誤讀，所以這裡
+ * 一定要四格並列、再給一行合成的多空對比，不要只挑其中一格講。
+ *
+ * 用未平倉而不是當日交易口數：當日交易含大量價差單與隔日沖，方向性意義弱。
+ */
+function renderForeignOptions(o: MarginOptionsReport["options"] | null | undefined): string {
+  if (!o) return "";
+  const d = (n: number, unit: string, digits = 0) => {
+    const c = n > 0 ? "#dc2626" : n < 0 ? "#16a34a" : "#9ca3af";
+    return `<span style="color:${c};">${n >= 0 ? "+" : ""}${n.toLocaleString(undefined, { maximumFractionDigits: digits })}${unit}</span>`;
+  };
+  const cell = (label: string, tone: "bull" | "bear", s: OptionSide) => {
+    const bg = tone === "bull" ? "#fef2f2" : "#f0fdf4";
+    const bd = tone === "bull" ? "#fecaca" : "#bbf7d0";
+    const fg = tone === "bull" ? "#991b1b" : "#166534";
+    return `<td style="padding:6px 8px; background:${bg}; border:1px solid ${bd}; border-radius:6px; vertical-align:top;">
+      <div style="font-size:11px; color:${fg}; font-weight:bold; margin-bottom:2px;">${label}</div>
+      <div style="font-size:13px; font-weight:bold; color:#334155;">${s.lots.toLocaleString()} 口 <span style="font-size:11px; font-weight:normal;">${d(s.dLots, "")}</span></div>
+      <div style="font-size:11px; color:#6b7280;">${s.amount.toLocaleString()} 億 <span>${d(s.dAmount, "", 1)}</span></div>
+    </td>`;
+  };
+  const net = o.bull.lots - o.bear.lots;
+  const netD = o.bull.dLots - o.bear.dLots;
+  const stance = net > 0 ? "偏多" : net < 0 ? "偏空" : "中性";
+  const stanceColor = net > 0 ? "#dc2626" : net < 0 ? "#16a34a" : "#6b7280";
+
+  return `<div style="background:#ffffff; border:1px solid #e2e8f0; padding:12px 15px; border-radius:8px; margin-top:10px;">
+    <div style="font-size:12px; font-weight:bold; color:#334155; margin-bottom:2px;">外資臺指選擇權未平倉（${o.dataDate}，括號為對 ${o.prevDate} 的增減）</div>
+    <div style="font-size:11px; color:#6b7280; margin-bottom:8px;">
+      看多 = 買買權 + 賣賣權；看空 = 賣買權 + 買賣權。<strong>賣方是收權利金賭不會發生</strong>，所以賣賣權算偏多、賣買權算偏空。
+    </div>
+    <table style="width:100%; border-collapse:separate; border-spacing:4px; table-layout:fixed;">
+      <tr>${cell("買進買權 Call 買方（偏多）", "bull", o.call.buy)}${cell("賣出買權 Call 賣方（偏空）", "bear", o.call.sell)}</tr>
+      <tr>${cell("賣出賣權 Put 賣方（偏多）", "bull", o.put.sell)}${cell("買進賣權 Put 買方（偏空）", "bear", o.put.buy)}</tr>
+    </table>
+    <div style="font-size:12px; color:#334155; margin-top:8px; padding:6px 8px; background:#f8fafc; border-radius:6px;">
+      合計：看多 <strong>${o.bull.lots.toLocaleString()}</strong> 口（${o.bull.amount} 億）${d(o.bull.dLots, "")}　·　
+      看空 <strong>${o.bear.lots.toLocaleString()}</strong> 口（${o.bear.amount} 億）${d(o.bear.dLots, "")}　·　
+      淨部位 <strong style="color:${stanceColor};">${stance} ${Math.abs(net).toLocaleString()} 口</strong>（日變化 ${d(netD, " 口")}）
+    </div>
+  </div>`;
+}
+
+function renderMarketDashboard(market: MarketBlock | null | undefined, retailHistory?: MarketHistoryEntry[], marginHistory?: MarginHistoryEntry[], mo?: MarginOptionsReport | null): string {
   if (!market) return "";
 
   const rows: string[] = [];
@@ -563,9 +761,27 @@ function renderMarketDashboard(market: MarketBlock | null | undefined, retailHis
     rows.push(`<tr><td style="padding: 4px 8px; color: #6b7280;">微臺散戶淨多空</td><td style="padding: 4px 8px; color: ${netColor}; font-weight: bold;" colspan="2">${netPct}%　<span style="font-size: 11px; color: #9ca3af;">(${mfr.dataDate})</span></td></tr>`);
   }
 
+  // 融資餘額／維持率。與盤後資料同一天才顯示，避免把昨天的數字混進今天的儀表板。
+  const mg = mo?.margin;
+  if (mg) {
+    const dColor = mg.dAmount >= 0 ? "#dc2626" : "#16a34a";
+    const dSign = mg.dAmount >= 0 ? "+" : "";
+    // 166% 是追繳線、130% 是斷頭線。整體維持率離這兩條還很遠時只是背景資訊，
+    // 逼近時才是風險訊號，所以低於門檻才變色。
+    const mt = mg.maintenance;
+    const mtColor = mt === null ? "#9ca3af" : mt < 140 ? "#dc2626" : mt < 166 ? "#ea580c" : "#334155";
+    rows.push(
+      `<tr><td style="padding: 4px 8px; color: #6b7280;">融資餘額(上市)</td><td style="padding: 4px 8px; font-weight: bold;">${mg.twseAmount.toLocaleString()} 億</td><td style="padding: 4px 8px; color: ${dColor}; font-weight: bold;">${dSign}${mg.dAmount.toFixed(1)} 億<span style="color:#9ca3af; font-weight:normal; font-size:11px;">　${mg.twseLots.toLocaleString()} 張${mg.tpexLots ? `／上櫃 ${mg.tpexLots.toLocaleString()} 張` : ""}</span></td></tr>`,
+    );
+    rows.push(
+      `<tr><td style="padding: 4px 8px; color: #6b7280;">融資維持率</td><td style="padding: 4px 8px; color: ${mtColor}; font-weight: bold;" colspan="2">${mt === null ? "—" : `${mt.toFixed(1)}%`}<span style="color:#9ca3af; font-weight:normal; font-size:11px;">　自算值，追繳線 166%／斷頭線 130%${mg.maintenanceCoverage ? `　涵蓋 ${mg.maintenanceCoverage.stocks} 檔` : ""}</span></td></tr>`,
+    );
+  }
+
   if (rows.length === 0) return "";
 
-  const trendHtml = retailHistory ? renderRetailTrend(retailHistory) : "";
+  const trendHtml = retailHistory ? renderRetailTrend(retailHistory, marginHistory) : "";
+  const optionsHtml = renderForeignOptions(mo?.options);
 
   return `<div style="background-color: #f8fafc; border: 1px solid #e2e8f0; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
   <h3 style="margin-top: 0; color: #334155;">📊 市場儀表板</h3>
@@ -573,6 +789,7 @@ function renderMarketDashboard(market: MarketBlock | null | undefined, retailHis
     ${rows.join("\n    ")}
   </table>
   ${trendHtml}
+  ${optionsHtml}
 </div>`;
 }
 
@@ -1530,7 +1747,7 @@ function renderHome(labels: string[], date: string): string {
     </div>`;
 }
 
-function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName: Map<string, string>, market?: MarketBlock | null, retailHistory?: MarketHistoryEntry[], contrib?: IndexContribution | null, tdcc?: DivergenceReport | null): string {
+function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName: Map<string, string>, market?: MarketBlock | null, retailHistory?: MarketHistoryEntry[], contrib?: IndexContribution | null, tdcc?: DivergenceReport | null, marginHistory?: MarginHistoryEntry[], mo?: MarginOptionsReport | null): string {
   // 有 call 標記的族群排前面（順勢 → 觀察 → 反轉），其餘維持原順序（檔數多→少）
   const callRank: Record<string, number> = { 順勢: 0, 觀察: 1, 反轉: 2 };
   const sortedGainers = [...a.gainers].sort(
@@ -1550,7 +1767,7 @@ function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName
       <p style="line-height: 1.7; margin-bottom: 0; color: #7c2d12;">${a.playbook.replace(/\n/g, "<br>")}</p>
     </div>`
     : "";
-  const marketDashboardHtml = renderMarketDashboard(market, retailHistory);
+  const marketDashboardHtml = renderMarketDashboard(market, retailHistory, marginHistory, mo);
   const intlHtml = renderIntl(a.intl);
   const rrgHtml = renderRrg(a.rrg);
   const contribHtml = renderIndexContribution(contrib);
@@ -1703,7 +1920,8 @@ async function sendEmail(html: string): Promise<void> {
 }
 
 async function main() {
-  const inputPath = process.argv[2] ?? "data/analysis-latest.json";
+  // 略過旗標，第一個非 -- 開頭的參數才是輸入檔
+  const inputPath = process.argv.slice(2).find((a) => !a.startsWith("--")) ?? "data/analysis-latest.json";
   const resolved = resolve(process.cwd(), inputPath);
   if (!existsSync(resolved)) {
     console.error(`Analysis file not found: ${resolved}`);
@@ -1741,6 +1959,31 @@ async function main() {
 
   // Load market history for retail trend chart
   const marketHistoryPath = resolve(process.cwd(), "data/market-history.json");
+  // 融資序列（互動圖的第三條線）與當日融資／外資選擇權快照。
+  // 兩者由 fetch-margin-options.ts 產出，缺檔就退回沒有這些資料的版本。
+  let marginHistory: MarginHistoryEntry[] | undefined;
+  const marginHistoryPath = resolve(process.cwd(), "data/margin-history.json");
+  if (existsSync(marginHistoryPath)) {
+    try {
+      marginHistory = JSON.parse(readFileSync(marginHistoryPath, "utf-8"));
+    } catch {
+      console.warn("[warn] margin-history.json 解析失敗，圖表少一條融資線");
+    }
+  }
+  let marginOptions: MarginOptionsReport | null = null;
+  const marginOptionsPath = resolve(process.cwd(), "data/margin-options-latest.json");
+  if (existsSync(marginOptionsPath)) {
+    try {
+      const parsed: MarginOptionsReport = JSON.parse(readFileSync(marginOptionsPath, "utf-8"));
+      // 新鮮度檢查：交易所在收盤前／假日會回上一個交易日，日期對不上就不顯示，
+      // 免得把昨天的融資餘額掛在今天的儀表板上
+      if (parsed.tradingDate === analysis.date) marginOptions = parsed;
+      else console.warn(`[warn] margin-options 的日期 ${parsed.tradingDate} 與分析日 ${analysis.date} 不符，略過`);
+    } catch {
+      console.warn("[warn] margin-options-latest.json 解析失敗");
+    }
+  }
+
   let retailHistory: MarketHistoryEntry[] | undefined;
   if (existsSync(marketHistoryPath)) {
     try {
@@ -1777,7 +2020,7 @@ async function main() {
     }
   }
 
-  const html = renderHtml(analysis, stockMap, codeByName, marketBlock, retailHistory, contrib, tdcc);
+  const html = renderHtml(analysis, stockMap, codeByName, marketBlock, retailHistory, contrib, tdcc, marginHistory, marginOptions);
 
   const htmlOutPath = resolve(process.cwd(), "data/report-latest.html");
   writeFileSync(htmlOutPath, html, "utf-8");
@@ -1785,6 +2028,8 @@ async function main() {
 
   updateHistory(analysis);
 
+  // 注意：.env.local 是用 override:true 載入的，所以「GAS_WEBHOOK_URL= 前綴」擋不掉寄信，
+  // 一定要用這個旗標（而且旗標必須能單獨當第一個參數傳，見上方 inputPath 的處理）。
   const shouldSend = !process.argv.includes("--no-email");
   if (shouldSend) {
     await sendEmail(html);

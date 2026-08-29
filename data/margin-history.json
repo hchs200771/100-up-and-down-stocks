@@ -1,0 +1,262 @@
+[
+  {
+    "date": "2026-06-16",
+    "marginAmount": 5713.1,
+    "maintenance": 199.6
+  },
+  {
+    "date": "2026-06-17",
+    "marginAmount": 5839.1,
+    "maintenance": 201.5
+  },
+  {
+    "date": "2026-06-18",
+    "marginAmount": 5930.5,
+    "maintenance": 205.4
+  },
+  {
+    "date": "2026-06-22",
+    "marginAmount": 6050.4,
+    "maintenance": 208.6
+  },
+  {
+    "date": "2026-06-23",
+    "marginAmount": 5939.3,
+    "maintenance": 201.9
+  },
+  {
+    "date": "2026-06-24",
+    "marginAmount": 6074.6,
+    "maintenance": 200.4
+  },
+  {
+    "date": "2026-06-25",
+    "marginAmount": 6110,
+    "maintenance": 201.3
+  },
+  {
+    "date": "2026-06-26",
+    "marginAmount": 5909.3,
+    "maintenance": 191.1
+  },
+  {
+    "date": "2026-06-29",
+    "marginAmount": 5942.3,
+    "maintenance": 192.2
+  },
+  {
+    "date": "2026-06-30",
+    "marginAmount": 6116.5,
+    "maintenance": 198.9
+  },
+  {
+    "date": "2026-07-01",
+    "marginAmount": 6095,
+    "maintenance": 198.2
+  },
+  {
+    "date": "2026-07-02",
+    "marginAmount": 6208.4,
+    "maintenance": 197.4
+  },
+  {
+    "date": "2026-07-03",
+    "marginAmount": 6308.1,
+    "maintenance": 197.6
+  },
+  {
+    "date": "2026-07-06",
+    "marginAmount": 6313.4,
+    "maintenance": 194.4
+  },
+  {
+    "date": "2026-07-07",
+    "marginAmount": 6109.5,
+    "maintenance": 186.1
+  },
+  {
+    "date": "2026-07-08",
+    "marginAmount": 6138.2,
+    "maintenance": 186.8
+  },
+  {
+    "date": "2026-07-09",
+    "marginAmount": 6196.5,
+    "maintenance": 186.6
+  },
+  {
+    "date": "2026-07-13",
+    "marginAmount": 6183,
+    "maintenance": 184
+  },
+  {
+    "date": "2026-07-14",
+    "marginAmount": 6040.3,
+    "maintenance": 180.7
+  },
+  {
+    "date": "2026-07-15",
+    "marginAmount": 6153.7,
+    "maintenance": 186.8
+  },
+  {
+    "date": "2026-07-16",
+    "marginAmount": 6155.8,
+    "maintenance": 182.9
+  },
+  {
+    "date": "2026-07-17",
+    "marginAmount": 5879.6,
+    "maintenance": 170.5
+  },
+  {
+    "date": "2026-07-20",
+    "marginAmount": 5690.4,
+    "maintenance": 167.5
+  },
+  {
+    "date": "2026-07-21",
+    "marginAmount": 5765,
+    "maintenance": 175.4
+  },
+  {
+    "date": "2026-07-22",
+    "marginAmount": 5828.2,
+    "maintenance": 181.2
+  },
+  {
+    "date": "2026-07-23",
+    "marginAmount": 5826.3,
+    "maintenance": 179.8
+  },
+  {
+    "date": "2026-07-24",
+    "marginAmount": 5770.6,
+    "maintenance": 173.1
+  },
+  {
+    "date": "2026-07-27",
+    "marginAmount": 5686.6,
+    "maintenance": 173.5
+  },
+  {
+    "date": "2026-07-28",
+    "marginAmount": 5455.3,
+    "maintenance": 163.1
+  },
+  {
+    "date": "2026-07-29",
+    "marginAmount": 5070.1,
+    "maintenance": 158
+  },
+  {
+    "date": "2026-07-30",
+    "marginAmount": 4938.7,
+    "maintenance": 156.7
+  },
+  {
+    "date": "2026-07-31",
+    "marginAmount": 5074.6,
+    "maintenance": 169.8
+  },
+  {
+    "date": "2026-08-03",
+    "marginAmount": 5147.6,
+    "maintenance": 176.6
+  },
+  {
+    "date": "2026-08-04",
+    "marginAmount": 5211.3,
+    "maintenance": 181.7
+  },
+  {
+    "date": "2026-08-05",
+    "marginAmount": 5234.9,
+    "maintenance": 186.7
+  },
+  {
+    "date": "2026-08-06",
+    "marginAmount": 5328,
+    "maintenance": 188.2
+  },
+  {
+    "date": "2026-08-07",
+    "marginAmount": 5376.6,
+    "maintenance": 184.8
+  },
+  {
+    "date": "2026-08-10",
+    "marginAmount": 5453,
+    "maintenance": 189.8
+  },
+  {
+    "date": "2026-08-11",
+    "marginAmount": 5441.5,
+    "maintenance": 190.5
+  },
+  {
+    "date": "2026-08-12",
+    "marginAmount": 5480.8,
+    "maintenance": 192.7
+  },
+  {
+    "date": "2026-08-13",
+    "marginAmount": 5497.8,
+    "maintenance": 194.7
+  },
+  {
+    "date": "2026-08-14",
+    "marginAmount": 5470.6,
+    "maintenance": 194.1
+  },
+  {
+    "date": "2026-08-17",
+    "marginAmount": 5501,
+    "maintenance": 194.9
+  },
+  {
+    "date": "2026-08-18",
+    "marginAmount": 5470.1,
+    "maintenance": 190.3
+  },
+  {
+    "date": "2026-08-19",
+    "marginAmount": 5481.9,
+    "maintenance": 187.2
+  },
+  {
+    "date": "2026-08-20",
+    "marginAmount": 5484.1,
+    "maintenance": 188.9
+  },
+  {
+    "date": "2026-08-21",
+    "marginAmount": 5469.4,
+    "maintenance": 187.4
+  },
+  {
+    "date": "2026-08-24",
+    "marginAmount": 5452.6,
+    "maintenance": 185.6
+  },
+  {
+    "date": "2026-08-25",
+    "marginAmount": 5469.4,
+    "maintenance": 188.2
+  },
+  {
+    "date": "2026-08-26",
+    "marginAmount": 5548,
+    "maintenance": 193.3
+  },
+  {
+    "date": "2026-08-27",
+    "marginAmount": 5599.2,
+    "maintenance": 193.2
+  },
+  {
+    "date": "2026-08-28",
+    "marginAmount": 5671.8,
+    "maintenance": 194.3
+  }
+]

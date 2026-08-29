@@ -195,6 +195,7 @@ if stage_enabled fetch; then
 
   log "進度 1.8/5：拆解加權指數貢獻 (產業 / 個股)"
   run_tsx scripts/build-index-contribution.ts || log "[warn] build-index-contribution.ts failed; 指數貢獻分頁略過，不影響其他區塊"
+  run_tsx scripts/fetch-margin-options.ts || log "[warn] fetch-margin-options.ts failed; 融資與外資選擇權區塊略過，不影響其他區塊"
 
   # 集保大戶持股是週資料（週五結算、週六才有）。抓取本身是冪等的：同一週已存過就跳過，
   # 所以每天跑也只有週六那次會真的抓，其餘是 no-op。
