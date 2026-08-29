@@ -1696,13 +1696,60 @@ const TAB_GUIDE: Record<string, string> = {
 const READ_ORDER = ["🌐 國際情勢", "📊 市場總覽", "⚖️ 指數貢獻", "🔥 上漲族群", "🔄 族群輪動", "🏦 大戶籌碼", "🎯 操作建議"];
 
 /**
+ * Email 版的段落順序，與網頁版（READ_ORDER）**刻意不同**。
+ *
+ * Gmail 在 102KB 就會截斷信件、把後面收進「查看完整訊息」。這份報告 300KB 以上，
+ * 一定會被截，所以重點不是塞進 102KB（辦不到，光上漲族群就 90KB 以上），而是
+ * **讓截斷落在不重要的地方**。
+ *
+ * 網頁版的動線把「指數貢獻」排在「上漲族群」前面（先看大盤是誰推的，再看個股），
+ * 那在有分頁的網頁上很合理；但在信件裡它是 50KB 的實體段落，會把最重要的族群內容
+ * 整個推到截斷線之後。所以信件版把上漲族群提到市場總覽之後，圖表重的段落往後放。
+ *
+ * 改動線時**兩張表都要看**：READ_ORDER 管網頁的分頁與「建議第 N 站」徽章，
+ * 這張只管信件的段落順序。
+ */
+const EMAIL_ORDER = ["🌐 國際情勢", "📊 市場總覽", "🔥 上漲族群", "🎯 操作建議", "⚖️ 指數貢獻", "🔄 族群輪動", "🏦 大戶籌碼"];
+
+/**
+ * 把完整版 HTML 壓成信件版。**只拿掉信件本來就顯示不出來的東西**，不動看得見的內容。
+ *
+ * - `<script>`：信件用戶端一律剝除，留著純粹是體積（含 tab 切換、圖表互動、
+ *   大戶籌碼那 13KB 的 JSON payload）。
+ * - 標籤之間的縮排空白：HTML 是用樣板字串寫的，縮排佔了可觀比例。
+ * - inline style 裡冒號與分號後的空白：每個 chip 的 style 字串會重複兩百次。
+ *
+ * **不要**在這裡拿掉 `<svg>`：Gmail 確實不支援，但 Apple Mail 等用戶端畫得出來，
+ * 刪掉是拿別的用戶端的體驗換 Gmail 的體積，不划算（實測也只省 27KB，救不了 102KB）。
+ */
+function slimForEmail(html: string): string {
+  return html
+    .replace(/<script[\s\S]*?<\/script>/g, "")
+    // style="..." 內部壓縮：只動屬性值裡的空白，不碰標籤外的文字內容
+    .replace(/style="([^"]*)"/g, (_m, css: string) => `style="${css.replace(/\s*([:;])\s*/g, "$1").replace(/;$/, "").trim()}"`)
+    // 縮排空白壓成**一個空格**，不是刪掉。標籤之間的空白在 HTML 裡是有意義的內容，
+    // 瀏覽器本來就會把它折成一個空格；刪掉會讓相鄰的行內元素黏在一起。
+    // 實測踩過兩次：`<strong>華新科</strong> <span>2492</span>` → 「華新科2492」、
+    // 「領先 9 IC設計」→「領先 9IC設計」。壓成一個空格則渲染結果完全不變。
+    .replace(/>[ \t]*\n[ \t\n]*</g, "> <")
+    .replace(/[ \t]{2,}/g, " ");
+}
+
+/**
  * 總覽分頁：介紹每個分頁的用途並可一鍵跳過去。
  *
  * 刻意做成漸進增強——這裡只輸出純文字卡片，沒有 <a>、沒有「前往」字樣。
  * 有 JS 時（網頁版）由下方 script 把卡片變成可點按鈕並補上箭頭；
  * 沒有 JS 時（Email，所有分頁本來就依序攤開）它就是一份開頭導讀，不會出現點不動的死連結。
  */
-function renderHome(labels: string[], date: string): string {
+/**
+ * @param order 這份輸出實際採用的段落順序（網頁是 READ_ORDER、信件是 EMAIL_ORDER）。
+ *   **一定要跟外層排序用的是同一份表**，否則「建議第 N 站」會跟卡片與段落的實際
+ *   先後對不上——之前就發生過徽章順序 4,2,3,5,1 的情況。
+ */
+function renderHome(labels: string[], date: string, order: string[] = READ_ORDER): string {
+  // 動線上「今天真的有輸出」的段落，卡片徽章與建議動線都以它為準
+  const steps = order.filter((l) => labels.includes(l));
   // labels 進來時已由 sortByReadOrder 排好，這裡直接沿用——分頁列、面板順序、
   // 卡片順序必須是同一份順序，否則「建議第 N 站」會跟上方分頁列對不起來。
   const ordered = labels;
@@ -1715,7 +1762,9 @@ function renderHome(labels: string[], date: string): string {
   const cards = ordered
     .map((label) => {
       const desc = TAB_GUIDE[label] ?? "";
-      const step = READ_ORDER.indexOf(label);
+      // 用「在實際存在的段落之中排第幾」而不是在 order 表裡的索引：
+      // 動線上的段落可能整個缺席（例如今天沒有操作建議），用表索引會跳號（1,2,3,5,6）。
+      const step = steps.indexOf(label);
       const badge = step >= 0
         ? `<span style="display:inline-block; background:#eef2ff; color:#4f46e5; font-size:10px; font-weight:bold; border-radius:999px; padding:1px 6px; margin-left:5px; vertical-align:1px;">建議第 ${step + 1} 站</span>`
         : "";
@@ -1729,7 +1778,7 @@ function renderHome(labels: string[], date: string): string {
     })
     .join("");
 
-  const orderText = READ_ORDER.filter((l) => labels.includes(l))
+  const orderText = steps
     .map((l) => l.replace(/^\S+\s/, ""))
     .join(" → ");
 
@@ -1747,7 +1796,7 @@ function renderHome(labels: string[], date: string): string {
     </div>`;
 }
 
-function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName: Map<string, string>, market?: MarketBlock | null, retailHistory?: MarketHistoryEntry[], contrib?: IndexContribution | null, tdcc?: DivergenceReport | null, marginHistory?: MarginHistoryEntry[], mo?: MarginOptionsReport | null): string {
+function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName: Map<string, string>, market?: MarketBlock | null, retailHistory?: MarketHistoryEntry[], contrib?: IndexContribution | null, tdcc?: DivergenceReport | null, marginHistory?: MarginHistoryEntry[], mo?: MarginOptionsReport | null, forEmail = false): string {
   // 有 call 標記的族群排前面（順勢 → 觀察 → 反轉），其餘維持原順序（檔數多→少）
   const callRank: Record<string, number> = { 順勢: 0, 觀察: 1, 反轉: 2 };
   const sortedGainers = [...a.gainers].sort(
@@ -1807,15 +1856,16 @@ function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName
   // 依建議閱讀順序重排。這是唯一的排序來源：分頁列、面板順序、總覽卡片全部吃它，
   // 三者只要有一個不同步，「建議第 N 站」就會跟上方分頁列對不起來。
   // Email 版沒有分頁、段落是依序攤開的，所以這個順序同時也是信件的閱讀順序。
+  const order = forEmail ? EMAIL_ORDER : READ_ORDER;
   const rank = (label: string) => {
-    const i = READ_ORDER.indexOf(label);
+    const i = order.indexOf(label);
     return i < 0 ? 99 : i; // 不在動線上的（圖例、評分說明等）沉到最後，維持原相對順序
   };
   sections.sort((x, y) => rank(x.label) - rank(y.label));
 
   // 總覽放最前面：網頁版是預設落地頁（activate(0)），Email 版沒有 JS，
   // 所有分頁本來就依序攤開，它自然成為開頭的導讀。
-  sections.unshift({ label: "🏠 總覽", html: renderHome(sections.map((s) => s.label), a.timestamp) });
+  sections.unshift({ label: "🏠 總覽", html: renderHome(sections.map((s) => s.label), a.timestamp, order) });
 
   const panelsHtml = sections
     .map((s) => `<div class="tabpanel" data-label="${s.label}">${s.html}</div>`)
@@ -1825,6 +1875,7 @@ function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName
   return `<meta name="viewport" content="width=device-width, initial-scale=1">
   <div style="font-family: sans-serif; max-width: 980px; margin: 0 auto; color: #333; padding: 0 16px;">
     <h2 style="color: #4f46e5; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px;">📈 台股盤後資金流向與 AI 總結 (${a.timestamp})</h2>
+    ${forEmail ? `<div style="background:#fffbeb; border:1px solid #fde68a; border-radius:6px; padding:8px 10px; font-size:12px; color:#92400e; line-height:1.6; margin-bottom:16px;">這封信內容較長，Gmail 可能在中途截斷並顯示「查看完整訊息」。互動圖表（可切換的大戶籌碼榜、市場情緒疊圖）在信件裡也無法操作 — <a href="${SITE_URL}" style="color:#b45309; font-weight:bold;">開啟網頁版</a>看完整內容。</div>` : ""}
     <div id="tabbar" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;"></div>
     ${panelsHtml}
     <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb; color: #9ca3af; font-size: 12px;">
@@ -2020,11 +2071,21 @@ async function main() {
     }
   }
 
+  // 網頁版（給 build-site-html.ts）與信件版分開產：兩者的段落順序不同，
+  // 而且信件版會再過一次 slimForEmail 把信件顯示不出來的東西拿掉。
   const html = renderHtml(analysis, stockMap, codeByName, marketBlock, retailHistory, contrib, tdcc, marginHistory, marginOptions);
+  const emailHtml = slimForEmail(
+    renderHtml(analysis, stockMap, codeByName, marketBlock, retailHistory, contrib, tdcc, marginHistory, marginOptions, true),
+  );
 
   const htmlOutPath = resolve(process.cwd(), "data/report-latest.html");
   writeFileSync(htmlOutPath, html, "utf-8");
   console.log(`Wrote HTML preview to ${htmlOutPath}`);
+  writeFileSync(resolve(process.cwd(), "data/report-email.html"), emailHtml, "utf-8");
+  console.log(
+    `Email 版 ${(emailHtml.length / 1024).toFixed(0)}KB（網頁版 ${(html.length / 1024).toFixed(0)}KB）` +
+      `${emailHtml.length > 102 * 1024 ? "，仍超過 Gmail 102KB 截斷線，但重點段落已排在截斷線之前" : ""}`,
+  );
 
   updateHistory(analysis);
 
@@ -2032,7 +2093,7 @@ async function main() {
   // 一定要用這個旗標（而且旗標必須能單獨當第一個參數傳，見上方 inputPath 的處理）。
   const shouldSend = !process.argv.includes("--no-email");
   if (shouldSend) {
-    await sendEmail(html);
+    await sendEmail(emailHtml);
   } else {
     console.log("Skipped email (--no-email flag)");
   }
