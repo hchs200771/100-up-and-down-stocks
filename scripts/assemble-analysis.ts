@@ -1,6 +1,7 @@
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import * as OpenCC from "opencc-js";
+import { scrubStories } from "./check-story-facts";
 import { loadTaxonomy, normalizeCategory, type Taxonomy } from "./lib/taxonomy.ts";
 
 /**
@@ -263,6 +264,16 @@ function main() {
     ...(rrg ? { rrg } : {}),
     ...(playbook ? { playbook } : {}),
   };
+
+  // 機械事實檢查：擋掉「還沒公布的月營收」這類讀起來完全正常、但不可能存在的敘述。
+  // 寫故事的是小模型，prompt 擋不住它在查不到資料時填一個合理的數字，只有規則擋得住。
+  // 處理方式是整句刪除，不是改寫——改寫等於再編一次。
+  const factIssues = scrubStories([...out.gainers, ...out.losers], out.date);
+  if (factIssues.length) {
+    console.warn(`\n⚠️  事實檢查攔下 ${factIssues.length} 句（已從故事中移除）：`);
+    for (const i of factIssues) console.warn(`   [${i.id}] ${i.reason}\n     「${i.sentence}」`);
+    console.warn("");
+  }
 
   writeFileSync(outPath, `${JSON.stringify(out, null, 2)}\n`, "utf8");
 
