@@ -192,6 +192,15 @@ if stage_enabled fetch; then
 
   log "進度 1.7/5：抓信用利差 (FRED, ICE BofA OAS)"
   run_tsx scripts/fetch-credit-spreads.ts || log "[warn] fetch-credit-spreads.ts failed; 信用利差略過，不影響台股報告"
+
+  log "進度 1.8/5：拆解加權指數貢獻 (產業 / 個股)"
+  run_tsx scripts/build-index-contribution.ts || log "[warn] build-index-contribution.ts failed; 指數貢獻分頁略過，不影響其他區塊"
+
+  # 集保大戶持股是週資料（週五結算、週六才有）。抓取本身是冪等的：同一週已存過就跳過，
+  # 所以每天跑也只有週六那次會真的抓，其餘是 no-op。
+  log "進度 1.9/5：集保大戶持股週快照 + 背離篩選"
+  run_tsx scripts/fetch-tdcc-holders.ts || log "[warn] fetch-tdcc-holders.ts failed; 大戶籌碼分頁略過"
+  run_tsx scripts/build-tdcc-divergence.ts || log "[warn] build-tdcc-divergence.ts failed（快照可能不足兩份）; 大戶籌碼分頁略過"
 fi
 
 if [ ! -f "$PROJECT_DIR/data/market-latest.json" ]; then

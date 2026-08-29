@@ -190,6 +190,16 @@ fi
 log "進度 1/5：已經抓回上市/上櫃資料，交易日 $(market_trading_date)"
 
 # score-report: run after fetch/classify, skip when resuming from research or later
+if stage_enabled fetch; then
+  log "進度 1.2/5：拆解加權指數貢獻 (產業 / 個股)"
+  run_tsx scripts/build-index-contribution.ts || log "[warn] build-index-contribution.ts failed; 指數貢獻分頁略過，不影響其他區塊"
+
+  # 週資料，抓取冪等（同一週已存過就跳過），每天跑只有週六會真的抓。
+  log "進度 1.3/5：集保大戶持股週快照 + 背離篩選"
+  run_tsx scripts/fetch-tdcc-holders.ts || log "[warn] fetch-tdcc-holders.ts failed; 大戶籌碼分頁略過"
+  run_tsx scripts/build-tdcc-divergence.ts || log "[warn] build-tdcc-divergence.ts failed（快照可能不足兩份）; 大戶籌碼分頁略過"
+fi
+
 if stage_enabled classify; then
   log "進度 1.5/5：執行 score-report 快照與記分板更新"
   run_tsx scripts/score-report.ts || log "[warn] score-report.ts failed; continuing"

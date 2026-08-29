@@ -86,6 +86,37 @@ interface IntlBlock {
   credit?: CreditSpread[];
 }
 
+/** build-index-contribution.ts 的輸出（data/index-contribution-latest.json） */
+interface StockContribution {
+  code: string;
+  name: string;
+  industry: string;
+  pct: number;
+  points: number;
+}
+
+interface SectorContribution {
+  name: string;
+  points: number;
+  absPoints: number;
+  upPoints: number;
+  downPoints: number;
+  count: number;
+  top: StockContribution[];
+}
+
+interface IndexContribution {
+  timestamp: string;
+  tradingDate: string;
+  index: { close: number; change: number; prev: number };
+  calibration: number;
+  totals: { up: number; down: number; net: number; abs: number; offset: number };
+  coverage: { priced: number; matched: number };
+  sectors: SectorContribution[];
+  topGainers: StockContribution[];
+  topLosers: StockContribution[];
+}
+
 interface RrgAlert {
   kind: string;
   sector: string;
@@ -670,6 +701,447 @@ function renderIntl(intl: IntlBlock | null | undefined): string {
 }
 
 /**
+ * 指數貢獻拆解區塊：把加權指數的漲跌拆回產業與個股。
+ *
+ * 為什麼值得單獨一個 tab：指數漲跌幾點是「結果」，真正能操作的是「誰推的、誰拖的」。
+ * 常見狀況是指數收紅但半導體其實在拖，靠少數幾檔非電撐起來——只看指數完全看不到。
+ *
+ * treemap 用巢狀 <table> 而不是 CSS grid/flex/absolute：Gmail 會剝掉 position 與
+ * 多數現代版面屬性，但固定 px 寬高的巢狀表格從 Outlook 到手機 Gmail 都畫得出來。
+ * 版面用 strip treemap（逐列切）而非完整 squarified，因為列結構正好對應 <tr>，
+ * 不需要任何定位就能還原，代價只是長寬比沒那麼方正。
+ */
+function contribColor(points: number, max: number): { bg: string; fg: string } {
+  // 台股慣例：紅漲綠跌。強度依貢獻絕對值對當日最大值的比例，避免小格全糊在一起。
+  const t = max > 0 ? Math.min(1, Math.abs(points) / max) : 0;
+  const light = 0.88 - 0.55 * Math.sqrt(t); // sqrt 讓中小型格子也拉得開
+  const [h, s] = points >= 0 ? [0, 72] : [145, 55];
+  const bg = `hsl(${h}, ${s}%, ${Math.round(light * 100)}%)`;
+  return { bg, fg: light < 0.55 ? "#fff" : "#1f2937" };
+}
+
+interface TreemapItem { name: string; value: number; points: number }
+
+/** strip treemap：把 items 依值切成數列，每列高度正比於該列總值。回傳每列的 [高度, 該列項目]。 */
+function stripRows(items: TreemapItem[], width: number, height: number): [number, TreemapItem[]][] {
+  const rows: [number, TreemapItem[]][] = [];
+  let rest = [...items];
+  let restTotal = rest.reduce((a, i) => a + i.value, 0);
+  let restH = height;
+
+  // 一列的「最差長寬比」：愈接近 1 愈方正。用它決定何時該收掉這一列、另起新列。
+  const worst = (row: TreemapItem[], rowH: number) => {
+    const sum = row.reduce((a, i) => a + i.value, 0);
+    if (sum <= 0 || rowH <= 0) return Infinity;
+    return Math.max(
+      ...row.map((i) => {
+        const w = (i.value / sum) * width;
+        return Math.max(w / rowH, rowH / w);
+      }),
+    );
+  };
+
+  while (rest.length > 0 && restTotal > 0 && restH > 1) {
+    const row: TreemapItem[] = [rest[0]];
+    let idx = 1;
+    let rowH = (row[0].value / restTotal) * restH;
+    while (idx < rest.length) {
+      const cand = [...row, rest[idx]];
+      const candSum = cand.reduce((a, i) => a + i.value, 0);
+      const candH = (candSum / restTotal) * restH;
+      if (worst(cand, candH) > worst(row, rowH)) break;
+      row.push(rest[idx]);
+      rowH = candH;
+      idx++;
+    }
+    rows.push([rowH, row]);
+    rest = rest.slice(idx);
+    restTotal = rest.reduce((a, i) => a + i.value, 0);
+    restH -= rowH;
+  }
+  return rows;
+}
+
+function renderTreemap(sectors: SectorContribution[]): string {
+  const W = 900;
+  const H = 380;
+  // 面積用絕對貢獻（absPoints）：正負互相抵銷後的淨值會讓「內部廝殺很兇」的產業消失。
+  const ranked = sectors
+    .filter((s) => s.absPoints > 0)
+    .sort((a, b) => b.absPoints - a.absPoints);
+  if (ranked.length === 0) return "";
+
+  // 長尾切掉：30 幾個產業裡有一半佔不到 1% 面積，畫出來只是幾 px 寬的色條，
+  // 既讀不到名字也擠掉主要格子的空間。合併成一格「其他產業」，總面積仍然守恆。
+  const totalAbs = ranked.reduce((a, s) => a + s.absPoints, 0);
+  const major = ranked.filter((s) => s.absPoints / totalAbs >= 0.01);
+  const minor = ranked.filter((s) => s.absPoints / totalAbs < 0.01);
+  const items: TreemapItem[] = major.map((s) => ({ name: s.name, value: s.absPoints, points: s.points }));
+  if (minor.length > 0) {
+    items.push({
+      name: `其他 ${minor.length} 產業`,
+      value: minor.reduce((a, s) => a + s.absPoints, 0),
+      points: minor.reduce((a, s) => a + s.points, 0),
+    });
+  }
+  const maxAbs = Math.max(...items.map((i) => Math.abs(i.points)));
+
+  // 每一列各自一張巢狀表格。不能全部塞進同一張表：table-layout:fixed 會用第一列
+  // 決定欄數，後面列多出來的格子會被壓成寬度 0 而整個消失。
+  const rows = stripRows(items, W, H)
+    .map(([rowH, row]) => {
+      const sum = row.reduce((a, i) => a + i.value, 0);
+      const h = Math.max(18, Math.round(rowH));
+      const cells = row
+        .map((i) => {
+          const w = Math.max(2, Math.round((i.value / sum) * W));
+          const { bg, fg } = contribColor(i.points, maxAbs);
+          const sign = i.points >= 0 ? "+" : "";
+          // 格子太小就只留產業名，再小就整格留白——硬塞字會變成一團看不懂的色塊
+          const showPts = w >= 70 && h >= 40;
+          const showName = w >= 44 && h >= 22;
+          const label = showName
+            ? `<div style="font-size:${w >= 110 ? 13 : 11}px; font-weight:bold; line-height:1.25;">${i.name}</div>` +
+              (showPts
+                ? `<div style="font-size:${w >= 110 ? 15 : 12}px; line-height:1.3; margin-top:2px;">${sign}${i.points.toFixed(1)}</div>`
+                : "")
+            : "";
+          return `<td width="${w}" height="${h}" valign="middle" align="center" style="width:${w}px; height:${h}px; background:${bg}; color:${fg}; border:1px solid #ffffff; overflow:hidden; padding:0 2px;" title="${i.name} ${sign}${i.points.toFixed(2)} 點">${label}</td>`;
+        })
+        .join("");
+      return `<tr><td style="padding:0;"><table cellpadding="0" cellspacing="0" border="0" width="${W}" style="width:${W}px; border-collapse:collapse; table-layout:fixed;"><tbody><tr>${cells}</tr></tbody></table></td></tr>`;
+    })
+    .join("");
+
+  return `<div style="overflow-x:auto; margin-bottom:12px;">
+      <table cellpadding="0" cellspacing="0" border="0" width="${W}" style="width:${W}px; border-collapse:collapse;"><tbody>${rows}</tbody></table>
+    </div>`;
+}
+
+function renderContribStockList(title: string, list: StockContribution[], positive: boolean): string {
+  if (!list || list.length === 0) return "";
+  const color = positive ? "#dc2626" : "#16a34a";
+  const rows = list
+    .map((s) => {
+      const sign = s.points >= 0 ? "+" : "";
+      const pctSign = s.pct >= 0 ? "+" : "";
+      return `<tr>
+        <td style="padding:3px 6px; white-space:nowrap;"><a href="https://tw.stock.yahoo.com/quote/${s.code}" style="color:#374151; text-decoration:none;">${s.code} ${s.name}</a></td>
+        <td style="padding:3px 6px; text-align:right; color:#9ca3af; white-space:nowrap;">${pctSign}${s.pct.toFixed(2)}%</td>
+        <td style="padding:3px 6px; text-align:right; font-weight:bold; color:${color}; white-space:nowrap;">${sign}${s.points.toFixed(2)}</td>
+        <td style="padding:3px 6px; color:#9ca3af; white-space:nowrap;">${s.industry}</td>
+      </tr>`;
+    })
+    .join("");
+  return `<td width="50%" valign="top" style="padding:0 6px;">
+      <div style="font-size:12px; font-weight:bold; color:#6b7280; margin-bottom:4px;">${title}</div>
+      <table style="width:100%; border-collapse:collapse; font-size:12px;"><tbody>${rows}</tbody></table>
+    </td>`;
+}
+
+/**
+ * 貢獻傳導 Sankey：上漲／下跌貢獻 → 產業 → 個股，帶寬正比於點數。
+ *
+ * 為什麼要有這張圖：treemap 回答「哪個產業戰場最大」，但看不出「這個產業是被誰
+ * 推動的」，也看不出上漲與下跌兩股力量各自流去哪裡。Sankey 把兩件事一次講完——
+ * 帶子有多寬就是貢獻幾點，一眼就能比重。
+ *
+ * 這裡用 inline SVG，Gmail 會整段剝掉。所以它是「加分項」而非主體：下方的 treemap
+ * 與表格都是純表格、信件裡照樣完整，讀者不會因為看不到這張圖而漏掉任何結論。
+ *
+ * 版面刻意維持淺色（跟報告其他區塊一致），沒有沿用交易終端的深色底。
+ */
+interface SankeyNode {
+  id: string;
+  col: 0 | 1 | 2;
+  label: string;
+  sub: string;
+  value: number;
+  sign: number; // 1 正貢獻 / -1 負貢獻 / 0 混合
+  y: number;
+  h: number;
+  inOff: number;
+  outOff: number;
+}
+
+interface SankeyLink {
+  s: string;
+  t: string;
+  v: number;
+  sign: number;
+}
+
+const SANKEY_RED = "#dc2626";
+const SANKEY_GREEN = "#16a34a";
+const SANKEY_GRAY = "#9ca3af";
+const flowColor = (sign: number) => (sign > 0 ? SANKEY_RED : sign < 0 ? SANKEY_GREEN : SANKEY_GRAY);
+
+function renderSankey(c: IndexContribution): string {
+  const W = 790; // 第三欄標籤最長約到 x=770，再寬只是留白
+  const H = 620;
+  const PAD = 7; // 同欄節點之間的間距
+  const NODE_W = 13;
+  const COL_X = [78, 340, 622];
+  const MAX_SECTORS = 10;
+  const EXPAND_SHARE = 0.06; // 佔總戰場 6% 以上的產業才展開到個股，否則第三欄會爆掉
+  const TOP_STOCKS = 3;
+
+  const totalAbs = c.totals.abs;
+  if (!(totalAbs > 0)) return "";
+
+  // ---- 第二欄：產業。小產業合併成一個節點，總量守恆 ----
+  const ranked = [...c.sectors].filter((s) => s.absPoints > 0).sort((a, b) => b.absPoints - a.absPoints);
+  const major = ranked.slice(0, MAX_SECTORS).filter((s) => s.absPoints / totalAbs >= 0.015);
+  const minor = ranked.filter((s) => !major.includes(s));
+  type Mid = { key: string; name: string; abs: number; up: number; down: number; net: number; top: StockContribution[]; expandable: boolean };
+  const mids: Mid[] = major.map((s) => ({
+    key: s.name,
+    name: s.name,
+    abs: s.absPoints,
+    up: s.upPoints,
+    down: s.downPoints,
+    net: s.points,
+    top: s.top ?? [],
+    expandable: true,
+  }));
+  if (minor.length > 0) {
+    mids.push({
+      key: "__minor__",
+      name: `其他 ${minor.length} 產業`,
+      abs: minor.reduce((a, s) => a + s.absPoints, 0),
+      up: minor.reduce((a, s) => a + s.upPoints, 0),
+      down: minor.reduce((a, s) => a + s.downPoints, 0),
+      net: minor.reduce((a, s) => a + s.points, 0),
+      top: [],
+      expandable: false,
+    });
+  }
+  // 上漲佔比高的排上面、被拖累的排下面，讓帶子少交叉
+  mids.sort((a, b) => {
+    const sa = a.up / (a.up + a.down || 1);
+    const sb = b.up / (b.up + b.down || 1);
+    return sb - sa || b.abs - a.abs;
+  });
+
+  const nodes: SankeyNode[] = [];
+  const links: SankeyLink[] = [];
+  const push = (n: Omit<SankeyNode, "y" | "h" | "inOff" | "outOff">) =>
+    nodes.push({ ...n, y: 0, h: 0, inOff: 0, outOff: 0 });
+
+  const upTotal = c.totals.up;
+  const downTotal = Math.abs(c.totals.down);
+  push({ id: "UP", col: 0, label: "上漲貢獻", sub: `+${upTotal.toFixed(0)}`, value: upTotal, sign: 1 });
+  push({ id: "DOWN", col: 0, label: "下跌貢獻", sub: `−${downTotal.toFixed(0)}`, value: downTotal, sign: -1 });
+
+  for (const m of mids) {
+    const sign = m.net > 0 ? 1 : m.net < 0 ? -1 : 0;
+    push({
+      id: `S:${m.key}`,
+      col: 1,
+      label: m.name,
+      sub: `${m.net >= 0 ? "+" : "−"}${Math.abs(m.net).toFixed(1)}`,
+      value: m.abs,
+      sign,
+    });
+    if (m.up > 0) links.push({ s: "UP", t: `S:${m.key}`, v: m.up, sign: 1 });
+    if (m.down > 0) links.push({ s: "DOWN", t: `S:${m.key}`, v: m.down, sign: -1 });
+  }
+
+  // ---- 第三欄：大產業展開到個股 ----
+  for (const m of mids) {
+    if (!m.expandable || m.abs / totalAbs < EXPAND_SHARE) continue;
+    const picks = m.top.slice(0, TOP_STOCKS).filter((s) => Math.abs(s.points) > 0);
+    if (picks.length === 0) continue;
+    const ordered = [
+      ...picks.filter((s) => s.points > 0).sort((a, b) => b.points - a.points),
+      ...picks.filter((s) => s.points < 0).sort((a, b) => a.points - b.points),
+    ];
+    for (const s of ordered) {
+      const id = `K:${m.key}:${s.code}`;
+      push({
+        id,
+        col: 2,
+        label: `${s.code} ${s.name}`,
+        sub: `${s.points >= 0 ? "+" : "−"}${Math.abs(s.points).toFixed(1)}`,
+        value: Math.abs(s.points),
+        sign: s.points > 0 ? 1 : -1,
+      });
+      links.push({ s: `S:${m.key}`, t: id, v: Math.abs(s.points), sign: s.points > 0 ? 1 : -1 });
+    }
+    // 剩下的成分股併一格，帶寬才守恆（不然產業節點的流出量會憑空變少）
+    const rest = m.abs - ordered.reduce((a, s) => a + Math.abs(s.points), 0);
+    if (rest > totalAbs * 0.004) {
+      const id = `K:${m.key}:rest`;
+      push({ id, col: 2, label: "其他成分股", sub: "", value: rest, sign: 0 });
+      links.push({ s: `S:${m.key}`, t: id, v: rest, sign: 0 });
+    }
+  }
+
+  // ---- 版面：三欄各自等比例縮放後垂直置中，共用同一個 scale 才能比寬度 ----
+  const byCol = [0, 1, 2].map((ci) => nodes.filter((n) => n.col === ci));
+  const scale = Math.min(
+    ...byCol
+      .filter((col) => col.length > 0)
+      .map((col) => {
+        const total = col.reduce((a, n) => a + n.value, 0);
+        return (H - (col.length - 1) * PAD) / total;
+      }),
+  );
+  for (const col of byCol) {
+    if (col.length === 0) continue;
+    const colH = col.reduce((a, n) => a + n.value * scale, 0) + (col.length - 1) * PAD;
+    let y = (H - colH) / 2;
+    for (const n of col) {
+      n.h = Math.max(1.5, n.value * scale);
+      n.y = y;
+      y += n.h + PAD;
+    }
+  }
+
+  const byId = new Map(nodes.map((n) => [n.id, n]));
+  // 連線依「目標節點的排列順序」決定出口高低，交叉才會最少
+  const order = new Map(nodes.map((n, i) => [n.id, i]));
+  links.sort((a, b) => (order.get(a.s)! - order.get(b.s)!) || (order.get(a.t)! - order.get(b.t)!));
+
+  const paths = links
+    .map((l) => {
+      const s = byId.get(l.s)!;
+      const t = byId.get(l.t)!;
+      const th = l.v * scale;
+      const x0 = COL_X[s.col] + NODE_W;
+      const x1 = COL_X[t.col];
+      const y0 = s.y + s.outOff;
+      const y1 = t.y + t.inOff;
+      s.outOff += th;
+      t.inOff += th;
+      const mx = (x0 + x1) / 2;
+      const d = `M${x0},${y0} C${mx},${y0} ${mx},${y1} ${x1},${y1} L${x1},${y1 + th} C${mx},${y1 + th} ${mx},${y0 + th} ${x0},${y0 + th} Z`;
+      return `<path d="${d}" fill="${flowColor(l.sign)}" fill-opacity="0.3"/>`;
+    })
+    .join("");
+
+  const rects = nodes
+    .map(
+      (n) =>
+        `<rect x="${COL_X[n.col]}" y="${n.y.toFixed(1)}" width="${NODE_W}" height="${n.h.toFixed(1)}" fill="${flowColor(n.sign)}" rx="2"><title>${n.label} ${n.sub}</title></rect>`,
+    )
+    .join("");
+
+  // 文字壓在帶子上，靠白色描邊（paint-order）讓它讀得出來
+  const halo = 'style="paint-order:stroke; stroke:#ffffff; stroke-width:3px; stroke-linejoin:round;"';
+  const labels = nodes
+    .map((n) => {
+      const cy = n.y + n.h / 2;
+      const small = n.h < 13;
+      if (n.col === 0) {
+        return `<text x="${COL_X[0] - 8}" y="${cy - 4}" text-anchor="end" font-size="13" font-weight="bold" fill="#374151" ${halo}>${n.label}</text>` +
+          `<text x="${COL_X[0] - 8}" y="${cy + 12}" text-anchor="end" font-size="13" font-weight="bold" fill="${flowColor(n.sign)}" ${halo}>${n.sub}</text>`;
+      }
+      const x = COL_X[n.col] + NODE_W + 6;
+      const fs = n.col === 1 ? 12 : 11;
+      if (small) {
+        // 節點太薄，名稱與數字並排一行，否則兩行會疊到隔壁
+        return `<text x="${x}" y="${cy + 3.5}" font-size="${fs}" fill="#4b5563" ${halo}>${n.label} <tspan fill="${flowColor(n.sign)}" font-weight="bold">${n.sub}</tspan></text>`;
+      }
+      return `<text x="${x}" y="${cy - 2}" font-size="${fs}" font-weight="${n.col === 1 ? "bold" : "normal"}" fill="#374151" ${halo}>${n.label}</text>` +
+        `<text x="${x}" y="${cy + 11}" font-size="${fs}" font-weight="bold" fill="${flowColor(n.sign)}" ${halo}>${n.sub}</text>`;
+    })
+    .join("");
+
+  const headers = ["資金方向", "產業", "主要個股"]
+    .map((t, i) => `<text x="${i === 0 ? COL_X[0] - 8 : COL_X[i] + NODE_W + 6}" y="-8" text-anchor="${i === 0 ? "end" : "start"}" font-size="11" fill="#9ca3af">${t}</text>`)
+    .join("");
+
+  return `<div style="overflow-x:auto; margin-bottom:6px;">
+      <svg width="${W}" height="${H + 24}" viewBox="0 -20 ${W} ${H + 24}" style="width:${W}px; max-width:none; font-family:sans-serif;" role="img" aria-label="指數貢獻傳導圖">
+        ${headers}${paths}${rects}${labels}
+      </svg>
+    </div>`;
+}
+
+function renderIndexContribution(c: IndexContribution | null | undefined): string {
+  if (!c || !c.sectors || c.sectors.length === 0) return "";
+  const { index, totals } = c;
+  const up = index.change >= 0;
+  const idxColor = up ? "#dc2626" : "#16a34a";
+
+  // 產業表只列有感的（≥0.5 點），其餘折成一行摘要，避免 30 幾列把重點稀釋掉。
+  const shown = c.sectors.filter((s) => Math.abs(s.points) >= 0.5);
+  const hidden = c.sectors.length - shown.length;
+  const sectorRows = shown
+    .map((s) => {
+      const sign = s.points >= 0 ? "+" : "";
+      const color = s.points >= 0 ? "#dc2626" : "#16a34a";
+      const share = totals.abs > 0 ? (s.absPoints / totals.abs) * 100 : 0;
+      const tops = s.top
+        .slice(0, 3)
+        .map((t) => `${t.name} ${t.points >= 0 ? "+" : ""}${t.points.toFixed(1)}`)
+        .join("、");
+      return `<tr style="border-top:1px solid #f3f4f6;">
+        <td style="padding:4px 8px; white-space:nowrap;">${s.name}<span style="color:#d1d5db; font-size:11px;"> ${s.count}檔</span></td>
+        <td style="padding:4px 8px; text-align:right; font-weight:bold; color:${color}; white-space:nowrap;">${sign}${s.points.toFixed(2)}</td>
+        <td style="padding:4px 8px; text-align:right; color:#9ca3af; white-space:nowrap;">${share.toFixed(1)}%</td>
+        <td style="padding:4px 8px; color:#6b7280; font-size:11px;">${tops}</td>
+      </tr>`;
+    })
+    .join("");
+
+  const hiddenNote = hidden > 0
+    ? `<div style="font-size:11px; color:#9ca3af; margin-top:4px;">另有 ${hidden} 個產業貢獻不足 0.5 點，未列出。</div>`
+    : "";
+
+  return `<div style="background-color:#fffbeb; border:1px solid #fde68a; padding:15px; border-radius:8px; margin-bottom:20px;">
+      <h3 style="margin-top:0; color:#b45309;">⚖️ 指數貢獻拆解</h3>
+      <p style="font-size:13px; color:#4b5563; margin:0 0 10px; line-height:1.7;">
+        加權指數收 <strong>${index.close.toLocaleString()}</strong>
+        <span style="color:${idxColor}; font-weight:bold;">${up ? "+" : ""}${index.change.toFixed(2)} 點</span>，
+        拆成
+        <span style="color:#dc2626; font-weight:bold;">上漲貢獻 +${totals.up.toFixed(0)} 點</span>
+        與 <span style="color:#16a34a; font-weight:bold;">下跌貢獻 ${totals.down.toFixed(0)} 點</span>。
+        兩邊互相對沖掉 <strong>${totals.offset.toFixed(0)} 點</strong>——這是只看指數完全看不到的內部廝殺。
+      </p>
+      <div style="font-size:12px; color:#6b7280; font-weight:bold; margin-bottom:2px;">
+        貢獻傳導（帶寬＝點數，紅＝推升、綠＝拖累）
+      </div>
+      <div style="font-size:11px; color:#9ca3af; margin-bottom:6px;">
+        由左往右看：當日的推升與拖累力道，各自流進哪些產業、又由哪幾檔撐起來。帶子愈寬代表點數愈多。
+        三個看點：<strong>左右兩根柱子誰高</strong>（多空力量對比）、
+        <strong>哪個產業同時接到紅帶與綠帶</strong>（內部多空互打，方向未定）、
+        <strong>產業的帶子是不是集中在一兩檔</strong>（集中＝個股事件，分散＝真的族群動能）。
+      </div>
+      ${renderSankey(c)}
+      <div style="font-size:11px; color:#9ca3af; margin:0 0 14px;">
+        這張流向圖是 SVG，Email 用戶端多半不支援而不會顯示；下方的分布圖與表格是純表格，信件裡照樣完整。
+        要看流向圖請開 <a href="${SITE_URL}" style="color:#b45309; font-weight:bold;">→ 網頁版報告</a>。
+      </div>
+      <div style="font-size:12px; color:#6b7280; font-weight:bold; margin-bottom:6px;">
+        產業貢獻分布（面積＝絕對貢獻，紅＝推升、綠＝拖累）
+      </div>
+      ${renderTreemap(c.sectors)}
+      <table style="width:100%; border-collapse:collapse; font-size:12px; margin-bottom:12px;">
+        <thead><tr style="color:#9ca3af; font-size:11px;">
+          <th style="padding:2px 8px; text-align:left;">產業</th>
+          <th style="padding:2px 8px; text-align:right;">淨貢獻</th>
+          <th style="padding:2px 8px; text-align:right;">佔戰場</th>
+          <th style="padding:2px 8px; text-align:left;">主要來源</th>
+        </tr></thead>
+        <tbody>${sectorRows}</tbody>
+      </table>
+      ${hiddenNote}
+      <table style="width:100%; border-collapse:collapse; margin-top:10px;"><tbody><tr>
+        ${renderContribStockList("推升最多", c.topGainers, true)}
+        ${renderContribStockList("拖累最多", c.topLosers, false)}
+      </tr></tbody></table>
+      <div style="font-size:11px; color:#9ca3af; margin-top:10px; line-height:1.6;">
+        個股貢獻點數 ＝ 漲跌價差 × 發行股數 ÷ 昨日總市值 × 昨日指數；納入 ${c.coverage.matched} 檔上市普通股
+        （ETF、權證等非指數成分已排除）。發行股數為 MOPS 月更資料，且特別股／私募股／全額交割股無法從公開資料剝離，
+        故原始加總與交易所公佈值有落差，已用係數 ${c.calibration} 整體校準，總數精確、個股相對比重不受影響。
+        僅涵蓋上市，不含上櫃。
+      </div>
+    </div>`;
+}
+
+/**
  * 族群輪動（RRG）區塊：先圖後結論——上方是可切換 120/60/20 日的互動圖，下方才是
  * 象限分佈與異動判讀（不看圖也拿得到結論）。
  *
@@ -757,7 +1229,308 @@ function renderRrg(rrg: RrgBlock | null | undefined): string {
     </div>`;
 }
 
-function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName: Map<string, string>, market?: MarketBlock | null, retailHistory?: MarketHistoryEntry[]): string {
+/** build-tdcc-divergence.ts 的輸出（data/tdcc-divergence-latest.json） */
+interface DivergenceRow {
+  code: string;
+  name: string;
+  market: "twse" | "tpex";
+  cum: number;
+  dCum: number;
+  dHolders: number;
+  pricePct: number;
+  price20: number | null;
+  aboveMa20: boolean | null;
+  avgTop: number;
+  dAvgTop: number;
+  byLevel: Record<string, number>;
+  score: number;
+  lots: number;
+  close: number;
+  dilutionRisk: boolean;
+  streak: number;
+}
+
+interface DivergenceView {
+  key: string;
+  label: string;
+  desc: string;
+  byCutoff: Record<string, DivergenceRow[]>;
+}
+
+interface DivergenceReport {
+  generatedAt: string;
+  curDate: string;
+  prevDate: string;
+  curWeek: string;
+  prevWeek: string;
+  universe: number;
+  partial: boolean;
+  hasLevels: boolean;
+  filters: { minLots: number; minPrice: number; divergeMaxGain: number; divergeMinChange: number };
+  cutoffs: { key: string; lots: number; label: string }[];
+  views: DivergenceView[];
+  defaults: { view: string; cutoff: string };
+}
+
+/** 一列榜單。web 版的 JS 會用同一套欄位順序重畫，改這裡要同步改下方的 renderRow。 */
+function tdccRowHtml(r: DivergenceRow, i: number): string {
+  const cumColor = r.dCum > 0 ? "#dc2626" : "#16a34a";
+  const priceColor = r.pricePct > 0 ? "#dc2626" : r.pricePct < 0 ? "#16a34a" : "#6b7280";
+  const mkt = r.market === "twse" ? "上市" : "上櫃";
+  const badge = (bg: string, fg: string, text: string, title: string) =>
+    `<span title="${title}" style="display:inline-block; background:${bg}; color:${fg}; font-size:10px; border-radius:3px; padding:0 4px; margin-left:4px;">${text}</span>`;
+  const flags =
+    (r.streak >= 2 ? badge("#fef3c7", "#92400e", `連${r.streak}週`, "連續多週增加") : "") +
+    (r.dilutionRisk
+      ? badge("#fee2e2", "#991b1b", "股數變動?", "比例上升但大戶人數沒增加，可能是除權息／現增造成的股數變動，不是有人買進")
+      : "") +
+    (r.aboveMa20 ? badge("#dbeafe", "#1e40af", "站上20MA", "收盤在 20 日均線之上") : "");
+  const p20 =
+    r.price20 === null
+      ? `<span style="color:#d1d5db;">—</span>`
+      : `<span style="color:${r.price20 > 0 ? "#dc2626" : r.price20 < 0 ? "#16a34a" : "#6b7280"};">${r.price20 >= 0 ? "+" : ""}${r.price20.toFixed(1)}%</span>`;
+  return `<tr style="border-top:1px solid #f3f4f6;">
+    <td style="padding:4px 6px; color:#9ca3af; text-align:right;">${i + 1}</td>
+    <td style="padding:4px 6px; white-space:nowrap;">
+      <a href="https://tw.stock.yahoo.com/quote/${r.code}" style="color:#374151; text-decoration:none; font-weight:bold;">${r.code} ${r.name}</a>
+      <span style="color:#d1d5db; font-size:10px;"> ${mkt}</span>${flags}
+    </td>
+    <td style="padding:4px 6px; text-align:right; color:#6b7280; white-space:nowrap;">${r.close.toLocaleString()}</td>
+    <td style="padding:4px 6px; text-align:right; color:${priceColor}; white-space:nowrap;">${r.pricePct >= 0 ? "+" : ""}${r.pricePct.toFixed(1)}%</td>
+    <td style="padding:4px 6px; text-align:right; white-space:nowrap;">${p20}</td>
+    <td style="padding:4px 6px; text-align:right; font-weight:bold; color:${cumColor}; white-space:nowrap;">${r.dCum >= 0 ? "+" : ""}${r.dCum.toFixed(2)}</td>
+    <td style="padding:4px 6px; text-align:right; color:#9ca3af; white-space:nowrap;">${r.cum.toFixed(1)}%</td>
+    <td style="padding:4px 6px; text-align:right; color:${r.dHolders > 0 ? "#dc2626" : "#9ca3af"}; white-space:nowrap;">${r.dHolders >= 0 ? "+" : ""}${r.dHolders}</td>
+    <td style="padding:4px 6px; text-align:right; color:${r.dAvgTop > 0 ? "#dc2626" : r.dAvgTop < 0 ? "#16a34a" : "#d1d5db"}; white-space:nowrap;">${r.avgTop > 0 ? `${r.avgTop.toLocaleString()}<span style="color:#d1d5db; font-size:10px;">${r.dAvgTop >= 0 ? "+" : ""}${r.dAvgTop}</span>` : "—"}</td>
+  </tr>`;
+}
+
+/**
+ * 大戶籌碼分頁：兩種視角 × 五種門檻，可切換。
+ *
+ * 這是**週資料**（TDCC 每週五結算、週六才拿得到），所以同一份榜單會在報告裡連續
+ * 出現好幾天，直到下週六更新。標題會標出資料週期，避免誤以為是當日資料。
+ *
+ * **為什麼只有預設組合是伺服器端渲染、其他組合走 JSON + JS**：
+ * 2 視角 × 5 門檻 × 20 檔 = 200 列 HTML，全部展開約 160KB，會超過 Gmail 102KB 的
+ * 截斷門檻，信件會被切掉尾巴。改成只渲染預設那張表、其餘壓成精簡 JSON（短 key）
+ * 由 JS 現畫，信件端只看到一張完整的表，網頁端才有切換器。
+ *
+ * 切換器本身預設 `display:none`，由 JS 打開——沒有 JS 的信件不會出現一排點不動的按鈕。
+ */
+function renderTdcc(d: DivergenceReport | null | undefined): string {
+  if (!d || !d.views || d.views.length === 0) return "";
+  const defView = d.views.find((v) => v.key === d.defaults.view) ?? d.views[0];
+  const defCut = d.cutoffs.find((c) => c.key === d.defaults.cutoff) ?? d.cutoffs[0];
+  const defRows = defView.byCutoff[defCut.key] ?? [];
+  if (defRows.length === 0) return "";
+
+  // 精簡 key，控制信件體積
+  const payload = {
+    v: d.views.map((v) => ({
+      k: v.key,
+      l: v.label,
+      d: v.desc,
+      c: Object.fromEntries(
+        Object.entries(v.byCutoff).map(([ck, rows]) => [
+          ck,
+          rows.map((r) => [
+            r.code, r.name, r.market === "twse" ? 1 : 0, r.close, r.pricePct,
+            r.price20, r.dCum, r.cum, r.dHolders, r.avgTop, r.dAvgTop,
+            r.streak, r.dilutionRisk ? 1 : 0, r.aboveMa20 ? 1 : 0,
+          ]),
+        ]),
+      ),
+    })),
+    c: d.cutoffs,
+  };
+
+  const btn = (active: boolean) =>
+    `display:inline-block; padding:3px 10px; margin:0 4px 4px 0; border-radius:12px; font-size:11px; cursor:pointer; border:1px solid ${active ? "#15803d" : "#d1d5db"}; background:${active ? "#15803d" : "#fff"}; color:${active ? "#fff" : "#6b7280"};`;
+
+  const viewBtns = d.views
+    .map((v) => `<span class="tdcc-view" data-k="${v.key}" style="${btn(v.key === defView.key)}">${v.label}</span>`)
+    .join("");
+  const cutBtns = d.cutoffs
+    .map((c) => `<span class="tdcc-cut" data-k="${c.key}" style="${btn(c.key === defCut.key)}">${c.label}</span>`)
+    .join("");
+
+  const partialNote = d.partial
+    ? `<div style="background:#fef2f2; border:1px solid #fecaca; border-radius:6px; padding:8px 10px; font-size:11px; color:#991b1b; line-height:1.6; margin-bottom:10px;">
+        ⚠️ 這期的對照週是<strong>限定範圍回補</strong>的快照（只涵蓋流動性前段的個股，非全市場），
+        所以榜單看不到未被回補的股票。等每週快照自然累積後就會恢復全市場比較。
+      </div>`
+    : "";
+
+  return `<div style="background-color:#f0fdf4; border:1px solid #bbf7d0; padding:15px; border-radius:8px; margin-bottom:20px;">
+      <h3 style="margin-top:0; color:#15803d;">🏦 大戶籌碼</h3>
+      <p style="font-size:13px; color:#4b5563; margin:0 0 10px; line-height:1.7;">
+        比較 <strong>${d.prevDate}</strong>（${d.prevWeek}）→ <strong>${d.curDate}</strong>（${d.curWeek}）兩週的集保持股分級，
+        比較範圍 ${d.universe} 檔（成交 ≥${d.filters.minLots} 張、股價 ≥${d.filters.minPrice} 元）。
+      </p>
+      <div class="tdcc-ctrl" style="display:none; margin-bottom:10px;">
+        <div style="font-size:11px; color:#9ca3af; margin-bottom:3px;">視角</div>
+        <div>${viewBtns}</div>
+        <div style="font-size:11px; color:#9ca3af; margin:6px 0 3px;">大戶門檻</div>
+        <div>${cutBtns}</div>
+      </div>
+      <div class="tdcc-desc" style="font-size:12px; color:#4b5563; background:#fff; border-radius:6px; padding:8px 10px; line-height:1.7; margin-bottom:10px;">${defView.desc}</div>
+      <div style="font-size:11px; color:#6b7280; line-height:1.7; margin-bottom:10px;">
+        <strong>怎麼看</strong>：「大戶增減」是<span style="color:#15803d; font-weight:bold;">該門檻以上全部級距的累計比例</span>週變化——
+        用累計而不是單一級距，是因為 900 張的人加碼到 1100 張會跨級，只看某一級會把加碼誤讀成減碼。
+        「大戶人數」同步增加才代表真的有新的人進場；比例漲但人數沒動會標「股數變動?」。
+        「千張均張」是級 15 的平均每人持股張數——TDCC 沒有更高的分級，這是判斷「超大戶是否在集中」最接近的指標。
+        <strong>這是觀察名單，不是買賣訊號</strong>。
+      </div>
+      ${partialNote}
+      <div style="overflow-x:auto;">
+      <table style="width:100%; border-collapse:collapse; font-size:12px; min-width:680px;">
+        <thead><tr style="color:#9ca3af; font-size:11px;">
+          <th style="padding:2px 6px; text-align:right;">#</th>
+          <th style="padding:2px 6px; text-align:left;">個股</th>
+          <th style="padding:2px 6px; text-align:right;">收盤</th>
+          <th style="padding:2px 6px; text-align:right;" title="兩份快照之間的收盤價變化">週漲跌</th>
+          <th style="padding:2px 6px; text-align:right;" title="近 20 個交易日漲跌幅">20日</th>
+          <th class="tdcc-h-d" style="padding:2px 6px; text-align:right;" title="該門檻以上累計持股比例的週增減（百分點）">${defCut.label}增減</th>
+          <th class="tdcc-h-c" style="padding:2px 6px; text-align:right;" title="該門檻以上累計持股比例">總計</th>
+          <th style="padding:2px 6px; text-align:right;" title="該門檻涵蓋級距的持有人數週增減">人數</th>
+          <th style="padding:2px 6px; text-align:right;" title="級15（1000張以上）平均每人持股張數與其週增減">千張均張</th>
+        </tr></thead>
+        <tbody class="tdcc-body">${defRows.map((r, i) => tdccRowHtml(r, i)).join("")}</tbody>
+      </table>
+      </div>
+      <div class="tdcc-empty" style="display:none; font-size:12px; color:#9ca3af; padding:12px 0;">這個門檻與視角的組合本週沒有符合條件的個股。</div>
+      <div style="font-size:11px; color:#9ca3af; margin-top:10px; line-height:1.6;">
+        資料源：集保結算所「集保戶股權分散表」，每週五結算、隔天公布，所以這份榜單一週更新一次。
+        排序用標準化分數（z-score）而非絕對門檻——大型股大戶比例週變動 1% 已是巨量、小型股 1% 只是雜訊，
+        絕對門檻會讓榜單被小型股洗版。信件版只呈現「${defView.label} × ${defCut.label}」，其餘組合請看網頁版。
+      </div>
+      <script type="application/json" class="tdcc-data">${JSON.stringify(payload).replace(/</g, "\\u003c")}</script>
+      <script>
+      (function(){
+        var root=document.currentScript&&document.currentScript.parentNode; if(!root) return;
+        var raw=root.querySelector('.tdcc-data'); if(!raw) return;
+        var D=JSON.parse(raw.textContent), view='${defView.key}', cut='${defCut.key}';
+        var ctrl=root.querySelector('.tdcc-ctrl'); if(ctrl) ctrl.style.display='block';
+        var body=root.querySelector('.tdcc-body'), desc=root.querySelector('.tdcc-desc');
+        var empty=root.querySelector('.tdcc-empty'), table=body.parentNode;
+        var hD=root.querySelector('.tdcc-h-d');
+        function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+        function col(v){return v>0?'#dc2626':v<0?'#16a34a':'#6b7280'}
+        function badge(bg,fg,t){return '<span style="display:inline-block;background:'+bg+';color:'+fg+';font-size:10px;border-radius:3px;padding:0 4px;margin-left:4px;">'+t+'</span>'}
+        function row(r,i){
+          var f=(r[11]>=2?badge('#fef3c7','#92400e','連'+r[11]+'週'):'')+(r[12]?badge('#fee2e2','#991b1b','股數變動?'):'')+(r[13]?badge('#dbeafe','#1e40af','站上20MA'):'');
+          var p20=r[5]===null?'<span style="color:#d1d5db;">—</span>':'<span style="color:'+col(r[5])+';">'+(r[5]>=0?'+':'')+r[5].toFixed(1)+'%</span>';
+          var av=r[9]>0?r[9].toLocaleString()+'<span style="color:#d1d5db;font-size:10px;">'+(r[10]>=0?'+':'')+r[10]+'</span>':'—';
+          var td='padding:4px 6px;text-align:right;white-space:nowrap;';
+          return '<tr style="border-top:1px solid #f3f4f6;">'+
+            '<td style="padding:4px 6px;color:#9ca3af;text-align:right;">'+(i+1)+'</td>'+
+            '<td style="padding:4px 6px;white-space:nowrap;"><a href="https://tw.stock.yahoo.com/quote/'+r[0]+'" style="color:#374151;text-decoration:none;font-weight:bold;">'+r[0]+' '+esc(r[1])+'</a><span style="color:#d1d5db;font-size:10px;"> '+(r[2]?'上市':'上櫃')+'</span>'+f+'</td>'+
+            '<td style="'+td+'color:#6b7280;">'+r[3].toLocaleString()+'</td>'+
+            '<td style="'+td+'color:'+col(r[4])+';">'+(r[4]>=0?'+':'')+r[4].toFixed(1)+'%</td>'+
+            '<td style="'+td+'">'+p20+'</td>'+
+            '<td style="'+td+'font-weight:bold;color:'+col(r[6])+';">'+(r[6]>=0?'+':'')+r[6].toFixed(2)+'</td>'+
+            '<td style="'+td+'color:#9ca3af;">'+r[7].toFixed(1)+'%</td>'+
+            '<td style="'+td+'color:'+(r[8]>0?'#dc2626':'#9ca3af')+';">'+(r[8]>=0?'+':'')+r[8]+'</td>'+
+            '<td style="'+td+'color:'+(r[10]>0?'#dc2626':r[10]<0?'#16a34a':'#d1d5db')+';">'+av+'</td></tr>';
+        }
+        function paint(){
+          var v=null,i; for(i=0;i<D.v.length;i++) if(D.v[i].k===view) v=D.v[i];
+          if(!v) return;
+          var rows=(v.c[cut]||[]);
+          desc.textContent=v.d;
+          var cl=''; for(i=0;i<D.c.length;i++) if(D.c[i].key===cut) cl=D.c[i].label;
+          if(hD) hD.textContent=cl+'增減';
+          body.innerHTML=rows.map(row).join('');
+          table.parentNode.style.display=rows.length?'':'none';
+          empty.style.display=rows.length?'none':'block';
+          [].forEach.call(root.querySelectorAll('.tdcc-view'),function(b){mark(b,b.getAttribute('data-k')===view)});
+          [].forEach.call(root.querySelectorAll('.tdcc-cut'),function(b){mark(b,b.getAttribute('data-k')===cut)});
+        }
+        function mark(b,on){b.style.borderColor=on?'#15803d':'#d1d5db';b.style.background=on?'#15803d':'#fff';b.style.color=on?'#fff':'#6b7280';}
+        [].forEach.call(root.querySelectorAll('.tdcc-view'),function(b){b.onclick=function(){view=b.getAttribute('data-k');paint()}});
+        [].forEach.call(root.querySelectorAll('.tdcc-cut'),function(b){b.onclick=function(){cut=b.getAttribute('data-k');paint()}});
+      })();
+      </script>
+    </div>`;
+}
+
+/**
+ * 每個分頁「在回答什麼問題」。key 必須與 sections 的 label 完全一致。
+ *
+ * 為什麼要有這張表：tab 上只有名字，第一次看報告的人分不出「指數貢獻」與
+ * 「族群輪動」差在哪（一個看今天、一個看這段期間）。這裡寫的是用途，不是內容摘要。
+ */
+const TAB_GUIDE: Record<string, string> = {
+  "🔥 上漲族群": "今天哪些族群在漲、背後的產業故事，以及每個族群的進場評分與建議動作。",
+  "🧊 下跌族群": "今天哪些族群在跌、為什麼跌，哪些是該避開的、哪些只是回檔。",
+  "🎯 操作建議": "把當日結論收斂成三類：可以現在介入、需要再觀察、直接避開。",
+  "📊 市場總覽": "一段盤後總結，加上大盤指數、成交量、法人買賣超、當沖比、散戶部位的儀表板。",
+  "⚖️ 指數貢獻": "指數這幾點到底是誰推的、誰在拖。資金流向圖看力道來源，分布圖看主戰場在哪。",
+  "🔄 族群輪動": "中期資金在族群之間怎麼輪動（RRG 四象限）。看的是趨勢，不是單日漲跌。",
+  "🏦 大戶籌碼": "集保大戶這週買了什麼。可切「背離（籌碼先動、價還沒動）」與「同向（籌碼與趨勢一致）」，門檻 200~1000 張可調。週資料。",
+  "🌐 國際情勢": "美股、亞股、原物料、匯率與信用利差——台股開盤前的外部條件。",
+  "🧭 長線策略": "跳出當日波動，長線的進出場想法與部位思考。",
+  "🔖 圖例說明": "報告裡各種標記、badge、顏色代表什麼意思。",
+  "🧮 評分說明": "進場評分 0-100 是怎麼算出來的，四個構面各佔多少。",
+};
+
+/** 建議的閱讀順序：由外而內、由結果到原因，最後才是可以動手的結論。 */
+const READ_ORDER = ["🌐 國際情勢", "📊 市場總覽", "⚖️ 指數貢獻", "🔥 上漲族群", "🔄 族群輪動", "🏦 大戶籌碼", "🎯 操作建議"];
+
+/**
+ * 總覽分頁：介紹每個分頁的用途並可一鍵跳過去。
+ *
+ * 刻意做成漸進增強——這裡只輸出純文字卡片，沒有 <a>、沒有「前往」字樣。
+ * 有 JS 時（網頁版）由下方 script 把卡片變成可點按鈕並補上箭頭；
+ * 沒有 JS 時（Email，所有分頁本來就依序攤開）它就是一份開頭導讀，不會出現點不動的死連結。
+ */
+function renderHome(labels: string[], date: string): string {
+  // labels 進來時已由 sortByReadOrder 排好，這裡直接沿用——分頁列、面板順序、
+  // 卡片順序必須是同一份順序，否則「建議第 N 站」會跟上方分頁列對不起來。
+  const ordered = labels;
+  // 分頁改名時 TAB_GUIDE 會對不上，卡片就只剩標題、沒人會發現。出個聲。
+  const missing = ordered.filter((l) => !TAB_GUIDE[l]);
+  if (missing.length > 0) {
+    console.warn(`[warn] 總覽缺少分頁說明，請補 TAB_GUIDE：${missing.join("、")}`);
+  }
+
+  const cards = ordered
+    .map((label) => {
+      const desc = TAB_GUIDE[label] ?? "";
+      const step = READ_ORDER.indexOf(label);
+      const badge = step >= 0
+        ? `<span style="display:inline-block; background:#eef2ff; color:#4f46e5; font-size:10px; font-weight:bold; border-radius:999px; padding:1px 6px; margin-left:5px; vertical-align:1px;">建議第 ${step + 1} 站</span>`
+        : "";
+      // 標題與說明排同一行：原本上下兩行讓每張卡片吃掉 78px，右側大半是空的。
+      // 用一般的行內流排版（不是固定欄寬表格），窄螢幕上說明會自然換行到下一行。
+      // float 的箭頭必須寫在文字之前，某些 Email 用戶端才會正確靠右。
+      return `<div class="homecard" data-goto="${label}" style="border:1px solid #e5e7eb; border-radius:6px; padding:9px 12px; margin-bottom:6px; background:#fff; font-size:13px; line-height:1.65;">
+        <span class="homecard-arrow" style="float:right; color:#c7d2fe;"></span>
+        <strong style="color:#374151; white-space:nowrap;">${label}</strong>${badge}<span style="color:#d1d5db;"> · </span><span style="color:#6b7280; font-size:12px;">${desc}</span>
+      </div>`;
+    })
+    .join("");
+
+  const orderText = READ_ORDER.filter((l) => labels.includes(l))
+    .map((l) => l.replace(/^\S+\s/, ""))
+    .join(" → ");
+
+  return `<div style="background-color:#f8fafc; border:1px solid #e2e8f0; padding:15px; border-radius:8px; margin-bottom:20px;">
+      <h3 style="margin-top:0; color:#334155;">🏠 這份報告怎麼看</h3>
+      <p style="font-size:13px; color:#4b5563; line-height:1.8; margin:0 0 12px;">
+        這是 ${date} 的台股盤後報告。它不預測明天，而是回答三件事：<strong>今天實際發生了什麼</strong>、
+        <strong>錢流去了哪裡</strong>、<strong>這是單日雜訊還是正在成形的趨勢</strong>。
+        ${orderText ? `第一次看建議照這個順序：<strong>${orderText}</strong>。` : ""}
+      </p>
+      ${cards}
+      <div class="home-hint" style="font-size:11px; color:#9ca3af; margin-top:10px; line-height:1.6; display:none;">
+        點任一張卡片可直接跳到該分頁；隨時可以從上方的分頁列回到這裡。
+      </div>
+    </div>`;
+}
+
+function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName: Map<string, string>, market?: MarketBlock | null, retailHistory?: MarketHistoryEntry[], contrib?: IndexContribution | null, tdcc?: DivergenceReport | null): string {
   // 有 call 標記的族群排前面（順勢 → 觀察 → 反轉），其餘維持原順序（檔數多→少）
   const callRank: Record<string, number> = { 順勢: 0, 觀察: 1, 反轉: 2 };
   const sortedGainers = [...a.gainers].sort(
@@ -780,6 +1553,8 @@ function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName
   const marketDashboardHtml = renderMarketDashboard(market, retailHistory);
   const intlHtml = renderIntl(a.intl);
   const rrgHtml = renderRrg(a.rrg);
+  const contribHtml = renderIndexContribution(contrib);
+  const tdccHtml = renderTdcc(tdcc);
   const legendHtml = renderLegend();
   const rubricHtml = renderScoringRubric();
 
@@ -800,13 +1575,30 @@ function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName
     { label: "🎯 操作建議", html: playbookHtml },
     // 盤後總結與市場儀表板都是整體市場觀點，合併成一個「市場總覽」tab。
     { label: "📊 市場總覽", html: `${summaryHtml}${marketDashboardHtml}` },
+    // 指數貢獻：把當日指數漲跌拆回產業與個股，緊接在市場總覽之後回答「這幾點是誰推的」
+    { label: "⚖️ 指數貢獻", html: contribHtml },
     // 族群輪動：中期資金流向，放在市場總覽之後、國際情勢之前
     { label: "🔄 族群輪動", html: rrgHtml },
+    // 大戶籌碼：週資料（TDCC 每週五結算），與每日資料放在一起時要留意更新頻率不同
+    { label: "🏦 大戶籌碼", html: tdccHtml },
     { label: "🌐 國際情勢", html: intlHtml },
     { label: "🧭 長線策略", html: longTermStrategyHtml },
     { label: "🔖 圖例說明", html: legendHtml },
     { label: "🧮 評分說明", html: rubricHtml },
   ].filter((s) => s.html && s.html.trim());
+
+  // 依建議閱讀順序重排。這是唯一的排序來源：分頁列、面板順序、總覽卡片全部吃它，
+  // 三者只要有一個不同步，「建議第 N 站」就會跟上方分頁列對不起來。
+  // Email 版沒有分頁、段落是依序攤開的，所以這個順序同時也是信件的閱讀順序。
+  const rank = (label: string) => {
+    const i = READ_ORDER.indexOf(label);
+    return i < 0 ? 99 : i; // 不在動線上的（圖例、評分說明等）沉到最後，維持原相對順序
+  };
+  sections.sort((x, y) => rank(x.label) - rank(y.label));
+
+  // 總覽放最前面：網頁版是預設落地頁（activate(0)），Email 版沒有 JS，
+  // 所有分頁本來就依序攤開，它自然成為開頭的導讀。
+  sections.unshift({ label: "🏠 總覽", html: renderHome(sections.map((s) => s.label), a.timestamp) });
 
   const panelsHtml = sections
     .map((s) => `<div class="tabpanel" data-label="${s.label}">${s.html}</div>`)
@@ -837,13 +1629,30 @@ function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName
         b.style.borderColor=on?'#4f46e5':'#e5e7eb';
       });
     }
+    var idxByLabel={};
     panels.forEach(function(p,i){
+      var label=p.getAttribute('data-label')||('Tab '+(i+1));
+      idxByLabel[label]=i;
       var b=document.createElement('button');
-      b.textContent=p.getAttribute('data-label')||('Tab '+(i+1));
+      b.textContent=label;
       b.style.cssText='font-family:inherit;font-size:14px;font-weight:bold;cursor:pointer;border:1px solid #e5e7eb;border-radius:999px;padding:8px 14px;background:#fff;color:#374151;';
       b.onclick=function(){activate(i);};
       btns.push(b);bar.appendChild(b);
     });
+    // 總覽卡片：只有在 JS 跑得動時才變成可點的入口，並補上箭頭與提示。
+    // Email 沒有 JS，卡片維持純文字，不會出現點不動的死連結。
+    [].slice.call(document.querySelectorAll('.homecard')).forEach(function(card){
+      var target=idxByLabel[card.getAttribute('data-goto')];
+      if(target===undefined)return;
+      card.style.cursor='pointer';
+      var arrow=card.querySelector('.homecard-arrow');
+      if(arrow){arrow.textContent=' →';arrow.style.color='#4f46e5';arrow.style.float='right';}
+      card.onclick=function(){activate(target);window.scrollTo(0,0);};
+      card.onmouseenter=function(){card.style.borderColor='#4f46e5';card.style.background='#f5f3ff';};
+      card.onmouseleave=function(){card.style.borderColor='#e5e7eb';card.style.background='#fff';};
+    });
+    var hint=document.querySelector('.home-hint');
+    if(hint)hint.style.display='';
     activate(0);
   })();
   </script>`;
@@ -941,7 +1750,34 @@ async function main() {
     }
   }
 
-  const html = renderHtml(analysis, stockMap, codeByName, marketBlock, retailHistory);
+  // 指數貢獻拆解（build-index-contribution.ts 的輸出）。缺檔或過期就不顯示這個 tab，
+  // 不影響其他區塊——這支是獨立可選步驟，失敗不該擋掉整份報告。
+  const contribPath = resolve(process.cwd(), "data/index-contribution-latest.json");
+  let contrib: IndexContribution | null = null;
+  if (existsSync(contribPath)) {
+    try {
+      const parsed: IndexContribution = JSON.parse(readFileSync(contribPath, "utf-8"));
+      // 交易日對不上代表這份是舊的（例如當天沒重跑），寧可不顯示也不要秀錯的數字。
+      if (parsed?.tradingDate === analysis.date || !analysis.date) contrib = parsed;
+      else console.warn(`index-contribution 交易日 ${parsed?.tradingDate} 與分析 ${analysis.date} 不符，略過`);
+    } catch {
+      console.warn("index-contribution-latest.json 無法解析，略過");
+    }
+  }
+
+  // 大戶籌碼背離（build-tdcc-divergence.ts 的輸出）。這是週資料，不做「當日新鮮度」
+  // 檢查——同一份榜單本來就會連續出現好幾天，直到下週六 TDCC 更新。
+  const tdccPath = resolve(process.cwd(), "data/tdcc-divergence-latest.json");
+  let tdcc: DivergenceReport | null = null;
+  if (existsSync(tdccPath)) {
+    try {
+      tdcc = JSON.parse(readFileSync(tdccPath, "utf-8"));
+    } catch {
+      console.warn("tdcc-divergence-latest.json 無法解析，略過");
+    }
+  }
+
+  const html = renderHtml(analysis, stockMap, codeByName, marketBlock, retailHistory, contrib, tdcc);
 
   const htmlOutPath = resolve(process.cwd(), "data/report-latest.html");
   writeFileSync(htmlOutPath, html, "utf-8");

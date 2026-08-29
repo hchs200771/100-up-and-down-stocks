@@ -312,6 +312,44 @@ async function readTwseResponse(res: Response): Promise<any> {
   return parseTwseCsv(text);
 }
 
+/**
+ * fetch + parse with retry.
+ *
+ * 交易所端點偶發回 HTTP 200 但 body 是 HTML（WAF/限流擋掉），此時 res.json()
+ * 會拋 SyntaxError。這種失敗原樣重跑通常就過，所以把 fetch 與解析一起包進
+ * 重試：解析失敗也算失敗、也要重試（只重試 fetch 沒有用）。
+ */
+async function fetchRetry<T>(
+  url: string,
+  label: string,
+  parse: (res: Response) => Promise<T>,
+  attempts = 3,
+): Promise<T> {
+  let lastErr: unknown;
+  for (let i = 1; i <= attempts; i++) {
+    try {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return await parse(res);
+    } catch (e) {
+      lastErr = e;
+      if (i < attempts) {
+        const wait = 1500 * i; // 1.5s, 3s
+        console.warn(
+          `[retry] ${label} 第 ${i}/${attempts} 次失敗：${(e as Error).message}，${wait}ms 後重試`,
+        );
+        await new Promise((r) => setTimeout(r, wait));
+      }
+    }
+  }
+  throw new Error(`${label} 重試 ${attempts} 次仍失敗：${(lastErr as Error)?.message}`);
+}
+
+/** fetchRetry 的 JSON 版本（絕大多數端點用這支） */
+function fetchJson(url: string, label: string, attempts = 3): Promise<any> {
+  return fetchRetry(url, label, (r) => r.json(), attempts);
+}
+
 function processTwseData(json: any): Stock[] {
   if (!json.data) return [];
   return json.data
@@ -382,16 +420,20 @@ function deriveTradingDate(twseData: any, tpexData: any): { tradingDate: string;
 
 async function main() {
   // Step 1: fetch base data
-  const [twseRes, tpexRes, futuresRes] = await Promise.all([
-    fetch("https://www.twse.com.tw/rwd/zh/afterTrading/STOCK_DAY_ALL?response=json"),
-    fetch("https://www.tpex.org.tw/www/zh-tw/afterTrading/dailyQuotes?response=json"),
-    fetch("https://openapi.taifex.com.tw/v1/SingleStockFuturesMargining"),
-  ]);
-
   const [twseData, tpexData, futuresData] = await Promise.all([
-    readTwseResponse(twseRes),
-    tpexRes.json(),
-    futuresRes.json().catch(() => []),
+    fetchRetry(
+      "https://www.twse.com.tw/rwd/zh/afterTrading/STOCK_DAY_ALL?response=json",
+      "TWSE STOCK_DAY_ALL",
+      readTwseResponse,
+    ),
+    fetchJson(
+      "https://www.tpex.org.tw/www/zh-tw/afterTrading/dailyQuotes?response=json",
+      "TPEx dailyQuotes",
+    ),
+    fetchJson(
+      "https://openapi.taifex.com.tw/v1/SingleStockFuturesMargining",
+      "TAIFEX 股期保證金",
+    ).catch(() => []),
   ]);
 
   const futuresMap: Record<string, { level: string; margin: string }> = {};
@@ -437,50 +479,35 @@ async function main() {
     tpexIssuedSharesRaw,
     bfi82uRaw,
   ] = await Promise.all([
-    fetch(`https://www.twse.com.tw/rwd/zh/fund/T86?response=json&date=${rawDate}&selectType=ALL`)
-      .then((r) => r.json())
+    fetchJson(`https://www.twse.com.tw/rwd/zh/fund/T86?response=json&date=${rawDate}&selectType=ALL`, "T86")
       .catch((e) => { console.warn("[warn] T86 failed:", e.message); return null; }),
-    fetch("https://www.tpex.org.tw/www/zh-tw/insti/dailyTrade?type=Daily&response=json")
-      .then((r) => r.json())
+    fetchJson("https://www.tpex.org.tw/www/zh-tw/insti/dailyTrade?type=Daily&response=json", "TPEx insti")
       .catch((e) => { console.warn("[warn] TPEx insti failed:", e.message); return null; }),
-    fetch(`https://www.twse.com.tw/exchangeReport/TWTB4U?response=json&date=${rawDate}&selectType=All`)
-      .then((r) => r.json())
+    fetchJson(`https://www.twse.com.tw/exchangeReport/TWTB4U?response=json&date=${rawDate}&selectType=All`, "TWTB4U")
       .catch((e) => { console.warn("[warn] TWTB4U failed:", e.message); return null; }),
-    fetch("https://www.tpex.org.tw/openapi/v1/tpex_intraday_trading_statistics")
-      .then((r) => r.json())
+    fetchJson("https://www.tpex.org.tw/openapi/v1/tpex_intraday_trading_statistics", "TPEx day trade stat")
       .catch((e) => { console.warn("[warn] TPEx day trade stat failed:", e.message); return null; }),
-    fetch("https://openapi.twse.com.tw/v1/announcement/notice")
-      .then((r) => r.json())
+    fetchJson("https://openapi.twse.com.tw/v1/announcement/notice", "TWSE notice")
       .catch((e) => { console.warn("[warn] TWSE notice failed:", e.message); return null; }),
-    fetch("https://openapi.twse.com.tw/v1/announcement/punish")
-      .then((r) => r.json())
+    fetchJson("https://openapi.twse.com.tw/v1/announcement/punish", "TWSE punish")
       .catch((e) => { console.warn("[warn] TWSE punish failed:", e.message); return null; }),
-    fetch("https://www.tpex.org.tw/openapi/v1/tpex_trading_warning_information")
-      .then((r) => r.json())
+    fetchJson("https://www.tpex.org.tw/openapi/v1/tpex_trading_warning_information", "TPEx notice")
       .catch((e) => { console.warn("[warn] TPEx notice failed:", e.message); return null; }),
-    fetch("https://www.tpex.org.tw/openapi/v1/tpex_disposal_information")
-      .then((r) => r.json())
+    fetchJson("https://www.tpex.org.tw/openapi/v1/tpex_disposal_information", "TPEx disposal")
       .catch((e) => { console.warn("[warn] TPEx disposal failed:", e.message); return null; }),
-    fetch("https://openapi.taifex.com.tw/v1/MarketDataOfMajorInstitutionalTradersDetailsOfFuturesContractsBytheDate")
-      .then((r) => r.json())
+    fetchJson("https://openapi.taifex.com.tw/v1/MarketDataOfMajorInstitutionalTradersDetailsOfFuturesContractsBytheDate", "Micro insti OI")
       .catch((e) => { console.warn("[warn] Micro insti OI failed:", e.message); return null; }),
-    fetch("https://openapi.taifex.com.tw/v1/DailyMarketReportFut")
-      .then((r) => r.json())
+    fetchJson("https://openapi.taifex.com.tw/v1/DailyMarketReportFut", "DailyMarketReportFut")
       .catch((e) => { console.warn("[warn] DailyMarketReportFut failed:", e.message); return null; }),
-    fetch("https://www.twse.com.tw/rwd/zh/afterTrading/FMTQIK?response=json")
-      .then((r) => r.json())
+    fetchJson("https://www.twse.com.tw/rwd/zh/afterTrading/FMTQIK?response=json", "FMTQIK")
       .catch((e) => { console.warn("[warn] FMTQIK failed:", e.message); return null; }),
-    fetch("https://www.tpex.org.tw/openapi/v1/tpex_daily_trading_index")
-      .then((r) => r.json())
+    fetchJson("https://www.tpex.org.tw/openapi/v1/tpex_daily_trading_index", "TPEx daily index")
       .catch((e) => { console.warn("[warn] TPEx daily index failed:", e.message); return null; }),
-    fetch("https://openapi.twse.com.tw/v1/opendata/t187ap03_L")
-      .then((r) => r.json())
+    fetchJson("https://openapi.twse.com.tw/v1/opendata/t187ap03_L", "TWSE issued shares")
       .catch((e) => { console.warn("[warn] TWSE issued shares failed:", e.message); return null; }),
-    fetch("https://www.tpex.org.tw/openapi/v1/mopsfin_t187ap03_O")
-      .then((r) => r.json())
+    fetchJson("https://www.tpex.org.tw/openapi/v1/mopsfin_t187ap03_O", "TPEx issued shares")
       .catch((e) => { console.warn("[warn] TPEx issued shares failed:", e.message); return null; }),
-    fetch("https://www.twse.com.tw/rwd/zh/fund/BFI82U?response=json&type=day")
-      .then((r) => r.json())
+    fetchJson("https://www.twse.com.tw/rwd/zh/fund/BFI82U?response=json&type=day", "BFI82U")
       .catch((e) => { console.warn("[warn] BFI82U failed:", e.message); return null; }),
   ]);
 
@@ -698,12 +725,16 @@ async function main() {
       const compact = isoDate.replace(/-/g, "");
       const tpexFmt = `${isoDate.slice(0, 4)}/${isoDate.slice(5, 7)}/${isoDate.slice(8, 10)}`;
       return Promise.all([
-        fetch(`https://www.twse.com.tw/rwd/zh/fund/T86?response=json&date=${compact}&selectType=ALL`)
-          .then((r) => r.json())
-          .catch(() => null),
-        fetch(`https://www.tpex.org.tw/www/zh-tw/insti/dailyTrade?type=Daily&date=${tpexFmt}&response=json`)
-          .then((r) => r.json())
-          .catch(() => null),
+        fetchJson(
+          `https://www.twse.com.tw/rwd/zh/fund/T86?response=json&date=${compact}&selectType=ALL`,
+          `T86 ${isoDate}`,
+          2,
+        ).catch(() => null),
+        fetchJson(
+          `https://www.tpex.org.tw/www/zh-tw/insti/dailyTrade?type=Daily&date=${tpexFmt}&response=json`,
+          `TPEx insti ${isoDate}`,
+          2,
+        ).catch(() => null),
       ]).then(([twseJson, tpexJson]): InstiDayResult => {
         const twseMap = twseJson ? parseT86(twseJson) : new Map();
         const tpexMap = tpexJson ? parseTpexInsti(tpexJson) : new Map();
