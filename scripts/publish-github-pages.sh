@@ -33,6 +33,8 @@ fi
 # 族群輪動 RRG 已由 build-site-html.ts 直接內嵌進 index.html 的「🔄 族群輪動」分頁，
 # 不再發佈獨立的 rrg.html 子頁（data/tw-rrg.html 只留給本地預覽）。
 [ -f "$PROJECT_DIR/data/tw-rrg-alerts.json" ] && cp "$PROJECT_DIR/data/tw-rrg-alerts.json" "$SITE_DIR/tw-rrg-alerts.json"
+# 董監設質+CB 候選池子頁（scripts/screen-cb-pledge.ts 產出，週更）
+[ -f "$PROJECT_DIR/data/cb-pledge.html" ] && cp "$PROJECT_DIR/data/cb-pledge.html" "$SITE_DIR/cb-pledge.html"
 
 git add data/site
 

@@ -42,6 +42,7 @@ const CACHE_DIR = path.join(ROOT, "data", "cache", "cb-pledge");
 const SNAP_DIR = path.join(ROOT, "data", "cb-pledge-history");
 const STATE_FILE = path.join(CACHE_DIR, "state.json");
 const OUT_FILE = path.join(ROOT, "data", "cb-pledge-latest.json");
+const OUT_HTML = path.join(ROOT, "data", "cb-pledge.html");
 const UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36";
 const FORCE = process.argv.includes("--force");
 
@@ -343,6 +344,7 @@ async function main() {
     if (st.isoWeek === week) {
       const prev = JSON.parse(readFileSync(OUT_FILE, "utf8"));
       console.log(`本週（${week}）已跑過（${st.lastRunAt}，設質資料 ${st.pledgeMonth}、看板 ${st.boardDate}），直接用上次結果；--force 可強制重跑。`);
+      writeFileSync(OUT_HTML, renderHtml(prev)); // 樣板改版時不用等下週，重跑就更新網頁
       printSummary(prev);
       return;
     }
@@ -452,10 +454,145 @@ async function main() {
     candidates,
   };
   writeFileSync(OUT_FILE, JSON.stringify(out, null, 1));
+  writeFileSync(OUT_HTML, renderHtml(out));
   const st: State = { lastRunAt: now.toISOString(), isoWeek: week, pledgeMonth: pledge.month, boardDate: board.boardDate };
   writeFileSync(STATE_FILE, JSON.stringify(st, null, 1));
-  console.log(`寫出 ${path.relative(ROOT, OUT_FILE)}（${candidates.length} 檔）`);
+  console.log(`寫出 ${path.relative(ROOT, OUT_FILE)} 與 ${path.relative(ROOT, OUT_HTML)}（${candidates.length} 檔）`);
   printSummary(out);
+}
+
+/**
+ * 自足單頁：可排序、可篩選的候選池表格，發佈到日報網站當子頁 /cb-pledge.html。
+ * 資料直接內嵌（~300 檔很小），不打 API、不吃外部資源。
+ */
+function renderHtml(out: any): string {
+  const cands = out.candidates as Candidate[];
+  const rows = cands.map((c) => {
+    // 展示用的主 CB：優先取轉換期內的，其次第一檔（通常是餘額最大）
+    const b = c.bonds.find((x) => x.inWindow) ?? c.bonds[0];
+    return {
+      code: c.code,
+      name: c.name,
+      market: c.market,
+      pledgeRatio: c.pledgeRatio,
+      newPledgeLots: c.newPledgeLots,
+      close: c.close,
+      ma20: c.ma20,
+      avgLots: c.avgLots,
+      vsConv: c.vsConversionPct,
+      convPrice: b?.conversionPrice ?? null,
+      premium: b?.premiumPct ?? null,
+      converted: b?.convertedPct ?? null,
+      cbUnits: b?.cbAvgUnits ?? null,
+      convEnd: b?.conversionEnd ?? "",
+      bondName: b?.bondName ?? "",
+      flags: c.flags,
+    };
+  });
+  const note = out.hasMonthOverMonth
+    ? ""
+    : "<p class='note'>⚠️ 目前是基線月：OpenAPI 只提供最新一個月的設質資料，「月增設質」要等下個月中公布新資料後才算得出來。</p>";
+  return `<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>董監設質 + CB 候選池</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="88">🔐</text></svg>')}">
+<style>
+:root{--bg:#f7f8fa;--card:#fff;--fg:#1a202c;--muted:#64748b;--line:#e2e8f0;--accent:#2563eb;--up:#c2410c;--down:#15803d;--chip:#eef2f7}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1420;--card:#171e2e;--fg:#e5eaf3;--muted:#8b98ad;--line:#28334a;--accent:#7aa2ff;--up:#ff8a5c;--down:#4ade80;--chip:#222c42}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.6 -apple-system,"PingFang TC","Noto Sans TC",sans-serif;padding:16px}
+.wrap{max-width:1200px;margin:0 auto}
+h1{font-size:20px;margin:4px 0 2px}
+.sub,.note{color:var(--muted);font-size:13px;margin:2px 0}
+.note{color:var(--up)}
+.filters{display:flex;flex-wrap:wrap;gap:6px 14px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:12px 0;font-size:13px}
+.filters label{display:flex;align-items:center;gap:5px;cursor:pointer;white-space:nowrap}
+.tablebox{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;min-width:980px;font-size:13px}
+th,td{padding:6px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+th:nth-child(-n+2),td:nth-child(-n+2){text-align:left}
+th{position:sticky;top:0;background:var(--card);cursor:pointer;user-select:none;color:var(--muted);font-weight:600}
+th .arr{font-size:10px}
+tr:hover td{background:color-mix(in srgb,var(--accent) 6%,transparent)}
+a{color:var(--accent);text-decoration:none}
+.chip{display:inline-block;background:var(--chip);border-radius:99px;padding:0 8px;margin:1px 2px;font-size:11px;color:var(--muted)}
+.chip.hot{color:var(--up)}
+.chip.go{color:var(--down)}
+.pos{color:var(--up)}.neg{color:var(--down)}
+.count{margin:8px 2px;color:var(--muted);font-size:13px}
+.howto{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:14px 0;font-size:13px;color:var(--muted)}
+.howto b{color:var(--fg)}
+</style>
+</head>
+<body><div class="wrap">
+<h1>🔐 董監設質 + CB 候選池</h1>
+<p class="sub">設質資料年月 ${out.pledgeMonth}（民國）｜CB 看板 ${out.boardDate}｜產生於 ${String(out.generatedAt).slice(0, 16).replace("T", " ")} UTC｜每週更新</p>
+${note}
+<div class="filters">
+  <label><input type="checkbox" id="fLiquid" checked> 排除流動性不足（現股&lt;${out.thresholds.MIN_STOCK_LOTS}張 或 CB&lt;${out.thresholds.MIN_CB_UNITS}張）</label>
+  <label><input type="checkbox" id="fWindow"> 只看轉換期內</label>
+  <label><input type="checkbox" id="fP50"> 只看設質&gt;50%</label>
+  <label><input type="checkbox" id="fBreak"> 只看突破轉換價+MA20</label>
+  <label><input type="checkbox" id="fAlive" checked> 隱藏已過期/已轉換&gt;70%</label>
+</div>
+<div class="count" id="count"></div>
+<div class="tablebox"><table id="tbl">
+<thead><tr>
+<th data-k="code">代號</th><th data-k="name">名稱</th><th data-k="pledgeRatio">設質%</th><th data-k="newPledgeLots">月增(張)</th>
+<th data-k="close">現價</th><th data-k="ma20">MA20</th><th data-k="avgLots">均量(張)</th>
+<th data-k="convPrice">轉換價</th><th data-k="vsConv">vs轉換價</th><th data-k="premium">CB溢價%</th>
+<th data-k="converted">已轉換%</th><th data-k="cbUnits">CB均量</th><th data-k="convEnd">轉換迄日</th><th>旗標</th>
+</tr></thead><tbody></tbody></table></div>
+<div class="howto">
+<b>怎麼讀：</b>公司派有流通中 CB（動機：拉過轉換價才能套利）+ 董監設質（壓力：維持率不能跌）。
+<b>vs轉換價</b>負值＝還在轉換價之下（有想像空間）；<b>CB溢價%</b>低＝CB 貼著平價走、進度落後不多；
+<b>已轉換%</b>高＝戲近尾聲。<span class="chip go">突破轉換價+MA20</span>＝量價站上、策略一的進場觀察名單；
+<span class="chip hot">轉換期未開始</span>＝CB 剛發行、常是吃貨階段，先追蹤。此為候選池非買賣建議，進場仍要看量價。
+</div>
+<script>
+const ROWS=${JSON.stringify(rows)};
+const fmt=(v,suf)=>v==null?"—":v+(suf||"");
+const cls=v=>v==null?"":v>0?" class=pos":v<0?" class=neg":"";
+let sortK="pledgeRatio",sortDir=-1;
+function dead(r){return r.flags.includes("轉換期已過")||r.flags.includes("CB已轉換>70%")}
+function render(){
+  const f={liquid:fLiquid.checked,win:fWindow.checked,p50:fP50.checked,brk:fBreak.checked,alive:fAlive.checked};
+  let rs=ROWS.filter(r=>
+    !(f.alive&&dead(r))&&
+    !(f.liquid&&(r.flags.includes("現股量低")||r.flags.includes("CB量低")))&&
+    !(f.win&&r.flags.includes("轉換期未開始"))&&
+    !(f.p50&&!r.flags.includes("設質>50%"))&&
+    !(f.brk&&!r.flags.includes("突破轉換價+MA20")));
+  rs.sort((a,b)=>{const x=a[sortK],y=b[sortK];
+    if(x==null&&y==null)return 0;if(x==null)return 1;if(y==null)return -1;
+    return(x<y?-1:x>y?1:0)*sortDir});
+  document.querySelector("#tbl tbody").innerHTML=rs.map(r=>{
+    const url="https://tw.stock.yahoo.com/quote/"+r.code+(r.market==="twse"?".TW":".TWO");
+    const chips=r.flags.map(fl=>{
+      const c=fl==="突破轉換價+MA20"?"chip go":fl==="轉換期未開始"||fl==="設質>50%"?"chip hot":"chip";
+      return '<span class="'+c+'">'+fl+"</span>"}).join("");
+    return "<tr><td><a href='"+url+"' target='_blank'>"+r.code+"</a></td><td>"+r.name+
+      "</td><td>"+fmt(r.pledgeRatio)+"</td><td"+cls(r.newPledgeLots)+">"+fmt(r.newPledgeLots)+
+      "</td><td>"+fmt(r.close)+"</td><td>"+fmt(r.ma20)+"</td><td>"+fmt(r.avgLots)+
+      "</td><td>"+fmt(r.convPrice)+"</td><td"+cls(r.vsConv)+">"+fmt(r.vsConv,"%")+"</td><td>"+fmt(r.premium)+
+      "</td><td>"+fmt(r.converted)+"</td><td>"+fmt(r.cbUnits)+"</td><td>"+r.convEnd+"</td><td>"+chips+"</td></tr>"}).join("");
+  count.textContent="顯示 "+rs.length+" / "+ROWS.length+" 檔";
+  document.querySelectorAll("#tbl th").forEach(th=>{
+    const a=th.querySelector(".arr");if(a)a.remove();
+    if(th.dataset.k===sortK)th.insertAdjacentHTML("beforeend"," <span class='arr'>"+(sortDir<0?"▼":"▲")+"</span>")});
+}
+document.querySelectorAll("#tbl th[data-k]").forEach(th=>th.onclick=()=>{
+  const k=th.dataset.k;
+  if(k===sortK)sortDir*=-1;else{sortK=k;sortDir=-1}
+  render()});
+document.querySelectorAll(".filters input").forEach(i=>i.onchange=render);
+render();
+</script>
+</div></body></html>`;
 }
 
 function printSummary(out: any) {
