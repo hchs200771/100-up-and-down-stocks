@@ -1759,40 +1759,100 @@ function renderHome(labels: string[], date: string, order: string[] = READ_ORDER
     console.warn(`[warn] 總覽缺少分頁說明，請補 TAB_GUIDE：${missing.join("、")}`);
   }
 
-  const cards = ordered
-    .map((label) => {
-      const desc = TAB_GUIDE[label] ?? "";
-      // 用「在實際存在的段落之中排第幾」而不是在 order 表裡的索引：
-      // 動線上的段落可能整個缺席（例如今天沒有操作建議），用表索引會跳號（1,2,3,5,6）。
-      const step = steps.indexOf(label);
-      const badge = step >= 0
-        ? `<span style="display:inline-block; background:#eef2ff; color:#4f46e5; font-size:10px; font-weight:bold; border-radius:999px; padding:1px 6px; margin-left:5px; vertical-align:1px;">建議第 ${step + 1} 站</span>`
-        : "";
-      // 標題與說明排同一行：原本上下兩行讓每張卡片吃掉 78px，右側大半是空的。
-      // 用一般的行內流排版（不是固定欄寬表格），窄螢幕上說明會自然換行到下一行。
-      // float 的箭頭必須寫在文字之前，某些 Email 用戶端才會正確靠右。
-      return `<div class="homecard" data-goto="${label}" style="border:1px solid #e5e7eb; border-radius:6px; padding:9px 12px; margin-bottom:6px; background:#fff; font-size:13px; line-height:1.65;">
+  // 標題與說明排同一行：原本上下兩行讓每張卡片吃掉 78px，右側大半是空的。
+  // 用一般的行內流排版（不是固定欄寬表格），窄螢幕上說明會自然換行到下一行。
+  // float 的箭頭必須寫在文字之前，某些 Email 用戶端才會正確靠右。
+  const card = (label: string) => {
+    const desc = TAB_GUIDE[label] ?? "";
+    // 用「在實際存在的段落之中排第幾」而不是在 order 表裡的索引：
+    // 動線上的段落可能整個缺席（例如今天沒有操作建議），用表索引會跳號（1,2,3,5,6）。
+    const step = steps.indexOf(label);
+    const badge = step >= 0
+      ? `<span style="display:inline-block; background:#eef2ff; color:#4f46e5; font-size:10px; font-weight:bold; border-radius:999px; padding:1px 6px; margin-left:5px; vertical-align:1px;">建議第 ${step + 1} 站</span>`
+      : "";
+    return `<div class="homecard" data-goto="${label}" style="border:1px solid #e5e7eb; border-radius:6px; padding:9px 12px; margin-bottom:6px; background:#fff; font-size:13px; line-height:1.65;">
         <span class="homecard-arrow" style="float:right; color:#c7d2fe;"></span>
         <strong style="color:#374151; white-space:nowrap;">${label}</strong>${badge}<span style="color:#d1d5db;"> · </span><span style="color:#6b7280; font-size:12px;">${desc}</span>
       </div>`;
-    })
-    .join("");
+  };
+
+  // 設質+CB 候選池是獨立子頁（週更），不是分頁——卡片直接外連，網頁與信件都能點。
+  const cbCard = `<a href="${SITE_URL}cb-pledge.html" style="text-decoration:none; display:block;"><div style="border:1px solid #e5e7eb; border-radius:6px; padding:9px 12px; margin-bottom:6px; background:#fff; font-size:13px; line-height:1.65;">
+        <span style="float:right; color:#c7d2fe;">↗</span>
+        <strong style="color:#374151; white-space:nowrap;">🔐 設質+CB 候選池</strong><span style="color:#d1d5db;"> · </span><span style="color:#6b7280; font-size:12px;">董監新增設質＋有流通中 CB 的公司派作價訊號池，含轉換價距離與 CB 溢價。週更、獨立頁面。</span>
+      </div></a>`;
+
+  // 首頁分組：依「多久變一次」分色塊，讀者可以先看每天會動的，慢變數另外一區。
+  // labels 進來已依 READ_ORDER 排好，各色塊內沿用該順序；沒被任何色塊認領的分頁
+  // 落到「其他」，分頁改名或新增時不會從首頁消失。
+  const BLOCKS: { title: string; hint: string; bg: string; border: string; titleColor: string; labels: string[]; extraHtml?: string }[] = [
+    {
+      title: "🔥 今日族群與操作",
+      // 圖例位置兩版不同：網頁版附在上漲/下跌分頁底部、信件版是最後的獨立段落
+      hint: `每天的主菜：漲跌族群與可執行結論。圖例與評分說明${order === EMAIL_ORDER ? "在本信最後" : "附在上漲/下跌分頁的最底下"}。`,
+      bg: "#fff7ed", border: "#fed7aa", titleColor: "#c2410c",
+      labels: ["🔥 上漲族群", "🧊 下跌族群", "🎯 操作建議"],
+    },
+    {
+      title: "📅 一日市場總覽",
+      hint: "每天更新的市場背景：外部條件 → 大盤儀表板 → 指數是誰推的。",
+      bg: "#eff6ff", border: "#bfdbfe", titleColor: "#1d4ed8",
+      labels: ["🌐 國際情勢", "📊 市場總覽", "⚖️ 指數貢獻"],
+    },
+    {
+      title: "🐢 非每日變動",
+      hint: "慢變數：週更或月更，不用每天看，但轉折時最值錢。",
+      bg: "#f0fdf4", border: "#bbf7d0", titleColor: "#15803d",
+      labels: ["🔄 族群輪動", "🏦 大戶籌碼"],
+      extraHtml: cbCard,
+    },
+    {
+      title: "📚 其他",
+      hint: "",
+      bg: "#f8fafc", border: "#e2e8f0", titleColor: "#334155",
+      labels: [], // 由 leftovers 填入
+    },
+  ];
+  const claimed = new Set(BLOCKS.flatMap((b) => b.labels));
+  BLOCKS[BLOCKS.length - 1].labels = ordered.filter((l) => !claimed.has(l));
+
+  const renderBlock = (b: (typeof BLOCKS)[number], style = "") => {
+    const present = b.labels.filter((l) => ordered.includes(l));
+    if (!present.length && !b.extraHtml) return "";
+    return `<div style="background-color:${b.bg}; border:1px solid ${b.border}; border-radius:8px; padding:12px 14px; margin-bottom:10px; ${style}">
+        <div style="font-weight:bold; color:${b.titleColor}; margin-bottom:2px;">${b.title}</div>
+        ${b.hint ? `<p style="font-size:12px; color:#6b7280; line-height:1.6; margin:0 0 8px;">${b.hint}</p>` : `<div style="margin-bottom:8px;"></div>`}
+        ${present.map(card).join("")}${b.extraHtml ?? ""}
+      </div>`;
+  };
+
+  // 「一日市場總覽」與「非每日變動」在寬螢幕左右並排（inline-block 49%），
+  // 窄螢幕/信件視窗因 min-width 排不下會自動上下堆疊。不用 flex/grid 是為了 Email 相容。
+  const twoCol =
+    `<div>` +
+    `<div style="display:inline-block; width:49%; min-width:300px; vertical-align:top;">${renderBlock(BLOCKS[1], "margin-right:0;")}</div>` +
+    `<div style="display:inline-block; width:49%; min-width:300px; vertical-align:top; margin-left:1%;">${renderBlock(BLOCKS[2])}</div>` +
+    `</div>`;
 
   const orderText = steps
     .map((l) => l.replace(/^\S+\s/, ""))
     .join(" → ");
 
-  return `<div style="background-color:#f8fafc; border:1px solid #e2e8f0; padding:15px; border-radius:8px; margin-bottom:20px;">
-      <h3 style="margin-top:0; color:#334155;">🏠 這份報告怎麼看</h3>
-      <p style="font-size:13px; color:#4b5563; line-height:1.8; margin:0 0 12px;">
-        這是 ${date} 的台股盤後報告。它不預測明天，而是回答三件事：<strong>今天實際發生了什麼</strong>、
-        <strong>錢流去了哪裡</strong>、<strong>這是單日雜訊還是正在成形的趨勢</strong>。
-        ${orderText ? `第一次看建議照這個順序：<strong>${orderText}</strong>。` : ""}
-      </p>
-      ${cards}
-      <div class="home-hint" style="font-size:11px; color:#9ca3af; margin-top:10px; line-height:1.6; display:none;">
-        點任一張卡片可直接跳到該分頁；隨時可以從上方的分頁列回到這裡。
+  return `<div style="margin-bottom:20px;">
+      <div style="background-color:#f8fafc; border:1px solid #e2e8f0; padding:12px 15px; border-radius:8px; margin-bottom:10px;">
+        <h3 style="margin-top:0; margin-bottom:6px; color:#334155;">🏠 這份報告怎麼看</h3>
+        <p style="font-size:13px; color:#4b5563; line-height:1.8; margin:0;">
+          這是 ${date} 的台股盤後報告。它不預測明天，而是回答三件事：<strong>今天實際發生了什麼</strong>、
+          <strong>錢流去了哪裡</strong>、<strong>這是單日雜訊還是正在成形的趨勢</strong>。
+          ${orderText ? `第一次看建議照這個順序：<strong>${orderText}</strong>。` : ""}
+        </p>
+        <div class="home-hint" style="font-size:11px; color:#9ca3af; margin-top:6px; line-height:1.6; display:none;">
+          點任一張卡片可直接跳到該分頁；隨時可以從上方的分頁列回到這裡。
+        </div>
       </div>
+      ${renderBlock(BLOCKS[0])}
+      ${twoCol}
+      ${renderBlock(BLOCKS[3])}
     </div>`;
 }
 
@@ -1829,8 +1889,13 @@ function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName
       <p style="line-height: 1.6; margin-bottom: 0;">${a.summary.replace(/\n/g, "<br>")}</p>
     </div>`;
 
-  const groupGHtml = `<h3 style="color: #dc2626; margin-top: 0;">🔥 強勢焦點 (量大優先)</h3>${gainersHtml}`;
-  const groupLHtml = `<h3 style="color: #16a34a; margin-top: 0;">🧊 弱勢焦點 (量大優先)</h3>${losersHtml}`;
+  // 圖例／評分說明的歸屬：
+  // - 網頁版：不再是獨立分頁，直接附在會用到它們的分頁最底下（badge 都出現在
+  //   上漲/下跌族群；進場評分只有強勢族群有，所以評分說明只附在上漲）。
+  // - 信件版：維持單份、照舊排在最後。信件是線性攤開的，圖例出現兩次只是灌體積，
+  //   而 Gmail 102KB 截斷的壓力一直都在。
+  const groupGHtml = `<h3 style="color: #dc2626; margin-top: 0;">🔥 強勢焦點 (量大優先)</h3>${gainersHtml}${forEmail ? "" : legendHtml + rubricHtml}`;
+  const groupLHtml = `<h3 style="color: #16a34a; margin-top: 0;">🧊 弱勢焦點 (量大優先)</h3>${losersHtml}${forEmail ? "" : legendHtml}`;
 
   // 每個區塊都是一個 tab panel；瀏覽器端由下方 script 產生頂部切換鈕、預設只顯示第一個（上漲族群）。
   // email 無 JS 時所有 panel 都顯示（完整退回），不會壞。
@@ -1849,8 +1914,13 @@ function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName
     { label: "🏦 大戶籌碼", html: tdccHtml },
     { label: "🌐 國際情勢", html: intlHtml },
     { label: "🧭 長線策略", html: longTermStrategyHtml },
-    { label: "🔖 圖例說明", html: legendHtml },
-    { label: "🧮 評分說明", html: rubricHtml },
+    // 圖例/評分說明只有信件版還是獨立段落（見上方 groupGHtml 的說明）
+    ...(forEmail
+      ? [
+          { label: "🔖 圖例說明", html: legendHtml },
+          { label: "🧮 評分說明", html: rubricHtml },
+        ]
+      : []),
   ].filter((s) => s.html && s.html.trim());
 
   // 依建議閱讀順序重排。這是唯一的排序來源：分頁列、面板順序、總覽卡片全部吃它，
