@@ -410,7 +410,9 @@ async function main() {
     if (s.avgLots != null && s.avgLots < MIN_STOCK_LOTS) flags.push("現股量低");
     if (enriched.every((b) => (b.cbAvgUnits ?? 0) < MIN_CB_UNITS)) flags.push("CB量低");
     if (enriched.every((b) => b.convertedPct > 70)) flags.push("CB已轉換>70%");
-    if (!enriched.some((b) => b.inWindow)) flags.push("不在轉換期");
+    // 轉換期「已結束」才是死訊號；「未開始」＝CB 剛發行、常是公司派吃貨階段，特別標出來
+    if (bonds.every((b) => b.conversionEnd < today)) flags.push("轉換期已過");
+    else if (!enriched.some((b) => b.inWindow)) flags.push("轉換期未開始");
     if (p.pledgeRatio >= 50) flags.push("設質>50%");
     if (stockPx && s.ma20 && stockPx > s.ma20 && stockPx > main.conversionPrice) flags.push("突破轉換價+MA20");
     return {
@@ -431,7 +433,7 @@ async function main() {
   });
 
   // 排序：有新增設質的排最前（張數大→小），其餘用設質比例；被流動性/轉換期排除的沉底
-  const dead = (c: Candidate) => c.flags.includes("不在轉換期") || c.flags.includes("CB已轉換>70%");
+  const dead = (c: Candidate) => c.flags.includes("轉換期已過") || c.flags.includes("CB已轉換>70%");
   candidates.sort((a, b) => {
     if (dead(a) !== dead(b)) return dead(a) ? 1 : -1;
     const an = a.newPledgeLots ?? -1;
@@ -458,7 +460,7 @@ async function main() {
 
 function printSummary(out: any) {
   const rows = (out.candidates as Candidate[]).filter(
-    (c) => !c.flags.includes("不在轉換期") && !c.flags.includes("CB已轉換>70%"),
+    (c) => !c.flags.includes("轉換期已過") && !c.flags.includes("CB已轉換>70%"),
   );
   console.log(`\n設質資料 ${out.pledgeMonth}｜CB 看板 ${out.boardDate}｜月增設質${out.hasMonthOverMonth ? "已可比較" : "＝基線月，暫無"}`);
   console.log("代號   名稱      設質%  月增(張) 現價    vs轉換價  CB溢價%  已轉換%  旗標");

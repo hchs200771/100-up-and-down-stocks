@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-08-31T14:44:16.804Z",
+ "generatedAt": "2026-08-31T14:46:26.367Z",
  "isoWeek": "2026-W36",
  "pledgeMonth": "11507",
  "boardDate": "115/08/31",
@@ -1038,6 +1038,36 @@
    ]
   },
   {
+   "code": "2486",
+   "name": "一詮",
+   "market": "twse",
+   "pledgeRatio": 36.09,
+   "pledgedLots": 14081,
+   "newPledgeLots": null,
+   "pledgeOver50": false,
+   "bonds": [
+    {
+     "bondCode": "24867",
+     "bondName": "一詮七",
+     "conversionPrice": 256,
+     "conversionEnd": "2029/07/23",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 131,
+     "cbAvgUnits": 55.9,
+     "premiumPct": 27.5
+    }
+   ],
+   "close": 263,
+   "ma20": 240.25,
+   "avgLots": 8777,
+   "vsConversionPct": 2.7,
+   "flags": [
+    "轉換期未開始",
+    "突破轉換價+MA20"
+   ]
+  },
+  {
    "code": "6706",
    "name": "惠特",
    "market": "twse",
@@ -1131,6 +1161,47 @@
    "vsConversionPct": -9.8,
    "flags": [
     "CB量低"
+   ]
+  },
+  {
+   "code": "3081",
+   "name": "聯亞",
+   "market": "tpex",
+   "pledgeRatio": 35.03,
+   "pledgedLots": 6058,
+   "newPledgeLots": null,
+   "pledgeOver50": false,
+   "bonds": [
+    {
+     "bondCode": "30811",
+     "bondName": "聯亞一",
+     "conversionPrice": 1757.9,
+     "conversionEnd": "2029/08/12",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 231,
+     "cbAvgUnits": 833,
+     "premiumPct": 15
+    },
+    {
+     "bondCode": "30812",
+     "bondName": "聯亞二",
+     "conversionPrice": 2168.8,
+     "conversionEnd": "2029/08/13",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 187,
+     "cbAvgUnits": 1007.4,
+     "premiumPct": 14.9
+    }
+   ],
+   "close": 3530,
+   "ma20": 2751.5,
+   "avgLots": 3412,
+   "vsConversionPct": 62.8,
+   "flags": [
+    "轉換期未開始",
+    "突破轉換價+MA20"
    ]
   },
   {
@@ -1380,6 +1451,36 @@
    "flags": []
   },
   {
+   "code": "6187",
+   "name": "萬潤",
+   "market": "tpex",
+   "pledgeRatio": 29.66,
+   "pledgedLots": 6410,
+   "newPledgeLots": null,
+   "pledgeOver50": false,
+   "bonds": [
+    {
+     "bondCode": "61876",
+     "bondName": "萬潤六",
+     "conversionPrice": 1136.8,
+     "conversionEnd": "2029/07/02",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 143.5,
+     "cbAvgUnits": 189.8,
+     "premiumPct": 21.3
+    }
+   ],
+   "close": 1345,
+   "ma20": 1231.5,
+   "avgLots": 3949,
+   "vsConversionPct": 18.3,
+   "flags": [
+    "轉換期未開始",
+    "突破轉換價+MA20"
+   ]
+  },
+  {
    "code": "2442",
    "name": "新美齊",
    "market": "twse",
@@ -1621,6 +1722,36 @@
    ]
   },
   {
+   "code": "6869",
+   "name": "雲豹能源",
+   "market": "twse",
+   "pledgeRatio": 25.19,
+   "pledgedLots": 3400,
+   "newPledgeLots": null,
+   "pledgeOver50": false,
+   "bonds": [
+    {
+     "bondCode": "68692",
+     "bondName": "雲豹能源二",
+     "conversionPrice": 72.3,
+     "conversionEnd": "2029/07/24",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 110,
+     "cbAvgUnits": 119.1,
+     "premiumPct": 19.4
+    }
+   ],
+   "close": 66.6,
+   "ma20": 67.23,
+   "avgLots": 460,
+   "vsConversionPct": -7.9,
+   "flags": [
+    "現股量低",
+    "轉換期未開始"
+   ]
+  },
+  {
    "code": "9939",
    "name": "宏全",
    "market": "twse",
@@ -1646,6 +1777,36 @@
    "avgLots": 1557,
    "vsConversionPct": -14.4,
    "flags": []
+  },
+  {
+   "code": "1717",
+   "name": "長興",
+   "market": "twse",
+   "pledgeRatio": 24.74,
+   "pledgedLots": 72050,
+   "newPledgeLots": null,
+   "pledgeOver50": false,
+   "bonds": [
+    {
+     "bondCode": "17172",
+     "bondName": "長興二",
+     "conversionPrice": 75.7,
+     "conversionEnd": "2031/06/08",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 135.1,
+     "cbAvgUnits": 99.5,
+     "premiumPct": 24
+    }
+   ],
+   "close": 82.5,
+   "ma20": 71.87,
+   "avgLots": 16856,
+   "vsConversionPct": 9,
+   "flags": [
+    "轉換期未開始",
+    "突破轉換價+MA20"
+   ]
   },
   {
    "code": "2906",
@@ -1816,6 +1977,46 @@
    ]
   },
   {
+   "code": "8936",
+   "name": "國統",
+   "market": "tpex",
+   "pledgeRatio": 23.72,
+   "pledgedLots": 3600,
+   "newPledgeLots": null,
+   "pledgeOver50": false,
+   "bonds": [
+    {
+     "bondCode": "89365",
+     "bondName": "國統五",
+     "conversionPrice": 55,
+     "conversionEnd": "2029/08/17",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 111.25,
+     "cbAvgUnits": 301.9,
+     "premiumPct": 20.7
+    },
+    {
+     "bondCode": "89366",
+     "bondName": "國統六",
+     "conversionPrice": 53.8,
+     "conversionEnd": "2029/08/28",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 102.9,
+     "cbAvgUnits": 28.5,
+     "premiumPct": 9.2
+    }
+   ],
+   "close": 50.7,
+   "ma20": 51.34,
+   "avgLots": 1008,
+   "vsConversionPct": -7.8,
+   "flags": [
+    "轉換期未開始"
+   ]
+  },
+  {
    "code": "3518",
    "name": "柏騰",
    "market": "twse",
@@ -1843,6 +2044,35 @@
    "flags": [
     "現股量低",
     "CB量低"
+   ]
+  },
+  {
+   "code": "2303",
+   "name": "聯電",
+   "market": "twse",
+   "pledgeRatio": 22.06,
+   "pledgedLots": 177735,
+   "newPledgeLots": null,
+   "pledgeOver50": false,
+   "bonds": [
+    {
+     "bondCode": "23031",
+     "bondName": "聯電一",
+     "conversionPrice": 146,
+     "conversionEnd": "2031/08/07",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 120,
+     "cbAvgUnits": 5846.3,
+     "premiumPct": 35.8
+    }
+   ],
+   "close": 129,
+   "ma20": 121.5,
+   "avgLots": 148212,
+   "vsConversionPct": -11.6,
+   "flags": [
+    "轉換期未開始"
    ]
   },
   {
@@ -2124,6 +2354,36 @@
    "vsConversionPct": -24.2,
    "flags": [
     "CB量低"
+   ]
+  },
+  {
+   "code": "3491",
+   "name": "昇達科",
+   "market": "tpex",
+   "pledgeRatio": 19.76,
+   "pledgedLots": 1400,
+   "newPledgeLots": null,
+   "pledgeOver50": false,
+   "bonds": [
+    {
+     "bondCode": "34913",
+     "bondName": "昇達科三",
+     "conversionPrice": 1788,
+     "conversionEnd": "2031/06/09",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 135,
+     "cbAvgUnits": 36,
+     "premiumPct": 74.9
+    }
+   ],
+   "close": 1380,
+   "ma20": 1309,
+   "avgLots": 1707,
+   "vsConversionPct": -22.8,
+   "flags": [
+    "CB量低",
+    "轉換期未開始"
    ]
   },
   {
@@ -2675,6 +2935,37 @@
    ]
   },
   {
+   "code": "6134",
+   "name": "萬旭",
+   "market": "tpex",
+   "pledgeRatio": 13.27,
+   "pledgedLots": 8469,
+   "newPledgeLots": null,
+   "pledgeOver50": false,
+   "bonds": [
+    {
+     "bondCode": "61343",
+     "bondName": "萬旭三",
+     "conversionPrice": 33.8,
+     "conversionEnd": "2029/07/20",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 120.05,
+     "cbAvgUnits": 0.9,
+     "premiumPct": 41.6
+    }
+   ],
+   "close": 28.65,
+   "ma20": 27.91,
+   "avgLots": 223,
+   "vsConversionPct": -15.2,
+   "flags": [
+    "現股量低",
+    "CB量低",
+    "轉換期未開始"
+   ]
+  },
+  {
    "code": "6209",
    "name": "今國光",
    "market": "twse",
@@ -2772,6 +3063,35 @@
    "vsConversionPct": -13.4,
    "flags": [
     "CB量低"
+   ]
+  },
+  {
+   "code": "4764",
+   "name": "雙鍵",
+   "market": "twse",
+   "pledgeRatio": 11.37,
+   "pledgedLots": 3200,
+   "newPledgeLots": null,
+   "pledgeOver50": false,
+   "bonds": [
+    {
+     "bondCode": "47642",
+     "bondName": "雙鍵二",
+     "conversionPrice": 336.8,
+     "conversionEnd": "2029/08/05",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 124.5,
+     "cbAvgUnits": 293.1,
+     "premiumPct": 74
+    }
+   ],
+   "close": 241,
+   "ma20": 231.83,
+   "avgLots": 1703,
+   "vsConversionPct": -28.4,
+   "flags": [
+    "轉換期未開始"
    ]
   },
   {
@@ -3061,6 +3381,37 @@
    "vsConversionPct": -6.6,
    "flags": [
     "CB量低"
+   ]
+  },
+  {
+   "code": "3294",
+   "name": "英濟",
+   "market": "tpex",
+   "pledgeRatio": 7.45,
+   "pledgedLots": 6000,
+   "newPledgeLots": null,
+   "pledgeOver50": false,
+   "bonds": [
+    {
+     "bondCode": "32943",
+     "bondName": "英濟三",
+     "conversionPrice": 41.8,
+     "conversionEnd": "2029/06/18",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 120,
+     "cbAvgUnits": 0,
+     "premiumPct": 64.7
+    }
+   ],
+   "close": 30.45,
+   "ma20": 30.78,
+   "avgLots": 282,
+   "vsConversionPct": -27.2,
+   "flags": [
+    "現股量低",
+    "CB量低",
+    "轉換期未開始"
    ]
   },
   {
@@ -3861,6 +4212,35 @@
    ]
   },
   {
+   "code": "5289",
+   "name": "宜鼎",
+   "market": "tpex",
+   "pledgeRatio": 1,
+   "pledgedLots": 154,
+   "newPledgeLots": null,
+   "pledgeOver50": false,
+   "bonds": [
+    {
+     "bondCode": "52892",
+     "bondName": "宜鼎二",
+     "conversionPrice": 2180,
+     "conversionEnd": "2029/07/01",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 116.35,
+     "cbAvgUnits": 111.5,
+     "premiumPct": 74.9
+    }
+   ],
+   "close": 1450,
+   "ma20": 1475.01,
+   "avgLots": 2633,
+   "vsConversionPct": -33.5,
+   "flags": [
+    "轉換期未開始"
+   ]
+  },
+  {
    "code": "1256",
    "name": "鮮活果汁-KY",
    "market": "twse",
@@ -4135,6 +4515,37 @@
    "flags": [
     "現股量低",
     "CB量低"
+   ]
+  },
+  {
+   "code": "1623",
+   "name": "大東電",
+   "market": "twse",
+   "pledgeRatio": 0,
+   "pledgedLots": 0,
+   "newPledgeLots": null,
+   "pledgeOver50": false,
+   "bonds": [
+    {
+     "bondCode": "16231",
+     "bondName": "大東電一",
+     "conversionPrice": 232,
+     "conversionEnd": "2029/07/16",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 106.05,
+     "cbAvgUnits": 20.5,
+     "premiumPct": 21.5
+    }
+   ],
+   "close": 202.5,
+   "ma20": 206.07,
+   "avgLots": 79,
+   "vsConversionPct": -12.7,
+   "flags": [
+    "現股量低",
+    "CB量低",
+    "轉換期未開始"
    ]
   },
   {
@@ -4553,6 +4964,35 @@
    "flags": []
   },
   {
+   "code": "3028",
+   "name": "增你強",
+   "market": "twse",
+   "pledgeRatio": 0,
+   "pledgedLots": 0,
+   "newPledgeLots": null,
+   "pledgeOver50": false,
+   "bonds": [
+    {
+     "bondCode": "30285",
+     "bondName": "增你強五",
+     "conversionPrice": 78,
+     "conversionEnd": "2031/07/24",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 108,
+     "cbAvgUnits": 80.5,
+     "premiumPct": 30.2
+    }
+   ],
+   "close": 64.7,
+   "ma20": 67.44,
+   "avgLots": 1282,
+   "vsConversionPct": -17.1,
+   "flags": [
+    "轉換期未開始"
+   ]
+  },
+  {
    "code": "3033",
    "name": "威健",
    "market": "twse",
@@ -4659,6 +5099,36 @@
    "flags": []
   },
   {
+   "code": "3149",
+   "name": "正達",
+   "market": "twse",
+   "pledgeRatio": 0,
+   "pledgedLots": 0,
+   "newPledgeLots": null,
+   "pledgeOver50": false,
+   "bonds": [
+    {
+     "bondCode": "31494",
+     "bondName": "正達四",
+     "conversionPrice": 68.1,
+     "conversionEnd": "2029/08/31",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 118.6,
+     "cbAvgUnits": 18.2,
+     "premiumPct": 26
+    }
+   ],
+   "close": 64.1,
+   "ma20": 66.08,
+   "avgLots": 8866,
+   "vsConversionPct": -5.9,
+   "flags": [
+    "CB量低",
+    "轉換期未開始"
+   ]
+  },
+  {
    "code": "3167",
    "name": "大量",
    "market": "twse",
@@ -4716,6 +5186,36 @@
    "flags": [
     "現股量低",
     "CB量低"
+   ]
+  },
+  {
+   "code": "3219",
+   "name": "倚強科",
+   "market": "tpex",
+   "pledgeRatio": 0,
+   "pledgedLots": 0,
+   "newPledgeLots": null,
+   "pledgeOver50": false,
+   "bonds": [
+    {
+     "bondCode": "32191",
+     "bondName": "倚強科一",
+     "conversionPrice": 66.4,
+     "conversionEnd": "2029/08/25",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 134.4,
+     "cbAvgUnits": 125.1,
+     "premiumPct": -1.9
+    }
+   ],
+   "close": 91,
+   "ma20": 73.72,
+   "avgLots": 579,
+   "vsConversionPct": 37,
+   "flags": [
+    "轉換期未開始",
+    "突破轉換價+MA20"
    ]
   },
   {
@@ -4987,6 +5487,36 @@
    ]
   },
   {
+   "code": "3512",
+   "name": "皇龍",
+   "market": "tpex",
+   "pledgeRatio": 0,
+   "pledgedLots": 0,
+   "newPledgeLots": null,
+   "pledgeOver50": false,
+   "bonds": [
+    {
+     "bondCode": "35122",
+     "bondName": "皇龍二",
+     "conversionPrice": 20.5,
+     "conversionEnd": "2029/08/18",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 103.25,
+     "cbAvgUnits": 360.7,
+     "premiumPct": 8.3
+    }
+   ],
+   "close": 19.55,
+   "ma20": 19.66,
+   "avgLots": 30,
+   "vsConversionPct": -4.6,
+   "flags": [
+    "現股量低",
+    "轉換期未開始"
+   ]
+  },
+  {
    "code": "3516",
    "name": "亞帝歐",
    "market": "tpex",
@@ -5117,6 +5647,36 @@
    "flags": [
     "現股量低",
     "CB量低"
+   ]
+  },
+  {
+   "code": "3583",
+   "name": "辛耘",
+   "market": "twse",
+   "pledgeRatio": 0,
+   "pledgedLots": 0,
+   "newPledgeLots": null,
+   "pledgeOver50": false,
+   "bonds": [
+    {
+     "bondCode": "35833",
+     "bondName": "辛耘三",
+     "conversionPrice": 850,
+     "conversionEnd": "2029/07/30",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 130,
+     "cbAvgUnits": 44.7,
+     "premiumPct": 52.6
+    }
+   ],
+   "close": 724,
+   "ma20": 715.15,
+   "avgLots": 935,
+   "vsConversionPct": -14.8,
+   "flags": [
+    "CB量低",
+    "轉換期未開始"
    ]
   },
   {
@@ -5799,6 +6359,65 @@
    ]
   },
   {
+   "code": "4967",
+   "name": "十銓",
+   "market": "twse",
+   "pledgeRatio": 0,
+   "pledgedLots": 0,
+   "newPledgeLots": null,
+   "pledgeOver50": false,
+   "bonds": [
+    {
+     "bondCode": "49675",
+     "bondName": "十銓五",
+     "conversionPrice": 205,
+     "conversionEnd": "2031/08/18",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 134.15,
+     "cbAvgUnits": 1376.3,
+     "premiumPct": -0.4
+    }
+   ],
+   "close": 276,
+   "ma20": 271.88,
+   "avgLots": 5613,
+   "vsConversionPct": 34.6,
+   "flags": [
+    "轉換期未開始",
+    "突破轉換價+MA20"
+   ]
+  },
+  {
+   "code": "4973",
+   "name": "廣穎電通",
+   "market": "tpex",
+   "pledgeRatio": 0,
+   "pledgedLots": 0,
+   "newPledgeLots": null,
+   "pledgeOver50": false,
+   "bonds": [
+    {
+     "bondCode": "49731",
+     "bondName": "廣穎電通一",
+     "conversionPrice": 169.6,
+     "conversionEnd": "2029/08/21",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 106.5,
+     "cbAvgUnits": 217.3,
+     "premiumPct": 17.3
+    }
+   ],
+   "close": 154,
+   "ma20": 155.13,
+   "avgLots": 2223,
+   "vsConversionPct": -9.2,
+   "flags": [
+    "轉換期未開始"
+   ]
+  },
+  {
    "code": "4979",
    "name": "華星光",
    "market": "tpex",
@@ -5897,6 +6516,37 @@
    "flags": [
     "現股量低",
     "CB量低"
+   ]
+  },
+  {
+   "code": "5291",
+   "name": "邑昇",
+   "market": "tpex",
+   "pledgeRatio": 0,
+   "pledgedLots": 0,
+   "newPledgeLots": null,
+   "pledgeOver50": false,
+   "bonds": [
+    {
+     "bondCode": "52912",
+     "bondName": "邑昇二",
+     "conversionPrice": 53,
+     "conversionEnd": "2029/07/29",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 130,
+     "cbAvgUnits": 31.9,
+     "premiumPct": -0.9
+    }
+   ],
+   "close": 69.5,
+   "ma20": 57.32,
+   "avgLots": 1184,
+   "vsConversionPct": 31.1,
+   "flags": [
+    "CB量低",
+    "轉換期未開始",
+    "突破轉換價+MA20"
    ]
   },
   {
@@ -6088,6 +6738,46 @@
    ]
   },
   {
+   "code": "5536",
+   "name": "聖暉*",
+   "market": "tpex",
+   "pledgeRatio": 0,
+   "pledgedLots": 0,
+   "newPledgeLots": null,
+   "pledgeOver50": false,
+   "bonds": [
+    {
+     "bondCode": "55362",
+     "bondName": "聖暉二",
+     "conversionPrice": 1178,
+     "conversionEnd": "2029/08/04",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 122.5,
+     "cbAvgUnits": 705.4,
+     "premiumPct": 67
+    },
+    {
+     "bondCode": "55363",
+     "bondName": "聖暉三",
+     "conversionPrice": 1158,
+     "conversionEnd": "2029/08/17",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 119,
+     "cbAvgUnits": 908.3,
+     "premiumPct": 59.5
+    }
+   ],
+   "close": 864,
+   "ma20": 922.8,
+   "avgLots": 1168,
+   "vsConversionPct": -26.7,
+   "flags": [
+    "轉換期未開始"
+   ]
+  },
+  {
    "code": "5608",
    "name": "四維航",
    "market": "twse",
@@ -6272,6 +6962,66 @@
    "vsConversionPct": 9,
    "flags": [
     "CB量低"
+   ]
+  },
+  {
+   "code": "6220",
+   "name": "岳豐",
+   "market": "tpex",
+   "pledgeRatio": 0,
+   "pledgedLots": 0,
+   "newPledgeLots": null,
+   "pledgeOver50": false,
+   "bonds": [
+    {
+     "bondCode": "622010",
+     "bondName": "岳豐十",
+     "conversionPrice": 32.4,
+     "conversionEnd": "2029/06/10",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 112,
+     "cbAvgUnits": 29.1,
+     "premiumPct": 39.8
+    }
+   ],
+   "close": 25.95,
+   "ma20": 25.91,
+   "avgLots": 212,
+   "vsConversionPct": -19.9,
+   "flags": [
+    "現股量低",
+    "CB量低",
+    "轉換期未開始"
+   ]
+  },
+  {
+   "code": "6223",
+   "name": "旺矽",
+   "market": "tpex",
+   "pledgeRatio": 0,
+   "pledgedLots": 0,
+   "newPledgeLots": null,
+   "pledgeOver50": false,
+   "bonds": [
+    {
+     "bondCode": "62236",
+     "bondName": "旺矽六",
+     "conversionPrice": 6201.8,
+     "conversionEnd": "2031/06/15",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 138.4,
+     "cbAvgUnits": 153.7,
+     "premiumPct": 67.3
+    }
+   ],
+   "close": 5130,
+   "ma20": 5775.75,
+   "avgLots": 949,
+   "vsConversionPct": -17.3,
+   "flags": [
+    "轉換期未開始"
    ]
   },
   {
@@ -6603,6 +7353,36 @@
    ]
   },
   {
+   "code": "6570",
+   "name": "維田",
+   "market": "tpex",
+   "pledgeRatio": 0,
+   "pledgedLots": 0,
+   "newPledgeLots": null,
+   "pledgeOver50": false,
+   "bonds": [
+    {
+     "bondCode": "65702",
+     "bondName": "維田二",
+     "conversionPrice": 55.73,
+     "conversionEnd": "2029/08/14",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 110.8,
+     "cbAvgUnits": 168.1,
+     "premiumPct": 22.5
+    }
+   ],
+   "close": 50.4,
+   "ma20": 54.85,
+   "avgLots": 221,
+   "vsConversionPct": -9.6,
+   "flags": [
+    "現股量低",
+    "轉換期未開始"
+   ]
+  },
+  {
    "code": "6576",
    "name": "逸達",
    "market": "tpex",
@@ -6630,6 +7410,36 @@
    "flags": [
     "現股量低",
     "CB量低"
+   ]
+  },
+  {
+   "code": "6584",
+   "name": "南俊國際",
+   "market": "tpex",
+   "pledgeRatio": 0,
+   "pledgedLots": 0,
+   "newPledgeLots": null,
+   "pledgeOver50": false,
+   "bonds": [
+    {
+     "bondCode": "65843",
+     "bondName": "南俊國際三",
+     "conversionPrice": 685,
+     "conversionEnd": "2029/07/02",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 125.65,
+     "cbAvgUnits": 28.8,
+     "premiumPct": 36.8
+    }
+   ],
+   "close": 629,
+   "ma20": 575.23,
+   "avgLots": 1193,
+   "vsConversionPct": -8.2,
+   "flags": [
+    "CB量低",
+    "轉換期未開始"
    ]
   },
   {
@@ -6810,6 +7620,66 @@
     "現股量低",
     "CB量低",
     "突破轉換價+MA20"
+   ]
+  },
+  {
+   "code": "6683",
+   "name": "雍智科技",
+   "market": "tpex",
+   "pledgeRatio": 0,
+   "pledgedLots": 0,
+   "newPledgeLots": null,
+   "pledgeOver50": false,
+   "bonds": [
+    {
+     "bondCode": "66831",
+     "bondName": "雍智一",
+     "conversionPrice": 1127.1,
+     "conversionEnd": "2029/08/10",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 138,
+     "cbAvgUnits": 819,
+     "premiumPct": 28.5
+    }
+   ],
+   "close": 1210,
+   "ma20": 1204.75,
+   "avgLots": 614,
+   "vsConversionPct": 7.4,
+   "flags": [
+    "轉換期未開始",
+    "突破轉換價+MA20"
+   ]
+  },
+  {
+   "code": "6693",
+   "name": "廣閎科",
+   "market": "tpex",
+   "pledgeRatio": 0,
+   "pledgedLots": 0,
+   "newPledgeLots": null,
+   "pledgeOver50": false,
+   "bonds": [
+    {
+     "bondCode": "66931",
+     "bondName": "廣閎科一",
+     "conversionPrice": 228.1,
+     "conversionEnd": "2029/07/24",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 115,
+     "cbAvgUnits": 12.7,
+     "premiumPct": 48.6
+    }
+   ],
+   "close": 176.5,
+   "ma20": 173.95,
+   "avgLots": 958,
+   "vsConversionPct": -22.6,
+   "flags": [
+    "CB量低",
+    "轉換期未開始"
    ]
   },
   {
@@ -7194,6 +8064,47 @@
    ]
   },
   {
+   "code": "6903",
+   "name": "巨漢",
+   "market": "tpex",
+   "pledgeRatio": 0,
+   "pledgedLots": 0,
+   "newPledgeLots": null,
+   "pledgeOver50": false,
+   "bonds": [
+    {
+     "bondCode": "69031",
+     "bondName": "巨漢一",
+     "conversionPrice": 406.6,
+     "conversionEnd": "2029/07/24",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 110.5,
+     "cbAvgUnits": 38.9,
+     "premiumPct": 43.5
+    },
+    {
+     "bondCode": "69032",
+     "bondName": "巨漢二",
+     "conversionPrice": 369.8,
+     "conversionEnd": "2029/08/07",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 112.5,
+     "cbAvgUnits": 457.7,
+     "premiumPct": 32.9
+    }
+   ],
+   "close": 313,
+   "ma20": 316.18,
+   "avgLots": 310,
+   "vsConversionPct": -15.4,
+   "flags": [
+    "現股量低",
+    "轉換期未開始"
+   ]
+  },
+  {
    "code": "6904",
    "name": "伯鑫",
    "market": "tpex",
@@ -7398,6 +8309,36 @@
    ]
   },
   {
+   "code": "7631",
+   "name": "聚賢研發-創",
+   "market": "twse",
+   "pledgeRatio": 0,
+   "pledgedLots": 0,
+   "newPledgeLots": null,
+   "pledgeOver50": false,
+   "bonds": [
+    {
+     "bondCode": "76311",
+     "bondName": "聚賢研發一創",
+     "conversionPrice": 150.8,
+     "conversionEnd": "2029/08/26",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 108,
+     "cbAvgUnits": 97.4,
+     "premiumPct": 13.1
+    }
+   ],
+   "close": 144,
+   "ma20": 141.97,
+   "avgLots": 90,
+   "vsConversionPct": -4.5,
+   "flags": [
+    "現股量低",
+    "轉換期未開始"
+   ]
+  },
+  {
    "code": "7713",
    "name": "威力德生醫",
    "market": "tpex",
@@ -7459,6 +8400,36 @@
    ]
   },
   {
+   "code": "8054",
+   "name": "安國",
+   "market": "tpex",
+   "pledgeRatio": 0,
+   "pledgedLots": 0,
+   "newPledgeLots": null,
+   "pledgeOver50": false,
+   "bonds": [
+    {
+     "bondCode": "80541",
+     "bondName": "安國一",
+     "conversionPrice": 122.6,
+     "conversionEnd": "2029/07/22",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 118,
+     "cbAvgUnits": 3.8,
+     "premiumPct": 74.5
+    }
+   ],
+   "close": 82.9,
+   "ma20": 82.5,
+   "avgLots": 741,
+   "vsConversionPct": -32.4,
+   "flags": [
+    "CB量低",
+    "轉換期未開始"
+   ]
+  },
+  {
    "code": "8074",
    "name": "鉅橡",
    "market": "tpex",
@@ -7515,6 +8486,47 @@
    "flags": [
     "現股量低",
     "CB量低"
+   ]
+  },
+  {
+   "code": "8096",
+   "name": "擎亞",
+   "market": "tpex",
+   "pledgeRatio": 0,
+   "pledgedLots": 0,
+   "newPledgeLots": null,
+   "pledgeOver50": false,
+   "bonds": [
+    {
+     "bondCode": "80962",
+     "bondName": "擎亞二",
+     "conversionPrice": 158,
+     "conversionEnd": "2029/07/02",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 101,
+     "cbAvgUnits": 33.5,
+     "premiumPct": 46.4
+    },
+    {
+     "bondCode": "80963",
+     "bondName": "擎亞三",
+     "conversionPrice": 155,
+     "conversionEnd": "2029/07/14",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 109,
+     "cbAvgUnits": 10.7,
+     "premiumPct": 55
+    }
+   ],
+   "close": 109,
+   "ma20": 116.53,
+   "avgLots": 4794,
+   "vsConversionPct": -31,
+   "flags": [
+    "CB量低",
+    "轉換期未開始"
    ]
   },
   {
@@ -7630,6 +8642,36 @@
    "flags": [
     "現股量低",
     "CB量低"
+   ]
+  },
+  {
+   "code": "8438",
+   "name": "昶昕",
+   "market": "twse",
+   "pledgeRatio": 0,
+   "pledgedLots": 0,
+   "newPledgeLots": null,
+   "pledgeOver50": false,
+   "bonds": [
+    {
+     "bondCode": "84381",
+     "bondName": "昶昕一",
+     "conversionPrice": 90.8,
+     "conversionEnd": "2029/08/05",
+     "inWindow": false,
+     "convertedPct": 0,
+     "cbPrice": 93.25,
+     "cbAvgUnits": 89.6,
+     "premiumPct": 18.1
+    }
+   ],
+   "close": 71.7,
+   "ma20": 67.43,
+   "avgLots": 279,
+   "vsConversionPct": -21,
+   "flags": [
+    "現股量低",
+    "轉換期未開始"
    ]
   },
   {
@@ -7954,77 +8996,6 @@
    ]
   },
   {
-   "code": "2486",
-   "name": "一詮",
-   "market": "twse",
-   "pledgeRatio": 36.09,
-   "pledgedLots": 14081,
-   "newPledgeLots": null,
-   "pledgeOver50": false,
-   "bonds": [
-    {
-     "bondCode": "24867",
-     "bondName": "一詮七",
-     "conversionPrice": 256,
-     "conversionEnd": "2029/07/23",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 131,
-     "cbAvgUnits": 55.9,
-     "premiumPct": 27.5
-    }
-   ],
-   "close": 263,
-   "ma20": 240.25,
-   "avgLots": 8777,
-   "vsConversionPct": 2.7,
-   "flags": [
-    "不在轉換期",
-    "突破轉換價+MA20"
-   ]
-  },
-  {
-   "code": "3081",
-   "name": "聯亞",
-   "market": "tpex",
-   "pledgeRatio": 35.03,
-   "pledgedLots": 6058,
-   "newPledgeLots": null,
-   "pledgeOver50": false,
-   "bonds": [
-    {
-     "bondCode": "30811",
-     "bondName": "聯亞一",
-     "conversionPrice": 1757.9,
-     "conversionEnd": "2029/08/12",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 231,
-     "cbAvgUnits": 833,
-     "premiumPct": 15
-    },
-    {
-     "bondCode": "30812",
-     "bondName": "聯亞二",
-     "conversionPrice": 2168.8,
-     "conversionEnd": "2029/08/13",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 187,
-     "cbAvgUnits": 1007.4,
-     "premiumPct": 14.9
-    }
-   ],
-   "close": 3530,
-   "ma20": 2751.5,
-   "avgLots": 3412,
-   "vsConversionPct": 62.8,
-   "flags": [
-    "不在轉換期",
-    "突破轉換價+MA20"
-   ]
-  },
-  {
    "code": "3305",
    "name": "昇貿",
    "market": "twse",
@@ -8119,36 +9090,6 @@
    ]
   },
   {
-   "code": "6187",
-   "name": "萬潤",
-   "market": "tpex",
-   "pledgeRatio": 29.66,
-   "pledgedLots": 6410,
-   "newPledgeLots": null,
-   "pledgeOver50": false,
-   "bonds": [
-    {
-     "bondCode": "61876",
-     "bondName": "萬潤六",
-     "conversionPrice": 1136.8,
-     "conversionEnd": "2029/07/02",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 143.5,
-     "cbAvgUnits": 189.8,
-     "premiumPct": 21.3
-    }
-   ],
-   "close": 1345,
-   "ma20": 1231.5,
-   "avgLots": 3949,
-   "vsConversionPct": 18.3,
-   "flags": [
-    "不在轉換期",
-    "突破轉換價+MA20"
-   ]
-  },
-  {
    "code": "6207",
    "name": "雷科",
    "market": "tpex",
@@ -8188,106 +9129,6 @@
     "CB量低",
     "CB已轉換>70%",
     "突破轉換價+MA20"
-   ]
-  },
-  {
-   "code": "6869",
-   "name": "雲豹能源",
-   "market": "twse",
-   "pledgeRatio": 25.19,
-   "pledgedLots": 3400,
-   "newPledgeLots": null,
-   "pledgeOver50": false,
-   "bonds": [
-    {
-     "bondCode": "68692",
-     "bondName": "雲豹能源二",
-     "conversionPrice": 72.3,
-     "conversionEnd": "2029/07/24",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 110,
-     "cbAvgUnits": 119.1,
-     "premiumPct": 19.4
-    }
-   ],
-   "close": 66.6,
-   "ma20": 67.23,
-   "avgLots": 460,
-   "vsConversionPct": -7.9,
-   "flags": [
-    "現股量低",
-    "不在轉換期"
-   ]
-  },
-  {
-   "code": "1717",
-   "name": "長興",
-   "market": "twse",
-   "pledgeRatio": 24.74,
-   "pledgedLots": 72050,
-   "newPledgeLots": null,
-   "pledgeOver50": false,
-   "bonds": [
-    {
-     "bondCode": "17172",
-     "bondName": "長興二",
-     "conversionPrice": 75.7,
-     "conversionEnd": "2031/06/08",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 135.1,
-     "cbAvgUnits": 99.5,
-     "premiumPct": 24
-    }
-   ],
-   "close": 82.5,
-   "ma20": 71.87,
-   "avgLots": 16856,
-   "vsConversionPct": 9,
-   "flags": [
-    "不在轉換期",
-    "突破轉換價+MA20"
-   ]
-  },
-  {
-   "code": "8936",
-   "name": "國統",
-   "market": "tpex",
-   "pledgeRatio": 23.72,
-   "pledgedLots": 3600,
-   "newPledgeLots": null,
-   "pledgeOver50": false,
-   "bonds": [
-    {
-     "bondCode": "89365",
-     "bondName": "國統五",
-     "conversionPrice": 55,
-     "conversionEnd": "2029/08/17",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 111.25,
-     "cbAvgUnits": 301.9,
-     "premiumPct": 20.7
-    },
-    {
-     "bondCode": "89366",
-     "bondName": "國統六",
-     "conversionPrice": 53.8,
-     "conversionEnd": "2029/08/28",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 102.9,
-     "cbAvgUnits": 28.5,
-     "premiumPct": 9.2
-    }
-   ],
-   "close": 50.7,
-   "ma20": 51.34,
-   "avgLots": 1008,
-   "vsConversionPct": -7.8,
-   "flags": [
-    "不在轉換期"
    ]
   },
   {
@@ -8362,35 +9203,6 @@
    ]
   },
   {
-   "code": "2303",
-   "name": "聯電",
-   "market": "twse",
-   "pledgeRatio": 22.06,
-   "pledgedLots": 177735,
-   "newPledgeLots": null,
-   "pledgeOver50": false,
-   "bonds": [
-    {
-     "bondCode": "23031",
-     "bondName": "聯電一",
-     "conversionPrice": 146,
-     "conversionEnd": "2031/08/07",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 120,
-     "cbAvgUnits": 5846.3,
-     "premiumPct": 35.8
-    }
-   ],
-   "close": 129,
-   "ma20": 121.5,
-   "avgLots": 148212,
-   "vsConversionPct": -11.6,
-   "flags": [
-    "不在轉換期"
-   ]
-  },
-  {
    "code": "8473",
    "name": "山林水",
    "market": "twse",
@@ -8419,36 +9231,6 @@
     "CB量低",
     "CB已轉換>70%",
     "突破轉換價+MA20"
-   ]
-  },
-  {
-   "code": "3491",
-   "name": "昇達科",
-   "market": "tpex",
-   "pledgeRatio": 19.76,
-   "pledgedLots": 1400,
-   "newPledgeLots": null,
-   "pledgeOver50": false,
-   "bonds": [
-    {
-     "bondCode": "34913",
-     "bondName": "昇達科三",
-     "conversionPrice": 1788,
-     "conversionEnd": "2031/06/09",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 135,
-     "cbAvgUnits": 36,
-     "premiumPct": 74.9
-    }
-   ],
-   "close": 1380,
-   "ma20": 1309,
-   "avgLots": 1707,
-   "vsConversionPct": -22.8,
-   "flags": [
-    "CB量低",
-    "不在轉換期"
    ]
   },
   {
@@ -8494,37 +9276,6 @@
    ]
   },
   {
-   "code": "6134",
-   "name": "萬旭",
-   "market": "tpex",
-   "pledgeRatio": 13.27,
-   "pledgedLots": 8469,
-   "newPledgeLots": null,
-   "pledgeOver50": false,
-   "bonds": [
-    {
-     "bondCode": "61343",
-     "bondName": "萬旭三",
-     "conversionPrice": 33.8,
-     "conversionEnd": "2029/07/20",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 120.05,
-     "cbAvgUnits": 0.9,
-     "premiumPct": 41.6
-    }
-   ],
-   "close": 28.65,
-   "ma20": 27.91,
-   "avgLots": 223,
-   "vsConversionPct": -15.2,
-   "flags": [
-    "現股量低",
-    "CB量低",
-    "不在轉換期"
-   ]
-  },
-  {
    "code": "4542",
    "name": "科嶠",
    "market": "tpex",
@@ -8553,66 +9304,6 @@
     "CB量低",
     "CB已轉換>70%",
     "突破轉換價+MA20"
-   ]
-  },
-  {
-   "code": "4764",
-   "name": "雙鍵",
-   "market": "twse",
-   "pledgeRatio": 11.37,
-   "pledgedLots": 3200,
-   "newPledgeLots": null,
-   "pledgeOver50": false,
-   "bonds": [
-    {
-     "bondCode": "47642",
-     "bondName": "雙鍵二",
-     "conversionPrice": 336.8,
-     "conversionEnd": "2029/08/05",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 124.5,
-     "cbAvgUnits": 293.1,
-     "premiumPct": 74
-    }
-   ],
-   "close": 241,
-   "ma20": 231.83,
-   "avgLots": 1703,
-   "vsConversionPct": -28.4,
-   "flags": [
-    "不在轉換期"
-   ]
-  },
-  {
-   "code": "3294",
-   "name": "英濟",
-   "market": "tpex",
-   "pledgeRatio": 7.45,
-   "pledgedLots": 6000,
-   "newPledgeLots": null,
-   "pledgeOver50": false,
-   "bonds": [
-    {
-     "bondCode": "32943",
-     "bondName": "英濟三",
-     "conversionPrice": 41.8,
-     "conversionEnd": "2029/06/18",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 120,
-     "cbAvgUnits": 0,
-     "premiumPct": 64.7
-    }
-   ],
-   "close": 30.45,
-   "ma20": 30.78,
-   "avgLots": 282,
-   "vsConversionPct": -27.2,
-   "flags": [
-    "現股量低",
-    "CB量低",
-    "不在轉換期"
    ]
   },
   {
@@ -8768,35 +9459,6 @@
    ]
   },
   {
-   "code": "5289",
-   "name": "宜鼎",
-   "market": "tpex",
-   "pledgeRatio": 1,
-   "pledgedLots": 154,
-   "newPledgeLots": null,
-   "pledgeOver50": false,
-   "bonds": [
-    {
-     "bondCode": "52892",
-     "bondName": "宜鼎二",
-     "conversionPrice": 2180,
-     "conversionEnd": "2029/07/01",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 116.35,
-     "cbAvgUnits": 111.5,
-     "premiumPct": 74.9
-    }
-   ],
-   "close": 1450,
-   "ma20": 1475.01,
-   "avgLots": 2633,
-   "vsConversionPct": -33.5,
-   "flags": [
-    "不在轉換期"
-   ]
-  },
-  {
    "code": "1560",
    "name": "中砂",
    "market": "twse",
@@ -8823,37 +9485,6 @@
    "vsConversionPct": 141.6,
    "flags": [
     "CB已轉換>70%"
-   ]
-  },
-  {
-   "code": "1623",
-   "name": "大東電",
-   "market": "twse",
-   "pledgeRatio": 0,
-   "pledgedLots": 0,
-   "newPledgeLots": null,
-   "pledgeOver50": false,
-   "bonds": [
-    {
-     "bondCode": "16231",
-     "bondName": "大東電一",
-     "conversionPrice": 232,
-     "conversionEnd": "2029/07/16",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 106.05,
-     "cbAvgUnits": 20.5,
-     "premiumPct": 21.5
-    }
-   ],
-   "close": 202.5,
-   "ma20": 206.07,
-   "avgLots": 79,
-   "vsConversionPct": -12.7,
-   "flags": [
-    "現股量低",
-    "CB量低",
-    "不在轉換期"
    ]
   },
   {
@@ -8949,35 +9580,6 @@
    ]
   },
   {
-   "code": "3028",
-   "name": "增你強",
-   "market": "twse",
-   "pledgeRatio": 0,
-   "pledgedLots": 0,
-   "newPledgeLots": null,
-   "pledgeOver50": false,
-   "bonds": [
-    {
-     "bondCode": "30285",
-     "bondName": "增你強五",
-     "conversionPrice": 78,
-     "conversionEnd": "2031/07/24",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 108,
-     "cbAvgUnits": 80.5,
-     "premiumPct": 30.2
-    }
-   ],
-   "close": 64.7,
-   "ma20": 67.44,
-   "avgLots": 1282,
-   "vsConversionPct": -17.1,
-   "flags": [
-    "不在轉換期"
-   ]
-  },
-  {
    "code": "3037",
    "name": "欣興",
    "market": "twse",
@@ -9038,66 +9640,6 @@
    ]
   },
   {
-   "code": "3149",
-   "name": "正達",
-   "market": "twse",
-   "pledgeRatio": 0,
-   "pledgedLots": 0,
-   "newPledgeLots": null,
-   "pledgeOver50": false,
-   "bonds": [
-    {
-     "bondCode": "31494",
-     "bondName": "正達四",
-     "conversionPrice": 68.1,
-     "conversionEnd": "2029/08/31",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 118.6,
-     "cbAvgUnits": 18.2,
-     "premiumPct": 26
-    }
-   ],
-   "close": 64.1,
-   "ma20": 66.08,
-   "avgLots": 8866,
-   "vsConversionPct": -5.9,
-   "flags": [
-    "CB量低",
-    "不在轉換期"
-   ]
-  },
-  {
-   "code": "3219",
-   "name": "倚強科",
-   "market": "tpex",
-   "pledgeRatio": 0,
-   "pledgedLots": 0,
-   "newPledgeLots": null,
-   "pledgeOver50": false,
-   "bonds": [
-    {
-     "bondCode": "32191",
-     "bondName": "倚強科一",
-     "conversionPrice": 66.4,
-     "conversionEnd": "2029/08/25",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 134.4,
-     "cbAvgUnits": 125.1,
-     "premiumPct": -1.9
-    }
-   ],
-   "close": 91,
-   "ma20": 73.72,
-   "avgLots": 579,
-   "vsConversionPct": 37,
-   "flags": [
-    "不在轉換期",
-    "突破轉換價+MA20"
-   ]
-  },
-  {
    "code": "3357",
    "name": "臺慶科",
    "market": "tpex",
@@ -9125,66 +9667,6 @@
    "flags": [
     "CB量低",
     "CB已轉換>70%"
-   ]
-  },
-  {
-   "code": "3512",
-   "name": "皇龍",
-   "market": "tpex",
-   "pledgeRatio": 0,
-   "pledgedLots": 0,
-   "newPledgeLots": null,
-   "pledgeOver50": false,
-   "bonds": [
-    {
-     "bondCode": "35122",
-     "bondName": "皇龍二",
-     "conversionPrice": 20.5,
-     "conversionEnd": "2029/08/18",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 103.25,
-     "cbAvgUnits": 360.7,
-     "premiumPct": 8.3
-    }
-   ],
-   "close": 19.55,
-   "ma20": 19.66,
-   "avgLots": 30,
-   "vsConversionPct": -4.6,
-   "flags": [
-    "現股量低",
-    "不在轉換期"
-   ]
-  },
-  {
-   "code": "3583",
-   "name": "辛耘",
-   "market": "twse",
-   "pledgeRatio": 0,
-   "pledgedLots": 0,
-   "newPledgeLots": null,
-   "pledgeOver50": false,
-   "bonds": [
-    {
-     "bondCode": "35833",
-     "bondName": "辛耘三",
-     "conversionPrice": 850,
-     "conversionEnd": "2029/07/30",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 130,
-     "cbAvgUnits": 44.7,
-     "premiumPct": 52.6
-    }
-   ],
-   "close": 724,
-   "ma20": 715.15,
-   "avgLots": 935,
-   "vsConversionPct": -14.8,
-   "flags": [
-    "CB量低",
-    "不在轉換期"
    ]
   },
   {
@@ -9218,136 +9700,6 @@
    ]
   },
   {
-   "code": "4967",
-   "name": "十銓",
-   "market": "twse",
-   "pledgeRatio": 0,
-   "pledgedLots": 0,
-   "newPledgeLots": null,
-   "pledgeOver50": false,
-   "bonds": [
-    {
-     "bondCode": "49675",
-     "bondName": "十銓五",
-     "conversionPrice": 205,
-     "conversionEnd": "2031/08/18",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 134.15,
-     "cbAvgUnits": 1376.3,
-     "premiumPct": -0.4
-    }
-   ],
-   "close": 276,
-   "ma20": 271.88,
-   "avgLots": 5613,
-   "vsConversionPct": 34.6,
-   "flags": [
-    "不在轉換期",
-    "突破轉換價+MA20"
-   ]
-  },
-  {
-   "code": "4973",
-   "name": "廣穎電通",
-   "market": "tpex",
-   "pledgeRatio": 0,
-   "pledgedLots": 0,
-   "newPledgeLots": null,
-   "pledgeOver50": false,
-   "bonds": [
-    {
-     "bondCode": "49731",
-     "bondName": "廣穎電通一",
-     "conversionPrice": 169.6,
-     "conversionEnd": "2029/08/21",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 106.5,
-     "cbAvgUnits": 217.3,
-     "premiumPct": 17.3
-    }
-   ],
-   "close": 154,
-   "ma20": 155.13,
-   "avgLots": 2223,
-   "vsConversionPct": -9.2,
-   "flags": [
-    "不在轉換期"
-   ]
-  },
-  {
-   "code": "5291",
-   "name": "邑昇",
-   "market": "tpex",
-   "pledgeRatio": 0,
-   "pledgedLots": 0,
-   "newPledgeLots": null,
-   "pledgeOver50": false,
-   "bonds": [
-    {
-     "bondCode": "52912",
-     "bondName": "邑昇二",
-     "conversionPrice": 53,
-     "conversionEnd": "2029/07/29",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 130,
-     "cbAvgUnits": 31.9,
-     "premiumPct": -0.9
-    }
-   ],
-   "close": 69.5,
-   "ma20": 57.32,
-   "avgLots": 1184,
-   "vsConversionPct": 31.1,
-   "flags": [
-    "CB量低",
-    "不在轉換期",
-    "突破轉換價+MA20"
-   ]
-  },
-  {
-   "code": "5536",
-   "name": "聖暉*",
-   "market": "tpex",
-   "pledgeRatio": 0,
-   "pledgedLots": 0,
-   "newPledgeLots": null,
-   "pledgeOver50": false,
-   "bonds": [
-    {
-     "bondCode": "55362",
-     "bondName": "聖暉二",
-     "conversionPrice": 1178,
-     "conversionEnd": "2029/08/04",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 122.5,
-     "cbAvgUnits": 705.4,
-     "premiumPct": 67
-    },
-    {
-     "bondCode": "55363",
-     "bondName": "聖暉三",
-     "conversionPrice": 1158,
-     "conversionEnd": "2029/08/17",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 119,
-     "cbAvgUnits": 908.3,
-     "premiumPct": 59.5
-    }
-   ],
-   "close": 864,
-   "ma20": 922.8,
-   "avgLots": 1168,
-   "vsConversionPct": -26.7,
-   "flags": [
-    "不在轉換期"
-   ]
-  },
-  {
    "code": "6182",
    "name": "合晶",
    "market": "tpex",
@@ -9375,66 +9727,6 @@
    "flags": [
     "CB量低",
     "CB已轉換>70%"
-   ]
-  },
-  {
-   "code": "6220",
-   "name": "岳豐",
-   "market": "tpex",
-   "pledgeRatio": 0,
-   "pledgedLots": 0,
-   "newPledgeLots": null,
-   "pledgeOver50": false,
-   "bonds": [
-    {
-     "bondCode": "622010",
-     "bondName": "岳豐十",
-     "conversionPrice": 32.4,
-     "conversionEnd": "2029/06/10",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 112,
-     "cbAvgUnits": 29.1,
-     "premiumPct": 39.8
-    }
-   ],
-   "close": 25.95,
-   "ma20": 25.91,
-   "avgLots": 212,
-   "vsConversionPct": -19.9,
-   "flags": [
-    "現股量低",
-    "CB量低",
-    "不在轉換期"
-   ]
-  },
-  {
-   "code": "6223",
-   "name": "旺矽",
-   "market": "tpex",
-   "pledgeRatio": 0,
-   "pledgedLots": 0,
-   "newPledgeLots": null,
-   "pledgeOver50": false,
-   "bonds": [
-    {
-     "bondCode": "62236",
-     "bondName": "旺矽六",
-     "conversionPrice": 6201.8,
-     "conversionEnd": "2031/06/15",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 138.4,
-     "cbAvgUnits": 153.7,
-     "premiumPct": 67.3
-    }
-   ],
-   "close": 5130,
-   "ma20": 5775.75,
-   "avgLots": 949,
-   "vsConversionPct": -17.3,
-   "flags": [
-    "不在轉換期"
    ]
   },
   {
@@ -9531,126 +9823,6 @@
    ]
   },
   {
-   "code": "6570",
-   "name": "維田",
-   "market": "tpex",
-   "pledgeRatio": 0,
-   "pledgedLots": 0,
-   "newPledgeLots": null,
-   "pledgeOver50": false,
-   "bonds": [
-    {
-     "bondCode": "65702",
-     "bondName": "維田二",
-     "conversionPrice": 55.73,
-     "conversionEnd": "2029/08/14",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 110.8,
-     "cbAvgUnits": 168.1,
-     "premiumPct": 22.5
-    }
-   ],
-   "close": 50.4,
-   "ma20": 54.85,
-   "avgLots": 221,
-   "vsConversionPct": -9.6,
-   "flags": [
-    "現股量低",
-    "不在轉換期"
-   ]
-  },
-  {
-   "code": "6584",
-   "name": "南俊國際",
-   "market": "tpex",
-   "pledgeRatio": 0,
-   "pledgedLots": 0,
-   "newPledgeLots": null,
-   "pledgeOver50": false,
-   "bonds": [
-    {
-     "bondCode": "65843",
-     "bondName": "南俊國際三",
-     "conversionPrice": 685,
-     "conversionEnd": "2029/07/02",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 125.65,
-     "cbAvgUnits": 28.8,
-     "premiumPct": 36.8
-    }
-   ],
-   "close": 629,
-   "ma20": 575.23,
-   "avgLots": 1193,
-   "vsConversionPct": -8.2,
-   "flags": [
-    "CB量低",
-    "不在轉換期"
-   ]
-  },
-  {
-   "code": "6683",
-   "name": "雍智科技",
-   "market": "tpex",
-   "pledgeRatio": 0,
-   "pledgedLots": 0,
-   "newPledgeLots": null,
-   "pledgeOver50": false,
-   "bonds": [
-    {
-     "bondCode": "66831",
-     "bondName": "雍智一",
-     "conversionPrice": 1127.1,
-     "conversionEnd": "2029/08/10",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 138,
-     "cbAvgUnits": 819,
-     "premiumPct": 28.5
-    }
-   ],
-   "close": 1210,
-   "ma20": 1204.75,
-   "avgLots": 614,
-   "vsConversionPct": 7.4,
-   "flags": [
-    "不在轉換期",
-    "突破轉換價+MA20"
-   ]
-  },
-  {
-   "code": "6693",
-   "name": "廣閎科",
-   "market": "tpex",
-   "pledgeRatio": 0,
-   "pledgedLots": 0,
-   "newPledgeLots": null,
-   "pledgeOver50": false,
-   "bonds": [
-    {
-     "bondCode": "66931",
-     "bondName": "廣閎科一",
-     "conversionPrice": 228.1,
-     "conversionEnd": "2029/07/24",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 115,
-     "cbAvgUnits": 12.7,
-     "premiumPct": 48.6
-    }
-   ],
-   "close": 176.5,
-   "ma20": 173.95,
-   "avgLots": 958,
-   "vsConversionPct": -22.6,
-   "flags": [
-    "CB量低",
-    "不在轉換期"
-   ]
-  },
-  {
    "code": "6830",
    "name": "汎銓",
    "market": "twse",
@@ -9679,77 +9851,6 @@
     "CB量低",
     "CB已轉換>70%",
     "突破轉換價+MA20"
-   ]
-  },
-  {
-   "code": "6903",
-   "name": "巨漢",
-   "market": "tpex",
-   "pledgeRatio": 0,
-   "pledgedLots": 0,
-   "newPledgeLots": null,
-   "pledgeOver50": false,
-   "bonds": [
-    {
-     "bondCode": "69031",
-     "bondName": "巨漢一",
-     "conversionPrice": 406.6,
-     "conversionEnd": "2029/07/24",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 110.5,
-     "cbAvgUnits": 38.9,
-     "premiumPct": 43.5
-    },
-    {
-     "bondCode": "69032",
-     "bondName": "巨漢二",
-     "conversionPrice": 369.8,
-     "conversionEnd": "2029/08/07",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 112.5,
-     "cbAvgUnits": 457.7,
-     "premiumPct": 32.9
-    }
-   ],
-   "close": 313,
-   "ma20": 316.18,
-   "avgLots": 310,
-   "vsConversionPct": -15.4,
-   "flags": [
-    "現股量低",
-    "不在轉換期"
-   ]
-  },
-  {
-   "code": "7631",
-   "name": "聚賢研發-創",
-   "market": "twse",
-   "pledgeRatio": 0,
-   "pledgedLots": 0,
-   "newPledgeLots": null,
-   "pledgeOver50": false,
-   "bonds": [
-    {
-     "bondCode": "76311",
-     "bondName": "聚賢研發一創",
-     "conversionPrice": 150.8,
-     "conversionEnd": "2029/08/26",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 108,
-     "cbAvgUnits": 97.4,
-     "premiumPct": 13.1
-    }
-   ],
-   "close": 144,
-   "ma20": 141.97,
-   "avgLots": 90,
-   "vsConversionPct": -4.5,
-   "flags": [
-    "現股量低",
-    "不在轉換期"
    ]
   },
   {
@@ -9783,36 +9884,6 @@
    ]
   },
   {
-   "code": "8054",
-   "name": "安國",
-   "market": "tpex",
-   "pledgeRatio": 0,
-   "pledgedLots": 0,
-   "newPledgeLots": null,
-   "pledgeOver50": false,
-   "bonds": [
-    {
-     "bondCode": "80541",
-     "bondName": "安國一",
-     "conversionPrice": 122.6,
-     "conversionEnd": "2029/07/22",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 118,
-     "cbAvgUnits": 3.8,
-     "premiumPct": 74.5
-    }
-   ],
-   "close": 82.9,
-   "ma20": 82.5,
-   "avgLots": 741,
-   "vsConversionPct": -32.4,
-   "flags": [
-    "CB量低",
-    "不在轉換期"
-   ]
-  },
-  {
    "code": "8091",
    "name": "翔名",
    "market": "tpex",
@@ -9841,47 +9912,6 @@
     "現股量低",
     "CB量低",
     "CB已轉換>70%"
-   ]
-  },
-  {
-   "code": "8096",
-   "name": "擎亞",
-   "market": "tpex",
-   "pledgeRatio": 0,
-   "pledgedLots": 0,
-   "newPledgeLots": null,
-   "pledgeOver50": false,
-   "bonds": [
-    {
-     "bondCode": "80962",
-     "bondName": "擎亞二",
-     "conversionPrice": 158,
-     "conversionEnd": "2029/07/02",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 101,
-     "cbAvgUnits": 33.5,
-     "premiumPct": 46.4
-    },
-    {
-     "bondCode": "80963",
-     "bondName": "擎亞三",
-     "conversionPrice": 155,
-     "conversionEnd": "2029/07/14",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 109,
-     "cbAvgUnits": 10.7,
-     "premiumPct": 55
-    }
-   ],
-   "close": 109,
-   "ma20": 116.53,
-   "avgLots": 4794,
-   "vsConversionPct": -31,
-   "flags": [
-    "CB量低",
-    "不在轉換期"
    ]
   },
   {
@@ -9997,36 +10027,6 @@
     "現股量低",
     "CB量低",
     "CB已轉換>70%"
-   ]
-  },
-  {
-   "code": "8438",
-   "name": "昶昕",
-   "market": "twse",
-   "pledgeRatio": 0,
-   "pledgedLots": 0,
-   "newPledgeLots": null,
-   "pledgeOver50": false,
-   "bonds": [
-    {
-     "bondCode": "84381",
-     "bondName": "昶昕一",
-     "conversionPrice": 90.8,
-     "conversionEnd": "2029/08/05",
-     "inWindow": false,
-     "convertedPct": 0,
-     "cbPrice": 93.25,
-     "cbAvgUnits": 89.6,
-     "premiumPct": 18.1
-    }
-   ],
-   "close": 71.7,
-   "ma20": 67.43,
-   "avgLots": 279,
-   "vsConversionPct": -21,
-   "flags": [
-    "現股量低",
-    "不在轉換期"
    ]
   }
  ]
