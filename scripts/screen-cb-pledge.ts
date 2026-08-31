@@ -332,6 +332,59 @@ interface Candidate {
   /** 現價 ÷ 轉換價 - 1（%），取最主要（餘額最大）一檔 CB */
   vsConversionPct: number | null;
   flags: string[];
+  /** 優先度評分 0-100（見 scoreCandidate 的配分） */
+  score: number;
+  scoreBreakdown: { position: number; progress: number; pledge: number; tradable: number; bonus: number };
+}
+
+/**
+ * 優先度評分 0-100：把「先看哪幾檔」的判斷收斂成一個數字。
+ *
+ *   位置分   0-35  vs轉換價在 -15%~+15% 滿分（動機最強、突破觸發點近），
+ *                  每再偏離 1% 扣 0.7，deep OTM（劇本未開演）與漲太多的同罰
+ *   轉換進度 0-25  已轉換 ≤10% 滿分，往 70% 線性遞減（肉還剩多少）
+ *   設質動能 0-25  有月增資料：月增 2000 張以上滿分、線性；解質為負分（拿回籌碼＝警訊）
+ *                  基線月退回用設質比例水位：50% 滿分封頂（再高不加，斷頭風險也在升）
+ *   可執行性 0-15  現股均量 ≥500 張給 10、CB 均量 ≥50 張給 5（買不進的訊號沒有意義）
+ *   加分     +5    突破轉換價+MA20（策略一的進場確認已出現）
+ *
+ * 「轉換期已過」「CB已轉換>70%」直接 0 分沉底——戲演完了，分數再高都不用看。
+ */
+function scoreCandidate(c: Omit<Candidate, "score" | "scoreBreakdown">): Candidate["scoreBreakdown"] & { total: number } {
+  const zero = { position: 0, progress: 0, pledge: 0, tradable: 0, bonus: 0, total: 0 };
+  if (c.flags.includes("轉換期已過") || c.flags.includes("CB已轉換>70%")) return zero;
+
+  const v = c.vsConversionPct;
+  const position = v == null ? 0 : Math.round(Math.max(0, 35 - Math.max(0, Math.abs(v) - 15) * 0.7));
+
+  const conv = c.bonds.find((b) => b.inWindow)?.convertedPct ?? c.bonds[0]?.convertedPct ?? 0;
+  const progress = Math.round(Math.max(0, Math.min(25, ((70 - conv) / 60) * 25)));
+
+  let pledgeScore: number;
+  if (c.newPledgeLots != null) {
+    pledgeScore = c.newPledgeLots >= 0
+      ? Math.round(Math.min(25, (c.newPledgeLots / 2000) * 25))
+      : Math.max(-10, Math.round((c.newPledgeLots / 2000) * 25)); // 解質＝公司派拿回籌碼，扣分
+  } else {
+    pledgeScore = Math.round(Math.min(25, (c.pledgeRatio / 50) * 25));
+  }
+
+  const tradable =
+    (c.avgLots != null && c.avgLots >= MIN_STOCK_LOTS ? 10 : 0) +
+    (c.bonds.some((b) => (b.cbAvgUnits ?? 0) >= MIN_CB_UNITS) ? 5 : 0);
+
+  const bonus = c.flags.includes("突破轉換價+MA20") ? 5 : 0;
+
+  let total = Math.max(0, Math.min(100, position + progress + pledgeScore + tradable + bonus));
+  // 設質是這個策略的前提之一：幾乎沒設質又沒有月增的，其他分數再高也只是
+  // 「有 CB 的普通股票」，封頂在 🟡 以下，避免混進優先名單。
+  if (c.pledgeRatio < 5 && !(c.newPledgeLots != null && c.newPledgeLots > 0)) total = Math.min(total, 59);
+  return { position, progress, pledge: pledgeScore, tradable, bonus, total };
+}
+
+/** 分級：只是讓人一眼挑出該先看哪幾檔，跟報告的評分同一個精神。 */
+function tierOf(score: number): string {
+  return score >= 75 ? "🔴" : score >= 60 ? "🟠" : score >= 45 ? "🟡" : "⚪";
 }
 
 async function main() {
@@ -365,7 +418,7 @@ async function main() {
       .filter((m): m is string => !!m && m < pledge.month)
       .sort();
     const m = months[months.length - 1];
-    return m ? JSON.parse(readFileSync(path.join(CACHE_DIR, `pledge-${m}.json`), "utf8")) : null;
+    return m ? JSON.parse(readFileSync(path.join(SNAP_DIR, `pledge-${m}.json`), "utf8")) : null;
   })();
   if (!prevSnap) console.log("  （沒有更早的月快照：本次建立基線，「新增設質」下個月開始才算得出來）");
 
@@ -416,8 +469,9 @@ async function main() {
     if (bonds.every((b) => b.conversionEnd < today)) flags.push("轉換期已過");
     else if (!enriched.some((b) => b.inWindow)) flags.push("轉換期未開始");
     if (p.pledgeRatio >= 50) flags.push("設質>50%");
+    else if (p.pledgeRatio < 5) flags.push("設質近零");
     if (stockPx && s.ma20 && stockPx > s.ma20 && stockPx > main.conversionPrice) flags.push("突破轉換價+MA20");
-    return {
+    const base = {
       code: p.code,
       name: p.name,
       market: p.market,
@@ -432,17 +486,12 @@ async function main() {
       vsConversionPct: stockPx && main.conversionPrice ? +((stockPx / main.conversionPrice - 1) * 100).toFixed(1) : null,
       flags,
     };
+    const { total, ...breakdown } = scoreCandidate(base);
+    return { ...base, score: total, scoreBreakdown: breakdown };
   });
 
-  // 排序：有新增設質的排最前（張數大→小），其餘用設質比例；被流動性/轉換期排除的沉底
-  const dead = (c: Candidate) => c.flags.includes("轉換期已過") || c.flags.includes("CB已轉換>70%");
-  candidates.sort((a, b) => {
-    if (dead(a) !== dead(b)) return dead(a) ? 1 : -1;
-    const an = a.newPledgeLots ?? -1;
-    const bn = b.newPledgeLots ?? -1;
-    if (an > 0 || bn > 0) return bn - an;
-    return b.pledgeRatio - a.pledgeRatio;
-  });
+  // 排序：優先度評分高→低；同分用設質比例。死訊號的（已過期/已轉換>70%）分數是 0，自然沉底。
+  candidates.sort((a, b) => b.score - a.score || b.pledgeRatio - a.pledgeRatio);
 
   const out = {
     generatedAt: now.toISOString(),
@@ -474,6 +523,8 @@ function renderHtml(out: any): string {
       code: c.code,
       name: c.name,
       market: c.market,
+      score: c.score,
+      tier: tierOf(c.score),
       pledgeRatio: c.pledgeRatio,
       newPledgeLots: c.newPledgeLots,
       close: c.close,
@@ -542,12 +593,18 @@ ${note}
 <div class="count" id="count"></div>
 <div class="tablebox"><table id="tbl">
 <thead><tr>
+<th data-k="score">評分</th>
 <th data-k="code">代號</th><th data-k="name">名稱</th><th data-k="pledgeRatio">設質%</th><th data-k="newPledgeLots">月增(張)</th>
 <th data-k="close">現價</th><th data-k="ma20">MA20</th><th data-k="avgLots">均量(張)</th>
 <th data-k="convPrice">轉換價</th><th data-k="vsConv">vs轉換價</th><th data-k="premium">CB溢價%</th>
 <th data-k="converted">已轉換%</th><th data-k="cbUnits">CB均量</th><th data-k="convEnd">轉換迄日</th><th>旗標</th>
 </tr></thead><tbody></tbody></table></div>
 <div class="howto">
+<b>評分（0-100，🔴≥75 優先看、🟠60-74、🟡45-59、⚪&lt;45）：</b>
+位置分 0-35（vs轉換價 ±15% 內滿分，太價外＝劇本未開演、漲太多＝肉少，都扣）＋
+轉換進度 0-25（已轉換 ≤10% 滿分、往 70% 遞減）＋
+設質動能 0-25（有月增資料用月增、解質扣分；基線月先用設質比例水位）＋
+可執行性 0-15（現股/CB 流動性）＋突破轉換價+MA20 加 5。已過期或已轉換&gt;70% 直接 0 分。<br>
 <b>怎麼讀：</b>公司派有流通中 CB（動機：拉過轉換價才能套利）+ 董監設質（壓力：維持率不能跌）。
 <b>vs轉換價</b>負值＝還在轉換價之下（有想像空間）；<b>CB溢價%</b>低＝CB 貼著平價走、進度落後不多；
 <b>已轉換%</b>高＝戲近尾聲。<span class="chip go">突破轉換價+MA20</span>＝量價站上、策略一的進場觀察名單；
@@ -557,7 +614,7 @@ ${note}
 const ROWS=${JSON.stringify(rows)};
 const fmt=(v,suf)=>v==null?"—":v+(suf||"");
 const cls=v=>v==null?"":v>0?" class=pos":v<0?" class=neg":"";
-let sortK="pledgeRatio",sortDir=-1;
+let sortK="score",sortDir=-1;
 function dead(r){return r.flags.includes("轉換期已過")||r.flags.includes("CB已轉換>70%")}
 function render(){
   const f={liquid:fLiquid.checked,win:fWindow.checked,p50:fP50.checked,brk:fBreak.checked,alive:fAlive.checked};
@@ -575,7 +632,7 @@ function render(){
     const chips=r.flags.map(fl=>{
       const c=fl==="突破轉換價+MA20"?"chip go":fl==="轉換期未開始"||fl==="設質>50%"?"chip hot":"chip";
       return '<span class="'+c+'">'+fl+"</span>"}).join("");
-    return "<tr><td><a href='"+url+"' target='_blank'>"+r.code+"</a></td><td>"+r.name+
+    return "<tr><td>"+r.tier+" <b>"+r.score+"</b></td><td><a href='"+url+"' target='_blank'>"+r.code+"</a></td><td>"+r.name+
       "</td><td>"+fmt(r.pledgeRatio)+"</td><td"+cls(r.newPledgeLots)+">"+fmt(r.newPledgeLots)+
       "</td><td>"+fmt(r.close)+"</td><td>"+fmt(r.ma20)+"</td><td>"+fmt(r.avgLots)+
       "</td><td>"+fmt(r.convPrice)+"</td><td"+cls(r.vsConv)+">"+fmt(r.vsConv,"%")+"</td><td>"+fmt(r.premium)+
@@ -600,11 +657,12 @@ function printSummary(out: any) {
     (c) => !c.flags.includes("轉換期已過") && !c.flags.includes("CB已轉換>70%"),
   );
   console.log(`\n設質資料 ${out.pledgeMonth}｜CB 看板 ${out.boardDate}｜月增設質${out.hasMonthOverMonth ? "已可比較" : "＝基線月，暫無"}`);
-  console.log("代號   名稱      設質%  月增(張) 現價    vs轉換價  CB溢價%  已轉換%  旗標");
+  console.log("     評分 代號   名稱      設質%  月增(張) 現價    vs轉換價  CB溢價%  已轉換%  旗標");
   for (const c of rows.slice(0, 30)) {
     const b = c.bonds.find((x) => x.inWindow) ?? c.bonds[0];
     console.log(
       [
+        `${tierOf(c.score)}${String(c.score).padStart(4)}`,
         c.code.padEnd(6),
         c.name.padEnd(5, "　"),
         String(c.pledgeRatio).padStart(5),
