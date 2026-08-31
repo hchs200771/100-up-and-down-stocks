@@ -54,6 +54,9 @@ const MIN_CB_UNITS = 50;
 /** Yahoo 併發上限，沿用 build-tw-rrg 的經驗值。 */
 const FETCH_CONCURRENCY = 6;
 
+/** 台灣時間的「現在」。TPEx 的「當月」以台灣日期為準，跨午夜時用 UTC 會差一個月。 */
+const twNow = () => new Date(Date.now() + 8 * 3600 * 1000);
+
 const num = (v: unknown): number => {
   const n = Number(String(v ?? "").replace(/[,%\s]/g, ""));
   return Number.isFinite(n) ? n : 0;
@@ -206,9 +209,21 @@ interface CbInfo {
 }
 
 async function fetchCbFileList(fileCode: string): Promise<[string, string][]> {
-  const j = await fetchJson(`https://www.tpex.org.tw/www/zh-tw/bond/cbDaily?fileCode=${fileCode}&response=json`);
-  // data 列：[民國日期, csv 路徑, (xls 路徑)]
-  return (j?.tables?.[0]?.data ?? []).map((r: string[]) => [r[0], r[1]] as [string, string]);
+  const get = async (dateParam: string) => {
+    const j = await fetchJson(
+      `https://www.tpex.org.tw/www/zh-tw/bond/cbDaily?fileCode=${fileCode}${dateParam}&response=json`,
+    );
+    // data 列：[民國日期, csv 路徑, (xls 路徑)]
+    return (j?.tables?.[0]?.data ?? []).map((r: string[]) => [r[0], r[1]] as [string, string]);
+  };
+  const cur = await get("");
+  if (cur.length) return cur;
+  // 不帶日期只回「當月」清單（以台灣日期為準）；月初第一個交易日收盤前當月
+  // 還沒有檔，清單是空的。帶上個月最後一天（西元 yyyy/mm/dd）補抓上月清單。
+  const prev = twNow();
+  prev.setUTCDate(0); // 上個月最後一天
+  const ym = `${prev.getUTCFullYear()}/${String(prev.getUTCMonth() + 1).padStart(2, "0")}/${String(prev.getUTCDate()).padStart(2, "0")}`;
+  return get(`&date=${ym}`);
 }
 
 async function fetchCbBoard(): Promise<{ boardDate: string; bonds: CbInfo[] }> {
@@ -340,8 +355,9 @@ interface Candidate {
 /**
  * 優先度評分 0-100：把「先看哪幾檔」的判斷收斂成一個數字。
  *
- *   位置分   0-35  vs轉換價在 -15%~+15% 滿分（動機最強、突破觸發點近），
- *                  每再偏離 1% 扣 0.7，deep OTM（劇本未開演）與漲太多的同罰
+ *   位置分   0-35  vs轉換價在 -20%~+5% 滿分。**不對稱**：往上每 1% 扣 1 分（漲越多肉越薄），
+ *                  往下每 1% 只扣 0.6（價外空間大、但劇本未證實，罰得輕）——同樣條件下
+ *                  低於轉換價的排前面，反映「低於轉換價期望報酬較好」的判斷
  *   轉換進度 0-25  已轉換 ≤10% 滿分，往 70% 線性遞減（肉還剩多少）
  *   設質動能 0-25  有月增資料：月增 2000 張以上滿分、線性；解質為負分（拿回籌碼＝警訊）
  *                  基線月退回用設質比例水位：50% 滿分封頂（再高不加，斷頭風險也在升）
@@ -355,7 +371,8 @@ function scoreCandidate(c: Omit<Candidate, "score" | "scoreBreakdown">): Candida
   if (c.flags.includes("轉換期已過") || c.flags.includes("CB已轉換>70%")) return zero;
 
   const v = c.vsConversionPct;
-  const position = v == null ? 0 : Math.round(Math.max(0, 35 - Math.max(0, Math.abs(v) - 15) * 0.7));
+  const position =
+    v == null ? 0 : Math.round(Math.max(0, 35 - (v > 5 ? (v - 5) * 1.0 : v < -20 ? (-20 - v) * 0.6 : 0)));
 
   const conv = c.bonds.find((b) => b.inWindow)?.convertedPct ?? c.bonds[0]?.convertedPct ?? 0;
   const progress = Math.round(Math.max(0, Math.min(25, ((70 - conv) / 60) * 25)));
@@ -435,7 +452,7 @@ async function main() {
   });
   console.log(`候選池 ${pool.length} 家，抓現股量價…`);
 
-  const today = now.toISOString().slice(0, 10).replace(/-/g, "/");
+  const today = twNow().toISOString().slice(0, 10).replace(/-/g, "/");
   const stats = await mapPool(pool, FETCH_CONCURRENCY, ({ p }) => fetchStockStat(p.code, p.market));
 
   const candidates: Candidate[] = pool.map(({ p, bonds }, i) => {
@@ -575,14 +592,46 @@ a{color:var(--accent);text-decoration:none}
 .chip.go{color:var(--down)}
 .pos{color:var(--up)}.neg{color:var(--down)}
 .count{margin:8px 2px;color:var(--muted);font-size:13px}
-.howto{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:14px 0;font-size:13px;color:var(--muted)}
-.howto b{color:var(--fg)}
+details.howto{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:12px 0;font-size:13px;color:var(--muted)}
+details.howto summary{cursor:pointer;list-style:none;padding:10px 16px;font-size:14px;font-weight:600;color:var(--fg);user-select:none}
+details.howto summary::-webkit-details-marker{display:none}
+details.howto summary::before{content:"▸";display:inline-block;margin-right:8px;color:var(--accent);transition:transform .15s}
+details.howto[open] summary::before{transform:rotate(90deg)}
+details.howto .body{padding:0 16px 12px;border-top:1px solid var(--line)}
+details.howto h4{margin:12px 0 4px;font-size:13px;color:var(--fg)}
+details.howto ul{margin:4px 0;padding-left:18px}
+details.howto li{margin:3px 0}
+details.howto b{color:var(--fg)}
 </style>
 </head>
 <body><div class="wrap">
 <h1>🔐 董監設質 + CB 候選池</h1>
 <p class="sub">設質資料年月 ${out.pledgeMonth}（民國）｜CB 看板 ${out.boardDate}｜產生於 ${String(out.generatedAt).slice(0, 16).replace("T", " ")} UTC｜每週更新</p>
 ${note}
+<details class="howto">
+<summary>📖 本頁說明與選股邏輯（點開）</summary>
+<div class="body">
+<h4>這個池子在找什麼</h4>
+<p>公司派同時滿足兩個條件：<b>有流通中 CB</b>（動機——股價拉過轉換價、撐上轉換價 130% 觸發強制贖回，CB 才能全數轉換出貨）＋<b>董監設質</b>（壓力——質押維持率不能跌，跌到斷頭線反而要護盤）。兩者同時出現時，股價易漲抗跌的機率較高。</p>
+<h4>評分怎麼算（0-100）</h4>
+<p>🔴 ≥75 優先看｜🟠 60-74｜🟡 45-59｜⚪ &lt;45</p>
+<ul>
+<li><b>位置分 0-35</b>：vs轉換價在 <b>-20%~+5% 滿分</b>。不對稱設計：往上每 1% 扣 1 分（漲越多肉越薄），往下每 1% 只扣 0.6 分（價外空間大、但劇本未證實）——同條件下低於轉換價的排前面。</li>
+<li><b>轉換進度 0-25</b>：已轉換 ≤10% 滿分、往 70% 線性遞減。已轉換越多，公司派出貨越接近完成。</li>
+<li><b>設質動能 0-25</b>：有月增資料時用當月新增設質張數（2000 張滿分；<b>解質倒扣</b>——拿回籌碼是警訊）；基線月先用設質比例水位（50% 封頂）。</li>
+<li><b>可執行性 0-15</b>：現股 20 日均量 ≥500 張給 10、CB 日均量 ≥50 張給 5。買不進出不掉的訊號沒有意義。</li>
+<li><b>加分 +5</b>：突破轉換價＋站上 MA20（策略的進場確認訊號已出現）。</li>
+</ul>
+<p>「轉換期已過」或「已轉換&gt;70%」直接 0 分沉底——戲演完了。「設質近零」（&lt;5% 且無月增）封頂 59 分——沒設質就不構成這個策略。</p>
+<h4>欄位怎麼讀</h4>
+<ul>
+<li><b>vs轉換價</b>：負＝還在轉換價下（空間大、待證實），正＝已站上（劇本執行中）。終點參考：轉換價 × 1.3 的強贖線。</li>
+<li><b>CB溢價%</b>：低＝CB 貼著平價走；<b>已轉換%</b>：高＝戲近尾聲。</li>
+<li><span class="chip go">突破轉換價+MA20</span>＝量價確認、進場觀察名單；<span class="chip hot">轉換期未開始</span>＝CB 剛發行、常是吃貨階段，先追蹤。</li>
+</ul>
+<p>此為候選池與優先排序，<b>不是買賣建議</b>；進場仍要等量價確認。資料：設質為月頻（每月中更新上月）、CB 看板日頻、本頁每週更新。</p>
+</div>
+</details>
 <div class="filters">
   <label><input type="checkbox" id="fLiquid" checked> 排除流動性不足（現股&lt;${out.thresholds.MIN_STOCK_LOTS}張 或 CB&lt;${out.thresholds.MIN_CB_UNITS}張）</label>
   <label><input type="checkbox" id="fWindow"> 只看轉換期內</label>
@@ -599,17 +648,6 @@ ${note}
 <th data-k="convPrice">轉換價</th><th data-k="vsConv">vs轉換價</th><th data-k="premium">CB溢價%</th>
 <th data-k="converted">已轉換%</th><th data-k="cbUnits">CB均量</th><th data-k="convEnd">轉換迄日</th><th>旗標</th>
 </tr></thead><tbody></tbody></table></div>
-<div class="howto">
-<b>評分（0-100，🔴≥75 優先看、🟠60-74、🟡45-59、⚪&lt;45）：</b>
-位置分 0-35（vs轉換價 ±15% 內滿分，太價外＝劇本未開演、漲太多＝肉少，都扣）＋
-轉換進度 0-25（已轉換 ≤10% 滿分、往 70% 遞減）＋
-設質動能 0-25（有月增資料用月增、解質扣分；基線月先用設質比例水位）＋
-可執行性 0-15（現股/CB 流動性）＋突破轉換價+MA20 加 5。已過期或已轉換&gt;70% 直接 0 分。<br>
-<b>怎麼讀：</b>公司派有流通中 CB（動機：拉過轉換價才能套利）+ 董監設質（壓力：維持率不能跌）。
-<b>vs轉換價</b>負值＝還在轉換價之下（有想像空間）；<b>CB溢價%</b>低＝CB 貼著平價走、進度落後不多；
-<b>已轉換%</b>高＝戲近尾聲。<span class="chip go">突破轉換價+MA20</span>＝量價站上、策略一的進場觀察名單；
-<span class="chip hot">轉換期未開始</span>＝CB 剛發行、常是吃貨階段，先追蹤。此為候選池非買賣建議，進場仍要看量價。
-</div>
 <script>
 const ROWS=${JSON.stringify(rows)};
 const fmt=(v,suf)=>v==null?"—":v+(suf||"");

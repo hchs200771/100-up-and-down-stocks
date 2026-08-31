@@ -1789,7 +1789,7 @@ function renderHome(labels: string[], date: string, order: string[] = READ_ORDER
     {
       title: "🔥 今日族群與操作",
       // 圖例位置兩版不同：網頁版附在上漲/下跌分頁底部、信件版是最後的獨立段落
-      hint: `每天的主菜：漲跌族群與可執行結論。圖例與評分說明${order === EMAIL_ORDER ? "在本信最後" : "附在上漲/下跌分頁的最底下"}。`,
+      hint: `每天的主菜：漲跌族群與可執行結論。圖例與評分說明${order === EMAIL_ORDER ? "在本信最後" : "收在上漲/下跌分頁最上方的「本頁說明」，點開就有"}。`,
       bg: "#fff7ed", border: "#fed7aa", titleColor: "#c2410c",
       labels: ["🔥 上漲族群", "🧊 下跌族群", "🎯 操作建議"],
     },
@@ -1890,12 +1890,18 @@ function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName
     </div>`;
 
   // 圖例／評分說明的歸屬：
-  // - 網頁版：不再是獨立分頁，直接附在會用到它們的分頁最底下（badge 都出現在
-  //   上漲/下跌族群；進場評分只有強勢族群有，所以評分說明只附在上漲）。
-  // - 信件版：維持單份、照舊排在最後。信件是線性攤開的，圖例出現兩次只是灌體積，
-  //   而 Gmail 102KB 截斷的壓力一直都在。
-  const groupGHtml = `<h3 style="color: #dc2626; margin-top: 0;">🔥 強勢焦點 (量大優先)</h3>${gainersHtml}${forEmail ? "" : legendHtml + rubricHtml}`;
-  const groupLHtml = `<h3 style="color: #16a34a; margin-top: 0;">🧊 弱勢焦點 (量大優先)</h3>${losersHtml}${forEmail ? "" : legendHtml}`;
+  // - 網頁版：不再是獨立分頁，改成放在會用到它們的分頁**最上方的摺疊區塊**
+  //   （<details>，預設收合、要看再點開），讀者不用滑到最底才發現有說明。
+  //   badge 都出現在上漲/下跌族群；進場評分只有強勢族群有，所以評分說明只附在上漲。
+  // - 信件版：維持單份、照舊排在最後。信件是線性攤開的（Gmail 對 <details> 支援
+  //   也不可靠），圖例出現兩次只是灌體積，而 102KB 截斷的壓力一直都在。
+  const foldNote = (label: string, inner: string) =>
+    `<details style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; margin-bottom:14px;">
+      <summary style="cursor:pointer; padding:9px 14px; font-size:13px; font-weight:bold; color:#475569; user-select:none;">📖 ${label}（點開）</summary>
+      <div style="padding:0 10px;">${inner}</div>
+    </details>`;
+  const groupGHtml = `${forEmail ? "" : foldNote("本頁說明：圖例與進場評分", legendHtml + rubricHtml)}<h3 style="color: #dc2626; margin-top: 0;">🔥 強勢焦點 (量大優先)</h3>${gainersHtml}`;
+  const groupLHtml = `${forEmail ? "" : foldNote("本頁說明：圖例", legendHtml)}<h3 style="color: #16a34a; margin-top: 0;">🧊 弱勢焦點 (量大優先)</h3>${losersHtml}`;
 
   // 每個區塊都是一個 tab panel；瀏覽器端由下方 script 產生頂部切換鈕、預設只顯示第一個（上漲族群）。
   // email 無 JS 時所有 panel 都顯示（完整退回），不會壞。
