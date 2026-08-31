@@ -320,6 +320,26 @@ async function fetchStockStat(code: string, market: "twse" | "tpex"): Promise<St
 
 // ── 4) 組合與輸出 ─────────────────────────────────────────────
 
+interface BondView {
+  bondCode: string;
+  bondName: string;
+  conversionPrice: number;
+  conversionStart: string;
+  conversionEnd: string;
+  inWindow: boolean;
+  /** 轉換期已結束 */
+  expired: boolean;
+  convertedPct: number;
+  /** 上月底發行餘額（億元），判斷這檔還剩多少籌碼 */
+  outstandingBn: number;
+  cbPrice: number | null;
+  cbAvgUnits: number | null;
+  /** 現價 ÷ 這檔的轉換價 - 1（%） */
+  vsConvPct: number | null;
+  /** CB 溢價率 %：CB價 ÷ 轉換價值 - 1（轉換價值 = 股價/轉換價×100） */
+  premiumPct: number | null;
+}
+
 interface Candidate {
   code: string;
   name: string;
@@ -329,22 +349,11 @@ interface Candidate {
   /** 相對上月新增設質（張）；沒有上月快照時為 null */
   newPledgeLots: number | null;
   pledgeOver50: boolean;
-  bonds: {
-    bondCode: string;
-    bondName: string;
-    conversionPrice: number;
-    conversionEnd: string;
-    inWindow: boolean;
-    convertedPct: number;
-    cbPrice: number | null;
-    cbAvgUnits: number | null;
-    /** CB 溢價率 %：CB價 ÷ 轉換價值 - 1（轉換價值 = 股價/轉換價×100） */
-    premiumPct: number | null;
-  }[];
+  bonds: BondView[];
   close: number | null;
   ma20: number | null;
   avgLots: number | null;
-  /** 現價 ÷ 轉換價 - 1（%），取最主要（餘額最大）一檔 CB */
+  /** 現價 ÷ 轉換價 - 1（%），取條件最好的那檔 CB（見 pickMainBond） */
   vsConversionPct: number | null;
   flags: string[];
   /** 優先度評分 0-100（見 scoreCandidate 的配分） */
@@ -366,16 +375,35 @@ interface Candidate {
  *
  * 「轉換期已過」「CB已轉換>70%」直接 0 分沉底——戲演完了，分數再高都不用看。
  */
+const positionScore = (v: number | null) =>
+  v == null ? 0 : Math.round(Math.max(0, 35 - (v > 5 ? (v - 5) * 1.0 : v < -20 ? (-20 - v) * 0.6 : 0)));
+const progressScore = (convertedPct: number) =>
+  Math.round(Math.max(0, Math.min(25, ((70 - convertedPct) / 60) * 25)));
+
+/**
+ * 一家公司有多檔 CB 時，用哪一檔代表它？取**條件最好的那檔**，不是餘額最大的。
+ *
+ * 公司派只要「任何一檔」有套利空間就有拉抬動機，所以看的是機會最好的那檔：
+ * 未到期優先 → 位置分＋進度分最高 → 同分時餘額大的優先（籌碼多、動機強）。
+ * 之前取餘額最大會誤判：例如康普三轉換價 96.9、康普四只有 69.9，
+ * 挑錯一檔「vs轉換價」的結論會完全相反。
+ */
+function pickMainBond(bonds: BondView[]): BondView {
+  const alive = bonds.filter((b) => !b.expired);
+  const pool = alive.length ? alive : bonds;
+  return pool.reduce((best, b) => {
+    const s = (x: BondView) => positionScore(x.vsConvPct) + progressScore(x.convertedPct);
+    const d = s(b) - s(best);
+    return d > 0 || (d === 0 && b.outstandingBn > best.outstandingBn) ? b : best;
+  }, pool[0]);
+}
+
 function scoreCandidate(c: Omit<Candidate, "score" | "scoreBreakdown">): Candidate["scoreBreakdown"] & { total: number } {
   const zero = { position: 0, progress: 0, pledge: 0, tradable: 0, bonus: 0, total: 0 };
   if (c.flags.includes("轉換期已過") || c.flags.includes("CB已轉換>70%")) return zero;
 
-  const v = c.vsConversionPct;
-  const position =
-    v == null ? 0 : Math.round(Math.max(0, 35 - (v > 5 ? (v - 5) * 1.0 : v < -20 ? (-20 - v) * 0.6 : 0)));
-
-  const conv = c.bonds.find((b) => b.inWindow)?.convertedPct ?? c.bonds[0]?.convertedPct ?? 0;
-  const progress = Math.round(Math.max(0, Math.min(25, ((70 - conv) / 60) * 25)));
+  const position = positionScore(c.vsConversionPct);
+  const progress = progressScore(pickMainBond(c.bonds).convertedPct);
 
   let pledgeScore: number;
   if (c.newPledgeLots != null) {
@@ -459,26 +487,31 @@ async function main() {
     const s = stats[i];
     const prev = prevSnap?.[p.code];
     const newPledgeLots = prev ? Math.round((p.pledged - prev.pledged) / 1000) : null;
-    const enriched = bonds.map((b) => {
+    const enriched: BondView[] = bonds.map((b) => {
       const stockPx = s.close ?? b.stockPrice;
       const inWindow = b.conversionStart <= today && today <= b.conversionEnd;
       const parity = stockPx && b.conversionPrice ? (stockPx / b.conversionPrice) * 100 : null;
       return {
         bondCode: b.bondCode,
-        bondName: b.bondName,
+        bondName: b.bondName.trim(),
         conversionPrice: b.conversionPrice,
+        conversionStart: b.conversionStart,
         conversionEnd: b.conversionEnd,
         inWindow,
+        expired: b.conversionEnd < today,
         convertedPct: b.convertedPct,
+        outstandingBn: +(b.outstanding / 1e8).toFixed(2),
         cbPrice: b.cbPrice,
         cbAvgUnits: b.avgUnits,
+        vsConvPct: stockPx && b.conversionPrice ? +((stockPx / b.conversionPrice - 1) * 100).toFixed(1) : null,
         premiumPct: b.cbPrice && parity ? +((b.cbPrice / parity - 1) * 100).toFixed(1) : null,
       };
     });
-    // 主 CB＝餘額最大那檔
-    const main = bonds.reduce((a, b) => (b.outstanding > a.outstanding ? b : a), bonds[0]);
-    const stockPx = s.close ?? main.stockPrice;
+    // 主 CB＝條件最好的那檔（不是餘額最大；理由見 pickMainBond）
+    const main = pickMainBond(enriched);
+    const stockPx = s.close ?? bonds[0].stockPrice;
     const flags: string[] = [];
+    if (enriched.length > 1) flags.push(`多CB×${enriched.length}`);
     if (s.avgLots != null && s.avgLots < MIN_STOCK_LOTS) flags.push("現股量低");
     if (enriched.every((b) => (b.cbAvgUnits ?? 0) < MIN_CB_UNITS)) flags.push("CB量低");
     if (enriched.every((b) => b.convertedPct > 70)) flags.push("CB已轉換>70%");
@@ -500,7 +533,7 @@ async function main() {
       close: s.close,
       ma20: s.ma20,
       avgLots: s.avgLots,
-      vsConversionPct: stockPx && main.conversionPrice ? +((stockPx / main.conversionPrice - 1) * 100).toFixed(1) : null,
+      vsConversionPct: main.vsConvPct,
       flags,
     };
     const { total, ...breakdown } = scoreCandidate(base);
@@ -534,8 +567,7 @@ async function main() {
 function renderHtml(out: any): string {
   const cands = out.candidates as Candidate[];
   const rows = cands.map((c) => {
-    // 展示用的主 CB：優先取轉換期內的，其次第一檔（通常是餘額最大）
-    const b = c.bonds.find((x) => x.inWindow) ?? c.bonds[0];
+    const b = pickMainBond(c.bonds);
     return {
       code: c.code,
       name: c.name,
@@ -554,7 +586,27 @@ function renderHtml(out: any): string {
       cbUnits: b?.cbAvgUnits ?? null,
       convEnd: b?.conversionEnd ?? "",
       bondName: b?.bondName ?? "",
+      bondCode: b?.bondCode ?? "",
       flags: c.flags,
+      // 子列：這家公司**轉換期還沒結束**的所有 CB，展開才看得到。
+      // 已到期的不列——沒得轉換也買不到，只會干擾。
+      cbs: c.bonds
+        .filter((x) => !x.expired)
+        .sort((x, y) => (y.inWindow ? 1 : 0) - (x.inWindow ? 1 : 0) || x.bondCode.localeCompare(y.bondCode))
+        .map((x) => ({
+          code: x.bondCode,
+          name: x.bondName,
+          cp: x.conversionPrice,
+          vs: x.vsConvPct,
+          px: x.cbPrice,
+          prem: x.premiumPct,
+          conv: x.convertedPct,
+          units: x.cbAvgUnits,
+          out: x.outstandingBn,
+          win: x.inWindow,
+          start: x.conversionStart,
+          end: x.conversionEnd,
+        })),
     };
   });
   const note = out.hasMonthOverMonth
@@ -592,6 +644,16 @@ a{color:var(--accent);text-decoration:none}
 .chip.go{color:var(--down)}
 .pos{color:var(--up)}.neg{color:var(--down)}
 .count{margin:8px 2px;color:var(--muted);font-size:13px}
+.nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.nav a{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:6px 13px;font-size:13px;font-weight:600;background:var(--card);color:var(--fg)}
+.nav a:hover{border-color:var(--accent);color:var(--accent)}
+.nav a.here{background:var(--accent);border-color:var(--accent);color:#fff}
+tr.parent td:first-child{cursor:pointer}
+tr.parent .tw{display:inline-block;width:12px;color:var(--accent);font-size:10px;transition:transform .15s}
+tr.parent.open .tw{transform:rotate(90deg)}
+tr.cbrow td{background:color-mix(in srgb,var(--accent) 4%,transparent);font-size:12px;color:var(--muted);border-bottom:1px dashed var(--line)}
+tr.cbrow .bn{color:var(--fg);font-weight:600}
+tr.cbrow .off{opacity:.6}
 details.howto{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:12px 0;font-size:13px;color:var(--muted)}
 details.howto summary{cursor:pointer;list-style:none;padding:10px 16px;font-size:14px;font-weight:600;color:var(--fg);user-select:none}
 details.howto summary::-webkit-details-marker{display:none}
@@ -605,6 +667,15 @@ details.howto b{color:var(--fg)}
 </style>
 </head>
 <body><div class="wrap">
+<nav class="nav">${[
+      ["🏠 總覽", ""],
+      ["🔥 上漲族群", "🔥 上漲族群"],
+      ["📊 市場總覽", "📊 市場總覽"],
+      ["🔄 族群輪動", "🔄 族群輪動"],
+      ["🏦 大戶籌碼", "🏦 大戶籌碼"],
+    ]
+      .map(([txt, tab]) => `<a href="index.html${tab ? `#tab=${encodeURIComponent(tab)}` : ""}">${txt}</a>`)
+      .join("")}<a class="here" href="cb-pledge.html">🔐 設質+CB</a></nav>
 <h1>🔐 董監設質 + CB 候選池</h1>
 <p class="sub">設質資料年月 ${out.pledgeMonth}（民國）｜CB 看板 ${out.boardDate}｜產生於 ${String(out.generatedAt).slice(0, 16).replace("T", " ")} UTC｜每週更新</p>
 ${note}
@@ -623,6 +694,8 @@ ${note}
 <li><b>加分 +5</b>：突破轉換價＋站上 MA20（策略的進場確認訊號已出現）。</li>
 </ul>
 <p>「轉換期已過」或「已轉換&gt;70%」直接 0 分沉底——戲演完了。「設質近零」（&lt;5% 且無月增）封頂 59 分——沒設質就不構成這個策略。</p>
+<h4>一家公司常常不只一檔 CB</h4>
+<p>候選池裡約 <b>兩成公司有 2 檔以上</b>（最多的晟德有四檔），各檔的轉換價、餘額、轉換進度都不一樣——例如康普三轉換價 96.9、康普四只有 69.9，看錯檔結論會完全相反。<b>點任一列可展開</b>，列出該公司所有轉換期未結束的 CB（債券代號、簡稱如「正德七/正德八」、轉換價、溢價、已轉換、餘額）。表格主列顯示的是<b>條件最好的那一檔</b>（未到期、位置與進度加總最高），因為公司派只要有一檔有套利空間就有拉抬動機。</p>
 <h4>欄位怎麼讀</h4>
 <ul>
 <li><b>vs轉換價</b>：負＝還在轉換價下（空間大、待證實），正＝已站上（劇本執行中）。終點參考：轉換價 × 1.3 的強贖線。</li>
@@ -665,16 +738,35 @@ function render(){
   rs.sort((a,b)=>{const x=a[sortK],y=b[sortK];
     if(x==null&&y==null)return 0;if(x==null)return 1;if(y==null)return -1;
     return(x<y?-1:x>y?1:0)*sortDir});
-  document.querySelector("#tbl tbody").innerHTML=rs.map(r=>{
+  document.querySelector("#tbl tbody").innerHTML=rs.map((r,ri)=>{
     const url="https://tw.stock.yahoo.com/quote/"+r.code+(r.market==="twse"?".TW":".TWO");
     const chips=r.flags.map(fl=>{
-      const c=fl==="突破轉換價+MA20"?"chip go":fl==="轉換期未開始"||fl==="設質>50%"?"chip hot":"chip";
+      const c=fl==="突破轉換價+MA20"?"chip go":fl.indexOf("多CB")===0?"chip":fl==="轉換期未開始"||fl==="設質>50%"?"chip hot":"chip";
       return '<span class="'+c+'">'+fl+"</span>"}).join("");
-    return "<tr><td>"+r.tier+" <b>"+r.score+"</b></td><td><a href='"+url+"' target='_blank'>"+r.code+"</a></td><td>"+r.name+
+    const head="<tr class='parent' data-i='"+ri+"'><td><span class='tw'>▸</span> "+r.tier+" <b>"+r.score+"</b></td>"+
+      "<td><a href='"+url+"' target='_blank'>"+r.code+"</a></td><td>"+r.name+
       "</td><td>"+fmt(r.pledgeRatio)+"</td><td"+cls(r.newPledgeLots)+">"+fmt(r.newPledgeLots)+
       "</td><td>"+fmt(r.close)+"</td><td>"+fmt(r.ma20)+"</td><td>"+fmt(r.avgLots)+
       "</td><td>"+fmt(r.convPrice)+"</td><td"+cls(r.vsConv)+">"+fmt(r.vsConv,"%")+"</td><td>"+fmt(r.premium)+
-      "</td><td>"+fmt(r.converted)+"</td><td>"+fmt(r.cbUnits)+"</td><td>"+r.convEnd+"</td><td>"+chips+"</td></tr>"}).join("");
+      "</td><td>"+fmt(r.converted)+"</td><td>"+fmt(r.cbUnits)+"</td><td>"+r.convEnd+"</td><td>"+chips+"</td></tr>";
+    // 子列：轉換期未結束的每一檔 CB 各一行。Yahoo 對台灣 CB 收錄不全（測過約半數查無），
+    // 所以債券代號連到櫃買官方頁（一定有），另附 Yahoo 連結但標成次要。
+    const subs=r.cbs.map(b=>{
+      const tpex="https://www.tpex.org.tw/zh-tw/bond/info/statistics-cb/day.html";
+      const y="https://tw.stock.yahoo.com/quote/"+b.code+".TWO";
+      const state=b.win?"轉換中":"未開始("+b.start+")";
+      return "<tr class='cbrow"+(b.win?"":" off")+"' data-p='"+ri+"' style='display:none'><td></td>"+
+        "<td><a href='"+y+"' target='_blank' title='Yahoo（部分 CB 無資料）'>"+b.code+"</a></td>"+
+        "<td class='bn'>"+b.name+"</td><td colspan='2' style='text-align:left'>"+state+"</td>"+
+        "<td colspan='3' style='text-align:left'>餘額 "+fmt(b.out,"億")+"</td>"+
+        "<td>"+fmt(b.cp)+"</td><td"+cls(b.vs)+">"+fmt(b.vs,"%")+"</td><td>"+fmt(b.prem)+
+        "</td><td>"+fmt(b.conv)+"</td><td>"+fmt(b.units)+"</td><td>"+b.end+
+        "</td><td><a href='"+tpex+"' target='_blank'>櫃買 ↗</a></td></tr>"}).join("");
+    return head+subs}).join("");
+  document.querySelectorAll("#tbl tr.parent").forEach(tr=>tr.onclick=e=>{
+    if(e.target.tagName==="A")return; // 點代號連結時不要順便展開
+    const i=tr.dataset.i,open=tr.classList.toggle("open");
+    document.querySelectorAll("#tbl tr.cbrow[data-p='"+i+"']").forEach(s=>s.style.display=open?"":"none")});
   count.textContent="顯示 "+rs.length+" / "+ROWS.length+" 檔";
   document.querySelectorAll("#tbl th").forEach(th=>{
     const a=th.querySelector(".arr");if(a)a.remove();
@@ -697,7 +789,7 @@ function printSummary(out: any) {
   console.log(`\n設質資料 ${out.pledgeMonth}｜CB 看板 ${out.boardDate}｜月增設質${out.hasMonthOverMonth ? "已可比較" : "＝基線月，暫無"}`);
   console.log("     評分 代號   名稱      設質%  月增(張) 現價    vs轉換價  CB溢價%  已轉換%  旗標");
   for (const c of rows.slice(0, 30)) {
-    const b = c.bonds.find((x) => x.inWindow) ?? c.bonds[0];
+    const b = pickMainBond(c.bonds); // 與評分、網頁用同一檔，否則數字對不起來
     console.log(
       [
         `${tierOf(c.score)}${String(c.score).padStart(4)}`,

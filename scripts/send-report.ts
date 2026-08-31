@@ -1672,6 +1672,136 @@ function renderTdcc(d: DivergenceReport | null | undefined): string {
     </div>`;
 }
 
+// ---------- 終極選股池（build-stock-picks.ts 的輸出） ----------
+
+interface PickSignal { label: string; detail: string; tone: "pos" | "neg" }
+interface PickEntry {
+  rank: number;
+  code: string;
+  name: string;
+  close: number;
+  score: number;
+  type: string;
+  sector: string | null;
+  reason: string;
+  signals: PickSignal[];
+  plan: { entry: string; stop: string; exit: string };
+  metrics: Record<string, string>;
+}
+interface PicksReport {
+  generatedAt: string;
+  date: string;
+  basis: { tdccWeek?: string | null; cbWeek?: string | null; rrgAsOf?: string | null; priceHistoryDays?: number };
+  regimeNotes: string[];
+  long: PickEntry[];
+  short: PickEntry[];
+}
+
+/**
+ * 終極選股池分頁：長線 10 檔＋短線 10 檔，各自一張理由表格。
+ * 版面策略——20 檔全攤開會太擠，所以每張榜單先給「可一眼掃完」的表格
+ * （代號/收盤/分數/型態/一句話理由），個股完整訊號與進出場計畫收進
+ * 每檔一個 <details>，要看再點開。信件版沒有可靠的 <details> 支援，
+ * 只出表格、明細導去網頁版。
+ */
+function renderPicks(picks: PicksReport | null, forEmail: boolean): string {
+  if (!picks || (!picks.long.length && !picks.short.length)) return "";
+
+  const metricLabel: Record<string, string> = {
+    r10: "近兩週", r20: "近一月", ma10: "MA10", ma20: "MA20", high20: "20日高",
+    dayTrade: "當沖比", instNet: "法人買賣超", quadrant: "RRG 族群", tdcc: "集保大戶", cb: "CB+設質",
+  };
+
+  const table = (list: PickEntry[], accent: string): string => {
+    const rows = list
+      .map((p) => {
+        const badges = p.signals
+          .filter((s) => s.tone === "pos")
+          .slice(0, 4)
+          .map((s) => `<span style="background:#eef2ff; color:#4f46e5; border-radius:10px; padding:1px 6px; font-size:11px; white-space:nowrap; margin-right:3px;">${s.label}</span>`)
+          .join("");
+        const warn = p.signals.filter((s) => s.tone === "neg").map((s) => s.label).join("、");
+        return `<tr style="border-top:1px solid #f1f5f9;">
+          <td style="padding:6px 8px; color:#9ca3af; text-align:center;">${p.rank}</td>
+          <td style="padding:6px 8px; white-space:nowrap;"><strong style="color:#1f2937;">${p.name}</strong> <span style="color:#9ca3af; font-size:12px;">${p.code}</span></td>
+          <td style="padding:6px 8px; text-align:right; white-space:nowrap;">${p.close}</td>
+          <td style="padding:6px 8px; text-align:center;"><span style="background:${accent}; color:#fff; border-radius:10px; padding:1px 8px; font-weight:bold; font-size:12px;">${p.score}</span></td>
+          <td style="padding:6px 8px; white-space:nowrap; font-size:12px; color:#6b7280;">${p.type}</td>
+          <td style="padding:6px 8px; font-size:12px; line-height:1.6; color:#4b5563;">${badges}${badges ? "<br>" : ""}${p.reason}${warn ? `<br><span style="color:#b45309;">⚠ ${warn}</span>` : ""}</td>
+        </tr>`;
+      })
+      .join("");
+    return `<div style="overflow-x:auto;"><table style="border-collapse:collapse; width:100%; font-size:13px; min-width:560px;">
+      <tr style="color:#6b7280; font-size:12px; text-align:left;">
+        <th style="padding:4px 8px;">#</th><th style="padding:4px 8px;">個股</th><th style="padding:4px 8px; text-align:right;">收盤</th><th style="padding:4px 8px;">分數</th><th style="padding:4px 8px;">型態</th><th style="padding:4px 8px;">入選理由</th>
+      </tr>${rows}</table></div>`;
+  };
+
+  const detailBlocks = (list: PickEntry[]): string =>
+    list
+      .map((p) => {
+        const sigRows = p.signals
+          .map((s) => `<li style="color:${s.tone === "pos" ? "#166534" : "#b45309"};"><strong>${s.label}</strong>：${s.detail}</li>`)
+          .join("");
+        const mRows = Object.entries(p.metrics)
+          .filter(([, v]) => v && v !== "—")
+          .map(([k, v]) => `<span style="display:inline-block; margin:0 12px 3px 0; white-space:nowrap;"><span style="color:#9ca3af;">${metricLabel[k] ?? k}</span> <strong style="color:#374151;">${v}</strong></span>`)
+          .join("");
+        return `<details style="border:1px solid #e5e7eb; border-radius:6px; margin-bottom:6px; background:#fff;">
+        <summary style="cursor:pointer; padding:8px 12px; font-size:13px; user-select:none;"><strong>${p.rank}. ${p.name}</strong> <span style="color:#9ca3af;">${p.code}</span> · ${p.score} 分 · ${p.type} <span style="color:#9ca3af; font-size:12px;">— 點開看訊號明細與進出場</span></summary>
+        <div style="padding:4px 14px 12px; font-size:13px; line-height:1.7;">
+          <ul style="margin:6px 0; padding-left:18px;">${sigRows}</ul>
+          <div style="background:#f8fafc; border-radius:6px; padding:8px 10px; margin:8px 0;">
+            <div>🎯 <strong>進場</strong>：${p.plan.entry}</div>
+            <div>🛑 <strong>停損</strong>：${p.plan.stop}</div>
+            <div>🚪 <strong>出場</strong>：${p.plan.exit}</div>
+          </div>
+          <div style="font-size:12px;">${mRows}</div>
+        </div>
+      </details>`;
+      })
+      .join("");
+
+  const listSection = (title: string, hint: string, list: PickEntry[], accent: string, border: string, bg: string): string => {
+    if (!list.length) return "";
+    return `<div style="background:${bg}; border:1px solid ${border}; border-radius:8px; padding:12px 14px; margin-bottom:16px;">
+      <h3 style="margin:0 0 4px; color:#1f2937; font-size:15px;">${title}</h3>
+      <p style="font-size:12px; color:#6b7280; margin:0 0 8px; line-height:1.6;">${hint}</p>
+      ${table(list, accent)}
+      ${forEmail ? `<p style="font-size:12px; color:#9ca3af; margin:8px 0 0;">個股訊號明細與進出場計畫請開網頁版。</p>` : `<div style="margin-top:10px;">${detailBlocks(list)}</div>`}
+    </div>`;
+  };
+
+  const regime = picks.regimeNotes.length
+    ? `<div style="background:#fffbeb; border:1px solid #fde68a; border-radius:6px; padding:8px 12px; font-size:12px; color:#92400e; line-height:1.7; margin-bottom:12px;"><strong>大盤狀態提醒</strong>（來自族群輪動）：${picks.regimeNotes.map((n) => `<div>· ${n}</div>`).join("")}<div>出現「大盤全面回檔」特徵時，以下新倉建議減半。</div></div>`
+    : "";
+
+  const basis = picks.basis;
+  return `<div style="background-color:#f8fafc; border:1px solid #e2e8f0; padding:15px; border-radius:8px; margin-bottom:20px;">
+    <h3 style="margin-top:0; color:#334155;">🏆 終極選股池（${picks.date}）</h3>
+    <p style="font-size:13px; color:#4b5563; line-height:1.7; margin:0 0 10px;">
+      把大戶籌碼、CB+設質、法人買賣超、族群輪動、當日分類與價格動能<strong>五路訊號統合到個股層級</strong>打分。
+      進榜門檻：至少兩個獨立資料源同時給正訊號（共振），單一訊號再強都只算噪音。
+      分數是排序用的相對值，不同天之間不可直接比大小。
+    </p>
+    ${regime}
+    ${listSection(
+      "🐢 長線波段 Top 10（3 個月～1 年）",
+      "吃「結構性籌碼」：大戶默默累積、公司派有作價動機、族群在中期輪動的順風處。多為背離佈局型——買點靠等，不靠追。",
+      picks.long, "#0d9488", "#99f6e4", "#f0fdfa",
+    )}
+    ${listSection(
+      "⚡ 短線動能 Top 10（2 週～1 個月）",
+      "吃「資金正在青睞」：相對強度前段、法人連買、族群剛啟動。多為動能順勢型——嚴設停損，訊號轉弱就走。",
+      picks.short, "#ea580c", "#fed7aa", "#fff7ed",
+    )}
+    <p style="font-size:11px; color:#9ca3af; line-height:1.6; margin:4px 0 0;">
+      資料基準：集保大戶 ${basis.tdccWeek ?? "—"}（週）、CB+設質 ${basis.cbWeek ?? "—"}（週）、RRG ${basis.rrgAsOf ?? "—"}、價格序列 ${basis.priceHistoryDays ?? 0} 個交易日。
+      純規則計算（無 AI 判讀），每日快照存於 stock-picks-history 供回測。非投資建議。
+    </p>
+  </div>`;
+}
+
 /**
  * 每個分頁「在回答什麼問題」。key 必須與 sections 的 label 完全一致。
  *
@@ -1688,12 +1818,13 @@ const TAB_GUIDE: Record<string, string> = {
   "🏦 大戶籌碼": "集保大戶這週買了什麼。可切「背離（籌碼先動、價還沒動）」與「同向（籌碼與趨勢一致）」，門檻 200~1000 張可調。週資料。",
   "🌐 國際情勢": "美股、亞股、原物料、匯率與信用利差——台股開盤前的外部條件。",
   "🧭 長線策略": "跳出當日波動，長線的進出場想法與部位思考。",
+  "🏆 終極選股池": "全部訊號統合後的最終結論：長線 10 檔＋短線 10 檔，含入選理由與進出場計畫。",
   "🔖 圖例說明": "報告裡各種標記、badge、顏色代表什麼意思。",
   "🧮 評分說明": "進場評分 0-100 是怎麼算出來的，四個構面各佔多少。",
 };
 
 /** 建議的閱讀順序：由外而內、由結果到原因，最後才是可以動手的結論。 */
-const READ_ORDER = ["🌐 國際情勢", "📊 市場總覽", "⚖️ 指數貢獻", "🔥 上漲族群", "🔄 族群輪動", "🏦 大戶籌碼", "🎯 操作建議"];
+const READ_ORDER = ["🌐 國際情勢", "📊 市場總覽", "⚖️ 指數貢獻", "🔥 上漲族群", "🔄 族群輪動", "🏦 大戶籌碼", "🎯 操作建議", "🏆 終極選股池"];
 
 /**
  * Email 版的段落順序，與網頁版（READ_ORDER）**刻意不同**。
@@ -1709,7 +1840,7 @@ const READ_ORDER = ["🌐 國際情勢", "📊 市場總覽", "⚖️ 指數貢�
  * 改動線時**兩張表都要看**：READ_ORDER 管網頁的分頁與「建議第 N 站」徽章，
  * 這張只管信件的段落順序。
  */
-const EMAIL_ORDER = ["🌐 國際情勢", "📊 市場總覽", "🔥 上漲族群", "🎯 操作建議", "⚖️ 指數貢獻", "🔄 族群輪動", "🏦 大戶籌碼"];
+const EMAIL_ORDER = ["🌐 國際情勢", "📊 市場總覽", "🔥 上漲族群", "🎯 操作建議", "🏆 終極選股池", "⚖️ 指數貢獻", "🔄 族群輪動", "🏦 大戶籌碼"];
 
 /**
  * 把完整版 HTML 壓成信件版。**只拿掉信件本來就顯示不出來的東西**，不動看得見的內容。
@@ -1791,7 +1922,7 @@ function renderHome(labels: string[], date: string, order: string[] = READ_ORDER
       // 圖例位置兩版不同：網頁版附在上漲/下跌分頁底部、信件版是最後的獨立段落
       hint: `每天的主菜：漲跌族群與可執行結論。圖例與評分說明${order === EMAIL_ORDER ? "在本信最後" : "收在上漲/下跌分頁最上方的「本頁說明」，點開就有"}。`,
       bg: "#fff7ed", border: "#fed7aa", titleColor: "#c2410c",
-      labels: ["🔥 上漲族群", "🧊 下跌族群", "🎯 操作建議"],
+      labels: ["🔥 上漲族群", "🧊 下跌族群", "🎯 操作建議", "🏆 終極選股池"],
     },
     {
       title: "📅 一日市場總覽",
@@ -1856,7 +1987,7 @@ function renderHome(labels: string[], date: string, order: string[] = READ_ORDER
     </div>`;
 }
 
-function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName: Map<string, string>, market?: MarketBlock | null, retailHistory?: MarketHistoryEntry[], contrib?: IndexContribution | null, tdcc?: DivergenceReport | null, marginHistory?: MarginHistoryEntry[], mo?: MarginOptionsReport | null, forEmail = false): string {
+function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName: Map<string, string>, market?: MarketBlock | null, retailHistory?: MarketHistoryEntry[], contrib?: IndexContribution | null, tdcc?: DivergenceReport | null, marginHistory?: MarginHistoryEntry[], mo?: MarginOptionsReport | null, picks?: PicksReport | null, forEmail = false): string {
   // 有 call 標記的族群排前面（順勢 → 觀察 → 反轉），其餘維持原順序（檔數多→少）
   const callRank: Record<string, number> = { 順勢: 0, 觀察: 1, 反轉: 2 };
   const sortedGainers = [...a.gainers].sort(
@@ -1918,6 +2049,8 @@ function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName
     { label: "🔄 族群輪動", html: rrgHtml },
     // 大戶籌碼：週資料（TDCC 每週五結算），與每日資料放在一起時要留意更新頻率不同
     { label: "🏦 大戶籌碼", html: tdccHtml },
+    // 終極選股池：全訊號統合後的最終結論，動線上排在操作建議之後（先看族群層級的結論，再看個股層級的收斂）
+    { label: "🏆 終極選股池", html: renderPicks(picks ?? null, forEmail) },
     { label: "🌐 國際情勢", html: intlHtml },
     { label: "🧭 長線策略", html: longTermStrategyHtml },
     // 圖例/評分說明只有信件版還是獨立段落（見上方 groupGHtml 的說明）
@@ -1974,15 +2107,24 @@ function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName
       });
     }
     var idxByLabel={};
+    var PILL='font-family:inherit;font-size:14px;font-weight:bold;cursor:pointer;border:1px solid #e5e7eb;border-radius:999px;padding:8px 14px;background:#fff;color:#374151;';
     panels.forEach(function(p,i){
       var label=p.getAttribute('data-label')||('Tab '+(i+1));
       idxByLabel[label]=i;
       var b=document.createElement('button');
       b.textContent=label;
-      b.style.cssText='font-family:inherit;font-size:14px;font-weight:bold;cursor:pointer;border:1px solid #e5e7eb;border-radius:999px;padding:8px 14px;background:#fff;color:#374151;';
-      b.onclick=function(){activate(i);};
+      b.style.cssText=PILL;
+      // hash 深連結：子頁（設質+CB）要能連回特定分頁，重新整理也要留在原分頁
+      b.onclick=function(){activate(i);location.hash='tab='+encodeURIComponent(label);};
       btns.push(b);bar.appendChild(b);
     });
+    // 子頁入口：設質+CB 候選池是獨立頁面（週更），放在分頁列最後當第一級導覽，
+    // 樣式與分頁鈕一致但用 <a>，讓它看得出是「離開這一頁」。
+    var ext=document.createElement('a');
+    ext.href='cb-pledge.html';
+    ext.textContent='🔐 設質+CB ↗';
+    ext.style.cssText=PILL+'text-decoration:none;border-style:dashed;';
+    bar.appendChild(ext);
     // 總覽卡片：只有在 JS 跑得動時才變成可點的入口，並補上箭頭與提示。
     // Email 沒有 JS，卡片維持純文字，不會出現點不動的死連結。
     [].slice.call(document.querySelectorAll('.homecard')).forEach(function(card){
@@ -1997,7 +2139,16 @@ function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName
     });
     var hint=document.querySelector('.home-hint');
     if(hint)hint.style.display='';
-    activate(0);
+    // 進站時若帶 #tab=xxx（從子頁連回來或重新整理）就開那一頁，否則落在總覽
+    function fromHash(){
+      var m=/^#tab=(.+)$/.exec(location.hash||'');
+      if(!m)return -1;
+      var i=idxByLabel[decodeURIComponent(m[1])];
+      return i===undefined?-1:i;
+    }
+    var start=fromHash();
+    activate(start<0?0:start);
+    window.addEventListener('hashchange',function(){var i=fromHash();if(i>=0)activate(i);});
   })();
   </script>`;
 }
