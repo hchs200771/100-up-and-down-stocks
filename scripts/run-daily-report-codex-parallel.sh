@@ -17,6 +17,11 @@ CONTROLLER_SPLIT="${CODEX_CONTROLLER_SPLIT:-1}"
 FINALIZER_MODEL="${CODEX_FINALIZER_MODEL:-gpt-5.5}"
 REFINE_GROUP_TASKS="${CODEX_REFINE_GROUP_TASKS:-1}"
 CONTROLLER_TIMEOUT_SECONDS="${CODEX_CONTROLLER_TIMEOUT_SECONDS:-900}"
+# 族群研究 worker 的同時執行數。研究階段是「一個族群一個 codex 子行程」，
+# 每個都在等 API、幾乎不吃本機 CPU，所以瓶頸是併發數不是機器。
+# 6 → 10：族群數通常 20~30 個，10 條大約兩輪就跑完。
+# 再往上要留意 codex 端的速率限制，真的被擋就調回 8。
+GROUP_CONCURRENCY="${CODEX_GROUP_MAX_CONCURRENCY:-10}"
 cd "$PROJECT_DIR" || exit 1
 
 LOG_DIR="$PROJECT_DIR/data/logs"
@@ -32,6 +37,53 @@ notify() {
 log() {
   local line="[$(date '+%Y-%m-%d %H:%M:%S')] $*"
   echo "$line" | tee -a "$LOG_FILE"
+}
+
+# ── 階段計時 ────────────────────────────────────────────────────
+# 每個步驟的耗時寫成一行 TSV，最後彙整成「最慢的在最上面」的表，
+# 並存成 data/logs/timing-*.json 供跨日比較（要優化先看這張表，不要憑感覺猜）。
+# 平行步驟由各自的子行程 append，單行寫入夠短，不會互相截斷。
+RUN_T0="$(date +%s)"
+TIMING_FILE="$TMP_DIR/timings.tsv"
+mkdir -p "$TMP_DIR"
+: > "$TIMING_FILE"
+
+# timed <名稱> <指令...>：計時執行，回傳原本的 exit code。
+# 加 & 就是背景平行版，計時一樣準（各自記錄自己的 wall-clock）。
+timed() {
+  local name="$1"; shift
+  local t0 t1 rc
+  t0="$(date +%s)"
+  "$@"
+  rc=$?
+  t1="$(date +%s)"
+  printf '%s\t%s\t%s\n' "$name" "$((t1 - t0))" "$rc" >> "$TIMING_FILE"
+  # 變數一律用 ${} 包起來：後面接全形括號時，裸寫 $rc 會被 bash 連著 CJK 位元組
+  # 一起當成變數名（實測 "rc）: unbound variable"）。
+  log "⏱ ${name} 耗時 $((t1 - t0))s（rc=${rc}）"
+  return $rc
+}
+
+timing_summary() {
+  local total=$(( $(date +%s) - RUN_T0 ))
+  log "──────── 階段耗時（由慢到快，wall-clock）────────"
+  if [ -s "$TIMING_FILE" ]; then
+    # 平行步驟的耗時相加會超過總時間，那是正常的（重疊執行）
+    sort -t$'\t' -k2 -rn "$TIMING_FILE" | while IFS=$'\t' read -r name secs rc; do
+      local mark=""
+      [ "$rc" != "0" ] && mark=" ❌rc=$rc"
+      printf '  %6ss  %s%s\n' "$secs" "$name" "$mark" | tee -a "$LOG_FILE"
+    done
+  fi
+  log "總時間 ${total}s（$((total / 60))m$((total % 60))s）"
+  node -e '
+    const fs=require("fs");
+    const [tsv,out,total,startedAt]=process.argv.slice(1);
+    const rows=fs.existsSync(tsv)?fs.readFileSync(tsv,"utf8").trim().split("\n").filter(Boolean):[];
+    const stages=rows.map(l=>{const [name,secs,rc]=l.split("\t");return{name,seconds:+secs,ok:rc==="0"};})
+      .sort((a,b)=>b.seconds-a.seconds);
+    fs.writeFileSync(out,JSON.stringify({startedAt,totalSeconds:+total,stages},null,1));
+  ' "$TIMING_FILE" "$LOG_DIR/timing-$(date +%Y-%m-%d_%H%M%S).json" "$total" "$(date -r "$RUN_T0" '+%Y-%m-%d %H:%M:%S' 2>/dev/null || echo unknown)" 2>/dev/null || true
 }
 
 market_trading_date() {
@@ -164,7 +216,7 @@ fi
 log "run-daily-report-codex-parallel.sh start"
 log "START_STAGE=$START_STAGE"
 log "CONTROLLER_MODEL=$CONTROLLER_MODEL FINALIZER_MODEL=$FINALIZER_MODEL CODEX_GROUP_WORKER_MODEL=${CODEX_GROUP_WORKER_MODEL:-gpt-5.4-mini} CONTROLLER_SPLIT=$CONTROLLER_SPLIT"
-log "CONTROLLER_TIMEOUT_SECONDS=$CONTROLLER_TIMEOUT_SECONDS"
+log "CONTROLLER_TIMEOUT_SECONDS=$CONTROLLER_TIMEOUT_SECONDS GROUP_CONCURRENCY=$GROUP_CONCURRENCY"
 
 if ! command -v codex >/dev/null 2>&1; then
   log "codex command not found"
@@ -174,7 +226,7 @@ fi
 
 if stage_enabled fetch; then
   log "進度 1/5：開始抓上市/上櫃市場資料"
-  if ! run_tsx scripts/fetch-market-data.ts; then
+  if ! timed fetch-market run_tsx scripts/fetch-market-data.ts; then
     log "fetch-market-data.ts exited non-zero"
     notify "每日股市報告 ❌" "抓市場資料失敗，請看 log: $LOG_FILE"
     exit 1
@@ -189,21 +241,53 @@ fi
 
 log "進度 1/5：已經抓回上市/上櫃資料，交易日 $(market_trading_date)"
 
-# score-report: run after fetch/classify, skip when resuming from research or later
+# 輔助資料：全部只依賴 market-latest.json（或完全獨立的外部來源），彼此之間沒有相依，
+# 所以整批背景平行跑，總時間 = 最慢的那一個，而不是全部相加。
+# 每個都用 timed 包起來，事後看 timing 表就知道該優化誰。
+# 失敗一律只 warn：這些是加值分頁，不該擋住主流程。
 if stage_enabled fetch; then
-  log "進度 1.2/5：拆解加權指數貢獻 (產業 / 個股)"
-  run_tsx scripts/build-index-contribution.ts || log "[warn] build-index-contribution.ts failed; 指數貢獻分頁略過，不影響其他區塊"
-  run_tsx scripts/fetch-margin-options.ts || log "[warn] fetch-margin-options.ts failed; 融資與外資選擇權區塊略過，不影響其他區塊"
+  log "進度 1.2/5：背景平行抓輔助資料（指數貢獻／融資選擇權／集保／國際／信用利差／RRG／設質+CB）"
 
-  # 週資料，抓取冪等（同一週已存過就跳過），每天跑只有週六會真的抓。
-  log "進度 1.3/5：集保大戶持股週快照 + 背離篩選"
-  run_tsx scripts/fetch-tdcc-holders.ts || log "[warn] fetch-tdcc-holders.ts failed; 大戶籌碼分頁略過"
-  run_tsx scripts/build-tdcc-divergence.ts || log "[warn] build-tdcc-divergence.ts failed（快照可能不足兩份）; 大戶籌碼分頁略過"
+  timed index-contribution run_tsx scripts/build-index-contribution.ts \
+    || log "[warn] build-index-contribution.ts failed; 指數貢獻分頁略過，不影響其他區塊" &
+  timed margin-options run_tsx scripts/fetch-margin-options.ts \
+    || log "[warn] fetch-margin-options.ts failed; 融資與外資選擇權區塊略過，不影響其他區塊" &
+  timed intl-market run_tsx scripts/fetch-intl-market.ts \
+    || log "[warn] fetch-intl-market.ts failed; 國際數字略過，不影響台股報告" &
+  timed credit-spreads run_tsx scripts/fetch-credit-spreads.ts \
+    || log "[warn] fetch-credit-spreads.ts failed; 信用利差略過，不影響台股報告" &
+
+  # 集保是週資料且抓取冪等（同一週已存過就跳過），但 divergence 依賴 holders 的產出，
+  # 這兩步必須依序，所以包成同一個子行程、與其他步驟平行。
+  (
+    timed tdcc-holders run_tsx scripts/fetch-tdcc-holders.ts \
+      || log "[warn] fetch-tdcc-holders.ts failed; 大戶籌碼分頁略過"
+    timed tdcc-divergence run_tsx scripts/build-tdcc-divergence.ts \
+      || log "[warn] build-tdcc-divergence.ts failed（快照可能不足兩份）; 大戶籌碼分頁略過"
+  ) &
+
+  # RRG：抓 245 檔 Yahoo，是這批裡最慢的，排進平行區才不會拖長總時間。
+  # render 依賴 build 的輸出，同樣包成一個子行程。
+  (
+    timed rrg-build run_tsx scripts/build-tw-rrg.ts \
+      || log "[warn] build-tw-rrg.ts failed; 族群輪動分頁略過"
+    timed rrg-render run_tsx scripts/render-tw-rrg.ts \
+      || log "[warn] render-tw-rrg.ts failed; 族群輪動互動圖略過"
+    timed rrg-alerts run_tsx scripts/build-rrg-alerts.ts \
+      || log "[warn] build-rrg-alerts.ts failed; RRG 警示略過"
+  ) &
+
+  # 設質+CB：週更且同 ISO 週內冪等（重跑會直接用上次結果），每天跑只有一次真的抓。
+  timed cb-pledge run_tsx scripts/screen-cb-pledge.ts \
+    || log "[warn] screen-cb-pledge.ts failed; 設質+CB 子頁沿用上次結果" &
+
+  wait
+  log "進度 1.2/5：輔助資料全部結束"
 fi
 
 if stage_enabled classify; then
   log "進度 1.5/5：執行 score-report 快照與記分板更新"
-  run_tsx scripts/score-report.ts || log "[warn] score-report.ts failed; continuing"
+  timed score-report run_tsx scripts/score-report.ts || log "[warn] score-report.ts failed; continuing"
 fi
 
 if stage_enabled classify; then
@@ -221,9 +305,9 @@ if stage_enabled classify; then
     cat "$CONTROLLER_PROMPT" > "$LOSER_PROMPT"
     printf '\n\n## 本次執行範圍限制\n只處理 direction=loser（弱勢 100 檔），只輸出 loser task 檔，檔名以 loser 為主。完全不要處理 gainers。不要清空 data/tmp/group-tasks/ 目錄（runner 已先清空，且此刻有另一個 process 正在同目錄切 gainer task）。漏股檢查只需確認弱勢 100 檔各出現一次。\n' >> "$LOSER_PROMPT"
 
-    run_codex_prompt_with_timeout "$CONTROLLER_MODEL" "$GAINER_PROMPT" "$CONTROLLER_TIMEOUT_SECONDS" &
+    timed controller-gainer run_codex_prompt_with_timeout "$CONTROLLER_MODEL" "$GAINER_PROMPT" "$CONTROLLER_TIMEOUT_SECONDS" &
     GAINER_PID="$!"
-    run_codex_prompt_with_timeout "$CONTROLLER_MODEL" "$LOSER_PROMPT" "$CONTROLLER_TIMEOUT_SECONDS" &
+    timed controller-loser run_codex_prompt_with_timeout "$CONTROLLER_MODEL" "$LOSER_PROMPT" "$CONTROLLER_TIMEOUT_SECONDS" &
     LOSER_PID="$!"
 
     wait "$GAINER_PID" || log "gainer controller exited non-zero"
@@ -231,7 +315,7 @@ if stage_enabled classify; then
 
     rm -f "$GAINER_PROMPT" "$LOSER_PROMPT"
   else
-    if ! run_codex_prompt_with_timeout "$CONTROLLER_MODEL" "$CONTROLLER_PROMPT" "$CONTROLLER_TIMEOUT_SECONDS"; then
+    if ! timed controller run_codex_prompt_with_timeout "$CONTROLLER_MODEL" "$CONTROLLER_PROMPT" "$CONTROLLER_TIMEOUT_SECONDS"; then
       log "task controller exited non-zero"
     fi
   fi
@@ -248,7 +332,7 @@ if stage_enabled classify; then
 
   if [ "$REFINE_GROUP_TASKS" != "0" ]; then
     log "進度 2/5：套用 deterministic 分類修正"
-    if ! run_tsx scripts/refine-group-tasks.ts "$TASK_DIR"; then
+    if ! timed refine-tasks run_tsx scripts/refine-group-tasks.ts "$TASK_DIR"; then
       log "refine-group-tasks.ts exited non-zero"
       notify "每日股市報告 ❌" "族群細分修正失敗，請看 log: $LOG_FILE"
       exit 1
@@ -280,7 +364,7 @@ if stage_enabled research; then
 
   clear_dir_json "$RESULT_DIR"
   log "進度 3/5：開始做各分類/族群的個別研究報告"
-  if ! CODEX_GROUP_TASK_DIR="$TASK_SNAPSHOT_DIR" CODEX_GROUP_RESULT_DIR="$RESULT_DIR" bash "$WORKER_RUNNER" "${CODEX_GROUP_MAX_CONCURRENCY:-6}" > >(tee -a "$LOG_FILE") 2>&1; then
+  if ! timed research-workers env CODEX_GROUP_TASK_DIR="$TASK_SNAPSHOT_DIR" CODEX_GROUP_RESULT_DIR="$RESULT_DIR" bash "$WORKER_RUNNER" "$GROUP_CONCURRENCY" > >(tee -a "$LOG_FILE") 2>&1; then
     log "parallel workers exited non-zero; continuing with fallback stories where needed"
   fi
 
@@ -296,7 +380,7 @@ if stage_enabled finalize; then
   fi
 
   log "進度 4/5：開始 finalizer 組裝盤後分析"
-  if ! run_codex_prompt "$FINALIZER_MODEL" "$FINALIZER_PROMPT"; then
+  if ! timed finalizer run_codex_prompt "$FINALIZER_MODEL" "$FINALIZER_PROMPT"; then
     log "finalizer exited non-zero"
   fi
 
@@ -315,16 +399,18 @@ if [ ! -f "$PROJECT_DIR/data/analysis-latest.json" ]; then
 fi
 
 if stage_enabled send; then
+  # 終極選股池：統合大戶/CB設質/法人/RRG/分類/動能，需要 analysis-latest.json，所以排在 send 階段開頭
+  timed stock-picks run_tsx scripts/build-stock-picks.ts || log "[warn] build-stock-picks.ts failed; 終極選股池分頁略過，不影響其他區塊"
   log "進度 5/5：開始產生 HTML 並寄送報告"
   if [ -n "${GAS_WEBHOOK_URL:-}" ]; then
-    if ! run_tsx scripts/send-report.ts; then
+    if ! timed send-report run_tsx scripts/send-report.ts; then
       log "send-report.ts exited non-zero"
       notify "每日股市報告 ❌" "報告產出成功，但寄信失敗。Log: $LOG_FILE"
       exit 1
     fi
     log "進度 5/5：報告已寄出"
   else
-    if ! run_tsx scripts/send-report.ts data/analysis-latest.json --no-email; then
+    if ! timed send-report run_tsx scripts/send-report.ts data/analysis-latest.json --no-email; then
       log "send-report.ts --no-email exited non-zero"
       notify "每日股市報告 ❌" "報告產出成功，但 HTML 預覽失敗。Log: $LOG_FILE"
       exit 1
@@ -335,10 +421,11 @@ fi
 
 if stage_enabled publish; then
   log "進度 6/6：部署到 GitHub Pages"
-  if ! bash "$PROJECT_DIR/scripts/publish-github-pages.sh" > >(tee -a "$LOG_FILE") 2>&1; then
+  if ! timed publish bash "$PROJECT_DIR/scripts/publish-github-pages.sh" > >(tee -a "$LOG_FILE") 2>&1; then
     log "[warn] publish-github-pages.sh 失敗（不中斷整體流程）"
   fi
 fi
 
+timing_summary
 log "Done"
 notify "每日股市報告 ✅" "Codex 平行 research 已完成並產出報告"
