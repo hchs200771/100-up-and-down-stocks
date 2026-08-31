@@ -3337,15 +3337,24 @@ PMIC在8吋BCD產能長期偏緊下，交期已拉長至35至40周，預期吃�
       });
     }
     var idxByLabel={};
+    var PILL='font-family:inherit;font-size:14px;font-weight:bold;cursor:pointer;border:1px solid #e5e7eb;border-radius:999px;padding:8px 14px;background:#fff;color:#374151;';
     panels.forEach(function(p,i){
       var label=p.getAttribute('data-label')||('Tab '+(i+1));
       idxByLabel[label]=i;
       var b=document.createElement('button');
       b.textContent=label;
-      b.style.cssText='font-family:inherit;font-size:14px;font-weight:bold;cursor:pointer;border:1px solid #e5e7eb;border-radius:999px;padding:8px 14px;background:#fff;color:#374151;';
-      b.onclick=function(){activate(i);};
+      b.style.cssText=PILL;
+      // hash 深連結：子頁（設質+CB）要能連回特定分頁，重新整理也要留在原分頁
+      b.onclick=function(){activate(i);location.hash='tab='+encodeURIComponent(label);};
       btns.push(b);bar.appendChild(b);
     });
+    // 子頁入口：設質+CB 候選池是獨立頁面（週更），放在分頁列最後當第一級導覽，
+    // 樣式與分頁鈕一致但用 <a>，讓它看得出是「離開這一頁」。
+    var ext=document.createElement('a');
+    ext.href='cb-pledge.html';
+    ext.textContent='🔐 設質+CB ↗';
+    ext.style.cssText=PILL+'text-decoration:none;border-style:dashed;';
+    bar.appendChild(ext);
     // 總覽卡片：只有在 JS 跑得動時才變成可點的入口，並補上箭頭與提示。
     // Email 沒有 JS，卡片維持純文字，不會出現點不動的死連結。
     [].slice.call(document.querySelectorAll('.homecard')).forEach(function(card){
@@ -3360,7 +3369,16 @@ PMIC在8吋BCD產能長期偏緊下，交期已拉長至35至40周，預期吃�
     });
     var hint=document.querySelector('.home-hint');
     if(hint)hint.style.display='';
-    activate(0);
+    // 進站時若帶 #tab=xxx（從子頁連回來或重新整理）就開那一頁，否則落在總覽
+    function fromHash(){
+      var m=/^#tab=(.+)$/.exec(location.hash||'');
+      if(!m)return -1;
+      var i=idxByLabel[decodeURIComponent(m[1])];
+      return i===undefined?-1:i;
+    }
+    var start=fromHash();
+    activate(start<0?0:start);
+    window.addEventListener('hashchange',function(){var i=fromHash();if(i>=0)activate(i);});
   })();
   </script>
 </body>
