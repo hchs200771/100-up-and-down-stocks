@@ -17,7 +17,8 @@
     "report:fetch": "tsx scripts/fetch-market-data.ts",
     "report:send": "tsx scripts/send-report.ts",
     "report:score": "tsx scripts/score-report.ts",
-    "positions": "tsx scripts/analyze-positions.ts"
+    "positions": "tsx scripts/analyze-positions.ts",
+    "screen:cb": "tsx scripts/screen-cb-pledge.ts"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",
