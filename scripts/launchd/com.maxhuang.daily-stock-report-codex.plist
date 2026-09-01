@@ -7,7 +7,7 @@
 
   <key>ProgramArguments</key>
   <array>
-    <string>/Users/max/Projects/100-up-and-down-stocks/scripts/run-daily-report-codex-parallel.sh</string>
+    <string>__PROJECT_DIR__/scripts/run-daily-report-auto.sh</string>
   </array>
 
   <key>StartCalendarInterval</key>
@@ -40,9 +40,9 @@
   </array>
 
   <key>StandardOutPath</key>
-  <string>/Users/max/Projects/100-up-and-down-stocks/data/logs/launchd-codex.out.log</string>
+  <string>__PROJECT_DIR__/data/logs/launchd-codex.out.log</string>
   <key>StandardErrorPath</key>
-  <string>/Users/max/Projects/100-up-and-down-stocks/data/logs/launchd-codex.err.log</string>
+  <string>__PROJECT_DIR__/data/logs/launchd-codex.err.log</string>
 
   <key>RunAtLoad</key>
   <false/>

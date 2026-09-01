@@ -23,7 +23,7 @@ View your app in AI Studio: https://ai.studio/apps/5dd3b4df-4788-40bb-9fb0-054b9
 
 ## 盤後報告自動化（Claude Code Skill）
 
-> 目前標準每日入口：使用 Codex parallel 版，執行 `npm run report` 或 `npm run report:codex`。
+> 目前標準每日入口：`npm run report`（自動選引擎：有 `codex` 走 codex parallel 版，否則走 Claude 版）。要指定引擎可用 `npm run report:codex` / `npm run report:claude`。
 >
 > 一般版與 parallel 版的「流程目標」相同：抓市場資料、完成族群分析、寫入 `data/analysis-latest.json`、更新 memory/history、產生 `data/report-latest.html`，並在有 `GAS_WEBHOOK_URL` 時寄信。差異在執行引擎：一般版走 Claude Code Skill 單一路徑；parallel 版走 Codex controller / worker / finalizer，並把族群 research 平行化。之後手動與排程建議都以 parallel 版為準。
 
@@ -190,10 +190,13 @@ CODEX_REPORT_START_STAGE=send npm run report:codex
 
 ### 排程執行
 
-首次安裝：
+排程呼叫的是 `scripts/run-daily-report-auto.sh`：本機有 `codex` 就跑 codex 流程，沒有就自動退回 Claude 流程（`DAILY_REPORT_ENGINE=codex|claude` 可強制指定）。
+
+首次安裝。plist 內的路徑寫成 `__PROJECT_DIR__` 佔位，安裝時才代換成實際位置，不要寫死某台機器的家目錄：
 
 ```bash
-cp scripts/launchd/com.maxhuang.daily-stock-report-codex.plist ~/Library/LaunchAgents/
+sed "s|__PROJECT_DIR__|$(pwd)|g" scripts/launchd/com.maxhuang.daily-stock-report-codex.plist \
+  > ~/Library/LaunchAgents/com.maxhuang.daily-stock-report-codex.plist
 launchctl load ~/Library/LaunchAgents/com.maxhuang.daily-stock-report-codex.plist
 ```
 

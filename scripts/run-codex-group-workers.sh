@@ -1,7 +1,10 @@
 #!/bin/bash
 set -euo pipefail
 
-export PATH="/Users/max/.nvm/versions/node/v20.12.0/bin:/Users/max/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
+# launchd 給的 PATH 很精簡，這裡補回 node / claude / codex 的常見安裝位置。
+# 不寫死家目錄與 node 版本：換一台機器後路徑就不存在，整條流程會在第一步找不到 node。
+_nvm_bin="$(ls -d "$HOME"/.nvm/versions/node/*/bin 2>/dev/null | sort -V | tail -1)"
+export PATH="${_nvm_bin:+$_nvm_bin:}$HOME/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 TASK_DIR="${CODEX_GROUP_TASK_DIR:-$PROJECT_DIR/data/tmp/group-tasks}"
