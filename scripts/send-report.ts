@@ -1043,7 +1043,7 @@ function renderContribStockList(title: string, list: StockContribution[], positi
       const sign = s.points >= 0 ? "+" : "";
       const pctSign = s.pct >= 0 ? "+" : "";
       return `<tr>
-        <td style="padding:3px 6px; white-space:nowrap;"><a href="https://tw.stock.yahoo.com/quote/${s.code}" style="color:#374151; text-decoration:none;">${s.code} ${s.name}</a></td>
+        <td style="padding:3px 6px; white-space:nowrap;"><a href="https://tw.stock.yahoo.com/quote/${s.code}" target="_blank" style="color:#374151; text-decoration:none;">${s.code} ${s.name}</a></td>
         <td style="padding:3px 6px; text-align:right; color:#9ca3af; white-space:nowrap;">${pctSign}${s.pct.toFixed(2)}%</td>
         <td style="padding:3px 6px; text-align:right; font-weight:bold; color:${color}; white-space:nowrap;">${sign}${s.points.toFixed(2)}</td>
         <td style="padding:3px 6px; color:#9ca3af; white-space:nowrap;">${s.industry}</td>
@@ -1509,7 +1509,7 @@ function tdccRowHtml(r: DivergenceRow, i: number): string {
   return `<tr style="border-top:1px solid #f3f4f6;">
     <td style="padding:4px 6px; color:#9ca3af; text-align:right;">${i + 1}</td>
     <td style="padding:4px 6px; white-space:nowrap;">
-      <a href="https://tw.stock.yahoo.com/quote/${r.code}" style="color:#374151; text-decoration:none; font-weight:bold;">${r.code} ${r.name}</a>
+      <a href="https://tw.stock.yahoo.com/quote/${r.code}" target="_blank" style="color:#374151; text-decoration:none; font-weight:bold;">${r.code} ${r.name}</a>
       <span style="color:#d1d5db; font-size:10px;"> ${mkt}</span>${flags}
     </td>
     <td style="padding:4px 6px; text-align:right; color:#6b7280; white-space:nowrap;">${r.close.toLocaleString()}</td>
@@ -1642,7 +1642,7 @@ function renderTdcc(d: DivergenceReport | null | undefined): string {
           var td='padding:4px 6px;text-align:right;white-space:nowrap;';
           return '<tr style="border-top:1px solid #f3f4f6;">'+
             '<td style="padding:4px 6px;color:#9ca3af;text-align:right;">'+(i+1)+'</td>'+
-            '<td style="padding:4px 6px;white-space:nowrap;"><a href="https://tw.stock.yahoo.com/quote/'+r[0]+'" style="color:#374151;text-decoration:none;font-weight:bold;">'+r[0]+' '+esc(r[1])+'</a><span style="color:#d1d5db;font-size:10px;"> '+(r[2]?'上市':'上櫃')+'</span>'+f+'</td>'+
+            '<td style="padding:4px 6px;white-space:nowrap;"><a href="https://tw.stock.yahoo.com/quote/'+r[0]+'" target="_blank" style="color:#374151;text-decoration:none;font-weight:bold;">'+r[0]+' '+esc(r[1])+'</a><span style="color:#d1d5db;font-size:10px;"> '+(r[2]?'上市':'上櫃')+'</span>'+f+'</td>'+
             '<td style="'+td+'color:#6b7280;">'+r[3].toLocaleString()+'</td>'+
             '<td style="'+td+'color:'+col(r[4])+';">'+(r[4]>=0?'+':'')+r[4].toFixed(1)+'%</td>'+
             '<td style="'+td+'">'+p20+'</td>'+
@@ -1683,6 +1683,7 @@ interface PickEntry {
   score: number;
   type: string;
   sector: string | null;
+  futures: { level: string; margin: string } | null;
   reason: string;
   signals: PickSignal[];
   plan: { entry: string; stop: string; exit: string };
@@ -1704,6 +1705,13 @@ interface PicksReport {
  * 每檔一個 <details>，要看再點開。信件版沒有可靠的 <details> 支援，
  * 只出表格、明細導去網頁版。
  */
+/** 與 renderFuturesBadge 同一種呈現，讓選股池和漲跌 100 名單看起來一致 */
+function renderPickFutures(p: PickEntry): string {
+  if (!p.futures) return "";
+  const label = [p.futures.level, p.futures.margin].filter(Boolean).join(" ");
+  return `<span style="font-size:11px; background-color:#e0e7ff; color:#4338ca; padding:1px 5px; border-radius:4px; margin-left:4px; white-space:nowrap;">期貨(${label})</span>`;
+}
+
 function renderPicks(picks: PicksReport | null, forEmail: boolean): string {
   if (!picks || (!picks.long.length && !picks.short.length)) return "";
 
@@ -1723,7 +1731,7 @@ function renderPicks(picks: PicksReport | null, forEmail: boolean): string {
         const warn = p.signals.filter((s) => s.tone === "neg").map((s) => s.label).join("、");
         return `<tr style="border-top:1px solid #f1f5f9;">
           <td style="padding:6px 8px; color:#9ca3af; text-align:center;">${p.rank}</td>
-          <td style="padding:6px 8px; white-space:nowrap;"><strong style="color:#1f2937;">${p.name}</strong> <span style="color:#9ca3af; font-size:12px;">${p.code}</span></td>
+          <td style="padding:6px 8px; white-space:nowrap;"><a href="https://tw.stock.yahoo.com/quote/${p.code}" target="_blank" style="text-decoration:none;"><strong style="color:#1f2937;">${p.name}</strong> <span style="color:#9ca3af; font-size:12px;">${p.code}</span></a>${renderPickFutures(p)}</td>
           <td style="padding:6px 8px; text-align:right; white-space:nowrap;">${p.close}</td>
           <td style="padding:6px 8px; text-align:center;"><span style="background:${accent}; color:#fff; border-radius:10px; padding:1px 8px; font-weight:bold; font-size:12px;">${p.score}</span></td>
           <td style="padding:6px 8px; white-space:nowrap; font-size:12px; color:#6b7280;">${p.type}</td>
@@ -1748,7 +1756,7 @@ function renderPicks(picks: PicksReport | null, forEmail: boolean): string {
           .map(([k, v]) => `<span style="display:inline-block; margin:0 12px 3px 0; white-space:nowrap;"><span style="color:#9ca3af;">${metricLabel[k] ?? k}</span> <strong style="color:#374151;">${v}</strong></span>`)
           .join("");
         return `<details style="border:1px solid #e5e7eb; border-radius:6px; margin-bottom:6px; background:#fff;">
-        <summary style="cursor:pointer; padding:8px 12px; font-size:13px; user-select:none;"><strong>${p.rank}. ${p.name}</strong> <span style="color:#9ca3af;">${p.code}</span> · ${p.score} 分 · ${p.type} <span style="color:#9ca3af; font-size:12px;">— 點開看訊號明細與進出場</span></summary>
+        <summary style="cursor:pointer; padding:8px 12px; font-size:13px; user-select:none;"><strong>${p.rank}. ${p.name}</strong> <a href="https://tw.stock.yahoo.com/quote/${p.code}" target="_blank" style="color:#9ca3af; text-decoration:none;">${p.code} ↗</a>${renderPickFutures(p)} · ${p.score} 分 · ${p.type} <span style="color:#9ca3af; font-size:12px;">— 點開看訊號明細與進出場</span></summary>
         <div style="padding:4px 14px 12px; font-size:13px; line-height:1.7;">
           <ul style="margin:6px 0; padding-left:18px;">${sigRows}</ul>
           <div style="background:#f8fafc; border-radius:6px; padding:8px 10px; margin:8px 0;">
@@ -2298,11 +2306,24 @@ async function main() {
     }
   }
 
+  // 終極選股池（build-stock-picks.ts 的輸出）。交易日對不上代表是舊榜單，寧缺勿舊。
+  const picksPath = resolve(process.cwd(), "data/stock-picks-latest.json");
+  let picks: PicksReport | null = null;
+  if (existsSync(picksPath)) {
+    try {
+      const parsed: PicksReport = JSON.parse(readFileSync(picksPath, "utf-8"));
+      if (parsed.date === analysis.date || !analysis.date) picks = parsed;
+      else console.warn(`stock-picks 交易日 ${parsed.date} 與分析 ${analysis.date} 不符，終極選股池分頁略過`);
+    } catch {
+      console.warn("stock-picks-latest.json 無法解析，略過");
+    }
+  }
+
   // 網頁版（給 build-site-html.ts）與信件版分開產：兩者的段落順序不同，
   // 而且信件版會再過一次 slimForEmail 把信件顯示不出來的東西拿掉。
-  const html = renderHtml(analysis, stockMap, codeByName, marketBlock, retailHistory, contrib, tdcc, marginHistory, marginOptions);
+  const html = renderHtml(analysis, stockMap, codeByName, marketBlock, retailHistory, contrib, tdcc, marginHistory, marginOptions, picks);
   const emailHtml = slimForEmail(
-    renderHtml(analysis, stockMap, codeByName, marketBlock, retailHistory, contrib, tdcc, marginHistory, marginOptions, true),
+    renderHtml(analysis, stockMap, codeByName, marketBlock, retailHistory, contrib, tdcc, marginHistory, marginOptions, picks, true),
   );
 
   const htmlOutPath = resolve(process.cwd(), "data/report-latest.html");
