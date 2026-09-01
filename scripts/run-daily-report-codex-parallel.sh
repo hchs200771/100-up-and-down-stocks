@@ -1,7 +1,10 @@
 #!/bin/bash
 set -u
 
-export PATH="/Users/max/.nvm/versions/node/v20.12.0/bin:/Users/max/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
+# launchd 給的 PATH 很精簡，這裡補回 node / claude / codex 的常見安裝位置。
+# 不寫死家目錄與 node 版本：換一台機器後路徑就不存在，整條流程會在第一步找不到 node。
+_nvm_bin="$(ls -d "$HOME"/.nvm/versions/node/*/bin 2>/dev/null | sort -V | tail -1)"
+export PATH="${_nvm_bin:+$_nvm_bin:}$HOME/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 CONTROLLER_PROMPT="$PROJECT_DIR/scripts/prompts/group-task-controller.md"
@@ -63,6 +66,12 @@ timed() {
   log "⏱ ${name} 耗時 $((t1 - t0))s（rc=${rc}）"
   return $rc
 }
+
+# 輔助資料的背景 PID。這些步驟只依賴 market-latest.json，產出只有 send-report 要用，
+# 中間的 controller 與 research 完全用不到，所以 fetch 後就放行、等到送信前才 wait，
+# 整段（最慢的是 RRG 抓 245 檔，實測 ~6m30s）藏在 research 底下，不佔關鍵路徑。
+# 用空白分隔字串而不是陣列：macOS 內建 bash 3.2 對空陣列 + set -u 會炸。
+AUX_PIDS=""
 
 timing_summary() {
   local total=$(( $(date +%s) - RUN_T0 ))
@@ -242,7 +251,7 @@ fi
 log "進度 1/5：已經抓回上市/上櫃資料，交易日 $(market_trading_date)"
 
 # 輔助資料：全部只依賴 market-latest.json（或完全獨立的外部來源），彼此之間沒有相依，
-# 所以整批背景平行跑，總時間 = 最慢的那一個，而不是全部相加。
+# 所以整批背景平行丟出去，這裡不 wait，直接往下跑分類與 research（見 AUX_PIDS）。
 # 每個都用 timed 包起來，事後看 timing 表就知道該優化誰。
 # 失敗一律只 warn：這些是加值分頁，不該擋住主流程。
 if stage_enabled fetch; then
@@ -250,12 +259,16 @@ if stage_enabled fetch; then
 
   timed index-contribution run_tsx scripts/build-index-contribution.ts \
     || log "[warn] build-index-contribution.ts failed; 指數貢獻分頁略過，不影響其他區塊" &
+  AUX_PIDS="$AUX_PIDS $!"
   timed margin-options run_tsx scripts/fetch-margin-options.ts \
     || log "[warn] fetch-margin-options.ts failed; 融資與外資選擇權區塊略過，不影響其他區塊" &
+  AUX_PIDS="$AUX_PIDS $!"
   timed intl-market run_tsx scripts/fetch-intl-market.ts \
     || log "[warn] fetch-intl-market.ts failed; 國際數字略過，不影響台股報告" &
+  AUX_PIDS="$AUX_PIDS $!"
   timed credit-spreads run_tsx scripts/fetch-credit-spreads.ts \
     || log "[warn] fetch-credit-spreads.ts failed; 信用利差略過，不影響台股報告" &
+  AUX_PIDS="$AUX_PIDS $!"
 
   # 集保是週資料且抓取冪等（同一週已存過就跳過），但 divergence 依賴 holders 的產出，
   # 這兩步必須依序，所以包成同一個子行程、與其他步驟平行。
@@ -265,6 +278,7 @@ if stage_enabled fetch; then
     timed tdcc-divergence run_tsx scripts/build-tdcc-divergence.ts \
       || log "[warn] build-tdcc-divergence.ts failed（快照可能不足兩份）; 大戶籌碼分頁略過"
   ) &
+  AUX_PIDS="$AUX_PIDS $!"
 
   # RRG：抓 245 檔 Yahoo，是這批裡最慢的，排進平行區才不會拖長總時間。
   # render 依賴 build 的輸出，同樣包成一個子行程。
@@ -276,13 +290,13 @@ if stage_enabled fetch; then
     timed rrg-alerts run_tsx scripts/build-rrg-alerts.ts \
       || log "[warn] build-rrg-alerts.ts failed; RRG 警示略過"
   ) &
+  AUX_PIDS="$AUX_PIDS $!"
 
   # 設質+CB：週更且同 ISO 週內冪等（重跑會直接用上次結果），每天跑只有一次真的抓。
   timed cb-pledge run_tsx scripts/screen-cb-pledge.ts \
     || log "[warn] screen-cb-pledge.ts failed; 設質+CB 子頁沿用上次結果" &
+  AUX_PIDS="$AUX_PIDS $!"
 
-  wait
-  log "進度 1.2/5：輔助資料全部結束"
 fi
 
 if stage_enabled classify; then
@@ -379,6 +393,16 @@ if stage_enabled finalize; then
     exit 1
   fi
 
+  # 先把 task + result 機械合併成單一骨架檔。finalizer prompt 已改成只讀這一份，
+  # 不再逐一 Read 一百多個檔（每個 Read 都是一次 API round-trip）。骨架缺席的話
+  # finalizer 會找不到任何族群資料，所以這裡直接當致命錯誤中止，不要放它產出半份報告。
+  log "進度 3.9/5：組 analysis skeleton"
+  if ! timed skeleton run_tsx scripts/build-analysis-skeleton.ts "$TASK_DIR" "$RESULT_DIR"; then
+    log "build-analysis-skeleton.ts exited non-zero"
+    notify "每日股市報告 ❌" "analysis skeleton 沒產出，finalizer 無法進行。Log: $LOG_FILE"
+    exit 1
+  fi
+
   log "進度 4/5：開始 finalizer 組裝盤後分析"
   if ! timed finalizer run_codex_prompt "$FINALIZER_MODEL" "$FINALIZER_PROMPT"; then
     log "finalizer exited non-zero"
@@ -400,6 +424,13 @@ fi
 
 if stage_enabled send; then
   # 終極選股池：統合大戶/CB設質/法人/RRG/分類/動能，需要 analysis-latest.json，所以排在 send 階段開頭
+  # 到這裡才收輔助資料。正常情況它們早在 research 那十幾分鐘裡跑完了，這個 wait 是零成本。
+  if [ -n "$AUX_PIDS" ]; then
+    log "進度 4.5/5：等背景輔助資料收尾"
+    for _p in $AUX_PIDS; do wait "$_p" 2>/dev/null || true; done
+    log "進度 4.5/5：輔助資料全部結束"
+  fi
+
   timed stock-picks run_tsx scripts/build-stock-picks.ts || log "[warn] build-stock-picks.ts failed; 終極選股池分頁略過，不影響其他區塊"
   log "進度 5/5：開始產生 HTML 並寄送報告"
   if [ -n "${GAS_WEBHOOK_URL:-}" ]; then
