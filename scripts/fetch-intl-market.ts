@@ -11,8 +11,10 @@ import { dirname, resolve } from "node:path";
  * 1. 報告裡的「🌐 國際情勢」數字表（renderIntl in send-report.ts）。
  * 2. 餵給「國際情勢 worker」當判讀依據（搭配 macromicro-analyst 框架）。
  *
- * 注意：各市場收盤時間不同。對台股傍晚跑的盤後報告而言，亞股（日經/上證/恒生/
- * KOSPI）是「當日」收盤，美股 / 費半 / 原油 / 殖利率是「隔夜」前一個交易日。
+ * 一律以「最近一個已經收完的交易時段」為準，不看盤中即時價——就像台股報告不看夜盤。
+ * 各市場收盤時間不同：對台股晚上跑的盤後報告而言，亞股是當日收盤，美股 / 費半 /
+ * 原油 / 殖利率是隔夜前一個交易日；報告晚於 21:30（美股開盤）跑時美股正在交易，
+ * 這時要的仍然是隔夜那根已收完的 K，不是正在跳動的盤中價。
  * asOfEpoch 保留各標的最後成交時間，需要時可判斷新鮮度。
  */
 
@@ -55,8 +57,8 @@ interface Chart {
   closes: (number | null)[];
 }
 
-async function fetchChart(symbol: string, range: string): Promise<Chart | null> {
-  const path = `/v8/finance/chart/${encodeURIComponent(symbol)}?interval=1d&range=${range}`;
+async function fetchChart(symbol: string, query: string): Promise<Chart | null> {
+  const path = `/v8/finance/chart/${encodeURIComponent(symbol)}?${query}`;
   for (const host of HOSTS) {
     try {
       const res = await fetch(host + path, {
@@ -84,59 +86,57 @@ function localDate(epochSec: number, gmtoffsetSec: number): string {
   return new Date((epochSec + gmtoffsetSec) * 1000).toISOString().slice(0, 10);
 }
 
-// 從日 K 陣列取「當地日期 < beforeDate」的已收完收盤（日期遞增），最後一根即最近前一交易日。
-function settledBarsBefore(chart: Chart, beforeDate: string, off: number): { d: string; c: number }[] {
-  const bars: { d: string; c: number }[] = [];
-  for (let i = 0; i < chart.timestamps.length; i++) {
+// 日 K 陣列轉成 {當地日期, 收盤, epoch}，保留資料源給 null 的那幾根（c 為 null），依日期遞增。
+// null 的那幾根不能直接丟掉：丟掉之後看起來像連續兩個交易日，會把兩天漲跌算成一天。
+function dailyBars(chart: Chart, off: number): { d: string; c: number | null; t: number }[] {
+  const bars = chart.timestamps.map((t, i) => {
     const c = chart.closes[i];
-    if (typeof c !== "number" || !isFinite(c)) continue;
-    const d = localDate(chart.timestamps[i], off);
-    if (d < beforeDate) bars.push({ d, c });
-  }
+    return { d: localDate(t, off), c: typeof c === "number" && isFinite(c) ? c : null, t };
+  });
   bars.sort((a, b) => (a.d < b.d ? -1 : a.d > b.d ? 1 : 0));
   return bars;
 }
 
 /**
- * 決定前一交易日收盤。chartPreviousClose 多數時候就是對的（含資料源陣列裡為 null 的
- * 假日後缺口日，如 06-15），但偶爾資料源會給到更舊的一根（如上證給到 06-11、跳過 06-12）。
- * 對策：跟日 K 陣列裡「今天之前最近一根已收完收盤」交叉比對——若 chartPreviousClose
- * 對得上某根「比陣列最近一根更舊」的 K，判定為錯位，改用陣列最近一根；否則沿用
- * chartPreviousClose（它是缺口日或就等於陣列最近一根）。
+ * 補回日 K 為 null 的那個交易日收盤。
+ *
+ * Yahoo 對美股指數實測會整天給 null（2026-08-28 的 ^GSPC / ^DJI / ^IXIC / ^SOX
+ * 連 open / volume 都是 null），但同一天的小時線是有資料的。用該日最後一根小時 K 當收盤，
+ * 與官方收盤有零點零幾個百分點的誤差（收盤競價不在小時 K 裡），仍遠好過拿再前一天當基準
+ * 把兩天漲跌算成一天（實測 S&P500 會從 -0.33% 變成 -0.58%）。
  */
-function resolvePrevClose(cpc: number, array: Chart | null, todayDate: string, off: number): number {
-  if (!array) return cpc;
-  const bars = settledBarsBefore(array, todayDate, off);
-  if (bars.length === 0) return cpc;
-  const arrayPrev = bars[bars.length - 1];
-  const eq = (a: number, b: number) => Math.abs(a - b) <= Math.max(1e-6, Math.abs(b) * 1e-5);
-  for (const b of bars) {
-    if (b.d < arrayPrev.d && eq(cpc, b.c)) return arrayPrev.c; // chartPreviousClose 錯位到更舊的一根
+async function fillGapClose(symbol: string, gapDate: string, from: number, to: number, off: number): Promise<number | null> {
+  const c = await fetchChart(symbol, `interval=1h&period1=${Math.floor(from)}&period2=${Math.ceil(to)}`);
+  if (!c) return null;
+  let last: number | null = null;
+  for (let i = 0; i < c.timestamps.length; i++) {
+    const v = c.closes[i];
+    if (typeof v !== "number" || !isFinite(v)) continue;
+    if (localDate(c.timestamps[i], off) === gapDate) last = v;
   }
-  return cpc;
+  return last;
 }
 
 /**
  * 取「最近一根已收完的日 K 收盤」與其「前一交易日收盤」算單日漲跌幅。
  *
- * 前一交易日收盤主要用 range=1d 的 meta.chartPreviousClose——它是「回傳的那根日 K
- * 之前一根的收盤」，即真正的前一交易日收盤（已驗證對得上前一日報告數字）。
- * 不要用多日 range 的 chartPreviousClose（那是整段區間起點之前、約 N 天前），
- * 也不要用日 K 陣列逐根相減——此資料源某些交易日（如假日後）在陣列裡是 null，
- * 逐根相減會跨過缺口、把數日漲跌誤算成單日。
+ * 一律從 range=1mo 的日 K 陣列取最後兩根已收完的 K，不用 meta.chartPreviousClose。
+ * 那個欄位實測不可靠：range=1d 與 range=2d 會回傳同一個值（於是盤中分支算出
+ * close - prev = 0，整排美股顯示 +0.00%），指定 period1/period2 時它又變成整段
+ * 視窗起點之前的舊收盤（^SOX 給 12621，實際前一交易日是 11882）。
  *
- * 兩種情況（以「該標的目前是否在 regular session 盤中」區分）：
- *  - 已收盤（亞股對台股傍晚是當日收盤）：close=regularMarketPrice，prev=chartPreviousClose@1d。
- *    但有時 range=1d 回傳的那根 K 不是今天（資料源不一致，如上證），此時 chartPreviousClose
- *    會對到錯誤基準；用「range=1d 那根 K 的當地日期是否等於今天」判斷，不等於就改用
- *    日 K 陣列裡今天之前最後一根已收完收盤當 prev。
- *  - 盤中（美股/原油對台股傍晚多在盤中、即時非收盤）：抓隔夜最後收完那一根，
- *    close=chartPreviousClose@1d（昨夜已收盤），prev=chartPreviousClose@2d（昨夜的前一交易日）。
+ * 「已收完」的判定分兩種，靠 currentTradingPeriod.regular 判斷該標的此刻是否盤中：
+ *  - 盤中（報告晚於 21:30 跑時，美股 / 原油 / 匯率多半在交易）：陣列最後一根是還在
+ *    形成的今天，丟掉當地日期 >= 今天的 K，剩下最後一根就是隔夜已收完那根。
+ *  - 已收盤（亞股，或美股收盤後才跑）：以 regularMarketTime 的當地日期為準，丟掉比它
+ *    更新的 K（擋掉盤前形成中的那根）；若陣列還沒補上剛收完的那一天（日經實測會落後
+ *    一天），用 regularMarketPrice 補上去。
  */
 async function fetchOne(symbol: string): Promise<{ close: number; prevClose: number; epoch: number | null } | null> {
-  const c1 = await fetchChart(symbol, "1d");
-  if (!c1) return null;
-  const meta = c1.meta;
+  // 一個月足夠跨過連假，也讓資料源缺幾根 null 時仍湊得出兩根已收完的 K。
+  const chart = await fetchChart(symbol, "interval=1d&range=1mo");
+  if (!chart) return null;
+  const meta = chart.meta;
   const off = typeof meta.gmtoffset === "number" ? meta.gmtoffset : 0;
 
   const reg = meta?.currentTradingPeriod?.regular;
@@ -148,29 +148,58 @@ async function fetchOne(symbol: string): Promise<{ close: number; prevClose: num
     nowSec >= reg.start &&
     nowSec < reg.end;
 
-  let close: number;
-  let prevClose: number;
-  let epoch: number | null;
+  let bars = dailyBars(chart, off);
+  const epoch = typeof meta.regularMarketTime === "number" ? meta.regularMarketTime : null;
 
-  if (!isLive) {
-    close = Number(meta.regularMarketPrice);
-    epoch = typeof meta.regularMarketTime === "number" ? meta.regularMarketTime : null;
-
-    const cpc = Number(meta.chartPreviousClose);
-    const todayDate = epoch !== null ? localDate(epoch, off) : null;
-    // 跟日 K 陣列交叉比對，擋掉 chartPreviousClose 偶爾錯位到更舊一根的情況。
-    const c10 = todayDate ? await fetchChart(symbol, "10d") : null;
-    prevClose = todayDate ? resolvePrevClose(cpc, c10, todayDate, off) : cpc;
-  } else {
-    const c2 = await fetchChart(symbol, "2d");
-    if (!c2) return null;
-    close = Number(meta.chartPreviousClose);
-    prevClose = Number(c2.meta.chartPreviousClose);
-    epoch = null; // 隔夜已收盤那一根，時間戳意義不大
+  if (isLive) {
+    const today = localDate(nowSec, off);
+    bars = bars.filter((b) => b.d < today);
+  } else if (epoch !== null) {
+    const lastSession = localDate(epoch, off);
+    bars = bars.filter((b) => b.d <= lastSession);
+    // 剛收完那天，日 K 陣列可能還沒補上（日經實測落後一天），也可能只有一個 close 為 null
+    // 的佔位。兩種情況都用 regularMarketPrice 補；只看陣列最後一根會被 null 佔位擋住。
+    const price = Number(meta.regularMarketPrice);
+    if (isFinite(price) && !bars.some((b) => b.d === lastSession && b.c !== null)) {
+      bars = bars.filter((b) => b.d !== lastSession);
+      bars.push({ d: lastSession, c: price, t: epoch });
+    }
   }
 
+  // 最後一根有收盤的 K 就是「剛結束的交易日」
+  let li = bars.length - 1;
+  while (li >= 0 && bars[li].c === null) li--;
+  if (li < 0) return null;
+  const close = bars[li].c as number;
+
+  let pi = li - 1;
+  while (pi >= 0 && bars[pi].c === null) pi--;
+
+  let prevClose: number;
+  if (pi >= 0 && pi === li - 1) {
+    prevClose = bars[pi].c as number;
+  } else if (pi >= 0) {
+    // 中間夾了資料源給 null 的交易日，用小時線把最靠近的那天補回來
+    const gap = bars[li - 1];
+    const filled = await fillGapClose(symbol, gap.d, bars[pi].t, bars[li].t, off);
+    if (filled !== null) {
+      prevClose = filled;
+    } else {
+      console.warn(`[warn] ${symbol}: ${gap.d} 日K與小時線都沒資料，改用 ${bars[pi].d} 當基準，漲跌幅可能跨多日`);
+      prevClose = bars[pi].c as number;
+    }
+  } else if (!isLive) {
+    // 滬深300 實測不論 range 都只回傳 1 根日 K，湊不出前一交易日。這種資料源殘缺的標的
+    // 退回 meta.chartPreviousClose：在「已收盤」情境下它就是這根 K 的前一交易日收盤。
+    // 盤中不能這樣退——那時它指的正是我們挑出來的這根，相減會得到 0，也就是整排美股
+    // 顯示 +0.00% 的原因；寧可讓這個標的缺一天也不要送出假數字。
+    prevClose = Number(meta.chartPreviousClose);
+  } else {
+    return null;
+  }
   if (!isFinite(close) || !isFinite(prevClose) || prevClose === 0) return null;
-  return { close, prevClose, epoch };
+  // 盤中時回傳的是隔夜那根，regularMarketTime 指的是今天的盤中，貼上去會誤導新鮮度判斷。
+  return { close, prevClose, epoch: isLive ? null : epoch };
 }
 
 async function main() {
