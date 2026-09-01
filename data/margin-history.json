@@ -258,5 +258,15 @@
     "date": "2026-08-28",
     "marginAmount": 5671.8,
     "maintenance": 194.3
+  },
+  {
+    "date": "2026-08-31",
+    "marginAmount": 5698.8,
+    "maintenance": 192.2
+  },
+  {
+    "date": "2026-09-01",
+    "marginAmount": 5781.2,
+    "maintenance": 193.9
   }
 ]

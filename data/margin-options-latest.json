@@ -1,61 +1,61 @@
 {
-  "generatedAt": "2026-08-29T07:13:32.499Z",
-  "tradingDate": "2026-08-28",
+  "generatedAt": "2026-09-01T14:39:07.083Z",
+  "tradingDate": "2026-09-01",
   "margin": {
-    "twseLots": 8892723,
-    "twseAmount": 5671.8,
-    "twsePrevAmount": 5599.2,
-    "dAmount": 72.6,
-    "twseShortLots": 213833,
-    "tpexLots": 2262782,
-    "maintenance": 194.3,
+    "twseLots": 8896994,
+    "twseAmount": 5781.2,
+    "twsePrevAmount": 5698.8,
+    "dAmount": 82.4,
+    "twseShortLots": 220835,
+    "tpexLots": 2276807,
+    "maintenance": 193.9,
     "maintenanceCoverage": {
       "stocks": 1226,
-      "collateral": 11017
+      "collateral": 11212
     }
   },
   "options": {
-    "dataDate": "2026-08-28",
-    "prevDate": "2026-08-27",
+    "dataDate": "2026-09-01",
+    "prevDate": "2026-08-31",
     "call": {
       "buy": {
-        "lots": 3830,
-        "amount": 2.9,
-        "dLots": -1444,
-        "dAmount": -0.1
+        "lots": 6946,
+        "amount": 4.6,
+        "dLots": 2305,
+        "dAmount": 2
       },
       "sell": {
-        "lots": 8111,
-        "amount": 6,
-        "dLots": -656,
-        "dAmount": 0.1
+        "lots": 10384,
+        "amount": 8.6,
+        "dLots": 1560,
+        "dAmount": 3.5
       }
     },
     "put": {
       "buy": {
-        "lots": 5310,
-        "amount": 1.1,
-        "dLots": -1517,
-        "dAmount": -0.4
+        "lots": 8438,
+        "amount": 0.9,
+        "dLots": 1888,
+        "dAmount": -0.3
       },
       "sell": {
-        "lots": 5218,
-        "amount": 0.8,
-        "dLots": -1124,
-        "dAmount": -0.4
+        "lots": 6809,
+        "amount": 0.5,
+        "dLots": 594,
+        "dAmount": -0.3
       }
     },
     "bull": {
-      "lots": 9048,
-      "dLots": -2568,
-      "amount": 3.7,
-      "dAmount": -0.5
+      "lots": 13755,
+      "dLots": 2899,
+      "amount": 5.1,
+      "dAmount": 1.7
     },
     "bear": {
-      "lots": 13421,
-      "dLots": -2173,
-      "amount": 7.1,
-      "dAmount": -0.3
+      "lots": 18822,
+      "dLots": 3448,
+      "amount": 9.5,
+      "dAmount": 3.2
     }
   }
 }
