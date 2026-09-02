@@ -1,528 +1,198 @@
 {
-  "timestamp": "2026-09-01T14:39:06.518Z",
-  "tradingDate": "2026-09-01",
+  "timestamp": "2026-09-02T14:59:45.269Z",
+  "tradingDate": "2026-09-02",
   "index": {
-    "close": 46948.72,
-    "change": 820.25,
-    "prev": 46128.47
+    "close": 46164.72,
+    "change": -784,
+    "prev": 46948.72
   },
-  "calibration": 1.0056,
+  "calibration": 1.0003,
   "totals": {
-    "up": 952.36,
-    "down": -132.16,
-    "net": 820.25,
-    "abs": 1084.52,
-    "offset": 264.27
+    "up": 121.02,
+    "down": -904.98,
+    "net": -784,
+    "abs": 1026,
+    "offset": 242
   },
   "coverage": {
-    "priced": 1377,
-    "matched": 1087
+    "priced": 1380,
+    "matched": 1090
   },
   "sectors": [
     {
-      "name": "半導體",
-      "points": 534.84,
-      "absPoints": 630.88,
-      "upPoints": 582.86,
-      "downPoints": 48.02,
-      "count": 96,
-      "top": [
-        {
-          "code": "2330",
-          "name": "台積電",
-          "industry": "半導體",
-          "pct": 1.46,
-          "points": 279.29
-        },
-        {
-          "code": "2454",
-          "name": "聯發科",
-          "industry": "半導體",
-          "pct": 9.94,
-          "points": 192.48
-        },
-        {
-          "code": "3711",
-          "name": "日月光投控",
-          "industry": "半導體",
-          "pct": 4.45,
-          "points": 35.77
-        },
-        {
-          "code": "2408",
-          "name": "南亞科",
-          "industry": "半導體",
-          "pct": -4.6,
-          "points": -26.54
-        },
-        {
-          "code": "2303",
-          "name": "聯電",
-          "industry": "半導體",
-          "pct": 2.71,
-          "points": 13.54
-        },
-        {
-          "code": "2344",
-          "name": "華邦電",
-          "industry": "半導體",
-          "pct": -3.56,
-          "points": -9
-        },
-        {
-          "code": "3189",
-          "name": "景碩",
-          "industry": "半導體",
-          "pct": 6.72,
-          "points": 8.92
-        },
-        {
-          "code": "2449",
-          "name": "京元電子",
-          "industry": "半導體",
-          "pct": 8.56,
-          "points": 8.69
-        }
-      ]
-    },
-    {
-      "name": "電子零組件",
-      "points": 62.05,
-      "absPoints": 110.89,
-      "upPoints": 86.47,
-      "downPoints": 24.42,
-      "count": 103,
-      "top": [
-        {
-          "code": "2308",
-          "name": "台達電",
-          "industry": "電子零組件",
-          "pct": 1.36,
-          "points": 19.98
-        },
-        {
-          "code": "2383",
-          "name": "台光電",
-          "industry": "電子零組件",
-          "pct": 2.83,
-          "points": 17.09
-        },
-        {
-          "code": "2327",
-          "name": "國巨*",
-          "industry": "電子零組件",
-          "pct": 4.22,
-          "points": 14.57
-        },
-        {
-          "code": "3037",
-          "name": "欣興",
-          "industry": "電子零組件",
-          "pct": -2.8,
-          "points": -14.12
-        },
-        {
-          "code": "4958",
-          "name": "臻鼎-KY",
-          "industry": "電子零組件",
-          "pct": 7,
-          "points": 12.03
-        },
-        {
-          "code": "2368",
-          "name": "金像電",
-          "industry": "電子零組件",
-          "pct": 5.15,
-          "points": 9.65
-        },
-        {
-          "code": "3653",
-          "name": "健策",
-          "industry": "電子零組件",
-          "pct": -1.75,
-          "points": -4.74
-        },
-        {
-          "code": "3533",
-          "name": "嘉澤",
-          "industry": "電子零組件",
-          "pct": 3.25,
-          "points": 1.9
-        }
-      ]
-    },
-    {
-      "name": "電腦及週邊",
-      "points": 59.57,
-      "absPoints": 72.39,
-      "upPoints": 65.98,
-      "downPoints": 6.41,
-      "count": 64,
-      "top": [
-        {
-          "code": "6669",
-          "name": "緯穎",
-          "industry": "電腦及週邊",
-          "pct": 9.94,
-          "points": 40.32
-        },
-        {
-          "code": "2395",
-          "name": "研華",
-          "industry": "電腦及週邊",
-          "pct": 5.02,
-          "points": 9.09
-        },
-        {
-          "code": "2382",
-          "name": "廣達",
-          "industry": "電腦及週邊",
-          "pct": 1.03,
-          "points": 4.42
-        },
-        {
-          "code": "3231",
-          "name": "緯創",
-          "industry": "電腦及週邊",
-          "pct": 2.25,
-          "points": 3.91
-        },
-        {
-          "code": "2301",
-          "name": "光寶科",
-          "industry": "電腦及週邊",
-          "pct": -1.48,
-          "points": -3.21
-        },
-        {
-          "code": "2357",
-          "name": "華碩",
-          "industry": "電腦及週邊",
-          "pct": 1.1,
-          "points": 2.51
-        },
-        {
-          "code": "3017",
-          "name": "奇鋐",
-          "industry": "電腦及週邊",
-          "pct": -0.44,
-          "points": -1.81
-        },
-        {
-          "code": "3706",
-          "name": "神達",
-          "industry": "電腦及週邊",
-          "pct": 3.46,
-          "points": 1.31
-        }
-      ]
-    },
-    {
       "name": "金融保險",
-      "points": 54.68,
-      "absPoints": 55.44,
-      "upPoints": 55.06,
-      "downPoints": 0.38,
+      "points": 17.72,
+      "absPoints": 49.34,
+      "upPoints": 33.53,
+      "downPoints": 15.81,
       "count": 31,
       "top": [
+        {
+          "code": "2882",
+          "name": "國泰金",
+          "industry": "金融保險",
+          "pct": -1.8,
+          "points": -9.04
+        },
         {
           "code": "2887",
           "name": "台新新光金",
           "industry": "金融保險",
-          "pct": 4.54,
-          "points": 13.52
-        },
-        {
-          "code": "2891",
-          "name": "中信金",
-          "industry": "金融保險",
-          "pct": 2.78,
-          "points": 10.9
-        },
-        {
-          "code": "2883",
-          "name": "凱基金",
-          "industry": "金融保險",
-          "pct": 3.25,
-          "points": 5.75
-        },
-        {
-          "code": "2885",
-          "name": "元大金",
-          "industry": "金融保險",
-          "pct": 1.99,
-          "points": 5.33
+          "pct": 2.23,
+          "points": 6.96
         },
         {
           "code": "2881",
           "name": "富邦金",
           "industry": "金融保險",
-          "pct": 0.69,
-          "points": 4.31
-        },
-        {
-          "code": "2892",
-          "name": "第一金",
-          "industry": "金融保險",
-          "pct": 1.7,
-          "points": 2.65
+          "pct": -1.03,
+          "points": -6.47
         },
         {
           "code": "2880",
           "name": "華南金",
           "industry": "金融保險",
-          "pct": 1.45,
-          "points": 2.57
+          "pct": 2.5,
+          "points": 4.5
         },
         {
-          "code": "5876",
-          "name": "上海商銀",
+          "code": "5880",
+          "name": "合庫金",
           "industry": "金融保險",
-          "pct": 3.73,
-          "points": 2.39
+          "pct": 2.73,
+          "points": 3.38
+        },
+        {
+          "code": "2884",
+          "name": "玉山金",
+          "industry": "金融保險",
+          "pct": 1.5,
+          "points": 2.99
+        },
+        {
+          "code": "2890",
+          "name": "永豐金",
+          "industry": "金融保險",
+          "pct": 1.57,
+          "points": 2.96
+        },
+        {
+          "code": "2883",
+          "name": "凱基金",
+          "industry": "金融保險",
+          "pct": 1.57,
+          "points": 2.88
         }
       ]
     },
     {
-      "name": "其他電子",
-      "points": 53.99,
-      "absPoints": 54.63,
-      "upPoints": 54.31,
-      "downPoints": 0.32,
-      "count": 46,
+      "name": "光電",
+      "points": 12.28,
+      "absPoints": 16.6,
+      "upPoints": 14.44,
+      "downPoints": 2.16,
+      "count": 68,
       "top": [
         {
-          "code": "2317",
-          "name": "鴻海",
-          "industry": "其他電子",
-          "pct": 2.4,
-          "points": 25.9
+          "code": "3008",
+          "name": "大立光",
+          "industry": "光電",
+          "pct": 3.03,
+          "points": 9.27
         },
         {
-          "code": "2360",
-          "name": "致茂",
-          "industry": "其他電子",
-          "pct": 3.57,
-          "points": 9.16
+          "code": "3406",
+          "name": "玉晶光",
+          "industry": "光電",
+          "pct": 4.48,
+          "points": 1.56
         },
         {
-          "code": "3665",
-          "name": "貿聯-KY",
-          "industry": "其他電子",
-          "pct": 6.68,
-          "points": 8.9
+          "code": "3019",
+          "name": "亞光",
+          "industry": "光電",
+          "pct": 9.76,
+          "points": 1.2
         },
         {
-          "code": "2404",
-          "name": "漢唐",
-          "industry": "其他電子",
-          "pct": 3.77,
-          "points": 2.35
+          "code": "2486",
+          "name": "一詮",
+          "industry": "光電",
+          "pct": 4.35,
+          "points": 0.89
         },
         {
-          "code": "6196",
-          "name": "帆宣",
-          "industry": "其他電子",
-          "pct": 4.54,
-          "points": 1.49
+          "code": "3481",
+          "name": "群創",
+          "industry": "光電",
+          "pct": -0.51,
+          "points": -0.62
         },
         {
-          "code": "6139",
-          "name": "亞翔",
-          "industry": "其他電子",
-          "pct": 1.99,
-          "points": 1.09
+          "code": "2426",
+          "name": "鼎元",
+          "industry": "光電",
+          "pct": -2.79,
+          "points": -0.28
         },
         {
-          "code": "6830",
-          "name": "汎銓",
-          "industry": "其他電子",
-          "pct": 10,
-          "points": 0.87
+          "code": "3504",
+          "name": "揚明光",
+          "industry": "光電",
+          "pct": 8.14,
+          "points": 0.25
         },
         {
-          "code": "2474",
-          "name": "可成",
-          "industry": "其他電子",
-          "pct": 2.4,
-          "points": 0.83
-        }
-      ]
-    },
-    {
-      "name": "通信網路",
-      "points": 32.89,
-      "absPoints": 34.45,
-      "upPoints": 33.67,
-      "downPoints": 0.78,
-      "count": 46,
-      "top": [
-        {
-          "code": "2345",
-          "name": "智邦",
-          "industry": "通信網路",
-          "pct": 8.35,
-          "points": 29.35
-        },
-        {
-          "code": "2455",
-          "name": "全新",
-          "industry": "通信網路",
-          "pct": 9.85,
-          "points": 2.67
-        },
-        {
-          "code": "6285",
-          "name": "啟碁",
-          "industry": "通信網路",
-          "pct": 2.05,
-          "points": 0.74
-        },
-        {
-          "code": "3045",
-          "name": "台灣大",
-          "industry": "通信網路",
-          "pct": -0.43,
-          "points": -0.57
-        },
-        {
-          "code": "4906",
-          "name": "正文",
-          "industry": "通信網路",
-          "pct": 5.52,
-          "points": 0.27
-        },
-        {
-          "code": "2498",
-          "name": "宏達電",
-          "industry": "通信網路",
-          "pct": 1.74,
-          "points": 0.18
-        },
-        {
-          "code": "6442",
-          "name": "光聖",
-          "industry": "通信網路",
-          "pct": 0.31,
-          "points": 0.12
-        },
-        {
-          "code": "6426",
-          "name": "統新",
-          "industry": "通信網路",
-          "pct": 3.45,
-          "points": 0.11
-        }
-      ]
-    },
-    {
-      "name": "電機機械",
-      "points": 14.1,
-      "absPoints": 14.36,
-      "upPoints": 14.23,
-      "downPoints": 0.13,
-      "count": 48,
-      "top": [
-        {
-          "code": "1519",
-          "name": "華城",
-          "industry": "電機機械",
-          "pct": 4.39,
-          "points": 3.42
-        },
-        {
-          "code": "1560",
-          "name": "中砂",
-          "industry": "電機機械",
-          "pct": 8.93,
-          "points": 2.82
-        },
-        {
-          "code": "7750",
-          "name": "新代",
-          "industry": "電機機械",
-          "pct": 3.3,
-          "points": 1.66
-        },
-        {
-          "code": "1503",
-          "name": "士電",
-          "industry": "電機機械",
-          "pct": 4.25,
-          "points": 1.36
-        },
-        {
-          "code": "1590",
-          "name": "亞德客-KY",
-          "industry": "電機機械",
-          "pct": 1.4,
-          "points": 1.23
-        },
-        {
-          "code": "2049",
-          "name": "上銀",
-          "industry": "電機機械",
-          "pct": 2.57,
-          "points": 0.98
-        },
-        {
-          "code": "1504",
-          "name": "東元",
-          "industry": "電機機械",
-          "pct": 1.38,
-          "points": 0.73
-        },
-        {
-          "code": "4576",
-          "name": "大銀微系統",
-          "industry": "電機機械",
-          "pct": 6.47,
-          "points": 0.52
+          "code": "3576",
+          "name": "聯合再生",
+          "industry": "光電",
+          "pct": -2.81,
+          "points": -0.25
         }
       ]
     },
     {
       "name": "油電燃氣",
-      "points": 9.59,
-      "absPoints": 9.61,
-      "upPoints": 9.6,
-      "downPoints": 0.01,
+      "points": 5.76,
+      "absPoints": 6,
+      "upPoints": 5.88,
+      "downPoints": 0.12,
       "count": 8,
       "top": [
         {
           "code": "6505",
           "name": "台塑化",
           "industry": "油電燃氣",
-          "pct": 4.35,
-          "points": 9.38
+          "pct": 2.61,
+          "points": 5.87
         },
         {
           "code": "8926",
           "name": "台汽電",
           "industry": "油電燃氣",
-          "pct": 1.43,
-          "points": 0.2
+          "pct": -0.71,
+          "points": -0.1
         },
         {
           "code": "9918",
           "name": "欣天然",
           "industry": "油電燃氣",
-          "pct": 0.35,
-          "points": 0.01
+          "pct": -0.23,
+          "points": -0.01
         },
         {
           "code": "9926",
           "name": "新海",
           "industry": "油電燃氣",
-          "pct": -0.2,
-          "points": -0.01
+          "pct": 0.21,
+          "points": 0.01
         },
         {
           "code": "9937",
           "name": "全國",
           "industry": "油電燃氣",
-          "pct": 0.18,
-          "points": 0.01
+          "pct": -0.18,
+          "points": -0.01
         },
         {
           "code": "2616",
@@ -548,252 +218,1273 @@
       ]
     },
     {
-      "name": "化學工業",
-      "points": 4.26,
-      "absPoints": 5.02,
-      "upPoints": 4.64,
-      "downPoints": 0.38,
-      "count": 28,
+      "name": "塑膠",
+      "points": 2.36,
+      "absPoints": 12.4,
+      "upPoints": 7.38,
+      "downPoints": 5.02,
+      "count": 21,
       "top": [
         {
-          "code": "4763",
-          "name": "材料*-KY",
-          "industry": "化學工業",
-          "pct": 7.99,
-          "points": 1.13
+          "code": "1303",
+          "name": "南亞",
+          "industry": "塑膠",
+          "pct": 1.28,
+          "points": 7.33
         },
         {
-          "code": "1717",
-          "name": "長興",
-          "industry": "化學工業",
-          "pct": 2.67,
-          "points": 0.8
+          "code": "1326",
+          "name": "台化",
+          "industry": "塑膠",
+          "pct": -2.02,
+          "points": -2.71
         },
         {
-          "code": "1773",
-          "name": "勝一",
-          "industry": "化學工業",
-          "pct": 4.57,
-          "points": 0.69
+          "code": "1301",
+          "name": "台塑",
+          "industry": "塑膠",
+          "pct": -1.47,
+          "points": -1.96
         },
         {
-          "code": "1714",
-          "name": "和桐",
-          "industry": "化學工業",
-          "pct": 9.76,
-          "points": 0.5
+          "code": "1312",
+          "name": "國喬",
+          "industry": "塑膠",
+          "pct": -2.56,
+          "points": -0.19
         },
         {
-          "code": "1709",
-          "name": "和益",
-          "industry": "化學工業",
-          "pct": 8.82,
-          "points": 0.43
+          "code": "1314",
+          "name": "中石化",
+          "industry": "塑膠",
+          "pct": -0.48,
+          "points": -0.05
         },
         {
-          "code": "4770",
-          "name": "上品",
-          "industry": "化學工業",
-          "pct": 4.24,
-          "points": 0.22
+          "code": "1313",
+          "name": "聯成",
+          "industry": "塑膠",
+          "pct": -0.82,
+          "points": -0.04
         },
         {
-          "code": "4766",
-          "name": "南寶",
-          "industry": "化學工業",
-          "pct": 1.45,
+          "code": "1304",
+          "name": "台聚",
+          "industry": "塑膠",
+          "pct": -0.4,
+          "points": -0.02
+        },
+        {
+          "code": "1305",
+          "name": "華夏",
+          "industry": "塑膠",
+          "pct": -0.79,
+          "points": -0.02
+        }
+      ]
+    },
+    {
+      "name": "食品",
+      "points": 1.07,
+      "absPoints": 1.31,
+      "upPoints": 1.19,
+      "downPoints": 0.12,
+      "count": 24,
+      "top": [
+        {
+          "code": "1216",
+          "name": "統一",
+          "industry": "食品",
+          "pct": 0.52,
+          "points": 0.7
+        },
+        {
+          "code": "1229",
+          "name": "聯華",
+          "industry": "食品",
+          "pct": 0.84,
           "points": 0.19
         },
         {
-          "code": "1727",
-          "name": "中華化",
-          "industry": "化學工業",
-          "pct": -4.6,
-          "points": -0.18
+          "code": "1215",
+          "name": "卜蜂",
+          "industry": "食品",
+          "pct": 1.39,
+          "points": 0.14
+        },
+        {
+          "code": "7780",
+          "name": "大研生醫*",
+          "industry": "食品",
+          "pct": 1.19,
+          "points": 0.05
+        },
+        {
+          "code": "1227",
+          "name": "佳格",
+          "industry": "食品",
+          "pct": 0.53,
+          "points": 0.04
+        },
+        {
+          "code": "1210",
+          "name": "大成",
+          "industry": "食品",
+          "pct": 0.19,
+          "points": 0.03
+        },
+        {
+          "code": "1218",
+          "name": "泰山",
+          "industry": "食品",
+          "pct": -0.69,
+          "points": -0.02
+        },
+        {
+          "code": "1232",
+          "name": "大統益",
+          "industry": "食品",
+          "pct": -0.32,
+          "points": -0.02
+        }
+      ]
+    },
+    {
+      "name": "貿易百貨",
+      "points": 0.7,
+      "absPoints": 0.74,
+      "upPoints": 0.72,
+      "downPoints": 0.02,
+      "count": 18,
+      "top": [
+        {
+          "code": "2912",
+          "name": "統一超",
+          "industry": "貿易百貨",
+          "pct": 0.46,
+          "points": 0.32
+        },
+        {
+          "code": "2915",
+          "name": "潤泰全",
+          "industry": "貿易百貨",
+          "pct": 0.88,
+          "points": 0.17
+        },
+        {
+          "code": "2905",
+          "name": "三商",
+          "industry": "貿易百貨",
+          "pct": 2.3,
+          "points": 0.14
+        },
+        {
+          "code": "2903",
+          "name": "遠百",
+          "industry": "貿易百貨",
+          "pct": 0.68,
+          "points": 0.07
+        },
+        {
+          "code": "2908",
+          "name": "特力",
+          "industry": "貿易百貨",
+          "pct": -0.68,
+          "points": -0.02
+        },
+        {
+          "code": "2910",
+          "name": "統領",
+          "industry": "貿易百貨",
+          "pct": 1.26,
+          "points": 0.02
+        },
+        {
+          "code": "2901",
+          "name": "欣欣",
+          "industry": "貿易百貨",
+          "pct": 0,
+          "points": 0
+        },
+        {
+          "code": "2906",
+          "name": "高林",
+          "industry": "貿易百貨",
+          "pct": -0.36,
+          "points": 0
+        }
+      ]
+    },
+    {
+      "name": "造紙",
+      "points": 0.19,
+      "absPoints": 0.45,
+      "upPoints": 0.32,
+      "downPoints": 0.13,
+      "count": 7,
+      "top": [
+        {
+          "code": "1909",
+          "name": "榮成",
+          "industry": "造紙",
+          "pct": 3.18,
+          "points": 0.14
+        },
+        {
+          "code": "1907",
+          "name": "永豐餘",
+          "industry": "造紙",
+          "pct": 0.84,
+          "points": 0.13
+        },
+        {
+          "code": "1904",
+          "name": "正隆",
+          "industry": "造紙",
+          "pct": -1.21,
+          "points": -0.1
+        },
+        {
+          "code": "1905",
+          "name": "華紙",
+          "industry": "造紙",
+          "pct": 1.09,
+          "points": 0.05
+        },
+        {
+          "code": "1903",
+          "name": "士紙",
+          "industry": "造紙",
+          "pct": -0.73,
+          "points": -0.03
+        },
+        {
+          "code": "1906",
+          "name": "寶隆",
+          "industry": "造紙",
+          "pct": -0.88,
+          "points": 0
+        },
+        {
+          "code": "6790",
+          "name": "永豐實",
+          "industry": "造紙",
+          "pct": 0,
+          "points": 0
+        }
+      ]
+    },
+    {
+      "name": "觀光餐旅",
+      "points": 0.13,
+      "absPoints": 0.19,
+      "upPoints": 0.16,
+      "downPoints": 0.03,
+      "count": 19,
+      "top": [
+        {
+          "code": "2727",
+          "name": "王品",
+          "industry": "觀光餐旅",
+          "pct": 0.86,
+          "points": 0.05
+        },
+        {
+          "code": "2753",
+          "name": "八方雲集",
+          "industry": "觀光餐旅",
+          "pct": 1.39,
+          "points": 0.05
+        },
+        {
+          "code": "2723",
+          "name": "美食-KY",
+          "industry": "觀光餐旅",
+          "pct": 0.85,
+          "points": 0.04
+        },
+        {
+          "code": "2704",
+          "name": "國賓",
+          "industry": "觀光餐旅",
+          "pct": 0.33,
+          "points": 0.02
+        },
+        {
+          "code": "2705",
+          "name": "六福",
+          "industry": "觀光餐旅",
+          "pct": -0.95,
+          "points": -0.01
+        },
+        {
+          "code": "2722",
+          "name": "夏都",
+          "industry": "觀光餐旅",
+          "pct": -0.92,
+          "points": -0.01
+        },
+        {
+          "code": "8940",
+          "name": "新天地",
+          "industry": "觀光餐旅",
+          "pct": -2.58,
+          "points": -0.01
+        },
+        {
+          "code": "2701",
+          "name": "萬企",
+          "industry": "觀光餐旅",
+          "pct": 0,
+          "points": 0
+        }
+      ]
+    },
+    {
+      "name": "資訊服務",
+      "points": 0.1,
+      "absPoints": 0.16,
+      "upPoints": 0.13,
+      "downPoints": 0.03,
+      "count": 11,
+      "top": [
+        {
+          "code": "6112",
+          "name": "邁達特",
+          "industry": "資訊服務",
+          "pct": 1.88,
+          "points": 0.05
+        },
+        {
+          "code": "6214",
+          "name": "精誠",
+          "industry": "資訊服務",
+          "pct": 0.27,
+          "points": 0.04
+        },
+        {
+          "code": "2480",
+          "name": "敦陽科",
+          "industry": "資訊服務",
+          "pct": 0.64,
+          "points": 0.03
+        },
+        {
+          "code": "4994",
+          "name": "傳奇",
+          "industry": "資訊服務",
+          "pct": -2.05,
+          "points": -0.03
+        },
+        {
+          "code": "6183",
+          "name": "關貿",
+          "industry": "資訊服務",
+          "pct": 0.22,
+          "points": 0.01
+        },
+        {
+          "code": "2427",
+          "name": "三商電",
+          "industry": "資訊服務",
+          "pct": -0.23,
+          "points": 0
+        },
+        {
+          "code": "2453",
+          "name": "凌群",
+          "industry": "資訊服務",
+          "pct": 0.19,
+          "points": 0
+        },
+        {
+          "code": "2468",
+          "name": "華經",
+          "industry": "資訊服務",
+          "pct": 0.45,
+          "points": 0
+        }
+      ]
+    },
+    {
+      "name": "鋼鐵",
+      "points": -0.11,
+      "absPoints": 1.09,
+      "upPoints": 0.49,
+      "downPoints": 0.6,
+      "count": 31,
+      "top": [
+        {
+          "code": "2006",
+          "name": "東和鋼鐵",
+          "industry": "鋼鐵",
+          "pct": 1.85,
+          "points": 0.34
+        },
+        {
+          "code": "2027",
+          "name": "大成鋼",
+          "industry": "鋼鐵",
+          "pct": -0.5,
+          "points": -0.2
+        },
+        {
+          "code": "2009",
+          "name": "第一銅",
+          "industry": "鋼鐵",
+          "pct": -1.97,
+          "points": -0.09
+        },
+        {
+          "code": "2023",
+          "name": "燁輝",
+          "industry": "鋼鐵",
+          "pct": 1.09,
+          "points": 0.08
+        },
+        {
+          "code": "2211",
+          "name": "長榮鋼",
+          "industry": "鋼鐵",
+          "pct": -0.6,
+          "points": -0.06
+        },
+        {
+          "code": "2008",
+          "name": "高興昌",
+          "industry": "鋼鐵",
+          "pct": -2.08,
+          "points": -0.04
+        },
+        {
+          "code": "2014",
+          "name": "中鴻",
+          "industry": "鋼鐵",
+          "pct": -0.59,
+          "points": -0.04
+        },
+        {
+          "code": "2015",
+          "name": "豐興",
+          "industry": "鋼鐵",
+          "pct": 0.31,
+          "points": 0.04
+        }
+      ]
+    },
+    {
+      "name": "居家生活",
+      "points": -0.12,
+      "absPoints": 0.14,
+      "upPoints": 0.01,
+      "downPoints": 0.13,
+      "count": 11,
+      "top": [
+        {
+          "code": "8482",
+          "name": "商億-KY",
+          "industry": "居家生活",
+          "pct": -2.9,
+          "points": -0.05
+        },
+        {
+          "code": "9911",
+          "name": "櫻花",
+          "industry": "居家生活",
+          "pct": -0.85,
+          "points": -0.05
+        },
+        {
+          "code": "3557",
+          "name": "嘉威",
+          "industry": "居家生活",
+          "pct": -0.82,
+          "points": -0.01
+        },
+        {
+          "code": "6754",
+          "name": "匯僑設計",
+          "industry": "居家生活",
+          "pct": -1.19,
+          "points": -0.01
+        },
+        {
+          "code": "9924",
+          "name": "福興",
+          "industry": "居家生活",
+          "pct": -0.65,
+          "points": -0.01
+        },
+        {
+          "code": "9935",
+          "name": "慶豐富",
+          "industry": "居家生活",
+          "pct": 0.76,
+          "points": 0.01
+        },
+        {
+          "code": "2062",
+          "name": "橋椿",
+          "industry": "居家生活",
+          "pct": -0.26,
+          "points": 0
+        },
+        {
+          "code": "6671",
+          "name": "三能-KY",
+          "industry": "居家生活",
+          "pct": -0.87,
+          "points": 0
+        }
+      ]
+    },
+    {
+      "name": "橡膠",
+      "points": -0.3,
+      "absPoints": 0.44,
+      "upPoints": 0.07,
+      "downPoints": 0.37,
+      "count": 11,
+      "top": [
+        {
+          "code": "2105",
+          "name": "正新",
+          "industry": "橡膠",
+          "pct": -0.64,
+          "points": -0.2
+        },
+        {
+          "code": "2103",
+          "name": "台橡",
+          "industry": "橡膠",
+          "pct": -1.74,
+          "points": -0.13
+        },
+        {
+          "code": "2101",
+          "name": "南港",
+          "industry": "橡膠",
+          "pct": 0.8,
+          "points": 0.06
+        },
+        {
+          "code": "2102",
+          "name": "泰豐",
+          "industry": "橡膠",
+          "pct": -0.27,
+          "points": -0.01
+        },
+        {
+          "code": "2106",
+          "name": "建大",
+          "industry": "橡膠",
+          "pct": -0.29,
+          "points": -0.01
+        },
+        {
+          "code": "2107",
+          "name": "厚生",
+          "industry": "橡膠",
+          "pct": -0.37,
+          "points": -0.01
+        },
+        {
+          "code": "2108",
+          "name": "南帝",
+          "industry": "橡膠",
+          "pct": 0.16,
+          "points": 0.01
+        },
+        {
+          "code": "6582",
+          "name": "申豐",
+          "industry": "橡膠",
+          "pct": -0.62,
+          "points": -0.01
+        }
+      ]
+    },
+    {
+      "name": "玻璃陶瓷",
+      "points": -0.47,
+      "absPoints": 0.47,
+      "upPoints": 0,
+      "downPoints": 0.47,
+      "count": 5,
+      "top": [
+        {
+          "code": "1802",
+          "name": "台玻",
+          "industry": "玻璃陶瓷",
+          "pct": -0.82,
+          "points": -0.45
+        },
+        {
+          "code": "1809",
+          "name": "中釉",
+          "industry": "玻璃陶瓷",
+          "pct": -1.03,
+          "points": -0.02
+        },
+        {
+          "code": "1806",
+          "name": "冠軍",
+          "industry": "玻璃陶瓷",
+          "pct": -0.5,
+          "points": 0
+        },
+        {
+          "code": "1810",
+          "name": "和成",
+          "industry": "玻璃陶瓷",
+          "pct": -0.2,
+          "points": 0
+        },
+        {
+          "code": "1817",
+          "name": "凱撒衛",
+          "industry": "玻璃陶瓷",
+          "pct": -0.25,
+          "points": 0
+        }
+      ]
+    },
+    {
+      "name": "通信網路",
+      "points": -0.47,
+      "absPoints": 24.15,
+      "upPoints": 11.84,
+      "downPoints": 12.31,
+      "count": 46,
+      "top": [
+        {
+          "code": "2345",
+          "name": "智邦",
+          "industry": "通信網路",
+          "pct": -2.95,
+          "points": -11.24
+        },
+        {
+          "code": "6442",
+          "name": "光聖",
+          "industry": "通信網路",
+          "pct": 9.79,
+          "points": 3.97
+        },
+        {
+          "code": "2412",
+          "name": "中華電",
+          "industry": "通信網路",
+          "pct": 1.1,
+          "points": 3.58
+        },
+        {
+          "code": "4904",
+          "name": "遠傳",
+          "industry": "通信網路",
+          "pct": 1.49,
+          "points": 1.67
+        },
+        {
+          "code": "2455",
+          "name": "全新",
+          "industry": "通信網路",
+          "pct": 3.44,
+          "points": 1.03
+        },
+        {
+          "code": "3045",
+          "name": "台灣大",
+          "industry": "通信網路",
+          "pct": 0.43,
+          "points": 0.57
+        },
+        {
+          "code": "6285",
+          "name": "啟碁",
+          "industry": "通信網路",
+          "pct": -1.41,
+          "points": -0.52
+        },
+        {
+          "code": "3380",
+          "name": "明泰",
+          "industry": "通信網路",
+          "pct": 6,
+          "points": 0.28
+        }
+      ]
+    },
+    {
+      "name": "運動休閒",
+      "points": -0.48,
+      "absPoints": 1.12,
+      "upPoints": 0.32,
+      "downPoints": 0.8,
+      "count": 18,
+      "top": [
+        {
+          "code": "1736",
+          "name": "喬山",
+          "industry": "運動休閒",
+          "pct": 1.61,
+          "points": 0.19
+        },
+        {
+          "code": "9904",
+          "name": "寶成",
+          "industry": "運動休閒",
+          "pct": -0.6,
+          "points": -0.14
+        },
+        {
+          "code": "6890",
+          "name": "來億-KY",
+          "industry": "運動休閒",
+          "pct": -0.89,
+          "points": -0.12
+        },
+        {
+          "code": "9921",
+          "name": "巨大",
+          "industry": "運動休閒",
+          "pct": -0.98,
+          "points": -0.12
+        },
+        {
+          "code": "9914",
+          "name": "美利達",
+          "industry": "運動休閒",
+          "pct": -1.34,
+          "points": -0.1
+        },
+        {
+          "code": "8462",
+          "name": "柏文",
+          "industry": "運動休閒",
+          "pct": -2.04,
+          "points": -0.09
+        },
+        {
+          "code": "9910",
+          "name": "豐泰",
+          "industry": "運動休閒",
+          "pct": -0.44,
+          "points": -0.09
+        },
+        {
+          "code": "8478",
+          "name": "東哥遊艇",
+          "industry": "運動休閒",
+          "pct": 1.76,
+          "points": 0.07
+        }
+      ]
+    },
+    {
+      "name": "數位雲端",
+      "points": -0.48,
+      "absPoints": 0.5,
+      "upPoints": 0.01,
+      "downPoints": 0.49,
+      "count": 13,
+      "top": [
+        {
+          "code": "8454",
+          "name": "富邦媒",
+          "industry": "數位雲端",
+          "pct": -1.62,
+          "points": -0.33
+        },
+        {
+          "code": "7722",
+          "name": "LINEPAY",
+          "industry": "數位雲端",
+          "pct": -1.25,
+          "points": -0.08
+        },
+        {
+          "code": "6902",
+          "name": "GOGOLOOK",
+          "industry": "數位雲端",
+          "pct": -2.36,
+          "points": -0.03
+        },
+        {
+          "code": "7835",
+          "name": "永悅健康-創",
+          "industry": "數位雲端",
+          "pct": -6.43,
+          "points": -0.03
+        },
+        {
+          "code": "6614",
+          "name": "資拓宏宇",
+          "industry": "數位雲端",
+          "pct": -0.7,
+          "points": -0.01
+        },
+        {
+          "code": "6689",
+          "name": "伊雲谷",
+          "industry": "數位雲端",
+          "pct": 0.97,
+          "points": 0.01
+        },
+        {
+          "code": "6906",
+          "name": "現觀科",
+          "industry": "數位雲端",
+          "pct": -1.81,
+          "points": -0.01
+        },
+        {
+          "code": "3130",
+          "name": "一零四",
+          "industry": "數位雲端",
+          "pct": 0,
+          "points": 0
         }
       ]
     },
     {
       "name": "紡織纖維",
-      "points": 3.12,
-      "absPoints": 3.36,
-      "upPoints": 3.24,
-      "downPoints": 0.12,
+      "points": -0.56,
+      "absPoints": 1.12,
+      "upPoints": 0.28,
+      "downPoints": 0.84,
       "count": 42,
       "top": [
         {
           "code": "1402",
           "name": "遠東新",
           "industry": "紡織纖維",
-          "pct": 3.7,
-          "points": 1.73
+          "pct": -1.02,
+          "points": -0.49
+        },
+        {
+          "code": "1440",
+          "name": "南紡",
+          "industry": "紡織纖維",
+          "pct": 2.53,
+          "points": 0.18
         },
         {
           "code": "1409",
           "name": "新纖",
           "industry": "紡織纖維",
-          "pct": 4.27,
-          "points": 0.52
-        },
-        {
-          "code": "1476",
-          "name": "儒鴻",
-          "industry": "紡織纖維",
-          "pct": 1.78,
-          "points": 0.46
-        },
-        {
-          "code": "1419",
-          "name": "新紡",
-          "industry": "紡織纖維",
-          "pct": 2.28,
-          "points": 0.14
+          "pct": -1.17,
+          "points": -0.15
         },
         {
           "code": "1434",
           "name": "福懋",
           "industry": "紡織纖維",
-          "pct": 1.1,
-          "points": 0.1
+          "pct": -0.54,
+          "points": -0.05
+        },
+        {
+          "code": "1444",
+          "name": "力麗",
+          "industry": "紡織纖維",
+          "pct": 1.69,
+          "points": 0.04
+        },
+        {
+          "code": "1476",
+          "name": "儒鴻",
+          "industry": "紡織纖維",
+          "pct": -0.16,
+          "points": -0.04
         },
         {
           "code": "1477",
           "name": "聚陽",
           "industry": "紡織纖維",
-          "pct": 0.51,
-          "points": 0.08
-        },
-        {
-          "code": "4438",
-          "name": "廣越",
-          "industry": "紡織纖維",
-          "pct": 2.53,
-          "points": 0.05
-        },
-        {
-          "code": "1455",
-          "name": "集盛",
-          "industry": "紡織纖維",
-          "pct": 2.5,
+          "pct": 0.26,
           "points": 0.04
+        },
+        {
+          "code": "1419",
+          "name": "新紡",
+          "industry": "紡織纖維",
+          "pct": -0.3,
+          "points": -0.02
         }
       ]
     },
     {
-      "name": "航運",
-      "points": 2.91,
-      "absPoints": 8.61,
-      "upPoints": 5.76,
-      "downPoints": 2.85,
-      "count": 28,
+      "name": "汽車",
+      "points": -0.57,
+      "absPoints": 1.33,
+      "upPoints": 0.38,
+      "downPoints": 0.95,
+      "count": 43,
       "top": [
         {
-          "code": "2603",
-          "name": "長榮",
-          "industry": "航運",
-          "pct": 1.93,
-          "points": 3
+          "code": "2258",
+          "name": "鴻華先進-創",
+          "industry": "汽車",
+          "pct": -1.59,
+          "points": -0.27
         },
         {
-          "code": "2609",
-          "name": "陽明",
-          "industry": "航運",
-          "pct": -3.19,
-          "points": -2.04
+          "code": "2207",
+          "name": "和泰車",
+          "industry": "汽車",
+          "pct": -0.19,
+          "points": -0.17
         },
         {
-          "code": "2618",
-          "name": "長榮航",
-          "industry": "航運",
-          "pct": 0.95,
-          "points": 0.66
+          "code": "2201",
+          "name": "裕隆",
+          "industry": "汽車",
+          "pct": 1.43,
+          "points": 0.15
         },
         {
-          "code": "2615",
-          "name": "萬海",
-          "industry": "航運",
-          "pct": 0.44,
-          "points": 0.43
+          "code": "4569",
+          "name": "六方科-KY",
+          "industry": "汽車",
+          "pct": 6.85,
+          "points": 0.11
         },
         {
-          "code": "2633",
-          "name": "台灣高鐵",
-          "industry": "航運",
-          "pct": 0.96,
-          "points": 0.43
+          "code": "2233",
+          "name": "宇隆",
+          "industry": "汽車",
+          "pct": -2.84,
+          "points": -0.09
         },
         {
-          "code": "2645",
-          "name": "長榮航太",
-          "industry": "航運",
-          "pct": 1.73,
-          "points": 0.35
+          "code": "2243",
+          "name": "宏旭-KY",
+          "industry": "汽車",
+          "pct": -7.14,
+          "points": -0.08
         },
         {
-          "code": "2637",
-          "name": "慧洋-KY",
-          "industry": "航運",
-          "pct": 1.59,
-          "points": 0.34
+          "code": "2204",
+          "name": "中華",
+          "industry": "汽車",
+          "pct": -0.73,
+          "points": -0.07
         },
         {
-          "code": "2606",
-          "name": "裕民",
-          "industry": "航運",
-          "pct": -1.45,
-          "points": -0.29
+          "code": "4551",
+          "name": "智伸科",
+          "industry": "汽車",
+          "pct": -0.9,
+          "points": -0.05
+        }
+      ]
+    },
+    {
+      "name": "其他",
+      "points": -0.67,
+      "absPoints": 3.25,
+      "upPoints": 1.29,
+      "downPoints": 1.96,
+      "count": 62,
+      "top": [
+        {
+          "code": "5871",
+          "name": "中租-KY",
+          "industry": "其他",
+          "pct": -0.88,
+          "points": -0.54
+        },
+        {
+          "code": "9105",
+          "name": "泰金寶-DR",
+          "industry": "其他",
+          "pct": -1.85,
+          "points": -0.52
+        },
+        {
+          "code": "9941",
+          "name": "裕融",
+          "industry": "其他",
+          "pct": 3.25,
+          "points": 0.46
+        },
+        {
+          "code": "5284",
+          "name": "jpp-KY",
+          "industry": "其他",
+          "pct": 5.34,
+          "points": 0.29
+        },
+        {
+          "code": "8033",
+          "name": "雷虎",
+          "industry": "其他",
+          "pct": -2.43,
+          "points": -0.23
+        },
+        {
+          "code": "9945",
+          "name": "潤泰新",
+          "industry": "其他",
+          "pct": 0.89,
+          "points": 0.22
+        },
+        {
+          "code": "6592",
+          "name": "和潤企業",
+          "industry": "其他",
+          "pct": 1.66,
+          "points": 0.2
+        },
+        {
+          "code": "910322",
+          "name": "康師傅-DR",
+          "industry": "其他",
+          "pct": -0.4,
+          "points": -0.17
+        }
+      ]
+    },
+    {
+      "name": "建材營造",
+      "points": -0.75,
+      "absPoints": 2.01,
+      "upPoints": 0.63,
+      "downPoints": 1.38,
+      "count": 55,
+      "top": [
+        {
+          "code": "2540",
+          "name": "愛山林",
+          "industry": "建材營造",
+          "pct": -2.49,
+          "points": -0.35
+        },
+        {
+          "code": "2539",
+          "name": "櫻花建",
+          "industry": "建材營造",
+          "pct": -1.69,
+          "points": -0.22
+        },
+        {
+          "code": "5522",
+          "name": "遠雄",
+          "industry": "建材營造",
+          "pct": 1.28,
+          "points": 0.19
+        },
+        {
+          "code": "1808",
+          "name": "潤隆",
+          "industry": "建材營造",
+          "pct": 1.72,
+          "points": 0.13
+        },
+        {
+          "code": "2530",
+          "name": "華建",
+          "industry": "建材營造",
+          "pct": -2.53,
+          "points": -0.13
+        },
+        {
+          "code": "2527",
+          "name": "宏璟",
+          "industry": "建材營造",
+          "pct": -2.28,
+          "points": -0.08
+        },
+        {
+          "code": "2524",
+          "name": "京城",
+          "industry": "建材營造",
+          "pct": -1.72,
+          "points": -0.07
+        },
+        {
+          "code": "2546",
+          "name": "根基",
+          "industry": "建材營造",
+          "pct": 1.44,
+          "points": 0.07
+        }
+      ]
+    },
+    {
+      "name": "電器電纜",
+      "points": -0.85,
+      "absPoints": 1.03,
+      "upPoints": 0.09,
+      "downPoints": 0.94,
+      "count": 16,
+      "top": [
+        {
+          "code": "1605",
+          "name": "華新",
+          "industry": "電器電纜",
+          "pct": -1.42,
+          "points": -0.75
+        },
+        {
+          "code": "1608",
+          "name": "華榮",
+          "industry": "電器電纜",
+          "pct": -1.47,
+          "points": -0.11
+        },
+        {
+          "code": "1609",
+          "name": "大亞",
+          "industry": "電器電纜",
+          "pct": 0.67,
+          "points": 0.06
+        },
+        {
+          "code": "1617",
+          "name": "榮星",
+          "industry": "電器電纜",
+          "pct": -3.06,
+          "points": -0.03
+        },
+        {
+          "code": "1623",
+          "name": "大東電",
+          "industry": "電器電纜",
+          "pct": -0.48,
+          "points": -0.02
+        },
+        {
+          "code": "1604",
+          "name": "聲寶",
+          "industry": "電器電纜",
+          "pct": 0.43,
+          "points": 0.01
+        },
+        {
+          "code": "1612",
+          "name": "宏泰",
+          "industry": "電器電纜",
+          "pct": -0.29,
+          "points": -0.01
+        },
+        {
+          "code": "1615",
+          "name": "大山",
+          "industry": "電器電纜",
+          "pct": 0.23,
+          "points": 0.01
+        }
+      ]
+    },
+    {
+      "name": "電子通路",
+      "points": -1.31,
+      "absPoints": 6.61,
+      "upPoints": 2.65,
+      "downPoints": 3.96,
+      "count": 22,
+      "top": [
+        {
+          "code": "3036",
+          "name": "文曄",
+          "industry": "電子通路",
+          "pct": -4.59,
+          "points": -3.52
+        },
+        {
+          "code": "3702",
+          "name": "大聯大",
+          "industry": "電子通路",
+          "pct": 1.49,
+          "points": 0.78
+        },
+        {
+          "code": "2347",
+          "name": "聯強",
+          "industry": "電子通路",
+          "pct": 1.63,
+          "points": 0.72
+        },
+        {
+          "code": "3055",
+          "name": "蔚華科",
+          "industry": "電子通路",
+          "pct": 9.65,
+          "points": 0.44
+        },
+        {
+          "code": "5434",
+          "name": "崇越",
+          "industry": "電子通路",
+          "pct": -0.93,
+          "points": -0.3
+        },
+        {
+          "code": "3312",
+          "name": "弘憶股",
+          "industry": "電子通路",
+          "pct": 6.87,
+          "points": 0.2
+        },
+        {
+          "code": "3010",
+          "name": "華立",
+          "industry": "電子通路",
+          "pct": 1.17,
+          "points": 0.12
+        },
+        {
+          "code": "3028",
+          "name": "增你強",
+          "industry": "電子通路",
+          "pct": 2.17,
+          "points": 0.1
         }
       ]
     },
     {
       "name": "水泥",
-      "points": 2.88,
-      "absPoints": 2.88,
-      "upPoints": 2.88,
-      "downPoints": 0,
+      "points": -1.34,
+      "absPoints": 1.34,
+      "upPoints": 0,
+      "downPoints": 1.34,
       "count": 7,
       "top": [
         {
           "code": "1101",
           "name": "台泥",
           "industry": "水泥",
-          "pct": 3.69,
-          "points": 2.08
+          "pct": -1.98,
+          "points": -1.16
         },
         {
           "code": "1102",
           "name": "亞泥",
           "industry": "水泥",
-          "pct": 1.74,
-          "points": 0.65
+          "pct": -0.43,
+          "points": -0.16
         },
         {
           "code": "1104",
           "name": "環泥",
           "industry": "水泥",
-          "pct": 1.69,
-          "points": 0.1
-        },
-        {
-          "code": "1110",
-          "name": "東泥",
-          "industry": "水泥",
-          "pct": 0.94,
-          "points": 0.03
-        },
-        {
-          "code": "1103",
-          "name": "嘉泥",
-          "industry": "水泥",
-          "pct": 0.38,
-          "points": 0.01
+          "pct": -0.18,
+          "points": -0.01
         },
         {
           "code": "1109",
           "name": "信大",
           "industry": "水泥",
-          "pct": 0.37,
-          "points": 0.01
+          "pct": -0.37,
+          "points": -0.01
+        },
+        {
+          "code": "1103",
+          "name": "嘉泥",
+          "industry": "水泥",
+          "pct": 0,
+          "points": 0
         },
         {
           "code": "1108",
@@ -801,1472 +1492,781 @@
           "industry": "水泥",
           "pct": 0,
           "points": 0
-        }
-      ]
-    },
-    {
-      "name": "汽車",
-      "points": 2.32,
-      "absPoints": 2.8,
-      "upPoints": 2.56,
-      "downPoints": 0.24,
-      "count": 42,
-      "top": [
-        {
-          "code": "2207",
-          "name": "和泰車",
-          "industry": "汽車",
-          "pct": 0.97,
-          "points": 0.86
         },
         {
-          "code": "2201",
-          "name": "裕隆",
-          "industry": "汽車",
-          "pct": 5.88,
-          "points": 0.58
-        },
-        {
-          "code": "4551",
-          "name": "智伸科",
-          "industry": "汽車",
-          "pct": 5.02,
-          "points": 0.28
-        },
-        {
-          "code": "2258",
-          "name": "鴻華先進-創",
-          "industry": "汽車",
-          "pct": 1.29,
-          "points": 0.22
-        },
-        {
-          "code": "2204",
-          "name": "中華",
-          "industry": "汽車",
-          "pct": 1.48,
-          "points": 0.14
-        },
-        {
-          "code": "1319",
-          "name": "東陽",
-          "industry": "汽車",
-          "pct": 0.73,
-          "points": 0.11
-        },
-        {
-          "code": "2243",
-          "name": "宏旭-KY",
-          "industry": "汽車",
-          "pct": 10,
-          "points": 0.1
-        },
-        {
-          "code": "2233",
-          "name": "宇隆",
-          "industry": "汽車",
-          "pct": 2.92,
-          "points": 0.09
+          "code": "1110",
+          "name": "東泥",
+          "industry": "水泥",
+          "pct": 0,
+          "points": 0
         }
       ]
     },
     {
       "name": "綠能環保",
-      "points": 2.27,
-      "absPoints": 2.55,
-      "upPoints": 2.41,
-      "downPoints": 0.14,
+      "points": -2.35,
+      "absPoints": 2.47,
+      "upPoints": 0.06,
+      "downPoints": 2.41,
       "count": 27,
       "top": [
         {
           "code": "7610",
           "name": "聯友金屬-創",
           "industry": "綠能環保",
-          "pct": 6.64,
-          "points": 1.79
-        },
-        {
-          "code": "5292",
-          "name": "華懋",
-          "industry": "綠能環保",
-          "pct": 9.79,
-          "points": 0.31
-        },
-        {
-          "code": "3708",
-          "name": "上緯投控",
-          "industry": "綠能環保",
-          "pct": -1.95,
-          "points": -0.06
-        },
-        {
-          "code": "6869",
-          "name": "雲豹能源",
-          "industry": "綠能環保",
-          "pct": 2.1,
-          "points": 0.06
+          "pct": -5.3,
+          "points": -1.53
         },
         {
           "code": "6944",
           "name": "兆聯實業",
           "industry": "綠能環保",
-          "pct": 0.28,
-          "points": 0.06
+          "pct": -1.39,
+          "points": -0.31
         },
         {
-          "code": "7740",
-          "name": "熙特爾-創",
+          "code": "2072",
+          "name": "世紀風電",
           "industry": "綠能環保",
-          "pct": 2.32,
-          "points": 0.06
+          "pct": -1.77,
+          "points": -0.15
         },
         {
-          "code": "6923",
-          "name": "中台",
+          "code": "5292",
+          "name": "華懋",
           "industry": "綠能環保",
-          "pct": -1.17,
-          "points": -0.03
+          "pct": -2.7,
+          "points": -0.09
+        },
+        {
+          "code": "6869",
+          "name": "雲豹能源",
+          "industry": "綠能環保",
+          "pct": -2.06,
+          "points": -0.06
         },
         {
           "code": "7786",
           "name": "東方風能",
           "industry": "綠能環保",
-          "pct": 0.43,
-          "points": 0.03
-        }
-      ]
-    },
-    {
-      "name": "電子通路",
-      "points": 1.97,
-      "absPoints": 3.13,
-      "upPoints": 2.55,
-      "downPoints": 0.58,
-      "count": 21,
-      "top": [
-        {
-          "code": "5434",
-          "name": "崇越",
-          "industry": "電子通路",
-          "pct": 4.85,
-          "points": 1.49
-        },
-        {
-          "code": "2347",
-          "name": "聯強",
-          "industry": "電子通路",
-          "pct": -1.15,
-          "points": -0.51
-        },
-        {
-          "code": "3702",
-          "name": "大聯大",
-          "industry": "電子通路",
-          "pct": 0.9,
-          "points": 0.47
-        },
-        {
-          "code": "3055",
-          "name": "蔚華科",
-          "industry": "電子通路",
-          "pct": 7.47,
-          "points": 0.32
-        },
-        {
-          "code": "8112",
-          "name": "至上",
-          "industry": "電子通路",
-          "pct": 0.55,
-          "points": 0.09
-        },
-        {
-          "code": "3312",
-          "name": "弘憶股",
-          "industry": "電子通路",
-          "pct": 1.95,
-          "points": 0.06
-        },
-        {
-          "code": "3033",
-          "name": "威健",
-          "industry": "電子通路",
-          "pct": -0.67,
+          "pct": -0.85,
           "points": -0.05
         },
         {
-          "code": "3209",
-          "name": "全科",
-          "industry": "電子通路",
-          "pct": 1.2,
-          "points": 0.04
-        }
-      ]
-    },
-    {
-      "name": "鋼鐵",
-      "points": 1.27,
-      "absPoints": 2.05,
-      "upPoints": 1.66,
-      "downPoints": 0.39,
-      "count": 31,
-      "top": [
-        {
-          "code": "2027",
-          "name": "大成鋼",
-          "industry": "鋼鐵",
-          "pct": 2.05,
-          "points": 0.8
-        },
-        {
-          "code": "2002",
-          "name": "中鋼",
-          "industry": "鋼鐵",
-          "pct": 0.53,
-          "points": 0.48
-        },
-        {
-          "code": "2023",
-          "name": "燁輝",
-          "industry": "鋼鐵",
-          "pct": -3.18,
-          "points": -0.25
-        },
-        {
-          "code": "2006",
-          "name": "東和鋼鐵",
-          "industry": "鋼鐵",
-          "pct": 0.5,
-          "points": 0.09
-        },
-        {
-          "code": "2015",
-          "name": "豐興",
-          "industry": "鋼鐵",
-          "pct": 0.63,
-          "points": 0.07
-        },
-        {
-          "code": "2211",
-          "name": "長榮鋼",
-          "industry": "鋼鐵",
-          "pct": 0.61,
-          "points": 0.06
-        },
-        {
-          "code": "2010",
-          "name": "春源",
-          "industry": "鋼鐵",
-          "pct": -1.1,
-          "points": -0.05
-        },
-        {
-          "code": "2033",
-          "name": "佳大",
-          "industry": "鋼鐵",
-          "pct": -8.08,
-          "points": -0.05
-        }
-      ]
-    },
-    {
-      "name": "建材營造",
-      "points": 0.95,
-      "absPoints": 3.73,
-      "upPoints": 2.34,
-      "downPoints": 1.39,
-      "count": 55,
-      "top": [
-        {
-          "code": "2542",
-          "name": "興富發",
-          "industry": "建材營造",
-          "pct": 2.68,
-          "points": 0.83
-        },
-        {
-          "code": "2540",
-          "name": "愛山林",
-          "industry": "建材營造",
-          "pct": -3.61,
-          "points": -0.52
-        },
-        {
-          "code": "2923",
-          "name": "鼎固-KY",
-          "industry": "建材營造",
-          "pct": 2.27,
-          "points": 0.29
-        },
-        {
-          "code": "2530",
-          "name": "華建",
-          "industry": "建材營造",
-          "pct": 5.05,
-          "points": 0.25
-        },
-        {
-          "code": "2539",
-          "name": "櫻花建",
-          "industry": "建材營造",
-          "pct": -1.66,
-          "points": -0.22
-        },
-        {
-          "code": "1808",
-          "name": "潤隆",
-          "industry": "建材營造",
-          "pct": 2.2,
-          "points": 0.21
-        },
-        {
-          "code": "2543",
-          "name": "皇昌",
-          "industry": "建材營造",
-          "pct": -2.89,
-          "points": -0.19
-        },
-        {
-          "code": "5522",
-          "name": "遠雄",
-          "industry": "建材營造",
-          "pct": 1.13,
-          "points": 0.17
-        }
-      ]
-    },
-    {
-      "name": "橡膠",
-      "points": 0.48,
-      "absPoints": 0.5,
-      "upPoints": 0.49,
-      "downPoints": 0.01,
-      "count": 11,
-      "top": [
-        {
-          "code": "2105",
-          "name": "正新",
-          "industry": "橡膠",
-          "pct": 0.81,
-          "points": 0.25
-        },
-        {
-          "code": "2103",
-          "name": "台橡",
-          "industry": "橡膠",
-          "pct": 1.41,
-          "points": 0.1
-        },
-        {
-          "code": "2106",
-          "name": "建大",
-          "industry": "橡膠",
-          "pct": 2.05,
-          "points": 0.1
-        },
-        {
-          "code": "2101",
-          "name": "南港",
-          "industry": "橡膠",
-          "pct": 0.48,
-          "points": 0.03
-        },
-        {
-          "code": "2107",
-          "name": "厚生",
-          "industry": "橡膠",
-          "pct": 0.37,
-          "points": 0.01
-        },
-        {
-          "code": "6582",
-          "name": "申豐",
-          "industry": "橡膠",
-          "pct": -1.08,
-          "points": -0.01
-        },
-        {
-          "code": "2102",
-          "name": "泰豐",
-          "industry": "橡膠",
-          "pct": 0,
-          "points": 0
-        },
-        {
-          "code": "2104",
-          "name": "國際中橡",
-          "industry": "橡膠",
-          "pct": 0,
-          "points": 0
-        }
-      ]
-    },
-    {
-      "name": "玻璃陶瓷",
-      "points": 0.43,
-      "absPoints": 0.49,
-      "upPoints": 0.46,
-      "downPoints": 0.03,
-      "count": 5,
-      "top": [
-        {
-          "code": "1802",
-          "name": "台玻",
-          "industry": "玻璃陶瓷",
-          "pct": 0.82,
-          "points": 0.45
-        },
-        {
-          "code": "1810",
-          "name": "和成",
-          "industry": "玻璃陶瓷",
-          "pct": -0.8,
-          "points": -0.02
-        },
-        {
-          "code": "1806",
-          "name": "冠軍",
-          "industry": "玻璃陶瓷",
-          "pct": 0.75,
-          "points": 0.01
-        },
-        {
-          "code": "1809",
-          "name": "中釉",
-          "industry": "玻璃陶瓷",
-          "pct": -0.26,
-          "points": -0.01
-        },
-        {
-          "code": "1817",
-          "name": "凱撒衛",
-          "industry": "玻璃陶瓷",
-          "pct": 0.5,
-          "points": 0
-        }
-      ]
-    },
-    {
-      "name": "觀光餐旅",
-      "points": 0.05,
-      "absPoints": 0.37,
-      "upPoints": 0.21,
-      "downPoints": 0.16,
-      "count": 19,
-      "top": [
-        {
-          "code": "2707",
-          "name": "晶華",
-          "industry": "觀光餐旅",
-          "pct": 1.13,
-          "points": 0.08
-        },
-        {
-          "code": "2727",
-          "name": "王品",
-          "industry": "觀光餐旅",
-          "pct": -1.27,
-          "points": -0.08
-        },
-        {
-          "code": "2704",
-          "name": "國賓",
-          "industry": "觀光餐旅",
-          "pct": 1.35,
-          "points": 0.07
-        },
-        {
-          "code": "2753",
-          "name": "八方雲集",
-          "industry": "觀光餐旅",
-          "pct": -1.37,
-          "points": -0.05
-        },
-        {
-          "code": "2723",
-          "name": "美食-KY",
-          "industry": "觀光餐旅",
-          "pct": 0.98,
-          "points": 0.04
-        },
-        {
-          "code": "2706",
-          "name": "第一店",
-          "industry": "觀光餐旅",
-          "pct": -0.79,
-          "points": -0.02
-        },
-        {
-          "code": "2731",
-          "name": "雄獅",
-          "industry": "觀光餐旅",
-          "pct": -0.35,
-          "points": -0.01
-        },
-        {
-          "code": "7705",
-          "name": "三商餐飲",
-          "industry": "觀光餐旅",
-          "pct": 0.83,
-          "points": 0.01
-        }
-      ]
-    },
-    {
-      "name": "貿易百貨",
-      "points": -0.02,
-      "absPoints": 0.54,
-      "upPoints": 0.26,
-      "downPoints": 0.28,
-      "count": 17,
-      "top": [
-        {
-          "code": "2915",
-          "name": "潤泰全",
-          "industry": "貿易百貨",
-          "pct": 1.25,
-          "points": 0.24
-        },
-        {
-          "code": "2912",
-          "name": "統一超",
-          "industry": "貿易百貨",
-          "pct": -0.23,
-          "points": -0.16
-        },
-        {
-          "code": "2903",
-          "name": "遠百",
-          "industry": "貿易百貨",
-          "pct": -0.67,
-          "points": -0.07
-        },
-        {
-          "code": "2905",
-          "name": "三商",
-          "industry": "貿易百貨",
-          "pct": -0.57,
-          "points": -0.03
-        },
-        {
-          "code": "2910",
-          "name": "統領",
-          "industry": "貿易百貨",
-          "pct": -1.45,
-          "points": -0.02
-        },
-        {
-          "code": "2906",
-          "name": "高林",
-          "industry": "貿易百貨",
-          "pct": 0.72,
-          "points": 0.01
-        },
-        {
-          "code": "2908",
-          "name": "特力",
-          "industry": "貿易百貨",
-          "pct": 0.23,
-          "points": 0.01
-        },
-        {
-          "code": "2901",
-          "name": "欣欣",
-          "industry": "貿易百貨",
-          "pct": 0.64,
-          "points": 0
-        }
-      ]
-    },
-    {
-      "name": "運動休閒",
-      "points": -0.03,
-      "absPoints": 1.25,
-      "upPoints": 0.61,
-      "downPoints": 0.64,
-      "count": 18,
-      "top": [
-        {
-          "code": "6670",
-          "name": "復盛應用",
-          "industry": "運動休閒",
-          "pct": -3.48,
-          "points": -0.43
-        },
-        {
-          "code": "1736",
-          "name": "喬山",
-          "industry": "運動休閒",
-          "pct": -1.59,
-          "points": -0.19
-        },
-        {
-          "code": "9910",
-          "name": "豐泰",
-          "industry": "運動休閒",
-          "pct": 0.89,
-          "points": 0.18
-        },
-        {
-          "code": "8462",
-          "name": "柏文",
-          "industry": "運動休閒",
-          "pct": 2.08,
-          "points": 0.09
-        },
-        {
-          "code": "6890",
-          "name": "來億-KY",
-          "industry": "運動休閒",
-          "pct": 0.6,
-          "points": 0.08
-        },
-        {
-          "code": "4536",
-          "name": "拓凱",
-          "industry": "運動休閒",
-          "pct": 1.54,
-          "points": 0.07
-        },
-        {
-          "code": "9921",
-          "name": "巨大",
-          "industry": "運動休閒",
-          "pct": 0.49,
-          "points": 0.06
-        },
-        {
-          "code": "9904",
-          "name": "寶成",
-          "industry": "運動休閒",
-          "pct": 0.2,
-          "points": 0.05
-        }
-      ]
-    },
-    {
-      "name": "居家生活",
-      "points": -0.05,
-      "absPoints": 0.25,
-      "upPoints": 0.1,
-      "downPoints": 0.15,
-      "count": 11,
-      "top": [
-        {
-          "code": "8464",
-          "name": "億豐",
-          "industry": "居家生活",
-          "pct": -0.4,
-          "points": -0.14
-        },
-        {
-          "code": "8482",
-          "name": "商億-KY",
-          "industry": "居家生活",
-          "pct": 4.32,
-          "points": 0.07
-        },
-        {
-          "code": "3557",
-          "name": "嘉威",
-          "industry": "居家生活",
-          "pct": 0.83,
-          "points": 0.01
-        },
-        {
-          "code": "9911",
-          "name": "櫻花",
-          "industry": "居家生活",
-          "pct": -0.24,
-          "points": -0.01
-        },
-        {
-          "code": "9924",
-          "name": "福興",
-          "industry": "居家生活",
-          "pct": 0.65,
-          "points": 0.01
-        },
-        {
-          "code": "9934",
-          "name": "成霖",
-          "industry": "居家生活",
-          "pct": 0.45,
-          "points": 0.01
-        },
-        {
-          "code": "2062",
-          "name": "橋椿",
-          "industry": "居家生活",
-          "pct": 0.26,
-          "points": 0
-        },
-        {
-          "code": "6671",
-          "name": "三能-KY",
-          "industry": "居家生活",
-          "pct": 0,
-          "points": 0
-        }
-      ]
-    },
-    {
-      "name": "食品",
-      "points": -0.11,
-      "absPoints": 0.55,
-      "upPoints": 0.22,
-      "downPoints": 0.33,
-      "count": 25,
-      "top": [
-        {
-          "code": "1227",
-          "name": "佳格",
-          "industry": "食品",
-          "pct": -1.39,
-          "points": -0.11
-        },
-        {
-          "code": "1229",
-          "name": "聯華",
-          "industry": "食品",
-          "pct": -0.48,
-          "points": -0.11
-        },
-        {
-          "code": "1210",
-          "name": "大成",
-          "industry": "食品",
-          "pct": 0.58,
-          "points": 0.08
-        },
-        {
-          "code": "1215",
-          "name": "卜蜂",
-          "industry": "食品",
-          "pct": 0.47,
-          "points": 0.05
-        },
-        {
-          "code": "1256",
-          "name": "鮮活果汁-KY",
-          "industry": "食品",
-          "pct": -1.93,
+          "code": "7740",
+          "name": "熙特爾-創",
+          "industry": "綠能環保",
+          "pct": -1.51,
           "points": -0.04
         },
         {
-          "code": "1225",
-          "name": "福懋油",
-          "industry": "食品",
-          "pct": -1.36,
-          "points": -0.03
-        },
-        {
-          "code": "1235",
-          "name": "興泰",
-          "industry": "食品",
-          "pct": 1.36,
-          "points": 0.03
-        },
-        {
-          "code": "1231",
-          "name": "聯華食",
-          "industry": "食品",
-          "pct": -0.25,
-          "points": -0.02
-        }
-      ]
-    },
-    {
-      "name": "數位雲端",
-      "points": -0.13,
-      "absPoints": 0.17,
-      "upPoints": 0.02,
-      "downPoints": 0.15,
-      "count": 13,
-      "top": [
-        {
-          "code": "7722",
-          "name": "LINEPAY",
-          "industry": "數位雲端",
-          "pct": -1.58,
-          "points": -0.1
-        },
-        {
-          "code": "6165",
-          "name": "浪凡",
-          "industry": "數位雲端",
-          "pct": -1.87,
-          "points": -0.02
-        },
-        {
-          "code": "3130",
-          "name": "一零四",
-          "industry": "數位雲端",
-          "pct": 0.48,
-          "points": 0.01
-        },
-        {
-          "code": "6614",
-          "name": "資拓宏宇",
-          "industry": "數位雲端",
-          "pct": -1.11,
-          "points": -0.01
-        },
-        {
-          "code": "6902",
-          "name": "GOGOLOOK",
-          "industry": "數位雲端",
-          "pct": -0.39,
-          "points": -0.01
-        },
-        {
-          "code": "6906",
-          "name": "現觀科",
-          "industry": "數位雲端",
-          "pct": -0.9,
-          "points": -0.01
-        },
-        {
-          "code": "7823",
-          "name": "奧義賽博-KY創",
-          "industry": "數位雲端",
-          "pct": 1.09,
-          "points": 0.01
-        },
-        {
-          "code": "6689",
-          "name": "伊雲谷",
-          "industry": "數位雲端",
-          "pct": -0.16,
-          "points": 0
-        }
-      ]
-    },
-    {
-      "name": "造紙",
-      "points": -0.15,
-      "absPoints": 0.17,
-      "upPoints": 0.01,
-      "downPoints": 0.16,
-      "count": 7,
-      "top": [
-        {
-          "code": "1904",
-          "name": "正隆",
-          "industry": "造紙",
-          "pct": -1.39,
-          "points": -0.12
-        },
-        {
-          "code": "1909",
-          "name": "榮成",
-          "industry": "造紙",
-          "pct": -0.9,
+          "code": "8422",
+          "name": "可寧衛*",
+          "industry": "綠能環保",
+          "pct": -0.37,
           "points": -0.04
-        },
-        {
-          "code": "1903",
-          "name": "士紙",
-          "industry": "造紙",
-          "pct": 0.31,
-          "points": 0.01
-        },
-        {
-          "code": "1905",
-          "name": "華紙",
-          "industry": "造紙",
-          "pct": 0,
-          "points": 0
-        },
-        {
-          "code": "1906",
-          "name": "寶隆",
-          "industry": "造紙",
-          "pct": -0.44,
-          "points": 0
-        },
-        {
-          "code": "1907",
-          "name": "永豐餘",
-          "industry": "造紙",
-          "pct": 0,
-          "points": 0
-        },
-        {
-          "code": "6790",
-          "name": "永豐實",
-          "industry": "造紙",
-          "pct": 0.13,
-          "points": 0
         }
       ]
     },
     {
-      "name": "資訊服務",
-      "points": -0.17,
-      "absPoints": 0.21,
-      "upPoints": 0.02,
-      "downPoints": 0.19,
-      "count": 11,
+      "name": "化學工業",
+      "points": -3.16,
+      "absPoints": 4.66,
+      "upPoints": 0.75,
+      "downPoints": 3.91,
+      "count": 28,
       "top": [
         {
-          "code": "6214",
-          "name": "精誠",
-          "industry": "資訊服務",
-          "pct": -0.54,
-          "points": -0.08
+          "code": "1717",
+          "name": "長興",
+          "industry": "化學工業",
+          "pct": -4.6,
+          "points": -1.42
         },
         {
-          "code": "2480",
-          "name": "敦陽科",
-          "industry": "資訊服務",
-          "pct": -0.96,
-          "points": -0.05
+          "code": "1773",
+          "name": "勝一",
+          "industry": "化學工業",
+          "pct": -4.66,
+          "points": -0.74
         },
         {
-          "code": "3029",
-          "name": "零壹",
-          "industry": "資訊服務",
-          "pct": -0.44,
-          "points": -0.03
+          "code": "4763",
+          "name": "材料*-KY",
+          "industry": "化學工業",
+          "pct": 3,
+          "points": 0.46
         },
         {
-          "code": "4994",
-          "name": "傳奇",
-          "industry": "資訊服務",
-          "pct": 1.47,
-          "points": 0.02
+          "code": "1714",
+          "name": "和桐",
+          "industry": "化學工業",
+          "pct": -6.47,
+          "points": -0.37
         },
         {
-          "code": "2427",
-          "name": "三商電",
-          "industry": "資訊服務",
-          "pct": -0.67,
-          "points": -0.01
+          "code": "1709",
+          "name": "和益",
+          "industry": "化學工業",
+          "pct": -3.85,
+          "points": -0.21
         },
         {
-          "code": "5203",
-          "name": "訊連",
-          "industry": "資訊服務",
-          "pct": -0.51,
-          "points": -0.01
+          "code": "4722",
+          "name": "國精化",
+          "industry": "化學工業",
+          "pct": -3.13,
+          "points": -0.21
         },
         {
-          "code": "6112",
-          "name": "邁達特",
-          "industry": "資訊服務",
-          "pct": -0.55,
-          "points": -0.01
+          "code": "1718",
+          "name": "中纖",
+          "industry": "化學工業",
+          "pct": -3.14,
+          "points": -0.18
         },
         {
-          "code": "2453",
-          "name": "凌群",
-          "industry": "資訊服務",
-          "pct": -0.19,
-          "points": 0
-        }
-      ]
-    },
-    {
-      "name": "電器電纜",
-      "points": -0.6,
-      "absPoints": 1.06,
-      "upPoints": 0.23,
-      "downPoints": 0.83,
-      "count": 16,
-      "top": [
-        {
-          "code": "1605",
-          "name": "華新",
-          "industry": "電器電纜",
-          "pct": -1.15,
-          "points": -0.61
-        },
-        {
-          "code": "1623",
-          "name": "大東電",
-          "industry": "電器電纜",
-          "pct": 2.72,
-          "points": 0.11
-        },
-        {
-          "code": "1617",
-          "name": "榮星",
-          "industry": "電器電纜",
-          "pct": 9.8,
-          "points": 0.09
-        },
-        {
-          "code": "1609",
-          "name": "大亞",
-          "industry": "電器電纜",
-          "pct": -0.93,
-          "points": -0.08
-        },
-        {
-          "code": "1608",
-          "name": "華榮",
-          "industry": "電器電纜",
-          "pct": -0.93,
-          "points": -0.07
-        },
-        {
-          "code": "1612",
-          "name": "宏泰",
-          "industry": "電器電纜",
-          "pct": -1,
-          "points": -0.03
-        },
-        {
-          "code": "1614",
-          "name": "三洋電",
-          "industry": "電器電纜",
-          "pct": 0.65,
-          "points": 0.02
-        },
-        {
-          "code": "1604",
-          "name": "聲寶",
-          "industry": "電器電纜",
-          "pct": 0.22,
-          "points": 0.01
-        }
-      ]
-    },
-    {
-      "name": "其他",
-      "points": -1.99,
-      "absPoints": 4.07,
-      "upPoints": 1.04,
-      "downPoints": 3.03,
-      "count": 62,
-      "top": [
-        {
-          "code": "5871",
-          "name": "中租-KY",
-          "industry": "其他",
-          "pct": -2.56,
-          "points": -1.61
-        },
-        {
-          "code": "910322",
-          "name": "康師傅-DR",
-          "industry": "其他",
-          "pct": -1.57,
-          "points": -0.69
-        },
-        {
-          "code": "5284",
-          "name": "jpp-KY",
-          "industry": "其他",
-          "pct": 4.33,
-          "points": 0.23
-        },
-        {
-          "code": "9105",
-          "name": "泰金寶-DR",
-          "industry": "其他",
-          "pct": -0.8,
-          "points": -0.23
-        },
-        {
-          "code": "9945",
-          "name": "潤泰新",
-          "industry": "其他",
-          "pct": 0.9,
-          "points": 0.22
-        },
-        {
-          "code": "9933",
-          "name": "中鼎",
-          "industry": "其他",
-          "pct": 1.23,
-          "points": 0.15
-        },
-        {
-          "code": "6901",
-          "name": "鑽石投資",
-          "industry": "其他",
-          "pct": -2.52,
-          "points": -0.11
-        },
-        {
-          "code": "9907",
-          "name": "統一實",
-          "industry": "其他",
-          "pct": 1.31,
-          "points": 0.1
-        }
-      ]
-    },
-    {
-      "name": "光電",
-      "points": -2.45,
-      "absPoints": 10.03,
-      "upPoints": 3.79,
-      "downPoints": 6.24,
-      "count": 68,
-      "top": [
-        {
-          "code": "3008",
-          "name": "大立光",
-          "industry": "光電",
-          "pct": -0.92,
-          "points": -2.82
-        },
-        {
-          "code": "3481",
-          "name": "群創",
-          "industry": "光電",
-          "pct": -1.1,
-          "points": -1.35
-        },
-        {
-          "code": "2486",
-          "name": "一詮",
-          "industry": "光電",
-          "pct": 4.94,
-          "points": 0.96
-        },
-        {
-          "code": "2426",
-          "name": "鼎元",
-          "industry": "光電",
-          "pct": 9.92,
-          "points": 0.9
-        },
-        {
-          "code": "2409",
-          "name": "友達",
-          "industry": "光電",
-          "pct": -0.94,
-          "points": -0.58
-        },
-        {
-          "code": "3563",
-          "name": "牧德",
-          "industry": "光電",
-          "pct": 4.11,
-          "points": 0.55
-        },
-        {
-          "code": "3576",
-          "name": "聯合再生",
-          "industry": "光電",
-          "pct": -2.2,
-          "points": -0.2
-        },
-        {
-          "code": "3714",
-          "name": "富采",
-          "industry": "光電",
-          "pct": 1.46,
-          "points": 0.2
-        }
-      ]
-    },
-    {
-      "name": "塑膠",
-      "points": -5.3,
-      "absPoints": 33.76,
-      "upPoints": 14.23,
-      "downPoints": 19.53,
-      "count": 21,
-      "top": [
-        {
-          "code": "1303",
-          "name": "南亞",
-          "industry": "塑膠",
-          "pct": -3.3,
-          "points": -19.52
-        },
-        {
-          "code": "1326",
-          "name": "台化",
-          "industry": "塑膠",
-          "pct": 8.78,
-          "points": 10.82
-        },
-        {
-          "code": "1301",
-          "name": "台塑",
-          "industry": "塑膠",
-          "pct": 2.42,
-          "points": 3.13
-        },
-        {
-          "code": "1314",
-          "name": "中石化",
-          "industry": "塑膠",
-          "pct": 0.98,
-          "points": 0.09
-        },
-        {
-          "code": "1309",
-          "name": "台達化",
-          "industry": "塑膠",
-          "pct": 2.97,
-          "points": 0.05
-        },
-        {
-          "code": "1312",
-          "name": "國喬",
-          "industry": "塑膠",
-          "pct": 0.64,
-          "points": 0.05
-        },
-        {
-          "code": "1321",
-          "name": "大洋",
-          "industry": "塑膠",
-          "pct": 1.24,
-          "points": 0.03
-        },
-        {
-          "code": "1308",
-          "name": "亞聚",
-          "industry": "塑膠",
-          "pct": 0.69,
-          "points": 0.02
+          "code": "4764",
+          "name": "雙鍵",
+          "industry": "化學工業",
+          "pct": -2.83,
+          "points": -0.18
         }
       ]
     },
     {
       "name": "生技醫療",
-      "points": -13.42,
-      "absPoints": 14.32,
-      "upPoints": 0.45,
-      "downPoints": 13.87,
+      "points": -3.2,
+      "absPoints": 3.96,
+      "upPoints": 0.38,
+      "downPoints": 3.58,
       "count": 60,
       "top": [
-        {
-          "code": "6446",
-          "name": "藥華藥",
-          "industry": "生技醫療",
-          "pct": -6.09,
-          "points": -11.05
-        },
         {
           "code": "6919",
           "name": "康霈*",
           "industry": "生技醫療",
-          "pct": -3.8,
-          "points": -1.73
+          "pct": -3.4,
+          "points": -1.49
         },
         {
-          "code": "6472",
-          "name": "保瑞",
+          "code": "6446",
+          "name": "藥華藥",
           "industry": "生技醫療",
-          "pct": -3,
-          "points": -0.51
-        },
-        {
-          "code": "6541",
-          "name": "泰福-KY",
-          "industry": "生技醫療",
-          "pct": -4.41,
-          "points": -0.12
+          "pct": -0.38,
+          "points": -0.65
         },
         {
           "code": "7799",
           "name": "禾榮科",
           "industry": "生技醫療",
-          "pct": 0.68,
-          "points": 0.12
+          "pct": -2.7,
+          "points": -0.49
+        },
+        {
+          "code": "1795",
+          "name": "美時",
+          "industry": "生技醫療",
+          "pct": -1.34,
+          "points": -0.21
         },
         {
           "code": "6782",
           "name": "視陽",
           "industry": "生技醫療",
-          "pct": -1.96,
-          "points": -0.1
+          "pct": -4.21,
+          "points": -0.2
+        },
+        {
+          "code": "6472",
+          "name": "保瑞",
+          "industry": "生技醫療",
+          "pct": 0.6,
+          "points": 0.1
+        },
+        {
+          "code": "7827",
+          "name": "漢康-KY創",
+          "industry": "生技醫療",
+          "pct": -1.3,
+          "points": -0.09
         },
         {
           "code": "6491",
           "name": "晶碩",
           "industry": "生技醫療",
-          "pct": -0.75,
-          "points": -0.07
+          "pct": -0.63,
+          "points": -0.06
+        }
+      ]
+    },
+    {
+      "name": "航運",
+      "points": -4.55,
+      "absPoints": 6.43,
+      "upPoints": 0.94,
+      "downPoints": 5.49,
+      "count": 28,
+      "top": [
+        {
+          "code": "2603",
+          "name": "長榮",
+          "industry": "航運",
+          "pct": -1.47,
+          "points": -2.33
         },
         {
-          "code": "6861",
-          "name": "睿生光電",
-          "industry": "生技醫療",
-          "pct": 2.93,
-          "points": 0.07
+          "code": "2615",
+          "name": "萬海",
+          "industry": "航運",
+          "pct": -2.18,
+          "points": -2.16
+        },
+        {
+          "code": "5607",
+          "name": "遠雄港",
+          "industry": "航運",
+          "pct": 7.54,
+          "points": 0.45
+        },
+        {
+          "code": "2618",
+          "name": "長榮航",
+          "industry": "航運",
+          "pct": -0.59,
+          "points": -0.42
+        },
+        {
+          "code": "2610",
+          "name": "華航",
+          "industry": "航運",
+          "pct": 0.49,
+          "points": 0.19
+        },
+        {
+          "code": "2634",
+          "name": "漢翔",
+          "industry": "航運",
+          "pct": -0.9,
+          "points": -0.17
+        },
+        {
+          "code": "2637",
+          "name": "慧洋-KY",
+          "industry": "航運",
+          "pct": 0.73,
+          "points": 0.16
+        },
+        {
+          "code": "2609",
+          "name": "陽明",
+          "industry": "航運",
+          "pct": -0.17,
+          "points": -0.11
+        }
+      ]
+    },
+    {
+      "name": "電機機械",
+      "points": -7.62,
+      "absPoints": 14.9,
+      "upPoints": 3.64,
+      "downPoints": 11.26,
+      "count": 48,
+      "top": [
+        {
+          "code": "1590",
+          "name": "亞德客-KY",
+          "industry": "電機機械",
+          "pct": -3.46,
+          "points": -3.08
+        },
+        {
+          "code": "8996",
+          "name": "高力",
+          "industry": "電機機械",
+          "pct": 7.66,
+          "points": 2.59
+        },
+        {
+          "code": "1519",
+          "name": "華城",
+          "industry": "電機機械",
+          "pct": -2.63,
+          "points": -2.14
+        },
+        {
+          "code": "1560",
+          "name": "中砂",
+          "industry": "電機機械",
+          "pct": -5.38,
+          "points": -1.85
+        },
+        {
+          "code": "7750",
+          "name": "新代",
+          "industry": "電機機械",
+          "pct": -1.92,
+          "points": -1
+        },
+        {
+          "code": "2049",
+          "name": "上銀",
+          "industry": "電機機械",
+          "pct": -1.95,
+          "points": -0.76
+        },
+        {
+          "code": "3167",
+          "name": "大量",
+          "industry": "電機機械",
+          "pct": -3.25,
+          "points": -0.72
+        },
+        {
+          "code": "1504",
+          "name": "東元",
+          "industry": "電機機械",
+          "pct": -1.22,
+          "points": -0.66
+        }
+      ]
+    },
+    {
+      "name": "電腦及週邊",
+      "points": -8.33,
+      "absPoints": 43.97,
+      "upPoints": 17.82,
+      "downPoints": 26.15,
+      "count": 64,
+      "top": [
+        {
+          "code": "3017",
+          "name": "奇鋐",
+          "industry": "電腦及週邊",
+          "pct": -2.93,
+          "points": -12.09
+        },
+        {
+          "code": "2301",
+          "name": "光寶科",
+          "industry": "電腦及週邊",
+          "pct": 4.83,
+          "points": 10.35
+        },
+        {
+          "code": "2382",
+          "name": "廣達",
+          "industry": "電腦及週邊",
+          "pct": -1.46,
+          "points": -6.33
+        },
+        {
+          "code": "2395",
+          "name": "研華",
+          "industry": "電腦及週邊",
+          "pct": -2.67,
+          "points": -5.09
+        },
+        {
+          "code": "3231",
+          "name": "緯創",
+          "industry": "電腦及週邊",
+          "pct": 1.92,
+          "points": 3.43
+        },
+        {
+          "code": "8210",
+          "name": "勤誠",
+          "industry": "電腦及週邊",
+          "pct": -2.22,
+          "points": -0.85
+        },
+        {
+          "code": "7711",
+          "name": "永擎",
+          "industry": "電腦及週邊",
+          "pct": 6.09,
+          "points": 0.77
+        },
+        {
+          "code": "4938",
+          "name": "和碩",
+          "industry": "電腦及週邊",
+          "pct": 0.77,
+          "points": 0.58
+        }
+      ]
+    },
+    {
+      "name": "其他電子",
+      "points": -44.92,
+      "absPoints": 47.46,
+      "upPoints": 1.27,
+      "downPoints": 46.19,
+      "count": 46,
+      "top": [
+        {
+          "code": "2317",
+          "name": "鴻海",
+          "industry": "其他電子",
+          "pct": -1.95,
+          "points": -21.61
+        },
+        {
+          "code": "3665",
+          "name": "貿聯-KY",
+          "industry": "其他電子",
+          "pct": -6.26,
+          "points": -8.92
+        },
+        {
+          "code": "2360",
+          "name": "致茂",
+          "industry": "其他電子",
+          "pct": -2.71,
+          "points": -7.21
+        },
+        {
+          "code": "2404",
+          "name": "漢唐",
+          "industry": "其他電子",
+          "pct": -6.82,
+          "points": -4.4
+        },
+        {
+          "code": "6196",
+          "name": "帆宣",
+          "industry": "其他電子",
+          "pct": -2.96,
+          "points": -1.02
+        },
+        {
+          "code": "6691",
+          "name": "洋基工程",
+          "industry": "其他電子",
+          "pct": -3.8,
+          "points": -0.9
+        },
+        {
+          "code": "6409",
+          "name": "旭隼",
+          "industry": "其他電子",
+          "pct": -2.43,
+          "points": -0.68
+        },
+        {
+          "code": "3030",
+          "name": "德律",
+          "industry": "其他電子",
+          "pct": -3.03,
+          "points": -0.65
+        }
+      ]
+    },
+    {
+      "name": "電子零組件",
+      "points": -201.02,
+      "absPoints": 207.56,
+      "upPoints": 3.27,
+      "downPoints": 204.29,
+      "count": 104,
+      "top": [
+        {
+          "code": "2308",
+          "name": "台達電",
+          "industry": "電子零組件",
+          "pct": -7.24,
+          "points": -108.03
+        },
+        {
+          "code": "2383",
+          "name": "台光電",
+          "industry": "電子零組件",
+          "pct": -3.46,
+          "points": -21.53
+        },
+        {
+          "code": "2327",
+          "name": "國巨*",
+          "industry": "電子零組件",
+          "pct": -4.93,
+          "points": -17.76
+        },
+        {
+          "code": "4958",
+          "name": "臻鼎-KY",
+          "industry": "電子零組件",
+          "pct": -5.23,
+          "points": -9.64
+        },
+        {
+          "code": "2059",
+          "name": "川湖",
+          "industry": "電子零組件",
+          "pct": -2.01,
+          "points": -8.37
+        },
+        {
+          "code": "2368",
+          "name": "金像電",
+          "industry": "電子零組件",
+          "pct": -4.08,
+          "points": -8.06
+        },
+        {
+          "code": "3653",
+          "name": "健策",
+          "industry": "電子零組件",
+          "pct": -1.95,
+          "points": -5.2
+        },
+        {
+          "code": "8046",
+          "name": "南電",
+          "industry": "電子零組件",
+          "pct": -2.04,
+          "points": -4.98
+        }
+      ]
+    },
+    {
+      "name": "半導體",
+      "points": -540.64,
+      "absPoints": 562.8,
+      "upPoints": 11.08,
+      "downPoints": 551.72,
+      "count": 96,
+      "top": [
+        {
+          "code": "2330",
+          "name": "台積電",
+          "industry": "半導體",
+          "pct": -2.25,
+          "points": -439.41
+        },
+        {
+          "code": "3711",
+          "name": "日月光投控",
+          "industry": "半導體",
+          "pct": -3.44,
+          "points": -28.92
+        },
+        {
+          "code": "2303",
+          "name": "聯電",
+          "industry": "半導體",
+          "pct": -4.91,
+          "points": -25.17
+        },
+        {
+          "code": "2454",
+          "name": "聯發科",
+          "industry": "半導體",
+          "pct": -0.93,
+          "points": -19.76
+        },
+        {
+          "code": "7769",
+          "name": "鴻勁",
+          "industry": "半導體",
+          "pct": -2.73,
+          "points": -8.87
+        },
+        {
+          "code": "3189",
+          "name": "景碩",
+          "industry": "半導體",
+          "pct": -3.09,
+          "points": -4.38
+        },
+        {
+          "code": "2344",
+          "name": "華邦電",
+          "industry": "半導體",
+          "pct": 1.7,
+          "points": 4.16
+        },
+        {
+          "code": "3443",
+          "name": "創意",
+          "industry": "半導體",
+          "pct": -1.67,
+          "points": -4.13
         }
       ]
     }
   ],
   "topGainers": [
     {
-      "code": "2330",
-      "name": "台積電",
-      "industry": "半導體",
-      "pct": 1.46,
-      "points": 279.29
-    },
-    {
-      "code": "2454",
-      "name": "聯發科",
-      "industry": "半導體",
-      "pct": 9.94,
-      "points": 192.48
-    },
-    {
-      "code": "6669",
-      "name": "緯穎",
-      "industry": "電腦及週邊",
-      "pct": 9.94,
-      "points": 40.32
-    },
-    {
-      "code": "3711",
-      "name": "日月光投控",
-      "industry": "半導體",
-      "pct": 4.45,
-      "points": 35.77
-    },
-    {
-      "code": "2345",
-      "name": "智邦",
-      "industry": "通信網路",
-      "pct": 8.35,
-      "points": 29.35
-    },
-    {
-      "code": "2317",
-      "name": "鴻海",
-      "industry": "其他電子",
-      "pct": 2.4,
-      "points": 25.9
-    },
-    {
-      "code": "2308",
-      "name": "台達電",
-      "industry": "電子零組件",
-      "pct": 1.36,
-      "points": 19.98
-    },
-    {
-      "code": "2383",
-      "name": "台光電",
-      "industry": "電子零組件",
-      "pct": 2.83,
-      "points": 17.09
-    },
-    {
-      "code": "2327",
-      "name": "國巨*",
-      "industry": "電子零組件",
-      "pct": 4.22,
-      "points": 14.57
-    },
-    {
-      "code": "2303",
-      "name": "聯電",
-      "industry": "半導體",
-      "pct": 2.71,
-      "points": 13.54
-    },
-    {
-      "code": "2887",
-      "name": "台新新光金",
-      "industry": "金融保險",
-      "pct": 4.54,
-      "points": 13.52
-    },
-    {
-      "code": "4958",
-      "name": "臻鼎-KY",
-      "industry": "電子零組件",
-      "pct": 7,
-      "points": 12.03
-    }
-  ],
-  "topLosers": [
-    {
-      "code": "2408",
-      "name": "南亞科",
-      "industry": "半導體",
-      "pct": -4.6,
-      "points": -26.54
-    },
-    {
-      "code": "1303",
-      "name": "南亞",
-      "industry": "塑膠",
-      "pct": -3.3,
-      "points": -19.52
-    },
-    {
-      "code": "3037",
-      "name": "欣興",
-      "industry": "電子零組件",
-      "pct": -2.8,
-      "points": -14.12
-    },
-    {
-      "code": "6446",
-      "name": "藥華藥",
-      "industry": "生技醫療",
-      "pct": -6.09,
-      "points": -11.05
-    },
-    {
-      "code": "2344",
-      "name": "華邦電",
-      "industry": "半導體",
-      "pct": -3.56,
-      "points": -9
-    },
-    {
-      "code": "3653",
-      "name": "健策",
-      "industry": "電子零組件",
-      "pct": -1.75,
-      "points": -4.74
-    },
-    {
-      "code": "3443",
-      "name": "創意",
-      "industry": "半導體",
-      "pct": -1.72,
-      "points": -4.33
-    },
-    {
       "code": "2301",
       "name": "光寶科",
       "industry": "電腦及週邊",
-      "pct": -1.48,
-      "points": -3.21
-    },
-    {
-      "code": "6770",
-      "name": "力積電",
-      "industry": "半導體",
-      "pct": -3.01,
-      "points": -3.19
+      "pct": 4.83,
+      "points": 10.35
     },
     {
       "code": "3008",
       "name": "大立光",
       "industry": "光電",
-      "pct": -0.92,
-      "points": -2.82
+      "pct": 3.03,
+      "points": 9.27
     },
     {
-      "code": "2337",
-      "name": "旺宏",
+      "code": "1303",
+      "name": "南亞",
+      "industry": "塑膠",
+      "pct": 1.28,
+      "points": 7.33
+    },
+    {
+      "code": "2887",
+      "name": "台新新光金",
+      "industry": "金融保險",
+      "pct": 2.23,
+      "points": 6.96
+    },
+    {
+      "code": "6505",
+      "name": "台塑化",
+      "industry": "油電燃氣",
+      "pct": 2.61,
+      "points": 5.87
+    },
+    {
+      "code": "2880",
+      "name": "華南金",
+      "industry": "金融保險",
+      "pct": 2.5,
+      "points": 4.5
+    },
+    {
+      "code": "2344",
+      "name": "華邦電",
       "industry": "半導體",
-      "pct": -2.78,
-      "points": -2.13
+      "pct": 1.7,
+      "points": 4.16
     },
     {
-      "code": "2609",
-      "name": "陽明",
-      "industry": "航運",
-      "pct": -3.19,
-      "points": -2.04
+      "code": "6442",
+      "name": "光聖",
+      "industry": "通信網路",
+      "pct": 9.79,
+      "points": 3.97
+    },
+    {
+      "code": "2412",
+      "name": "中華電",
+      "industry": "通信網路",
+      "pct": 1.1,
+      "points": 3.58
+    },
+    {
+      "code": "3231",
+      "name": "緯創",
+      "industry": "電腦及週邊",
+      "pct": 1.92,
+      "points": 3.43
+    },
+    {
+      "code": "5880",
+      "name": "合庫金",
+      "industry": "金融保險",
+      "pct": 2.73,
+      "points": 3.38
+    },
+    {
+      "code": "2884",
+      "name": "玉山金",
+      "industry": "金融保險",
+      "pct": 1.5,
+      "points": 2.99
+    }
+  ],
+  "topLosers": [
+    {
+      "code": "2330",
+      "name": "台積電",
+      "industry": "半導體",
+      "pct": -2.25,
+      "points": -439.41
+    },
+    {
+      "code": "2308",
+      "name": "台達電",
+      "industry": "電子零組件",
+      "pct": -7.24,
+      "points": -108.03
+    },
+    {
+      "code": "3711",
+      "name": "日月光投控",
+      "industry": "半導體",
+      "pct": -3.44,
+      "points": -28.92
+    },
+    {
+      "code": "2303",
+      "name": "聯電",
+      "industry": "半導體",
+      "pct": -4.91,
+      "points": -25.17
+    },
+    {
+      "code": "2317",
+      "name": "鴻海",
+      "industry": "其他電子",
+      "pct": -1.95,
+      "points": -21.61
+    },
+    {
+      "code": "2383",
+      "name": "台光電",
+      "industry": "電子零組件",
+      "pct": -3.46,
+      "points": -21.53
+    },
+    {
+      "code": "2454",
+      "name": "聯發科",
+      "industry": "半導體",
+      "pct": -0.93,
+      "points": -19.76
+    },
+    {
+      "code": "2327",
+      "name": "國巨*",
+      "industry": "電子零組件",
+      "pct": -4.93,
+      "points": -17.76
+    },
+    {
+      "code": "3017",
+      "name": "奇鋐",
+      "industry": "電腦及週邊",
+      "pct": -2.93,
+      "points": -12.09
+    },
+    {
+      "code": "2345",
+      "name": "智邦",
+      "industry": "通信網路",
+      "pct": -2.95,
+      "points": -11.24
+    },
+    {
+      "code": "4958",
+      "name": "臻鼎-KY",
+      "industry": "電子零組件",
+      "pct": -5.23,
+      "points": -9.64
+    },
+    {
+      "code": "2882",
+      "name": "國泰金",
+      "industry": "金融保險",
+      "pct": -1.8,
+      "points": -9.04
     }
   ]
 }

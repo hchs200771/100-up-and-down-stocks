@@ -18,7 +18,8 @@ AI 的工作（分類、族群故事、盤後總結）由 Claude 在對話裡直
 |---|---|---|---|
 | A 主線 | Step 1 抓盤 → Step 2 讀記憶 → Step 3 分類 → Step 4 spawn workers | 立刻 | 全程 |
 | B 背景 script | Step 1.8 RRG 三支（依序 chain） | **t=0，跟 Step 1 同時**，不必等抓盤 | Step 6 assemble |
-| C 背景 script | Step 1.5 記分板、Step 1.6 國際數字、Step 1.65 信用利差、Step 1.66 指數貢獻（四者互不相依，同時丟） | Step 1 一跑完 | 1.5 → Step 5 寫總結；1.6/1.65 → Step 6 assemble；1.66 → Step 9 送報告時直接讀檔 |
+| C 背景 script | Step 1.5 記分板、Step 1.6 國際數字、Step 1.65 信用利差、Step 1.66 指數貢獻、Step 1.67 集保、Step 1.68 融資選擇權、Step 1.69 選股池（互不相依，同時丟） | Step 1 一跑完 | 1.5 → Step 5 寫總結；1.6/1.65 → Step 4.5 國際 worker 與 Step 6 assemble；其餘 → Step 7 送報告時直接讀檔 |
+| D 背景 worker | Step 1.7 題材偵察、**Step 4.5 國際情勢 worker** | Step 1.6/1.65 一跑完（約 t+15s） | 1.7 → Step 3 分類；4.5 → Step 6 assemble |
 
 **具體怎麼做**：用 Bash tool 的 `run_in_background: true` 把 B 和 C 丟出去，主對話繼續往下跑 Step 2 / Step 3。**不要**用 `;` 或 `&&` 把互不相依的 script 串成一條 bash 依序執行——那等於自己放棄平行。
 
@@ -26,6 +27,7 @@ AI 的工作（分類、族群故事、盤後總結）由 Claude 在對話裡直
 - Step 1.5 讀 `market-latest.json` → 必須在 Step 1 之後
 - Step 1.8 三支彼此 chain（build → alerts → render），但整組**不依賴當日盤後資料**（只讀 `sector-baskets.json` + Yahoo），所以可以最早開跑。它是整條鏈最慢的一塊，排最後跑是今天最大的浪費來源
 - Step 1.7 題材偵察 worker 要在 Step 3 分類前寫完檔 → Step 1 一跑完就 spawn
+- **Step 4.5 國際情勢 worker 不要等 Step 4，Step 1.6/1.65 一跑完就 spawn**。它只讀 `intl-market-latest.json`／`credit-spreads-latest.json`，跟台股分類完全無關；而它是 sonnet、要讀框架檔又要 WebSearch，實測 148 秒、是全批 worker 裡最慢的一個。跟族群 worker 同批 spawn 會讓它變成 Step 6 的唯一瓶頸（2026-09-02 實測族群 worker 全部 75 秒內寫完，卻為了它多等 70 秒）
 - Step 5 寫總結前要有 `scorecard.json` / `group-timeline.json`（水線 C）
 - Step 6 assemble 前要有全部 stories、`intl-brief.txt`、RRG alerts
 
@@ -262,6 +264,16 @@ npx tsx scripts/fetch-tdcc-holders.ts && npx tsx scripts/build-tdcc-divergence.t
 
 **寄信的旗標**：`npx tsx scripts/send-report.ts --no-email` 只產 HTML 不寄信。**不要用 `GAS_WEBHOOK_URL= npx tsx ...` 去擋**——`.env.local` 是用 `override: true` 載入的，前綴的環境變數會被蓋掉，信照樣寄出去。
 
+### Step 1.69 — 終極選股池（純 script，可跳過）
+
+```
+npx tsx scripts/build-stock-picks.ts
+```
+
+**水線 C，背景執行**：與 Step 1.5／1.6／1.65／1.66／1.67／1.68 同批平行丟。它讀當日 `market-latest.json` 與大戶／CB 等訊號，輸出 `data/stock-picks-latest.json`，`send-report.ts` 據此產出「終極選股池」分頁。
+
+**一定要在 Step 7 寄信之前跑完。** 檔案裡的交易日與 `analysis.date` 不符時該分頁會被整個略過（2026-09-02 實測漏跑，信件少了這個分頁，只好補跑再重產一次網頁版）。
+
 ### Step 1.7 — 題材偵察 worker（背景 spawn，越早越好）
 
 **Step 1 一跑完就 spawn**（與 Step 1.5/1.6 的 script 平行），這樣它搜尋時你可以繼續跑 script 與讀記憶，Step 3 分類前它多半已寫完檔。spawn 前先 `rm -f data/tmp/theme-scan.md` 清掉前一天的舊檔。
@@ -416,7 +428,7 @@ rm -f data/tmp/playbook.txt
 
 **單一批次 spawn（不要再分兩階段）：**
 
-把**所有**符合門檻的強勢族群 + 弱勢前 3 大族群 + 1 個「國際情勢 worker」（見 Step 4.5），**全部放在同一個 assistant message 裡一次 spawn 完**（通常 15–18 個）。
+把**所有**符合門檻的強勢族群 + 弱勢前 3 大族群，**全部放在同一個 assistant message 裡一次 spawn 完**（通常 14–17 個）。國際情勢 worker **不在這一批**——它在 Step 1.6/1.65 跑完時就先送出去了（見 Step 4.5）。
 
 **關鍵：所有 spawn 必須在同一個 assistant message 裡**，才是真平行；wall-clock 等於最慢那一個 worker。
 
@@ -461,9 +473,13 @@ data/tmp/stories/<id>.txt
 - 真平行：wall-clock 約等於最慢那個 subagent。
 - 主對話 context 乾淨：不會被 N 組搜尋結果或 N 段故事污染。
 
-### Step 4.5 — 國際情勢 worker（與 Step 4 同批平行 spawn）
+### Step 4.5 — 國際情勢 worker（水線 D，**Step 1.6/1.65 一跑完就 spawn，不要等 Step 4**）
 
-**這個 worker 必須跟 Step 4 的所有族群 worker 放在同一個 assistant message 裡一起 spawn**，這樣它跟台股族群故事同時在跑，不會拉長整體報告時間（使用者常在深夜執行，整體時間要短）。它讀的 `intl-market-latest.json` / `credit-spreads-latest.json` 由水線 C 的背景 job 產出，spawn 前確認那兩支已經跑完；沒跑完也照 spawn，worker 會降級成純靠 WebSearch。
+**這個 worker 要跟 Step 1.7 題材偵察 worker 一起，在你還沒開始分類之前就 spawn 出去。** 它讀的 `intl-market-latest.json` / `credit-spreads-latest.json` 由水線 C 產出（約 3 秒跑完），跟台股分類、族群故事完全沒有相依。
+
+**為什麼不跟 Step 4 同批**：它是 sonnet、要先讀 macromicro 框架檔再做 3 次 WebSearch，2026-09-02 實測跑了 148 秒，而同批的 16 個 haiku 族群 worker 全部在 75 秒內寫完——等於整條流程為了它多空轉 70 秒。提早到 t+15s 開跑，它跟「讀記憶 → 分類 → 寫 classification.json」這段主線時間重疊，Step 6 assemble 時通常已經寫好檔。
+
+spawn 前確認那兩支 script 已經跑完；沒跑完也照 spawn，worker 會降級成純靠 WebSearch。
 
 **worker 設定：** Agent tool，`subagent_type: "general-purpose"`、`model: "sonnet"`（這份要套總經分析框架，用 sonnet 判讀品質較穩；因為平行跑，不影響總時間）。只 spawn **1 個**。
 

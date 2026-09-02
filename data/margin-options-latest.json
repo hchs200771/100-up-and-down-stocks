@@ -1,61 +1,61 @@
 {
-  "generatedAt": "2026-09-01T14:39:07.083Z",
-  "tradingDate": "2026-09-01",
+  "generatedAt": "2026-09-02T14:59:52.825Z",
+  "tradingDate": "2026-09-02",
   "margin": {
-    "twseLots": 8896994,
-    "twseAmount": 5781.2,
-    "twsePrevAmount": 5698.8,
-    "dAmount": 82.4,
-    "twseShortLots": 220835,
-    "tpexLots": 2276807,
-    "maintenance": 193.9,
+    "twseLots": 8929880,
+    "twseAmount": 5856.8,
+    "twsePrevAmount": 5781.2,
+    "dAmount": 75.6,
+    "twseShortLots": 214315,
+    "tpexLots": 2286146,
+    "maintenance": 190.1,
     "maintenanceCoverage": {
-      "stocks": 1226,
-      "collateral": 11212
+      "stocks": 1232,
+      "collateral": 11135
     }
   },
   "options": {
-    "dataDate": "2026-09-01",
-    "prevDate": "2026-08-31",
+    "dataDate": "2026-09-02",
+    "prevDate": "2026-09-01",
     "call": {
       "buy": {
-        "lots": 6946,
-        "amount": 4.6,
-        "dLots": 2305,
-        "dAmount": 2
+        "lots": 4482,
+        "amount": 2.6,
+        "dLots": -2464,
+        "dAmount": -2
       },
       "sell": {
-        "lots": 10384,
-        "amount": 8.6,
-        "dLots": 1560,
-        "dAmount": 3.5
+        "lots": 8174,
+        "amount": 5.4,
+        "dLots": -2210,
+        "dAmount": -3.1
       }
     },
     "put": {
       "buy": {
-        "lots": 8438,
-        "amount": 0.9,
-        "dLots": 1888,
-        "dAmount": -0.3
+        "lots": 5245,
+        "amount": 1.2,
+        "dLots": -3193,
+        "dAmount": 0.3
       },
       "sell": {
-        "lots": 6809,
-        "amount": 0.5,
-        "dLots": 594,
-        "dAmount": -0.3
+        "lots": 5219,
+        "amount": 0.8,
+        "dLots": -1590,
+        "dAmount": 0.2
       }
     },
     "bull": {
-      "lots": 13755,
-      "dLots": 2899,
-      "amount": 5.1,
-      "dAmount": 1.7
+      "lots": 9701,
+      "dLots": -4054,
+      "amount": 3.4,
+      "dAmount": -1.8
     },
     "bear": {
-      "lots": 18822,
-      "dLots": 3448,
-      "amount": 9.5,
-      "dAmount": 3.2
+      "lots": 13419,
+      "dLots": -5403,
+      "amount": 6.6,
+      "dAmount": -2.8
     }
   }
 }

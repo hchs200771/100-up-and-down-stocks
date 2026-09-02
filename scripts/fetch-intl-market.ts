@@ -29,7 +29,7 @@ interface IntlIndex {
 }
 
 // region 排序即為報告呈現順序。
-const SYMBOLS: { symbol: string; key: string; name: string; region: string }[] = [
+const SYMBOLS: { symbol: string; key: string; name: string; region: string; digits?: number }[] = [
   { symbol: "^GSPC", key: "sp500", name: "標普500", region: "美股" },
   { symbol: "^DJI", key: "dji", name: "道瓊工業", region: "美股" },
   { symbol: "^IXIC", key: "nasdaq", name: "那斯達克", region: "美股" },
@@ -43,7 +43,10 @@ const SYMBOLS: { symbol: string; key: string; name: string; region: string }[] =
   { symbol: "GC=F", key: "gold", name: "黃金", region: "原物料/利率" },
   { symbol: "DX-Y.NYB", key: "dxy", name: "美元指數", region: "原物料/利率" },
   { symbol: "^TNX", key: "us10y", name: "美10年期殖利率", region: "原物料/利率" },
-  { symbol: "TWD=X", key: "usdtwd", name: "美元/台幣", region: "匯率" },
+  // 美元/台幣不走 Yahoo：TWD=X 是 24 小時的國際盤報價，晚上跑報告時抓到的是紐約盤
+  // 還在跳的價，跟新聞講的「台北匯市收盤」對不起來。改抓央行公布的「新臺幣對美元
+  // 銀行間成交之收盤匯率」（fetchCbcUsdTwd），symbol 只在 CBC 掛掉時當後備。
+  { symbol: "TWD=X", key: "usdtwd", name: "美元/台幣", region: "匯率", digits: 3 },
 ];
 
 const HOSTS = [
@@ -202,10 +205,53 @@ async function fetchOne(symbol: string): Promise<{ close: number; prevClose: num
   return { close, prevClose, epoch: isLive ? null : epoch };
 }
 
+/**
+ * 央行「新臺幣對美元銀行間成交之收盤匯率」日資料（台北匯市當日收盤）。
+ *
+ * 頁面是一張日期 / NTD/USD 的表格，最新的一天在最上面，約當日 16:00 收盤後公布，
+ * 報告在 21:00 之後跑一定拿得到當天。取最上面兩列算單日漲跌。
+ */
+const CBC_USDTWD_URL = "https://www.cbc.gov.tw/tw/lp-645-1.html";
+
+async function fetchCbcUsdTwd(): Promise<{ close: number; prevClose: number; epoch: number | null; date: string } | null> {
+  try {
+    const res = await fetch(CBC_USDTWD_URL, {
+      headers: { "User-Agent": "Mozilla/5.0" },
+      signal: AbortSignal.timeout(15000),
+    });
+    if (!res.ok) return null;
+    const html = await res.text();
+    const rows: { date: string; rate: number }[] = [];
+    const re = /<td[^>]*>\s*<span>\s*(\d{4})\/(\d{2})\/(\d{2})\s*<\/span>\s*<\/td>\s*<td[^>]*>\s*<span>\s*([\d.]+)\s*<\/span>/g;
+    let m: RegExpExecArray | null;
+    while ((m = re.exec(html)) !== null) {
+      const rate = Number(m[4]);
+      if (isFinite(rate) && rate > 0) rows.push({ date: `${m[1]}-${m[2]}-${m[3]}`, rate });
+    }
+    if (rows.length < 2) return null;
+    return { close: rows[0].rate, prevClose: rows[1].rate, epoch: null, date: rows[0].date };
+  } catch {
+    return null;
+  }
+}
+
 async function main() {
   const results = await Promise.all(
     SYMBOLS.map(async (s) => {
-      const r = await fetchOne(s.symbol);
+      let r: { close: number; prevClose: number; epoch: number | null } | null = null;
+      if (s.key === "usdtwd") {
+        const cbc = await fetchCbcUsdTwd();
+        if (cbc) {
+          r = cbc;
+          const today = taipeiDate();
+          if (cbc.date !== today) {
+            console.warn(`[warn] 央行收盤匯率最新為 ${cbc.date}，非今日 ${today}（尚未公布或非交易日）`);
+          }
+        } else {
+          console.warn("[warn] 央行收盤匯率抓取失敗，改用 Yahoo TWD=X 國際盤報價");
+        }
+      }
+      if (!r) r = await fetchOne(s.symbol);
       if (!r) {
         console.warn(`[warn] intl fetch failed: ${s.symbol} (${s.name})`);
         return null;
@@ -216,8 +262,8 @@ async function main() {
         key: s.key,
         name: s.name,
         region: s.region,
-        close: round(r.close),
-        change: round(change),
+        close: round(r.close, s.digits),
+        change: round(change, s.digits),
         pct: Number(pct.toFixed(2)),
         asOfEpoch: r.epoch,
       };
@@ -248,8 +294,14 @@ async function main() {
   }
 }
 
-function round(n: number): number {
-  return Math.round(n * 100) / 100;
+function round(n: number, digits = 2): number {
+  const f = 10 ** digits;
+  return Math.round(n * f) / f;
+}
+
+// 台北當地日期（YYYY-MM-DD），用來判斷央行那張表最上面一列是不是今天。
+function taipeiDate(): string {
+  return new Date(Date.now() + 8 * 3600 * 1000).toISOString().slice(0, 10);
 }
 function pad(n: number): string {
   return String(n).padStart(2, "0");
