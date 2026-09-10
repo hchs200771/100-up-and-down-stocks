@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-10T14:33:49.965Z",
+  "updatedAt": "2026-09-10T19:42:33.540Z",
   "records": [
     {
       "date": "2026-06-29",
@@ -17566,6 +17566,385 @@
       "direction": "loser",
       "members": 8,
       "t1": -1.03
+    },
+    {
+      "date": "2026-09-10",
+      "category": "ASIC/IP矽智財",
+      "direction": "gainer",
+      "members": 2,
+      "stage": "擴散"
+    },
+    {
+      "date": "2026-09-10",
+      "category": "AI伺服器散熱/機構件",
+      "direction": "gainer",
+      "members": 2,
+      "stage": "連3日+"
+    },
+    {
+      "date": "2026-09-10",
+      "category": "CCL/銅箔基板",
+      "direction": "gainer",
+      "members": 2,
+      "stage": "連2日"
+    },
+    {
+      "date": "2026-09-10",
+      "category": "被動元件",
+      "direction": "gainer",
+      "members": 5,
+      "stage": "高潮"
+    },
+    {
+      "date": "2026-09-10",
+      "category": "功率半導體/晶圓代工與測試",
+      "direction": "gainer",
+      "members": 5,
+      "stage": "高潮"
+    },
+    {
+      "date": "2026-09-10",
+      "category": "IC設計/MCU",
+      "direction": "gainer",
+      "members": 4,
+      "stage": "高潮"
+    },
+    {
+      "date": "2026-09-10",
+      "category": "PCB軟板",
+      "direction": "gainer",
+      "members": 2,
+      "stage": "回歸"
+    },
+    {
+      "date": "2026-09-10",
+      "category": "LED/顯示模組與電子紙",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "連3日+"
+    },
+    {
+      "date": "2026-09-10",
+      "category": "化合物半導體/RF射頻",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "啟動"
+    },
+    {
+      "date": "2026-09-10",
+      "category": "光通訊/CPO矽光子",
+      "direction": "gainer",
+      "members": 3,
+      "stage": "高潮"
+    },
+    {
+      "date": "2026-09-10",
+      "category": "生技/新藥與醫材",
+      "direction": "gainer",
+      "members": 10,
+      "stage": "連1日"
+    },
+    {
+      "date": "2026-09-10",
+      "category": "電子通路/零組件代理",
+      "direction": "gainer",
+      "members": 2,
+      "stage": "連2日"
+    },
+    {
+      "date": "2026-09-10",
+      "category": "造紙/包裝材料",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "啟動"
+    },
+    {
+      "date": "2026-09-10",
+      "category": "鋼鐵/金屬材料",
+      "direction": "gainer",
+      "members": 3,
+      "stage": "高潮"
+    },
+    {
+      "date": "2026-09-10",
+      "category": "食品餐飲/內需消費",
+      "direction": "gainer",
+      "members": 3,
+      "stage": "連2日"
+    },
+    {
+      "date": "2026-09-10",
+      "category": "紡織成衣/化纖",
+      "direction": "gainer",
+      "members": 3,
+      "stage": "擴散"
+    },
+    {
+      "date": "2026-09-10",
+      "category": "航運/貨櫃運價",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "啟動"
+    },
+    {
+      "date": "2026-09-10",
+      "category": "電池/儲能元件",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "退潮"
+    },
+    {
+      "date": "2026-09-10",
+      "category": "綠能/太陽能與電力工程",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "連3日+"
+    },
+    {
+      "date": "2026-09-10",
+      "category": "重電/電力設備",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "啟動"
+    },
+    {
+      "date": "2026-09-10",
+      "category": "原油期貨/大宗商品ETF",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "高潮"
+    },
+    {
+      "date": "2026-09-10",
+      "category": "連接器/精密機構件",
+      "direction": "gainer",
+      "members": 3,
+      "stage": "啟動"
+    },
+    {
+      "date": "2026-09-10",
+      "category": "工業自動化設備",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "連1日"
+    },
+    {
+      "date": "2026-09-10",
+      "category": "傳統PCB/EMS板廠",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "退潮"
+    },
+    {
+      "date": "2026-09-10",
+      "category": "其他強勢個股事件整理",
+      "direction": "gainer",
+      "members": 41,
+      "stage": "高潮"
+    },
+    {
+      "date": "2026-09-10",
+      "category": "半導體設備/測試介面",
+      "direction": "loser",
+      "members": 14
+    },
+    {
+      "date": "2026-09-10",
+      "category": "生技新藥/醫材",
+      "direction": "loser",
+      "members": 8
+    },
+    {
+      "date": "2026-09-10",
+      "category": "光學鏡頭/影像模組",
+      "direction": "loser",
+      "members": 6
+    },
+    {
+      "date": "2026-09-10",
+      "category": "紡織成衣/化纖",
+      "direction": "loser",
+      "members": 5
+    },
+    {
+      "date": "2026-09-10",
+      "category": "車用電子/精密金屬",
+      "direction": "loser",
+      "members": 4
+    },
+    {
+      "date": "2026-09-10",
+      "category": "包裝材料/紙品",
+      "direction": "loser",
+      "members": 3
+    },
+    {
+      "date": "2026-09-10",
+      "category": "工具機/CNC控制器",
+      "direction": "loser",
+      "members": 2
+    },
+    {
+      "date": "2026-09-10",
+      "category": "DRAM/NAND記憶體模組與控制IC",
+      "direction": "loser",
+      "members": 2
+    },
+    {
+      "date": "2026-09-10",
+      "category": "AI伺服器/系統組裝",
+      "direction": "loser",
+      "members": 2
+    },
+    {
+      "date": "2026-09-10",
+      "category": "LED/顯示模組與電子紙",
+      "direction": "loser",
+      "members": 2
+    },
+    {
+      "date": "2026-09-10",
+      "category": "建材陶瓷/衛浴與營建材料",
+      "direction": "loser",
+      "members": 2
+    },
+    {
+      "date": "2026-09-10",
+      "category": "特用化學/電子材料",
+      "direction": "loser",
+      "members": 2
+    },
+    {
+      "date": "2026-09-10",
+      "category": "連接器/線束",
+      "direction": "loser",
+      "members": 2
+    },
+    {
+      "date": "2026-09-10",
+      "category": "軟體/資訊服務",
+      "direction": "loser",
+      "members": 2
+    },
+    {
+      "date": "2026-09-10",
+      "category": "光通訊/CPO矽光子",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-09-10",
+      "category": "低軌衛星/微波通訊",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-09-10",
+      "category": "傳統PCB/EMS板廠",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-09-10",
+      "category": "電源供應器/UPS",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-09-10",
+      "category": "營建資產/不動產開發",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-09-10",
+      "category": "CCL/銅箔基板",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-09-10",
+      "category": "低軌衛星/HDI高階PCB",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-09-10",
+      "category": "驅動IC/顯示控制IC",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-09-10",
+      "category": "矽晶圓/半導體基板",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-09-10",
+      "category": "二極體/功率半導體",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-09-10",
+      "category": "半導體封測",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-09-10",
+      "category": "精密金屬/關鍵礦物",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-09-10",
+      "category": "螺絲扣件/精密金屬件",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-09-10",
+      "category": "食品餐飲/內需消費",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-09-10",
+      "category": "塑化/化工",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-09-10",
+      "category": "AI伺服器散熱/機構件",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-09-10",
+      "category": "綠能/太陽能與電力工程",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-09-10",
+      "category": "電競周邊/PC機殼與散熱",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-09-10",
+      "category": "一般網通/交換器",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-09-10",
+      "category": "其他弱勢",
+      "direction": "loser",
+      "members": 25
     }
   ],
   "aggregates": {
