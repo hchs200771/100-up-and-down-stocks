@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-14T15:25:23.911Z",
+  "updatedAt": "2026-09-14T15:28:13.562Z",
   "records": [
     {
       "date": "2026-06-29",
@@ -18002,6 +18002,144 @@
       "direction": "loser",
       "members": 25,
       "t1": -1.77
+    },
+    {
+      "date": "2026-09-14",
+      "category": "LED/顯示與光電",
+      "direction": "gainer",
+      "members": 7,
+      "stage": "連1日"
+    },
+    {
+      "date": "2026-09-14",
+      "category": "其他強勢個股事件整理",
+      "direction": "gainer",
+      "members": 56,
+      "stage": "高潮"
+    },
+    {
+      "date": "2026-09-14",
+      "category": "資訊服務/網通與工業電腦",
+      "direction": "gainer",
+      "members": 10,
+      "stage": "連1日"
+    },
+    {
+      "date": "2026-09-14",
+      "category": "生技醫療/健康照護",
+      "direction": "gainer",
+      "members": 3,
+      "stage": "連1日"
+    },
+    {
+      "date": "2026-09-14",
+      "category": "電子零組件/半導體個股整理",
+      "direction": "gainer",
+      "members": 13,
+      "stage": "啟動"
+    },
+    {
+      "date": "2026-09-14",
+      "category": "機械/車用與金屬加工",
+      "direction": "gainer",
+      "members": 5,
+      "stage": "啟動"
+    },
+    {
+      "date": "2026-09-14",
+      "category": "CCL/銅箔基板與高頻材料",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "高潮"
+    },
+    {
+      "date": "2026-09-14",
+      "category": "PCB鑽針/耗材",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "啟動"
+    },
+    {
+      "date": "2026-09-14",
+      "category": "化合物半導體/RF前端與砷化鎵",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "啟動"
+    },
+    {
+      "date": "2026-09-14",
+      "category": "營建/不動產與工程承攬",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "高潮"
+    },
+    {
+      "date": "2026-09-14",
+      "category": "半導體設備/檢測與自動化",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "啟動"
+    },
+    {
+      "date": "2026-09-14",
+      "category": "化工/塑化與特用材料",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "退潮"
+    },
+    {
+      "date": "2026-09-14",
+      "category": "LED/顯示與光電",
+      "direction": "loser",
+      "members": 10
+    },
+    {
+      "date": "2026-09-14",
+      "category": "DRAM/NAND記憶體模組與控制IC",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-09-14",
+      "category": "機械/車用與金屬加工",
+      "direction": "loser",
+      "members": 6
+    },
+    {
+      "date": "2026-09-14",
+      "category": "半導體設備/檢測與自動化",
+      "direction": "loser",
+      "members": 2
+    },
+    {
+      "date": "2026-09-14",
+      "category": "生技醫療/健康照護",
+      "direction": "loser",
+      "members": 5
+    },
+    {
+      "date": "2026-09-14",
+      "category": "電子零組件/半導體個股整理",
+      "direction": "loser",
+      "members": 6
+    },
+    {
+      "date": "2026-09-14",
+      "category": "光通訊/CPO矽光子",
+      "direction": "loser",
+      "members": 3
+    },
+    {
+      "date": "2026-09-14",
+      "category": "資訊服務/網通與工業電腦",
+      "direction": "loser",
+      "members": 4
+    },
+    {
+      "date": "2026-09-14",
+      "category": "其他弱勢",
+      "direction": "loser",
+      "members": 63
     }
   ],
   "aggregates": {
