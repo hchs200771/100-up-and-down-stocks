@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-16T13:37:57.932Z",
+  "updatedAt": "2026-09-17T12:28:31.829Z",
   "records": [
     {
       "date": "2026-06-29",
@@ -18537,6 +18537,195 @@
       "members": 3,
       "stage": "連3日+",
       "t1": 0.12
+    },
+    {
+      "date": "2026-09-16",
+      "category": "生技醫療/健康照護",
+      "direction": "loser",
+      "members": 13,
+      "t1": 0.64
+    },
+    {
+      "date": "2026-09-16",
+      "category": "紡織成衣/化纖",
+      "direction": "loser",
+      "members": 8,
+      "t1": 0.97
+    },
+    {
+      "date": "2026-09-16",
+      "category": "雲端AI/企業系統整合",
+      "direction": "loser",
+      "members": 5,
+      "t1": -0.78
+    },
+    {
+      "date": "2026-09-16",
+      "category": "線上遊戲/數位娛樂",
+      "direction": "loser",
+      "members": 5,
+      "t1": 1.25
+    },
+    {
+      "date": "2026-09-16",
+      "category": "半導體設備/測試介面",
+      "direction": "loser",
+      "members": 5,
+      "t1": 1.07
+    },
+    {
+      "date": "2026-09-16",
+      "category": "工業自動化/工具機設備",
+      "direction": "loser",
+      "members": 5,
+      "t1": 1.55
+    },
+    {
+      "date": "2026-09-16",
+      "category": "營建/不動產與工程承攬",
+      "direction": "loser",
+      "members": 5,
+      "t1": -0.17
+    },
+    {
+      "date": "2026-09-16",
+      "category": "生成式AI/資料分析與多媒體軟體",
+      "direction": "loser",
+      "members": 3,
+      "t1": -0.85
+    },
+    {
+      "date": "2026-09-16",
+      "category": "金融科技/交易系統與市場資訊",
+      "direction": "loser",
+      "members": 3,
+      "t1": 1.22
+    },
+    {
+      "date": "2026-09-16",
+      "category": "車用電動化/車電與AM零組件",
+      "direction": "loser",
+      "members": 3,
+      "t1": 1.65
+    },
+    {
+      "date": "2026-09-16",
+      "category": "綠能/太陽能與電力工程",
+      "direction": "loser",
+      "members": 3,
+      "t1": -0.56
+    },
+    {
+      "date": "2026-09-16",
+      "category": "離岸風電/風場工程",
+      "direction": "loser",
+      "members": 3,
+      "t1": 3.08
+    },
+    {
+      "date": "2026-09-16",
+      "category": "醫療影像/隱形眼鏡與視光醫材",
+      "direction": "loser",
+      "members": 3,
+      "t1": -0.83
+    },
+    {
+      "date": "2026-09-16",
+      "category": "塑化/特用化學與工業材料",
+      "direction": "loser",
+      "members": 3,
+      "t1": 6
+    },
+    {
+      "date": "2026-09-16",
+      "category": "零售電商/生活消費",
+      "direction": "loser",
+      "members": 3,
+      "t1": -0.07
+    },
+    {
+      "date": "2026-09-16",
+      "category": "AI伺服器/系統組裝",
+      "direction": "loser",
+      "members": 2,
+      "t1": 0.51
+    },
+    {
+      "date": "2026-09-16",
+      "category": "事務機/影像掃描與安防設備",
+      "direction": "loser",
+      "members": 2,
+      "t1": 0.24
+    },
+    {
+      "date": "2026-09-16",
+      "category": "面板/電子紙與顯示模組",
+      "direction": "loser",
+      "members": 2,
+      "t1": -1.58
+    },
+    {
+      "date": "2026-09-16",
+      "category": "半導體材料/通路與導線架",
+      "direction": "loser",
+      "members": 2,
+      "t1": -0.83
+    },
+    {
+      "date": "2026-09-16",
+      "category": "被動元件",
+      "direction": "loser",
+      "members": 2,
+      "t1": -0.41
+    },
+    {
+      "date": "2026-09-16",
+      "category": "電池/儲能元件",
+      "direction": "loser",
+      "members": 2,
+      "t1": -1.48
+    },
+    {
+      "date": "2026-09-16",
+      "category": "鋼鐵/金屬材料",
+      "direction": "loser",
+      "members": 2,
+      "t1": 1.74
+    },
+    {
+      "date": "2026-09-16",
+      "category": "低軌衛星/微波通訊",
+      "direction": "loser",
+      "members": 1,
+      "t1": 0.48
+    },
+    {
+      "date": "2026-09-16",
+      "category": "驅動IC/顯示控制IC",
+      "direction": "loser",
+      "members": 1,
+      "t1": 0.25
+    },
+    {
+      "date": "2026-09-16",
+      "category": "金融/租賃",
+      "direction": "loser",
+      "members": 1,
+      "t1": 1.96
+    },
+    {
+      "date": "2026-09-16",
+      "category": "一般網通/企業網路設備",
+      "direction": "loser",
+      "members": 1,
+      "t1": 0.28
+    },
+    {
+      "date": "2026-09-16",
+      "category": "其他弱勢",
+      "direction": "loser",
+      "members": 12,
+      "t1": 0.37
     }
   ],
   "aggregates": {
@@ -18549,10 +18738,10 @@
         "winRateT5": 39.69
       },
       "loser": {
-        "n": 934,
-        "avgT1": -0.34,
+        "n": 961,
+        "avgT1": -0.32,
         "avgT5": -0.23,
-        "winRateT1": 54.07,
+        "winRateT1": 53.59,
         "winRateT5": 55.53
       }
     },
