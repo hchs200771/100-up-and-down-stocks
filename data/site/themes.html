@@ -1,40 +1,68 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>題材雷達｜台股盤後報告</title><meta name="description" content="台股科技題材 RSS 提及占比與加速度觀察">
-<style>body{font-family:system-ui,-apple-system,sans-serif;color:#1e293b;background:#f8fafc;margin:0}.wrap{max-width:1060px;margin:auto;padding:24px 16px 56px}h1{font-size:26px;margin:20px 0 8px}h2{font-size:19px;margin:30px 0 12px}.muted{color:#64748b}.card{background:white;border:1px solid #e2e8f0;border-radius:12px;padding:18px;margin:16px 0;line-height:1.7}.nav{display:flex;flex-wrap:wrap;gap:8px}.nav a{font-size:13px;font-weight:700;text-decoration:none;color:#334155;background:#fff;border:1px solid #e2e8f0;border-radius:999px;padding:7px 12px}.nav a.here{background:#dbeafe;color:#1d4ed8;border-color:#93c5fd}table{border-collapse:collapse;width:100%;background:white}th,td{text-align:left;padding:10px;border-bottom:1px solid #e2e8f0;vertical-align:top}th{background:#f1f5f9;font-size:13px}td{font-size:14px}small{display:block;color:#94a3b8;margin-top:3px}.scroll{overflow-x:auto}a{color:#2563eb}</style></head><body><div class="wrap">
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>題材雷達｜台股盤後報告</title><meta name="robots" content="noindex"><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2288%22%3E%F0%9F%93%A1%3C%2Ftext%3E%3C%2Fsvg%3E">
+<style>
+:root{--bg:#f7f8fa;--card:#fff;--fg:#1a202c;--muted:#64748b;--line:#e2e8f0;--accent:#2563eb;--up:#c2410c;--chip:#eef2f7}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1420;--card:#171e2e;--fg:#e5eaf3;--muted:#8b98ad;--line:#28334a;--accent:#7aa2ff;--up:#ff8a5c;--chip:#222c42}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.6 -apple-system,"PingFang TC","Noto Sans TC",sans-serif;padding:16px}.wrap{max-width:1200px;margin:0 auto}h1{font-size:20px;margin:4px 0 2px}h2{font-size:17px;margin:22px 0 8px}.sub{color:var(--muted);font-size:13px;margin:2px 0}.note{color:var(--up);font-size:13px}a{color:var(--accent);text-decoration:none}.nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}.nav a{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:7px 12px;font-size:13px;font-weight:700;background:var(--card);color:var(--fg)}.nav a:hover{border-color:var(--accent);color:var(--accent)}.nav a.here{background:var(--accent);border-color:var(--accent);color:#fff}
+.cards{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}.card{flex:1 1 170px;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px}.card .cname{font-size:14px;font-weight:700}.card .cdesc{color:var(--muted);font-size:11.5px;line-height:1.5;margin-top:2px;flex:1}.card b{font-size:17px;line-height:1.2;margin-top:6px}.card.total{border-color:var(--accent)}.card.total b{color:var(--accent)}.tablebox{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:10px}table{border-collapse:collapse;width:100%;min-width:800px;font-size:13px}th,td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}th{background:var(--card);color:var(--muted);font-weight:600}tr:hover td{background:color-mix(in srgb,var(--accent) 6%,transparent)}.chip{display:inline-block;background:var(--chip);border-radius:99px;padding:0 8px;font-size:11px;color:var(--muted)}.chip.hot{background:var(--accent);color:#fff}small{display:block;color:var(--muted);margin-top:2px}
+details.howto{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:12px 0;font-size:13px;color:var(--muted)}details.howto summary{cursor:pointer;list-style:none;padding:10px 16px;font-size:14px;font-weight:600;color:var(--fg);user-select:none}details.howto summary::-webkit-details-marker{display:none}details.howto summary::before{content:"▸";display:inline-block;margin-right:8px;color:var(--accent);transition:transform .15s}details.howto[open] summary::before{transform:rotate(90deg)}details.howto .body{padding:0 16px 12px;border-top:1px solid var(--line)}details.howto h4{margin:12px 0 4px;font-size:13px;color:var(--fg)}details.howto p{margin:4px 0}details.howto ul,details.howto ol{margin:4px 0;padding-left:20px}details.howto li{margin:3px 0}details.howto b{color:var(--fg)}
+</style></head><body><div class="wrap">
 <nav class="nav"><a href="index.html">總覽</a><a href="index.html#tab=%F0%9F%8C%90%20%E5%9C%8B%E9%9A%9B%E6%83%85%E5%8B%A2">國際情勢</a><a href="index.html#tab=%F0%9F%93%8A%20%E5%B8%82%E5%A0%B4%E7%B8%BD%E8%A6%BD">市場總覽</a><a href="index.html#tab=%E2%9A%96%EF%B8%8F%20%E6%8C%87%E6%95%B8%E8%B2%A2%E7%8D%BB">指數貢獻</a><a href="index.html#tab=%F0%9F%94%A5%20%E4%B8%8A%E6%BC%B2%E6%97%8F%E7%BE%A4">上漲族群</a><a href="index.html#tab=%F0%9F%94%84%20%E6%97%8F%E7%BE%A4%E8%BC%AA%E5%8B%95">族群輪動</a><a href="index.html#tab=%F0%9F%8F%A6%20%E5%A4%A7%E6%88%B6%E7%B1%8C%E7%A2%BC">大戶籌碼</a><a href="index.html#tab=%F0%9F%8E%AF%20%E6%93%8D%E4%BD%9C%E5%BB%BA%E8%AD%B0">操作建議</a><a href="index.html#tab=%F0%9F%8F%86%20%E7%B5%82%E6%A5%B5%E9%81%B8%E8%82%A1%E6%B1%A0">選股池</a><a href="index.html#tab=%F0%9F%A7%8A%20%E4%B8%8B%E8%B7%8C%E6%97%8F%E7%BE%A4">下跌族群</a><a href="cb-pledge.html">設質CB ↗</a><a href="revenue.html">月營收 ↗</a><a class="here" href="themes.html">題材雷達</a></nav>
-<h1>題材雷達</h1><p class="muted">市場基準日 2026-09-24；RSS 抓取時間 2026-09-25 15:38（台北）。已保存 126 篇文章。</p>
-<div class="card"><strong>加速度判讀：目前沒有題材達門檻</strong><div>最近 4 個完整週的提及占比，對比之前 12 週；至少需 10 個基準週與 4 個近期週有文章、近期至少 3 篇、占比達 2 倍且 z ≥ 2。首次啟用需要累積約 16 週。下方「本週提及」屬即時觀察，尚未納入加速度計算。</div></div>
-<h2>題材概況</h2><div class="scroll"><table><thead><tr><th>題材</th><th>加速度</th><th>近 4 個完整週提及</th><th>本週提及（未計分）</th><th>關聯個股</th></tr></thead><tbody><tr>
+<h1>📡 題材雷達</h1><p class="sub">市場基準日 2026-09-24｜產生於 2026-09-25 16:21（台北時間）｜已保存 129 篇 RSS 文章</p>
+<div class="cards">
+<div class="card total"><span class="cname">資料週數</span><span class="cdesc">基準期至少 10／12 週有文章，近期 4／4 週都要有文章</span><b>0／12 ＋ 1／4</b></div>
+<div class="card"><span class="cname">本週新文章</span><span class="cdesc">這週尚未結束，不納入加速度計算</span><b>128</b></div>
+<div class="card"><span class="cname">加速題材</span><span class="cdesc">資料足夠、來源正常且提及占比與 z 值都達門檻</span><b>0</b></div>
+</div>
+
+<details class="howto"><summary>📖 本頁怎麼看、資料與門檻怎麼算（點開）</summary><div class="body">
+<h4>這一頁在找什麼</h4><p>從公開 RSS 文章觀察科技題材的<b>提及占比是否突然上升</b>。題材與關聯個股寫在固定字典中；關鍵字命中只代表文章提到題材，<b>不等於利多、公司訂單或題材營收已確認</b>。</p>
+<h4>資料怎麼抓</h4><p>每日報告抓完市場資料後，與分類、研究等工作並行抓取 TechNews、iThome、ServeTheHome、Tom's Hardware 的 RSS。按文章網址去重並保存標題、摘要、來源與發表時間。某來源抓取失敗或回傳空白時，當日會顯示警告並停止發出加速訊號，避免提及占比的分母失真。</p>
+<h4>「資料累積中」到什麼程度才結束</h4><p>只使用<b>已結束的完整週</b>。計算視窗共 16 週：前 12 週是基準期，最近 4 週是比較期。前 12 週中至少 <b>10 週有文章</b>，最近 4 週必須<b>每週都有文章</b>，才開始判斷是否加速。本週正在抓的文章只列在表格的「本週提及」，到下週才會進入完整週計算。目前進度是<b>0／12 個基準週、1／4 個近期週</b>；因此表格顯示「資料累積中」，不代表題材已被判定為弱勢。</p>
+<h4>資料足夠後，怎樣才算「加速」</h4><ol><li>最近 4 個完整週至少 <b>3 篇</b>命中該題材。</li><li>最近 4 週的「命中文章／所有文章」占比，至少是前 12 週占比的 <b>2 倍</b>；計算倍率時兩邊各加 0.2 個百分點，避免基準為零時無限放大。</li><li>近期占比相對基準 12 週的週占比分布，<b>z 值至少 2</b>；標準差下限設為 0.2 個百分點。</li><li>當次 RSS 來源沒有失敗或空白。</li></ol><p>四項都成立才標成「加速」。資料已足夠但條件未全過，會顯示「未達加速門檻」。</p>
+<h4>怎麼判斷它有沒有幫助</h4><p>現階段題材訊號<b>只作觀察，不參與選股分數或入選門檻</b>。每日選股快照會記下同日是否有題材加速；累積足夠交易日後，用同日有訊號與無訊號的選股，對照下一交易日進場後 5／20 日的<b>扣成本勝率、平均淨報酬與相對全市場超額報酬</b>。至少累積 20 個可觀測進場日再討論權重，並檢查樣本是否跨越不同市場狀態；目前沒有證據顯示它能提高勝率。</p>
+</div></details>
+<h2>題材概況</h2><div class="tablebox"><table><thead><tr><th>題材</th><th>狀態</th><th>近 4 個完整週提及</th><th>近期占比</th><th>占比倍率</th><th>本週提及（未計分）</th><th>關聯個股</th></tr></thead><tbody><tr>
     <td><strong>矽光子與資料中心光通訊</strong></td>
-    <td>資料累積中／未達門檻</td>
+    <td><span class="chip ">資料累積中</span></td>
     <td>0</td>
+    <td>—</td>
+    <td>—</td>
     <td>0</td>
     <td>3081、3450</td>
   </tr><tr>
     <td><strong>共同封裝光學 CPO</strong></td>
-    <td>資料累積中／未達門檻</td>
+    <td><span class="chip ">資料累積中</span></td>
     <td>0</td>
+    <td>—</td>
+    <td>—</td>
     <td>0</td>
     <td>3363、3450、3163</td>
   </tr><tr>
     <td><strong>面板級扇出封裝</strong></td>
-    <td>資料累積中／未達門檻</td>
+    <td><span class="chip ">資料累積中</span></td>
     <td>0</td>
+    <td>—</td>
+    <td>—</td>
     <td>0</td>
     <td>3481</td>
   </tr><tr>
     <td><strong>資料中心液冷</strong></td>
-    <td>資料累積中／未達門檻</td>
+    <td><span class="chip ">資料累積中</span></td>
     <td>0</td>
+    <td>—</td>
+    <td>—</td>
     <td>0</td>
     <td>3017、3324</td>
   </tr><tr>
     <td><strong>備援電池 BBU</strong></td>
-    <td>資料累積中／未達門檻</td>
+    <td><span class="chip ">資料累積中</span></td>
     <td>0</td>
+    <td>—</td>
+    <td>—</td>
     <td>0</td>
     <td>2308</td>
   </tr></tbody></table></div>
-<h2>本週命中的文章</h2><div class="scroll"><table><thead><tr><th>日期</th><th>文章與來源</th><th>題材</th></tr></thead><tbody><tr><td colspan="3">目前沒有關鍵字命中的文章。</td></tr></tbody></table></div>
-<p class="muted">關鍵字命中與個股關聯只供研究觀察，不代表報導看多、公司已有對應題材營收，亦不參與現有選股分數。</p>
+<h2>本週命中的文章</h2><div class="tablebox"><table><thead><tr><th>日期</th><th>文章與來源</th><th>題材</th></tr></thead><tbody><tr><td colspan="3">本週尚無追蹤題材的關鍵字命中。</td></tr></tbody></table></div>
+<p class="sub" style="margin-top:10px">資料來源：上述公開 RSS；題材與關聯個股是研究字典。未完成週、來源缺漏與樣本不足都不會產生加速訊號。本頁不構成投資建議。</p>
 </div></body></html>
