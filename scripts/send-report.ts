@@ -1785,6 +1785,16 @@ function renderPicks(picks: PicksReport | null, forEmail: boolean): string {
     : "";
 
   const basis = picks.basis;
+  // 型態名稱由 build-stock-picks.ts 的 toPick() 決定；這裡說明同一個價格判斷
+  // 在長線榜與波段榜各代表什麼，避免把「等待確認」誤讀成營收尚未公布。
+  const typeGuide = `<div style="background:#fff; border:1px solid #cbd5e1; border-radius:8px; padding:12px 14px; margin-bottom:16px; font-size:12px; color:#475569; line-height:1.7;">
+    <h4 style="margin:0 0 6px; color:#334155; font-size:14px;">📖 選股型態怎麼看</h4>
+    <div><strong>營運先行·等待確認</strong>（長線）：營收已通過篩選，但價格符合以下任一情況：未站上 MA20、近 20 日漲幅低於 5%、距 20 日高點超過 5%。「等待」指價格，並非營收尚未公布。</div>
+    <div><strong>營運成長·趨勢確認</strong>（長線）：營收已通過篩選，且未觸發上述價格等待條件；仍須看營運能否延續，並依進場與風控計畫執行。</div>
+    <div><strong>回檔觀察</strong>（波段）：距 20 日高點超過 5%；若有營運訊號，也檢查是否站上 MA20 與近 20 日漲幅。這表示短線仍待價格確認，不表示已經落底。</div>
+    <div><strong>動能順勢</strong>（波段）：未觸發價格等待條件；依個股計畫等回測 MA10 不破或整理後突破，再考慮進場。</div>
+    <div style="border-top:1px solid #e2e8f0; margin-top:7px; padding-top:7px;"><strong>RRG 怎麼用：</strong>個股依所屬族群對應四象限；領先／改善可提供產業趨勢分，長線遇弱化會扣分。短線與當日族群訊號取較高分，不重複累加；RRG 是族群佐證，並非單獨的買進條件。</div>
+  </div>`;
   return `<div style="background-color:#f8fafc; border:1px solid #e2e8f0; padding:15px; border-radius:8px; margin-bottom:20px;">
     <h3 style="margin-top:0; color:#334155;">🏆 終極選股池（${picks.date}）</h3>
     <p style="font-size:13px; color:#4b5563; line-height:1.7; margin:0 0 10px;">
@@ -1792,6 +1802,7 @@ function renderPicks(picks: PicksReport | null, forEmail: boolean): string {
       進榜門檻：至少兩個獨立資料源同時給正訊號（共振），單一訊號再強都只算噪音。
       分數是排序用的相對值，不同天之間不可直接比大小。
     </p>
+    ${typeGuide}
     ${regime}
     ${listSection(
       "🐢 長線波段 Top 10（3 個月～1 年）",
