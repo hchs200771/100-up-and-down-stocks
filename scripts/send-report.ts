@@ -2215,6 +2215,25 @@ async function main() {
   }
   const analysis: Analysis = JSON.parse(readFileSync(resolved, "utf-8"));
 
+  // finalizer 只負責敘事，可能不帶 RRG 欄位；象限與警示是獨立腳本產生的確定資料。
+  // 在寄信前補回，否則 renderRrg() 會連同網頁版的互動圖佔位符一起略過。
+  if (!analysis.rrg) {
+    const rrgPath = resolve(process.cwd(), "data/tw-rrg-alerts.json");
+    if (existsSync(rrgPath)) {
+      try {
+        const rrg: RrgBlock = JSON.parse(readFileSync(rrgPath, "utf-8"));
+        if (rrg.asOf === analysis.date && rrg.quadrants && Array.isArray(rrg.alerts) && Array.isArray(rrg.regime)) {
+          analysis.rrg = rrg;
+          console.log(`Loaded RRG for ${rrg.asOf}`);
+        } else {
+          console.warn(`[warn] RRG 日期 ${rrg.asOf ?? "未知"} 與分析日 ${analysis.date} 不符或資料不完整，略過族群輪動`);
+        }
+      } catch {
+        console.warn("[warn] tw-rrg-alerts.json 無法解析，略過族群輪動");
+      }
+    }
+  }
+
   const marketPath = resolve(process.cwd(), "data/market-latest.json");
   let stockMap: Record<string, StockMeta> = analysis.stockMap ?? {};
   let codeByName = new Map<string, string>();
