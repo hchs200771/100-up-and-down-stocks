@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>贏家分點追蹤</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2288%22%3E%F0%9F%95%B5%EF%B8%8F%3C%2Ftext%3E%3C%2Fsvg%3E">
+<style>
+:root{--bg:#f7f8fa;--card:#fff;--fg:#1a202c;--muted:#64748b;--line:#e2e8f0;--accent:#2563eb;--up:#c2410c;--down:#15803d;--chip:#eef2f7;--hit:#fef3c7}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1420;--card:#171e2e;--fg:#e5eaf3;--muted:#8b98ad;--line:#28334a;--accent:#7aa2ff;--up:#ff8a5c;--down:#4ade80;--chip:#222c42;--hit:#3a2f12}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.6 -apple-system,"PingFang TC","Noto Sans TC",sans-serif;padding:16px}
+.wrap{max-width:1200px;margin:0 auto}
+h1{font-size:20px;margin:4px 0 2px}
+.sub{color:var(--muted);font-size:13px;margin:2px 0}
+.tablebox{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:10px;margin-top:12px}
+table{border-collapse:collapse;width:100%;min-width:980px;font-size:13px}
+th,td{padding:6px 10px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;vertical-align:top}
+th{color:var(--muted);font-weight:600}
+tr.hit td{background:var(--hit)}
+td.note{white-space:normal;min-width:180px;color:var(--muted);font-size:12px}
+.recent .day{display:inline-block;margin-right:8px;font-size:12px;color:var(--muted)}
+a{color:var(--accent);text-decoration:none}
+.muted{color:var(--muted)}
+.chip{display:inline-block;background:var(--chip);border-radius:99px;padding:0 8px;font-size:11px;color:var(--up);font-weight:700}
+.pos{color:var(--up)}.neg{color:var(--down)}
+.nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.nav a{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:7px 12px;font-size:13px;font-weight:700;background:var(--card);color:var(--fg)}
+.nav a:hover{border-color:var(--accent);color:var(--accent)}
+.nav a.here{background:var(--accent);border-color:var(--accent);color:#fff}
+details.howto{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:12px 0;font-size:13px;color:var(--muted)}
+details.howto summary{cursor:pointer;padding:10px 16px;font-size:14px;font-weight:600;color:var(--fg)}
+details.howto .body{padding:0 16px 12px;border-top:1px solid var(--line)}
+details.howto li{margin:3px 0}
+</style>
+</head>
+<body><div class="wrap">
+<nav class="nav"><a href="index.html">總覽</a><a href="index.html#tab=%F0%9F%8C%90%20%E5%9C%8B%E9%9A%9B%E6%83%85%E5%8B%A2">國際情勢</a><a href="index.html#tab=%F0%9F%93%8A%20%E5%B8%82%E5%A0%B4%E7%B8%BD%E8%A6%BD">市場總覽</a><a href="index.html#tab=%E2%9A%96%EF%B8%8F%20%E6%8C%87%E6%95%B8%E8%B2%A2%E7%8D%BB">指數貢獻</a><a href="index.html#tab=%F0%9F%94%A5%20%E4%B8%8A%E6%BC%B2%E6%97%8F%E7%BE%A4">上漲族群</a><a href="index.html#tab=%F0%9F%94%84%20%E6%97%8F%E7%BE%A4%E8%BC%AA%E5%8B%95">族群輪動</a><a href="index.html#tab=%F0%9F%8F%A6%20%E5%A4%A7%E6%88%B6%E7%B1%8C%E7%A2%BC">大戶籌碼</a><a href="index.html#tab=%F0%9F%8E%AF%20%E6%93%8D%E4%BD%9C%E5%BB%BA%E8%AD%B0">操作建議</a><a href="index.html#tab=%F0%9F%8F%86%20%E7%B5%82%E6%A5%B5%E9%81%B8%E8%82%A1%E6%B1%A0">選股池</a><a href="index.html#tab=%F0%9F%A7%8A%20%E4%B8%8B%E8%B7%8C%E6%97%8F%E7%BE%A4">下跌族群</a><a href="cb-pledge.html">設質CB ↗</a><a href="revenue.html">月營收 ↗</a><a href="themes.html">題材雷達 ↗</a><a class="here" href="broker-watch.html">贏家分點</a></nav>
+<h1>🕵️ 贏家分點追蹤</h1>
+<p class="sub">交易日 2026-09-29｜追蹤 1 組｜今日無觸發｜單位：張，正為買超、負為賣超｜名單沿用本機快取</p>
+<details class="howto">
+<summary>📖 本頁說明（點開）</summary>
+<div class="body"><ul>
+<li>名單維護在 Notion「投資 / 台股 / 贏家分點 / 分點追蹤名單」，每列一組「股票 × 分點」，取消「啟用」即停止追蹤。</li>
+<li>觸發條件：當日買超（或賣超，依觸發方向）張數達到門檻。「最近觸發」取近期歷史中最後一次達標的日子。</li>
+<li>資料來源：富邦 e01 券商分點進出（約 45 個交易日滾動），每天累積存檔，時間越久歷史越長。</li>
+<li>分點不代表特定人，僅作籌碼參考；點分點名稱可到 e01 看完整走勢。</li>
+</ul></div>
+</details>
+<div class="tablebox"><table>
+<tr><th>股票</th><th>分點</th><th>等級</th><th>今日</th><th>門檻</th><th>最近觸發</th><th>近 5 日</th><th>備註</th></tr>
+<tr class="">
+<td>信昌電 <span class="muted">6173</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=6173&BHID=6160&b=6160" target="_blank" rel="noopener">中國信託</a></td>
+<td><span class="muted">—</span></td>
+<td><span class="pos">+16</span></td>
+<td class="muted">400（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-09-21">09-21 <span class="neg">-32</span></span><span class="day" title="2026-09-22">09-22 <span class="neg">-10</span></span><span class="day" title="2026-09-23">09-23 <span class="pos">+19</span></span><span class="day" title="2026-09-24">09-24 <span class="neg">-5</span></span><span class="day" title="2026-09-29">09-29 <span class="pos">+16</span></span></td>
+<td class="note">總公司而非分點；單日買超或賣超超過 400 張即留意</td>
+</tr>
+</table></div>
+</div></body></html>
