@@ -621,26 +621,30 @@ function renderHtml(out: any): string {
 <meta name="robots" content="noindex">
 <link rel="icon" href="data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="88">🔐</text></svg>')}">
 <style>
-:root{--bg:#f7f8fa;--card:#fff;--fg:#1a202c;--muted:#64748b;--line:#e2e8f0;--accent:#2563eb;--up:#c2410c;--down:#15803d;--chip:#eef2f7}
-@media (prefers-color-scheme:dark){:root{--bg:#0f1420;--card:#171e2e;--fg:#e5eaf3;--muted:#8b98ad;--line:#28334a;--accent:#7aa2ff;--up:#ff8a5c;--down:#4ade80;--chip:#222c42}}
+/* 漲跌色照台股慣例：紅＝正／站上、綠＝負／跌破。--warn 是提醒類（基線月說明、「轉換期未開始」等旗標），跟漲跌分開 */
+:root{--bg:#f7f8fa;--card:#fff;--fg:#1a202c;--muted:#64748b;--line:#e2e8f0;--accent:#2563eb;--up:#dc2626;--down:#15803d;--warn:#c2410c;--chip:#eef2f7}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1420;--card:#171e2e;--fg:#e5eaf3;--muted:#8b98ad;--line:#28334a;--accent:#7aa2ff;--up:#f87171;--down:#4ade80;--warn:#ff8a5c;--chip:#222c42}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.6 -apple-system,"PingFang TC","Noto Sans TC",sans-serif;padding:16px}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.6 -apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC","Microsoft JhengHei","Segoe UI",sans-serif;padding:16px;-webkit-text-size-adjust:100%}
 .wrap{max-width:1200px;margin:0 auto}
-h1{font-size:20px;margin:4px 0 2px}
+h1{font-size:22px;font-weight:800;margin:6px 0 4px;line-height:1.35}
 .sub,.note{color:var(--muted);font-size:13px;margin:2px 0}
-.note{color:var(--up)}
+.note{color:var(--warn)}
 .filters{display:flex;flex-wrap:wrap;gap:6px 14px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:12px 0;font-size:13px}
 .filters label{display:flex;align-items:center;gap:5px;cursor:pointer;white-space:nowrap}
 .tablebox{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:10px}
-table{border-collapse:collapse;width:100%;min-width:980px;font-size:13px}
+table{border-collapse:collapse;width:100%;min-width:980px;font-size:13px;font-variant-numeric:tabular-nums}
 th,td{padding:6px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
-th:nth-child(-n+2),td:nth-child(-n+2){text-align:left}
-th{position:sticky;top:0;background:var(--card);cursor:pointer;user-select:none;color:var(--muted);font-weight:600}
+th:nth-child(-n+3),td:nth-child(-n+3){text-align:left}
+th{position:sticky;top:0;background:var(--card);cursor:pointer;user-select:none;color:var(--muted);font-weight:600;font-size:12px}
+th:hover{color:var(--fg)}
+/* 旗標欄放得下兩三個 chip 就換行，不要把整張表撐到 1300px 寬 */
+th:last-child,td:last-child{white-space:normal;text-align:left;min-width:190px}
 th .arr{font-size:10px}
 tr:hover td{background:color-mix(in srgb,var(--accent) 6%,transparent)}
 a{color:var(--accent);text-decoration:none}
 .chip{display:inline-block;background:var(--chip);border-radius:99px;padding:0 8px;margin:1px 2px;font-size:11px;color:var(--muted)}
-.chip.hot{color:var(--up)}
+.chip.hot{color:var(--warn)}
 .chip.go{color:var(--down)}
 .pos{color:var(--up)}.neg{color:var(--down)}
 .count{margin:8px 2px;color:var(--muted);font-size:13px}

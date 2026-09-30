@@ -92,6 +92,7 @@
     border-radius: 8px;
   }
   .rrg-root .wrap { max-width: 980px; margin: 0 auto; padding: 24px 20px 48px; }
+  @media (max-width: 640px) { .rrg-root .wrap { padding: 16px 12px 28px; } }
 
   .rrg-root header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px; margin-bottom: 4px; }
   .rrg-root h1 { font-size: 20px; font-weight: 700; margin: 0; letter-spacing: 0.02em; color: var(--ink); }
@@ -108,7 +109,11 @@
   .rrg-root .seg button[aria-pressed="true"] { background: var(--ink); color: var(--page); font-weight: 600; }
   .rrg-root .seg button:focus-visible { outline: 2px solid var(--lead); outline-offset: -2px; }
   .rrg-root .ctl-label { font-size: 12px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
-  .rrg-root .ctl-group { display: flex; align-items: center; gap: 8px; }
+  .rrg-root .ctl-group { display: flex; align-items: center; gap: 8px; min-width: 0; max-width: 100%; }
+  .rrg-root .ctl-label { white-space: nowrap; }
+  /* 手機：「市場」切換有 4 顆按鈕，375px 放不下會把整頁撐出水平捲軸——改成在自己的框內橫向捲動 */
+  .rrg-root .ctl-group .seg { max-width: 100%; overflow-x: auto; scrollbar-width: none; }
+  .rrg-root .ctl-group .seg::-webkit-scrollbar { display: none; }
 
   /* 桌機：族群清單放在圖的左側（水平排一長列會把圖擠到很下面、也很難掃）。
      窄螢幕才退回橫向排在圖的上方。 */
