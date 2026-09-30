@@ -82,12 +82,12 @@ CODEX_REPORT_START_STAGE=research npm run report:codex
 
 | 變數 | 預設值 | 用途 |
 | --- | --- | --- |
-| `CODEX_CONTROLLER_MODEL` | `gpt-5.4` | 切族群任務 |
+| `CODEX_CONTROLLER_MODEL` | `gpt-6-astra` | 切族群任務 |
 | `CODEX_GROUP_WORKER_MODEL` | `gpt-5.4-mini` | 族群新聞研究 |
 | `CODEX_FINALIZER_MODEL` | `gpt-5.5` | 彙總與盤後總結 |
 | `CODEX_GROUP_MAX_CONCURRENCY` | `4` | 同時跑幾個 worker |
 | `CODEX_REFINE_GROUP_TASKS` | `1` | 設 `0` 停用固定規則修正 |
-| `CLAUDE_CONTROLLER_MODEL` | `sonnet` | Claude 版的切族群任務 |
+| `CLAUDE_CONTROLLER_MODEL` | `opus`（最新 Opus） | Claude 版的切族群任務 |
 | `CLAUDE_GROUP_WORKER_MODEL` | `haiku` | Claude 版的族群研究 |
 | `CLAUDE_REPORT_MAX_CONCURRENCY` | `10` | Claude 版同時跑幾個 worker |
 
