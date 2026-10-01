@@ -21,6 +21,7 @@
  */
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from "node:fs";
 import { resolve } from "node:path";
+import { significantInstitutionalBuys, STRENGTH_DEFAULTS } from "./institutional-strength.ts";
 
 const ROOT = process.cwd();
 const j = <T = any>(p: string): T | null => {
@@ -182,6 +183,14 @@ for (const e of market.gainers ?? []) universe.add(e.code);
 const closeMap: Record<string, number> = market.closeMap ?? {};
 const stockMap: Record<string, any> = market.stockMap ?? {};
 
+// 顯著買超也能成為候選入口，涵蓋尚未進漲幅前 100 的股票。
+for (const [code, meta] of Object.entries(stockMap)) {
+  if (significantInstitutionalBuys(meta.chips?.strength).length) {
+    universe.add(code);
+    noteName(code, meta.name);
+  }
+}
+
 const feats: Feat[] = [];
 for (const code of universe) {
   const close = closeMap[code];
@@ -309,15 +318,18 @@ function scoreLong(f: Feat): Scored {
   const c = f.chips;
   if (c) {
     const fStreak = c.foreignBuyStreak ?? 0;
+    const buys = significantInstitutionalBuys(c.strength);
     if (fStreak >= 3) {
       s += fStreak >= 5 ? 8 : 5;
-      src++;
       sig.push({ label: "外資連買", detail: `外資連 ${fStreak} 日買超`, tone: "pos" });
     }
-    if (c.foreignNet > 0 && c.trustNet > 0) {
-      s += 4;
-      sig.push({ label: "外投同買", detail: `外資 +${c.foreignNet} 張、投信 +${c.trustNet} 張`, tone: "pos" });
+    if (buys.length) {
+      s += 8;
+      for (const buy of buys) sig.push({ ...buy, tone: "pos" });
     }
+    // 連買與力度來自同一份法人資料，只計一個共振來源。
+    if (fStreak >= 3 || buys.length) src++;
+    if (c.strength?.foreign.significantBuy && c.strength?.trust.significantBuy) s += 4;
   }
   if (f.aboveMa20) s += 4;
   if (f.r20 !== null && f.r20 > -0.05 && f.r20 < 0.25) s += 6; // 沒噴出，長線還有位置
@@ -345,19 +357,16 @@ function scoreShort(f: Feat): Scored {
   }
   const c = f.chips;
   if (c) {
-    let instPts = 0;
-    if (c.totalNet > 0) instPts += 6;
-    if (c.foreignNet > 0 && c.trustNet > 0) instPts += 6;
+    const buys = significantInstitutionalBuys(c.strength);
+    let instPts = buys.length ? (c.strength.foreign.significantBuy || c.strength.trust.significantBuy ? 12 : 8) : 0;
+    if (c.strength?.foreign.significantBuy && c.strength?.trust.significantBuy) instPts += 4;
     const fStreak = c.foreignBuyStreak ?? 0;
-    if (fStreak >= 3) instPts += fStreak >= 5 ? 10 : 6;
-    if (instPts >= 10) {
-      src++;
-      sig.push({
-        label: "法人進駐",
-        detail: `法人合計 ${c.totalNet > 0 ? "+" : ""}${c.totalNet} 張${fStreak >= 3 ? `、外資連 ${fStreak} 買` : ""}${c.foreignNet > 0 && c.trustNet > 0 ? "、外投同向" : ""}`,
-        tone: "pos",
-      });
+    if (fStreak >= 3) {
+      instPts += fStreak >= 5 ? 10 : 6;
+      sig.push({ label: "外資連買", detail: `外資連 ${fStreak} 日買超`, tone: "pos" });
     }
+    for (const buy of buys) sig.push({ ...buy, tone: "pos" });
+    if (buys.length || fStreak >= 3) src++;
     s += instPts;
   }
   if (f.group) {
@@ -513,6 +522,7 @@ const out = {
     cbWeek: cb?.isoWeek ?? null,
     rrgAsOf: rrgAlerts?.asOf ?? null,
     priceHistoryDays: phFiles.length,
+    institutionalStrength: { normalization: "daily-market-net-zscore", ...STRENGTH_DEFAULTS },
   },
   regimeNotes,
   long: longPicks.map((x, i) => toPick(x, i + 1, "long")),

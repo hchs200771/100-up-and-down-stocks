@@ -1,5 +1,6 @@
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { significantInstitutionalBuys, type InstitutionalStrength } from "./institutional-strength.ts";
 import { parseStockCode } from "./score-report.ts";
 
 /**
@@ -14,6 +15,7 @@ import { parseStockCode } from "./score-report.ts";
  */
 
 interface StockChips {
+  strength?: InstitutionalStrength;
   foreignNet?: number;
   trustNet?: number;
   totalNet?: number;
@@ -43,6 +45,7 @@ interface GroupChips {
   trustNet: number;
   trustBacked: string[];
   foreignBacked: string[];
+  significantBuys: Array<{ stock: string; signals: string[] }>;
   avgDayTradeRatio: number | null;
 }
 
@@ -61,6 +64,7 @@ export function aggregateGroupChips(
     let covered = 0;
     const trustBacked: string[] = [];
     const foreignBacked: string[] = [];
+    const significantBuys: GroupChips["significantBuys"] = [];
     const dayTradeRatios: number[] = [];
 
     for (const entry of g.stocks) {
@@ -70,6 +74,8 @@ export function aggregateGroupChips(
       covered++;
       const c = stock.chips;
       if (c) {
+        const buys = significantInstitutionalBuys(c.strength);
+        if (buys.length) significantBuys.push({ stock: entry, signals: buys.map((b) => b.detail) });
         foreignNet += c.foreignNet ?? 0;
         trustNet += c.trustNet ?? 0;
         if ((c.trustBuyStreak ?? 0) >= BACKED_STREAK) trustBacked.push(entry);
@@ -92,6 +98,7 @@ export function aggregateGroupChips(
       trustNet,
       trustBacked,
       foreignBacked,
+      significantBuys,
       avgDayTradeRatio,
     };
   });
@@ -108,6 +115,7 @@ function printSide(label: string, rows: GroupChips[]) {
       `${r.id ? `${r.id} ` : ""}${r.category} ${r.members}檔`,
       `外資${fmtNet(r.foreignNet)} 投信${fmtNet(r.trustNet)}`,
     ];
+    if (r.significantBuys.length) parts.push(`顯著買超: ${r.significantBuys.map((b) => `${b.stock}（${b.signals.join("；")}）`).join(", ")}`);
     if (r.trustBacked.length > 0) parts.push(`投信連買≥${BACKED_STREAK}日: ${r.trustBacked.join(", ")}`);
     if (r.foreignBacked.length > 0) parts.push(`外資連買≥${BACKED_STREAK}日: ${r.foreignBacked.length}檔`);
     if (r.avgDayTradeRatio !== null) {

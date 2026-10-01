@@ -1,5 +1,6 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
+import { significantInstitutionalBuys, type InstitutionalStrength } from "./institutional-strength.ts";
 import "dotenv/config";
 import dotenv from "dotenv";
 dotenv.config({ path: resolve(process.cwd(), ".env.local"), override: true });
@@ -79,7 +80,7 @@ interface CategoryGroup {
 interface StockMeta {
   pct: string | number;
   futures?: { level: string; margin: string };
-  chips?: { foreignNet: number; trustNet: number; dealerNet: number; totalNet: number; foreignRatio?: number; trustRatio?: number; foreignBuyStreak?: number; trustBuyStreak?: number };
+  chips?: { foreignNet: number; trustNet: number; dealerNet: number; totalNet: number; foreignRatio?: number; trustRatio?: number; foreignBuyStreak?: number; trustBuyStreak?: number; strength?: InstitutionalStrength };
   dayTradeRatio?: number;
   flags?: { attention?: boolean; disposition?: boolean; lowLiquidity?: boolean };
   overnightDump?: boolean;
@@ -234,6 +235,9 @@ function renderStockChipBadges(meta?: StockMeta): string {
   if (flags.attention) badges += `<span style="font-size: 12px; color: #d97706; margin-left: 3px;">⚠</span>`;
   if (flags.disposition) badges += `<span style="font-size: 12px; color: #dc2626; margin-left: 3px;">⛔</span>`;
   if (meta.chips) {
+    for (const buy of significantInstitutionalBuys(meta.chips.strength)) {
+      badges += `<span title="${buy.detail}" style="font-size: 12px; background-color: #fee2e2; color: #991b1b; padding: 1px 4px; border-radius: 4px; margin-left: 3px;">${buy.label}</span>`;
+    }
     const { foreignRatio, trustRatio, foreignBuyStreak, trustBuyStreak } = meta.chips;
     if (foreignRatio !== undefined && Math.abs(foreignRatio) >= 0.2) {
       const sign = foreignRatio > 0 ? "+" : "";
