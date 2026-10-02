@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-02",
+  "archiveSha256": "343a39c5b1aa4e68ca93a18708c4e0e5ec1caf0fa399d78748357922e23f6e8f",
+  "archiveBytes": 73861100,
+  "archiveMembers": 3247,
+  "twseSessions": 1347,
+  "tpexSessions": 1880,
+  "missingTwseSessions": 533,
+  "historicalUniqueCodes": 2084,
+  "plannedCohorts": 81,
+  "coveredCohorts": 30,
+  "sourceLimit": "TWSE HTTP403 WAF blocked further requests; missing dates are not assumed non-trading days",
+  "privateData": false
+}
