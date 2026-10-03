@@ -353,7 +353,7 @@ async function backfill(days: number) {
   let added = 0;
   for (let k = 0; k < days; k++) {
     const d = new Date(today.getTime() - k * 86400000);
-    const day = d.getUTCDay();
+    const day = d.getDay(); // 與下方 ymd 一樣用本機日期；getUTCDay 在台北早上 8 點前會差一天
     if (day === 0 || day === 6) continue; // 週末不用試
     const ymd = `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, "0")}${String(d.getDate()).padStart(2, "0")}`;
     const iso = `${ymd.slice(0, 4)}-${ymd.slice(4, 6)}-${ymd.slice(6, 8)}`;

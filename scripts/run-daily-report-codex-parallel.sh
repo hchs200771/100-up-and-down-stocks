@@ -302,6 +302,14 @@ fi
 
 log "進度 1/5：已經抓回上市/上櫃資料，交易日 $(market_trading_date)"
 
+# 漏跑的日子先補：收盤價、融資、市場情緒序列，並列出補不回來的選股池日期。
+# 必須在任何用到均線/報酬的步驟之前，也必須在背景輔助資料之前同步跑完
+# （fetch-margin-options 也會寫 margin-history.json）。已補過的日子有快取，平常幾乎不打 API。
+if stage_enabled fetch; then
+  timed missed-days run_tsx scripts/backfill-missed-days.ts \
+    || log "[warn] backfill-missed-days.ts failed; 均線與報酬率可能因缺格而失真"
+fi
+
 # 輔助資料：全部只依賴 market-latest.json（或完全獨立的外部來源），彼此之間沒有相依，
 # 所以整批背景平行丟出去，這裡不 wait，直接往下跑分類與 research（見 AUX_PIDS）。
 # 每個都用 timed 包起來，事後看 timing 表就知道該優化誰。

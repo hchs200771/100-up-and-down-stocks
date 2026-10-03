@@ -95,6 +95,7 @@ CODEX_REPORT_START_STAGE=research npm run report:codex
 
 ```bash
 npm run report:fetch     # 只重抓市場資料
+npx tsx scripts/backfill-missed-days.ts   # 補漏跑日的收盤價／融資／市場情緒（每日流程自動跑）
 npm run report:score     # 只重算族群記分板（當日快照已存在會跳過）
 npm run report:picks     # 只重算終極選股池
 npm run backtest:picks   # 選股池分數校準＋前 5 名前瞻追蹤（輸出 data/stock-picks-backtest.json，每日流程自動跑）
