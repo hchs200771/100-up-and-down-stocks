@@ -2,6 +2,7 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import "dotenv/config";
 import dotenv from "dotenv";
+import { READ_ORDER, SUBPAGES, navText, PILL_CSS } from "./lib/nav";
 dotenv.config({ path: resolve(process.cwd(), ".env.local"), override: true });
 
 // 網頁版報告（GitHub Pages）。Email 版沒有互動圖，用這個連結把讀者導回網頁版。
@@ -114,10 +115,53 @@ interface CreditSpread {
   pctile1y: number | null;
 }
 
+/** worker 寫的「過去一天大事」時間軸（data/tmp/intl-events.json → attach-intl.ts） */
+interface IntlEvent {
+  when: string;   // 台北時間 MM/DD HH:MM
+  cat: string;    // 央行 / 數據 / 地緣 / 關稅 / 財報 / 政治 / 原物料 / 科技
+  title: string;  // 一句事實
+  impact: string; // 利多 / 利空 / 中性（對台股）
+  level: string;  // 高 / 中
+  chain: string;  // 一句影響鏈
+}
+
+/** 美股指標股：價格來自 fetch-intl-market.ts，why/tw 由 worker 補 */
+interface IntlMover {
+  symbol: string;
+  name: string;
+  tag: string;
+  close: number;
+  change: number;
+  pct: number;
+  why?: string;
+  tw?: string;
+}
+
+/** fetch-sector-flows.ts 的輸出（data/sector-flows-latest.json） */
+interface SectorFlow {
+  symbol: string;
+  name: string;
+  close: number;
+  pct: number;
+  ret1w: number | null;
+  ret4w: number | null;
+  rsi14: number | null;
+  pe: number | null;
+  aum: number | null;
+  flow1w: number | null;
+  flow4w: number | null;
+  flowDays1w: number | null;
+  flowDays4w: number | null;
+}
+
 interface IntlBlock {
   summary: string;
+  window?: string;
+  events?: IntlEvent[];
   indices: IntlIndex[];
   credit?: CreditSpread[];
+  movers?: IntlMover[];
+  sectors?: SectorFlow[];
 }
 
 /** build-index-contribution.ts 的輸出（data/index-contribution-latest.json） */
@@ -285,22 +329,22 @@ function renderScorePanel(g: CategoryGroup): string {
   const cell = (label: string, val: number, max: number | null, isRisk = false): string => {
     const valColor = isRisk && val < 0 ? "#dc2626" : "#1f2937";
     const maxStr = max ? `<span style="color:#9ca3af; font-size:12px;">/${max}</span>` : "";
-    return `<div style="display:inline-block; text-align:center; min-width:62px; margin:0 2px;">
-      <div style="font-size:13px; color:#6b7280;">${label}</div>
-      <div style="font-size:18px; font-weight:bold; color:${valColor};">${val}${maxStr}</div>
+    return `<div style="display:inline-block; text-align:center; min-width:54px; margin:0 1px;">
+      <div style="font-size:10px; color:#6b7280;">${label}</div>
+      <div style="font-size:14px; font-weight:bold; color:${valColor};">${val}${maxStr}</div>
     </div>`;
   };
 
   const rationaleHtml = g.entryRationale
-    ? `<p style="margin:8px 0 0 0; font-size:14px; color:#374151; line-height:1.6;">${g.entryRationale}</p>`
+    ? `<p style="margin:4px 0 0 0; font-size:11px; color:#374151; line-height:1.3;">${g.entryRationale}</p>`
     : "";
 
-  return `<div style="background-color:${tierBg}; border:1px solid ${tierColor}; padding:10px 12px; border-radius:6px; margin-bottom:10px;">
-    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+  return `<div style="background-color:${tierBg}; border:1px solid ${tierColor}; padding:5px 8px; border-radius:6px; margin-bottom:6px;">
+    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:4px;">
       <div>
-        <span style="font-size:24px; font-weight:bold; color:${tierColor};">${s}</span>
-        <span style="font-size:12px; color:#6b7280;"> / 100</span>
-        <span style="font-size:12px; background-color:${tierColor}; color:#fff; padding:2px 8px; border-radius:10px; margin-left:8px;">${action}</span>
+        <span style="font-size:18px; font-weight:bold; color:${tierColor};">${s}</span>
+        <span style="font-size:10px; color:#6b7280;"> / 100</span>
+        <span style="font-size:10px; background-color:${tierColor}; color:#fff; padding:1px 6px; border-radius:10px; margin-left:5px;">${action}</span>
       </div>
       <div style="text-align:right;">
         ${cell("趨勢", b.trend, 40)}
@@ -371,8 +415,8 @@ function renderCategoryBlock(
 
   const storyHtml = g.story
     ? `<div style="background-color: ${bgColor}; padding: 10px; border-radius: 6px; border: 1px solid ${storyBorder};">
-        <strong style="color: ${storyLabelColor}; font-size: 14px;">${storyLabel}</strong>
-        <p style="margin: 5px 0 0 0; font-size: 14px; color: ${storyTextColor}; line-height: 1.6;">${g.story}</p>
+        <strong style="color: ${storyLabelColor}; font-size: 15px;">${storyLabel}</strong>
+        <p style="margin: 5px 0 0 0; font-size: 15px; color: ${storyTextColor}; line-height: 1.6;">${g.story}</p>
       </div>`
     : "";
 
@@ -868,10 +912,187 @@ function renderCredit(credit: CreditSpread[] | null | undefined): string {
   return `<tr><td style="padding:4px 8px; color:#6b7280; vertical-align:top; white-space:nowrap;">信用利差<div style="font-size:11px; color:#9ca3af;">${asOf}</div></td><td style="padding:4px 8px;">${cells}<div style="font-size:11px; color:#9ca3af; margin-top:2px;">ICE BofA OAS（公司債對公債的風險溢酬，CDS 的公開替代品）；走闊＝資金收縮、風險偏好下降。資料源 FRED，比美股晚一天。</div></td></tr>`;
 }
 
+/**
+ * 過去一天的國際大事時間軸。
+ *
+ * 這一段回答的是「我睡覺的時候世界發生了什麼」——台股收盤到隔天開盤中間，美股整個
+ * 交易日、各國央行與地緣事件都在這段空窗發生，光看指數漲跌幅看不出原因。
+ * 每列刻意壓成一行可掃：時間 → 類別 → 事實 → 對台股方向，第二行才是影響鏈。
+ *
+ * 用 <table> 而不是 flex：Gmail 會剝掉 flex，表格在所有用戶端都畫得出來。
+ */
+const EVENT_CAT_COLOR: Record<string, [string, string]> = {
+  央行: ["#e0e7ff", "#4338ca"],
+  數據: ["#dbeafe", "#1d4ed8"],
+  地緣: ["#fee2e2", "#991b1b"],
+  政治: ["#fee2e2", "#991b1b"],
+  關稅: ["#ffedd5", "#9a3412"],
+  財報: ["#dcfce7", "#15803d"],
+  科技: ["#dcfce7", "#15803d"],
+  原物料: ["#fef9c3", "#a16207"],
+};
+
+function renderIntlEvents(events: IntlEvent[] | null | undefined, window: string | undefined): string {
+  if (!events || events.length === 0) return "";
+  const rows = events
+    .map((e) => {
+      const [bg, fg] = EVENT_CAT_COLOR[e.cat] ?? ["#e5e7eb", "#374151"];
+      // 台股慣例紅漲綠跌：利多紅、利空綠。
+      const impactColor = e.impact === "利多" ? "#dc2626" : e.impact === "利空" ? "#16a34a" : "#6b7280";
+      const impactHtml = e.impact
+        ? `<span style="color:${impactColor}; font-weight:bold; white-space:nowrap;">${e.impact}</span>`
+        : "";
+      // 重要度高的用左側色條標出來，掃的時候先看有色條那幾條就好。
+      const accent = e.level === "高" ? "border-left:3px solid #0284c7;" : "border-left:3px solid transparent;";
+      const chain = e.chain ? `<div style="color:#64748b; font-size:12px; margin-top:2px;">${e.chain}</div>` : "";
+      return `<tr><td style="padding:6px 8px; ${accent} vertical-align:top; white-space:nowrap; color:#6b7280; font-size:12px;">${e.when}</td>
+      <td style="padding:6px 6px; vertical-align:top; white-space:nowrap;"><span style="background-color:${bg}; color:${fg}; padding:1px 6px; border-radius:10px; font-size:11px;">${e.cat}</span></td>
+      <td style="padding:6px 8px; vertical-align:top;"><span style="color:#1f2937; font-weight:${e.level === "高" ? "bold" : "normal"};">${e.title}</span> ${impactHtml}${chain}</td></tr>`;
+    })
+    .join("");
+  const win = window
+    ? `<div style="font-size:12px; color:#64748b; margin:0 0 6px 0;">涵蓋區間：${window}</div>`
+    : "";
+  return `<div style="margin-bottom:12px;">
+    <div style="font-weight:bold; color:#0369a1; font-size:14px; margin-bottom:4px;">🕒 過去一天大事</div>
+    ${win}
+    <table style="width:100%; border-collapse:collapse; font-size:13px; background-color:#ffffff; border:1px solid #e0f2fe; border-radius:6px;"><tbody>${rows}</tbody></table>
+  </div>`;
+}
+
+/**
+ * 美股指標股：台股電子供應鏈的隔夜對照組。
+ *
+ * 價格全部來自 fetch-intl-market.ts（程式抓的），worker 只補「為什麼動 / 對到台股誰」，
+ * 所以就算 worker 沒跑，這段仍然有完整數字。名單固定、由強到弱排，掃第一行就知道
+ * 昨晚是 AI 晶片在噴還是記憶體在殺。
+ */
+function renderIntlMovers(movers: IntlMover[] | null | undefined): string {
+  if (!movers || movers.length === 0) return "";
+  const chips = movers
+    .map((m) => {
+      const up = m.pct >= 0;
+      const color = up ? "#dc2626" : "#16a34a";
+      return `<span style="display:inline-block; margin:0 10px 4px 0; white-space:nowrap;"><span style="color:#6b7280;">${m.name}</span> <strong>${m.close.toLocaleString()}</strong> <span style="color:${color}; font-weight:bold;">${up ? "+" : ""}${m.pct.toFixed(2)}%</span></span>`;
+    })
+    .join("");
+  // 有 worker 註解的才展開成一行說明，沒有的就只是上面那排數字，不硬湊理由。
+  const notes = movers
+    .filter((m) => m.why)
+    .map((m) => {
+      const up = m.pct >= 0;
+      const color = up ? "#dc2626" : "#16a34a";
+      const tw = m.tw ? `<span style="color:#9ca3af;">　台股連動：${m.tw}</span>` : "";
+      return `<div style="margin-top:4px; font-size:12px; color:#475569;"><strong style="color:#1f2937;">${m.name}</strong> <span style="color:${color}; font-weight:bold;">${up ? "+" : ""}${m.pct.toFixed(2)}%</span>　${m.why}${tw}</div>`;
+    })
+    .join("");
+  return `<div style="margin-bottom:12px;">
+    <div style="font-weight:bold; color:#0369a1; font-size:14px; margin-bottom:4px;">🇺🇸 美股指標股（最近一個收盤）</div>
+    <div style="font-size:13px;">${chips}</div>
+    ${notes}
+  </div>`;
+}
+
+/**
+ * 美股板塊資金流向熱圖。
+ *
+ * 回答的問題是「錢往哪個板塊跑」——指數收紅收黑是結果，板塊之間的相對強弱才看得出
+ * 資金在做什麼輪動，而且直接對得上台股的族群（半導體→台積電供應鏈、非必需消費→
+ * 電商/零售代工）。
+ *
+ * 主數字有兩種來源，優先用真正的資金流：
+ *  - **淨流量**：ETF 淨申購／贖回（股數變化 × 淨值），是真的有錢進出。需要跨日快照，
+ *    所以剛開始跑的前幾天沒有這個數字（見 fetch-sector-flows.ts）。
+ *  - **週漲跌幅**：流量還沒累積出來時的替代主數字，至少仍看得出板塊相對強弱。
+ * 兩者混用會誤導，所以整張圖一次只用同一種，標題直接寫明現在看的是哪一種。
+ *
+ * 顏色沿用報告一貫的台股慣例**紅＝流入／上漲、綠＝流出／下跌**（與多數美股網站相反），
+ * 深淺按當日最大絕對值等比例，讓小格子也拉得開。
+ * 版面用固定四欄的 <table>：Gmail 不支援 grid，表格在所有用戶端都畫得出來。
+ */
+function sectorTileColor(v: number, max: number): { bg: string; fg: string } {
+  const t = max > 0 ? Math.min(1, Math.abs(v) / max) : 0;
+  const light = 0.95 - 0.35 * Math.sqrt(t);
+  const [h, sat] = v >= 0 ? [0, 72] : [145, 45];
+  return { bg: `hsl(${h}, ${sat}%, ${Math.round(light * 100)}%)`, fg: v >= 0 ? "#991b1b" : "#166534" };
+}
+
+function fmtFlow(usd: number): string {
+  const abs = Math.abs(usd);
+  if (abs >= 1e9) return `$${(abs / 1e9).toFixed(2)}B`;
+  return `$${Math.round(abs / 1e6)}M`;
+}
+
+function renderSectorFlows(sectors: SectorFlow[] | null | undefined): string {
+  if (!sectors || sectors.length === 0) return "";
+
+  // 全部板塊都算得出流量才用流量當主數字：只有一半有數字的話，格子之間沒得比。
+  const useFlow = sectors.every((s) => s.flow1w !== null);
+  const days = sectors.find((s) => s.flowDays1w)?.flowDays1w ?? null;
+  const metric = (s: SectorFlow): number | null => (useFlow ? s.flow1w : s.ret1w);
+  const label = useFlow
+    ? `ETF 淨流量${days ? `（近 ${days} 個交易日）` : ""}`
+    : "近 5 個交易日漲跌幅";
+
+  const values = sectors.map((s) => metric(s)).filter((v): v is number => v !== null);
+  if (values.length === 0) return "";
+  const max = Math.max(...values.map(Math.abs));
+
+  // 由強到弱排：第一格就是昨晚資金最集中的板塊。
+  const sorted = [...sectors].sort((a, b) => (metric(b) ?? -Infinity) - (metric(a) ?? -Infinity));
+
+  const tile = (s: SectorFlow): string => {
+    const v = metric(s);
+    if (v === null) return `<td style="width:25%; padding:3px;"></td>`;
+    const { bg, fg } = sectorTileColor(v, max);
+    const arrow = v >= 0 ? "↑" : "↓";
+    const main = useFlow ? fmtFlow(v) : `${Math.abs(v).toFixed(2)}%`;
+    const sub = [
+      s.rsi14 !== null ? `RSI ${s.rsi14.toFixed(1)}` : "",
+      s.pe !== null ? `PE ${s.pe.toFixed(1)}x` : "",
+      useFlow && s.ret1w !== null ? `週${s.ret1w >= 0 ? "+" : ""}${s.ret1w.toFixed(1)}%` : "",
+    ]
+      .filter(Boolean)
+      .join(" · ");
+    return `<td style="width:25%; padding:3px; vertical-align:top;">
+      <div style="background-color:${bg}; border-radius:8px; padding:10px 8px; text-align:center;">
+        <div style="color:#1f2937; font-weight:bold; font-size:13px;">${s.name}</div>
+        <div style="color:${fg}; font-weight:bold; font-size:16px; margin:3px 0;">${arrow} ${main}</div>
+        <div style="color:#6b7280; font-size:11px;">${sub}</div>
+      </div></td>`;
+  };
+
+  const rows: string[] = [];
+  for (let i = 0; i < sorted.length; i += 4) {
+    const cells = sorted.slice(i, i + 4).map(tile);
+    while (cells.length < 4) cells.push(`<td style="width:25%; padding:3px;"></td>`);
+    rows.push(`<tr>${cells.join("")}</tr>`);
+  }
+
+  // 沒有流量時把原因寫清楚，不然看到「漲跌幅」會以為是流量。
+  const note = useFlow
+    ? "ETF 淨申購／贖回推算（流通股數變化 × 淨值），正＝資金淨流入。紅＝流入、綠＝流出。"
+    : "淨流量需要跨日的流通股數快照，從今天開始累積，滿 5 個交易日後這張圖會改用真正的資金流量；目前先以近 5 日漲跌幅呈現板塊強弱。";
+
+  return `<div style="margin-bottom:12px;">
+    <div style="font-weight:bold; color:#0369a1; font-size:14px; margin-bottom:4px;">🗺️ 美股板塊熱圖（${label}）</div>
+    <table style="width:100%; border-collapse:collapse;"><tbody>${rows.join("")}</tbody></table>
+    <div style="font-size:11px; color:#9ca3af; margin-top:4px;">${note}</div>
+  </div>`;
+}
+
 function renderIntl(intl: IntlBlock | null | undefined): string {
   if (!intl) return "";
-  const { summary, indices, credit } = intl;
-  if (!summary && (!indices || indices.length === 0) && (!credit || credit.length === 0)) return "";
+  const { summary, indices, credit, events, movers, window, sectors } = intl;
+  if (
+    !summary &&
+    (!indices || indices.length === 0) &&
+    (!credit || credit.length === 0) &&
+    (!events || events.length === 0) &&
+    (!movers || movers.length === 0) &&
+    (!sectors || sectors.length === 0)
+  )
+    return "";
 
   let tableHtml = "";
   const creditRow = renderCredit(credit);
@@ -910,8 +1131,12 @@ function renderIntl(intl: IntlBlock | null | undefined): string {
     ? `<p style="line-height:1.6; margin:0;">${summary.replace(/\n/g, "<br>")}</p>`
     : "";
 
+  // 順序＝閱讀動線：先知道發生了什麼事（時間軸），再看誰動了（指標股、指數），最後看判讀。
   return `<div style="background-color:#f0f9ff; border:1px solid #bae6fd; padding:15px; border-radius:8px; margin-bottom:20px;">
       <h3 style="margin-top:0; color:#0369a1;">🌐 國際情勢</h3>
+      ${renderIntlEvents(events, window)}
+      ${renderIntlMovers(movers)}
+      ${renderSectorFlows(sectors)}
       ${tableHtml}
       ${summaryHtml}
     </div>`;
@@ -1497,7 +1722,7 @@ function tdccRowHtml(r: DivergenceRow, i: number): string {
   const badge = (bg: string, fg: string, text: string, title: string) =>
     `<span title="${title}" style="display:inline-block; background:${bg}; color:${fg}; font-size:10px; border-radius:3px; padding:0 4px; margin-left:4px;">${text}</span>`;
   const flags =
-    (r.streak >= 2 ? badge("#fef3c7", "#92400e", `連${r.streak}週`, "連續多週增加") : "") +
+    (r.streak >= 2 ? badge("#f3f4f6", "#6b7280", `連${r.streak}週`, "連續多週增加。⚠️ 這不是加分項——46 週回測裡「連 2 週以上」相對「本週才剛轉增」的下週報酬，5 個門檻 × 3 個視角沒有一格達到顯著。只當背景資訊看") : "") +
     (r.dilutionRisk
       ? badge("#fee2e2", "#991b1b", "股數變動?", "比例上升但大戶人數沒增加，可能是除權息／現增造成的股數變動，不是有人買進")
       : "") +
@@ -1597,7 +1822,11 @@ function renderTdcc(d: DivergenceReport | null | undefined): string {
         用累計而不是單一級距，是因為 900 張的人加碼到 1100 張會跨級，只看某一級會把加碼誤讀成減碼。
         「大戶人數」同步增加才代表真的有新的人進場；比例漲但人數沒動會標「股數變動?」。
         「千張均張」是級 15 的平均每人持股張數——TDCC 沒有更高的分級，這是判斷「超大戶是否在集中」最接近的指標。
-        <strong>這是觀察名單，不是買賣訊號</strong>。
+        <br>「連N週」是灰色的、<strong>不加分</strong>：46 週回測（2025-09 ~ 2026-08）裡「連 2 週以上」相對「本週才剛轉為增加」的下週報酬，
+        5 個門檻 × 3 個視角共 15 格，7 格正、8 格負，介於 −0.77% ~ +0.54%/週，<strong>|t| 全部小於 1.7，沒有一格顯著</strong>。
+        直覺上「連兩週買代表大戶看好」，但資料上看不出這個效果——多等一次確認既沒多賺也沒少賺。排序分數裡原本有的連續加碼加分已經移除。
+        <br>同一份回測還顯示：<strong>「大戶增加」本身在這一年沒有預測力</strong>（增加組相對減碼組的 t 值全部落在 ±1.6 以內）。
+        <strong>所以這是觀察名單，不是買賣訊號</strong>。
       </div>
       ${partialNote}
       <div style="overflow-x:auto;">
@@ -1686,14 +1915,16 @@ interface PickEntry {
   futures: { level: string; margin: string } | null;
   reason: string;
   signals: PickSignal[];
+  themeRadar?: Array<{ id: string; name: string; ratio: number; z: number; recentMentions: number }>;
   plan: { entry: string; stop: string; exit: string };
   metrics: Record<string, string>;
 }
 interface PicksReport {
   generatedAt: string;
   date: string;
-  basis: { tdccWeek?: string | null; cbWeek?: string | null; rrgAsOf?: string | null; priceHistoryDays?: number };
+  basis: { tdccWeek?: string | null; cbWeek?: string | null; cbAsOf?: string | null; revenueMonth?: string | null; themeRadarAsOf?: string | null; rrgAsOf?: string | null; priceHistoryDays?: number };
   regimeNotes: string[];
+  themeRadar?: { signals: Array<{ id: string; name: string; tickers: string[]; ratio: number; z: number; recentMentions: number }>; warnings: string[] } | null;
   long: PickEntry[];
   short: PickEntry[];
 }
@@ -1715,9 +1946,16 @@ function renderPickFutures(p: PickEntry): string {
 function renderPicks(picks: PicksReport | null, forEmail: boolean): string {
   if (!picks || (!picks.long.length && !picks.short.length)) return "";
 
+  const escapeTheme = (value: string): string => value.replace(/[&<>"']/g, (char) => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+  })[char] ?? char);
+  const themeNote = (p: PickEntry): string => (p.themeRadar ?? []).map((theme) =>
+    `題材新聞觀察：${escapeTheme(theme.name)}（近 4 週占比 ${theme.ratio.toFixed(1)} 倍、${theme.recentMentions} 篇；不計分）`,
+  ).join("；");
+
   const metricLabel: Record<string, string> = {
-    r10: "近兩週", r20: "近一月", ma10: "MA10", ma20: "MA20", high20: "20日高",
-    dayTrade: "當沖比", instNet: "法人買賣超", quadrant: "RRG 族群", tdcc: "集保大戶", cb: "CB+設質",
+    r10: "近兩週", r20: "近一月", ma10: "MA10", ma20: "MA20", ma60: "MA60", high20: "20日高",
+    dayTrade: "當沖比", instNet: "法人買賣超", quadrant: "RRG 族群", tdcc: "集保觀察", cb: "CB+設質事件", revenue: "營運品質",
   };
 
   const table = (list: PickEntry[], accent: string): string => {
@@ -1735,7 +1973,7 @@ function renderPicks(picks: PicksReport | null, forEmail: boolean): string {
           <td style="padding:6px 8px; text-align:right; white-space:nowrap;">${p.close}</td>
           <td style="padding:6px 8px; text-align:center;"><span style="background:${accent}; color:#fff; border-radius:10px; padding:1px 8px; font-weight:bold; font-size:12px;">${p.score}</span></td>
           <td style="padding:6px 8px; white-space:nowrap; font-size:12px; color:#6b7280;">${p.type}</td>
-          <td style="padding:6px 8px; font-size:12px; line-height:1.6; color:#4b5563;">${badges}${badges ? "<br>" : ""}${p.reason}${warn ? `<br><span style="color:#b45309;">⚠ ${warn}</span>` : ""}</td>
+          <td style="padding:6px 8px; font-size:12px; line-height:1.6; color:#4b5563;">${badges}${badges ? "<br>" : ""}${p.reason}${themeNote(p) ? `<br><span style="color:#0369a1;">${themeNote(p)}</span>` : ""}${warn ? `<br><span style="color:#b45309;">⚠ ${warn}</span>` : ""}</td>
         </tr>`;
       })
       .join("");
@@ -1758,7 +1996,7 @@ function renderPicks(picks: PicksReport | null, forEmail: boolean): string {
         return `<details style="border:1px solid #e5e7eb; border-radius:6px; margin-bottom:6px; background:#fff;">
         <summary style="cursor:pointer; padding:8px 12px; font-size:13px; user-select:none;"><strong>${p.rank}. ${p.name}</strong> <a href="https://tw.stock.yahoo.com/quote/${p.code}" target="_blank" style="color:#9ca3af; text-decoration:none;">${p.code} ↗</a>${renderPickFutures(p)} · ${p.score} 分 · ${p.type} <span style="color:#9ca3af; font-size:12px;">— 點開看訊號明細與進出場</span></summary>
         <div style="padding:4px 14px 12px; font-size:13px; line-height:1.7;">
-          <ul style="margin:6px 0; padding-left:18px;">${sigRows}</ul>
+          <ul style="margin:6px 0; padding-left:18px;">${sigRows}${themeNote(p) ? `<li style="color:#0369a1;">${themeNote(p)}</li>` : ""}</ul>
           <div style="background:#f8fafc; border-radius:6px; padding:8px 10px; margin:8px 0;">
             <div>🎯 <strong>進場</strong>：${p.plan.entry}</div>
             <div>🛑 <strong>停損</strong>：${p.plan.stop}</div>
@@ -1785,6 +2023,14 @@ function renderPicks(picks: PicksReport | null, forEmail: boolean): string {
     : "";
 
   const basis = picks.basis;
+  const themeOverview = picks.themeRadar
+    ? `<div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:6px; padding:8px 12px; margin-bottom:12px; font-size:12px; color:#1e3a8a; line-height:1.7;">
+        <strong>題材新聞加速觀察</strong>（最近 4 個完整週對比前 12 週；不計入選股分數）
+        ${picks.themeRadar.signals.length
+          ? picks.themeRadar.signals.map((signal) => `<div>· ${escapeTheme(signal.name)}：提及占比 ${signal.ratio.toFixed(1)} 倍、${signal.recentMentions} 篇；關聯個股 ${signal.tickers.join("、")}</div>`).join("")
+          : "<div>目前沒有符合門檻的題材；首次啟用需要累積約 16 週 RSS 文章。</div>"}
+        ${picks.themeRadar.warnings.length ? "<div>部分 RSS 來源缺漏，本次不發加速訊號。</div>" : ""}
+      </div>` : "";
   // 型態名稱由 build-stock-picks.ts 的 toPick() 決定；這裡說明同一個價格判斷
   // 在長線榜與波段榜各代表什麼，避免把「等待確認」誤讀成營收尚未公布。
   const typeGuide = `<div style="background:#fff; border:1px solid #cbd5e1; border-radius:8px; padding:12px 14px; margin-bottom:16px; font-size:12px; color:#475569; line-height:1.7;">
@@ -1798,24 +2044,25 @@ function renderPicks(picks: PicksReport | null, forEmail: boolean): string {
   return `<div style="background-color:#f8fafc; border:1px solid #e2e8f0; padding:15px; border-radius:8px; margin-bottom:20px;">
     <h3 style="margin-top:0; color:#334155;">🏆 終極選股池（${picks.date}）</h3>
     <p style="font-size:13px; color:#4b5563; line-height:1.7; margin:0 0 10px;">
-      把大戶籌碼、CB+設質、法人買賣超、族群輪動、當日分類與價格動能<strong>五路訊號統合到個股層級</strong>打分。
-      進榜門檻：至少兩個獨立資料源同時給正訊號（共振），單一訊號再強都只算噪音。
+      長線榜先要求營收成長，再用 TTM 營收、毛利率、產業趨勢與法人確認；波段榜分開看價格、法人、族群與營運催化。
+      集保與 CB+設質只作觀察或風險註記，不再單獨構成長線理由；同一檔可以同時出現在兩榜。
       分數是排序用的相對值，不同天之間不可直接比大小。
     </p>
     ${typeGuide}
     ${regime}
+    ${themeOverview}
     ${listSection(
-      "🐢 長線波段 Top 10（3 個月～1 年）",
-      "吃「結構性籌碼」：大戶默默累積、公司派有作價動機、族群在中期輪動的順風處。多為背離佈局型——買點靠等，不靠追。",
+      "🐢 長線研究 Top 10（3 個月～1 年）",
+      "先看營運成長能否延續，再由毛利率、產業趨勢與法人確認。技術面管理建倉節奏；長期論點由營收品質與產業假設決定。",
       picks.long, "#0d9488", "#99f6e4", "#f0fdfa",
     )}
     ${listSection(
-      "⚡ 短線動能 Top 10（2 週～1 個月）",
-      "吃「資金正在青睞」：相對強度前段、法人連買、族群剛啟動。多為動能順勢型——嚴設停損，訊號轉弱就走。",
+      "⚡ 波段動能 Top 10（2 週～3 個月）",
+      "看價格確認、法人、族群與營運催化；相同價格訊號只算一個證據家族。嚴設停損，催化未兌現或趨勢轉弱就走。",
       picks.short, "#ea580c", "#fed7aa", "#fff7ed",
     )}
     <p style="font-size:11px; color:#9ca3af; line-height:1.6; margin:4px 0 0;">
-      資料基準：集保大戶 ${basis.tdccWeek ?? "—"}（週）、CB+設質 ${basis.cbWeek ?? "—"}（週）、RRG ${basis.rrgAsOf ?? "—"}、價格序列 ${basis.priceHistoryDays ?? 0} 個交易日。
+      資料基準：營收 ${basis.revenueMonth ?? "—"}、題材新聞 ${basis.themeRadarAsOf ?? "—"}（觀察）、集保 ${basis.tdccWeek ?? "—"}（週）、CB+設質 ${basis.cbAsOf ?? basis.cbWeek ?? "—"}（CB 日頻／設質月頻）、RRG ${basis.rrgAsOf ?? "—"}、價格序列 ${basis.priceHistoryDays ?? 0} 個交易日。
       純規則計算（無 AI 判讀），每日快照存於 stock-picks-history 供回測。非投資建議。
     </p>
   </div>`;
@@ -1835,7 +2082,7 @@ const TAB_GUIDE: Record<string, string> = {
   "⚖️ 指數貢獻": "指數這幾點到底是誰推的、誰在拖。資金流向圖看力道來源，分布圖看主戰場在哪。",
   "🔄 族群輪動": "中期資金在族群之間怎麼輪動（RRG 四象限）。看的是趨勢，不是單日漲跌。",
   "🏦 大戶籌碼": "集保大戶這週買了什麼。可切「背離（籌碼先動、價還沒動）」與「同向（籌碼與趨勢一致）」，門檻 200~1000 張可調。週資料。",
-  "🌐 國際情勢": "美股、亞股、原物料、匯率與信用利差——台股開盤前的外部條件。",
+  "🌐 國際情勢": "過去一天的國際大事時間軸、美股指標股、亞股原物料匯率與信用利差——台股開盤前的外部條件。",
   "🧭 長線策略": "跳出當日波動，長線的進出場想法與部位思考。",
   "🏆 終極選股池": "全部訊號統合後的最終結論：長線 10 檔＋短線 10 檔，含入選理由與進出場計畫。",
   "🔖 圖例說明": "報告裡各種標記、badge、顏色代表什麼意思。",
@@ -1843,7 +2090,8 @@ const TAB_GUIDE: Record<string, string> = {
 };
 
 /** 建議的閱讀順序：由外而內、由結果到原因，最後才是可以動手的結論。 */
-const READ_ORDER = ["🌐 國際情勢", "📊 市場總覽", "⚖️ 指數貢獻", "🔥 上漲族群", "🔄 族群輪動", "🏦 大戶籌碼", "🎯 操作建議", "🏆 終極選股池"];
+// READ_ORDER 與分頁列的顯示規則集中在 lib/nav.ts——子頁要產生一模一樣的麵包屑，
+// 兩邊不能各寫一份。
 
 /**
  * Email 版的段落順序，與網頁版（READ_ORDER）**刻意不同**。
@@ -1926,10 +2174,17 @@ function renderHome(labels: string[], date: string, order: string[] = READ_ORDER
       </div>`;
   };
 
-  // 設質+CB 候選池是獨立子頁（週更），不是分頁——卡片直接外連，網頁與信件都能點。
+  // 設質+CB 事件池是獨立子頁（CB 日更、設質月更），不是分頁——卡片直接外連，網頁與信件都能點。
   const cbCard = `<a href="${SITE_URL}cb-pledge.html" style="text-decoration:none; display:block;"><div style="border:1px solid #e5e7eb; border-radius:6px; padding:9px 12px; margin-bottom:6px; background:#fff; font-size:13px; line-height:1.65;">
         <span style="float:right; color:#c7d2fe;">↗</span>
-        <strong style="color:#374151; white-space:nowrap;">🔐 設質+CB 候選池</strong><span style="color:#d1d5db;"> · </span><span style="color:#6b7280; font-size:12px;">董監新增設質＋有流通中 CB 的公司派作價訊號池，含轉換價距離與 CB 溢價。週更、獨立頁面。</span>
+        <strong style="color:#374151; white-space:nowrap;">🔐 設質+CB 事件觀察池</strong><span style="color:#d1d5db;"> · </span><span style="color:#6b7280; font-size:12px;">追蹤轉換、潛在稀釋、融資與治理風險；分數代表事件關注度，不代表預期報酬。CB 日更、設質月更。</span>
+      </div></a>`;
+
+  // 月營收動能名單同樣是獨立子頁。它在每月 1~10 號**每天**都會長大（公司陸續公布），
+  // 其餘日子靜止，所以跟設質+CB 一起放在「非每日變動」，但描述要點出這個節奏。
+  const revCard = `<a href="${SITE_URL}revenue.html" style="text-decoration:none; display:block;"><div style="border:1px solid #e5e7eb; border-radius:6px; padding:9px 12px; margin-bottom:6px; background:#fff; font-size:13px; line-height:1.65;">
+        <span style="float:right; color:#c7d2fe;">↗</span>
+        <strong style="color:#374151; white-space:nowrap;">📈 月營收動能名單</strong><span style="color:#d1d5db;"> · </span><span style="color:#6b7280; font-size:12px;">單月營收 YoY≥20% 的篩選名單，核心層再加「連 3 月成長＋24 月營收新高」。每月 1~10 號公司陸續公布，名單天天長大。獨立頁面。</span>
       </div></a>`;
 
   // 首頁分組：依「多久變一次」分色塊，讀者可以先看每天會動的，慢變數另外一區。
@@ -1950,11 +2205,11 @@ function renderHome(labels: string[], date: string, order: string[] = READ_ORDER
       labels: ["🌐 國際情勢", "📊 市場總覽", "⚖️ 指數貢獻"],
     },
     {
-      title: "🐢 非每日變動",
-      hint: "慢變數：週更或月更，不用每天看，但轉折時最值錢。",
+      title: "🐢 定期追蹤",
+      hint: "更新頻率依資料源而定：CB 每日、集保與 RRG 每週、設質與營收每月；轉折時優先檢查。",
       bg: "#f0fdf4", border: "#bbf7d0", titleColor: "#15803d",
       labels: ["🔄 族群輪動", "🏦 大戶籌碼"],
-      extraHtml: cbCard,
+      extraHtml: cbCard + revCard,
     },
     {
       title: "📚 其他",
@@ -1976,12 +2231,21 @@ function renderHome(labels: string[], date: string, order: string[] = READ_ORDER
       </div>`;
   };
 
-  // 「一日市場總覽」與「非每日變動」在寬螢幕左右並排（inline-block 49%），
+  // 色塊的先後 = 該塊裡「最早的那一站」的先後。色塊是依更新頻率分的，跟動線是兩個軸，
+  // 但至少要讓帶第 1 站的色塊排在帶第 4 站的上面——否則讀者照徽章讀，眼睛得先往下再往上跳。
+  // 不寫死順序，READ_ORDER 改了這裡自動跟著對。沒有任何一站的色塊（例如「其他」）排最後。
+  const firstStep = (b: (typeof BLOCKS)[number]) => {
+    const idx = b.labels.map((l) => steps.indexOf(l)).filter((i) => i >= 0);
+    return idx.length ? Math.min(...idx) : Number.MAX_SAFE_INTEGER;
+  };
+  const flow = [BLOCKS[0], BLOCKS[1], BLOCKS[2]].sort((x, y) => firstStep(x) - firstStep(y));
+
+  // 動線最前面的色塊獨佔整列，其餘兩塊在寬螢幕左右並排（inline-block 49%），
   // 窄螢幕/信件視窗因 min-width 排不下會自動上下堆疊。不用 flex/grid 是為了 Email 相容。
   const twoCol =
     `<div>` +
-    `<div style="display:inline-block; width:49%; min-width:300px; vertical-align:top;">${renderBlock(BLOCKS[1], "margin-right:0;")}</div>` +
-    `<div style="display:inline-block; width:49%; min-width:300px; vertical-align:top; margin-left:1%;">${renderBlock(BLOCKS[2])}</div>` +
+    `<div style="display:inline-block; width:49%; min-width:300px; vertical-align:top;">${renderBlock(flow[1], "margin-right:0;")}</div>` +
+    `<div style="display:inline-block; width:49%; min-width:300px; vertical-align:top; margin-left:1%;">${renderBlock(flow[2])}</div>` +
     `</div>`;
 
   const orderText = steps
@@ -2000,20 +2264,28 @@ function renderHome(labels: string[], date: string, order: string[] = READ_ORDER
           點任一張卡片可直接跳到該分頁；隨時可以從上方的分頁列回到這裡。
         </div>
       </div>
-      ${renderBlock(BLOCKS[0])}
+      ${renderBlock(flow[0])}
       ${twoCol}
       ${renderBlock(BLOCKS[3])}
     </div>`;
 }
 
+function sortGroupsByMemberCount(groups: CategoryGroup[]): CategoryGroup[] {
+  // 族群共振是主訊號：一起發動的公司越多，越能代表資金進駐。
+  // 「其他／個股事件整理」不是共同題材，固定放最後；同檔數維持 controller 原始順序。
+  // entryScore 只顯示、不參與排序。
+  const isMisc = (group: CategoryGroup) => /^其他/.test(group.category);
+  return groups
+    .map((group, index) => ({ group, index }))
+    .sort((a, b) => Number(isMisc(a.group)) - Number(isMisc(b.group)) || b.group.stocks.length - a.group.stocks.length || a.index - b.index)
+    .map(({ group }) => group);
+}
+
 function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName: Map<string, string>, market?: MarketBlock | null, retailHistory?: MarketHistoryEntry[], contrib?: IndexContribution | null, tdcc?: DivergenceReport | null, marginHistory?: MarginHistoryEntry[], mo?: MarginOptionsReport | null, picks?: PicksReport | null, forEmail = false): string {
-  // 有 call 標記的族群排前面（順勢 → 觀察 → 反轉），其餘維持原順序（檔數多→少）
-  const callRank: Record<string, number> = { 順勢: 0, 觀察: 1, 反轉: 2 };
-  const sortedGainers = [...a.gainers].sort(
-    (x, y) => (x.call ? callRank[x.call] ?? 3 : 4) - (y.call ? callRank[y.call] ?? 3 : 4),
-  );
+  const sortedGainers = sortGroupsByMemberCount(a.gainers);
   const gainersHtml = sortedGainers.map((g) => renderCategoryBlock(g, stockMap, codeByName, "gainer")).join("");
-  const losersHtml = a.losers.map((g) => renderCategoryBlock(g, stockMap, codeByName, "loser")).join("");
+  const losersHtml = sortGroupsByMemberCount(a.losers)
+    .map((g) => renderCategoryBlock(g, stockMap, codeByName, "loser")).join("");
   const longTermStrategyHtml = a.longTermStrategy
     ? `<div style="background-color: #eef6ff; border: 1px solid #bfdbfe; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
       <h3 style="margin-top: 0; color: #1d4ed8;">🧭 長線策略與進出場</h3>
@@ -2050,8 +2322,8 @@ function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName
       <summary style="cursor:pointer; padding:9px 14px; font-size:13px; font-weight:bold; color:#475569; user-select:none;">📖 ${label}（點開）</summary>
       <div style="padding:0 10px;">${inner}</div>
     </details>`;
-  const groupGHtml = `${forEmail ? "" : foldNote("本頁說明：圖例與進場評分", legendHtml + rubricHtml)}<h3 style="color: #dc2626; margin-top: 0;">🔥 強勢焦點 (量大優先)</h3>${gainersHtml}`;
-  const groupLHtml = `${forEmail ? "" : foldNote("本頁說明：圖例", legendHtml)}<h3 style="color: #16a34a; margin-top: 0;">🧊 弱勢焦點 (量大優先)</h3>${losersHtml}`;
+  const groupGHtml = `${forEmail ? "" : foldNote("本頁說明：圖例與進場評分", legendHtml + rubricHtml)}<h3 style="color: #dc2626; margin-top: 0;">🔥 強勢焦點（族群共振：檔數多→少）</h3>${gainersHtml}`;
+  const groupLHtml = `${forEmail ? "" : foldNote("本頁說明：圖例", legendHtml)}<h3 style="color: #16a34a; margin-top: 0;">🧊 弱勢焦點（族群共振：檔數多→少）</h3>${losersHtml}`;
 
   // 每個區塊都是一個 tab panel；瀏覽器端由下方 script 產生頂部切換鈕、預設只顯示第一個（上漲族群）。
   // email 無 JS 時所有 panel 都顯示（完整退回），不會壞。
@@ -2099,9 +2371,11 @@ function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName
     .map((s) => `<div class="tabpanel" data-label="${s.label}">${s.html}</div>`)
     .join("");
 
-  // 單欄 + RWD：viewport 讓手機正確縮放；容器 max-width 980、左右留白隨螢幕縮放。
+  // 單欄 + RWD：viewport 讓手機正確縮放；左右留白隨螢幕縮放。
+  // 寬度 1060 而不是 980：分頁列去掉 emoji 後 11 個分頁量到 913px，980 只剩 67px 餘裕，
+  // 「操作建議」那天多一個分頁（約 +78px）就會擠到第二行。1060 留得下最滿的情況。
   return `<meta name="viewport" content="width=device-width, initial-scale=1">
-  <div style="font-family: sans-serif; max-width: 980px; margin: 0 auto; color: #333; padding: 0 16px;">
+  <div style="font-family: sans-serif; max-width: 1060px; margin: 0 auto; color: #333; padding: 0 16px;">
     <h2 style="color: #4f46e5; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px;">📈 台股盤後資金流向與 AI 總結 (${a.timestamp})</h2>
     ${forEmail ? `<div style="background:#fffbeb; border:1px solid #fde68a; border-radius:6px; padding:8px 10px; font-size:12px; color:#92400e; line-height:1.6; margin-bottom:16px;">這封信內容較長，Gmail 可能在中途截斷並顯示「查看完整訊息」。互動圖表（可切換的大戶籌碼榜、市場情緒疊圖）在信件裡也無法操作 — <a href="${SITE_URL}" style="color:#b45309; font-weight:bold;">開啟網頁版</a>看完整內容。</div>` : ""}
     <div id="tabbar" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;"></div>
@@ -2126,24 +2400,28 @@ function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName
       });
     }
     var idxByLabel={};
-    var PILL='font-family:inherit;font-size:14px;font-weight:bold;cursor:pointer;border:1px solid #e5e7eb;border-radius:999px;padding:8px 14px;background:#fff;color:#374151;';
+    var PILL=${JSON.stringify(PILL_CSS)};
+    // 分頁列只顯示中文（去 emoji、長標籤縮短），但按鍵值仍是含 emoji 的原始 label
+    var NAV_TEXT=${JSON.stringify(Object.fromEntries(sections.map((s) => [s.label, navText(s.label)])))};
     panels.forEach(function(p,i){
       var label=p.getAttribute('data-label')||('Tab '+(i+1));
       idxByLabel[label]=i;
       var b=document.createElement('button');
-      b.textContent=label;
+      b.textContent=NAV_TEXT[label]||label;
       b.style.cssText=PILL;
       // hash 深連結：子頁（設質+CB）要能連回特定分頁，重新整理也要留在原分頁
       b.onclick=function(){activate(i);location.hash='tab='+encodeURIComponent(label);};
       btns.push(b);bar.appendChild(b);
     });
-    // 子頁入口：設質+CB 候選池是獨立頁面（週更），放在分頁列最後當第一級導覽，
+    // 子頁入口：設質+CB 與月營收是獨立頁面，放在分頁列最後當第一級導覽，
     // 樣式與分頁鈕一致但用 <a>，讓它看得出是「離開這一頁」。
-    var ext=document.createElement('a');
-    ext.href='cb-pledge.html';
-    ext.textContent='🔐 設質+CB ↗';
-    ext.style.cssText=PILL+'text-decoration:none;border-style:dashed;';
-    bar.appendChild(ext);
+    ${JSON.stringify(SUBPAGES.map((x) => [x.file, navText(x.label) + " ↗"]))}.forEach(function(x){
+      var ext=document.createElement('a');
+      ext.href=x[0];
+      ext.textContent=x[1];
+      ext.style.cssText=PILL+'text-decoration:none;border-style:dashed;';
+      bar.appendChild(ext);
+    });
     // 總覽卡片：只有在 JS 跑得動時才變成可點的入口，並補上箭頭與提示。
     // Email 沒有 JS，卡片維持純文字，不會出現點不動的死連結。
     [].slice.call(document.querySelectorAll('.homecard')).forEach(function(card){

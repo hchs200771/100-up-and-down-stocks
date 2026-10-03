@@ -1,0 +1,236 @@
+{
+  "generatedAt": "2026-09-16T21:27:54+08:00",
+  "pickFiles": 9,
+  "priceDates": 470,
+  "entryLagDays": 1,
+  "methodology": "訊號後下一交易日收盤進場的固定持有基準，不等同報告中的條件式進場；全市場等權為相對基準",
+  "implementationCostPct": 0.7849999999999999,
+  "implementationCostBasis": "一般股票往返手續費 0.285%＋賣出證交稅 0.3%＋滑價 0.2%",
+  "minimumRecommendedEntryDates": 20,
+  "byHorizon": {
+    "long:T+1": {
+      "n": 70,
+      "entryDates": 7,
+      "avgReturnPct": -0.05,
+      "avgNetReturnPct": -0.83,
+      "avgExcessPct": 0.07,
+      "winRatePct": 45.71,
+      "netWinRatePct": 27.14,
+      "excessWinRatePct": 42.86
+    },
+    "long:T+5": {
+      "n": 40,
+      "entryDates": 4,
+      "avgReturnPct": -1.69,
+      "avgNetReturnPct": -2.48,
+      "avgExcessPct": -0.71,
+      "winRatePct": 35,
+      "netWinRatePct": 27.5,
+      "excessWinRatePct": 40
+    },
+    "long:T+20": {
+      "n": 0,
+      "entryDates": 0,
+      "avgReturnPct": null,
+      "avgNetReturnPct": null,
+      "avgExcessPct": null,
+      "winRatePct": null,
+      "netWinRatePct": null,
+      "excessWinRatePct": null
+    },
+    "short:T+1": {
+      "n": 70,
+      "entryDates": 7,
+      "avgReturnPct": -0.14,
+      "avgNetReturnPct": -0.93,
+      "avgExcessPct": -0.03,
+      "winRatePct": 44.29,
+      "netWinRatePct": 41.43,
+      "excessWinRatePct": 45.71
+    },
+    "short:T+5": {
+      "n": 40,
+      "entryDates": 4,
+      "avgReturnPct": -3.19,
+      "avgNetReturnPct": -3.98,
+      "avgExcessPct": -2.21,
+      "winRatePct": 30,
+      "netWinRatePct": 25,
+      "excessWinRatePct": 35
+    },
+    "short:T+20": {
+      "n": 0,
+      "entryDates": 0,
+      "avgReturnPct": null,
+      "avgNetReturnPct": null,
+      "avgExcessPct": null,
+      "winRatePct": null,
+      "netWinRatePct": null,
+      "excessWinRatePct": null
+    }
+  },
+  "t5ByScore": {
+    "<60": {
+      "n": 46,
+      "entryDates": 4,
+      "avgReturnPct": -1.9,
+      "avgNetReturnPct": -2.68,
+      "avgExcessPct": -0.92,
+      "winRatePct": 32.61,
+      "netWinRatePct": 26.09,
+      "excessWinRatePct": 36.96
+    },
+    "60-69": {
+      "n": 23,
+      "entryDates": 4,
+      "avgReturnPct": -3.45,
+      "avgNetReturnPct": -4.24,
+      "avgExcessPct": -2.47,
+      "winRatePct": 34.78,
+      "netWinRatePct": 30.43,
+      "excessWinRatePct": 34.78
+    },
+    "70-79": {
+      "n": 9,
+      "entryDates": 4,
+      "avgReturnPct": -3.51,
+      "avgNetReturnPct": -4.3,
+      "avgExcessPct": -2.52,
+      "winRatePct": 22.22,
+      "netWinRatePct": 11.11,
+      "excessWinRatePct": 44.44
+    },
+    "80+": {
+      "n": 2,
+      "entryDates": 2,
+      "avgReturnPct": 1.49,
+      "avgNetReturnPct": 0.71,
+      "avgExcessPct": 2.41,
+      "winRatePct": 50,
+      "netWinRatePct": 50,
+      "excessWinRatePct": 50
+    }
+  },
+  "t5BySignal": {
+    "CB+設質": {
+      "n": 37,
+      "entryDates": 4,
+      "avgReturnPct": -1.6,
+      "avgNetReturnPct": -2.38,
+      "avgExcessPct": -0.61,
+      "winRatePct": 35.14,
+      "netWinRatePct": 29.73,
+      "excessWinRatePct": 40.54
+    },
+    "RRG 改善": {
+      "n": 10,
+      "entryDates": 4,
+      "avgReturnPct": 2.23,
+      "avgNetReturnPct": 1.44,
+      "avgExcessPct": 3.27,
+      "winRatePct": 50,
+      "netWinRatePct": 50,
+      "excessWinRatePct": 50
+    },
+    "RRG 領先": {
+      "n": 32,
+      "entryDates": 4,
+      "avgReturnPct": -4.47,
+      "avgNetReturnPct": -5.26,
+      "avgExcessPct": -3.49,
+      "winRatePct": 25,
+      "netWinRatePct": 15.63,
+      "excessWinRatePct": 31.25
+    },
+    "今日漲停": {
+      "n": 9,
+      "entryDates": 4,
+      "avgReturnPct": -4.41,
+      "avgNetReturnPct": -5.2,
+      "avgExcessPct": -3.45,
+      "winRatePct": 33.33,
+      "netWinRatePct": 22.22,
+      "excessWinRatePct": 33.33
+    },
+    "動能強": {
+      "n": 38,
+      "entryDates": 4,
+      "avgReturnPct": -3.37,
+      "avgNetReturnPct": -4.16,
+      "avgExcessPct": -2.4,
+      "winRatePct": 28.95,
+      "netWinRatePct": 23.68,
+      "excessWinRatePct": 34.21
+    },
+    "外資連買": {
+      "n": 24,
+      "entryDates": 4,
+      "avgReturnPct": -0.84,
+      "avgNetReturnPct": -1.62,
+      "avgExcessPct": 0.16,
+      "winRatePct": 37.5,
+      "netWinRatePct": 33.33,
+      "excessWinRatePct": 45.83
+    },
+    "大戶同向": {
+      "n": 29,
+      "entryDates": 4,
+      "avgReturnPct": -1.99,
+      "avgNetReturnPct": -2.78,
+      "avgExcessPct": -1.03,
+      "winRatePct": 34.48,
+      "netWinRatePct": 27.59,
+      "excessWinRatePct": 41.38
+    },
+    "大戶背離": {
+      "n": 6,
+      "entryDates": 2,
+      "avgReturnPct": -0.97,
+      "avgNetReturnPct": -1.76,
+      "avgExcessPct": -0.14,
+      "winRatePct": 50,
+      "netWinRatePct": 33.33,
+      "excessWinRatePct": 50
+    },
+    "族群啟動": {
+      "n": 14,
+      "entryDates": 2,
+      "avgReturnPct": -5.56,
+      "avgNetReturnPct": -6.34,
+      "avgExcessPct": -4.61,
+      "winRatePct": 28.57,
+      "netWinRatePct": 21.43,
+      "excessWinRatePct": 28.57
+    },
+    "法人進駐": {
+      "n": 32,
+      "entryDates": 4,
+      "avgReturnPct": -2.55,
+      "avgNetReturnPct": -3.33,
+      "avgExcessPct": -1.55,
+      "winRatePct": 31.25,
+      "netWinRatePct": 28.13,
+      "excessWinRatePct": 37.5
+    },
+    "流動性低": {
+      "n": 7,
+      "entryDates": 4,
+      "avgReturnPct": -1.44,
+      "avgNetReturnPct": -2.22,
+      "avgExcessPct": -0.4,
+      "winRatePct": 42.86,
+      "netWinRatePct": 28.57,
+      "excessWinRatePct": 42.86
+    },
+    "當沖偏高": {
+      "n": 8,
+      "entryDates": 4,
+      "avgReturnPct": -6.95,
+      "avgNetReturnPct": -7.74,
+      "avgExcessPct": -5.96,
+      "winRatePct": 12.5,
+      "netWinRatePct": 12.5,
+      "excessWinRatePct": 25
+    }
+  }
+}

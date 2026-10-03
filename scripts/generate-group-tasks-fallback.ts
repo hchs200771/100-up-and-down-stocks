@@ -23,6 +23,11 @@ interface Rule {
 
 const outDir = resolve(process.cwd(), process.argv[2] ?? "data/tmp/group-tasks");
 const marketPath = resolve(process.cwd(), "data/market-latest.json");
+// 第 3 個參數：逗號分隔的股票代號清單。有給的話進入「補漏」模式——
+// 只處理這幾檔（controller 分批跑，某幾批失敗留下的漏網之魚），
+// 不清空 outDir、也不重寫其他已經分類好的 task 檔。
+const onlyCodesArg = process.argv[3];
+const onlyCodes = onlyCodesArg ? new Set(onlyCodesArg.split(",").map((c) => c.trim()).filter(Boolean)) : null;
 
 const STOCK_RULES: Record<string, Rule> = {
   "00715L": rule("原油ETF/油價槓桿", "原油 ETF 台股", "布蘭特原油 正2"),
@@ -189,18 +194,29 @@ function main() {
     throw new Error("market-latest.json missing tradingDate/timestamp");
   }
 
+  const gainerStocks = onlyCodes ? market.gainers.filter((s) => onlyCodes.has(s.code)) : market.gainers;
+  const loserStocks = onlyCodes ? market.losers.filter((s) => onlyCodes.has(s.code)) : market.losers;
+
   const tasks = [
-    ...buildTasks(market, "gainer", market.gainers),
-    ...buildTasks(market, "loser", market.losers),
+    ...buildTasks(market, "gainer", gainerStocks),
+    ...buildTasks(market, "loser", loserStocks),
   ];
 
-  rmSync(outDir, { recursive: true, force: true });
-  mkdirSync(outDir, { recursive: true });
-  tasks.forEach((task, index) => {
-    const number = String(index + 1).padStart(2, "0");
-    const file = `${number}-${task.direction}-${slugify(task.category)}.json`;
-    writeFileSync(join(outDir, file), `${JSON.stringify(task, null, 2)}\n`, "utf8");
-  });
+  if (onlyCodes) {
+    mkdirSync(outDir, { recursive: true });
+    tasks.forEach((task) => {
+      const file = `fallback-supplement-${task.direction}-${slugify(task.category)}.json`;
+      writeFileSync(join(outDir, file), `${JSON.stringify(task, null, 2)}\n`, "utf8");
+    });
+  } else {
+    rmSync(outDir, { recursive: true, force: true });
+    mkdirSync(outDir, { recursive: true });
+    tasks.forEach((task, index) => {
+      const number = String(index + 1).padStart(2, "0");
+      const file = `${number}-${task.direction}-${slugify(task.category)}.json`;
+      writeFileSync(join(outDir, file), `${JSON.stringify(task, null, 2)}\n`, "utf8");
+    });
+  }
 
   const gainers = tasks.filter((task) => task.direction === "gainer").length;
   const losers = tasks.filter((task) => task.direction === "loser").length;

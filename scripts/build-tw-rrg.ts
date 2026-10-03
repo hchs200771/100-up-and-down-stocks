@@ -11,6 +11,7 @@
 import fs from 'fs';
 import path from 'path';
 
+import { twIso, fmtTw } from "./lib/time";
 const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36';
 const WINDOWS = [120, 60, 20];
 const TAIL_POINTS = 45;
@@ -380,7 +381,13 @@ async function main() {
 
   // 每個族群：取成分股共同交易日，各股正規化為「相對起點的報酬指數」後等權平均。
   // 等權而非市值加權：族群輪動要看資金是否【普遍】進場，市值加權會被單一權值股綁架。
-  const basketSeries: { canonical: string; prices: Prices; n: number }[] = [];
+  const basketSeries: {
+    canonical: string;
+    short: string;
+    prices: Prices;
+    n: number;
+    members: [string, string, string][];
+  }[] = [];
   for (const b of cfg.baskets) {
     const members = b.members.filter(([c]: [string, string]) => priceCache[c]);
     if (members.length < 3) {
@@ -467,7 +474,7 @@ async function main() {
   }
 
   const out = {
-    generated: new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UTC',
+    generated: fmtTw(twIso()) + ' (台北時間)',
     windows: WINDOWS,
     universes,
   };

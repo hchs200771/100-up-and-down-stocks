@@ -8,16 +8,18 @@ export PATH="${_nvm_bin:+$_nvm_bin:}$HOME/.local/bin:/opt/homebrew/bin:/usr/loca
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 CONTROLLER_PROMPT="$PROJECT_DIR/scripts/prompts/group-task-controller.md"
+STRUCTURED_CONTROLLER_PROMPT="$PROJECT_DIR/scripts/prompts/group-task-controller-codex.md"
 FINALIZER_PROMPT="$PROJECT_DIR/scripts/prompts/group-finalizer.md"
 WORKER_RUNNER="$PROJECT_DIR/scripts/run-codex-group-workers.sh"
+CONTROLLER_SCHEMA="$PROJECT_DIR/scripts/schemas/codex-controller-groups.schema.json"
 TMP_DIR="$PROJECT_DIR/data/tmp"
 TASK_DIR="$TMP_DIR/group-tasks"
 TASK_SNAPSHOT_DIR="$TMP_DIR/group-tasks-backup"
 RESULT_DIR="$TMP_DIR/group-results"
 START_STAGE="${CODEX_REPORT_START_STAGE:-fetch}"
-CONTROLLER_MODEL="${CODEX_CONTROLLER_MODEL:-gpt-5.4}"
+CONTROLLER_MODEL="${CODEX_CONTROLLER_MODEL:-gpt-5.6-sol}"
 CONTROLLER_SPLIT="${CODEX_CONTROLLER_SPLIT:-1}"
-FINALIZER_MODEL="${CODEX_FINALIZER_MODEL:-gpt-5.5}"
+FINALIZER_MODEL="${CODEX_FINALIZER_MODEL:-gpt-5.6-sol}"
 REFINE_GROUP_TASKS="${CODEX_REFINE_GROUP_TASKS:-1}"
 CONTROLLER_TIMEOUT_SECONDS="${CODEX_CONTROLLER_TIMEOUT_SECONDS:-900}"
 # 族群研究 worker 的同時執行數。研究階段是「一個族群一個 codex 子行程」，
@@ -103,24 +105,38 @@ run_tsx() {
   node --import tsx "$@" >> "$LOG_FILE" 2>&1
 }
 
+fallback_controller_side() {
+  local direction="$1"
+  local side codes
+  [ "$direction" = "gainer" ] && side="gainers" || side="losers"
+  codes="$(node -e 'const fs=require("fs"); const side=process.argv[1]; const market=JSON.parse(fs.readFileSync("data/market-latest.json","utf8")); process.stdout.write((market[side]||[]).map((stock)=>stock.code).join(","));' "$side")"
+  if [ -z "$codes" ]; then
+    log "[error] $direction fallback 找不到市場股票代號"
+    return 1
+  fi
+  log "[warn] $direction controller 無法使用，改用 deterministic fallback 補齊該側"
+  run_tsx scripts/generate-group-tasks-fallback.ts "$TASK_DIR" "$codes"
+}
+
 run_codex_prompt() {
   local model="$1"
   local prompt_file="$2"
-  codex exec --full-auto -m "$model" -C "$PROJECT_DIR" - < "$prompt_file" >> "$LOG_FILE" 2>&1
+  codex exec --approve-for-me -m "$model" -C "$PROJECT_DIR" - < "$prompt_file" >> "$LOG_FILE" 2>&1
 }
 
 run_codex_prompt_with_timeout() {
   local model="$1"
   local prompt_file="$2"
   local timeout_seconds="$3"
-  local pid elapsed
+  local pid started_at now
 
-  codex exec --full-auto -m "$model" -C "$PROJECT_DIR" - < "$prompt_file" >> "$LOG_FILE" 2>&1 &
+  codex exec --approve-for-me -m "$model" -C "$PROJECT_DIR" - < "$prompt_file" >> "$LOG_FILE" 2>&1 &
   pid="$!"
-  elapsed=0
+  started_at="$(date +%s)"
 
   while kill -0 "$pid" 2>/dev/null; do
-    if [ "$elapsed" -ge "$timeout_seconds" ]; then
+    now="$(date +%s)"
+    if [ "$((now - started_at))" -ge "$timeout_seconds" ]; then
       log "codex prompt timed out after ${timeout_seconds}s; killing pid $pid"
       pkill -TERM -P "$pid" 2>/dev/null || true
       kill "$pid" 2>/dev/null || true
@@ -131,7 +147,38 @@ run_codex_prompt_with_timeout() {
       return 124
     fi
     sleep 5
-    elapsed=$((elapsed + 5))
+  done
+
+  wait "$pid"
+}
+
+run_codex_structured_with_timeout() {
+  local model="$1"
+  local prompt_file="$2"
+  local timeout_seconds="$3"
+  local schema_file="$4"
+  local output_file="$5"
+  local pid started_at now
+
+  codex exec --approve-for-me --ephemeral --color never \
+    --output-schema "$schema_file" -o "$output_file" \
+    -m "$model" -C "$PROJECT_DIR" - < "$prompt_file" >> "$LOG_FILE" 2>&1 &
+  pid="$!"
+  started_at="$(date +%s)"
+
+  while kill -0 "$pid" 2>/dev/null; do
+    now="$(date +%s)"
+    if [ "$((now - started_at))" -ge "$timeout_seconds" ]; then
+      log "codex structured prompt timed out after ${timeout_seconds}s; killing pid $pid"
+      pkill -TERM -P "$pid" 2>/dev/null || true
+      kill "$pid" 2>/dev/null || true
+      sleep 2
+      pkill -KILL -P "$pid" 2>/dev/null || true
+      kill -9 "$pid" 2>/dev/null || true
+      wait "$pid" 2>/dev/null || true
+      return 124
+    fi
+    sleep 5
   done
 
   wait "$pid"
@@ -183,6 +230,11 @@ ensure_tasks_available() {
   restore_task_snapshot
 }
 
+# 讀出 JSON 檔的 date 欄位（讀不到就回空字串）。給 finalizer 後的日期一致性檢查用。
+read_json_date() {
+  node -e 'try{process.stdout.write(String(JSON.parse(require("fs").readFileSync(process.argv[1],"utf8")).date||""))}catch(e){}' "$1"
+}
+
 stage_enabled() {
   local stage_name="$1"
   case "$START_STAGE" in
@@ -224,7 +276,7 @@ fi
 
 log "run-daily-report-codex-parallel.sh start"
 log "START_STAGE=$START_STAGE"
-log "CONTROLLER_MODEL=$CONTROLLER_MODEL FINALIZER_MODEL=$FINALIZER_MODEL CODEX_GROUP_WORKER_MODEL=${CODEX_GROUP_WORKER_MODEL:-gpt-5.4-mini} CONTROLLER_SPLIT=$CONTROLLER_SPLIT"
+log "CONTROLLER_MODEL=$CONTROLLER_MODEL FINALIZER_MODEL=$FINALIZER_MODEL CODEX_GROUP_WORKER_MODEL=${CODEX_GROUP_WORKER_MODEL:-gpt-5.6-luna} CONTROLLER_SPLIT=$CONTROLLER_SPLIT"
 log "CONTROLLER_TIMEOUT_SECONDS=$CONTROLLER_TIMEOUT_SECONDS GROUP_CONCURRENCY=$GROUP_CONCURRENCY"
 
 if ! command -v codex >/dev/null 2>&1; then
@@ -266,8 +318,16 @@ if stage_enabled fetch; then
   timed intl-market run_tsx scripts/fetch-intl-market.ts \
     || log "[warn] fetch-intl-market.ts failed; 國際數字略過，不影響台股報告" &
   AUX_PIDS="$AUX_PIDS $!"
+  # 板塊熱圖：每天都要跑，因為 ETF 淨流量是靠自己累積的股數快照跨日相減算出來的，
+  # 漏跑一天就少一筆基準（fetch-sector-flows.ts）。
+  timed sector-flows run_tsx scripts/fetch-sector-flows.ts \
+    || log "[warn] fetch-sector-flows.ts failed; 美股板塊熱圖略過，不影響台股報告" &
+  AUX_PIDS="$AUX_PIDS $!"
   timed credit-spreads run_tsx scripts/fetch-credit-spreads.ts \
     || log "[warn] fetch-credit-spreads.ts failed; 信用利差略過，不影響台股報告" &
+  AUX_PIDS="$AUX_PIDS $!"
+  timed theme-radar run_tsx scripts/build-theme-radar.ts \
+    || log "[warn] build-theme-radar.ts failed; 題材觀察欄位略過，不影響選股分數" &
   AUX_PIDS="$AUX_PIDS $!"
 
   # 集保是週資料且抓取冪等（同一週已存過就跳過），但 divergence 依賴 holders 的產出，
@@ -292,9 +352,15 @@ if stage_enabled fetch; then
   ) &
   AUX_PIDS="$AUX_PIDS $!"
 
-  # 設質+CB：週更且同 ISO 週內冪等（重跑會直接用上次結果），每天跑只有一次真的抓。
+  # 設質+CB：CB 行情日更，同一台北日內冪等；設質快照仍依官方月頻資料比較。
   timed cb-pledge run_tsx scripts/screen-cb-pledge.ts \
     || log "[warn] screen-cb-pledge.ts failed; 設質+CB 子頁沿用上次結果" &
+  AUX_PIDS="$AUX_PIDS $!"
+
+  # 贏家分點：名單在 Notion「分點追蹤名單」（讀不到就用 data/broker-watch-config.json），
+  # 資料來自富邦 e01，約 45 日滾動窗，每天累積進 data/broker-watch-history/。
+  timed broker-watch run_tsx scripts/fetch-broker-watch.ts \
+    || log "[warn] fetch-broker-watch.ts failed; 贏家分點區塊略過" &
   AUX_PIDS="$AUX_PIDS $!"
 
 fi
@@ -302,6 +368,10 @@ fi
 if stage_enabled classify; then
   log "進度 1.5/5：執行 score-report 快照與記分板更新"
   timed score-report run_tsx scripts/score-report.ts || log "[warn] score-report.ts failed; continuing"
+  timed classify-input run_tsx scripts/build-codex-classify-input.ts || {
+    log "build-codex-classify-input.ts exited non-zero"
+    exit 1
+  }
 fi
 
 if stage_enabled classify; then
@@ -312,22 +382,39 @@ if stage_enabled classify; then
 
   log "進度 2/6：執行分類 controller (SPLIT=$CONTROLLER_SPLIT)"
   if [ "$CONTROLLER_SPLIT" = "1" ]; then
-    GAINER_PROMPT="$(mktemp /tmp/controller-gainer-XXXXXX.md)"
-    LOSER_PROMPT="$(mktemp /tmp/controller-loser-XXXXXX.md)"
-    cat "$CONTROLLER_PROMPT" > "$GAINER_PROMPT"
-    printf '\n\n## 本次執行範圍限制\n只處理 direction=gainer（強勢 100 檔），只輸出 gainer task 檔，檔名以 gainer 為主。完全不要處理 losers。不要清空 data/tmp/group-tasks/ 目錄（runner 已先清空，且此刻有另一個 process 正在同目錄切 loser task）。漏股檢查只需確認強勢 100 檔各出現一次。\n' >> "$GAINER_PROMPT"
-    cat "$CONTROLLER_PROMPT" > "$LOSER_PROMPT"
-    printf '\n\n## 本次執行範圍限制\n只處理 direction=loser（弱勢 100 檔），只輸出 loser task 檔，檔名以 loser 為主。完全不要處理 gainers。不要清空 data/tmp/group-tasks/ 目錄（runner 已先清空，且此刻有另一個 process 正在同目錄切 gainer task）。漏股檢查只需確認弱勢 100 檔各出現一次。\n' >> "$LOSER_PROMPT"
+    GAINER_PROMPT="$(mktemp /tmp/controller-gainer-XXXXXX)"
+    LOSER_PROMPT="$(mktemp /tmp/controller-loser-XXXXXX)"
+    GAINER_OUTPUT="$TMP_DIR/controller-gainer.json"
+    LOSER_OUTPUT="$TMP_DIR/controller-loser.json"
+    rm -f "$GAINER_OUTPUT" "$LOSER_OUTPUT"
+    cat "$STRUCTURED_CONTROLLER_PROMPT" > "$GAINER_PROMPT"
+    printf '\n\n本次只處理 direction=gainer，只使用輸入的 gainers；JSON 的 direction 固定為 gainer。\n' >> "$GAINER_PROMPT"
+    cat "$STRUCTURED_CONTROLLER_PROMPT" > "$LOSER_PROMPT"
+    printf '\n\n本次只處理 direction=loser，只使用輸入的 losers；JSON 的 direction 固定為 loser。\n' >> "$LOSER_PROMPT"
 
-    timed controller-gainer run_codex_prompt_with_timeout "$CONTROLLER_MODEL" "$GAINER_PROMPT" "$CONTROLLER_TIMEOUT_SECONDS" &
+    timed controller-gainer run_codex_structured_with_timeout "$CONTROLLER_MODEL" "$GAINER_PROMPT" "$CONTROLLER_TIMEOUT_SECONDS" "$CONTROLLER_SCHEMA" "$GAINER_OUTPUT" &
     GAINER_PID="$!"
-    timed controller-loser run_codex_prompt_with_timeout "$CONTROLLER_MODEL" "$LOSER_PROMPT" "$CONTROLLER_TIMEOUT_SECONDS" &
+    timed controller-loser run_codex_structured_with_timeout "$CONTROLLER_MODEL" "$LOSER_PROMPT" "$CONTROLLER_TIMEOUT_SECONDS" "$CONTROLLER_SCHEMA" "$LOSER_OUTPUT" &
     LOSER_PID="$!"
 
     wait "$GAINER_PID" || log "gainer controller exited non-zero"
     wait "$LOSER_PID" || log "loser controller exited non-zero"
 
     rm -f "$GAINER_PROMPT" "$LOSER_PROMPT"
+    if [ -f "$GAINER_OUTPUT" ]; then
+      run_tsx scripts/split-codex-controller-output.ts "$GAINER_OUTPUT" "$TASK_DIR" gainer \
+        || fallback_controller_side gainer \
+        || { log "gainer controller 與 fallback 都失敗"; exit 1; }
+    else
+      fallback_controller_side gainer || { log "gainer controller 沒有輸出且 fallback 失敗"; exit 1; }
+    fi
+    if [ -f "$LOSER_OUTPUT" ]; then
+      run_tsx scripts/split-codex-controller-output.ts "$LOSER_OUTPUT" "$TASK_DIR" loser \
+        || fallback_controller_side loser \
+        || { log "loser controller 與 fallback 都失敗"; exit 1; }
+    else
+      fallback_controller_side loser || { log "loser controller 沒有輸出且 fallback 失敗"; exit 1; }
+    fi
   else
     if ! timed controller run_codex_prompt_with_timeout "$CONTROLLER_MODEL" "$CONTROLLER_PROMPT" "$CONTROLLER_TIMEOUT_SECONDS"; then
       log "task controller exited non-zero"
@@ -404,13 +491,31 @@ if stage_enabled finalize; then
   fi
 
   log "進度 4/5：開始 finalizer 組裝盤後分析"
-  if ! timed finalizer run_codex_prompt "$FINALIZER_MODEL" "$FINALIZER_PROMPT"; then
+  if ! timed finalizer run_codex_prompt_with_timeout "$FINALIZER_MODEL" "$FINALIZER_PROMPT" "$CONTROLLER_TIMEOUT_SECONDS"; then
     log "finalizer exited non-zero"
   fi
 
   if [ ! -f "$PROJECT_DIR/data/analysis-latest.json" ]; then
     log "analysis-latest.json missing after finalizer"
     notify "每日股市報告 ❌" "分析結果檔沒有產出，請看 log: $LOG_FILE"
+    exit 1
+  fi
+
+  # finalizer 非零退出時，前一交易日的 analysis-latest.json 仍可能留在原地。
+  # skeleton 是本次執行機械合併出的安全 fallback；日期不一致時改用它，避免送出舊報告。
+  SKELETON_FILE="$PROJECT_DIR/data/tmp/analysis-skeleton.json"
+  if [ -f "$SKELETON_FILE" ]; then
+    SKELETON_DATE="$(read_json_date "$SKELETON_FILE" 2>/dev/null || true)"
+    ANALYSIS_DATE="$(read_json_date "$PROJECT_DIR/data/analysis-latest.json" 2>/dev/null || true)"
+    if [ -n "$SKELETON_DATE" ] && [ "$SKELETON_DATE" != "$ANALYSIS_DATE" ]; then
+      log "[warn] analysis-latest.json 日期 $ANALYSIS_DATE 與 skeleton $SKELETON_DATE 不符；改用本次 skeleton，避免送出舊報告"
+      cp "$SKELETON_FILE" "$PROJECT_DIR/data/analysis-latest.json"
+    fi
+  fi
+  if ! timed analysis-completeness run_tsx scripts/validate-analysis-completeness.ts \
+    "$PROJECT_DIR/data/analysis-latest.json" "$SKELETON_FILE" "$PROJECT_DIR/data/market-latest.json"; then
+    log "analysis completeness validation failed; refusing to generate or publish an incomplete report"
+    notify "每日股市報告 ❌" "上漲／下跌族群資料不完整，已停止發布。Log: $LOG_FILE"
     exit 1
   fi
   log "進度 4/5：finalizer 已產出 data/analysis-latest.json"
@@ -432,22 +537,13 @@ if stage_enabled send; then
   fi
 
   timed stock-picks run_tsx scripts/build-stock-picks.ts || log "[warn] build-stock-picks.ts failed; 終極選股池分頁略過，不影響其他區塊"
-  log "進度 5/5：開始產生 HTML 並寄送報告"
-  if [ -n "${GAS_WEBHOOK_URL:-}" ]; then
-    if ! timed send-report run_tsx scripts/send-report.ts; then
-      log "send-report.ts exited non-zero"
-      notify "每日股市報告 ❌" "報告產出成功，但寄信失敗。Log: $LOG_FILE"
-      exit 1
-    fi
-    log "進度 5/5：報告已寄出"
-  else
-    if ! timed send-report run_tsx scripts/send-report.ts data/analysis-latest.json --no-email; then
-      log "send-report.ts --no-email exited non-zero"
-      notify "每日股市報告 ❌" "報告產出成功，但 HTML 預覽失敗。Log: $LOG_FILE"
-      exit 1
-    fi
-    log "進度 5/5：未設定 GAS_WEBHOOK_URL，已產生 HTML 預覽但未寄信"
+  log "進度 5/5：開始產生 HTML（Codex 流程不寄信）"
+  if ! timed send-report run_tsx scripts/send-report.ts data/analysis-latest.json --no-email; then
+    log "send-report.ts --no-email exited non-zero"
+    notify "每日股市報告 ❌" "報告分析成功，但 HTML 產出失敗。Log: $LOG_FILE"
+    exit 1
   fi
+  log "進度 5/5：HTML 已產生，未寄信"
 fi
 
 if stage_enabled publish; then

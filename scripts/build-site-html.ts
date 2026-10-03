@@ -10,6 +10,7 @@
  */
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { resolve } from "node:path";
+import { SUBPAGES, navText } from "./lib/nav";
 
 const SITE_URL = "https://hchs200771.github.io/100-up-and-down-stocks/";
 
@@ -35,6 +36,17 @@ if (fragment.includes("<!--RRG_EMBED-->")) {
     console.log(`[build-site] Inlined RRG (${(embed.length / 1024).toFixed(0)} KB)`);
   } else {
     console.warn("[build-site] data/tw-rrg-embed.html not found — RRG chart omitted.");
+  }
+}
+
+// 舊報告片段的 JS 分頁列是較早的子頁清單（依序新增：題材雷達、贏家分點）。
+// 發布時換成目前的完整清單，讓新子頁不用等重產報告就出現在同一列。
+{
+  const pills = (pages: typeof SUBPAGES) => JSON.stringify(pages.map((page) => [page.file, `${navText(page.label)} ↗`]));
+  const current = pills(SUBPAGES);
+  for (let n = SUBPAGES.length - 1; n >= 2 && !fragment.includes(current); n--) {
+    const previous = pills(SUBPAGES.slice(0, n));
+    if (fragment.includes(previous)) fragment = fragment.replace(previous, current);
   }
 }
 

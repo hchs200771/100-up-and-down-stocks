@@ -31,12 +31,32 @@
  * 4. 快照涵蓋範圍不同（回補的 partial 快照只有數百檔）→ 只比較兩份都有的個股，
  *    並在輸出標明 universe 大小。
  *
+ * ── 連續加碼不加分（2026-09 回測後改）────────────────────────────
+ * 直覺上「連兩週買」代表大戶看好，應該更強。**回測找不到這個效果。**
+ *
+ * 46 週（2025-09-19 ~ 2026-08-28，資料日+4 天進場、持有一週）分桶，5 個門檻 ×
+ * 3 個視角＝15 個格子，「連 2 週以上 − 連 1 週」7 格正、8 格負，介於
+ * −0.77% ~ +0.54%/週，**|t| 全部小於 1.7，沒有一格顯著**。等第二次確認既沒有
+ * 額外報酬，也沒有明顯傷害——就是純粹沒有資訊。
+ *
+ * 所以 streak 只留在輸出裡當**顯示資訊**，不進評分。原本背離 +0.25~0.5、
+ * 同向 +0.3~0.6 的加分已經移除：沒有證據支持的加分不該留在評分裡。
+ *
+ * ⚠️ 同一份回測也顯示：**「大戶增加」本身在這一年沒有預測力**——「全部增加 − 減碼」
+ * 在 15 個格子裡介於 −0.53% ~ +0.70%，t 值全部落在 ±1.6 以內。這強化了下面那句話。
+ *
+ * ⚠️ 這份回測的母體是**每週各自取當週成交量前 300 檔**的回補快照（見
+ * backfill-tdcc-history.ts）。第一版曾用「最新快照的前 300 檔」回頭套用到一年前，
+ * 那是前視偏誤，基準週報酬被灌到 +2.49%（年化 250%+），而且會生出「連 2 週以上
+ * 15 格全負」這種假結論。修掉之後基準降到 +1.58%/週，結論從「反指標」變成「沒訊號」。
+ *
  * ⚠️ 這是**觀察名單產生器，不是買賣訊號**。大戶增加不必然領先股價。
  */
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import type { HolderSnapshot, HolderSnapshotStock } from "./fetch-tdcc-holders";
 
+import { twIso } from "./lib/time";
 const HISTORY_DIR = "data/tdcc-history";
 const PRICE_DIR = "data/price-history";
 const TOP_N = 20;
@@ -261,7 +281,7 @@ function rankDiverge(all: DivergenceRow[]): DivergenceRow[] {
     let s = (r.dCum - mC) / sC - ((r.pricePct - mP) / sP) * 0.9;
     if (r.dHolders > 0) s += 0.25; // 真的有新的人進場，不是帳戶移轉
     if (r.dilutionRisk) s -= 0.8;
-    if (r.streak >= 2) s += Math.min(0.5, (r.streak - 1) * 0.25);
+    // ⚠️ 這裡曾經有「連續加碼 +0.25~0.5」的加分，2026-09 回測後移除，理由見檔頭。
     r.score = Number(s.toFixed(3));
   }
   return pool.sort((x, y) => y.score - x.score).slice(0, TOP_N);
@@ -281,7 +301,7 @@ function rankConverge(all: DivergenceRow[]): DivergenceRow[] {
     let s = (r.dCum - mC) / sC + ((r.pricePct - mP) / sP) * 0.7;
     if (r.dHolders > 0) s += 0.25;
     if (r.dilutionRisk) s -= 0.8;
-    if (r.streak >= 2) s += Math.min(0.6, (r.streak - 1) * 0.3); // 連續加碼在趨勢單上更值錢
+    // ⚠️ 這裡曾經有「連續加碼 +0.3~0.6」的加分，2026-09 回測後移除，理由見檔頭。
     if (r.aboveMa20 && r.price20 !== null && r.price20 > 0) s += 0.3; // 20 日也是正的＝短中期同步
     r.score = Number(s.toFixed(3));
   }
@@ -326,7 +346,7 @@ function main() {
   }
 
   const report: DivergenceReport = {
-    generatedAt: new Date().toISOString(),
+    generatedAt: twIso(),
     curDate: cur.dataDate,
     prevDate: prev.dataDate,
     curWeek: cur.isoWeek,

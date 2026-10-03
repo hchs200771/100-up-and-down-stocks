@@ -1,6 +1,7 @@
 import { writeFileSync, mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 
+import { twIso } from "./lib/time";
 /**
  * 信用利差快照（判斷「資金是不是在緊縮」）。
  *
@@ -129,7 +130,7 @@ async function main() {
   mkdirSync(dirname(outPath), { recursive: true });
   writeFileSync(
     outPath,
-    `${JSON.stringify({ timestamp: new Date().toISOString(), source: "FRED (ICE BofA OAS)", series }, null, 2)}\n`,
+    `${JSON.stringify({ timestamp: twIso(), source: "FRED (ICE BofA OAS)", series }, null, 2)}\n`,
     "utf-8",
   );
   console.log(`Wrote ${series.length}/${SERIES.length} credit spreads to ${outPath}`);

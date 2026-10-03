@@ -37,6 +37,7 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 
+import { twIso } from "./lib/time";
 const OUT_LATEST = "data/margin-options-latest.json";
 const OUT_HISTORY = "data/margin-history.json";
 const TXO = "臺指選擇權";
@@ -414,7 +415,7 @@ async function main() {
   }
 
   const report: MarginOptionsReport = {
-    generatedAt: new Date().toISOString(),
+    generatedAt: twIso(),
     tradingDate,
     margin,
     options,

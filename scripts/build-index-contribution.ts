@@ -21,6 +21,7 @@
 import { writeFileSync, mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 
+import { twIso } from "./lib/time";
 /** TWSE 官方產業別代碼 → 名稱（t187ap03_L 的「產業別」欄位）。 */
 const INDUSTRY: Record<string, string> = {
   "01": "水泥", "02": "食品", "03": "塑膠", "04": "紡織纖維", "05": "電機機械",
@@ -212,7 +213,7 @@ async function main() {
 
   const byPoints = [...stocks].sort((a, b) => b.points - a.points);
   const out: IndexContribution = {
-    timestamp: new Date().toISOString(),
+    timestamp: twIso(),
     tradingDate,
     index: { close: idxClose, change: idxChange, prev: Number(idxPrev.toFixed(2)) },
     calibration: Number(calibration.toFixed(4)),

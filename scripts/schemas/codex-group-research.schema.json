@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["category", "direction", "story", "confidence", "keyDrivers", "stockNotes"],
+  "properties": {
+    "category": { "type": "string" },
+    "direction": { "type": "string", "enum": ["gainer", "loser"] },
+    "story": { "type": "string" },
+    "confidence": { "type": "string", "enum": ["high", "medium", "low"] },
+    "keyDrivers": { "type": "array", "items": { "type": "string" }, "minItems": 1, "maxItems": 4 },
+    "stockNotes": {
+      "type": "array",
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["stock", "note"],
+        "properties": {
+          "stock": { "type": "string" },
+          "note": { "type": "string" }
+        }
+      }
+    }
+  }
+}

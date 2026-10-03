@@ -1,0 +1,53 @@
+{
+  "tradingDate": "2026-09-29",
+  "notion": false,
+  "items": [
+    {
+      "pageId": "3ead8bb2-433f-814b-b6da-de72be6c31df",
+      "title": "信昌電 × 中國信託",
+      "stockCode": "6173",
+      "stockName": "信昌電",
+      "broker": "中國信託",
+      "brokerCode": "6160",
+      "threshold": 400,
+      "direction": "雙向",
+      "grade": "未分級",
+      "note": "總公司而非分點；單日買超或賣超超過 400 張即留意",
+      "lastTriggerDate": "",
+      "lastTriggerNet": null,
+      "brokerHq": "6160",
+      "status": "ok",
+      "net": 16,
+      "close": 297.5,
+      "triggered": false,
+      "lastTrigger": null,
+      "recent": [
+        {
+          "date": "2026-09-21",
+          "close": 308,
+          "net": -32
+        },
+        {
+          "date": "2026-09-22",
+          "close": 303,
+          "net": -10
+        },
+        {
+          "date": "2026-09-23",
+          "close": 302.5,
+          "net": 19
+        },
+        {
+          "date": "2026-09-24",
+          "close": 306.5,
+          "net": -5
+        },
+        {
+          "date": "2026-09-29",
+          "close": 297.5,
+          "net": 16
+        }
+      ]
+    }
+  ]
+}

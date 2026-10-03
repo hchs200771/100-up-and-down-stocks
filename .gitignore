@@ -16,6 +16,8 @@ data/memory/
 data/tmp/
 data/logs/
 data/price-history/
+data/theme-radar/
+data/theme-radar.html
 data/analysis-history/
 data/scorecard.json
 
@@ -27,6 +29,7 @@ data/tw-rrg-embed.html
 # 帳戶持倉（真實金額與部位，絕不進版控）
 data/kgi-positions.json
 data/position-analysis.json
+data/holding-health-latest.json
 
 # 每日重抓/重算即可得的衍生產物（data/site/ 下的發佈副本仍追蹤）
 data/intl-market-latest.json

@@ -1,0 +1,20 @@
+{
+  "fetchedAt": "2026-09-30T00:00:00.000Z",
+  "source": "Notion connector（分點追蹤名單，啟用=true）",
+  "items": [
+    {
+      "pageId": "3ead8bb2-433f-814b-b6da-de72be6c31df",
+      "title": "信昌電 × 中國信託",
+      "stockCode": "6173",
+      "stockName": "信昌電",
+      "broker": "中國信託（總公司）",
+      "brokerCode": "6160",
+      "threshold": 400,
+      "direction": "雙向",
+      "grade": "未分級",
+      "note": "總公司而非分點；單日買超或賣超超過 400 張即留意",
+      "lastTriggerDate": "",
+      "lastTriggerNet": null
+    }
+  ]
+}

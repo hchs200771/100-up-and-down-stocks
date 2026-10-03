@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Activity, TrendingUp, TrendingDown, RefreshCw, AlertCircle, FileText, Download, CheckCircle2, Circle, Loader2, Mail } from 'lucide-react';
+import { Activity, TrendingUp, TrendingDown, RefreshCw, AlertCircle, FileText, Download, CheckCircle2, Circle, Loader2, Mail, UserRound, ExternalLink, Clock3 } from 'lucide-react';
 import { classifyStocks, generateSummary, fetchCategoryStory, Stock, CategoryGroup } from './services/aiService';
 import { getHistory, saveHistory } from './services/storageService';
 
@@ -12,7 +12,62 @@ interface MarketData {
   tradingDate: string;
 }
 
+type HoldingResearch = {
+  name: string;
+  company: string;
+  industry: string;
+  overview: string;
+  sourceHref: string;
+};
+
+const holdingResearch: HoldingResearch[] = [
+  {
+    name: '國巨',
+    company: 'YAGEO Corporation',
+    industry: '被動元件',
+    overview: '提供電阻、MLCC、電感與利基型被動元件，終端應用涵蓋運算與企業系統、車用、工業與通訊。產業的重點在高階產品組合、庫存循環與終端需求恢復速度。',
+    sourceHref: 'https://www.yageogroup.com/',
+  },
+  {
+    name: '聯電',
+    company: 'United Microelectronics Corporation',
+    industry: '晶圓代工／特殊製程',
+    overview: '以成熟製程與特殊製程為主的晶圓代工廠，服務通訊、消費、工業、車用等應用。產業觀察重點為成熟製程稼動率、特殊製程滲透率與區域擴產的資本效率。',
+    sourceHref: 'https://www.umc.com/en/IR/ir_overview',
+  },
+  {
+    name: 'AXT',
+    company: 'AXT, Inc.',
+    industry: '化合物半導體基板',
+    overview: '生產磷化銦、砷化鎵與鍺等基板，應用於資料中心光通訊、電信、雷射、感測與衛星。產業主軸是 AI 資料中心的高速光連結需求，同時受出口許可與供應鏈地緣風險影響。',
+    sourceHref: 'https://investors.axt.com/Investors/Overview/',
+  },
+  {
+    name: 'Intel',
+    company: 'Intel Corporation',
+    industry: '半導體設計與晶圓代工',
+    overview: '產品涵蓋 PC、資料中心與 AI 運算，並發展 Intel Foundry。產業焦點是 AI 運算需求、先進製程與先進封裝競爭，以及外部代工客戶與資本支出的執行成果。',
+    sourceHref: 'https://www.intc.com/news-events',
+  },
+  {
+    name: 'Solaris Energy Infrastructure',
+    company: 'Solaris Energy Infrastructure, Inc.',
+    industry: '電力基礎設施與能源服務',
+    overview: '提供模組化發電、配電與原料管理方案，客戶橫跨資料中心、能源與工業。產業重點是資料中心電力需求、設備交付與併購整合；景氣與專案執行對業績影響較大。',
+    sourceHref: 'https://ir.solaris-energy.com/',
+  },
+];
+
+function sortGroups(groups: CategoryGroup[]): CategoryGroup[] {
+  const isMisc = (group: CategoryGroup) => /^其他/.test(group.category);
+  return groups
+    .map((group, index) => ({ group, index }))
+    .sort((a, b) => Number(isMisc(a.group)) - Number(isMisc(b.group)) || b.group.stocks.length - a.group.stocks.length || a.index - b.index)
+    .map(({ group }) => group);
+}
+
 export default function App() {
+  const [activePage, setActivePage] = useState<'report' | 'personal'>('report');
   const [loading, setLoading] = useState(false);
   const [currentStep, setCurrentStep] = useState<number>(-1);
   const [error, setError] = useState<string | null>(null);
@@ -80,21 +135,23 @@ export default function App() {
         losersWithStoriesPromise
       ]);
 
-      setGainersStructure(gainersWithStories);
-      setLosersStructure(losersWithStories);
+      const sortedGainers = sortGroups(gainersWithStories);
+      const sortedLosers = sortGroups(losersWithStories);
+      setGainersStructure(sortedGainers);
+      setLosersStructure(sortedLosers);
 
       setCurrentStep(3); // 正在生成盤後總結
       const history = getHistory();
       const recentHistory = history.slice(0, 2); // 取前兩天
-      const marketSummary = await generateSummary(gainersWithStories, losersWithStories, recentHistory);
+      const marketSummary = await generateSummary(sortedGainers, sortedLosers, recentHistory);
       setSummary(marketSummary);
 
       // 儲存交易日紀錄
       saveHistory({
         date: data.tradingDate,
         summary: marketSummary,
-        gainers: gainersWithStories.map(g => g.category),
-        losers: losersWithStories.map(g => g.category)
+        gainers: sortedGainers.map(g => g.category),
+        losers: sortedLosers.map(g => g.category)
       });
 
       setCurrentStep(-1);
@@ -122,7 +179,7 @@ export default function App() {
             <p style="line-height: 1.6; margin-bottom: 0;">${summary.replace(/\n/g, '<br>')}</p>
           </div>
 
-          <h3 style="color: #dc2626;">🔥 強勢焦點 (量大優先)</h3>
+          <h3 style="color: #dc2626;">🔥 強勢焦點（族群共振：檔數多→少）</h3>
       `;
 
       gainersStructure.forEach(g => {
@@ -172,7 +229,7 @@ export default function App() {
         html += `</div>`;
       });
 
-      html += `<h3 style="color: #16a34a; margin-top: 30px;">🧊 弱勢焦點 (量大優先)</h3>`;
+      html += `<h3 style="color: #16a34a; margin-top: 30px;">🧊 弱勢焦點（族群共振：檔數多→少）</h3>`;
 
       losersStructure.forEach(g => {
         html += `
@@ -341,8 +398,8 @@ export default function App() {
                 <div className="flex items-start gap-2">
                   <FileText className={`w-4 h-4 mt-0.5 shrink-0 ${type === 'gainer' ? 'text-red-600' : 'text-green-600'}`} />
                   <div>
-                    <h5 className={`text-xs font-semibold mb-1 ${type === 'gainer' ? 'text-red-900' : 'text-green-900'}`}>產業故事與${type === 'gainer' ? '上漲' : '下跌'}原因</h5>
-                    <p className="text-sm text-gray-800 leading-relaxed">{group.story}</p>
+                    <h5 className={`text-sm font-semibold mb-1 ${type === 'gainer' ? 'text-red-900' : 'text-green-900'}`}>產業故事與${type === 'gainer' ? '上漲' : '下跌'}原因</h5>
+                    <p className="text-base text-gray-800 leading-relaxed">{group.story}</p>
                   </div>
                 </div>
               </div>
@@ -367,8 +424,23 @@ export default function App() {
               <p className="text-xs text-gray-500 font-mono">v8.0 Ultimate AI Edition</p>
             </div>
           </div>
+          <nav className="flex items-center gap-1 rounded-lg bg-gray-100 p-1" aria-label="主要頁面">
+            <button
+              onClick={() => setActivePage('report')}
+              className={`rounded-md px-2.5 py-1.5 text-sm font-medium transition-colors ${activePage === 'report' ? 'bg-white text-indigo-700 shadow-sm' : 'text-gray-600 hover:text-gray-900'}`}
+            >
+              盤後報告
+            </button>
+            <button
+              onClick={() => setActivePage('personal')}
+              className={`inline-flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-sm font-medium transition-colors ${activePage === 'personal' ? 'bg-white text-indigo-700 shadow-sm' : 'text-gray-600 hover:text-gray-900'}`}
+            >
+              <UserRound className="h-4 w-4" />
+              個人頁面
+            </button>
+          </nav>
           <div className="flex items-center gap-4">
-            {marketData && (
+            {activePage === 'report' && marketData && (
               <>
                 <span className="text-sm text-gray-500 font-mono bg-gray-100 px-3 py-1 rounded-full">
                   {marketData.timestamp}
@@ -402,19 +474,72 @@ export default function App() {
                 </button>
               </>
             )}
-            <button
-              onClick={runAnalysis}
-              disabled={loading}
-              className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm"
-            >
-              {loading ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Activity className="w-4 h-4" />}
-              {loading ? '分析中...' : '執行盤後分析'}
-            </button>
+            {activePage === 'report' && (
+              <button
+                onClick={runAnalysis}
+                disabled={loading}
+                className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm"
+              >
+                {loading ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Activity className="w-4 h-4" />}
+                {loading ? '分析中...' : '執行盤後分析'}
+              </button>
+            )}
           </div>
         </div>
       </header>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {activePage === 'personal' ? (
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="space-y-6"
+          >
+            <section className="rounded-2xl border border-indigo-100 bg-white p-6 shadow-sm">
+              <div className="flex items-start gap-3">
+                <div className="rounded-lg bg-indigo-50 p-2 text-indigo-600">
+                  <UserRound className="h-5 w-5" />
+                </div>
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-900">持股部位</h2>
+                  <p className="mt-1 text-gray-600">公司與產業研究頁，不呈現成本、數量、買賣紀錄或任何個人交易計畫。</p>
+                </div>
+              </div>
+              <div className="mt-5 flex items-center gap-2 rounded-lg border border-amber-100 bg-amber-50 px-3 py-2 text-sm text-amber-900">
+                <Clock3 className="h-4 w-4 shrink-0" />
+                最新動態只採計近 3 天公開消息；本次檢索未發現五個標的在此期間的重大公司公告，因此不以較舊消息填補。
+              </div>
+            </section>
+
+            <section className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+              {holdingResearch.map((holding) => (
+                <article key={holding.name} className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <p className="text-xs font-medium tracking-wide text-indigo-600">{holding.industry}</p>
+                      <h3 className="mt-1 text-xl font-bold text-gray-900">{holding.name}</h3>
+                      <p className="mt-1 text-sm text-gray-500">{holding.company}</p>
+                    </div>
+                    <a
+                      href={holding.sourceHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex shrink-0 items-center gap-1 text-sm font-medium text-indigo-600 hover:text-indigo-800"
+                    >
+                      公開來源
+                      <ExternalLink className="h-3.5 w-3.5" />
+                    </a>
+                  </div>
+                  <p className="mt-4 text-sm leading-6 text-gray-700">{holding.overview}</p>
+                  <div className="mt-4 rounded-lg bg-gray-50 px-3 py-2 text-sm text-gray-600">
+                    近 3 天動態：未發現重大公司公告
+                  </div>
+                </article>
+              ))}
+            </section>
+          </motion.div>
+        ) : (
+          <>
         {/* Loading State */}
         {loading && (
           <motion.div 
@@ -496,7 +621,7 @@ export default function App() {
                   </div>
                   <h2 className="text-xl font-bold text-gray-900">強勢焦點</h2>
                   <span className="text-sm text-gray-500 ml-auto bg-white px-2 py-1 rounded-md border border-gray-200">
-                    量大優先
+                    族群共振：檔數多→少
                   </span>
                 </div>
                 <div className="bg-red-50/30 p-4 rounded-2xl border border-red-100/50">
@@ -512,7 +637,7 @@ export default function App() {
                   </div>
                   <h2 className="text-xl font-bold text-gray-900">弱勢焦點</h2>
                   <span className="text-sm text-gray-500 ml-auto bg-white px-2 py-1 rounded-md border border-gray-200">
-                    量大優先
+                    族群共振：檔數多→少
                   </span>
                 </div>
                 <div className="bg-green-50/30 p-4 rounded-2xl border border-green-100/50">
@@ -538,6 +663,8 @@ export default function App() {
               點擊右上角的「執行盤後分析」按鈕，系統將自動抓取今日台股盤後數據，並透過 Gemini AI 進行資金流向分類與總結。
             </p>
           </div>
+        )}
+          </>
         )}
       </main>
     </div>

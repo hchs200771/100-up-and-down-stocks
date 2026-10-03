@@ -14,6 +14,12 @@
  * partial=true 與 universe 大小——**回補的快照涵蓋範圍比正規快照小**，下游算排行時
  * 必須知道這件事，否則會把「沒回補到的股票」誤當成「沒有大戶異動」。
  *
+ * ⚠️ universe 一律取**目標日期當天**的成交量前 N 檔，不是「今天」的前 N 檔。
+ * 這件事是回測能不能用的關鍵：用今天的流動性排名回頭挑一年前的股票，等於預先知道
+ * 哪些股票後來會變活躍——那批股票本來就偏向漲上來的。第一版就是這樣做的，結果
+ * 回測基準週報酬高達 +2.49%（年化 250%+），一看就是前視偏誤。改成當日排名之後
+ * universe 每週都不同，這是當時真的看得到的資訊。
+ *
  * 可中斷續跑：已抓到的個股會寫進 data/tdcc-history/.partial-<date>.json，重跑會沿用。
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -174,21 +180,8 @@ async function main() {
     return;
   }
 
-  // universe 取自最新的正規快照：用成交量排序，只回補流動性夠的部分。
+  // universe 取自**目標日期當天**的成交量前 N 檔（見檔頭的前視偏誤說明）。
   // 小型股用大戶比例做訊號本來雜訊就大，回補它們的邊際效益低。
-  const snaps = (await import("node:fs")).readdirSync(historyDir).filter((f) => /^\d{8}\.json$/.test(f)).sort();
-  if (snaps.length === 0) {
-    console.error("還沒有任何正規快照，請先跑 fetch-tdcc-holders.ts 決定 universe");
-    process.exit(1);
-  }
-  const base: HolderSnapshot = JSON.parse(readFileSync(resolve(historyDir, snaps[snaps.length - 1]), "utf-8"));
-  const universe = Object.entries(base.stocks)
-    .sort((a, b) => b[1].v - a[1].v)
-    .slice(0, TOP_N)
-    .map(([code]) => code);
-
-  console.log(`回補 ${date}（${isoWeekOf(date)}）：universe = 流動性前 ${universe.length} 檔（基準快照 ${base.dataDate}）`);
-
   const partialPath = resolve(historyDir, `.partial-${date}.json`);
   const done: Record<string, { mid: number; top: number; h: number; lv: Record<string, LevelTuple> }> = existsSync(partialPath)
     ? JSON.parse(readFileSync(partialPath, "utf-8"))
@@ -196,7 +189,16 @@ async function main() {
   if (Object.keys(done).length) console.log(`  沿用上次進度 ${Object.keys(done).length} 檔`);
 
   const [prices, session] = await Promise.all([fetchPricesFor(date), openSession()]);
-  console.log(`  當日價格 ${prices.size} 檔，session 就緒`);
+  if (prices.size === 0) {
+    console.error(`${date} 拿不到當日行情（非交易日？），跳過`);
+    return;
+  }
+  const universe = [...prices.entries()]
+    .filter(([, p]) => p.close > 0)
+    .sort((a, b) => b[1].vol - a[1].vol)
+    .slice(0, TOP_N)
+    .map(([code]) => code);
+  console.log(`  當日價格 ${prices.size} 檔 → universe = 當日成交量前 ${universe.length} 檔，session 就緒`);
 
   const todo = universe.filter((c) => !done[c]);
   const total = todo.length;

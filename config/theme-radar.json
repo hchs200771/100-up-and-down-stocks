@@ -1,0 +1,15 @@
+{
+  "feeds": [
+    { "name": "TechNews", "url": "https://technews.tw/feed/" },
+    { "name": "iThome", "url": "https://www.ithome.com.tw/rss" },
+    { "name": "ServeTheHome", "url": "https://www.servethehome.com/feed/" },
+    { "name": "Tom's Hardware", "url": "https://www.tomshardware.com/feeds/all" }
+  ],
+  "themes": [
+    { "id": "silicon_photonics", "name": "矽光子與資料中心光通訊", "aliases": ["silicon photonics", "矽光子", "磷化銦", "indium phosphide"], "tickers": ["3081", "3450"] },
+    { "id": "cpo", "name": "共同封裝光學 CPO", "aliases": ["CPO", "co-packaged optics", "共同封裝光學", "共封裝光學"], "exclude": ["chief product officer", "產品長", "certified pre-owned"], "tickers": ["3363", "3450", "3163"] },
+    { "id": "foplp", "name": "面板級扇出封裝", "aliases": ["FOPLP", "面板級封裝", "fan-out panel-level packaging"], "tickers": ["3481"] },
+    { "id": "liquid_cooling", "name": "資料中心液冷", "aliases": ["liquid cooling", "液冷", "水冷散熱"], "tickers": ["3017", "3324"] },
+    { "id": "bbu", "name": "備援電池 BBU", "aliases": ["BBU", "battery backup unit", "備援電池"], "exclude": ["baseband unit", "基頻處理"], "tickers": ["2308"] }
+  ]
+}

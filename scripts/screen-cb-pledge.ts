@@ -1,10 +1,9 @@
 #!/usr/bin/env npx tsx
 /**
- * 「董監設質 + CB」公司派作價訊號 screener。
+ * 「董監設質 + CB」特殊事件與風險觀察 screener。
  *
- * 策略邏輯：公司有流通中 CB（動機：拉過轉換價才能套利）+ 董監近期新增設質
- * （壓力：質押維持率不能跌），兩者同時出現時股價易漲抗跌。本工具產出候選池，
- * 進場仍要等量價確認，這裡只做篩選與標註，不做買賣訊號。
+ * 這兩項資料同時出現時，代表融資、稀釋、轉換與治理因素值得優先研究；它們不能
+ * 單向證明公司派會拉抬，也不能取代基本面與量價確認。本工具只做事件排序與風險標註。
  *
  * 資料源（全公開、免金鑰）：
  *   1. 董監持股/設質明細（月頻，MOPS 每月 15 日左右公布上月）
@@ -16,8 +15,8 @@
  *   4. Yahoo Finance：候選股的 MA20 / 20 日均量（只抓進候選池的，不掃全市場）
  *
  * ── 執行週期與冪等 ────────────────────────────────────────────
- * 核心訊號（設質）是月頻，但 CB 價格與現股價位天天動，取每週跑一次的折衷：
- * 同一 ISO 週內重跑，直接印上次結果、不重抓（--force 覆蓋）。
+ * 設質資料是月頻，但 CB 價格、成交量與現股價位天天動，因此每日重抓。
+ * 同一台北日內重跑時直接使用上次結果（--force 可覆蓋）。
  * 設質月快照存 data/cb-pledge-history/pledge-{年月}.json、永不重抓，
  * 累積兩個月後開始算得出「當月新增設質」；首次執行只能建基線，
  * 新增設質欄位為 null，排序退回用設質比例水位。
@@ -29,13 +28,15 @@
  * - 基本面過濾（近 3 季虧損擴大）未做：OpenAPI 只給最新一季，等快照累積。
  *
  * 用法：
- *   npx tsx scripts/screen-cb-pledge.ts          # 每週一次，同週跳過
+ *   npx tsx scripts/screen-cb-pledge.ts          # 每日一次，同日跳過
  *   npx tsx scripts/screen-cb-pledge.ts --force  # 強制重跑
  */
 import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
+import { twIso, fmtTw, twNow } from "./lib/time";
+import { renderSubpageNav } from "./lib/nav";
 const ROOT = process.cwd();
 const CACHE_DIR = path.join(ROOT, "data", "cache", "cb-pledge");
 /** 設質月快照。OpenAPI 只給最新一月、遺失補不回來，所以放在會進版控的 data/ 而不是 cache。 */
@@ -54,8 +55,8 @@ const MIN_CB_UNITS = 50;
 /** Yahoo 併發上限，沿用 build-tw-rrg 的經驗值。 */
 const FETCH_CONCURRENCY = 6;
 
-/** 台灣時間的「現在」。TPEx 的「當月」以台灣日期為準，跨午夜時用 UTC 會差一個月。 */
-const twNow = () => new Date(Date.now() + 8 * 3600 * 1000);
+// 台灣時間的「現在」用共用版（lib/time.ts）。TPEx 的「當月」以台灣日期為準，
+// 跨午夜時用 UTC 會差一個月。
 
 const num = (v: unknown): number => {
   const n = Number(String(v ?? "").replace(/[,%\s]/g, ""));
@@ -131,6 +132,7 @@ function isoWeek(d: Date): string {
 
 interface State {
   lastRunAt: string;
+  runDate?: string;
   isoWeek: string;
   pledgeMonth: string;
   boardDate: string;
@@ -368,8 +370,8 @@ interface Candidate {
  *                  往下每 1% 只扣 0.6（價外空間大、但劇本未證實，罰得輕）——同樣條件下
  *                  低於轉換價的排前面，反映「低於轉換價期望報酬較好」的判斷
  *   轉換進度 0-25  已轉換 ≤10% 滿分，往 70% 線性遞減（肉還剩多少）
- *   設質動能 0-25  有月增資料：月增 2000 張以上滿分、線性；解質為負分（拿回籌碼＝警訊）
- *                  基線月退回用設質比例水位：50% 滿分封頂（再高不加，斷頭風險也在升）
+ *   設質關注 0-25  有月增資料：月增 2000 張以上滿分、線性；解質不加分也不倒扣
+ *                  基線月退回用設質比例水位：50% 滿分封頂（分數高代表優先檢查風險）
  *   可執行性 0-15  現股均量 ≥500 張給 10、CB 均量 ≥50 張給 5（買不進的訊號沒有意義）
  *   加分     +5    突破轉換價+MA20（策略一的進場確認已出現）
  *
@@ -383,7 +385,7 @@ const progressScore = (convertedPct: number) =>
 /**
  * 一家公司有多檔 CB 時，用哪一檔代表它？取**條件最好的那檔**，不是餘額最大的。
  *
- * 公司派只要「任何一檔」有套利空間就有拉抬動機，所以看的是機會最好的那檔：
+ * 同家公司只要任何一檔仍有顯著轉換條件，就值得追蹤，所以看條件最相關的那檔：
  * 未到期優先 → 位置分＋進度分最高 → 同分時餘額大的優先（籌碼多、動機強）。
  * 之前取餘額最大會誤判：例如康普三轉換價 96.9、康普四只有 69.9，
  * 挑錯一檔「vs轉換價」的結論會完全相反。
@@ -409,7 +411,7 @@ function scoreCandidate(c: Omit<Candidate, "score" | "scoreBreakdown">): Candida
   if (c.newPledgeLots != null) {
     pledgeScore = c.newPledgeLots >= 0
       ? Math.round(Math.min(25, (c.newPledgeLots / 2000) * 25))
-      : Math.max(-10, Math.round((c.newPledgeLots / 2000) * 25)); // 解質＝公司派拿回籌碼，扣分
+      : 0; // 解質可能代表壓力降低或資金安排改變，不預設方向
   } else {
     pledgeScore = Math.round(Math.min(25, (c.pledgeRatio / 50) * 25));
   }
@@ -421,8 +423,7 @@ function scoreCandidate(c: Omit<Candidate, "score" | "scoreBreakdown">): Candida
   const bonus = c.flags.includes("突破轉換價+MA20") ? 5 : 0;
 
   let total = Math.max(0, Math.min(100, position + progress + pledgeScore + tradable + bonus));
-  // 設質是這個策略的前提之一：幾乎沒設質又沒有月增的，其他分數再高也只是
-  // 「有 CB 的普通股票」，封頂在 🟡 以下，避免混進優先名單。
+  // 幾乎沒設質又沒有月增時，只剩一般 CB 事件，降低本頁的追蹤優先度。
   if (c.pledgeRatio < 5 && !(c.newPledgeLots != null && c.newPledgeLots > 0)) total = Math.min(total, 59);
   return { position, progress, pledge: pledgeScore, tradable, bonus, total };
 }
@@ -436,12 +437,13 @@ async function main() {
   mkdirSync(CACHE_DIR, { recursive: true });
   const now = new Date();
   const week = isoWeek(now);
+  const runDate = twIso(now).slice(0, 10);
 
   if (!FORCE && existsSync(STATE_FILE) && existsSync(OUT_FILE)) {
     const st: State = JSON.parse(readFileSync(STATE_FILE, "utf8"));
-    if (st.isoWeek === week) {
+    if (st.runDate === runDate) {
       const prev = JSON.parse(readFileSync(OUT_FILE, "utf8"));
-      console.log(`本週（${week}）已跑過（${st.lastRunAt}，設質資料 ${st.pledgeMonth}、看板 ${st.boardDate}），直接用上次結果；--force 可強制重跑。`);
+      console.log(`今日（${runDate}）已跑過（${st.lastRunAt}，設質資料 ${st.pledgeMonth}、看板 ${st.boardDate}），直接用上次結果；--force 可強制重跑。`);
       writeFileSync(OUT_HTML, renderHtml(prev)); // 樣板改版時不用等下週，重跑就更新網頁
       printSummary(prev);
       return;
@@ -515,7 +517,7 @@ async function main() {
     if (s.avgLots != null && s.avgLots < MIN_STOCK_LOTS) flags.push("現股量低");
     if (enriched.every((b) => (b.cbAvgUnits ?? 0) < MIN_CB_UNITS)) flags.push("CB量低");
     if (enriched.every((b) => b.convertedPct > 70)) flags.push("CB已轉換>70%");
-    // 轉換期「已結束」才是死訊號；「未開始」＝CB 剛發行、常是公司派吃貨階段，特別標出來
+    // 轉換期「已結束」才失去事件關聯；未開始只標示時程，不推測公司派行為。
     if (bonds.every((b) => b.conversionEnd < today)) flags.push("轉換期已過");
     else if (!enriched.some((b) => b.inWindow)) flags.push("轉換期未開始");
     if (p.pledgeRatio >= 50) flags.push("設質>50%");
@@ -544,7 +546,7 @@ async function main() {
   candidates.sort((a, b) => b.score - a.score || b.pledgeRatio - a.pledgeRatio);
 
   const out = {
-    generatedAt: now.toISOString(),
+    generatedAt: twIso(now),
     isoWeek: week,
     pledgeMonth: pledge.month,
     boardDate: board.boardDate,
@@ -554,7 +556,7 @@ async function main() {
   };
   writeFileSync(OUT_FILE, JSON.stringify(out, null, 1));
   writeFileSync(OUT_HTML, renderHtml(out));
-  const st: State = { lastRunAt: now.toISOString(), isoWeek: week, pledgeMonth: pledge.month, boardDate: board.boardDate };
+  const st: State = { lastRunAt: now.toISOString(), runDate, isoWeek: week, pledgeMonth: pledge.month, boardDate: board.boardDate };
   writeFileSync(STATE_FILE, JSON.stringify(st, null, 1));
   console.log(`寫出 ${path.relative(ROOT, OUT_FILE)} 與 ${path.relative(ROOT, OUT_HTML)}（${candidates.length} 檔）`);
   printSummary(out);
@@ -617,7 +619,7 @@ function renderHtml(out: any): string {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>董監設質 + CB 候選池</title>
+<title>董監設質 + CB 事件觀察池</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="88">🔐</text></svg>')}">
 <style>
@@ -645,7 +647,7 @@ a{color:var(--accent);text-decoration:none}
 .pos{color:var(--up)}.neg{color:var(--down)}
 .count{margin:8px 2px;color:var(--muted);font-size:13px}
 .nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
-.nav a{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:6px 13px;font-size:13px;font-weight:600;background:var(--card);color:var(--fg)}
+.nav a{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:7px 12px;font-size:13px;font-weight:700;background:var(--card);color:var(--fg)}
 .nav a:hover{border-color:var(--accent);color:var(--accent)}
 .nav a.here{background:var(--accent);border-color:var(--accent);color:#fff}
 tr.parent td:first-child{cursor:pointer}
@@ -667,42 +669,34 @@ details.howto b{color:var(--fg)}
 </style>
 </head>
 <body><div class="wrap">
-<nav class="nav">${[
-      ["🏠 總覽", ""],
-      ["🔥 上漲族群", "🔥 上漲族群"],
-      ["📊 市場總覽", "📊 市場總覽"],
-      ["🔄 族群輪動", "🔄 族群輪動"],
-      ["🏦 大戶籌碼", "🏦 大戶籌碼"],
-    ]
-      .map(([txt, tab]) => `<a href="index.html${tab ? `#tab=${encodeURIComponent(tab)}` : ""}">${txt}</a>`)
-      .join("")}<a class="here" href="cb-pledge.html">🔐 設質+CB</a></nav>
-<h1>🔐 董監設質 + CB 候選池</h1>
-<p class="sub">設質資料年月 ${out.pledgeMonth}（民國）｜CB 看板 ${out.boardDate}｜產生於 ${String(out.generatedAt).slice(0, 16).replace("T", " ")} UTC｜每週更新</p>
+${renderSubpageNav("cb-pledge.html")}
+<h1>🔐 董監設質 + CB 事件觀察池</h1>
+<p class="sub">設質資料年月 ${out.pledgeMonth}（民國）｜CB 看板 ${out.boardDate}｜產生於 ${fmtTw(out.generatedAt)}（台北時間）｜CB 每日更新、設質月更</p>
 ${note}
 <details class="howto">
-<summary>📖 本頁說明與選股邏輯（點開）</summary>
+<summary>📖 本頁說明與事件排序邏輯（點開）</summary>
 <div class="body">
 <h4>這個池子在找什麼</h4>
-<p>公司派同時滿足兩個條件：<b>有流通中 CB</b>（動機——股價拉過轉換價、撐上轉換價 130% 觸發強制贖回，CB 才能全數轉換出貨）＋<b>董監設質</b>（壓力——質押維持率不能跌，跌到斷頭線反而要護盤）。兩者同時出現時，股價易漲抗跌的機率較高。</p>
+<p><b>流通中 CB</b>與<b>董監設質</b>同時存在，代表轉換、潛在稀釋、融資壓力及治理風險值得優先研究。分數是事件關注度，不代表預期報酬，也不推定公司派會拉抬。</p>
 <h4>評分怎麼算（0-100）</h4>
-<p>🔴 ≥75 優先看｜🟠 60-74｜🟡 45-59｜⚪ &lt;45</p>
+<p>🔴 ≥75 優先檢查｜🟠 60-74｜🟡 45-59｜⚪ &lt;45</p>
 <ul>
 <li><b>位置分 0-35</b>：vs轉換價在 <b>-20%~+5% 滿分</b>。不對稱設計：往上每 1% 扣 1 分（漲越多肉越薄），往下每 1% 只扣 0.6 分（價外空間大、但劇本未證實）——同條件下低於轉換價的排前面。</li>
-<li><b>轉換進度 0-25</b>：已轉換 ≤10% 滿分、往 70% 線性遞減。已轉換越多，公司派出貨越接近完成。</li>
-<li><b>設質動能 0-25</b>：有月增資料時用當月新增設質張數（2000 張滿分；<b>解質倒扣</b>——拿回籌碼是警訊）；基線月先用設質比例水位（50% 封頂）。</li>
+<li><b>轉換進度 0-25</b>：已轉換 ≤10% 滿分、往 70% 線性遞減；分數衡量事件尚有多少觀察空間。</li>
+<li><b>設質關注 0-25</b>：有月增資料時用當月新增設質張數（2000 張滿分）；解質不預設多空。基線月先用設質比例水位（50% 封頂），高分代表風險更值得檢查。</li>
 <li><b>可執行性 0-15</b>：現股 20 日均量 ≥500 張給 10、CB 日均量 ≥50 張給 5。買不進出不掉的訊號沒有意義。</li>
 <li><b>加分 +5</b>：突破轉換價＋站上 MA20（策略的進場確認訊號已出現）。</li>
 </ul>
-<p>「轉換期已過」或「已轉換&gt;70%」直接 0 分沉底——戲演完了。「設質近零」（&lt;5% 且無月增）封頂 59 分——沒設質就不構成這個策略。</p>
+<p>「轉換期已過」或「已轉換&gt;70%」代表本頁關注的事件已大幅消退，直接 0 分；「設質近零」（&lt;5% 且無月增）封頂 59 分。</p>
 <h4>一家公司常常不只一檔 CB</h4>
-<p>候選池裡約 <b>兩成公司有 2 檔以上</b>（最多的晟德有四檔），各檔的轉換價、餘額、轉換進度都不一樣——例如康普三轉換價 96.9、康普四只有 69.9，看錯檔結論會完全相反。<b>點任一列可展開</b>，列出該公司所有轉換期未結束的 CB（債券代號、簡稱如「正德七/正德八」、轉換價、溢價、已轉換、餘額）。表格主列顯示的是<b>條件最好的那一檔</b>（未到期、位置與進度加總最高），因為公司派只要有一檔有套利空間就有拉抬動機。</p>
+<p>候選池裡約 <b>兩成公司有 2 檔以上</b>（最多的晟德有四檔），各檔的轉換價、餘額、轉換進度都不一樣。<b>點任一列可展開</b>，列出該公司所有轉換期未結束的 CB。表格主列顯示未到期且位置與進度最值得追蹤的一檔。</p>
 <h4>欄位怎麼讀</h4>
 <ul>
 <li><b>vs轉換價</b>：負＝還在轉換價下（空間大、待證實），正＝已站上（劇本執行中）。終點參考：轉換價 × 1.3 的強贖線。</li>
 <li><b>CB溢價%</b>：低＝CB 貼著平價走；<b>已轉換%</b>：高＝戲近尾聲。</li>
-<li><span class="chip go">突破轉換價+MA20</span>＝量價確認、進場觀察名單；<span class="chip hot">轉換期未開始</span>＝CB 剛發行、常是吃貨階段，先追蹤。</li>
+<li><span class="chip go">突破轉換價+MA20</span>＝價格趨勢確認；<span class="chip hot">轉換期未開始</span>＝CB 剛發行，先追蹤時程與條款。</li>
 </ul>
-<p>此為候選池與優先排序，<b>不是買賣建議</b>；進場仍要等量價確認。資料：設質為月頻（每月中更新上月）、CB 看板日頻、本頁每週更新。</p>
+<p>此為候選池與優先排序，<b>不是買賣建議</b>；進場仍要等量價確認。資料：設質為月頻（每月中更新上月）、CB 看板日頻，本頁每日重新抓取。</p>
 </div>
 </details>
 <div class="filters">

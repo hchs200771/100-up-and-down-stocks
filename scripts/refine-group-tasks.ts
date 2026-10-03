@@ -1,6 +1,6 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { appendNewCategory, loadTaxonomy, normalizeCategory, saveTaxonomy, stripSuffixes } from "./lib/taxonomy.ts";
 
 interface Member {
@@ -635,4 +635,6 @@ function main() {
   console.log(`Refined ${files.length} task files into ${refined.length} task files in ${taskDir}`);
 }
 
-main();
+if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
+  main();
+}

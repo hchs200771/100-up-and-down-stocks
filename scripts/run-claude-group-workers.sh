@@ -17,6 +17,24 @@ WORKER_TIMEOUT_SECONDS="${CLAUDE_REPORT_WORKER_TIMEOUT_SECONDS:-180}"
 WORKER_MAX_ATTEMPTS="${CLAUDE_REPORT_WORKER_MAX_ATTEMPTS:-2}"
 # 族群故事屬輕量研究工作，預設用小模型省 token；可用環境變數覆寫
 WORKER_MODEL="${CLAUDE_GROUP_WORKER_MODEL:-haiku}"
+TMP_DIR="$PROJECT_DIR/data/tmp"
+COST_FILE="$TMP_DIR/costs.tsv"
+
+# 每個 worker 各自的輸出寫到自己專屬的暫存檔（mktemp 不加副檔名，
+# macOS mktemp 只在 X 是檔名最後一段時才會隨機化，見 run-daily-report-claude.sh 的說明），
+# 彼此互不干擾，所以就算 66 個平行跑也能各自安全記自己的花費。
+record_worker_cost() {
+  local name="$1" json_file="$2" cost
+  cost="$(node -e '
+    try {
+      const j = JSON.parse(require("fs").readFileSync(process.argv[1], "utf8"));
+      process.stdout.write(String(j.total_cost_usd || 0));
+    } catch (e) { process.stdout.write("0"); }
+  ' "$json_file" 2>/dev/null || echo 0)"
+  [ -z "$cost" ] && cost="0"
+  printf '%s\t%s\n' "$name" "$cost" >> "$COST_FILE"
+  echo "進度 3/5：${name} cost \$${cost}"
+}
 
 cd "$PROJECT_DIR" || exit 1
 
@@ -59,18 +77,12 @@ const tasks = files.map((file, index) => {
   };
 });
 
-const loserTop3 = tasks
-  .filter((task) => task.direction === 'loser')
-  .sort((a, b) => {
-    if (b.memberCount !== a.memberCount) return b.memberCount - a.memberCount;
-    return a.index - b.index;
-  })
-  .slice(0, 3)
-  .map((task) => task.file);
-const loserTop3Set = new Set(loserTop3);
-
+// 上漲、下跌都一樣：族群要有 3 檔以上成分股才值得花一次 worker 去查故事，
+// 少於 3 檔的當個股事件看，直接用 controller 寫的 preliminaryStory，不個別深挖。
+// retreatSignal（族群退潮）不受這條限制，人數再少也要查。
+const MIN_MEMBERS_FOR_WORKER = 3;
 const selected = tasks
-  .filter((task) => task.direction === 'gainer' || loserTop3Set.has(task.file) || task.retreatSignal === true)
+  .filter((task) => task.memberCount >= MIN_MEMBERS_FOR_WORKER || task.retreatSignal === true)
   .map((task) => ({
     file: task.file,
     direction: task.direction,
@@ -81,9 +93,9 @@ const selected = tasks
 
 process.stdout.write(JSON.stringify({
   selected,
-  skippedLosers: tasks
-    .filter((task) => task.direction === 'loser' && !loserTop3Set.has(task.file) && task.retreatSignal !== true)
-    .map((task) => ({ file: task.file, category: task.category, memberCount: task.memberCount })),
+  skipped: tasks
+    .filter((task) => task.memberCount < MIN_MEMBERS_FOR_WORKER && task.retreatSignal !== true)
+    .map((task) => ({ file: task.file, direction: task.direction, category: task.category, memberCount: task.memberCount })),
 }));
 NODE
 )"
@@ -100,10 +112,11 @@ fi
 
 printf '%s' "$FILTERED_TASKS_JSON" | node -e '
 const input = JSON.parse(require("fs").readFileSync(0, "utf8"));
-if (input.skippedLosers.length > 0) {
-  console.log("進度 3/5：以下弱勢族群不做個別 worker，finalizer 會合併為其他弱勢：");
-  for (const item of input.skippedLosers) {
-    console.log(`- ${item.category} (${item.memberCount} 檔): ${item.file}`);
+if (input.skipped.length > 0) {
+  console.log("進度 3/5：以下族群不到 3 檔，不做個別 worker，沿用 controller 寫的 preliminaryStory：");
+  for (const item of input.skipped) {
+    const dir = item.direction === "gainer" ? "強勢" : "弱勢";
+    console.log(`- [${dir}] ${item.category} (${item.memberCount} 檔): ${item.file}`);
   }
 }
 '
@@ -115,8 +128,17 @@ task_progress_label() {
 
 run_worker() {
   local task_file="$1"
-  local base_name task_json prompt_file
+  local base_name task_json prompt_file result_file
   base_name="$(basename "$task_file" .json)"
+  result_file="$RESULT_DIR/${base_name}.json"
+
+  # 中斷重跑（額度用盡等）時，已經成功寫出結果的族群不要再花錢重做一次。
+  # 只信任有效 JSON，半途被砍掉留下的殘檔會被判定無效、照樣重跑。
+  if [ -s "$result_file" ] && node -e 'JSON.parse(require("fs").readFileSync(process.argv[1],"utf8"))' "$result_file" 2>/dev/null; then
+    echo "進度 3/5：${base_name} 已有結果，跳過（沿用上次成功的結果，省 token）"
+    return 0
+  fi
+
   task_json="$(cat "$task_file")"
   prompt_file="$(mktemp)"
 
@@ -131,15 +153,17 @@ run_worker() {
     echo '```'
   } >> "$prompt_file"
 
-  local attempt exit_code pid elapsed
+  local attempt exit_code pid elapsed out_file
   attempt=1
   while [ "$attempt" -le "$WORKER_MAX_ATTEMPTS" ]; do
     exit_code=0
+    out_file="$(mktemp "$TMP_DIR/claude-json-XXXXXX")"
     echo "進度 3/5：${base_name} worker attempt ${attempt}/${WORKER_MAX_ATTEMPTS}，timeout ${WORKER_TIMEOUT_SECONDS}s"
     claude -p \
       --model "$WORKER_MODEL" \
+      --output-format json \
       --allowedTools 'Bash(*)' 'Read(*)' 'Write(*)' 'Edit(*)' 'WebSearch(*)' 'WebFetch(*)' \
-      < "$prompt_file" &
+      < "$prompt_file" > "$out_file" &
     pid="$!"
     elapsed=0
 
@@ -165,6 +189,9 @@ run_worker() {
       wait "$pid" || exit_code="$?"
       exit_code="${exit_code:-0}"
     fi
+
+    record_worker_cost "$base_name" "$out_file"
+    rm -f "$out_file"
 
     if [ "$exit_code" -eq 0 ]; then
       rm -f "$prompt_file"
@@ -213,3 +240,18 @@ for pid in "${running_pids[@]-}"; do
 done
 
 echo "進度 3/5：所有已派發的族群 worker 已結束"
+
+# costs.tsv 是整條 pipeline 共用檔（controller/finalizer/intl 也會寫進去），
+# 這裡只加總「族群 worker」自己那些行——它們的 name 固定是 task 檔名
+# （例如 01-gainer-xxx），用開頭數字-方向 這個格式跟其他階段的名字區分開。
+STAGE_COST="$(node -e '
+  const fs = require("fs");
+  if (!fs.existsSync(process.argv[1])) { console.log("0"); process.exit(0); }
+  const rows = fs.readFileSync(process.argv[1], "utf8").trim().split("\n").filter(Boolean);
+  const isWorkerRow = (name) => /^\d+-(gainer|loser)-/.test(name);
+  const total = rows
+    .filter((l) => isWorkerRow(l.split("\t")[0]))
+    .reduce((s, l) => s + (+l.split("\t")[1] || 0), 0);
+  console.log(total.toFixed(4));
+' "$COST_FILE" 2>/dev/null || echo 0)"
+echo "進度 3/5：本階段（所有族群 worker）累計花費 \$${STAGE_COST}"

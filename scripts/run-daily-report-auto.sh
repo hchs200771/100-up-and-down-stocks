@@ -13,11 +13,15 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 # DAILY_REPORT_ENGINE=codex|claude 可強制指定，預設 auto。
 ENGINE="${DAILY_REPORT_ENGINE:-auto}"
 if [ "$ENGINE" = "auto" ]; then
-  if command -v codex >/dev/null 2>&1; then ENGINE="codex"; else ENGINE="claude"; fi
+  if command -v codex >/dev/null 2>&1 && codex login status >/dev/null 2>&1; then
+    ENGINE="codex"
+  else
+    ENGINE="claude"
+  fi
 fi
 
 case "$ENGINE" in
-  codex)  RUNNER="$SCRIPT_DIR/run-daily-report-codex-parallel.sh" ;;
+  codex)  RUNNER="$SCRIPT_DIR/run-daily-report-codex.sh" ;;
   claude) RUNNER="$SCRIPT_DIR/run-daily-report-claude.sh" ;;
   *) echo "unknown DAILY_REPORT_ENGINE=$ENGINE (expect codex|claude|auto)" >&2; exit 1 ;;
 esac

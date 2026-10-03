@@ -7,21 +7,24 @@
  *  - data/tw-rrg-alerts.json            族群 RRG 象限 + regime 警告
  *  - data/sector-baskets.json           個股 → RRG 族群的對照
  *  - data/tdcc-divergence-latest.json   集保大戶背離/同向（週資料，含 z-score）
- *  - data/cb-pledge-latest.json         設質+CB 公司派作價候選池（週資料，含 0-100 分）
+ *  - data/cb-pledge-latest.json         CB＋設質事件觀察池（CB 日頻、設質月頻，含 0-100 分）
+ *  - data/revenue-momentum-latest.json  月營收與毛利率資料（長線榜的基本面門檻）
  *  - data/price-history/*.json          每日收盤序列 → MA10/MA20/20日高/動能
  *
  * 寫：data/stock-picks-latest.json ＋ data/stock-picks-history/<date>.json（供日後回測權重）
  *
  * 設計原則：
  *  1. 純規則、零 LLM——每天跑結果可重現，權重之後可以用歷史快照回測調整。
- *  2. 「共振」比單一高分重要：進榜必須至少兩個獨立資料源同時給正訊號，
- *     單軸暴衝（只有法人買、但大戶在倒/族群在弱化）擋在門外。
- *  3. 長短分開評：長線吃結構性籌碼（大戶累積、公司派作價、中期輪動），
- *     短線吃資金動能（相對強度、法人連買、族群擴散）。同一檔兩邊都上時只留分數高的那邊。
+ *  2. 不把同一價格現象重複當成多份證據：個股動能、族群趨勢、法人、基本面分軸計算。
+ *  3. 長短分開評：長線先過營運門檻，再看品質與產業確認；短線看價格、法人與催化。
+ *     同一檔可以同時適合長期研究與短期交易，兩張榜不互斥。
  */
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from "node:fs";
 import { resolve } from "node:path";
 
+import { twIso } from "./lib/time";
+import { computeStockPickRisk } from "./lib/stock-pick-risk";
+import { themesByTicker, type ThemeSignal } from "./lib/theme-radar";
 const ROOT = process.cwd();
 const j = <T = any>(p: string): T | null => {
   const full = resolve(ROOT, p);
@@ -46,8 +49,13 @@ const rrgAlerts = j<any>("data/tw-rrg-alerts.json");
 const baskets = j<any>("data/sector-baskets.json");
 const tdcc = j<any>("data/tdcc-divergence-latest.json");
 const cb = j<any>("data/cb-pledge-latest.json");
+const rev = j<any>("data/revenue-momentum-latest.json");
 
 const tradingDate: string = market.tradingDate;
+const themeSnapshot = j<{ date: string; signals: ThemeSignal[]; warnings: string[] }>("data/theme-radar/latest.json");
+// 只讀同一交易日的快照；舊資料不能替今天的選股背書。
+const themeMap = themeSnapshot?.date === tradingDate
+  ? themesByTicker(themeSnapshot.signals) : new Map<string, ThemeSignal[]>();
 
 // 價格序列：每檔 code → 依日期排序的收盤陣列
 const phDir = resolve(ROOT, "data/price-history");
@@ -95,7 +103,7 @@ for (const view of tdcc?.views ?? []) {
   }
 }
 
-// 設質+CB 公司派作價
+// CB＋設質只作事件與風險註記；尚無足夠回測，不直接當長線正向來源。
 type CbSig = { score: number; flags: string[]; pledgeRatio: number; vsConversionPct: number | null };
 const cbMap = new Map<string, CbSig>();
 for (const c of cb?.candidates ?? []) {
@@ -106,6 +114,71 @@ for (const c of cb?.candidates ?? []) {
     pledgeRatio: c.pledgeRatio ?? 0,
     vsConversionPct: c.vsConversionPct ?? null,
   });
+}
+
+/**
+ * 月營收篩選。這是六路訊號裡唯一的基本面軸，其他五路全是價量籌碼。
+ *
+ * 只收有標記的：**核心**（YoY≥20% + 連 3 月 YoY 成長 + 24 月營收新高）或**動能**
+ * （YoY≥20% + 連 3 月 MoM 為正）。兩者是平行標記、可以同時中，65 個月回測分不出
+ * 高下（配對相減 +0.78pp、t=1.66；保留樣本 t=0.61），所以**給同樣的分**。
+ * 舊版收的「觀察」層（只要連 3 月 YoY 成長）已經廢除——它 263 檔裡放行 206 檔，
+ * 相對不篩只有 +0.20pp，等於沒篩。細節見 lib/revenue-factors.ts 的 screen() 註解。
+ *
+ * **刻意沒有分數**——回測顯示門檻內部排名沒有資訊，所以這裡也只依標記給固定分。
+ *
+ * **陳舊保護**：月營收是月頻資料，離最近一次公布太久就不該再當「新訊號」用——
+ * 超過 2 個月直接整份忽略，寧可少一軸也不要拿三個月前的營收替今天的價格背書。
+ */
+type RevSig = {
+  core: boolean;
+  momentum: boolean;
+  label: string;
+  yoy: number;
+  ttmYoy: number | null;
+  streak: number;
+  flags: string[];
+  month: string;
+  marginQuarter: string | null;
+  margin: number | null;
+  marginQoq: number | null;
+  marginHigh4: boolean | null;
+  quiet: boolean;
+};
+const revMap = new Map<string, RevSig>();
+{
+  const month: string = rev?.month ?? "";
+  const staleMonths = month
+    ? (+tradingDate.slice(0, 4) * 12 + +tradingDate.slice(5, 7)) - (+month.slice(0, 4) * 12 + +month.slice(5, 7))
+    : 99;
+  if (month && staleMonths <= 2) {
+    for (const e of rev.entries ?? []) {
+      const core = e.tier === "核心";
+      const momentum = e.momentum === true;
+      if (!core && !momentum) continue;
+      noteName(e.code, e.name);
+      revMap.set(e.code, {
+        core,
+        momentum,
+        label: core && momentum ? "核心·動能" : core ? "核心" : "動能",
+        yoy: e.yoy,
+        ttmYoy: typeof e.ttmYoy === "number" ? e.ttmYoy : null,
+        streak: e.streak ?? 0,
+        flags: e.flags ?? [],
+        month,
+        marginQuarter: e.marginQuarter ?? null,
+        margin: typeof e.margin === "number" ? e.margin : null,
+        marginQoq: typeof e.marginQoq === "number" ? e.marginQoq : null,
+        marginHigh4: typeof e.marginHigh4 === "boolean" ? e.marginHigh4 : null,
+        // 營收達標、但股價還沒反映。**這不是加分項**——回測把門檻內的股票依進場前
+        // 一個月漲幅分五桶，最弱那桶之後一個月超額 +1.75pp，最強那桶 +3.65pp，
+        // 動能是延續的不是均值回歸。留這個欄位只為了在報告上標示狀態，不進分數。
+        quiet: e.price?.aboveMa20 === false || (typeof e.price?.r20 === "number" && e.price.r20 < 0.05),
+      });
+    }
+  } else if (month) {
+    console.warn(`[warn] 月營收名單是 ${month}（距今 ${staleMonths} 個月），太舊，本次不採用`);
+  }
 }
 
 // 個股 → RRG 族群 → 當前象限
@@ -123,15 +196,18 @@ for (const [quad, sectors] of Object.entries<any>(rrgAlerts?.quadrants ?? {})) {
 // regime 警告：「大盤全面回檔」出現時，整體要更保守
 const regimeNotes: string[] = (rrgAlerts?.regime ?? []).map((r: any) => `${r.kind}：${r.note}`);
 
-// 當日族群分類（strong 榜）
-type GroupSig = { category: string; stage: string; call: string };
+// 當日族群分類。新版 finalizer 輸出 entryAction；call 僅供舊快照相容。
+type GroupSig = { category: string; stage: string; action: string };
 const groupOf = new Map<string, GroupSig>();
 for (const g of analysis?.gainers ?? []) {
   for (const s of g.stocks ?? []) {
     const m = /^(.*?)\((\d{4,6}[A-Z]?)\)/.exec(s);
     if (!m) continue;
     noteName(m[2], m[1].replace(/\*$/, ""));
-    groupOf.set(m[2], { category: g.category, stage: g.stage ?? "", call: g.call ?? "" });
+    const action = g.entryAction ?? (
+      g.call === "順勢" ? "標準持有" : g.call === "反轉" ? "不碰減碼" : ""
+    );
+    groupOf.set(m[2], { category: g.category, stage: g.stage ?? "", action });
   }
 }
 // 弱勢榜的股票直接不碰（今天就在跌的東西，兩張榜單都不該出現）
@@ -143,11 +219,11 @@ for (const g of analysis?.losers ?? []) {
   }
 }
 
-// 當日榜單（漲停/流動性 flag 只在這裡有）
-const todayMove = new Map<string, { pct: number; lowLiquidity: boolean }>();
+// 當日漲跌前後 100 名只用來補名稱；風險旗標與漲跌幅一律讀完整 stockMap。
+const todayMove = new Map<string, { pct: number }>();
 for (const e of [...(market.gainers ?? []), ...(market.losers ?? [])]) {
   noteName(e.code, e.name);
-  todayMove.set(e.code, { pct: e.pct ?? 0, lowLiquidity: !!e.flags?.lowLiquidity });
+  todayMove.set(e.code, { pct: e.pct ?? 0 });
 }
 
 // ---------- 每檔股票的原始特徵 ----------
@@ -157,10 +233,12 @@ interface Feat {
   name: string;
   close: number;
   chips: any | null;
+  flags: { attention?: boolean; disposition?: boolean; lowLiquidity?: boolean };
   dayTrade: number | null;
   futures: { level: string; margin: string } | null;
   tdcc: TdccSig | null;
   cb: CbSig | null;
+  rev: RevSig | null;
   sector: string | null;
   quadrant: string | null;
   group: GroupSig | null;
@@ -169,6 +247,7 @@ interface Feat {
   rAll: number | null; // 價史全長（目前約一個半月，之後會自然長到三個月）
   ma10: number | null;
   ma20: number | null;
+  ma60: number | null;
   high20: number | null;
   aboveMa20: boolean | null;
   distHigh: number | null; // 收盤距 20 日高，負值 = 還在下面
@@ -176,7 +255,7 @@ interface Feat {
 }
 
 // 候選宇宙：任一結構性訊號源出現過的股票 ＋ 當日強勢榜
-const universe = new Set<string>([...tdccMap.keys(), ...cbMap.keys(), ...groupOf.keys()]);
+const universe = new Set<string>([...tdccMap.keys(), ...cbMap.keys(), ...groupOf.keys(), ...revMap.keys()]);
 for (const e of market.gainers ?? []) universe.add(e.code);
 
 const closeMap: Record<string, number> = market.closeMap ?? {};
@@ -199,10 +278,12 @@ for (const code of universe) {
     name: names.get(code) ?? code,
     close,
     chips: meta.chips ?? null,
+    flags: meta.flags ?? {},
     dayTrade: meta.dayTradeRatio ?? null,
     futures: meta.futures ?? null,
     tdcc: tdccMap.get(code) ?? null,
     cb: cbMap.get(code) ?? null,
+    rev: revMap.get(code) ?? null,
     sector: sectorOf.get(code) ?? null,
     quadrant: sectorOf.get(code) ? quadrantOf.get(sectorOf.get(code)!) ?? null : null,
     group: groupOf.get(code) ?? null,
@@ -211,10 +292,11 @@ for (const code of universe) {
     rAll: arr.length >= 15 ? last / arr[0] - 1 : null,
     ma10: maN(10),
     ma20,
+    ma60: maN(60),
     high20,
     aboveMa20: ma20 !== null ? close > ma20 : null,
     distHigh: high20 !== null ? close / high20 - 1 : null,
-    pctToday: todayMove.get(code)?.pct ?? 0,
+    pctToday: Number.parseFloat(meta.pct) || todayMove.get(code)?.pct || 0,
   });
 }
 
@@ -243,26 +325,17 @@ const px = (v: number | null) => (v === null ? "—" : v >= 500 ? v.toFixed(0) :
 
 /** 兩張榜單共用的風險扣分：投機假象與流動性問題，長短線都致命 */
 function riskDeduct(f: Feat, sig: Signal[]): number {
-  let d = 0;
-  if (f.dayTrade !== null && f.dayTrade > 45) {
-    d -= 14;
-    sig.push({ label: "當沖過熱", detail: `當沖比 ${f.dayTrade.toFixed(0)}%，隔日沖主場`, tone: "neg" });
-  } else if (f.dayTrade !== null && f.dayTrade > 35) {
-    d -= 7;
-    sig.push({ label: "當沖偏高", detail: `當沖比 ${f.dayTrade.toFixed(0)}%`, tone: "neg" });
-  }
-  if (todayMove.get(f.code)?.lowLiquidity) {
-    d -= 10;
-    sig.push({ label: "流動性低", detail: "日成交金額偏低，進出滑價大", tone: "neg" });
-  }
-  if (f.pctToday >= 9.5) {
-    d -= 4;
-    sig.push({ label: "今日漲停", detail: "追高風險，等回測再說", tone: "neg" });
-  }
-  return d;
+  const risk = computeStockPickRisk({
+    dayTrade: f.dayTrade,
+    pctToday: f.pctToday,
+    flags: f.flags,
+    pledgeRatio: f.cb?.pledgeRatio,
+  });
+  sig.push(...risk.signals);
+  return risk.deduction;
 }
 
-/** 長線（3 個月～1 年）：結構性籌碼優先——大戶累積、公司派作價、中期輪動方向 */
+/** 長線（3 個月～1 年）：營運改善是門票，品質、產業與法人只負責確認。 */
 function scoreLong(f: Feat): Scored {
   const sig: Signal[] = [];
   let s = 0;
@@ -270,41 +343,55 @@ function scoreLong(f: Feat): Scored {
 
   if (f.tdcc) {
     const t = f.tdcc;
-    const base = t.view === "diverge" ? Math.min(28, 10 + t.score * 2) : Math.min(14, 5 + t.score);
-    s += base + (t.streak >= 2 ? 4 : 0);
-    src++;
+    // 現有 46 週回測找不到穩健預測力，因此只作小幅佐證，也不計入「獨立來源」門檻。
+    s += t.view === "diverge" ? Math.min(6, Math.max(2, t.score)) : 2;
     sig.push({
-      label: t.view === "diverge" ? "大戶背離" : "大戶同向",
+      label: t.view === "diverge" ? "集保背離觀察" : "集保同向觀察",
       detail: `${t.cutoff}大戶週增 ${fmtPct(t.dCum / 100)}（z=${t.score.toFixed(1)}${t.streak >= 2 ? `、連${t.streak}週` : ""}）${t.view === "diverge" ? "，價格還沒反映" : ""}`,
       tone: "pos",
     });
   }
-  if (f.cb && f.cb.score >= 60) {
-    s += (f.cb.score - 60) * 0.5; // 最多 +20
+  if (f.rev) {
+    const r = f.rev;
+    s += r.core && r.momentum ? 26 : 22;
+    if (r.ttmYoy !== null) s += r.ttmYoy >= 0.1 ? 6 : r.ttmYoy > 0 ? 3 : -4;
+    if (r.marginQoq !== null) s += r.marginQoq >= 0 ? 5 : -6;
+    if (r.marginHigh4) s += 4;
     src++;
+    const quality = [
+      r.ttmYoy === null ? null : `TTM營收 ${fmtPct(r.ttmYoy)}`,
+      r.marginQoq === null ? null : `毛利率季變動 ${(r.marginQoq * 100).toFixed(1)}pp`,
+    ].filter(Boolean).join("、");
     sig.push({
-      label: "CB+設質",
-      detail: `公司派作價分 ${f.cb.score}（設質 ${f.cb.pledgeRatio.toFixed(0)}%${f.cb.flags.length ? `、${f.cb.flags.join("、")}` : ""}）`,
+      label: `營運${r.label}`,
+      detail: `${r.month} ${r.flags.join("、")}${quality ? `；${quality}` : ""}${r.quiet ? "（價格尚未確認）" : ""}`,
       tone: "pos",
     });
   }
+
+  let sectorPts = 0;
+  let sectorDetail = "";
   if (f.quadrant === "領先" || f.quadrant === "改善") {
-    s += f.quadrant === "領先" ? 10 : 8;
-    src++;
-    sig.push({ label: `RRG ${f.quadrant}`, detail: `族群「${f.sector}」在${f.quadrant}象限，中期資金流入`, tone: "pos" });
+    sectorPts = f.quadrant === "領先" ? 8 : 6;
+    sectorDetail = `族群「${f.sector}」在${f.quadrant}象限`;
   } else if (f.quadrant === "弱化") {
-    s -= 4;
-    sig.push({ label: "RRG 弱化", detail: `族群「${f.sector}」動能轉弱`, tone: "neg" });
+    s -= 5;
+    sig.push({ label: "RRG 弱化", detail: `族群「${f.sector}」中期相對動能轉弱`, tone: "neg" });
   }
-  if (f.group) {
-    if (f.group.call === "順勢") {
-      s += 6;
-      src++;
-      sig.push({ label: "族群順勢", detail: `「${f.group.category}」${f.group.stage}，操盤判斷順勢`, tone: "pos" });
-    } else if (f.group.call === "反轉") {
-      s -= 8;
-      sig.push({ label: "族群過熱", detail: `「${f.group.category}」被判反轉/過熱`, tone: "neg" });
+  if (f.group?.action === "核心加碼" || f.group?.action === "標準持有") {
+    const pts = f.group.action === "核心加碼" ? 9 : 7;
+    if (pts > sectorPts) {
+      sectorPts = pts;
+      sectorDetail = `「${f.group.category}」${f.group.stage || "當日"}，報告判斷${f.group.action}`;
     }
+  } else if (f.group?.action === "不碰減碼") {
+    s -= 10;
+    sig.push({ label: "族群降級", detail: `「${f.group.category}」判斷不碰減碼`, tone: "neg" });
+  }
+  if (sectorPts > 0) {
+    s += sectorPts;
+    src++;
+    sig.push({ label: "產業趨勢確認", detail: sectorDetail, tone: "pos" });
   }
   const c = f.chips;
   if (c) {
@@ -329,7 +416,7 @@ function scoreLong(f: Feat): Scored {
   return { feat: f, score: s, signals: sig, sources: src };
 }
 
-/** 短線（2 週～1 個月）：資金正在青睞誰——相對強度、法人連買、族群擴散 */
+/** 波段（2 週～3 個月）：價格確認、法人、產業與營運催化分軸評分。 */
 function scoreShort(f: Feat): Scored {
   const sig: Signal[] = [];
   let s = 0;
@@ -360,28 +447,41 @@ function scoreShort(f: Feat): Scored {
     }
     s += instPts;
   }
-  if (f.group) {
-    const days = Number(/連(\d+)日/.exec(f.group.stage)?.[1] ?? 0);
-    if (f.group.call === "順勢") {
-      s += 10 + (days <= 2 ? 6 : 0) - (days >= 7 ? 6 : 0);
-      src++;
-      sig.push({ label: "族群啟動", detail: `「${f.group.category}」${f.group.stage}、判斷順勢${days <= 2 ? "，剛啟動" : ""}`, tone: "pos" });
-    } else if (f.group.call === "觀察") {
-      s += 4;
-    } else if (f.group.call === "反轉") {
-      s -= 12;
-      sig.push({ label: "族群過熱", detail: `「${f.group.category}」被判反轉，短線是減碼點不是進場點`, tone: "neg" });
-    }
+  let sectorPts = 0;
+  let sectorDetail = "";
+  if (f.group?.action === "核心加碼" || f.group?.action === "標準持有") {
+    sectorPts = f.group.stage === "啟動" ? 14 : f.group.stage === "擴散" ? 10 : 7;
+    sectorDetail = `「${f.group.category}」${f.group.stage || "當日"}、${f.group.action}`;
+  } else if (f.group?.action === "觀察不追") {
+    sectorPts = 3;
+  } else if (f.group?.action === "不碰減碼") {
+    s -= 12;
+    sig.push({ label: "族群降級", detail: `「${f.group.category}」判斷不碰減碼`, tone: "neg" });
   }
   if (f.quadrant === "領先" || f.quadrant === "改善") {
-    s += f.quadrant === "領先" ? 8 : 6;
+    const pts = f.quadrant === "領先" ? 8 : 6;
+    if (pts > sectorPts) {
+      sectorPts = pts;
+      sectorDetail = `族群「${f.sector}」${f.quadrant}象限`;
+    }
+  }
+  if (sectorPts >= 6) {
+    s += sectorPts;
     src++;
-    sig.push({ label: `RRG ${f.quadrant}`, detail: `族群「${f.sector}」${f.quadrant}象限`, tone: "pos" });
+    sig.push({ label: "族群趨勢", detail: sectorDetail, tone: "pos" });
+  } else {
+    s += sectorPts;
   }
   if (f.tdcc) {
-    s += f.tdcc.view === "converge" ? 6 : 3;
+    s += f.tdcc.view === "converge" ? 3 : 1;
+    sig.push({ label: "集保觀察", detail: `${f.tdcc.cutoff}大戶週增 ${fmtPct(f.tdcc.dCum / 100)}，僅作佐證`, tone: "pos" });
+  }
+  // 短線認核心或動能：月頻資料本來就不是短線訊號，有價值的是營收公布後的漂移
+  // （post-announcement drift），所以權重壓在長線的一半。
+  if (f.rev) {
+    s += 10;
     src++;
-    sig.push({ label: f.tdcc.view === "converge" ? "大戶同向" : "大戶背離", detail: `${f.tdcc.cutoff}大戶週增 ${fmtPct(f.tdcc.dCum / 100)}`, tone: "pos" });
+    sig.push({ label: `營收${f.rev.label}`, detail: `${f.rev.month} ${f.rev.flags.join("、")}`, tone: "pos" });
   }
   if (f.aboveMa20) s += 4;
   if (f.ma10 !== null && f.ma20 !== null && f.ma10 > f.ma20) s += 3;
@@ -390,49 +490,14 @@ function scoreShort(f: Feat): Scored {
   return { feat: f, score: s, signals: sig, sources: src };
 }
 
-// ---------- 選股與去重 ----------
+// ---------- 選股 ----------
 
 const eligible = feats.filter((f) => !inLoserGroup.has(f.code));
-const longAll = eligible.map(scoreLong).filter((x) => x.sources >= 2 && x.score > 0).sort((a, b) => b.score - a.score);
+// 長線必須有基本面門票；集保與 CB 不計入兩個獨立確認來源。
+const longAll = eligible.map(scoreLong).filter((x) => x.feat.rev && x.sources >= 2 && x.score > 0).sort((a, b) => b.score - a.score);
 const shortAll = eligible.map(scoreShort).filter((x) => x.sources >= 2 && x.score > 0).sort((a, b) => b.score - a.score);
-
-// 同一檔兩邊都進前段時，留在分數較高的那張榜（分數同尺度 0~100 上下），確保 20 檔不重複
-const pickTop = (): { long: Scored[]; short: Scored[] } => {
-  const long: Scored[] = [];
-  const short: Scored[] = [];
-  const taken = new Set<string>();
-  const lq = [...longAll];
-  const sq = [...shortAll];
-  const sScore = new Map(shortAll.map((x) => [x.feat.code, x.score]));
-  const lScore = new Map(longAll.map((x) => [x.feat.code, x.score]));
-  while (long.length < 10 && lq.length) {
-    const x = lq.shift()!;
-    if (taken.has(x.feat.code)) continue;
-    if ((sScore.get(x.feat.code) ?? -1) > x.score && short.length < 10) continue; // 讓給短線榜
-    taken.add(x.feat.code);
-    long.push(x);
-  }
-  while (short.length < 10 && sq.length) {
-    const x = sq.shift()!;
-    if (taken.has(x.feat.code)) continue;
-    if ((lScore.get(x.feat.code) ?? -1) > x.score && !taken.has(x.feat.code) && longAll.findIndex((y) => y.feat.code === x.feat.code) < 10) {
-      // 長線分較高且長線榜還有位置的讓回去；否則收進短線
-      if (long.length < 10) continue;
-    }
-    taken.add(x.feat.code);
-    short.push(x);
-  }
-  // 長線榜因禮讓而缺額時回填
-  for (const x of longAll) {
-    if (long.length >= 10) break;
-    if (!taken.has(x.feat.code)) {
-      taken.add(x.feat.code);
-      long.push(x);
-    }
-  }
-  return { long, short };
-};
-const { long: longPicks, short: shortPicks } = pickTop();
+const longPicks = longAll.slice(0, 10);
+const shortPicks = shortAll.slice(0, 10);
 
 // ---------- 進出場建議 ----------
 
@@ -448,27 +513,32 @@ interface PickOut {
   futures: { level: string; margin: string } | null;
   reason: string;
   signals: Signal[];
+  /** 題材新聞觀察欄位；尚未驗證增益，不參與分數或候選資格。 */
+  themeRadar: Array<{ id: string; name: string; ratio: number; z: number; recentMentions: number }>;
   plan: { entry: string; stop: string; exit: string };
   metrics: {
-    r10: string; r20: string; ma10: string; ma20: string; high20: string;
-    dayTrade: string; instNet: string; quadrant: string; tdcc: string; cb: string;
+    r10: string; r20: string; ma10: string; ma20: string; ma60: string; high20: string;
+    dayTrade: string; instNet: string; quadrant: string; tdcc: string; cb: string; revenue: string;
   };
 }
 
 function toPick(x: Scored, rank: number, horizon: "long" | "short"): PickOut {
   const f = x.feat;
-  // 背離佈局＝籌碼先行、價格還沒發動（要等）；動能順勢＝已在走、順著做（別追）
-  const isDiverge =
-    (f.tdcc?.view === "diverge" || (f.cb && (f.r10 ?? 0) < 0.05)) && (f.distHigh ?? 0) < -0.05;
-  const type = isDiverge ? "背離佈局" : "動能順勢";
-  const entry = isDiverge
-    ? `MA20（${px(f.ma20)}）附近分批建 1/2 倉，帶量突破 20 日高 ${px(f.high20)} 補足`
-    : `不追今日價：回測 MA10（${px(f.ma10)}）不破進場，或整理 3-5 日後過 ${px(f.high20)} 再進`;
-  const stop = `收盤跌破 MA20（${px(f.ma20)}）或進場價 -8%，先到先出`;
-  const exit =
-    horizon === "long"
-      ? `論點失效就出：${f.tdcc ? "下週 TDCC 大戶轉減、" : ""}${f.cb ? "跌回轉換價下方、" : ""}族群 RRG 滑入弱化即清倉；否則沿 MA20 持有波段`
-      : `MA10 移動停利；族群轉「反轉/高潮」（當沖飆高＋法人轉賣）或法人連 3 日賣超即出`;
+  const isQuiet = (f.distHigh ?? 0) < -0.05 || f.rev?.quiet === true;
+  const type = horizon === "long"
+    ? isQuiet ? "營運先行·等待確認" : "營運成長·趨勢確認"
+    : isQuiet ? "回檔觀察" : "動能順勢";
+  const entry = horizon === "long"
+    ? `分批布局：MA20（${px(f.ma20)}）附近先建 1/3，站穩 20 日高 ${px(f.high20)} 且營運趨勢未轉弱再加碼`
+    : isQuiet
+      ? `等站回 MA20（${px(f.ma20)}）且量價轉強再進，不預判落底`
+      : `不追今日價：回測 MA10（${px(f.ma10)}）不破，或整理 3-5 日後過 ${px(f.high20)} 再進`;
+  const stop = horizon === "long"
+    ? `技術風控：跌破 MA60（${px(f.ma60)}）且兩日無法站回先減碼；建倉均價 -12% 仍須退出重評`
+    : `收盤跌破 MA20（${px(f.ma20)}）或進場價 -8%，先到先出`;
+  const exit = horizon === "long"
+    ? "基本面論點失效才清倉：TTM營收轉負、毛利率連兩季惡化、產業需求或競爭假設被證偽；單週籌碼與單月門檻只作預警"
+    : "MA10 移動停利；族群降級、法人連 3 日賣超，或預定催化未兌現即出";
 
   const pos = x.signals.filter((s) => s.tone === "pos");
   const neg = x.signals.filter((s) => s.tone === "neg");
@@ -487,34 +557,49 @@ function toPick(x: Scored, rank: number, horizon: "long" | "short"): PickOut {
     futures: f.futures,
     reason,
     signals: x.signals,
+    themeRadar: (themeMap.get(f.code) ?? []).map((signal) => ({
+      id: signal.id, name: signal.name, ratio: +signal.ratio.toFixed(2),
+      z: +signal.z.toFixed(2), recentMentions: signal.recentMentions,
+    })),
     plan: { entry, stop, exit },
     metrics: {
       r10: fmtPct(f.r10),
       r20: fmtPct(f.r20),
       ma10: px(f.ma10),
       ma20: px(f.ma20),
+      ma60: px(f.ma60),
       high20: px(f.high20),
       dayTrade: f.dayTrade === null ? "—" : `${f.dayTrade.toFixed(0)}%`,
       instNet: c ? `${c.totalNet > 0 ? "+" : ""}${c.totalNet} 張（外資 ${c.foreignNet > 0 ? "+" : ""}${c.foreignNet}／投信 ${c.trustNet > 0 ? "+" : ""}${c.trustNet}）` : "—",
       quadrant: f.quadrant ? `${f.sector}（${f.quadrant}）` : "—",
       tdcc: f.tdcc ? `${f.tdcc.view === "diverge" ? "背離" : "同向"} ${f.tdcc.cutoff} 週增 ${fmtPct(f.tdcc.dCum / 100)} z=${f.tdcc.score.toFixed(1)}` : "—",
-      cb: f.cb ? `${f.cb.score} 分（設質 ${f.cb.pledgeRatio.toFixed(0)}%）` : "—",
+      cb: f.cb ? `事件觀察 ${f.cb.score} 分（設質 ${f.cb.pledgeRatio.toFixed(0)}%，不列正向因子）` : "—",
+      revenue: f.rev
+        ? `${f.rev.month} ${f.rev.label}：${f.rev.flags.join("、")}；TTM ${fmtPct(f.rev.ttmYoy)}；毛利率季變動 ${f.rev.marginQoq === null ? "—" : `${(f.rev.marginQoq * 100).toFixed(1)}pp`}`
+        : "—",
     },
   };
 }
 
 const out = {
-  generatedAt: new Date().toISOString(),
+  generatedAt: twIso(),
   date: tradingDate,
   basis: {
     market: market.tradingDate,
     analysis: analysis?.date ?? null,
     tdccWeek: tdcc?.curWeek ?? null,
     cbWeek: cb?.isoWeek ?? null,
+    cbAsOf: cb?.boardDate ?? cb?.generatedAt?.slice(0, 10) ?? null,
+    revenueMonth: revMap.size ? rev?.month ?? null : null,
+    themeRadarAsOf: themeSnapshot?.date === tradingDate ? tradingDate : null,
     rrgAsOf: rrgAlerts?.asOf ?? null,
     priceHistoryDays: phFiles.length,
   },
   regimeNotes,
+  themeRadar: themeSnapshot?.date === tradingDate ? {
+    signals: themeSnapshot.signals.filter((signal) => signal.accelerating),
+    warnings: themeSnapshot.warnings,
+  } : null,
   long: longPicks.map((x, i) => toPick(x, i + 1, "long")),
   short: shortPicks.map((x, i) => toPick(x, i + 1, "short")),
 };
@@ -525,7 +610,7 @@ mkdirSync(histDir, { recursive: true });
 writeFileSync(resolve(histDir, `${tradingDate}.json`), JSON.stringify(out, null, 2), "utf-8");
 
 console.log(
-  `終極選股池：候選 ${eligible.length} 檔（大戶 ${tdccMap.size}、CB ${cbMap.size}、族群 ${groupOf.size}）→ 長線 ${out.long.length} 檔、短線 ${out.short.length} 檔`,
+  `終極選股池：候選 ${eligible.length} 檔（大戶 ${tdccMap.size}、CB ${cbMap.size}、族群 ${groupOf.size}、營收 ${revMap.size}）→ 長線 ${out.long.length} 檔、短線 ${out.short.length} 檔`,
 );
 console.log(`長線：${out.long.map((p) => `${p.name}(${p.code})${p.score}`).join("、")}`);
 console.log(`短線：${out.short.map((p) => `${p.name}(${p.code})${p.score}`).join("、")}`);

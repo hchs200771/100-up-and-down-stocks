@@ -1018,6 +1018,202 @@
     {
       "canonical": "電競周邊/PC機殼與散熱",
       "aliases": []
+    },
+    {
+      "canonical": "外幣匯率ETF/日圓資產",
+      "aliases": []
+    },
+    {
+      "canonical": "電池/儲能元件",
+      "aliases": []
+    },
+    {
+      "canonical": "功率半導體/晶圓代工與測試",
+      "aliases": []
+    },
+    {
+      "canonical": "生技/新藥與醫材",
+      "aliases": []
+    },
+    {
+      "canonical": "原油期貨/大宗商品ETF",
+      "aliases": []
+    },
+    {
+      "canonical": "連接器/精密機構件",
+      "aliases": []
+    },
+    {
+      "canonical": "工業自動化設備",
+      "aliases": []
+    },
+    {
+      "canonical": "LED/顯示與光電",
+      "aliases": []
+    },
+    {
+      "canonical": "半導體設備/檢測與自動化",
+      "aliases": []
+    },
+    {
+      "canonical": "電子零組件/半導體個股整理",
+      "aliases": []
+    },
+    {
+      "canonical": "生技醫療/健康照護",
+      "aliases": []
+    },
+    {
+      "canonical": "機械/車用與金屬加工",
+      "aliases": []
+    },
+    {
+      "canonical": "資訊服務/網通與工業電腦",
+      "aliases": []
+    },
+    {
+      "canonical": "原油ETF/油價槓桿",
+      "aliases": []
+    },
+    {
+      "canonical": "化合物半導體/RF前端與砷化鎵",
+      "aliases": []
+    },
+    {
+      "canonical": "DRAM/NAND記憶體製造與模組通路",
+      "aliases": []
+    },
+    {
+      "canonical": "營建/不動產與工程承攬",
+      "aliases": []
+    },
+    {
+      "canonical": "化工/塑化與特用材料",
+      "aliases": []
+    },
+    {
+      "canonical": "CCL/銅箔基板與高頻材料",
+      "aliases": []
+    },
+    {
+      "canonical": "PCB鑽針/耗材",
+      "aliases": []
+    },
+    {
+      "canonical": "雲端AI/企業系統整合",
+      "aliases": []
+    },
+    {
+      "canonical": "資安/零信任與SOC監控",
+      "aliases": []
+    },
+    {
+      "canonical": "生成式AI/資料分析與多媒體軟體",
+      "aliases": []
+    },
+    {
+      "canonical": "金融科技/交易系統與市場資訊",
+      "aliases": []
+    },
+    {
+      "canonical": "工業軟體/CAE工程分析",
+      "aliases": []
+    },
+    {
+      "canonical": "事務機/影像掃描與安防設備",
+      "aliases": []
+    },
+    {
+      "canonical": "LED/光電元件與設備",
+      "aliases": []
+    },
+    {
+      "canonical": "醫療影像/隱形眼鏡與視光醫材",
+      "aliases": []
+    },
+    {
+      "canonical": "功率半導體/晶圓代工與元件",
+      "aliases": []
+    },
+    {
+      "canonical": "高速介面IC/PCIe USB控制晶片",
+      "aliases": []
+    },
+    {
+      "canonical": "網通通訊IC/以太網路控制",
+      "aliases": []
+    },
+    {
+      "canonical": "連接器/高速介面與線束",
+      "aliases": []
+    },
+    {
+      "canonical": "一般網通/企業網路設備",
+      "aliases": []
+    },
+    {
+      "canonical": "重電/電力設備與汽電共生",
+      "aliases": []
+    },
+    {
+      "canonical": "機能性食品/保健原料",
+      "aliases": []
+    },
+    {
+      "canonical": "手機/通訊裝置EMS",
+      "aliases": []
+    },
+    {
+      "canonical": "海外DR/特殊交易事件",
+      "aliases": []
+    },
+    {
+      "canonical": "離岸風電/風場工程",
+      "aliases": []
+    },
+    {
+      "canonical": "PCB/傳統板廠與HDI板",
+      "aliases": []
+    },
+    {
+      "canonical": "PCB/面板製程設備",
+      "aliases": []
+    },
+    {
+      "canonical": "電子檢測/安規認證",
+      "aliases": []
+    },
+    {
+      "canonical": "環保工程/資源循環",
+      "aliases": []
+    },
+    {
+      "canonical": "面板材料",
+      "aliases": []
+    },
+    {
+      "canonical": "低軌衛星/天線通訊",
+      "aliases": []
+    },
+    {
+      "canonical": "債券ETF/利率交易",
+      "aliases": []
+    },
+    {
+      "canonical": "海外ETF/主題型基金",
+      "aliases": []
+    },
+    {
+      "canonical": "觸控面板/顯示模組",
+      "aliases": []
+    },
+    {
+      "canonical": "電線電纜/漆包線",
+      "aliases": []
+    },
+    {
+      "canonical": "金屬表面處理/真空鍍膜",
+      "aliases": []
     }
   ]
 }

@@ -24,7 +24,7 @@ rm -rf "$SITE_DIR"
 mkdir -p "$SITE_DIR"
 # Wrap the shared report fragment into a full HTML document with favicon + SEO
 # metadata (email body stays untouched). Fall back to a plain copy if it fails.
-if ! npx tsx "$SCRIPT_DIR/build-site-html.ts" "$HTML" "$SITE_DIR/index.html"; then
+if ! node --import tsx "$SCRIPT_DIR/build-site-html.ts" "$HTML" "$SITE_DIR/index.html"; then
   echo "[publish] build-site-html failed — falling back to plain copy." >&2
   cp "$HTML" "$SITE_DIR/index.html"
 fi
@@ -33,8 +33,15 @@ fi
 # 族群輪動 RRG 已由 build-site-html.ts 直接內嵌進 index.html 的「🔄 族群輪動」分頁，
 # 不再發佈獨立的 rrg.html 子頁（data/tw-rrg.html 只留給本地預覽）。
 [ -f "$PROJECT_DIR/data/tw-rrg-alerts.json" ] && cp "$PROJECT_DIR/data/tw-rrg-alerts.json" "$SITE_DIR/tw-rrg-alerts.json"
-# 董監設質+CB 候選池子頁（scripts/screen-cb-pledge.ts 產出，週更）
+# 董監設質+CB 事件池子頁（scripts/screen-cb-pledge.ts 產出；CB 日更、設質月更）
 [ -f "$PROJECT_DIR/data/cb-pledge.html" ] && cp "$PROJECT_DIR/data/cb-pledge.html" "$SITE_DIR/cb-pledge.html"
+# 月營收動能名單子頁（scripts/build-revenue-momentum.ts 產出，每日更新——
+# 每月 1~10 號公司陸續公布，名單會天天長大）
+[ -f "$PROJECT_DIR/data/revenue.html" ] && cp "$PROJECT_DIR/data/revenue.html" "$SITE_DIR/revenue.html"
+[ -f "$PROJECT_DIR/data/theme-radar.html" ] && cp "$PROJECT_DIR/data/theme-radar.html" "$SITE_DIR/themes.html"
+# 贏家分點子頁（scripts/fetch-broker-watch.ts 產出，每日更新）
+[ -f "$PROJECT_DIR/data/broker-watch.html" ] && cp "$PROJECT_DIR/data/broker-watch.html" "$SITE_DIR/broker-watch.html"
+node --import tsx "$SCRIPT_DIR/sync-site-nav.ts" "$SITE_DIR"
 
 git add data/site
 

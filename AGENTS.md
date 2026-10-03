@@ -1,118 +1,42 @@
 # Agent Instructions
 
-These instructions apply to this repository unless a more specific instruction file overrides them.
+React/TypeScript app plus a Node/TypeScript automation flow for Taiwan stock-market reports.
 
-## Project Context
+## Commands
 
-This project is a React/TypeScript app with a Node/TypeScript report automation flow for Taiwan stock market daily reports.
-
-Primary entry points:
-
-- App/dev server: `npm run dev`
+- Dev server: `npm run dev`
 - Type check: `npm run lint`
-- Build: `npm run build`
-- Daily after-market report workflow: `npm run report`
+- Production build: `npm run build`
+- Daily report: `npm run report`
 
-## Task Quick Reference
+## Daily report
 
-Use this section first when deciding what to do. Do not start by reading the full README unless the task is unclear after this page.
+- Run only when the user explicitly asks; daily execution is manual-only. Do not enable or restore a scheduler unless the user reverses this preference.
+- Before starting `npm run report`, sync the broker watchlist: query the Notion data source `collection://f5774c39-be43-426c-8b02-85657137f35e` (分點追蹤名單) through the interactive Notion connector for rows with 啟用 checked, and rewrite `data/broker-watch-config.json` with them (same item shape as the existing file; `pageId` is the row id, and use `""`/`null` for empty fields). `.env.local` has no `NOTION_TOKEN` by choice, so `scripts/fetch-broker-watch.ts` reads only this cache. Report how many pairs were synced. After the run, write any new 最近觸發日／最近買賣超張數 from `data/broker-watch-latest.json` back to Notion through the connector.
+- Run exactly `npm run report`. Use alternate or partial commands only to debug a failed run when requested.
+- Monitor the process and report stage starts/completions, warnings or fallbacks, and a brief heartbeat at least every 60 seconds. Do not dump prompts or large JSON payloads.
+- Once the trading date is known, run `$notion-holdings-health` through the interactive Notion connector; it may proceed alongside the shell pipeline. Include its checked count and attention items in the final result.
+- In Notion holdings, change a position's status or trade details only when the user explicitly mentions that position's change. Unmentioned positions remain held as recorded, but still receive fresh health reviews.
+- Report the trading date and whether the report was sent or published.
 
-### Daily After-Market Report
+`npm run report:codex` and `npm run report:claude` select a runtime explicitly; both target fetch → classify → research → finalize → send. Use `.claude/skills/daily-stock-report/SKILL.md` only when the user explicitly asks for the manual Claude skill path. For the Codex pipeline, keep controller/finalizer judgment on GPT-5.6 Sol and per-category research on GPT-5.6 Luna unless the user requests another split.
 
-When the user asks to run the daily report, produce today's after-market report, or send the report, run exactly one command:
+## Task routing
 
-```bash
-npm run report
-```
+- Classification, worker search, finalizer, or report-prompt changes: use `.claude/skills/stock-report-maintenance/SKILL.md`; start in `scripts/prompts/`, `scripts/refine-group-tasks.ts`, and `scripts/run-daily-report-codex-parallel.sh`. Validate through `npm run report`.
+- Scheduling or launchd: current policy is manual-only. Legacy references are `scripts/launchd/com.maxhuang.daily-stock-report-codex.plist` and `scripts/run-daily-report-codex-parallel.sh`. Do not modify or load `~/Library/LaunchAgents` unless explicitly asked.
+- Analysis schema or email HTML: start with `scripts/send-report.ts`; treat `data/analysis-latest.json` as example input and `data/report-latest.html` as generated output. Preserve the analysis contract unless migration is requested.
+- Frontend work lives in `src/`; the local server entry is `server.ts`.
 
-Do not split the daily report task into alternate commands unless the user explicitly asks to debug a failed run.
+## Repository constraints
 
-After completion, report the trading date and whether the report was sent.
-
-#### Choosing the runtime
-
-- **Codex CLI** (default): `npm run report` or `npm run report:codex`
-- **Claude Code CLI**: `npm run report:claude`
-
-Both run the same 5-stage pipeline (fetch → classify → research → finalize → send). The only difference is which AI CLI drives the controller, workers, and finalizer prompts.
-
-Skill to use: none by default. Use `.claude/skills/daily-stock-report/SKILL.md` only when the user explicitly wants the manual Claude skill path.
-
-### "改分類", "改 worker 搜尋", "改 finalizer", "改盤後報告 prompt"
-
-Use skill: `.claude/skills/stock-report-maintenance/SKILL.md`.
-
-Start with these files:
-
-- `scripts/prompts/group-task-controller.md`: category/task creation
-- `scripts/prompts/group-research-worker.md`: per-category research story
-- `scripts/prompts/group-finalizer.md`: final analysis assembly and summary
-- `scripts/refine-group-tasks.ts`: deterministic category corrections
-- `scripts/run-daily-report-codex-parallel.sh`: workflow orchestration
-
-For validation, use the actual daily report path: `npm run report`.
-
-### "改排程", "launchd", "每天自動跑"
-
-Start with:
-
-- `scripts/launchd/com.maxhuang.daily-stock-report-codex.plist`
-- `scripts/run-daily-report-codex-parallel.sh`
-
-Do not edit the user's installed `~/Library/LaunchAgents` copy unless explicitly asked.
-
-### "改資料格式", "analysis-latest schema", "email HTML"
-
-Start with:
-
-- `scripts/send-report.ts`
-- `data/analysis-latest.json` only as an example input, not as source code
-- `data/report-latest.html` only as generated output
-
-Preserve the `analysis-latest.json` contract unless the user explicitly asks to migrate it.
-
-Important files and directories:
-
-- `src/`: frontend app code
-- `server.ts`: local server
-- `scripts/`: report automation scripts
-- `scripts/prompts/`: Codex controller/worker/finalizer prompts
-- `data/market-latest.json`: latest market snapshot
-- `data/analysis-latest.json`: latest analysis payload
-- `data/report-latest.html`: generated HTML report
-- `data/memory/YYYY-MM-DD.md`: historical memory used for trend comparison
-- `.claude/skills/daily-stock-report/SKILL.md`: manual daily report skill
-
-## Collaboration Rules
-
-- If the request is clear, proceed without waiting for confirmation.
-- Ask only when missing information would materially change the result.
-- Ask one question at a time.
-- Implement the smallest reasonable change that satisfies the request.
-- Avoid broad refactors, new abstractions, or signature changes unless explicitly requested or clearly required.
-- Before non-trivial edits, inspect nearby code and match existing conventions.
-- Do not touch generated data files under `data/` unless the task is specifically about report output or data generation.
-- Preserve user changes in the worktree. Do not revert unrelated edits.
-
-## Prompt And Agent Rules
-
-- Prefer outcome-oriented prompts with clear success criteria over step-by-step process scripts.
-- Keep hard business constraints separate from style/personality guidance.
-- Give search-heavy agents an explicit retrieval budget and stop condition.
-- Stop researching once the available evidence is enough to answer the core question.
-- Use low or medium reasoning for routine mechanical work; reserve higher reasoning for ambiguous, high-risk, or cross-cutting tasks.
+- Preserve unrelated worktree changes.
+- Do not edit generated files under `data/` unless the task concerns report output or data generation.
+- Prefer the smallest change that satisfies the request and match nearby conventions.
 
 ## Verification
 
-- For code changes, run the narrowest relevant verification first.
-- Use `npm run lint` for TypeScript correctness.
-- Use `npm run build` when frontend behavior, bundling, or production output could be affected.
-- For daily report workflow validation, use `npm run report`.
-
-## Final Response
-
-Summarize:
-
-- What changed
-- What was verified
-- Any remaining risk or skipped verification
+- Run the narrowest relevant check first.
+- TypeScript: `npm run lint`.
+- Frontend or bundling changes: `npm run build`.
+- Daily workflow changes: `npm run report`.

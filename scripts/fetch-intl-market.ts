@@ -1,6 +1,7 @@
 import { writeFileSync, mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 
+import { twIso } from "./lib/time";
 /**
  * 盤後國際市場快照。
  *
@@ -47,6 +48,35 @@ const SYMBOLS: { symbol: string; key: string; name: string; region: string; digi
   // 還在跳的價，跟新聞講的「台北匯市收盤」對不起來。改抓央行公布的「新臺幣對美元
   // 銀行間成交之收盤匯率」（fetchCbcUsdTwd），symbol 只在 CBC 掛掉時當後備。
   { symbol: "TWD=X", key: "usdtwd", name: "美元/台幣", region: "匯率", digits: 3 },
+];
+
+/**
+ * 美股指標股：台股電子供應鏈最直接的「隔夜對照組」。
+ *
+ * 選股邏輯不是市值前 N 大，而是「動了會直接影響台股哪一族群」——AI 晶片與雲端
+ * 資本支出（台積電、供應鏈）、記憶體循環（南亞科、群聯）、手機與 PC（大立光、鴻海、廣達）。
+ * 數字一律用程式抓，不讓 worker 憑印象寫價格；worker 只負責補「為什麼動」。
+ * 名單刻意固定：每天同一組才看得出誰今天特別強弱，換名單就失去比較基準。
+ */
+const MOVERS: { symbol: string; name: string; tag: string }[] = [
+  { symbol: "NVDA", name: "輝達", tag: "AI晶片" },
+  { symbol: "AVGO", name: "博通", tag: "AI晶片" },
+  { symbol: "AMD", name: "超微", tag: "AI晶片" },
+  { symbol: "TSM", name: "台積電ADR", tag: "晶圓代工" },
+  { symbol: "ASML", name: "艾司摩爾", tag: "半導體設備" },
+  { symbol: "AMAT", name: "應用材料", tag: "半導體設備" },
+  { symbol: "MU", name: "美光", tag: "記憶體" },
+  { symbol: "INTC", name: "英特爾", tag: "IDM" },
+  { symbol: "ARM", name: "安謀", tag: "IP" },
+  { symbol: "AAPL", name: "蘋果", tag: "手機/消費" },
+  { symbol: "MSFT", name: "微軟", tag: "雲端資本支出" },
+  { symbol: "GOOGL", name: "Alphabet", tag: "雲端資本支出" },
+  { symbol: "AMZN", name: "亞馬遜", tag: "雲端資本支出" },
+  { symbol: "META", name: "Meta", tag: "雲端資本支出" },
+  { symbol: "TSLA", name: "特斯拉", tag: "電動車" },
+  { symbol: "SMCI", name: "美超微", tag: "AI伺服器" },
+  { symbol: "DELL", name: "戴爾", tag: "AI伺服器" },
+  { symbol: "QCOM", name: "高通", tag: "手機/消費" },
 ];
 
 const HOSTS = [
@@ -277,20 +307,48 @@ async function main() {
     process.exit(1);
   }
 
+  // 指標股與指數共用 fetchOne 的「最近一根已收完的日 K」邏輯，所以盤中跑也拿隔夜收盤，
+  // 跟上面的美股指數同一個時間基準，不會出現指數是隔夜、個股是盤中的混搭。
+  const moverResults = await Promise.all(
+    MOVERS.map(async (m) => {
+      const r = await fetchOne(m.symbol);
+      if (!r) {
+        console.warn(`[warn] mover fetch failed: ${m.symbol} (${m.name})`);
+        return null;
+      }
+      const change = r.close - r.prevClose;
+      return {
+        symbol: m.symbol,
+        name: m.name,
+        tag: m.tag,
+        close: round(r.close),
+        change: round(change),
+        pct: Number(((change / r.prevClose) * 100).toFixed(2)),
+      };
+    }),
+  );
+  const movers = moverResults.filter((x): x is NonNullable<typeof x> => x !== null);
+  // 由強到弱排：報告只顯示前後幾檔，排好之後渲染端不用再想順序。
+  movers.sort((a, b) => b.pct - a.pct);
+
   const now = new Date();
   const tradingDate = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
   const out = {
-    timestamp: now.toISOString(),
+    timestamp: twIso(now),
     tradingDate,
     indices,
+    movers,
   };
 
   const outPath = resolve(process.cwd(), "data/intl-market-latest.json");
   mkdirSync(dirname(outPath), { recursive: true });
   writeFileSync(outPath, `${JSON.stringify(out, null, 2)}\n`, "utf-8");
-  console.log(`Wrote ${indices.length}/${SYMBOLS.length} intl indices to ${outPath}`);
+  console.log(`Wrote ${indices.length}/${SYMBOLS.length} intl indices + ${movers.length}/${MOVERS.length} movers to ${outPath}`);
   for (const i of indices) {
     console.log(`  ${i.region.padEnd(8)} ${i.name}  ${i.close}  ${i.pct >= 0 ? "+" : ""}${i.pct}%`);
+  }
+  for (const m of movers) {
+    console.log(`  ${m.tag.padEnd(10)} ${m.name}(${m.symbol})  ${m.close}  ${m.pct >= 0 ? "+" : ""}${m.pct}%`);
   }
 }
 

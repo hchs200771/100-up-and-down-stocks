@@ -10,8 +10,11 @@ PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 TASK_DIR="${CODEX_GROUP_TASK_DIR:-$PROJECT_DIR/data/tmp/group-tasks}"
 RESULT_DIR="${CODEX_GROUP_RESULT_DIR:-$PROJECT_DIR/data/tmp/group-results}"
 PROMPT_DIR="$PROJECT_DIR/scripts/prompts"
-WORKER_TEMPLATE="$PROMPT_DIR/group-research-worker.md"
-MODEL="${CODEX_GROUP_WORKER_MODEL:-gpt-5.4-mini}"
+WORKER_TEMPLATE="$PROMPT_DIR/group-research-worker-codex.md"
+RESULT_SCHEMA="$PROJECT_DIR/scripts/schemas/codex-group-research.schema.json"
+MODEL="${CODEX_GROUP_WORKER_MODEL:-gpt-5.6-luna}"
+REASONING_EFFORT="${CODEX_GROUP_WORKER_REASONING_EFFORT:-low}"
+MAX_WORKERS="${CODEX_GROUP_MAX_WORKERS:-30}"
 MAX_CONCURRENCY="${1:-6}"
 POLL_INTERVAL="${CODEX_GROUP_POLL_INTERVAL:-1}"
 WORKER_TIMEOUT_SECONDS="${CODEX_GROUP_WORKER_TIMEOUT_SECONDS:-180}"
@@ -41,10 +44,11 @@ if [ "${#TASK_FILES[@]}" -eq 0 ]; then
   exit 1
 fi
 
-FILTERED_TASKS_JSON="$(node - <<'NODE' "${TASK_FILES[@]}"
+FILTERED_TASKS_JSON="$(node - "$MAX_WORKERS" "${TASK_FILES[@]}" <<'NODE'
 const fs = require('fs');
 
-const files = process.argv.slice(2);
+const maxWorkers = Math.max(1, Number(process.argv[2]) || 30);
+const files = process.argv.slice(3);
 const tasks = files.map((file, index) => {
   const task = JSON.parse(fs.readFileSync(file, 'utf8'));
   const memberCount = Array.isArray(task.members) ? task.members.length : 0;
@@ -55,21 +59,23 @@ const tasks = files.map((file, index) => {
     category: task.category || '未命名族群',
     memberCount,
     retreatSignal: task.retreatSignal === true,
+    avgPct: Math.abs(Number(task.stageSignals?.groupAvgPct) || 0),
   };
 });
 
-const loserTop3 = tasks
-  .filter((task) => task.direction === 'loser')
-  .sort((a, b) => {
-    if (b.memberCount !== a.memberCount) return b.memberCount - a.memberCount;
-    return a.index - b.index;
-  })
-  .slice(0, 3)
-  .map((task) => task.file);
-const loserTop3Set = new Set(loserTop3);
-
-const selected = tasks
-  .filter((task) => task.direction === 'gainer' || loserTop3Set.has(task.file) || task.retreatSignal === true)
+// 上漲、下跌都一樣：族群要有 3 檔以上成分股才值得花一次 worker 去查故事，
+// 少於 3 檔的當個股事件看，直接用 controller 寫的 preliminaryStory，不個別深挖。
+// retreatSignal（族群退潮）不受這條限制，人數再少也要查。
+const MIN_MEMBERS_FOR_WORKER = 3;
+const eligible = tasks
+  .filter((task) => task.memberCount >= MIN_MEMBERS_FOR_WORKER || task.retreatSignal === true)
+  .map((task) => ({
+    ...task,
+    priority: task.memberCount * 100 + (task.retreatSignal ? 120 : 0) + Math.min(50, task.avgPct * 5),
+  }))
+  .sort((a, b) => b.priority - a.priority || a.index - b.index);
+const selected = eligible
+  .slice(0, maxWorkers)
   .map((task) => ({
     file: task.file,
     direction: task.direction,
@@ -80,9 +86,16 @@ const selected = tasks
 
 process.stdout.write(JSON.stringify({
   selected,
-  skippedLosers: tasks
-    .filter((task) => task.direction === 'loser' && !loserTop3Set.has(task.file) && task.retreatSignal !== true)
-    .map((task) => ({ file: task.file, category: task.category, memberCount: task.memberCount })),
+  maxWorkers,
+  skipped: tasks
+    .filter((task) => !selected.some((chosen) => chosen.file === task.file))
+    .map((task) => ({
+      file: task.file,
+      direction: task.direction,
+      category: task.category,
+      memberCount: task.memberCount,
+      reason: eligible.some((candidate) => candidate.file === task.file) ? 'capacity' : 'small',
+    })),
 }));
 NODE
 )"
@@ -99,10 +112,12 @@ fi
 
 printf '%s' "$FILTERED_TASKS_JSON" | node -e '
 const input = JSON.parse(require("fs").readFileSync(0, "utf8"));
-if (input.skippedLosers.length > 0) {
-  console.log("進度 3/5：以下弱勢族群不做個別 worker，finalizer 會合併為其他弱勢：");
-  for (const item of input.skippedLosers) {
-    console.log(`- ${item.category} (${item.memberCount} 檔): ${item.file}`);
+if (input.skipped.length > 0) {
+  console.log(`進度 3/5：worker 上限 ${input.maxWorkers}；以下族群不做個別 research，沿用 controller preliminaryStory：`);
+  for (const item of input.skipped) {
+    const dir = item.direction === "gainer" ? "強勢" : "弱勢";
+    const reason = item.reason === "capacity" ? "超出優先額度" : "不到 3 檔";
+    console.log(`- [${dir}] ${item.category} (${item.memberCount} 檔，${reason}): ${item.file}`);
   }
 }
 '
@@ -114,16 +129,14 @@ task_progress_label() {
 
 run_worker() {
   local task_file="$1"
-  local base_name task_json prompt_file
+  local base_name task_json prompt_file output_file
   base_name="$(basename "$task_file" .json)"
   task_json="$(cat "$task_file")"
   prompt_file="$(mktemp)"
+  output_file="$RESULT_DIR/${base_name}.json"
 
   cat "$WORKER_TEMPLATE" > "$prompt_file"
   {
-    echo
-    echo "Task file: $task_file"
-    echo "請將結果寫入：data/tmp/group-results/${base_name}.json"
     echo
     echo '```json'
     echo "$task_json"
@@ -135,7 +148,11 @@ run_worker() {
   while [ "$attempt" -le "$WORKER_MAX_ATTEMPTS" ]; do
     exit_code=0
     echo "進度 3/5：${base_name} worker attempt ${attempt}/${WORKER_MAX_ATTEMPTS}，timeout ${WORKER_TIMEOUT_SECONDS}s"
-    codex exec --full-auto -m "$MODEL" -C "$PROJECT_DIR" - < "$prompt_file" &
+    rm -f "$output_file"
+    codex exec --approve-for-me --ephemeral --color never \
+      -c "model_reasoning_effort=\"$REASONING_EFFORT\"" \
+      --output-schema "$RESULT_SCHEMA" -o "$output_file" \
+      -m "$MODEL" -C "$PROJECT_DIR" - < "$prompt_file" &
     pid="$!"
     elapsed=0
 
@@ -162,7 +179,7 @@ run_worker() {
       exit_code="${exit_code:-0}"
     fi
 
-    if [ "$exit_code" -eq 0 ]; then
+    if [ "$exit_code" -eq 0 ] && node -e 'JSON.parse(require("fs").readFileSync(process.argv[1], "utf8"))' "$output_file" 2>/dev/null; then
       rm -f "$prompt_file"
       return 0
     fi

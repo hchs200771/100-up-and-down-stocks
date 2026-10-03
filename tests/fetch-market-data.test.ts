@@ -11,6 +11,7 @@ import {
   computeBreadth,
   parseIssuedShares,
   computeBuyStreak,
+  processTpexData,
 } from "../scripts/fetch-market-data.ts";
 
 // ---------------------------------------------------------------------------
@@ -129,6 +130,18 @@ test("parseTpexInsti maps correct column indices", () => {
   assert.equal(chips.trustNet, 2);
   assert.equal(chips.dealerNet, 1);
   assert.equal(chips.totalNet, 9);
+});
+
+test("processTpexData reads成交股數 and成交金額 from the official columns", () => {
+  const row = [
+    "6683", "雍智科技", "1450.00", "+115.00", "1390.00", "1465.00", "1390.00",
+    "1458.28", "2,204,135", "3,214,251,045", "7,974",
+  ];
+  const [stock] = processTpexData({ tables: [{ data: [row] }] });
+  assert.equal(stock.code, "6683");
+  assert.equal(stock.close, 1450);
+  assert.equal(stock.volume, 2_204_135);
+  assert.equal(stock.amount, "3214251045");
 });
 
 // ---------------------------------------------------------------------------

@@ -1,5 +1,6 @@
 import { writeFileSync, mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
+import { pathToFileURL } from "node:url";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -318,12 +319,13 @@ async function readTwseResponse(res: Response): Promise<any> {
  * 交易所端點偶發回 HTTP 200 但 body 是 HTML（WAF/限流擋掉），此時 res.json()
  * 會拋 SyntaxError。這種失敗原樣重跑通常就過，所以把 fetch 與解析一起包進
  * 重試：解析失敗也算失敗、也要重試（只重試 fetch 沒有用）。
+ * 首次失敗後至少再試三次，避免短暫的 DNS 或交易所連線問題中斷整份報告。
  */
 async function fetchRetry<T>(
   url: string,
   label: string,
   parse: (res: Response) => Promise<T>,
-  attempts = 3,
+  attempts = 4,
 ): Promise<T> {
   let lastErr: unknown;
   for (let i = 1; i <= attempts; i++) {
@@ -334,7 +336,7 @@ async function fetchRetry<T>(
     } catch (e) {
       lastErr = e;
       if (i < attempts) {
-        const wait = 1500 * i; // 1.5s, 3s
+        const wait = 1500 * i; // 1.5s, 3s, 4.5s
         console.warn(
           `[retry] ${label} 第 ${i}/${attempts} 次失敗：${(e as Error).message}，${wait}ms 後重試`,
         );
@@ -346,7 +348,7 @@ async function fetchRetry<T>(
 }
 
 /** fetchRetry 的 JSON 版本（絕大多數端點用這支） */
-function fetchJson(url: string, label: string, attempts = 3): Promise<any> {
+function fetchJson(url: string, label: string, attempts = 4): Promise<any> {
   return fetchRetry(url, label, (r) => r.json(), attempts);
 }
 
@@ -371,7 +373,7 @@ function processTwseData(json: any): Stock[] {
     .filter((s: Stock | null): s is Stock => s !== null);
 }
 
-function processTpexData(json: any): Stock[] {
+export function processTpexData(json: any): Stock[] {
   let data: any[] = [];
   if (json.tables && json.tables.length > 0) data = json.tables[0].data;
   else if (json.data) data = json.data;
@@ -385,9 +387,10 @@ function processTpexData(json: any): Stock[] {
       if (code.length >= 6) return null;
       const closeStr = (row[2] || "0").toString().replace(/,/g, "");
       const changeStr = (row[3] || "0").toString().replace(/,/g, "");
-      const amountStr = (row[8] || "0").toString().replace(/,/g, "");
-      // row[7] is 成交股數 (千股 unit based on inspection: "283,529" for ETF — treat as shares directly)
-      const volumeRaw = parseInt((row[7] || "0").toString().replace(/,/g, ""), 10) || 0;
+      // TPEx dailyQuotes 欄位：7=均價、8=成交股數、9=成交金額（元）。
+      // 舊版把均價當成交量、成交股數當成交金額，會把活躍上櫃股誤標成低流動性。
+      const volumeRaw = parseInt((row[8] || "0").toString().replace(/,/g, ""), 10) || 0;
+      const amountStr = (row[9] || "0").toString().replace(/,/g, "");
       const close = parseFloat(closeStr);
       const change = parseFloat(changeStr);
       if (isNaN(close) || isNaN(change) || close === 0) return null;
@@ -830,7 +833,9 @@ async function main() {
   console.log(`Top loser:  ${losers[0].name}(${losers[0].code}) ${losers[0].pct.toFixed(2)}%`);
 }
 
-main().catch((err) => {
-  console.error("Fetch failed:", err);
-  process.exit(1);
-});
+if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
+  main().catch((err) => {
+    console.error("Fetch failed:", err);
+    process.exit(1);
+  });
+}

@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 
+import { twIso } from "./lib/time";
 /**
  * 持倉分析（Mac 端，純讀檔，不連凱基）。
  *
@@ -124,7 +125,7 @@ function main() {
   });
 
   const out = {
-    generatedAt: new Date().toISOString(),
+    generatedAt: twIso(),
     sourceFetchedAt: kgi.fetchedAt,
     marginRisk,
     positions,

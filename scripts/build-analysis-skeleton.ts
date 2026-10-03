@@ -248,8 +248,14 @@ function pickStory(
   }
   const prelim = (task.preliminaryStory ?? "").trim();
   if (prelim) {
-    // preliminaryStory 是分類階段的草稿，一律要求 finalizer 改寫成完整分析
-    return { story: prelim, storySource: "preliminary", needsRewrite: true, confidence: "low" };
+    // controller 已被要求把 preliminaryStory 寫成可直接刊出的短分析；沒有禁句時直接沿用，
+    // 避免未派 worker 的小族群全部轉由昂貴 finalizer 重寫。
+    return {
+      story: prelim,
+      storySource: "preliminary",
+      needsRewrite: BANNED_PHRASES.some((p) => prelim.includes(p)),
+      confidence: "low",
+    };
   }
   // 走到這裡代表 worker 掛了、task 也沒有草稿。這種族群是被「需要分析」的規則挑進來的
   // （強勢全部，弱勢前 3 大 ∪ retreatSignal），不能留空白，一定要 finalizer 自己寫。
