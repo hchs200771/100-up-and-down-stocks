@@ -734,6 +734,9 @@ if stage_enabled send; then
   # 選股池吃 analysis + scorecard + RRG + 設質CB，必須排在它們全部產出之後、送信之前。
   timed stock-picks run_tsx scripts/build-stock-picks.ts \
     || log "[warn] build-stock-picks.ts failed; 終極選股池分頁略過，不影響其他區塊"
+  # 前 5 名前瞻追蹤（docs/wide-market-scan-conclusion.md）：只更新 data/stock-picks-backtest.json，失敗不影響報告
+  timed picks-tracking run_tsx scripts/backtest-stock-picks.ts --quiet \
+    || log "[warn] backtest-stock-picks.ts failed; 前 5 名追蹤略過"
 
   log "進度 5/5：開始產生 HTML 並寄送報告"
   # REPORT_DRY_RUN=1：只產 HTML 預覽，不寄信也不部署。驗證 prompt / 評分規則改動時用，

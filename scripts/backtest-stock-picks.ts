@@ -13,6 +13,7 @@ import { twIso } from "./lib/time";
 type PriceMap = Record<string, number>;
 type Pick = {
   code: string;
+  rank?: number;
   score: number;
   signals?: Array<{ label?: string }>;
   themeRadar?: Array<{ id: string }>;
@@ -30,6 +31,7 @@ type Observation = {
   horizon: "long" | "short";
   days: number;
   code: string;
+  rank: number;
   score: number;
   returnPct: number;
   netReturnPct: number;
@@ -103,7 +105,7 @@ for (const file of readdirSync(PICKS_DIR).filter((name) => name.endsWith(".json"
     if (marketPct === null) continue;
 
     for (const horizon of ["long", "short"] as const) {
-      for (const pick of snapshot[horizon] ?? []) {
+      for (const [index, pick] of (snapshot[horizon] ?? []).entries()) {
         const entry = entryPrices[pick.code];
         const exit = exitPrices[pick.code];
         if (!(entry > 0 && exit > 0)) continue;
@@ -116,6 +118,7 @@ for (const file of readdirSync(PICKS_DIR).filter((name) => name.endsWith(".json"
           horizon,
           days,
           code: pick.code,
+          rank: pick.rank ?? index + 1,
           score: pick.score,
           returnPct,
           netReturnPct,
@@ -160,6 +163,34 @@ const bySignal = Object.fromEntries(
     .filter(([, stats]) => stats.n >= 5),
 );
 
+// 前瞻追蹤：全市場回測（docs/wide-market-scan-conclusion.md）顯示只買前 5 檔比前 10 檔好，
+// 但未達顯著。這裡用每日真實榜單驗證：前 5 名 vs 第 6–10 名，以進場日等權比較，
+// 避免某天留下較多股票就主導結果。累積約 6 個月（120 個進場日）再決定是否集中持股。
+function dateAvgExcess(rows: Observation[]) {
+  const byDate = new Map<string, number[]>();
+  for (const row of rows) byDate.set(row.date, [...(byDate.get(row.date) ?? []), row.excessPct]);
+  return new Map([...byDate].map(([date, values]) => [date, avg(values)!]));
+}
+const topFiveTracking = Object.fromEntries(
+  (["long", "short"] as const).flatMap((horizon) => HOLDING_DAYS.map((days) => {
+    const rows = observations.filter((row) => row.horizon === horizon && row.days === days);
+    const top5 = rows.filter((row) => row.rank <= 5);
+    const rest = rows.filter((row) => row.rank > 5 && row.rank <= 10);
+    const top5ByDate = dateAvgExcess(top5);
+    const restByDate = dateAvgExcess(rest);
+    const paired = [...top5ByDate.keys()].filter((date) => restByDate.has(date));
+    const diffs = paired.map((date) => top5ByDate.get(date)! - restByDate.get(date)!);
+    return [`${horizon}:T+${days}`, {
+      top5: summarize(top5),
+      rank6to10: summarize(rest),
+      top10: summarize(rows.filter((row) => row.rank <= 10)),
+      pairedDates: paired.length,
+      avgDateExcessDiffPct: round(avg(diffs)),
+      top5BeatsRestDates: diffs.filter((diff) => diff > 0).length,
+    }] as const;
+  })),
+);
+
 const result = {
   generatedAt: twIso(),
   pickFiles: readdirSync(PICKS_DIR).filter((name) => name.endsWith(".json")).length,
@@ -170,6 +201,8 @@ const result = {
   implementationCostBasis: "一般股票往返手續費 0.285%＋賣出證交稅 0.3%＋滑價 0.2%",
   minimumRecommendedEntryDates: 20,
   byHorizon,
+  topFiveTracking,
+  topFiveTrackingNote: "前 5 名 vs 第 6–10 名；avgDateExcessDiffPct 為同進場日兩組平均超額之差（前 5 減後 5）的日平均，正值代表前 5 名較好",
   t5ByScore: byScore,
   t5BySignal: bySignal,
   themeRadarComparison: Object.fromEntries(
@@ -187,7 +220,13 @@ const result = {
 };
 
 writeFileSync(OUT, `${JSON.stringify(result, null, 2)}\n`, "utf8");
-console.log(JSON.stringify(result, null, 2));
+// --quiet：每日流程用，只印前 5 名追蹤一行摘要，不把整份 JSON 灌進 log
+if (process.argv.includes("--quiet")) {
+  const t20 = topFiveTracking["long:T+20"];
+  console.log(`[top5] long T+20 配對 ${t20.pairedDates} 日，前5−後5 日均超額 ${t20.avgDateExcessDiffPct ?? "—"}%，前5勝 ${t20.top5BeatsRestDates} 日 → ${OUT}`);
+} else {
+  console.log(JSON.stringify(result, null, 2));
+}
 if (Math.max(...Object.values(byHorizon).map((stats) => stats.entryDates)) < result.minimumRecommendedEntryDates) {
   console.warn("[warn] 可觀測進場日少於 20 天；結果只適合監控，不適合據此最佳化權重");
 }

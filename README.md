@@ -97,7 +97,7 @@ CODEX_REPORT_START_STAGE=research npm run report:codex
 npm run report:fetch     # 只重抓市場資料
 npm run report:score     # 只重算族群記分板（當日快照已存在會跳過）
 npm run report:picks     # 只重算終極選股池
-npm run backtest:picks   # 選股池分數校準（輸出 data/stock-picks-backtest.json）
+npm run backtest:picks   # 選股池分數校準＋前 5 名前瞻追蹤（輸出 data/stock-picks-backtest.json，每日流程自動跑）
 npm run themes:refresh   # 重抓題材新聞觀察
 npm run report:send      # 用現有分析重產 HTML 並寄信
 npx tsx scripts/send-report.ts data/analysis-latest.json --no-email   # 只產 HTML 預覽

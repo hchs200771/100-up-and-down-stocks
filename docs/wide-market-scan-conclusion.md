@@ -74,7 +74,7 @@
 
 - **終極選股池（`build-stock-picks.ts`）不需修改。** 目前沒有大盤濾網、沒有漲幅上限，正好避開了被證明有害的兩個條件。
 - 法人力度（Z 分數＋佔股本比，見 [institutional-strength.md](institutional-strength.md)）不在這次測試範圍，因為沒有歷史全市場籌碼資料。門檻仍是未回測的預設值。
-- 建議前瞻追蹤：每日選股池前 5 名 vs 前 10 名的後續 20 日超額，累積 6 個月後再決定是否集中。
+- 前瞻追蹤已上線：每日流程在產生選股池後執行 `backtest-stock-picks.ts --quiet`，在 `data/stock-picks-backtest.json` 的 `topFiveTracking` 比較前 5 名與第 6–10 名（T+1／5／20，以同進場日配對）。累積約 6 個月（約 120 個進場日）後，看 `long:T+20` 的 `avgDateExcessDiffPct` 與 `top5BeatsRestDates` 再決定是否集中。
 
 ## 限制
 

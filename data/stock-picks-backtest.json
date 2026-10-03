@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-16T21:27:54+08:00",
-  "pickFiles": 9,
-  "priceDates": 470,
+  "generatedAt": "2026-10-03T23:56:55+08:00",
+  "pickFiles": 16,
+  "priceDates": 477,
   "entryLagDays": 1,
   "methodology": "訊號後下一交易日收盤進場的固定持有基準，不等同報告中的條件式進場；全市場等權為相對基準",
   "implementationCostPct": 0.7849999999999999,
@@ -9,24 +9,24 @@
   "minimumRecommendedEntryDates": 20,
   "byHorizon": {
     "long:T+1": {
-      "n": 70,
-      "entryDates": 7,
-      "avgReturnPct": -0.05,
-      "avgNetReturnPct": -0.83,
-      "avgExcessPct": 0.07,
-      "winRatePct": 45.71,
-      "netWinRatePct": 27.14,
-      "excessWinRatePct": 42.86
+      "n": 140,
+      "entryDates": 14,
+      "avgReturnPct": 0.75,
+      "avgNetReturnPct": -0.03,
+      "avgExcessPct": 0.55,
+      "winRatePct": 54.29,
+      "netWinRatePct": 42.14,
+      "excessWinRatePct": 52.14
     },
     "long:T+5": {
-      "n": 40,
-      "entryDates": 4,
-      "avgReturnPct": -1.69,
-      "avgNetReturnPct": -2.48,
-      "avgExcessPct": -0.71,
-      "winRatePct": 35,
-      "netWinRatePct": 27.5,
-      "excessWinRatePct": 40
+      "n": 100,
+      "entryDates": 10,
+      "avgReturnPct": 0.46,
+      "avgNetReturnPct": -0.32,
+      "avgExcessPct": -0.07,
+      "winRatePct": 51,
+      "netWinRatePct": 45,
+      "excessWinRatePct": 44
     },
     "long:T+20": {
       "n": 0,
@@ -39,24 +39,24 @@
       "excessWinRatePct": null
     },
     "short:T+1": {
-      "n": 70,
-      "entryDates": 7,
-      "avgReturnPct": -0.14,
-      "avgNetReturnPct": -0.93,
-      "avgExcessPct": -0.03,
-      "winRatePct": 44.29,
-      "netWinRatePct": 41.43,
-      "excessWinRatePct": 45.71
+      "n": 140,
+      "entryDates": 14,
+      "avgReturnPct": 0.27,
+      "avgNetReturnPct": -0.52,
+      "avgExcessPct": 0.07,
+      "winRatePct": 50.71,
+      "netWinRatePct": 45.71,
+      "excessWinRatePct": 48.57
     },
     "short:T+5": {
-      "n": 40,
-      "entryDates": 4,
-      "avgReturnPct": -3.19,
-      "avgNetReturnPct": -3.98,
-      "avgExcessPct": -2.21,
-      "winRatePct": 30,
-      "netWinRatePct": 25,
-      "excessWinRatePct": 35
+      "n": 100,
+      "entryDates": 10,
+      "avgReturnPct": 0.54,
+      "avgNetReturnPct": -0.25,
+      "avgExcessPct": 0,
+      "winRatePct": 47,
+      "netWinRatePct": 42,
+      "excessWinRatePct": 44
     },
     "short:T+20": {
       "n": 0,
@@ -69,78 +69,301 @@
       "excessWinRatePct": null
     }
   },
+  "topFiveTracking": {
+    "long:T+1": {
+      "top5": {
+        "n": 70,
+        "entryDates": 14,
+        "avgReturnPct": 0.88,
+        "avgNetReturnPct": 0.1,
+        "avgExcessPct": 0.68,
+        "winRatePct": 61.43,
+        "netWinRatePct": 42.86,
+        "excessWinRatePct": 58.57
+      },
+      "rank6to10": {
+        "n": 70,
+        "entryDates": 14,
+        "avgReturnPct": 0.62,
+        "avgNetReturnPct": -0.16,
+        "avgExcessPct": 0.42,
+        "winRatePct": 47.14,
+        "netWinRatePct": 41.43,
+        "excessWinRatePct": 45.71
+      },
+      "top10": {
+        "n": 140,
+        "entryDates": 14,
+        "avgReturnPct": 0.75,
+        "avgNetReturnPct": -0.03,
+        "avgExcessPct": 0.55,
+        "winRatePct": 54.29,
+        "netWinRatePct": 42.14,
+        "excessWinRatePct": 52.14
+      },
+      "pairedDates": 14,
+      "avgDateExcessDiffPct": 0.26,
+      "top5BeatsRestDates": 8
+    },
+    "long:T+5": {
+      "top5": {
+        "n": 50,
+        "entryDates": 10,
+        "avgReturnPct": 0.97,
+        "avgNetReturnPct": 0.18,
+        "avgExcessPct": 0.43,
+        "winRatePct": 50,
+        "netWinRatePct": 44,
+        "excessWinRatePct": 48
+      },
+      "rank6to10": {
+        "n": 50,
+        "entryDates": 10,
+        "avgReturnPct": -0.04,
+        "avgNetReturnPct": -0.82,
+        "avgExcessPct": -0.58,
+        "winRatePct": 52,
+        "netWinRatePct": 46,
+        "excessWinRatePct": 40
+      },
+      "top10": {
+        "n": 100,
+        "entryDates": 10,
+        "avgReturnPct": 0.46,
+        "avgNetReturnPct": -0.32,
+        "avgExcessPct": -0.07,
+        "winRatePct": 51,
+        "netWinRatePct": 45,
+        "excessWinRatePct": 44
+      },
+      "pairedDates": 10,
+      "avgDateExcessDiffPct": 1.01,
+      "top5BeatsRestDates": 8
+    },
+    "long:T+20": {
+      "top5": {
+        "n": 0,
+        "entryDates": 0,
+        "avgReturnPct": null,
+        "avgNetReturnPct": null,
+        "avgExcessPct": null,
+        "winRatePct": null,
+        "netWinRatePct": null,
+        "excessWinRatePct": null
+      },
+      "rank6to10": {
+        "n": 0,
+        "entryDates": 0,
+        "avgReturnPct": null,
+        "avgNetReturnPct": null,
+        "avgExcessPct": null,
+        "winRatePct": null,
+        "netWinRatePct": null,
+        "excessWinRatePct": null
+      },
+      "top10": {
+        "n": 0,
+        "entryDates": 0,
+        "avgReturnPct": null,
+        "avgNetReturnPct": null,
+        "avgExcessPct": null,
+        "winRatePct": null,
+        "netWinRatePct": null,
+        "excessWinRatePct": null
+      },
+      "pairedDates": 0,
+      "avgDateExcessDiffPct": null,
+      "top5BeatsRestDates": 0
+    },
+    "short:T+1": {
+      "top5": {
+        "n": 70,
+        "entryDates": 14,
+        "avgReturnPct": 0.07,
+        "avgNetReturnPct": -0.72,
+        "avgExcessPct": -0.13,
+        "winRatePct": 47.14,
+        "netWinRatePct": 45.71,
+        "excessWinRatePct": 45.71
+      },
+      "rank6to10": {
+        "n": 70,
+        "entryDates": 14,
+        "avgReturnPct": 0.47,
+        "avgNetReturnPct": -0.32,
+        "avgExcessPct": 0.27,
+        "winRatePct": 54.29,
+        "netWinRatePct": 45.71,
+        "excessWinRatePct": 51.43
+      },
+      "top10": {
+        "n": 140,
+        "entryDates": 14,
+        "avgReturnPct": 0.27,
+        "avgNetReturnPct": -0.52,
+        "avgExcessPct": 0.07,
+        "winRatePct": 50.71,
+        "netWinRatePct": 45.71,
+        "excessWinRatePct": 48.57
+      },
+      "pairedDates": 14,
+      "avgDateExcessDiffPct": -0.4,
+      "top5BeatsRestDates": 8
+    },
+    "short:T+5": {
+      "top5": {
+        "n": 50,
+        "entryDates": 10,
+        "avgReturnPct": 0.86,
+        "avgNetReturnPct": 0.07,
+        "avgExcessPct": 0.32,
+        "winRatePct": 52,
+        "netWinRatePct": 44,
+        "excessWinRatePct": 54
+      },
+      "rank6to10": {
+        "n": 50,
+        "entryDates": 10,
+        "avgReturnPct": 0.22,
+        "avgNetReturnPct": -0.57,
+        "avgExcessPct": -0.32,
+        "winRatePct": 42,
+        "netWinRatePct": 40,
+        "excessWinRatePct": 34
+      },
+      "top10": {
+        "n": 100,
+        "entryDates": 10,
+        "avgReturnPct": 0.54,
+        "avgNetReturnPct": -0.25,
+        "avgExcessPct": 0,
+        "winRatePct": 47,
+        "netWinRatePct": 42,
+        "excessWinRatePct": 44
+      },
+      "pairedDates": 10,
+      "avgDateExcessDiffPct": 0.64,
+      "top5BeatsRestDates": 6
+    },
+    "short:T+20": {
+      "top5": {
+        "n": 0,
+        "entryDates": 0,
+        "avgReturnPct": null,
+        "avgNetReturnPct": null,
+        "avgExcessPct": null,
+        "winRatePct": null,
+        "netWinRatePct": null,
+        "excessWinRatePct": null
+      },
+      "rank6to10": {
+        "n": 0,
+        "entryDates": 0,
+        "avgReturnPct": null,
+        "avgNetReturnPct": null,
+        "avgExcessPct": null,
+        "winRatePct": null,
+        "netWinRatePct": null,
+        "excessWinRatePct": null
+      },
+      "top10": {
+        "n": 0,
+        "entryDates": 0,
+        "avgReturnPct": null,
+        "avgNetReturnPct": null,
+        "avgExcessPct": null,
+        "winRatePct": null,
+        "netWinRatePct": null,
+        "excessWinRatePct": null
+      },
+      "pairedDates": 0,
+      "avgDateExcessDiffPct": null,
+      "top5BeatsRestDates": 0
+    }
+  },
+  "topFiveTrackingNote": "前 5 名 vs 第 6–10 名；avgDateExcessDiffPct 為同進場日兩組平均超額之差（前 5 減後 5）的日平均，正值代表前 5 名較好",
   "t5ByScore": {
     "<60": {
-      "n": 46,
-      "entryDates": 4,
-      "avgReturnPct": -1.9,
-      "avgNetReturnPct": -2.68,
-      "avgExcessPct": -0.92,
-      "winRatePct": 32.61,
-      "netWinRatePct": 26.09,
-      "excessWinRatePct": 36.96
+      "n": 106,
+      "entryDates": 10,
+      "avgReturnPct": 0.24,
+      "avgNetReturnPct": -0.54,
+      "avgExcessPct": -0.2,
+      "winRatePct": 49.06,
+      "netWinRatePct": 43.4,
+      "excessWinRatePct": 42.45
     },
     "60-69": {
-      "n": 23,
-      "entryDates": 4,
-      "avgReturnPct": -3.45,
-      "avgNetReturnPct": -4.24,
-      "avgExcessPct": -2.47,
-      "winRatePct": 34.78,
-      "netWinRatePct": 30.43,
-      "excessWinRatePct": 34.78
+      "n": 66,
+      "entryDates": 10,
+      "avgReturnPct": 1.6,
+      "avgNetReturnPct": 0.82,
+      "avgExcessPct": 0.77,
+      "winRatePct": 50,
+      "netWinRatePct": 46.97,
+      "excessWinRatePct": 42.42
     },
     "70-79": {
-      "n": 9,
-      "entryDates": 4,
-      "avgReturnPct": -3.51,
-      "avgNetReturnPct": -4.3,
-      "avgExcessPct": -2.52,
-      "winRatePct": 22.22,
-      "netWinRatePct": 11.11,
-      "excessWinRatePct": 44.44
+      "n": 23,
+      "entryDates": 10,
+      "avgReturnPct": -1.59,
+      "avgNetReturnPct": -2.38,
+      "avgExcessPct": -1.84,
+      "winRatePct": 47.83,
+      "netWinRatePct": 34.78,
+      "excessWinRatePct": 47.83
     },
     "80+": {
-      "n": 2,
-      "entryDates": 2,
-      "avgReturnPct": 1.49,
-      "avgNetReturnPct": 0.71,
-      "avgExcessPct": 2.41,
-      "winRatePct": 50,
-      "netWinRatePct": 50,
-      "excessWinRatePct": 50
+      "n": 5,
+      "entryDates": 5,
+      "avgReturnPct": 1.04,
+      "avgNetReturnPct": 0.26,
+      "avgExcessPct": 1.11,
+      "winRatePct": 40,
+      "netWinRatePct": 40,
+      "excessWinRatePct": 80
     }
   },
   "t5BySignal": {
     "CB+設質": {
-      "n": 37,
+      "n": 57,
+      "entryDates": 9,
+      "avgReturnPct": -0.64,
+      "avgNetReturnPct": -1.42,
+      "avgExcessPct": -0.56,
+      "winRatePct": 42.11,
+      "netWinRatePct": 36.84,
+      "excessWinRatePct": 38.6
+    },
+    "RRG 弱化": {
+      "n": 5,
       "entryDates": 4,
-      "avgReturnPct": -1.6,
-      "avgNetReturnPct": -2.38,
-      "avgExcessPct": -0.61,
-      "winRatePct": 35.14,
-      "netWinRatePct": 29.73,
-      "excessWinRatePct": 40.54
+      "avgReturnPct": 3.73,
+      "avgNetReturnPct": 2.95,
+      "avgExcessPct": 1.49,
+      "winRatePct": 80,
+      "netWinRatePct": 80,
+      "excessWinRatePct": 80
     },
     "RRG 改善": {
-      "n": 10,
-      "entryDates": 4,
-      "avgReturnPct": 2.23,
-      "avgNetReturnPct": 1.44,
-      "avgExcessPct": 3.27,
-      "winRatePct": 50,
-      "netWinRatePct": 50,
-      "excessWinRatePct": 50
+      "n": 36,
+      "entryDates": 9,
+      "avgReturnPct": 2.53,
+      "avgNetReturnPct": 1.75,
+      "avgExcessPct": 1.62,
+      "winRatePct": 55.56,
+      "netWinRatePct": 55.56,
+      "excessWinRatePct": 47.22
     },
     "RRG 領先": {
-      "n": 32,
-      "entryDates": 4,
-      "avgReturnPct": -4.47,
-      "avgNetReturnPct": -5.26,
-      "avgExcessPct": -3.49,
-      "winRatePct": 25,
-      "netWinRatePct": 15.63,
-      "excessWinRatePct": 31.25
+      "n": 57,
+      "entryDates": 9,
+      "avgReturnPct": -1.84,
+      "avgNetReturnPct": -2.62,
+      "avgExcessPct": -1.7,
+      "winRatePct": 38.6,
+      "netWinRatePct": 29.82,
+      "excessWinRatePct": 40.35
     },
     "今日漲停": {
       "n": 9,
@@ -153,84 +376,244 @@
       "excessWinRatePct": 33.33
     },
     "動能強": {
-      "n": 38,
-      "entryDates": 4,
-      "avgReturnPct": -3.37,
-      "avgNetReturnPct": -4.16,
-      "avgExcessPct": -2.4,
-      "winRatePct": 28.95,
-      "netWinRatePct": 23.68,
-      "excessWinRatePct": 34.21
+      "n": 97,
+      "entryDates": 10,
+      "avgReturnPct": 0.56,
+      "avgNetReturnPct": -0.23,
+      "avgExcessPct": -0.03,
+      "winRatePct": 47.42,
+      "netWinRatePct": 42.27,
+      "excessWinRatePct": 43.3
     },
     "外資連買": {
-      "n": 24,
-      "entryDates": 4,
-      "avgReturnPct": -0.84,
-      "avgNetReturnPct": -1.62,
-      "avgExcessPct": 0.16,
-      "winRatePct": 37.5,
-      "netWinRatePct": 33.33,
-      "excessWinRatePct": 45.83
+      "n": 30,
+      "entryDates": 8,
+      "avgReturnPct": -0.12,
+      "avgNetReturnPct": -0.91,
+      "avgExcessPct": 0.5,
+      "winRatePct": 43.33,
+      "netWinRatePct": 40,
+      "excessWinRatePct": 46.67
     },
     "大戶同向": {
-      "n": 29,
-      "entryDates": 4,
-      "avgReturnPct": -1.99,
-      "avgNetReturnPct": -2.78,
-      "avgExcessPct": -1.03,
-      "winRatePct": 34.48,
-      "netWinRatePct": 27.59,
-      "excessWinRatePct": 41.38
+      "n": 57,
+      "entryDates": 9,
+      "avgReturnPct": 0.42,
+      "avgNetReturnPct": -0.37,
+      "avgExcessPct": 0.23,
+      "winRatePct": 49.12,
+      "netWinRatePct": 42.11,
+      "excessWinRatePct": 50.88
     },
     "大戶背離": {
-      "n": 6,
-      "entryDates": 2,
-      "avgReturnPct": -0.97,
-      "avgNetReturnPct": -1.76,
-      "avgExcessPct": -0.14,
-      "winRatePct": 50,
-      "netWinRatePct": 33.33,
-      "excessWinRatePct": 50
+      "n": 42,
+      "entryDates": 7,
+      "avgReturnPct": 1.38,
+      "avgNetReturnPct": 0.6,
+      "avgExcessPct": 0.35,
+      "winRatePct": 59.52,
+      "netWinRatePct": 50,
+      "excessWinRatePct": 47.62
     },
     "族群啟動": {
-      "n": 14,
-      "entryDates": 2,
-      "avgReturnPct": -5.56,
-      "avgNetReturnPct": -6.34,
-      "avgExcessPct": -4.61,
-      "winRatePct": 28.57,
-      "netWinRatePct": 21.43,
-      "excessWinRatePct": 28.57
+      "n": 20,
+      "entryDates": 4,
+      "avgReturnPct": -5.07,
+      "avgNetReturnPct": -5.85,
+      "avgExcessPct": -4.17,
+      "winRatePct": 25,
+      "netWinRatePct": 15,
+      "excessWinRatePct": 30
+    },
+    "族群趨勢": {
+      "n": 5,
+      "entryDates": 1,
+      "avgReturnPct": 4.28,
+      "avgNetReturnPct": 3.5,
+      "avgExcessPct": 2.43,
+      "winRatePct": 40,
+      "netWinRatePct": 40,
+      "excessWinRatePct": 40
     },
     "法人進駐": {
-      "n": 32,
-      "entryDates": 4,
-      "avgReturnPct": -2.55,
-      "avgNetReturnPct": -3.33,
-      "avgExcessPct": -1.55,
-      "winRatePct": 31.25,
-      "netWinRatePct": 28.13,
-      "excessWinRatePct": 37.5
+      "n": 75,
+      "entryDates": 10,
+      "avgReturnPct": 0.12,
+      "avgNetReturnPct": -0.66,
+      "avgExcessPct": -0.16,
+      "winRatePct": 44,
+      "netWinRatePct": 40,
+      "excessWinRatePct": 45.33
     },
     "流動性低": {
-      "n": 7,
-      "entryDates": 4,
-      "avgReturnPct": -1.44,
-      "avgNetReturnPct": -2.22,
-      "avgExcessPct": -0.4,
-      "winRatePct": 42.86,
-      "netWinRatePct": 28.57,
-      "excessWinRatePct": 42.86
+      "n": 14,
+      "entryDates": 8,
+      "avgReturnPct": 0.79,
+      "avgNetReturnPct": 0.01,
+      "avgExcessPct": 0.68,
+      "winRatePct": 50,
+      "netWinRatePct": 35.71,
+      "excessWinRatePct": 35.71
+    },
+    "營收核心": {
+      "n": 8,
+      "entryDates": 5,
+      "avgReturnPct": 4.91,
+      "avgNetReturnPct": 4.13,
+      "avgExcessPct": 2.89,
+      "winRatePct": 75,
+      "netWinRatePct": 75,
+      "excessWinRatePct": 50
+    },
+    "營收核心·動能": {
+      "n": 69,
+      "entryDates": 6,
+      "avgReturnPct": 2.98,
+      "avgNetReturnPct": 2.19,
+      "avgExcessPct": 1.06,
+      "winRatePct": 66.67,
+      "netWinRatePct": 59.42,
+      "excessWinRatePct": 49.28
+    },
+    "營運核心·動能": {
+      "n": 9,
+      "entryDates": 1,
+      "avgReturnPct": 3.58,
+      "avgNetReturnPct": 2.8,
+      "avgExcessPct": 1.74,
+      "winRatePct": 44.44,
+      "netWinRatePct": 44.44,
+      "excessWinRatePct": 44.44
+    },
+    "產業趨勢確認": {
+      "n": 9,
+      "entryDates": 1,
+      "avgReturnPct": 4.21,
+      "avgNetReturnPct": 3.43,
+      "avgExcessPct": 2.37,
+      "winRatePct": 55.56,
+      "netWinRatePct": 55.56,
+      "excessWinRatePct": 55.56
     },
     "當沖偏高": {
+      "n": 16,
+      "entryDates": 10,
+      "avgReturnPct": -2.53,
+      "avgNetReturnPct": -3.31,
+      "avgExcessPct": -2.52,
+      "winRatePct": 31.25,
+      "netWinRatePct": 31.25,
+      "excessWinRatePct": 31.25
+    },
+    "當沖過熱": {
       "n": 8,
-      "entryDates": 4,
-      "avgReturnPct": -6.95,
-      "avgNetReturnPct": -7.74,
-      "avgExcessPct": -5.96,
-      "winRatePct": 12.5,
-      "netWinRatePct": 12.5,
-      "excessWinRatePct": 25
+      "entryDates": 6,
+      "avgReturnPct": 0.81,
+      "avgNetReturnPct": 0.03,
+      "avgExcessPct": 0.24,
+      "winRatePct": 62.5,
+      "netWinRatePct": 62.5,
+      "excessWinRatePct": 50
+    },
+    "集保觀察": {
+      "n": 5,
+      "entryDates": 1,
+      "avgReturnPct": 4.04,
+      "avgNetReturnPct": 3.26,
+      "avgExcessPct": 2.19,
+      "winRatePct": 80,
+      "netWinRatePct": 60,
+      "excessWinRatePct": 40
+    }
+  },
+  "themeRadarComparison": {
+    "long:T+5": {
+      "withTheme": {
+        "n": 0,
+        "entryDates": 0,
+        "avgReturnPct": null,
+        "avgNetReturnPct": null,
+        "avgExcessPct": null,
+        "winRatePct": null,
+        "netWinRatePct": null,
+        "excessWinRatePct": null
+      },
+      "withoutTheme": {
+        "n": 0,
+        "entryDates": 0,
+        "avgReturnPct": null,
+        "avgNetReturnPct": null,
+        "avgExcessPct": null,
+        "winRatePct": null,
+        "netWinRatePct": null,
+        "excessWinRatePct": null
+      }
+    },
+    "long:T+20": {
+      "withTheme": {
+        "n": 0,
+        "entryDates": 0,
+        "avgReturnPct": null,
+        "avgNetReturnPct": null,
+        "avgExcessPct": null,
+        "winRatePct": null,
+        "netWinRatePct": null,
+        "excessWinRatePct": null
+      },
+      "withoutTheme": {
+        "n": 0,
+        "entryDates": 0,
+        "avgReturnPct": null,
+        "avgNetReturnPct": null,
+        "avgExcessPct": null,
+        "winRatePct": null,
+        "netWinRatePct": null,
+        "excessWinRatePct": null
+      }
+    },
+    "short:T+5": {
+      "withTheme": {
+        "n": 0,
+        "entryDates": 0,
+        "avgReturnPct": null,
+        "avgNetReturnPct": null,
+        "avgExcessPct": null,
+        "winRatePct": null,
+        "netWinRatePct": null,
+        "excessWinRatePct": null
+      },
+      "withoutTheme": {
+        "n": 0,
+        "entryDates": 0,
+        "avgReturnPct": null,
+        "avgNetReturnPct": null,
+        "avgExcessPct": null,
+        "winRatePct": null,
+        "netWinRatePct": null,
+        "excessWinRatePct": null
+      }
+    },
+    "short:T+20": {
+      "withTheme": {
+        "n": 0,
+        "entryDates": 0,
+        "avgReturnPct": null,
+        "avgNetReturnPct": null,
+        "avgExcessPct": null,
+        "winRatePct": null,
+        "netWinRatePct": null,
+        "excessWinRatePct": null
+      },
+      "withoutTheme": {
+        "n": 0,
+        "entryDates": 0,
+        "avgReturnPct": null,
+        "avgNetReturnPct": null,
+        "avgExcessPct": null,
+        "winRatePct": null,
+        "netWinRatePct": null,
+        "excessWinRatePct": null
+      }
     }
   }
 }

@@ -537,6 +537,9 @@ if stage_enabled send; then
   fi
 
   timed stock-picks run_tsx scripts/build-stock-picks.ts || log "[warn] build-stock-picks.ts failed; 終極選股池分頁略過，不影響其他區塊"
+  # 前 5 名前瞻追蹤（docs/wide-market-scan-conclusion.md）：只更新 data/stock-picks-backtest.json，失敗不影響報告
+  timed picks-tracking run_tsx scripts/backtest-stock-picks.ts --quiet \
+    || log "[warn] backtest-stock-picks.ts failed; 前 5 名追蹤略過"
   log "進度 5/5：開始產生 HTML（Codex 流程不寄信）"
   if ! timed send-report run_tsx scripts/send-report.ts data/analysis-latest.json --no-email; then
     log "send-report.ts --no-email exited non-zero"
