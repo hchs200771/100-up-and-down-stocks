@@ -847,8 +847,3 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
     process.exit(1);
   });
 }
-const isMain = process.argv[1]?.endsWith("fetch-market-data.ts") || process.argv[1]?.endsWith("fetch-market-data.js");
-if (isMain) main().catch((err) => {
-  console.error("Fetch failed:", err);
-  process.exit(1);
-});
