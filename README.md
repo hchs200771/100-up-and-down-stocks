@@ -1,225 +1,163 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# 台股漲跌 100 盤後報告
 
-# Run and deploy your AI Studio app
+每天收盤後，自動整理台股漲幅與跌幅前 100 名，由 AI 分族群找原因、判斷資金階段，
+再疊上法人、集保大戶、董監設質、族群輪動等籌碼資料，產出一份盤後報告：
+寄到信箱，同時發佈到 GitHub Pages。
 
-This contains everything you need to run your app locally.
+網頁版：<https://hchs200771.github.io/100-up-and-down-stocks/>
 
-View your app in AI Studio: https://ai.studio/apps/5dd3b4df-4788-40bb-9fb0-054b9a54b4e1
+## 報告內容
 
-## Run Locally
+網頁版依建議閱讀順序分成下列分頁；信件版是同一份內容的靜態版本，沒有互動圖表，段落順序也不同（避免重點被 Gmail 截斷）。
 
-**Prerequisites:**  Node.js
+- **🌐 國際情勢**：美股、亞股、原物料、匯率與信用利差
+- **📊 市場總覽**：盤後總結，加上指數、成交量、法人買賣超、當沖比、散戶部位、融資與外資選擇權
+- **⚖️ 指數貢獻**：指數漲跌是哪些個股與產業推的、誰在拖
+- **🔥 上漲族群／🧊 下跌族群**：各族群的產業故事、資金階段（啟動／擴散／高潮／退潮）、進場評分與建議動作
+- **🔄 族群輪動**：台股族群 RRG 相對輪動圖與象限異動警示
+- **🏦 大戶籌碼**：集保大戶持股週增減，可切「背離」與「同向」兩種視角、200～1000 張門檻
+- **🎯 操作建議**：把當日結論收斂成可介入、再觀察、避開三類
+- **🧭 長線策略**：跳出當日波動的長線進出場想法
+- **🏆 終極選股池**：所有訊號統合後的長線 10 檔＋短線 10 檔，附入選理由與進出場計畫
 
+圖例（各種標記的意思）與 0–100 進場評分的算法，收在上漲／下跌族群分頁最上方的「本頁說明」，點開即可看。
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+另有獨立子頁 `cb-pledge.html`：董監設質＋可轉債（CB）公司派作價候選池，每週更新。
 
----
+## 快速開始
 
-## 盤後報告自動化（Claude Code Skill）
-
-> 目前標準每日入口：`npm run report`（自動選引擎：`codex` 已安裝且登入時走 Codex parallel 版，否則走 Claude 版）。要指定引擎可用 `npm run report:codex` / `npm run report:claude`。
->
-> 一般版與 parallel 版的「流程目標」相同：抓市場資料、完成族群分析、寫入 `data/analysis-latest.json`、更新 memory/history、產生 `data/report-latest.html`，並在有 `GAS_WEBHOOK_URL` 時寄信。差異在執行引擎：一般版走 Claude Code Skill 單一路徑；parallel 版走 Codex controller / worker / finalizer，並把族群 research 平行化。目前只採手動執行，不啟用 launchd 排程。
-
-這個專案另外提供一個 Claude Code Skill `daily-stock-report`，取代原本的 Gemini API 流程，改由 Claude 本地分析、再透過 Google Apps Script webhook 寄信。
-
-### 環境變數（`.env.local`）
-
-```
-GAS_WEBHOOK_URL=https://script.google.com/macros/s/.../exec
-```
-
-### 手動執行
-
-**跑完整流程**（抓資料 → Claude 分析 → 寄信）：在 Claude Code 裡輸入：
-
-```
-/daily-stock-report
-```
-
-**只重抓市場資料**（不做分析）：
+需要 Node.js 20 以上，以及 [Codex CLI](https://github.com/openai/codex) 或 [Claude Code](https://claude.com/claude-code) 其中之一（已登入）。
 
 ```bash
-npx tsx scripts/fetch-market-data.ts
-```
-會寫入 `data/market-latest.json`。當日（Asia/Taipei）跑過後，Skill 會自動用這份快取，跳過重抓。
-
-**只重寄信**（用現有的 `data/analysis-latest.json` 產 HTML + POST 到 GAS）：
-
-```bash
-npx tsx scripts/send-report.ts
-```
-
-**只產 HTML 預覽、不寄信**：
-
-```bash
-npx tsx scripts/send-report.ts data/analysis-latest.json --no-email
-```
-輸出在 `data/report-latest.html`。
-
-**只重做 Claude 分析、不重抓 API**：在 Claude Code 裡叫 `/daily-stock-report`，只要 `data/market-latest.json` 的 mtime 還在今天，Skill 會自動用快取，只重跑分類/故事/總結。這條路徑適合迭代 prompt 或重寫 Skill 內容時驗證效果。
-
-### 執行方式
-
-目前每日任務只接受互動式手動觸發，不安裝或載入 launchd。手動執行時由代理持續監看 log，依 fetch、分類、研究、finalizer、HTML／發布等階段即時回報進度，並另外透過已連線的 Notion connector 完成持股健檢。
-
-### 題材新聞觀察
-
-每日報告會在抓取市場資料後讀取 [config/theme-radar.json](config/theme-radar.json) 的 RSS 與題材字典，將文章保存在 `data/theme-radar/articles.json`，並為交易日建立一次性快照。也可在已有 `data/market-latest.json` 時手動執行 `npm run themes:refresh`。更改題材關鍵字只影響往後快照，不回寫舊訊號。
-
-訊號以最近 4 個**完整週**的題材提及占比，對比之前 12 週；至少需要 10 個基準週與 4 個近期週有文章。RSS 來源抓取失敗或回傳空白時，當日只保留診斷資料，不發加速訊號。選股頁只顯示「題材新聞觀察」，不因它加分或改變入選名單。
-
-`npm run backtest:picks` 的輸出會在同一交易日內，分列有／無題材訊號的選股結果。需累積足夠跨日期樣本，再根據扣成本勝率與平均報酬決定是否調整選股規則。RSS 關鍵字與個股關聯是觀察假設，不代表該公司已產生對應題材營收。
-
-### 檔案位置
-
-- Skill 定義：`.claude/skills/daily-stock-report/SKILL.md`
-- 排程 plist：`scripts/launchd/com.maxhuang.daily-stock-report.plist`
-- launchd wrapper：`scripts/run-daily-report.sh`
-- 市場資料（每日覆蓋）：`data/market-latest.json`
-- 分析結果（每日覆蓋）：`data/analysis-latest.json`
-- HTML 預覽：`data/report-latest.html`
-- 歷史記憶（波段趨勢比對用）：`data/memory/YYYY-MM-DD.md`
-- 執行 log：`data/logs/`
-
----
-
-## 盤後報告自動化（Codex）
-
-這是目前建議使用的每日報告入口。它與原本 Claude 流程產出的內容類型一致，但資料搜尋由 Codex 自己的 web search 完成，族群 research 會平行 fan-out 到多個 worker，再由 finalizer 彙總。
-
-### 新增檔案
-
-- task controller prompt：`scripts/prompts/group-task-controller.md`
-- group worker prompt：`scripts/prompts/group-research-worker.md`
-- finalizer prompt：`scripts/prompts/group-finalizer.md`
-- parallel worker runner：`scripts/run-codex-group-workers.sh`
-- Codex 穩定入口：`scripts/run-daily-report-codex.sh`
-- Codex pipeline：`scripts/run-daily-report-codex-parallel.sh`
-- launchd plist：`scripts/launchd/com.maxhuang.daily-stock-report-codex.plist`
-
-### 手動執行
-
-先確認本機 `codex` 已安裝並完成登入，然後執行：
-
-```bash
+npm install
+cp .env.example .env.local   # 再把內容換成下面的變數
 npm run report
 ```
 
-等同於：
+`.env.local` 目前只需要一個變數：
 
 ```bash
-npm run report:codex
+# Google Apps Script webhook，用來寄信。沒設定時只產 HTML 預覽，不寄信
+GAS_WEBHOOK_URL=https://script.google.com/macros/s/.../exec
 ```
 
-此專案的 `.codex/config.toml` 也設定了 Codex CLI status line，會顯示模型、目錄、分支、context 剩餘量、5 小時額度與每週額度。重新進入此專案的 Codex CLI session 後生效；互動中可用 `/status` 看完整用量，或用 `/statusline` 調整欄位。
+`npm run report` 會自動選引擎：本機有 `codex` 就用 Codex，沒有就用 Claude Code。
+要指定時用 `npm run report:codex` 或 `npm run report:claude`，也可以設 `DAILY_REPORT_ENGINE=codex|claude`。
 
-這個 wrapper 會：
+## 每日流程
 
-1. 先抓 `market-latest.json`（含三大法人、當沖比重、注意/處置、breadth、加權/櫃買指數、微臺散戶多空比）
-2. 執行 `npx tsx scripts/score-report.ts` 快照當日價格與前日分析、更新 `data/scorecard.json`（族群歷史勝率記分板）
-3. 用 `codex exec -m gpt-5.6-terra` 切出族群 task
-4. 用本地規則修正高風險誤分族群，例如低軌衛星、記憶體與矽晶圓拆分
-5. 用多個 `codex exec -m gpt-5.6-luna` worker 平行做最近 2 天新聞 research
-6. 再用 `codex exec -m gpt-5.6-terra` 做 finalizer，寫入 `analysis-latest.json` / memory；finalizer 可參考 `data/scorecard.json` 判斷族群歷史強弱
-7. 最後由 shell 端寄信或產 HTML 預覽；報告含市場儀表板（breadth、法人動向）與族群信心度/退潮 badge
+兩種引擎跑的是同一條五段流程，只差由哪個 AI CLI 驅動：
 
-補充：
+1. **fetch**：抓市場資料，寫入 `data/market-latest.json`（漲跌榜、全市場收盤、法人、當沖、注意／處置、家數、指數、微台散戶多空比）。
+   同時平行抓國際行情、信用利差、融資與選擇權、指數貢獻、集保大戶、設質＋CB、族群 RRG。
+2. **classify**：`score-report.ts` 先快照當日價格並更新族群記分板 `data/scorecard.json`；
+   接著由 controller 把漲跌股切成族群任務，`refine-group-tasks.ts` 再用固定規則修正容易誤分的股票。
+3. **research**：多個 worker 平行搜尋各族群最近兩天的新聞，寫出族群故事。
+4. **finalize**：`build-analysis-skeleton.ts` 先機械合併結果、判定資金階段與評分骨架，
+   finalizer 再補上產業判斷與盤後總結，寫入 `data/analysis-latest.json` 和 `data/memory/`。
+5. **send**：產生終極選股池與 HTML 報告、寄信，最後執行 `publish-github-pages.sh` 部署網頁版。
 
-- wrapper 會自動載入 `.env.local`，所以直接執行 `npm run report:codex` 也能吃到 `GAS_WEBHOOK_URL`
-- 每次從 `fetch` / `classify` 起跑時，會先清空 `data/tmp/group-results/`，避免舊 research 結果混進今天報告
-- task controller 成功後，wrapper 會自動備份一份 `data/tmp/group-tasks-backup/`，worker 與 finalizer 都以這份 snapshot 為準，避免中途 task 被覆寫
-- 若某個 `codex exec` 非零退出，但 task / analysis 檔已實際產出，wrapper 會優先以檔案存在與否決定是否繼續，而不是立刻整串失敗
-- `scripts/refine-group-tasks.ts` 會在 task controller 後自動執行，用 deterministic overrides 把已知容易誤分的股票拆出來，例如 `華通(2313)` 優先放到低軌衛星/HDI 高階 PCB，記憶體模組/控制 IC 不和矽晶圓混在一起
-
-### 調整並行數
-
-預設一次開 `10` 個 worker。若遇到速率限制，可在執行前調低：
-
-```bash
-CODEX_GROUP_MAX_CONCURRENCY=6 npm run report:codex
-```
-
-### 調整模型與成本
-
-預設模型：
-
-- task controller：`gpt-5.6-terra`
-- group research worker：`gpt-5.6-luna`
-- finalizer：`gpt-5.6-terra`
-
-需要時可用環境變數覆蓋：
-
-```bash
-CODEX_CONTROLLER_MODEL=gpt-5.6-terra CODEX_GROUP_WORKER_MODEL=gpt-5.6-luna CODEX_FINALIZER_MODEL=gpt-5.6-terra npm run report:codex
-```
-
-若要停用本地族群修正步驟：
-
-```bash
-CODEX_REFINE_GROUP_TASKS=0 npm run report:codex
-```
+輔助步驟失敗時只會記 warning、略過對應區塊，不會中斷整份報告。
 
 ### 斷點續跑
 
-若中途中斷，可用 `CODEX_REPORT_START_STAGE` 從指定階段接回：
+中途失敗時，可以從指定階段接回（Claude 版改用 `CLAUDE_REPORT_START_STAGE`）：
 
 ```bash
 CODEX_REPORT_START_STAGE=research npm run report:codex
-CODEX_REPORT_START_STAGE=finalize npm run report:codex
-CODEX_REPORT_START_STAGE=send npm run report:codex
 ```
 
-可用值：
+| 值 | 從哪裡開始 |
+| --- | --- |
+| `fetch` | 完整重跑（預設） |
+| `classify` | 沿用市場資料，從切族群開始 |
+| `research` | 沿用族群任務快照，重跑 worker 之後的步驟 |
+| `finalize` | 沿用 worker 結果，只重組 `analysis-latest.json` |
+| `send` | 只用現有分析產 HTML、寄信 |
+| `publish` | 只部署 GitHub Pages |
 
-- `fetch`：完整重跑全部流程（預設）
-- `classify`：跳過抓市場資料，從族群切 task 開始
-- `research`：沿用 `group-tasks-backup`，重跑 worker / finalizer / send
-- `finalize`：沿用 snapshot 與現有 results，直接重組 `analysis-latest.json`
-- `send`：只用現有 `analysis-latest.json` 產 HTML 並寄信
-- `publish`：只跑部署步驟，執行 `scripts/publish-github-pages.sh` 部署到 GitHub Pages（https://hchs200771.github.io/100-up-and-down-stocks/）
+只想看 HTML、不寄信也不部署時，加 `REPORT_DRY_RUN=1`（目前只有 Claude 版支援）。
 
-### 手動限定
+### 模型與並行數
+
+| 變數 | 預設值 | 用途 |
+| --- | --- | --- |
+| `CODEX_CONTROLLER_MODEL` | `gpt-6.1-sol`（目前最強） | 切族群任務 |
+| `CODEX_GROUP_WORKER_MODEL` | `gpt-5.6-luna` | 族群新聞研究 |
+| `CODEX_FINALIZER_MODEL` | `gpt-5.6-sol` | 彙總與盤後總結 |
+| `CODEX_GROUP_MAX_CONCURRENCY` | `10` | 同時跑幾個 worker |
+| `CODEX_REFINE_GROUP_TASKS` | `1` | 設 `0` 停用固定規則修正 |
+| `CLAUDE_CONTROLLER_MODEL` | `opus`（最新 Opus） | Claude 版的切族群任務 |
+| `CLAUDE_GROUP_WORKER_MODEL` | `haiku` | Claude 版的族群研究 |
+| `CLAUDE_REPORT_MAX_CONCURRENCY` | `10` | Claude 版同時跑幾個 worker |
+
+## 常用指令
+
+```bash
+npm run report:fetch     # 只重抓市場資料
+npm run report:score     # 只重算族群記分板（當日快照已存在會跳過）
+npm run report:picks     # 只重算終極選股池
+npm run backtest:picks   # 選股池分數校準（輸出 data/stock-picks-backtest.json）
+npm run themes:refresh   # 重抓題材新聞觀察
+npm run report:send      # 用現有分析重產 HTML 並寄信
+npx tsx scripts/send-report.ts data/analysis-latest.json --no-email   # 只產 HTML 預覽
+npm run screen:cb        # 重跑董監設質＋CB 篩選
+npm run positions        # 分析凱基期貨持倉（見下方）
+```
+
+## 執行方式：手動限定
 
 目前不使用 launchd 或其他排程。請在互動式工作階段要求代理「執行每日任務」；代理會執行 `npm run report`、持續顯示各階段 log，並用 Notion connector 完成持有中部位的最新健檢。
+舊的 launchd plist 留在 `scripts/launchd/` 僅供參考。執行 log 在 `data/logs/`。
 
-### 手動更新記分板
+## 資料檔
 
-只重算 scorecard（不重跑報告）：
+**進版控**（其他機器 clone 下來就有）：
+
+- `data/taxonomy.json`：族群標準名稱與別名
+- `data/sector-baskets.json`：RRG 固定族群籃子。改完一定要跑 `npx tsx scripts/verify-baskets.ts` 對帳代號
+- `data/tdcc-history/`、`data/cb-pledge-history/`：集保與設質的週快照（官方只提供最新一週，要自己累積）
+- `data/stock-picks-history/`：每日選股池快照
+- `data/site/`：GitHub Pages 發佈內容，這個目錄有變動時才會觸發部署
+
+**只在本機**（被 `.gitignore` 排除，換電腦不會跟著走）：
+
+- `data/market-latest.json`、`data/analysis-latest.json`、`data/report-latest.html`：當日產物，每天覆蓋
+- `data/price-history/`、`data/analysis-history/`、`data/scorecard.json`：記分板與回測用的歷史資料
+- `data/memory/`：每日摘要，供 finalizer 比對連續幾天的族群變化
+- `data/kgi-positions.json`、`data/position-analysis.json`：帳戶持倉，**絕不進版控**
+
+歷史資料只存在跑報告的那台機器上，要備份請自行處理。
+
+## 週資料
+
+- **集保大戶**：資料日是週五，隔天才公布。`fetch-tdcc-holders.ts` 同一週重跑會跳過，
+  所以每天跑也只有一次真的抓取。要回補歷史用 `scripts/backfill-tdcc-history.ts`（只補流動性前 N 檔）。
+- **董監設質＋CB**：同一個 ISO 週內重跑，直接沿用上次結果。
+
+## 持倉分析（選用）
+
+凱基官方套件只支援 Windows／Linux，且限台灣 IP、平日 10:00–22:00 連線，所以分成兩段：
+
+1. 在台灣的 Windows／Linux 主機執行 `scripts/kgi/fetch_kgi_positions.py`，產出 `data/kgi-positions.json`（安裝方式與環境變數見檔案開頭說明）。
+2. 把檔案放到 Mac 的 `data/` 下，執行 `npm run positions`。
+
+## 開發
 
 ```bash
-npm run report:score
+npm test         # 單元測試（node:test）
+npm run lint     # TypeScript 型別檢查
 ```
 
-冪等：若當日快照已存在會跳過，直接重算 `data/scorecard.json`。
+相關文件：
 
-選股池的分數校準可執行：
+- `AGENTS.md`：給 AI 代理的任務對照（改分類、改 prompt、改報告格式要先看哪些檔）
+- `docs/multifactor-roadmap.md`：多因子選股的回測與改版路線圖
+- `scripts/prompts/`：controller、worker、finalizer 的 prompt
+- `.claude/skills/`：Claude Code 手動流程（`daily-stock-report`）與維護說明（`stock-report-maintenance`）
+- `docs/factor-review-2026-10-02.md`：全台股因子掃描的結論
 
-```bash
-npm run backtest:picks
-```
+## 舊版網頁 App
 
-它會用 `stock-picks-history` 對照 `price-history`，以訊號後下一交易日收盤作為可執行的進場價，輸出持有 1 / 5 / 20 日的絕對與全市場等權超額報酬到 `data/stock-picks-backtest.json`。至少累積 20 個可觀測進場日後，再用這份結果調整權重。
-
-### 退潮警訊（retreatSignal）
-
-`data/analysis-latest.json` 的族群記錄可包含 `retreatSignal` 欄位，finalizer 用來標記「昨強今弱」或連跌訊號。報告的族群 badge 會反映此狀態。
-
-### 檔案位置（Codex 版新增）
-
-- 族群分類/歷史積分：`data/taxonomy.json`（進版控）
-- 族群每日價格快照：`data/price-history/YYYY-MM-DD.json`
-- 每日分析快照：`data/analysis-history/YYYY-MM-DD.json`
-- 族群勝率記分板：`data/scorecard.json`
-
-### 注意
-
-- Codex 版本依賴本機 `codex` CLI 與登入狀態
-- 族群搜尋與分析都由 Codex CLI 自行完成，不使用 `Gemini API`
-- 若未設定 `GAS_WEBHOOK_URL`，流程會退回只產 `data/report-latest.html`
+`src/`、`server.ts` 是專案最初從 Google AI Studio 建立的 React App，用 Gemini API 即時分析。
+每日報告已不再使用它；要啟動的話，在 `.env.local` 設 `GEMINI_API_KEY` 後執行 `npm run dev`。

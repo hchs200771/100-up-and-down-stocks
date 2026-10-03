@@ -1,6 +1,7 @@
 import { writeFileSync, mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
+import { computeInstitutionalStrength, type InstitutionalStrength } from "./institutional-strength.ts";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -14,7 +15,7 @@ interface Stock {
   amount: string;
   volume?: number;
   futures?: { level: string; margin: string };
-  chips?: { foreignNet: number; trustNet: number; dealerNet: number; totalNet: number; foreignRatio?: number; trustRatio?: number; foreignBuyStreak?: number; trustBuyStreak?: number };
+  chips?: { foreignNet: number; trustNet: number; dealerNet: number; totalNet: number; foreignRatio?: number; trustRatio?: number; foreignBuyStreak?: number; trustBuyStreak?: number; strength?: InstitutionalStrength };
   dayTradeRatio?: number;
   flags?: { attention?: boolean; disposition?: boolean; lowLiquidity?: boolean };
 }
@@ -786,10 +787,17 @@ async function main() {
     }
   }
 
-  const stockMap: Record<string, { pct: string; futures?: { level: string; margin: string }; chips?: Stock["chips"]; flags?: Stock["flags"]; dayTradeRatio?: number }> = {};
+  // 標準化母體必須是全市場，先算力度，再截取漲跌前 100 名。
+  const strengthMap = computeInstitutionalStrength(allStocksEnriched, issuedSharesMap);
+  for (const stock of allStocksEnriched) {
+    if (stock.chips) stock.chips.strength = strengthMap.get(stock.code);
+  }
+
+  const stockMap: Record<string, { name: string; pct: string; futures?: { level: string; margin: string }; chips?: Stock["chips"]; flags?: Stock["flags"]; dayTradeRatio?: number }> = {};
   for (const s of allStocksEnriched) {
     const sign = s.pct > 0 ? "+" : "";
     stockMap[s.code] = {
+      name: s.name,
       pct: `${sign}${s.pct.toFixed(2)}%`,
       futures: s.futures,
       chips: s.chips,
@@ -839,3 +847,8 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
     process.exit(1);
   });
 }
+const isMain = process.argv[1]?.endsWith("fetch-market-data.ts") || process.argv[1]?.endsWith("fetch-market-data.js");
+if (isMain) main().catch((err) => {
+  console.error("Fetch failed:", err);
+  process.exit(1);
+});

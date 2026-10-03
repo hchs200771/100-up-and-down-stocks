@@ -11,6 +11,11 @@
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit",
     "test": "node --import tsx --test tests/*.test.ts",
+    "factors:audit": "node --import tsx scripts/audit-factor-evidence.ts",
+    "backtest:picks:fetch": "node --import tsx scripts/fetch-pick-backtest-inputs.ts",
+    "backtest:pick-filters": "node --import tsx scripts/backtest-pick-filters.ts",
+    "backtest:expanded:fetch": "node --import tsx scripts/fetch-expanded-backtest-inputs.ts",
+    "backtest:expanded": "node --import tsx scripts/backtest-price-market-events.ts",
     "report": "bash scripts/run-daily-report-auto.sh",
     "report:codex": "bash scripts/run-daily-report-codex.sh",
     "report:claude": "bash scripts/run-daily-report-claude.sh",
@@ -27,7 +32,12 @@
     "positions": "tsx scripts/analyze-positions.ts",
     "holdings:health": "tsx scripts/update-holdings-health.ts",
     "broker:watch": "tsx scripts/fetch-broker-watch.ts",
-    "screen:cb": "tsx scripts/screen-cb-pledge.ts"
+    "screen:cb": "tsx scripts/screen-cb-pledge.ts",
+    "backtest:wide:fetch": "python3 scripts/fetch-wide-market-history.py",
+    "backtest:wide": "node --import tsx scripts/backtest-wide-market.ts",
+    "backtest:wide:actions": "python3 scripts/fetch-wide-action-references.py",
+    "backtest:restore": "python3 scripts/restore-backtest-checkpoint.py",
+    "backtest:wide:render": "node --import tsx scripts/render-wide-backtest-report.ts"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",

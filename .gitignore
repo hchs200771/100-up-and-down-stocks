@@ -20,6 +20,8 @@ data/theme-radar/
 data/theme-radar.html
 data/analysis-history/
 data/scorecard.json
+data/backtest/
+__pycache__/
 
 # RRG：Yahoo 日線本機快取（可重抓）與 render 產物（發佈時內嵌進 data/site/index.html）
 data/cache/

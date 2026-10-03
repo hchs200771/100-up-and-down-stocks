@@ -1,12 +1,19 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
+import { significantInstitutionalBuys, type InstitutionalStrength } from "./institutional-strength.ts";
 import "dotenv/config";
 import dotenv from "dotenv";
-import { READ_ORDER, SUBPAGES, navText, PILL_CSS } from "./lib/nav";
+import { READ_ORDER, SUBPAGES, navText } from "./lib/nav";
 dotenv.config({ path: resolve(process.cwd(), ".env.local"), override: true });
 
 // 網頁版報告（GitHub Pages）。Email 版沒有互動圖，用這個連結把讀者導回網頁版。
 const SITE_URL = "https://hchs200771.github.io/100-up-and-down-stocks/";
+
+// 中文字型堆疊：先吃各平台的系統黑體（蘋方／思源／正黑），最後才退回 sans-serif。
+// 原本只寫 sans-serif，Windows/Android 常掉到細明體或簡中字型，數字與中文粗細也不一致。
+// 用單引號包字型名，才能安全地塞進 style="..." 屬性（信件版也吃得到）。
+const FONT_STACK =
+  "-apple-system, BlinkMacSystemFont, 'PingFang TC', 'Noto Sans TC', 'Microsoft JhengHei', 'Heiti TC', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
 
 interface MarketHistoryEntry {
   date: string;
@@ -74,7 +81,7 @@ interface CategoryGroup {
 interface StockMeta {
   pct: string | number;
   futures?: { level: string; margin: string };
-  chips?: { foreignNet: number; trustNet: number; dealerNet: number; totalNet: number; foreignRatio?: number; trustRatio?: number; foreignBuyStreak?: number; trustBuyStreak?: number };
+  chips?: { foreignNet: number; trustNet: number; dealerNet: number; totalNet: number; foreignRatio?: number; trustRatio?: number; foreignBuyStreak?: number; trustBuyStreak?: number; strength?: InstitutionalStrength };
   dayTradeRatio?: number;
   flags?: { attention?: boolean; disposition?: boolean; lowLiquidity?: boolean };
   overnightDump?: boolean;
@@ -272,6 +279,9 @@ function renderStockChipBadges(meta?: StockMeta): string {
   if (flags.attention) badges += `<span style="font-size: 12px; color: #d97706; margin-left: 3px;">⚠</span>`;
   if (flags.disposition) badges += `<span style="font-size: 12px; color: #dc2626; margin-left: 3px;">⛔</span>`;
   if (meta.chips) {
+    for (const buy of significantInstitutionalBuys(meta.chips.strength)) {
+      badges += `<span title="${buy.detail}" style="font-size: 12px; background-color: #fee2e2; color: #991b1b; padding: 1px 4px; border-radius: 4px; margin-left: 3px;">${buy.label}</span>`;
+    }
     const { foreignRatio, trustRatio, foreignBuyStreak, trustBuyStreak } = meta.chips;
     if (foreignRatio !== undefined && Math.abs(foreignRatio) >= 0.2) {
       const sign = foreignRatio > 0 ? "+" : "";
@@ -363,14 +373,12 @@ function renderCategoryBlock(
   codeByName: Map<string, string>,
   kind: "gainer" | "loser",
 ): string {
-  const borderColor = kind === "gainer" ? "#fee2e2" : "#dcfce7";
   const bgColor = kind === "gainer" ? "#fef2f2" : "#f0fdf4";
   const headerColor = kind === "gainer" ? "#991b1b" : "#166534";
   const chipBg = kind === "gainer" ? "#fecaca" : "#bbf7d0";
   const stockBorder = kind === "gainer" ? "#fca5a5" : "#86efac";
   const pctColor = kind === "gainer" ? "#dc2626" : "#16a34a";
   const storyLabelColor = kind === "gainer" ? "#991b1b" : "#166534";
-  const storyTextColor = kind === "gainer" ? "#b91c1c" : "#15803d";
   const storyBorder = kind === "gainer" ? "#fecaca" : "#bbf7d0";
   const storyLabel =
     kind === "gainer" ? "💡 產業故事與上漲原因：" : "💡 產業故事與下跌原因：";
@@ -413,19 +421,23 @@ function renderCategoryBlock(
     </a>`;
   }
 
+  // 故事是整段長文：底色維持族群的淡紅／淡綠，但內文改深灰。
+  // 原本整段用紅／綠字，幾百字的紅字很難讀，漲跌語意交給標題與左側色條就夠了。
   const storyHtml = g.story
-    ? `<div style="background-color: ${bgColor}; padding: 10px; border-radius: 6px; border: 1px solid ${storyBorder};">
-        <strong style="color: ${storyLabelColor}; font-size: 15px;">${storyLabel}</strong>
-        <p style="margin: 5px 0 0 0; font-size: 15px; color: ${storyTextColor}; line-height: 1.6;">${g.story}</p>
+    ? `<div style="background-color: ${bgColor}; padding: 10px 12px; border-radius: 8px; border: 1px solid ${storyBorder}; margin-bottom: 10px;">
+        <strong style="color: ${storyLabelColor}; font-size: 13px;">${storyLabel}</strong>
+        <p style="margin: 4px 0 0 0; font-size: 14px; color: #374151; line-height: 1.75;">${g.story}</p>
       </div>`
     : "";
 
-  return `<div style="border: 1px solid ${borderColor}; background-color: ${bgColor}; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
-    <h4 style="margin-top: 0; font-size: 16px; color: ${headerColor}; display: flex; align-items: center; flex-wrap: wrap;">
-      <span style="background-color: ${chipBg}; padding: 2px 8px; border-radius: 12px; font-size: 12px; margin-right: 8px;">${g.stocks.length}檔</span>
+  // 卡片：白底 + 左側 4px 漲跌色條（紅＝漲、綠＝跌），取代整張粉紅／粉綠底，
+  // 長頁面一路滑下來不會一片紅，每張卡的邊界也更清楚。border-left 在各家信件用戶端都支援。
+  return `<div style="border: 1px solid #e5e7eb; border-left: 4px solid ${pctColor}; background: #fff; padding: 14px 16px 6px; border-radius: 10px; margin-bottom: 14px;">
+    <h4 style="margin: 0 0 10px; font-size: 17px; color: ${headerColor}; display: flex; align-items: center; flex-wrap: wrap;">
+      <span style="background-color: ${chipBg}; color: ${headerColor}; padding: 1px 8px; border-radius: 999px; font-size: 12px; margin-right: 8px;">${g.stocks.length}檔</span>
       ${g.category}${headerBadges}
     </h4>
-    <div style="margin-bottom: 10px;">${stocksHtml}</div>
+    <div style="margin-bottom: 6px;">${stocksHtml}</div>
     ${storyHtml}
     ${kind === "gainer" ? renderScorePanel(g) : ""}
   </div>`;
@@ -770,24 +782,24 @@ function renderMarketDashboard(market: MarketBlock | null | undefined, retailHis
     const color = change >= 0 ? "#dc2626" : "#16a34a";
     const prevClose = close - change;
     const pct = prevClose !== 0 ? (change / prevClose) * 100 : 0;
-    return `<td style="padding: 4px 8px; color: ${color}; font-weight: bold;">${sign}${change.toFixed(2)} <span style="font-size: 12px;">(${sign}${pct.toFixed(2)}%)</span></td>`;
+    return `<td style="padding: 6px 8px; border-top: 1px solid #eef2f7; color: ${color}; font-weight: bold;">${sign}${change.toFixed(2)} <span style="font-size: 12px;">(${sign}${pct.toFixed(2)}%)</span></td>`;
   };
   const taiex = market.taiex;
   if (taiex) {
-    rows.push(`<tr><td style="padding: 4px 8px; color: #6b7280;">加權指數</td><td style="padding: 4px 8px; font-weight: bold;">${taiex.close.toLocaleString()}</td>${fmtIndexChange(taiex.close, taiex.change)}</tr>`);
+    rows.push(`<tr><td style="padding: 6px 10px 6px 0; color: #6b7280; white-space: nowrap; width: 1%; border-top: 1px solid #eef2f7;">加權指數</td><td style="padding: 6px 8px; border-top: 1px solid #eef2f7; font-weight: bold;">${taiex.close.toLocaleString()}</td>${fmtIndexChange(taiex.close, taiex.change)}</tr>`);
   }
   const tpex = market.tpex;
   if (tpex) {
-    rows.push(`<tr><td style="padding: 4px 8px; color: #6b7280;">櫃買指數</td><td style="padding: 4px 8px; font-weight: bold;">${tpex.close.toLocaleString()}</td>${fmtIndexChange(tpex.close, tpex.change)}</tr>`);
+    rows.push(`<tr><td style="padding: 6px 10px 6px 0; color: #6b7280; white-space: nowrap; width: 1%; border-top: 1px solid #eef2f7;">櫃買指數</td><td style="padding: 6px 8px; border-top: 1px solid #eef2f7; font-weight: bold;">${tpex.close.toLocaleString()}</td>${fmtIndexChange(tpex.close, tpex.change)}</tr>`);
   }
   const breadth = market.breadth;
   if (breadth) {
-    rows.push(`<tr><td style="padding: 4px 8px; color: #6b7280;">上漲/下跌</td><td style="padding: 4px 8px;" colspan="2"><span style="color: #dc2626;">${breadth.up}家</span> / <span style="color: #16a34a;">${breadth.down}家</span>　漲停 <strong style="color: #dc2626;">${breadth.limitUp}</strong> / 跌停 <strong style="color: #16a34a;">${breadth.limitDown}</strong></td></tr>`);
+    rows.push(`<tr><td style="padding: 6px 10px 6px 0; color: #6b7280; white-space: nowrap; width: 1%; border-top: 1px solid #eef2f7;">上漲/下跌</td><td style="padding: 6px 8px; border-top: 1px solid #eef2f7;" colspan="2"><span style="color: #dc2626;">${breadth.up}家</span> / <span style="color: #16a34a;">${breadth.down}家</span>　漲停 <strong style="color: #dc2626;">${breadth.limitUp}</strong> / 跌停 <strong style="color: #16a34a;">${breadth.limitDown}</strong></td></tr>`);
   }
   const dt = market.dayTrade;
   if (dt) {
     const dtPct = (v: number | null | undefined) => (typeof v === "number" && isFinite(v) ? `${v.toFixed(2)}%` : "—");
-    rows.push(`<tr><td style="padding: 4px 8px; color: #6b7280;">當沖比重</td><td style="padding: 4px 8px;" colspan="2">上市 ${dtPct(dt.twseVolumePct)}　上櫃 ${dtPct(dt.tpexVolumePct)}</td></tr>`);
+    rows.push(`<tr><td style="padding: 6px 10px 6px 0; color: #6b7280; white-space: nowrap; width: 1%; border-top: 1px solid #eef2f7;">當沖比重</td><td style="padding: 6px 8px; border-top: 1px solid #eef2f7;" colspan="2">上市 ${dtPct(dt.twseVolumePct)}　上櫃 ${dtPct(dt.tpexVolumePct)}</td></tr>`);
   }
   const insti = market.institutional;
   if (insti) {
@@ -796,13 +808,13 @@ function renderMarketDashboard(market: MarketBlock | null | undefined, retailHis
       const sign = n >= 0 ? "+" : "";
       return `<span style="color: ${color}; font-weight: bold;">${sign}${n.toFixed(1)}</span>`;
     };
-    rows.push(`<tr><td style="padding: 4px 8px; color: #6b7280;">三大法人(上市)</td><td style="padding: 4px 8px;" colspan="2">合計 ${fmt(insti.totalNet)} 億　<span style="color:#9ca3af; font-size:12px;">外資 ${fmt(insti.foreignNet)}／投信 ${fmt(insti.trustNet)}／自營 ${fmt(insti.dealerNet)}</span></td></tr>`);
+    rows.push(`<tr><td style="padding: 6px 10px 6px 0; color: #6b7280; white-space: nowrap; width: 1%; border-top: 1px solid #eef2f7;">三大法人(上市)</td><td style="padding: 6px 8px; border-top: 1px solid #eef2f7;" colspan="2">合計 ${fmt(insti.totalNet)} 億　<span style="color:#9ca3af; font-size:12px;">外資 ${fmt(insti.foreignNet)}／投信 ${fmt(insti.trustNet)}／自營 ${fmt(insti.dealerNet)}</span></td></tr>`);
   }
   const mfr = market.microFuturesRetail;
   if (mfr) {
     const netPct = mfr.retailNetPct.toFixed(2);
     const netColor = mfr.retailNetPct < 0 ? "#16a34a" : "#dc2626";
-    rows.push(`<tr><td style="padding: 4px 8px; color: #6b7280;">微臺散戶淨多空</td><td style="padding: 4px 8px; color: ${netColor}; font-weight: bold;" colspan="2">${netPct}%　<span style="font-size: 11px; color: #9ca3af;">(${mfr.dataDate})</span></td></tr>`);
+    rows.push(`<tr><td style="padding: 6px 10px 6px 0; color: #6b7280; white-space: nowrap; width: 1%; border-top: 1px solid #eef2f7;">微臺散戶淨多空</td><td style="padding: 6px 8px; border-top: 1px solid #eef2f7; color: ${netColor}; font-weight: bold;" colspan="2">${netPct}%　<span style="font-size: 11px; color: #9ca3af;">(${mfr.dataDate})</span></td></tr>`);
   }
 
   // 融資餘額／維持率。與盤後資料同一天才顯示，避免把昨天的數字混進今天的儀表板。
@@ -815,10 +827,10 @@ function renderMarketDashboard(market: MarketBlock | null | undefined, retailHis
     const mt = mg.maintenance;
     const mtColor = mt === null ? "#9ca3af" : mt < 140 ? "#dc2626" : mt < 166 ? "#ea580c" : "#334155";
     rows.push(
-      `<tr><td style="padding: 4px 8px; color: #6b7280;">融資餘額(上市)</td><td style="padding: 4px 8px; font-weight: bold;">${mg.twseAmount.toLocaleString()} 億</td><td style="padding: 4px 8px; color: ${dColor}; font-weight: bold;">${dSign}${mg.dAmount.toFixed(1)} 億<span style="color:#9ca3af; font-weight:normal; font-size:11px;">　${mg.twseLots.toLocaleString()} 張${mg.tpexLots ? `／上櫃 ${mg.tpexLots.toLocaleString()} 張` : ""}</span></td></tr>`,
+      `<tr><td style="padding: 6px 10px 6px 0; color: #6b7280; white-space: nowrap; width: 1%; border-top: 1px solid #eef2f7;">融資餘額(上市)</td><td style="padding: 6px 8px; border-top: 1px solid #eef2f7; font-weight: bold;">${mg.twseAmount.toLocaleString()} 億</td><td style="padding: 6px 8px; border-top: 1px solid #eef2f7; color: ${dColor}; font-weight: bold;">${dSign}${mg.dAmount.toFixed(1)} 億<span style="color:#9ca3af; font-weight:normal; font-size:11px;">　${mg.twseLots.toLocaleString()} 張${mg.tpexLots ? `／上櫃 ${mg.tpexLots.toLocaleString()} 張` : ""}</span></td></tr>`,
     );
     rows.push(
-      `<tr><td style="padding: 4px 8px; color: #6b7280;">融資維持率</td><td style="padding: 4px 8px; color: ${mtColor}; font-weight: bold;" colspan="2">${mt === null ? "—" : `${mt.toFixed(1)}%`}<span style="color:#9ca3af; font-weight:normal; font-size:11px;">　自算值，追繳線 166%／斷頭線 130%${mg.maintenanceCoverage ? `　涵蓋 ${mg.maintenanceCoverage.stocks} 檔` : ""}</span></td></tr>`,
+      `<tr><td style="padding: 6px 10px 6px 0; color: #6b7280; white-space: nowrap; width: 1%; border-top: 1px solid #eef2f7;">融資維持率</td><td style="padding: 6px 8px; border-top: 1px solid #eef2f7; color: ${mtColor}; font-weight: bold;" colspan="2">${mt === null ? "—" : `${mt.toFixed(1)}%`}<span style="color:#9ca3af; font-weight:normal; font-size:11px;">　自算值，追繳線 166%／斷頭線 130%${mg.maintenanceCoverage ? `　涵蓋 ${mg.maintenanceCoverage.stocks} 檔` : ""}</span></td></tr>`,
     );
   }
 
@@ -829,7 +841,7 @@ function renderMarketDashboard(market: MarketBlock | null | undefined, retailHis
 
   return `<div style="background-color: #f8fafc; border: 1px solid #e2e8f0; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
   <h3 style="margin-top: 0; color: #334155;">📊 市場儀表板</h3>
-  <table style="border-collapse: collapse; font-size: 13px; width: 100%;">
+  <table style="border-collapse: collapse; font-size: 14px; width: 100%; line-height: 1.5;">
     ${rows.join("\n    ")}
   </table>
   ${trendHtml}
@@ -1271,14 +1283,12 @@ function renderContribStockList(title: string, list: StockContribution[], positi
         <td style="padding:3px 6px; white-space:nowrap;"><a href="https://tw.stock.yahoo.com/quote/${s.code}" target="_blank" style="color:#374151; text-decoration:none;">${s.code} ${s.name}</a></td>
         <td style="padding:3px 6px; text-align:right; color:#9ca3af; white-space:nowrap;">${pctSign}${s.pct.toFixed(2)}%</td>
         <td style="padding:3px 6px; text-align:right; font-weight:bold; color:${color}; white-space:nowrap;">${sign}${s.points.toFixed(2)}</td>
-        <td style="padding:3px 6px; color:#9ca3af; white-space:nowrap;">${s.industry}</td>
+        <td style="padding:3px 6px; color:#9ca3af; font-size:11px;">${s.industry}</td>
       </tr>`;
     })
     .join("");
-  return `<td width="50%" valign="top" style="padding:0 6px;">
-      <div style="font-size:12px; font-weight:bold; color:#6b7280; margin-bottom:4px;">${title}</div>
-      <table style="width:100%; border-collapse:collapse; font-size:12px;"><tbody>${rows}</tbody></table>
-    </td>`;
+  return `<div style="font-size:12px; font-weight:bold; color:#6b7280; margin-bottom:4px; padding:0 6px;">${title}</div>
+      <table style="width:100%; border-collapse:collapse; font-size:12px;"><tbody>${rows}</tbody></table>`;
 }
 
 /**
@@ -1495,7 +1505,7 @@ function renderSankey(c: IndexContribution): string {
     .join("");
 
   return `<div style="overflow-x:auto; margin-bottom:6px;">
-      <svg width="${W}" height="${H + 24}" viewBox="0 -20 ${W} ${H + 24}" style="width:${W}px; max-width:none; font-family:sans-serif;" role="img" aria-label="指數貢獻傳導圖">
+      <svg width="${W}" height="${H + 24}" viewBox="0 -20 ${W} ${H + 24}" style="width:${W}px; max-width:none; font-family:${FONT_STACK};" role="img" aria-label="指數貢獻傳導圖">
         ${headers}${paths}${rects}${labels}
       </svg>
     </div>`;
@@ -1570,10 +1580,13 @@ function renderIndexContribution(c: IndexContribution | null | undefined): strin
         <tbody>${sectorRows}</tbody>
       </table>
       ${hiddenNote}
-      <table style="width:100%; border-collapse:collapse; margin-top:10px;"><tbody><tr>
-        ${renderContribStockList("推升最多", c.topGainers, true)}
-        ${renderContribStockList("拖累最多", c.topLosers, false)}
-      </tr></tbody></table>
+      <div style="margin-top:10px;">${
+        // 推升／拖累兩張榜：寬螢幕左右並排、窄螢幕（手機 375px）自動上下堆疊。
+        // 原本是兩欄 <table>，手機上兩張各 300px 的榜硬擠一排，整頁被撐出水平捲軸。
+        // inline-block + min-width 是信件也吃的寫法（同總覽頁的雙欄）；兩個 div 之間不能有空白，否則 49%+1%+49% 會被擠到換行。
+        `<div class="split-col" style="display:inline-block; width:49%; min-width:290px; vertical-align:top; margin-bottom:8px;">${renderContribStockList("推升最多", c.topGainers, true)}</div>` +
+        `<div class="split-col" style="display:inline-block; width:49%; min-width:290px; vertical-align:top; margin-left:1%; margin-bottom:8px;">${renderContribStockList("拖累最多", c.topLosers, false)}</div>`
+      }</div>
       <div style="font-size:11px; color:#9ca3af; margin-top:10px; line-height:1.6;">
         個股貢獻點數 ＝ 漲跌價差 × 發行股數 ÷ 昨日總市值 × 昨日指數；納入 ${c.coverage.matched} 檔上市普通股
         （ETF、權證等非指數成分已排除）。發行股數為 MOPS 月更資料，且特別股／私募股／全額交割股無法從公開資料剝離，
@@ -2089,6 +2102,40 @@ const TAB_GUIDE: Record<string, string> = {
   "🧮 評分說明": "進場評分 0-100 是怎麼算出來的，四個構面各佔多少。",
 };
 
+/**
+ * 網頁版專用樣式（信件版不輸出）。
+ *
+ * 內容區的樣式全是 inline——信件只吃 inline，而網頁與信件共用同一份渲染。這段只補
+ * 信件本來就做不到、或做了也沒意義的部分：
+ * - 分頁列：sticky 固定在頂端；手機（≤640px）改成單排橫向捲動，不再堆成三四排吃掉半個螢幕。
+ * - 深色模式：內容有上百處寫死的淺色 inline 顏色，逐一改 token 成本太高，所以用
+ *   「反相 + 色相轉 180°」整頁翻成深色——亮度反轉、色相不變，紅漲綠跌的語意保留。
+ *   內嵌的互動 RRG 有自己的深色主題，若兩者都生效會負負得正變回淺色，所以下方 script
+ *   把 <html data-theme="light"> 鎖住 RRG 的淺色 token，讓它跟報告其他部分一起被反相。
+ */
+const WEB_CSS = `<style>
+  body{margin:0;background:#fff;}
+  .rpt-tabbar{position:sticky;top:0;z-index:30;padding:10px 0;margin-top:0;background:rgba(255,255,255,.94);-webkit-backdrop-filter:saturate(1.5) blur(8px);backdrop-filter:saturate(1.5) blur(8px);border-bottom:1px solid #eef0f4;}
+  .rpt-tab{font:inherit;font-size:14px;font-weight:600;line-height:1.3;cursor:pointer;border:1px solid #e5e7eb;border-radius:999px;padding:7px 14px;background:#fff;color:#374151;white-space:nowrap;text-decoration:none;display:inline-block;transition:background-color .15s,border-color .15s,color .15s;}
+  .rpt-tab:hover{border-color:#a5b4fc;color:#4338ca;background:#f5f7ff;}
+  .rpt-tab.on{background:#4f46e5;border-color:#4f46e5;color:#fff;box-shadow:0 1px 3px rgba(79,70,229,.35);}
+  .rpt-tab.ext{border-style:dashed;color:#6b7280;}
+  .rpt-tab:focus-visible,.homecard:focus-visible{outline:2px solid #6366f1;outline-offset:2px;}
+  @media (max-width:640px){
+    .rpt-tabbar{flex-wrap:nowrap !important;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin-left:-16px;margin-right:-16px;padding:8px 16px;gap:6px !important;}
+    .rpt-tabbar::-webkit-scrollbar{display:none;}
+    .rpt-tab{font-size:13px;padding:6px 12px;flex:none;}
+    .rpt h1{font-size:21px !important;}
+    /* 雙欄區塊在手機上已經上下堆疊，改成滿版，不要只佔 300px 留一條空白 */
+    .home-col,.split-col{display:block !important;width:auto !important;min-width:0 !important;margin-left:0 !important;}
+  }
+  @media (prefers-color-scheme:dark){
+    html,body{background:#141414;}
+    .rpt{filter:invert(.92) hue-rotate(180deg);background:#fff;}
+    .rpt img{filter:invert(1) hue-rotate(180deg);}
+  }
+</style>`;
+
 /** 建議的閱讀順序：由外而內、由結果到原因，最後才是可以動手的結論。 */
 // READ_ORDER 與分頁列的顯示規則集中在 lib/nav.ts——子頁要產生一模一樣的麵包屑，
 // 兩邊不能各寫一份。
@@ -2244,8 +2291,8 @@ function renderHome(labels: string[], date: string, order: string[] = READ_ORDER
   // 窄螢幕/信件視窗因 min-width 排不下會自動上下堆疊。不用 flex/grid 是為了 Email 相容。
   const twoCol =
     `<div>` +
-    `<div style="display:inline-block; width:49%; min-width:300px; vertical-align:top;">${renderBlock(flow[1], "margin-right:0;")}</div>` +
-    `<div style="display:inline-block; width:49%; min-width:300px; vertical-align:top; margin-left:1%;">${renderBlock(flow[2])}</div>` +
+    `<div class="home-col" style="display:inline-block; width:49%; min-width:300px; vertical-align:top;">${renderBlock(flow[1], "margin-right:0;")}</div>` +
+    `<div class="home-col" style="display:inline-block; width:49%; min-width:300px; vertical-align:top; margin-left:1%;">${renderBlock(flow[2])}</div>` +
     `</div>`;
 
   const orderText = steps
@@ -2371,55 +2418,71 @@ function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName
     .map((s) => `<div class="tabpanel" data-label="${s.label}">${s.html}</div>`)
     .join("");
 
-  // 單欄 + RWD：viewport 讓手機正確縮放；左右留白隨螢幕縮放。
-  // 寬度 1060 而不是 980：分頁列去掉 emoji 後 11 個分頁量到 913px，980 只剩 67px 餘裕，
-  // 「操作建議」那天多一個分頁（約 +78px）就會擠到第二行。1060 留得下最滿的情況。
+  // 單欄 + RWD：viewport 讓手機正確縮放；容器 max-width 1060（分頁列最滿時需要的寬度）、左右留白隨螢幕縮放。
+  // 所有看得到的樣式都是 inline（信件版只剩這些）；網頁版另外帶一段 <style>（WEB_CSS），
+  // 只做信件本來就做不到的事：分頁列固定在頂端／手機橫向捲動、hover、深色模式。
   return `<meta name="viewport" content="width=device-width, initial-scale=1">
-  <div style="font-family: sans-serif; max-width: 1060px; margin: 0 auto; color: #333; padding: 0 16px;">
-    <h2 style="color: #4f46e5; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px;">📈 台股盤後資金流向與 AI 總結 (${a.timestamp})</h2>
-    ${forEmail ? `<div style="background:#fffbeb; border:1px solid #fde68a; border-radius:6px; padding:8px 10px; font-size:12px; color:#92400e; line-height:1.6; margin-bottom:16px;">這封信內容較長，Gmail 可能在中途截斷並顯示「查看完整訊息」。互動圖表（可切換的大戶籌碼榜、市場情緒疊圖）在信件裡也無法操作 — <a href="${SITE_URL}" style="color:#b45309; font-weight:bold;">開啟網頁版</a>看完整內容。</div>` : ""}
-    <div id="tabbar" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;"></div>
+  ${forEmail ? "" : WEB_CSS}
+  <div class="rpt" style="font-family:${FONT_STACK}; font-variant-numeric:tabular-nums; -webkit-text-size-adjust:100%; max-width:1060px; margin:0 auto; color:#1f2937; line-height:1.6; padding:0 16px;">
+    <div style="padding:20px 0 14px; border-bottom:1px solid #e5e7eb; margin-bottom:${forEmail ? "14px" : "4px"};">
+      <div style="font-size:12px; font-weight:bold; color:#6366f1; letter-spacing:1px; margin-bottom:4px;">台股盤後報告 · 漲跌幅前 100 名資金流向</div>
+      <h1 style="margin:0; font-size:24px; line-height:1.35; color:#111827; font-weight:800;">📈 台股盤後資金流向與 AI 總結 <span style="display:inline-block; vertical-align:middle; font-size:14px; font-weight:bold; color:#4338ca; background:#eef2ff; border:1px solid #c7d2fe; border-radius:999px; padding:2px 10px; white-space:nowrap;">${a.timestamp}</span></h1>
+    </div>
+    ${forEmail ? `<div style="background:#fffbeb; border:1px solid #fde68a; border-radius:8px; padding:9px 12px; font-size:12px; color:#92400e; line-height:1.6; margin-bottom:16px;">這封信內容較長，Gmail 可能在中途截斷並顯示「查看完整訊息」。互動圖表（可切換的大戶籌碼榜、市場情緒疊圖）在信件裡也無法操作 — <a href="${SITE_URL}" style="color:#b45309; font-weight:bold;">開啟網頁版</a>看完整內容。</div>` : ""}
+    <div id="tabbar" class="rpt-tabbar" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px;"></div>
     ${panelsHtml}
-    <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb; color: #9ca3af; font-size: 12px;">
+    <div style="text-align:center; margin-top:32px; padding:18px 0 24px; border-top:1px solid #e5e7eb; color:#9ca3af; font-size:12px;">
       Generated via Claude Code workflow
     </div>
   </div>
   <script>
   (function(){
+    // 深色模式由 WEB_CSS 整頁反相處理；內嵌 RRG 鎖在淺色主題，才不會被反相兩次（見 WEB_CSS 說明）
+    document.documentElement.setAttribute('data-theme','light');
     var bar=document.getElementById('tabbar');
     var panels=[].slice.call(document.querySelectorAll('.tabpanel'));
     if(!bar||!panels.length)return;
     var btns=[];
+    // 分頁鈕的外觀全部在 WEB_CSS（.rpt-tab / .on），這裡只切 class。
     function activate(i){
       panels.forEach(function(p,j){p.style.display=j===i?'':'none';});
       btns.forEach(function(b,j){
         var on=j===i;
-        b.style.background=on?'#4f46e5':'#fff';
-        b.style.color=on?'#fff':'#374151';
-        b.style.borderColor=on?'#4f46e5':'#e5e7eb';
+        b.className='rpt-tab'+(on?' on':'');
+        b.setAttribute('aria-selected',on?'true':'false');
       });
+      // 手機上分頁列是橫向捲動的一排：把目前分頁捲到可見範圍中間
+      var cur=btns[i];
+      if(cur&&bar.scrollWidth>bar.clientWidth){bar.scrollLeft=cur.offsetLeft-(bar.clientWidth-cur.offsetWidth)/2;}
+    }
+    // 分頁列是 sticky：在長頁面底部切分頁時，捲回分頁列位置，新分頁才會從頭開始看
+    function toTop(){
+      var head=bar.previousElementSibling;
+      var y=head?head.getBoundingClientRect().bottom+window.pageYOffset:0;
+      if(window.pageYOffset>y)window.scrollTo(0,y);
     }
     var idxByLabel={};
-    var PILL=${JSON.stringify(PILL_CSS)};
-    // 分頁列只顯示中文（去 emoji、長標籤縮短），但按鍵值仍是含 emoji 的原始 label
     var NAV_TEXT=${JSON.stringify(Object.fromEntries(sections.map((s) => [s.label, navText(s.label)])))};
+    bar.setAttribute('role','tablist');
     panels.forEach(function(p,i){
       var label=p.getAttribute('data-label')||('Tab '+(i+1));
       idxByLabel[label]=i;
       var b=document.createElement('button');
+      b.type='button';
       b.textContent=NAV_TEXT[label]||label;
-      b.style.cssText=PILL;
+      b.className='rpt-tab';
+      b.setAttribute('role','tab');
       // hash 深連結：子頁（設質+CB）要能連回特定分頁，重新整理也要留在原分頁
-      b.onclick=function(){activate(i);location.hash='tab='+encodeURIComponent(label);};
+      b.onclick=function(){activate(i);toTop();location.hash='tab='+encodeURIComponent(label);};
       btns.push(b);bar.appendChild(b);
     });
     // 子頁入口：設質+CB 與月營收是獨立頁面，放在分頁列最後當第一級導覽，
-    // 樣式與分頁鈕一致但用 <a>，讓它看得出是「離開這一頁」。
+    // 樣式與分頁鈕一致但用 <a>（虛線框），讓它看得出是「離開這一頁」。
     ${JSON.stringify(SUBPAGES.map((x) => [x.file, navText(x.label) + " ↗"]))}.forEach(function(x){
       var ext=document.createElement('a');
       ext.href=x[0];
       ext.textContent=x[1];
-      ext.style.cssText=PILL+'text-decoration:none;border-style:dashed;';
+      ext.className='rpt-tab ext';
       bar.appendChild(ext);
     });
     // 總覽卡片：只有在 JS 跑得動時才變成可點的入口，並補上箭頭與提示。

@@ -1,0 +1,101 @@
+{
+  "purpose": "Predetermined price, market, portfolio and observable-event experiments; no revenue universe required",
+  "universe": "Dynamic historical TWSE and TPEx four-digit regular stock rows (including four-digit TDRs, foreign and innovation-board shares); excludes ETFs, warrants and emerging-market stocks; no current listing or popularity screen",
+  "inputs": {
+    "start": "2019-01-01",
+    "end": "2026-09-30"
+  },
+  "evaluationStart": "2020-01-02",
+  "developmentEnd": "2023-12-31",
+  "chronologicalValidationStart": "2024-01-01",
+  "rebalanceSessions": 20,
+  "entry": "Next session open after signal close",
+  "exit": "20th holding session close; stay cash until next entry open",
+  "baseline": "Each signal date: positive raw OHLC and volume >=100000 shares (100 lots), 61-session indicator history; rank forward-adjusted 20-session return, equal-weight top10. No price/turnover/top60 restriction.",
+  "costs": {
+    "buy": 0.001425,
+    "sell": 0.004425
+  },
+  "strategies": [
+    {
+      "id": "baseline",
+      "rule": "Top10 equal weights"
+    },
+    {
+      "id": "price_ma20",
+      "rule": "Close > MA20"
+    },
+    {
+      "id": "price_trend",
+      "rule": "Close > MA20 and MA20 > MA60"
+    },
+    {
+      "id": "price_breakout20",
+      "rule": "Close > prior20-session adjusted high"
+    },
+    {
+      "id": "price_volume15",
+      "rule": "Signal volume >1.5x prior20-session mean volume, and signal close >=previous close"
+    },
+    {
+      "id": "price_lowvol_half",
+      "rule": "20-session log-return volatility <= median among contemporaneously eligible stocks"
+    },
+    {
+      "id": "price_cap_r20",
+      "rule": "20-session return <=25%"
+    },
+    {
+      "id": "market_ma20",
+      "rule": "TAIEX close > MA20; otherwise cash"
+    },
+    {
+      "id": "market_ma60",
+      "rule": "TAIEX close > MA60; otherwise cash"
+    },
+    {
+      "id": "market_breadth",
+      "rule": ">50% of all contemporaneously observed ordinary shares with features above MA20; require >=500 observations; otherwise cash"
+    },
+    {
+      "id": "portfolio_top5",
+      "rule": "Equal-weight top5"
+    },
+    {
+      "id": "portfolio_top20",
+      "rule": "Equal-weight top20"
+    },
+    {
+      "id": "portfolio_inversevol",
+      "rule": "Top10 inverse 20-session volatility weights, cap20% per name, unallocatable capital cash"
+    },
+    {
+      "id": "event_quarter_half",
+      "rule": "Only signal dates in final15+ calendar days of Mar/Jun/Sep/Dec; other cohorts cash"
+    },
+    {
+      "id": "event_post_adjustment5",
+      "rule": "Observed reference-price corporate adjustment on signal day or within previous5 sessions; not assumed cash-only or pre-announced"
+    },
+    {
+      "id": "event_avoid_adjustment5",
+      "rule": "Exclude observed reference-price corporate adjustment within previous5 sessions"
+    },
+    {
+      "id": "universe_volume50",
+      "rule": "Same baseline ranking, but signal-date volume >=50000 shares (50 lots)"
+    }
+  ],
+  "priceAdjustment": "Forward reference-price factor from official TWSE/TPEx effective-date references and FinMind face-value changes; numeric signed close change only on ordinary comparison days. Prior TPEx nextReference is not a substitute for an official event reference. This is a reference reinvestment proxy, not audited cash dividends. Unknown references start a new price segment, cannot be crossed by return calculation, and require61-session warmup again.",
+  "benchmark": "Official TAIEX total-return index; entry open derived from same-date TR/price index scale",
+  "knownLimits": [
+    "50/100 lots is only a basic tradability gate; opening liquidity, capital capacity and slippage remain distinct",
+    "No optimizing thresholds or selecting winners on the validation period",
+    "Events use only effective events already observed, not hindsight future event calendar",
+    "Historical date-only events do not establish earlier announcement timestamps",
+    "Unresolved missing execution data suppresses deployable portfolio metrics",
+    "61-session warmup is needed for these indicators; no pre-IPO history is invented"
+  ],
+  "sensitivity": "Separate execution-cost scenario adds 0.5% adverse entry and 0.5% adverse exit prices; no thresholds retuned",
+  "inference": "Primary outcomes: paired net return difference and paired probability of beating same-window TAIEX TR. Three-cohort circular block bootstrap, 10000 draws; family correction across16 rules x2 outcomes=32 comparisons. Win rates are portfolio-cohort rates, not individual-stock trade rates."
+}

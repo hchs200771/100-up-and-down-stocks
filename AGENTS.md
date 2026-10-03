@@ -19,7 +19,7 @@ React/TypeScript app plus a Node/TypeScript automation flow for Taiwan stock-mar
 - In Notion holdings, change a position's status or trade details only when the user explicitly mentions that position's change. Unmentioned positions remain held as recorded, but still receive fresh health reviews.
 - Report the trading date and whether the report was sent or published.
 
-`npm run report:codex` and `npm run report:claude` select a runtime explicitly; both target fetch → classify → research → finalize → send. Use `.claude/skills/daily-stock-report/SKILL.md` only when the user explicitly asks for the manual Claude skill path. For the Codex pipeline, keep controller/finalizer judgment on GPT-5.6 Sol and per-category research on GPT-5.6 Luna unless the user requests another split.
+`npm run report:codex` and `npm run report:claude` select a runtime explicitly; both target fetch → classify → research → finalize → send. Use `.claude/skills/daily-stock-report/SKILL.md` only when the user explicitly asks for the manual Claude skill path. For the Codex pipeline, keep the controller on the strongest model (currently `gpt-6.1-sol`), the finalizer on GPT-5.6 Sol, and per-category research on GPT-5.6 Luna unless the user requests another split.
 
 ## Task routing
 

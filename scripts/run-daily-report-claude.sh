@@ -22,7 +22,7 @@ RESULT_DIR="$TMP_DIR/group-results"
 START_STAGE="${CLAUDE_REPORT_START_STAGE:-fetch}"
 REFINE_GROUP_TASKS="${CLAUDE_REPORT_REFINE_GROUP_TASKS:-1}"
 # 分類是全流程地基，不可下放小模型（haiku 實測會把指標股歸錯族群）
-CONTROLLER_MODEL="${CLAUDE_CONTROLLER_MODEL:-sonnet}"
+CONTROLLER_MODEL="${CLAUDE_CONTROLLER_MODEL:-opus}"
 # finalizer 要組出全站最大的判斷（盤後總結＋長線策略），明確鎖高階模型，
 # 不要讓它偷偷跟著使用者當下 `/model` 的預設值飄動
 FINALIZER_MODEL="${CLAUDE_FINALIZER_MODEL:-opus}"
