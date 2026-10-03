@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = process.cwd();
 const INPUT = resolve(ROOT, "data/backtest/wide/results.json");
-const OUTPUT = resolve(ROOT, "docs/factor-experiments-wide-results-2026-10-02.md");
+const OUTPUT = resolve(ROOT, "docs/factor-experiments-wide-results.md");
 
 type AnyRecord = Record<string, any>;
 const showPct = (v: unknown, digits = 2) => typeof v === "number" && Number.isFinite(v) ? `${v.toFixed(digits)}%` : "—";

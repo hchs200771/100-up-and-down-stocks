@@ -36,7 +36,6 @@
     "backtest:wide:fetch": "python3 scripts/fetch-wide-market-history.py",
     "backtest:wide": "node --import tsx scripts/backtest-wide-market.ts",
     "backtest:wide:actions": "python3 scripts/fetch-wide-action-references.py",
-    "backtest:restore": "python3 scripts/restore-backtest-checkpoint.py",
     "backtest:wide:render": "node --import tsx scripts/render-wide-backtest-report.ts"
   },
   "dependencies": {

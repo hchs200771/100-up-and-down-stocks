@@ -155,7 +155,7 @@ npm run lint     # TypeScript 型別檢查
 - `docs/multifactor-roadmap.md`：多因子選股的回測與改版路線圖
 - `scripts/prompts/`：controller、worker、finalizer 的 prompt
 - `.claude/skills/`：Claude Code 手動流程（`daily-stock-report`）與維護說明（`stock-report-maintenance`）
-- `docs/factor-review-2026-10-02.md`：全台股因子掃描的結論
+- `docs/wide-market-scan-conclusion.md`：全台股因子掃描的結論（17 條規則、81 個窗口）
 
 ## 舊版網頁 App
 
