@@ -10,6 +10,7 @@ PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 CONTROLLER_PROMPT="$PROJECT_DIR/scripts/prompts/group-task-controller.md"
 STRUCTURED_CONTROLLER_PROMPT="$PROJECT_DIR/scripts/prompts/group-task-controller-codex.md"
 FINALIZER_PROMPT="$PROJECT_DIR/scripts/prompts/group-finalizer.md"
+INTL_PROMPT="$PROJECT_DIR/scripts/prompts/intl-brief-worker.md"
 WORKER_RUNNER="$PROJECT_DIR/scripts/run-codex-group-workers.sh"
 CONTROLLER_SCHEMA="$PROJECT_DIR/scripts/schemas/codex-controller-groups.schema.json"
 TMP_DIR="$PROJECT_DIR/data/tmp"
@@ -20,6 +21,9 @@ START_STAGE="${CODEX_REPORT_START_STAGE:-fetch}"
 CONTROLLER_MODEL="${CODEX_CONTROLLER_MODEL:-gpt-6.1-sol}"
 CONTROLLER_SPLIT="${CODEX_CONTROLLER_SPLIT:-1}"
 FINALIZER_MODEL="${CODEX_FINALIZER_MODEL:-gpt-5.6-sol}"
+# 國際情勢 worker：與族群 research 同級的輕量模型（搜尋＋短文）
+INTL_MODEL="${CODEX_INTL_MODEL:-${CODEX_GROUP_WORKER_MODEL:-gpt-5.6-luna}}"
+INTL_TIMEOUT_SECONDS="${CODEX_INTL_TIMEOUT_SECONDS:-600}"
 REFINE_GROUP_TASKS="${CODEX_REFINE_GROUP_TASKS:-1}"
 CONTROLLER_TIMEOUT_SECONDS="${CODEX_CONTROLLER_TIMEOUT_SECONDS:-900}"
 # 族群研究 worker 的同時執行數。研究階段是「一個族群一個 codex 子行程」，
@@ -486,6 +490,21 @@ if stage_enabled research; then
   fi
 
   clear_dir_json "$RESULT_DIR"
+
+  # 國際情勢 worker：與族群 research 平行跑（Claude runner 同樣做法）。prompt 共用
+  # intl-brief-worker.md，前面加一段 Codex 用的工具對照。先刪舊檔：attach-intl 也會擋過期檔，
+  # 但這裡刪掉才不會讓「worker 失敗」看起來像成功。
+  rm -f "$TMP_DIR/intl-brief.txt" "$TMP_DIR/intl-events.json"
+  INTL_PROMPT_FILE="$(mktemp "$TMP_DIR/codex-intl-prompt-XXXXXX")"
+  {
+    echo "（執行環境：Codex。下文的「Write 工具」改用 shell 或 apply_patch 寫檔；WebSearch 即你的 web search。可讀取專案內檔案，包含 .claude/skills/ 底下的分析框架。）"
+    echo
+    cat "$INTL_PROMPT"
+  } > "$INTL_PROMPT_FILE"
+  log "進度 3/5：背景平行啟動國際情勢 worker (model=$INTL_MODEL)"
+  timed intl-brief run_codex_prompt_with_timeout "$INTL_MODEL" "$INTL_PROMPT_FILE" "$INTL_TIMEOUT_SECONDS" &
+  INTL_PID="$!"
+
   log "進度 3/5：開始做各分類/族群的個別研究報告"
   if ! timed research-workers env CODEX_GROUP_TASK_DIR="$TASK_SNAPSHOT_DIR" CODEX_GROUP_RESULT_DIR="$RESULT_DIR" bash "$WORKER_RUNNER" "$GROUP_CONCURRENCY" > >(tee -a "$LOG_FILE") 2>&1; then
     log "parallel workers exited non-zero; continuing with fallback stories where needed"
@@ -493,6 +512,17 @@ if stage_enabled research; then
 
   RESULT_COUNT="$(count_json_files "$RESULT_DIR")"
   log "進度 3/5：個別研究報告完成，產出 $RESULT_COUNT 個 result 檔"
+
+  if ! wait "$INTL_PID"; then
+    log "[warn] 國際情勢 worker 非零退出或逾時；attach-intl 會只放數字表"
+  fi
+  rm -f "$INTL_PROMPT_FILE"
+  if [ -f "$TMP_DIR/intl-brief.txt" ]; then
+    log "進度 3/5：國際情勢 worker 完成，已寫出 intl-brief.txt"
+  else
+    log "[warn] 國際情勢 worker 沒寫出 intl-brief.txt；報告國際區塊將只有數字表"
+  fi
+  [ -f "$TMP_DIR/intl-events.json" ] || log "[warn] 國際情勢 worker 沒寫出 intl-events.json；國際大事時間軸略過"
 fi
 
 if stage_enabled finalize; then
