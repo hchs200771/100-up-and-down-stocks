@@ -16,6 +16,7 @@ React/TypeScript app plus a Node/TypeScript automation flow for Taiwan stock-mar
 - Run exactly `npm run report`. Use alternate or partial commands only to debug a failed run when requested.
 - Monitor the process and report stage starts/completions, warnings or fallbacks, and a brief heartbeat at least every 60 seconds. Do not dump prompts or large JSON payloads.
 - Once the trading date is known, run `$notion-holdings-health` through the interactive Notion connector; it may proceed alongside the shell pipeline. Include its checked count and attention items in the final result.
+- Write the daily trade and holdings review in two places, not in chat: the full version (with sizes, prices, P&L) as a dated section on the current month's Notion 持股健檢 page, and a public version in `data/trade-review-latest.json` (`date` = trading date; `summary`, `trades[]`, `holdings[]` with `name`/`kind`/`side`/`status`/`note`) before the send stage. The site is public: the JSON must never contain quantities, prices, cost, or P&L.
 - In Notion holdings, change a position's status or trade details only when the user explicitly mentions that position's change. Unmentioned positions remain held as recorded, but still receive fresh health reviews.
 - Report the trading date and whether the report was sent or published.
 

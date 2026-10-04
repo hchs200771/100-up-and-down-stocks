@@ -25,7 +25,7 @@ export const READ_ORDER = [
 ];
 
 /** 不在 READ_ORDER 動線上、但確實是分頁的（主頁會把它們排在最後）。 */
-export const EXTRA_TABS = ["🧊 下跌族群"];
+export const EXTRA_TABS = ["🧊 下跌族群", "📒 交易檢討"];
 
 /** 子頁：獨立 HTML，不是 index 的分頁，所以用 <a> 而不是分頁鈕。 */
 export const SUBPAGES: { file: string; label: string }[] = [

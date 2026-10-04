@@ -2,6 +2,7 @@ import { writeFileSync, mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import { computeInstitutionalStrength, type InstitutionalStrength } from "./institutional-strength.ts";
+import { fetchTpexInstiOpenapi, fetchTpexQuotesOpenapi } from "./lib/tpex-openapi.ts";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -433,7 +434,10 @@ async function main() {
     fetchJson(
       "https://www.tpex.org.tw/www/zh-tw/afterTrading/dailyQuotes?response=json",
       "TPEx dailyQuotes",
-    ),
+    ).catch((e) => {
+      console.warn(`[warn] ${e.message}；改用 TPEx openapi 收盤行情`);
+      return fetchTpexQuotesOpenapi();
+    }),
     fetchJson(
       "https://openapi.taifex.com.tw/v1/SingleStockFuturesMargining",
       "TAIFEX 股期保證金",
@@ -486,7 +490,13 @@ async function main() {
     fetchJson(`https://www.twse.com.tw/rwd/zh/fund/T86?response=json&date=${rawDate}&selectType=ALL`, "T86")
       .catch((e) => { console.warn("[warn] T86 failed:", e.message); return null; }),
     fetchJson("https://www.tpex.org.tw/www/zh-tw/insti/dailyTrade?type=Daily&response=json", "TPEx insti")
-      .catch((e) => { console.warn("[warn] TPEx insti failed:", e.message); return null; }),
+      .catch((e) => {
+        console.warn("[warn] TPEx insti failed:", e.message, "；改用 openapi");
+        // openapi 只有最新一日，日期對不上就寧可不要
+        return fetchTpexInstiOpenapi()
+          .then((j) => (j.date === rawDate ? j : null))
+          .catch(() => null);
+      }),
     fetchJson(`https://www.twse.com.tw/exchangeReport/TWTB4U?response=json&date=${rawDate}&selectType=All`, "TWTB4U")
       .catch((e) => { console.warn("[warn] TWTB4U failed:", e.message); return null; }),
     fetchJson("https://www.tpex.org.tw/openapi/v1/tpex_intraday_trading_statistics", "TPEx day trade stat")

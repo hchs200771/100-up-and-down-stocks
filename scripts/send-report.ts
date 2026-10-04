@@ -2082,6 +2082,48 @@ function renderPicks(picks: PicksReport | null, forEmail: boolean): string {
 }
 
 /**
+ * 交易檢討（data/trade-review-latest.json，由每日功課的持股健檢產出）。
+ * 網頁是公開的：檔案只放標的、方向與文字檢討，不放數量、均價、損益——
+ * 完整版（含金額）只寫在私人的 Notion 月份頁。
+ */
+interface TradeReviewItem {
+  name: string;
+  side?: string;
+  kind?: string;
+  status?: string;
+  note: string;
+}
+interface TradeReview {
+  date: string;
+  summary?: string;
+  trades?: TradeReviewItem[];
+  holdings?: TradeReviewItem[];
+}
+
+function renderTradeReview(r: TradeReview | null): string {
+  if (!r || (!r.trades?.length && !r.holdings?.length)) return "";
+  const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]!);
+  const card = (it: TradeReviewItem) => {
+    const tags = [it.kind, it.side, it.status].filter(Boolean).map((t) =>
+      `<span style="display:inline-block; font-size:11px; color:#475569; background:#f1f5f9; border-radius:999px; padding:1px 7px; margin-left:4px;">${esc(t!)}</span>`,
+    ).join("");
+    return `<div style="border:1px solid #e5e7eb; border-radius:6px; padding:9px 12px; margin-bottom:8px; background:#fff;">
+        <div style="margin-bottom:3px;"><strong style="color:#1f2937;">${esc(it.name)}</strong>${tags}</div>
+        <div style="font-size:13px; color:#374151; line-height:1.75;">${esc(it.note).replace(/\n/g, "<br>")}</div>
+      </div>`;
+  };
+  const block = (title: string, list?: TradeReviewItem[]) =>
+    list?.length ? `<h4 style="margin:14px 0 8px; color:#334155;">${title}</h4>${list.map(card).join("")}` : "";
+  return `<div style="background-color:#f8fafc; border:1px solid #e2e8f0; padding:15px; border-radius:8px; margin-bottom:20px;">
+    <h3 style="margin-top:0; color:#334155;">📒 交易檢討</h3>
+    ${r.summary ? `<p style="font-size:13px; color:#4b5563; line-height:1.8; margin:0 0 4px;">${esc(r.summary).replace(/\n/g, "<br>")}</p>` : ""}
+    ${block("本期進出場", r.trades)}
+    ${block("持倉健檢", r.holdings)}
+    <p style="font-size:11px; color:#9ca3af; line-height:1.6; margin:8px 0 0;">個人交易紀錄的流程檢討，不含部位大小與損益；非投資建議。</p>
+  </div>`;
+}
+
+/**
  * 每個分頁「在回答什麼問題」。key 必須與 sections 的 label 完全一致。
  *
  * 為什麼要有這張表：tab 上只有名字，第一次看報告的人分不出「指數貢獻」與
@@ -2097,6 +2139,7 @@ const TAB_GUIDE: Record<string, string> = {
   "🏦 大戶籌碼": "集保大戶這週買了什麼。可切「背離（籌碼先動、價還沒動）」與「同向（籌碼與趨勢一致）」，門檻 200~1000 張可調。週資料。",
   "🌐 國際情勢": "過去一天的國際大事時間軸、美股指標股、亞股原物料匯率與信用利差——台股開盤前的外部條件。",
   "🧭 長線策略": "跳出當日波動，長線的進出場想法與部位思考。",
+  "📒 交易檢討": "自己最近的進出場與持倉健檢：理由、停損與出場計畫是否一致，下次可以怎麼調整。",
   "🏆 終極選股池": "全部訊號統合後的最終結論：長線 10 檔＋短線 10 檔，含入選理由與進出場計畫。",
   "🔖 圖例說明": "報告裡各種標記、badge、顏色代表什麼意思。",
   "🧮 評分說明": "進場評分 0-100 是怎麼算出來的，四個構面各佔多少。",
@@ -2243,7 +2286,7 @@ function renderHome(labels: string[], date: string, order: string[] = READ_ORDER
       // 圖例位置兩版不同：網頁版附在上漲/下跌分頁底部、信件版是最後的獨立段落
       hint: `每天的主菜：漲跌族群與可執行結論。圖例與評分說明${order === EMAIL_ORDER ? "在本信最後" : "收在上漲/下跌分頁最上方的「本頁說明」，點開就有"}。`,
       bg: "#fff7ed", border: "#fed7aa", titleColor: "#c2410c",
-      labels: ["🔥 上漲族群", "🧊 下跌族群", "🎯 操作建議", "🏆 終極選股池"],
+      labels: ["🔥 上漲族群", "🧊 下跌族群", "🎯 操作建議", "🏆 終極選股池", "📒 交易檢討"],
     },
     {
       title: "📅 一日市場總覽",
@@ -2328,7 +2371,7 @@ function sortGroupsByMemberCount(groups: CategoryGroup[]): CategoryGroup[] {
     .map(({ group }) => group);
 }
 
-function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName: Map<string, string>, market?: MarketBlock | null, retailHistory?: MarketHistoryEntry[], contrib?: IndexContribution | null, tdcc?: DivergenceReport | null, marginHistory?: MarginHistoryEntry[], mo?: MarginOptionsReport | null, picks?: PicksReport | null, forEmail = false): string {
+function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName: Map<string, string>, market?: MarketBlock | null, retailHistory?: MarketHistoryEntry[], contrib?: IndexContribution | null, tdcc?: DivergenceReport | null, marginHistory?: MarginHistoryEntry[], mo?: MarginOptionsReport | null, picks?: PicksReport | null, forEmail = false, tradeReview?: TradeReview | null): string {
   const sortedGainers = sortGroupsByMemberCount(a.gainers);
   const gainersHtml = sortedGainers.map((g) => renderCategoryBlock(g, stockMap, codeByName, "gainer")).join("");
   const losersHtml = sortGroupsByMemberCount(a.losers)
@@ -2391,6 +2434,7 @@ function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName
     { label: "🏆 終極選股池", html: renderPicks(picks ?? null, forEmail) },
     { label: "🌐 國際情勢", html: intlHtml },
     { label: "🧭 長線策略", html: longTermStrategyHtml },
+    { label: "📒 交易檢討", html: renderTradeReview(tradeReview ?? null) },
     // 圖例/評分說明只有信件版還是獨立段落（見上方 groupGHtml 的說明）
     ...(forEmail
       ? [
@@ -2690,11 +2734,24 @@ async function main() {
     }
   }
 
+  // 交易檢討（每日功課寫入）。日期對不上代表是舊的檢討，寧缺勿舊。
+  const tradeReviewPath = resolve(process.cwd(), "data/trade-review-latest.json");
+  let tradeReview: TradeReview | null = null;
+  if (existsSync(tradeReviewPath)) {
+    try {
+      const parsed: TradeReview = JSON.parse(readFileSync(tradeReviewPath, "utf-8"));
+      if (parsed.date === analysis.date) tradeReview = parsed;
+      else console.warn(`trade-review 日期 ${parsed.date} 與分析 ${analysis.date} 不符，交易檢討分頁略過`);
+    } catch {
+      console.warn("trade-review-latest.json 無法解析，略過");
+    }
+  }
+
   // 網頁版（給 build-site-html.ts）與信件版分開產：兩者的段落順序不同，
   // 而且信件版會再過一次 slimForEmail 把信件顯示不出來的東西拿掉。
-  const html = renderHtml(analysis, stockMap, codeByName, marketBlock, retailHistory, contrib, tdcc, marginHistory, marginOptions, picks);
+  const html = renderHtml(analysis, stockMap, codeByName, marketBlock, retailHistory, contrib, tdcc, marginHistory, marginOptions, picks, false, tradeReview);
   const emailHtml = slimForEmail(
-    renderHtml(analysis, stockMap, codeByName, marketBlock, retailHistory, contrib, tdcc, marginHistory, marginOptions, picks, true),
+    renderHtml(analysis, stockMap, codeByName, marketBlock, retailHistory, contrib, tdcc, marginHistory, marginOptions, picks, true, tradeReview),
   );
 
   const htmlOutPath = resolve(process.cwd(), "data/report-latest.html");

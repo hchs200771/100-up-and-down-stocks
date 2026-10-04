@@ -26,6 +26,7 @@
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync, readdirSync } from "node:fs";
 import { resolve } from "node:path";
+import { fetchTpexQuotesOpenapi } from "./lib/tpex-openapi.ts";
 
 const TDCC_URL = "https://opendata.tdcc.com.tw/getOD.ashx?id=1-5";
 const HISTORY_DIR = "data/tdcc-history";
@@ -169,7 +170,13 @@ async function fetchPrices(yyyymmdd: string): Promise<Map<string, { name: string
     fetchText(
       `https://www.tpex.org.tw/www/zh-tw/afterTrading/dailyQuotes?date=${encodeURIComponent(slashed)}&response=json`,
       "TPEx dailyQuotes",
-    ).catch((e) => {
+    ).catch(async (e) => {
+      // /www/ 掛掉時改抓 openapi；它只有最新一日，日期要等於資料日才能用
+      const alt = await fetchTpexQuotesOpenapi().catch(() => null);
+      if (alt?.date === yyyymmdd) {
+        console.warn(`[warn] 上櫃價格 ${e.message}；改用 TPEx openapi`);
+        return JSON.stringify(alt);
+      }
       console.warn(`[warn] 上櫃價格抓取失敗：${e.message}`);
       return "";
     }),
