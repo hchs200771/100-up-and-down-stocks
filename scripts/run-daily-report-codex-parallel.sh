@@ -371,6 +371,20 @@ if stage_enabled fetch; then
     || log "[warn] fetch-broker-watch.ts failed; 贏家分點區塊略過" &
   AUX_PIDS="$AUX_PIDS $!"
 
+  # 季報毛利率：季更，同一季抓過就 skip，平常這步是空轉。
+  timed financials run_tsx scripts/fetch-quarterly-financials.ts \
+    || log "[warn] fetch-quarterly-financials.ts failed; 毛利率欄位沿用上次結果" &
+  AUX_PIDS="$AUX_PIDS $!"
+
+  # 月營收：每天重抓最近 3 個月（公司陸續公布、也會更正），只有 6 個請求；與 Claude runner 一致。
+  (
+    timed revenue-fetch run_tsx scripts/fetch-monthly-revenue.ts \
+      || log "[warn] fetch-monthly-revenue.ts failed; 月營收動能沿用上次結果"
+    timed revenue-momentum run_tsx scripts/build-revenue-momentum.ts \
+      || log "[warn] build-revenue-momentum.ts failed; 月營收動能沿用上次結果"
+  ) &
+  AUX_PIDS="$AUX_PIDS $!"
+
 fi
 
 if stage_enabled classify; then
@@ -527,6 +541,10 @@ if stage_enabled finalize; then
     exit 1
   fi
   log "進度 4/5：finalizer 已產出 data/analysis-latest.json"
+
+  # finalizer 自己寫 analysis-latest.json、不帶 intl；與 Claude runner 一樣在這裡併入國際情勢
+  # （數字表 + 若有 data/tmp/intl-brief.txt 則含判讀）。缺這步時國際情勢分頁會整個消失。
+  run_tsx scripts/attach-intl.ts || log "[warn] attach-intl.ts failed; 報告將沒有國際區塊"
 fi
 
 if [ ! -f "$PROJECT_DIR/data/analysis-latest.json" ]; then

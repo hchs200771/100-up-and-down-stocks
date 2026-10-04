@@ -23,6 +23,7 @@
  *
  * 產出：data/revenue-history/<YYYY-MM>.json
  */
+import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 
@@ -107,6 +108,13 @@ async function fetchBig5(url: string, attempts = 3): Promise<string> {
       return html;
     } catch (e) {
       lastErr = e;
+      // 2026-10-04 起 mopsov 回應帶不合規的 header，Node 的嚴格 HTTP parser 直接拒收
+      // （HPE_INVALID_HEADER_TOKEN），curl 則照常可讀。遇到 parser 錯誤就改用 curl。
+      if (String((e as any)?.cause?.code ?? "").startsWith("HPE_")) {
+        const buf = execFileSync("curl", ["-sS", "--fail", "--max-time", "30", "-A", "Mozilla/5.0", url], { maxBuffer: 32 * 1024 * 1024 });
+        const html = new TextDecoder("big5").decode(buf);
+        if (html.includes("營業收入")) return html;
+      }
       if (i < attempts) await new Promise((r) => setTimeout(r, 1200 * i));
     }
   }

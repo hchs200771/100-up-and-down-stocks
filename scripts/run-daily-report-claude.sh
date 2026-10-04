@@ -712,6 +712,13 @@ if stage_enabled finalize; then
       cp "$SKELETON_FILE" "$PROJECT_DIR/data/analysis-latest.json"
     fi
   fi
+  # 與 Codex runner 一致：族群資料不完整就不發布
+  if ! timed analysis-completeness run_tsx scripts/validate-analysis-completeness.ts \
+    "$PROJECT_DIR/data/analysis-latest.json" "$SKELETON_FILE" "$PROJECT_DIR/data/market-latest.json"; then
+    log "analysis completeness validation failed; refusing to generate or publish an incomplete report"
+    notify "每日股市報告 ❌" "上漲／下跌族群資料不完整，已停止發布。Log: $LOG_FILE"
+    exit 1
+  fi
   log "進度 4/5：finalizer 已產出 data/analysis-latest.json"
 
   # finalizer 自己寫 analysis-latest.json、不走 assemble，所以這裡再把國際情勢併進 intl 欄位

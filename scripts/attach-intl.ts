@@ -1,4 +1,4 @@
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import * as OpenCC from "opencc-js";
 
@@ -21,6 +21,19 @@ const intlBriefPath = resolve(cwd, "data/tmp/intl-brief.txt");
 const intlEventsPath = resolve(cwd, "data/tmp/intl-events.json");
 const creditPath = resolve(cwd, "data/credit-spreads-latest.json");
 const sectorPath = resolve(cwd, "data/sector-flows-latest.json");
+
+/**
+ * worker 產物（intl-brief / intl-events）只在本次有重寫時才可用。Codex 流程沒有國際 worker，
+ * data/tmp 裡會留著幾週前 Claude 流程寫的舊檔；沒有這道檢查就會把舊判讀當成今天的發出去。
+ * 以本次抓的 intl-market-latest.json 為基準，早於它 12 小時以上就視為過期。
+ */
+function isFresh(path: string): boolean {
+  if (!existsSync(path)) return false;
+  if (!existsSync(intlMarketPath)) return true;
+  const fresh = statSync(path).mtimeMs >= statSync(intlMarketPath).mtimeMs - 12 * 3600 * 1000;
+  if (!fresh) console.warn(`attach-intl: ${path} 過期（早於本次國際數字），略過`);
+  return fresh;
+}
 
 const toTWPhrase = OpenCC.Converter({ from: "cn", to: "twp" });
 
@@ -71,7 +84,7 @@ function main() {
   // 為準，這裡只把 worker 的「為什麼動」用 symbol join 回去，避免 worker 憑印象寫錯價格。
   let events: any[] = [];
   let window = "";
-  if (existsSync(intlEventsPath)) {
+  if (isFresh(intlEventsPath)) {
     try {
       const raw = JSON.parse(readFileSync(intlEventsPath, "utf8"));
       if (Array.isArray(raw?.events)) {
@@ -112,7 +125,7 @@ function main() {
   }
 
   let summary = "";
-  if (existsSync(intlBriefPath)) {
+  if (isFresh(intlBriefPath)) {
     const txt = readFileSync(intlBriefPath, "utf8").trim();
     if (txt) summary = toTW(txt);
   }
