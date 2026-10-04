@@ -1222,5 +1222,525 @@
     }
   ],
   "summary": "加權收48,475.74點、漲122.25點。主線延續為9月底已見的半導體設備、材料與低軌衛星，新主線看CPO、CCL及PCB耗材；塑化、鋼鐵與面板偏補漲／事件。塑化、設備、PCB、網通等同列強弱，屬換手分化；車電已見退潮。全市場上漲1,053家、下跌987家、漲停48家，上市／上櫃當沖20.14%／22.15%；微臺散戶淨多13.40%，反指標偏熱，短線做多但持股宜六成、避免追高。",
-  "longTermStrategy": "未來1至2年核心研究先鎖定AI基礎建設的三個瓶頸。第一是光通訊／CPO：800G往1.6T升級與資料中心頻寬需求已是可確認的產業方向，聯亞、IET-KY偏高純度光源，光聖、波若威偏模組與連接；目前籌碼過熱，應續抱既有部位、等量縮回測，不追長紅，後續以客戶認證、量產良率與營收放量驗證。第二是先進製程與封裝供應鏈：萬潤已有營收成長與設備能見度資訊，旺矽、台特化及勤凱受測試複雜度、特殊氣體與電子材料規格升級支撐，合理推論資本支出與本土替代仍會反覆被交易；核心研究只留訂單、毛利與現金流能跟上的公司，族群同列強弱時等回測，確認營收後再加碼。第三是高階PCB材料與載板，台燿、聯茂、欣興、臻鼎-KY可列核心研究，AI高速傳輸帶動低損耗材料、HDI與ABF規格升級，但今日強勢尚不能代替獲利證據，下一步看報價、稼動率及法說展望；PCB鑽針耗材可作波段觀察。記憶體、矽晶圓與功率元件屬報價循環，只在庫存下降、報價與營收同向時續抱。塑化、鋼鐵、LED、面板及單一新藥事件降為波段觀察；原油正二等槓桿商品、低基期補漲與單一籌碼事件不列長線核心。若TTM營收轉負、毛利連續惡化或現金流與稀釋風險升高就退出；龍頭落入弱勢與族群分化只先降部位。系統近期標記「擴散」族群的T+5平均報酬為-1.19%，擴散段維持回測承接、不追價。"
+  "longTermStrategy": "未來1至2年核心研究先鎖定AI基礎建設的三個瓶頸。第一是光通訊／CPO：800G往1.6T升級與資料中心頻寬需求已是可確認的產業方向，聯亞、IET-KY偏高純度光源，光聖、波若威偏模組與連接；目前籌碼過熱，應續抱既有部位、等量縮回測，不追長紅，後續以客戶認證、量產良率與營收放量驗證。第二是先進製程與封裝供應鏈：萬潤已有營收成長與設備能見度資訊，旺矽、台特化及勤凱受測試複雜度、特殊氣體與電子材料規格升級支撐，合理推論資本支出與本土替代仍會反覆被交易；核心研究只留訂單、毛利與現金流能跟上的公司，族群同列強弱時等回測，確認營收後再加碼。第三是高階PCB材料與載板，台燿、聯茂、欣興、臻鼎-KY可列核心研究，AI高速傳輸帶動低損耗材料、HDI與ABF規格升級，但今日強勢尚不能代替獲利證據，下一步看報價、稼動率及法說展望；PCB鑽針耗材可作波段觀察。記憶體、矽晶圓與功率元件屬報價循環，只在庫存下降、報價與營收同向時續抱。塑化、鋼鐵、LED、面板及單一新藥事件降為波段觀察；原油正二等槓桿商品、低基期補漲與單一籌碼事件不列長線核心。若TTM營收轉負、毛利連續惡化或現金流與稀釋風險升高就退出；龍頭落入弱勢與族群分化只先降部位。系統近期標記「擴散」族群的T+5平均報酬為-1.19%，擴散段維持回測承接、不追價。",
+  "intl": {
+    "summary": "",
+    "window": "",
+    "events": [],
+    "indices": [
+      {
+        "key": "sp500",
+        "name": "標普500",
+        "region": "美股",
+        "close": 7722.72,
+        "change": 56.27,
+        "pct": 0.73,
+        "asOfEpoch": 1790974753
+      },
+      {
+        "key": "dji",
+        "name": "道瓊工業",
+        "region": "美股",
+        "close": 51176.96,
+        "change": 250.4,
+        "pct": 0.49,
+        "asOfEpoch": 1790974817
+      },
+      {
+        "key": "nasdaq",
+        "name": "那斯達克",
+        "region": "美股",
+        "close": 27190.86,
+        "change": 319.26,
+        "pct": 1.19,
+        "asOfEpoch": 1790975759
+      },
+      {
+        "key": "sox",
+        "name": "費城半導體",
+        "region": "美股",
+        "close": 13136.67,
+        "change": 307.67,
+        "pct": 2.4,
+        "asOfEpoch": 1790975759
+      },
+      {
+        "key": "sse",
+        "name": "上證指數",
+        "region": "中國",
+        "close": 3842.2,
+        "change": 11.74,
+        "pct": 0.31,
+        "asOfEpoch": 1790751634
+      },
+      {
+        "key": "csi300",
+        "name": "滬深300",
+        "region": "中國",
+        "close": 4357.62,
+        "change": 12.41,
+        "pct": 0.29,
+        "asOfEpoch": 1790751634
+      },
+      {
+        "key": "hsi",
+        "name": "恒生指數",
+        "region": "中國",
+        "close": 23972.29,
+        "change": -640.98,
+        "pct": -2.6,
+        "asOfEpoch": 1790928512
+      },
+      {
+        "key": "nikkei",
+        "name": "日經225",
+        "region": "日韓",
+        "close": 68309.46,
+        "change": -647.26,
+        "pct": -0.94,
+        "asOfEpoch": 1790923503
+      },
+      {
+        "key": "kospi",
+        "name": "韓國KOSPI",
+        "region": "日韓",
+        "close": 7003.74,
+        "change": 32.39,
+        "pct": 0.46,
+        "asOfEpoch": 1790939140
+      },
+      {
+        "key": "wti",
+        "name": "西德州原油",
+        "region": "原物料/利率",
+        "close": 91.11,
+        "change": -1.76,
+        "pct": -1.9,
+        "asOfEpoch": 1790974800
+      },
+      {
+        "key": "gold",
+        "name": "黃金",
+        "region": "原物料/利率",
+        "close": 4162.3,
+        "change": -40,
+        "pct": -0.95,
+        "asOfEpoch": 1790974798
+      },
+      {
+        "key": "dxy",
+        "name": "美元指數",
+        "region": "原物料/利率",
+        "close": 101.93,
+        "change": -0.17,
+        "pct": -0.17,
+        "asOfEpoch": 1790974799
+      },
+      {
+        "key": "us10y",
+        "name": "美10年期殖利率",
+        "region": "原物料/利率",
+        "close": 5.28,
+        "change": 0.04,
+        "pct": 0.76,
+        "asOfEpoch": 1790967595
+      },
+      {
+        "key": "usdtwd",
+        "name": "美元/台幣",
+        "region": "匯率",
+        "close": 31.83,
+        "change": -0.012,
+        "pct": -0.04,
+        "asOfEpoch": null
+      }
+    ],
+    "credit": [
+      {
+        "key": "hyOas",
+        "fredId": "BAMLH0A0HYM2",
+        "name": "美國高收益債利差",
+        "note": "風險偏好溫度計，最先反應",
+        "asOf": "2026-10-01",
+        "bps": 324,
+        "chg1d": 12,
+        "chg1m": 58,
+        "pctile1y": 98
+      },
+      {
+        "key": "igOas",
+        "fredId": "BAMLC0A0CM",
+        "name": "投資等級公司債利差",
+        "note": "擴散到投等債才算真的信用收縮",
+        "asOf": "2026-10-01",
+        "bps": 86,
+        "chg1d": 2,
+        "chg1m": 5,
+        "pctile1y": 94
+      },
+      {
+        "key": "aaaOas",
+        "fredId": "BAMLC0A1CAAA",
+        "name": "AAA 級公司債利差",
+        "note": "最頂級信用的溢酬，動了代表壓力進到核心",
+        "asOf": "2026-10-01",
+        "bps": 42,
+        "chg1d": 1,
+        "chg1m": -1,
+        "pctile1y": 92
+      }
+    ],
+    "movers": [
+      {
+        "symbol": "ARM",
+        "name": "安謀",
+        "tag": "IP",
+        "close": 307.49,
+        "change": 15.15,
+        "pct": 5.18
+      },
+      {
+        "symbol": "TSLA",
+        "name": "特斯拉",
+        "tag": "電動車",
+        "close": 370.59,
+        "change": 16.48,
+        "pct": 4.65
+      },
+      {
+        "symbol": "SMCI",
+        "name": "美超微",
+        "tag": "AI伺服器",
+        "close": 43.69,
+        "change": 1.77,
+        "pct": 4.22
+      },
+      {
+        "symbol": "DELL",
+        "name": "戴爾",
+        "tag": "AI伺服器",
+        "close": 562.52,
+        "change": 20.78,
+        "pct": 3.84
+      },
+      {
+        "symbol": "AVGO",
+        "name": "博通",
+        "tag": "AI晶片",
+        "close": 355.14,
+        "change": 11.5,
+        "pct": 3.35
+      },
+      {
+        "symbol": "ASML",
+        "name": "艾司摩爾",
+        "tag": "半導體設備",
+        "close": 1867.31,
+        "change": 58.82,
+        "pct": 3.25
+      },
+      {
+        "symbol": "TSM",
+        "name": "台積電ADR",
+        "tag": "晶圓代工",
+        "close": 472.78,
+        "change": 13.58,
+        "pct": 2.96
+      },
+      {
+        "symbol": "AMD",
+        "name": "超微",
+        "tag": "AI晶片",
+        "close": 633.91,
+        "change": 18.18,
+        "pct": 2.95
+      },
+      {
+        "symbol": "AMAT",
+        "name": "應用材料",
+        "tag": "半導體設備",
+        "close": 540.04,
+        "change": 10.74,
+        "pct": 2.03
+      },
+      {
+        "symbol": "GOOGL",
+        "name": "Alphabet",
+        "tag": "雲端資本支出",
+        "close": 343.5,
+        "change": 5.26,
+        "pct": 1.56
+      },
+      {
+        "symbol": "QCOM",
+        "name": "高通",
+        "tag": "手機/消費",
+        "close": 184.87,
+        "change": 2.78,
+        "pct": 1.53
+      },
+      {
+        "symbol": "NVDA",
+        "name": "輝達",
+        "tag": "AI晶片",
+        "close": 233.95,
+        "change": 3.09,
+        "pct": 1.34
+      },
+      {
+        "symbol": "AMZN",
+        "name": "亞馬遜",
+        "tag": "雲端資本支出",
+        "close": 251.52,
+        "change": 3.29,
+        "pct": 1.33
+      },
+      {
+        "symbol": "AAPL",
+        "name": "蘋果",
+        "tag": "手機/消費",
+        "close": 333.69,
+        "change": 3.37,
+        "pct": 1.02
+      },
+      {
+        "symbol": "MSFT",
+        "name": "微軟",
+        "tag": "雲端資本支出",
+        "close": 517.53,
+        "change": 4.73,
+        "pct": 0.92
+      },
+      {
+        "symbol": "META",
+        "name": "Meta",
+        "tag": "雲端資本支出",
+        "close": 728.08,
+        "change": 2.15,
+        "pct": 0.3
+      },
+      {
+        "symbol": "INTC",
+        "name": "英特爾",
+        "tag": "IDM",
+        "close": 119.33,
+        "change": -0.67,
+        "pct": -0.56
+      },
+      {
+        "symbol": "MU",
+        "name": "美光",
+        "tag": "記憶體",
+        "close": 1074.89,
+        "change": -22.5,
+        "pct": -2.05
+      }
+    ],
+    "sectors": [
+      {
+        "symbol": "SMH",
+        "name": "半導體",
+        "close": 630.6,
+        "pct": 2.07,
+        "ret1w": 3.96,
+        "ret4w": 14.12,
+        "rsi14": 68.61,
+        "pe": null,
+        "aum": null,
+        "shares": null,
+        "nav": null,
+        "flow1w": null,
+        "flow4w": null,
+        "flowDays1w": null,
+        "flowDays4w": null
+      },
+      {
+        "symbol": "XLK",
+        "name": "科技",
+        "close": 199.81,
+        "pct": 1.01,
+        "ret1w": 1.8,
+        "ret4w": 7.44,
+        "rsi14": 68.81,
+        "pe": null,
+        "aum": null,
+        "shares": null,
+        "nav": null,
+        "flow1w": null,
+        "flow4w": null,
+        "flowDays1w": null,
+        "flowDays4w": null
+      },
+      {
+        "symbol": "XLC",
+        "name": "通訊服務",
+        "close": 110.32,
+        "pct": 0.35,
+        "ret1w": -2.34,
+        "ret4w": -2.7,
+        "rsi14": 44.49,
+        "pe": null,
+        "aum": null,
+        "shares": null,
+        "nav": null,
+        "flow1w": null,
+        "flow4w": null,
+        "flowDays1w": null,
+        "flowDays4w": null
+      },
+      {
+        "symbol": "XLY",
+        "name": "非必需消費",
+        "close": 110.04,
+        "pct": 1.13,
+        "ret1w": -0.47,
+        "ret4w": -5.51,
+        "rsi14": 40.95,
+        "pe": null,
+        "aum": null,
+        "shares": null,
+        "nav": null,
+        "flow1w": null,
+        "flow4w": null,
+        "flowDays1w": null,
+        "flowDays4w": null
+      },
+      {
+        "symbol": "XLF",
+        "name": "金融",
+        "close": 53.49,
+        "pct": 0.06,
+        "ret1w": -2.46,
+        "ret4w": -8.66,
+        "rsi14": 25.93,
+        "pe": null,
+        "aum": null,
+        "shares": null,
+        "nav": null,
+        "flow1w": null,
+        "flow4w": null,
+        "flowDays1w": null,
+        "flowDays4w": null
+      },
+      {
+        "symbol": "XLI",
+        "name": "工業",
+        "close": 169.95,
+        "pct": 0.78,
+        "ret1w": -0.28,
+        "ret4w": -2.64,
+        "rsi14": 43.77,
+        "pe": null,
+        "aum": null,
+        "shares": null,
+        "nav": null,
+        "flow1w": null,
+        "flow4w": null,
+        "flowDays1w": null,
+        "flowDays4w": null
+      },
+      {
+        "symbol": "XLV",
+        "name": "醫療保健",
+        "close": 166.18,
+        "pct": -0.01,
+        "ret1w": -2.65,
+        "ret4w": -4.09,
+        "rsi14": 41.34,
+        "pe": null,
+        "aum": null,
+        "shares": null,
+        "nav": null,
+        "flow1w": null,
+        "flow4w": null,
+        "flowDays1w": null,
+        "flowDays4w": null
+      },
+      {
+        "symbol": "XLE",
+        "name": "能源",
+        "close": 62.82,
+        "pct": 0.19,
+        "ret1w": 1.26,
+        "ret4w": -2.79,
+        "rsi14": 50.44,
+        "pe": null,
+        "aum": null,
+        "shares": null,
+        "nav": null,
+        "flow1w": null,
+        "flow4w": null,
+        "flowDays1w": null,
+        "flowDays4w": null
+      },
+      {
+        "symbol": "XLB",
+        "name": "原物料",
+        "close": 48.86,
+        "pct": 0.66,
+        "ret1w": -1.89,
+        "ret4w": -7.15,
+        "rsi14": 34.44,
+        "pe": null,
+        "aum": null,
+        "shares": null,
+        "nav": null,
+        "flow1w": null,
+        "flow4w": null,
+        "flowDays1w": null,
+        "flowDays4w": null
+      },
+      {
+        "symbol": "XLP",
+        "name": "必需消費",
+        "close": 80.53,
+        "pct": 0.25,
+        "ret1w": -1.86,
+        "ret4w": -5.55,
+        "rsi14": 33.53,
+        "pe": null,
+        "aum": null,
+        "shares": null,
+        "nav": null,
+        "flow1w": null,
+        "flow4w": null,
+        "flowDays1w": null,
+        "flowDays4w": null
+      },
+      {
+        "symbol": "XLU",
+        "name": "公用事業",
+        "close": 39.83,
+        "pct": 0.38,
+        "ret1w": 0.81,
+        "ret4w": -7.44,
+        "rsi14": 34.16,
+        "pe": null,
+        "aum": null,
+        "shares": null,
+        "nav": null,
+        "flow1w": null,
+        "flow4w": null,
+        "flowDays1w": null,
+        "flowDays4w": null
+      },
+      {
+        "symbol": "XLRE",
+        "name": "房地產",
+        "close": 40.81,
+        "pct": 0.32,
+        "ret1w": -1.8,
+        "ret4w": -7.77,
+        "rsi14": 21.68,
+        "pe": null,
+        "aum": null,
+        "shares": null,
+        "nav": null,
+        "flow1w": null,
+        "flow4w": null,
+        "flowDays1w": null,
+        "flowDays4w": null
+      }
+    ]
+  }
 }
