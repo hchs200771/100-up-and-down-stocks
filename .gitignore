@@ -13,6 +13,8 @@ data/analysis-latest.json
 data/report-latest.html
 data/history.json
 data/memory/
+# 財經 KOL：已讀狀態、逐字稿快取、每日重點（本機狀態，重抓即可）
+data/kol/
 data/tmp/
 data/logs/
 data/price-history/

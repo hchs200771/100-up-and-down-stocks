@@ -24,6 +24,9 @@ FINALIZER_MODEL="${CODEX_FINALIZER_MODEL:-gpt-5.6-sol}"
 # 國際情勢 worker：與族群 research 同級的輕量模型（搜尋＋短文）
 INTL_MODEL="${CODEX_INTL_MODEL:-${CODEX_GROUP_WORKER_MODEL:-gpt-5.6-luna}}"
 INTL_TIMEOUT_SECONDS="${CODEX_INTL_TIMEOUT_SECONDS:-600}"
+# KOL worker：讀逐字稿寫摘要，屬輕量工作，跟國際情勢 worker 用同級模型
+KOL_PROMPT="$PROJECT_DIR/scripts/prompts/kol-brief-worker.md"
+KOL_MODEL="${CODEX_KOL_MODEL:-$INTL_MODEL}"
 REFINE_GROUP_TASKS="${CODEX_REFINE_GROUP_TASKS:-1}"
 CONTROLLER_TIMEOUT_SECONDS="${CODEX_CONTROLLER_TIMEOUT_SECONDS:-900}"
 # 族群研究 worker 的同時執行數。研究階段是「一個族群一個 codex 子行程」，
@@ -319,7 +322,7 @@ fi
 # 每個都用 timed 包起來，事後看 timing 表就知道該優化誰。
 # 失敗一律只 warn：這些是加值分頁，不該擋住主流程。
 if stage_enabled fetch; then
-  log "進度 1.2/5：背景平行抓輔助資料（指數貢獻／融資選擇權／集保／國際／信用利差／RRG／設質+CB）"
+  log "進度 1.2/5：背景平行抓輔助資料（指數貢獻／融資選擇權／集保／國際／信用利差／RRG／設質+CB／KOL）"
 
   timed index-contribution run_tsx scripts/build-index-contribution.ts \
     || log "[warn] build-index-contribution.ts failed; 指數貢獻分頁略過，不影響其他區塊" &
@@ -386,6 +389,26 @@ if stage_enabled fetch; then
       || log "[warn] fetch-monthly-revenue.ts failed; 月營收動能沿用上次結果"
     timed revenue-momentum run_tsx scripts/build-revenue-momentum.ts \
       || log "[warn] build-revenue-momentum.ts failed; 月營收動能沿用上次結果"
+  ) &
+  AUX_PIDS="$AUX_PIDS $!"
+
+  # 財經 KOL：抓 Podcast/YouTube 新節目（含字幕）→ worker 整理重點。整段跟主流程無關，
+  # 背景跑、send 前才收；送信前由 attach-kol 併進 analysis。失敗只是沒有 KOL 分頁。
+  (
+    rm -f "$TMP_DIR/kol-items.json" "$TMP_DIR/kol-brief.json"
+    timed kol-fetch run_tsx scripts/fetch-kol-feeds.ts \
+      || log "[warn] fetch-kol-feeds.ts failed; KOL 分頁略過"
+    if [ -f "$TMP_DIR/kol-items.json" ]; then
+      KOL_PROMPT_FILE="$(mktemp "$TMP_DIR/codex-kol-prompt-XXXXXX")"
+      {
+        echo "（執行環境：Codex。下文的「Write 工具」改用 shell 或 apply_patch 寫檔。）"
+        echo
+        cat "$KOL_PROMPT"
+      } > "$KOL_PROMPT_FILE"
+      timed kol-brief run_codex_prompt_with_timeout "$KOL_MODEL" "$KOL_PROMPT_FILE" 600 \
+        || log "[warn] KOL worker 非零退出；KOL 分頁可能略過"
+      rm -f "$KOL_PROMPT_FILE"
+    fi
   ) &
   AUX_PIDS="$AUX_PIDS $!"
 
@@ -591,6 +614,7 @@ if stage_enabled send; then
     for _p in $AUX_PIDS; do wait "$_p" 2>/dev/null || true; done
     log "進度 4.5/5：輔助資料全部結束"
   fi
+  run_tsx scripts/attach-kol.ts || log "[warn] attach-kol.ts failed; 報告將沒有 KOL 分頁"
 
   timed stock-picks run_tsx scripts/build-stock-picks.ts || log "[warn] build-stock-picks.ts failed; 終極選股池分頁略過，不影響其他區塊"
   # 前 5 名前瞻追蹤（docs/wide-market-scan-conclusion.md）：只更新 data/stock-picks-backtest.json，失敗不影響報告
