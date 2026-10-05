@@ -9,12 +9,12 @@ import { resolve } from "node:path";
  * 全文來源（由好到差）：
  * 1. YouTube 自動字幕（yt-dlp，免金鑰）。財經M平方的 Podcast 也會上 YouTube 且 YouTube 是超集，
  *    所以 M平方只追 YouTube：同一集不重複處理，還順便拿到逐字稿。
- * 2. Podcast 音檔轉文字：只在有設定 KOL_TRANSCRIBE_CMD 時才做（見下方），否則跳過。
+ * 2. Podcast 音檔轉文字：機器上有 mlx_whisper（Apple Silicon）就自動做，沒有就跳過（見下方）。
  * 3. 節目說明（show notes）：一定拿得到，但股癌這類說明很短，判讀會比較淺，報告上會標註。
  *
- * KOL_TRANSCRIBE_CMD：一段 shell 指令，$1 = 音檔路徑、$2 = 要寫出的純文字檔路徑。例：
- *   KOL_TRANSCRIBE_CMD='mlx_whisper "$1" --model mlx-community/whisper-large-v3-turbo --language zh -f txt -o "$(dirname "$2")" && mv "$(dirname "$2")/$(basename "${1%.*}").txt" "$2"'
- * 轉好的逐字稿會快取在 data/kol/transcripts/，重跑不會重轉。
+ * 轉文字指令：預設用 DEFAULT_TRANSCRIBE_CMD（mlx_whisper，本機跑、免金鑰），偵測到 mlx_whisper
+ * 才啟用。要換別的工具就設 KOL_TRANSCRIBE_CMD（一段 shell 指令，$1 = 音檔、$2 = 要寫出的純文字檔），
+ * 設成 off 則完全關閉。轉好的逐字稿會快取在 data/kol/transcripts/，重跑不會重轉。
  *
  * 任何一個來源失敗只 warn，不影響其他來源，也不影響主報告。
  */
@@ -38,7 +38,24 @@ const LOOKBACK_DAYS = Number(process.env.KOL_LOOKBACK_DAYS ?? 7);
 const MAX_PER_SOURCE = Number(process.env.KOL_MAX_PER_SOURCE ?? 3);
 const MAX_TEXT_CHARS = 40000;
 const YTDLP = process.env.KOL_YTDLP || "yt-dlp";
-const TRANSCRIBE_CMD = process.env.KOL_TRANSCRIBE_CMD || "";
+// mlx_whisper 會把結果寫成「輸出目錄/音檔主檔名.txt」。音檔和 $2 同目錄、同主檔名
+// （見 podcastTranscript），所以寫出來的正好就是 $2，不用再搬。
+const DEFAULT_TRANSCRIBE_CMD =
+  'mlx_whisper "$1" --model mlx-community/whisper-large-v3-turbo --language zh --output-format txt --output-dir "$(dirname "$2")"';
+
+function resolveTranscribeCmd(): string {
+  const env = process.env.KOL_TRANSCRIBE_CMD;
+  if (env === "off") return "";
+  if (env) return env;
+  try {
+    execFileSync("sh", ["-c", "command -v mlx_whisper"], { stdio: "ignore" });
+    return DEFAULT_TRANSCRIBE_CMD;
+  } catch {
+    return "";
+  }
+}
+
+const TRANSCRIBE_CMD = resolveTranscribeCmd();
 
 const cwd = process.cwd();
 const kolDir = resolve(cwd, "data/kol");
@@ -145,7 +162,8 @@ async function podcastTranscript(audioUrl: string, outFile: string): Promise<str
   if (!TRANSCRIBE_CMD) return "";
   const audioFile = outFile.replace(/\.txt$/, ".mp3");
   try {
-    const res = await fetch(audioUrl, { redirect: "follow" });
+    // Buzzsprout 等 CDN 不帶 User-Agent 會回 403
+    const res = await fetch(audioUrl, { redirect: "follow", headers: { "User-Agent": "Mozilla/5.0" } });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     writeFileSync(audioFile, Buffer.from(await res.arrayBuffer()));
     execFileSync("sh", ["-c", TRANSCRIBE_CMD, "kol-transcribe", audioFile, outFile], { stdio: "ignore", timeout: 1_800_000 });
@@ -175,6 +193,7 @@ function readTradingDate(): string {
 async function main() {
   mkdirSync(transcriptDir, { recursive: true });
   mkdirSync(resolve(cwd, "data/tmp"), { recursive: true });
+  console.log(`fetch-kol-feeds: podcast 轉文字 ${TRANSCRIBE_CMD ? "啟用" : "未啟用（找不到 mlx_whisper，只用節目說明）"}`);
   const tradingDate = readTradingDate();
   const seen: Record<string, string> = existsSync(seenPath) ? JSON.parse(readFileSync(seenPath, "utf8")) : {};
   const cutoff = Date.now() - LOOKBACK_DAYS * 86400_000;
