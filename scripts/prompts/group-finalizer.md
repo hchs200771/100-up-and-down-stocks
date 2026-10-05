@@ -2,15 +2,16 @@
 
 `data/tmp/analysis-skeleton.json` 已經由腳本把 task 與 worker result 機械合併好了：族群配對、story fallback、弱勢合併、stage 判定、entryScore 的 timing / chips / risk 三軸都已經填入。**不要再去讀 `data/tmp/group-tasks/` 或 `data/tmp/group-results/` 的個別檔案**，那些工作已經做完了。
 
-你要做的是骨架做不到、需要產業判斷的部分：`trend` 軸、`entryRationale`、被標記的 story、`summary`、`longTermStrategy`。
+你要做的是骨架做不到、需要產業判斷的部分：`trend` 軸、`entryRationale`、被標記的 story、`summary`、`longTermStrategy`、`playbook`（操作建議）。
 
 目標：
 1. 讀取 `data/market-latest.json`
 2. 讀取 `data/tmp/analysis-skeleton.json`
 3. 補上需要判斷的欄位，寫成 `data/analysis-latest.json`
 4. 另寫出獨立的長線策略判斷 `longTermStrategy`
-5. 寫入 `data/memory/<tradingDate>.md`
-6. 最後簡短回報
+5. 寫出操作建議 `playbook`
+6. 寫入 `data/memory/<tradingDate>.md`
+7. 最後簡短回報
 
 重要限制：
 - 不要重新抓市場資料。
@@ -107,7 +108,8 @@ Step 6. 寫入 `data/analysis-latest.json`，格式必須是：
   "gainers": [{"category":"...","stocks":["名稱(代號)"],"story":"...","confidence":"high","stage":"擴散","entryScore":81,"scoreBreakdown":{"trend":38,"timing":25,"chips":18,"risk":0},"entryAction":"標準持有","entryRationale":"..."}],
   "losers": [{"category":"...","stocks":["名稱(代號)"],"story":"...","confidence":"medium","retreatSignal":true}],
   "summary": "...",
-  "longTermStrategy": "..."
+  "longTermStrategy": "...",
+  "playbook": "..."
 }
 ```
 
@@ -119,6 +121,7 @@ Step 6. 寫入 `data/analysis-latest.json`，格式必須是：
 - `entryScore`（強勢族群必填，弱勢族群不輸出）：0-100 整數
 - `scoreBreakdown`（有 `entryScore` 時必填）：`{"trend":A,"timing":B,"chips":C,"risk":D}`，四項相加須等於 `entryScore`；`trend` 不可留 `null`
 - `entryAction` / `entryRationale`（有 `entryScore` 時必填）
+- `playbook`：見 Step 9，純文字，段落之間用 `\n` 分隔
 - **`storySource`、`needsRewrite`、`signals`、`alsoInLosers` 是骨架的工作欄位，不要寫進 `analysis-latest.json`**
 
 Step 7. 撰寫 `summary`：
@@ -149,7 +152,18 @@ Step 8. 撰寫 `longTermStrategy`：
 - 對短線題材要明確降級：槓桿/反向商品、DR、資產經營權、單一公司事件、新掛牌籌碼、純低基期補漲，不要寫成長線主線，明確說明不列入長線核心；這類只可當短線輪動，不要用長線主線的持股邏輯處理
 - 若 `data/scorecard.json` 的 `records` 非空，在結尾用一句自然語句帶出系統近期命中狀況（例如「近期標記擴散的族群 T+5 平均報酬 X%，持股信心維持正向」）；`records` 為空就完全不提
 
-Step 9. 寫入 `data/memory/<tradingDate>.md`，格式：
+Step 9. 撰寫 `playbook`（報告的「🎯 操作建議」分頁）：
+- 用途：把當日結論收斂成可執行的三類，讀者看完就知道明天怎麼處理。只用 skeleton、memory 與你在 Step 4-8 已形成的判斷，不要另外搜尋。
+- 固定三段，依序以 `可現在介入：`、`需關注：`、`避開：` 開頭，段落之間用 `\n` 分隔；某類真的沒有就寫「今日無」，不要硬湊。
+- 每段最多 3 個族群；每個族群寫成一句：族群名＋1-2 檔代表股（用股票名稱，不要代號）＋為什麼放這一類＋失效或轉換條件（例如「跌破族群龍頭前低就降級」「連 2 日擴散再升級」）。
+- 分類必須與 Step 5 一致，不可互相矛盾：
+  - `可現在介入`：只放 `entryAction` 為 `核心加碼` 或 `標準持有`、且 `stage` 為 `啟動` 或 `擴散` 的強勢族群。
+  - `需關注`：`觀察不追` 的強勢族群、證據不足但具題材的新族群，或帶 `alsoInLosers: true`、需要判斷換手或分化的族群。
+  - `避開`：`不碰減碼`、`stage` 為 `高潮` 或 `退潮`、帶 `retreatSignal` 的弱勢族群，以及含 `overnightDump` 或處置／注意股集中的族群。
+- 全文 300 字內，操盤語氣、自然語句，不要表格、不要 markdown 符號、不要逐軸報分數。
+- 這是依當日訊號整理的觀察清單，不是投資建議；不要寫具體價位或部位比例。
+
+Step 10. 寫入 `data/memory/<tradingDate>.md`，格式：
 ```md
 ---
 date: YYYY-MM-DD
@@ -169,7 +183,7 @@ timestamp: ...
 - 類別: N檔 — 代表股...
 ```
 
-Step 10. 最後簡短回報：
+Step 11. 最後簡短回報：
 - 當日時間戳
 - 強勢幾組 / 弱勢幾組
 - 改寫了幾段 story（skeleton 標 `needsRewrite` 的數量）
