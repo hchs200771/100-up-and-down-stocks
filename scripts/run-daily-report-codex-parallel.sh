@@ -18,6 +18,8 @@ START_STAGE="${CODEX_REPORT_START_STAGE:-fetch}"
 CONTROLLER_MODEL="${CODEX_CONTROLLER_MODEL:-gpt-6-astra}"
 CONTROLLER_SPLIT="${CODEX_CONTROLLER_SPLIT:-1}"
 FINALIZER_MODEL="${CODEX_FINALIZER_MODEL:-gpt-5.5}"
+KOL_PROMPT="$PROJECT_DIR/scripts/prompts/kol-brief-worker.md"
+KOL_MODEL="${CODEX_KOL_MODEL:-$FINALIZER_MODEL}"
 REFINE_GROUP_TASKS="${CODEX_REFINE_GROUP_TASKS:-1}"
 CONTROLLER_TIMEOUT_SECONDS="${CODEX_CONTROLLER_TIMEOUT_SECONDS:-900}"
 # 族群研究 worker 的同時執行數。研究階段是「一個族群一個 codex 子行程」，
@@ -255,7 +257,7 @@ log "進度 1/5：已經抓回上市/上櫃資料，交易日 $(market_trading_d
 # 每個都用 timed 包起來，事後看 timing 表就知道該優化誰。
 # 失敗一律只 warn：這些是加值分頁，不該擋住主流程。
 if stage_enabled fetch; then
-  log "進度 1.2/5：背景平行抓輔助資料（指數貢獻／融資選擇權／集保／國際／信用利差／RRG／設質+CB）"
+  log "進度 1.2/5：背景平行抓輔助資料（指數貢獻／融資選擇權／集保／國際／信用利差／RRG／設質+CB／KOL）"
 
   timed index-contribution run_tsx scripts/build-index-contribution.ts \
     || log "[warn] build-index-contribution.ts failed; 指數貢獻分頁略過，不影響其他區塊" &
@@ -295,6 +297,19 @@ if stage_enabled fetch; then
   # 設質+CB：週更且同 ISO 週內冪等（重跑會直接用上次結果），每天跑只有一次真的抓。
   timed cb-pledge run_tsx scripts/screen-cb-pledge.ts \
     || log "[warn] screen-cb-pledge.ts failed; 設質+CB 子頁沿用上次結果" &
+  AUX_PIDS="$AUX_PIDS $!"
+
+  # 財經 KOL：抓 Podcast/YouTube 新節目（含字幕）→ worker 整理重點。整段跟主流程無關，
+  # 背景跑、send 前才收；送信前由 attach-kol 併進 analysis。失敗只是沒有 KOL 分頁。
+  (
+    rm -f "$TMP_DIR/kol-items.json" "$TMP_DIR/kol-brief.json"
+    timed kol-fetch run_tsx scripts/fetch-kol-feeds.ts \
+      || log "[warn] fetch-kol-feeds.ts failed; KOL 分頁略過"
+    if [ -f "$TMP_DIR/kol-items.json" ]; then
+      timed kol-brief run_codex_prompt_with_timeout "$KOL_MODEL" "$KOL_PROMPT" 600 \
+        || log "[warn] KOL worker 非零退出；KOL 分頁可能略過"
+    fi
+  ) &
   AUX_PIDS="$AUX_PIDS $!"
 
 fi
@@ -430,6 +445,7 @@ if stage_enabled send; then
     for _p in $AUX_PIDS; do wait "$_p" 2>/dev/null || true; done
     log "進度 4.5/5：輔助資料全部結束"
   fi
+  run_tsx scripts/attach-kol.ts || log "[warn] attach-kol.ts failed; 報告將沒有 KOL 分頁"
 
   timed stock-picks run_tsx scripts/build-stock-picks.ts || log "[warn] build-stock-picks.ts failed; 終極選股池分頁略過，不影響其他區塊"
   log "進度 5/5：開始產生 HTML 並寄送報告"

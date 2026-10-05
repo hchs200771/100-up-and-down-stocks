@@ -127,6 +127,24 @@ interface IntlBlock {
   credit?: CreditSpread[];
 }
 
+/** attach-kol.ts 併進來的財經 KOL 新內容（kol-brief-worker 的判讀 + 來源連結） */
+interface KolItem {
+  source: string;
+  platform: string;
+  title: string;
+  url: string;
+  publishedAt: string;
+  insight: string;
+  tickers?: string[];
+  stance?: string;
+  basis?: string;
+}
+
+interface KolBlock {
+  overview: string;
+  items: KolItem[];
+}
+
 /** build-index-contribution.ts 的輸出（data/index-contribution-latest.json） */
 interface StockContribution {
   code: string;
@@ -183,6 +201,7 @@ interface Analysis {
   longTermStrategy?: string;
   playbook?: string;
   intl?: IntlBlock;
+  kol?: KolBlock;
   rrg?: RrgBlock;
 }
 
@@ -926,6 +945,48 @@ function renderIntl(intl: IntlBlock | null | undefined): string {
       <h3 style="margin-top:0; color:#0369a1;">🌐 國際情勢</h3>
       ${tableHtml}
       ${summaryHtml}
+    </div>`;
+}
+
+function escHtml(s: string): string {
+  return String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]!);
+}
+
+/**
+ * 財經 KOL 觀點：只列「上次報告之後的新節目」，沒有新內容時整個分頁不出現。
+ * 標題與連結來自外部 RSS，一律 escape；insight 是 worker 寫的摘要，不是原文。
+ */
+function renderKol(kol: KolBlock | null | undefined): string {
+  if (!kol || !kol.items || kol.items.length === 0) return "";
+  const stanceColor: Record<string, string> = { 偏多: "#dc2626", 偏空: "#16a34a", 中性: "#6b7280" };
+  const cards = kol.items
+    .map((it) => {
+      const color = stanceColor[it.stance ?? ""] ?? "#6b7280";
+      const stance = it.stance
+        ? `<span style="display:inline-block; font-size:11px; font-weight:bold; color:${color}; border:1px solid ${color}; border-radius:999px; padding:0 8px; margin-left:6px;">${escHtml(it.stance)}</span>`
+        : "";
+      const tickers = it.tickers && it.tickers.length > 0
+        ? `<div style="font-size:12px; color:#6b7280; margin-top:4px;">提到：${it.tickers.map(escHtml).join("、")}</div>`
+        : "";
+      const notesOnly = it.basis === "notes"
+        ? `<span style="font-size:11px; color:#9ca3af;">（僅依節目說明，未取得逐字稿）</span>`
+        : "";
+      return `<div style="border-top:1px solid #e9d5ff; padding:10px 0;">
+        <div style="font-size:13px;"><strong style="color:#6b21a8;">${escHtml(it.source)}</strong>${stance} <span style="color:#9ca3af; font-size:12px;">${escHtml(it.publishedAt)}</span></div>
+        <div style="font-size:13px; margin:2px 0 4px;"><a href="${escHtml(it.url)}" style="color:#7c3aed;">${escHtml(it.title)}</a></div>
+        <div style="line-height:1.6;">${escHtml(it.insight).replace(/\n/g, "<br>")} ${notesOnly}</div>
+        ${tickers}
+      </div>`;
+    })
+    .join("");
+  const overview = kol.overview
+    ? `<p style="line-height:1.6; margin:0 0 6px;">${escHtml(kol.overview).replace(/\n/g, "<br>")}</p>`
+    : "";
+  return `<div style="background-color:#faf5ff; border:1px solid #e9d5ff; padding:15px; border-radius:8px; margin-bottom:20px;">
+      <h3 style="margin-top:0; color:#6b21a8;">🎙️ KOL 觀點</h3>
+      ${overview}
+      ${cards}
+      <div style="font-size:11px; color:#9ca3af; margin-top:6px;">以上為節目內容的 AI 摘要，是他人觀點、不是事實，也不是投資建議；細節以原節目為準。</div>
     </div>`;
 }
 
@@ -1849,6 +1910,7 @@ const TAB_GUIDE: Record<string, string> = {
   "🔄 族群輪動": "中期資金在族群之間怎麼輪動（RRG 四象限）。看的是趨勢，不是單日漲跌。",
   "🏦 大戶籌碼": "集保大戶這週買了什麼。可切「背離（籌碼先動、價還沒動）」與「同向（籌碼與趨勢一致）」，門檻 200~1000 張可調。週資料。",
   "🌐 國際情勢": "美股、亞股、原物料、匯率與信用利差——台股開盤前的外部條件。",
+  "🎙️ KOL 觀點": "追蹤的財經 Podcast／YouTube 上次報告後的新節目重點，對照今天盤面。只在有新節目時出現。",
   "🧭 長線策略": "跳出當日波動，長線的進出場想法與部位思考。",
   "🏆 終極選股池": "全部訊號統合後的最終結論：長線 10 檔＋短線 10 檔，含入選理由與進出場計畫。",
   "🔖 圖例說明": "報告裡各種標記、badge、顏色代表什麼意思。",
@@ -1890,7 +1952,7 @@ const WEB_CSS = `<style>
 </style>`;
 
 /** 建議的閱讀順序：由外而內、由結果到原因，最後才是可以動手的結論。 */
-const READ_ORDER = ["🌐 國際情勢", "📊 市場總覽", "⚖️ 指數貢獻", "🔥 上漲族群", "🔄 族群輪動", "🏦 大戶籌碼", "🎯 操作建議", "🏆 終極選股池"];
+const READ_ORDER = ["🌐 國際情勢", "🎙️ KOL 觀點", "📊 市場總覽", "⚖️ 指數貢獻", "🔥 上漲族群", "🔄 族群輪動", "🏦 大戶籌碼", "🎯 操作建議", "🏆 終極選股池"];
 
 /**
  * Email 版的段落順序，與網頁版（READ_ORDER）**刻意不同**。
@@ -1906,7 +1968,7 @@ const READ_ORDER = ["🌐 國際情勢", "📊 市場總覽", "⚖️ 指數貢�
  * 改動線時**兩張表都要看**：READ_ORDER 管網頁的分頁與「建議第 N 站」徽章，
  * 這張只管信件的段落順序。
  */
-const EMAIL_ORDER = ["🌐 國際情勢", "📊 市場總覽", "🔥 上漲族群", "🎯 操作建議", "🏆 終極選股池", "⚖️ 指數貢獻", "🔄 族群輪動", "🏦 大戶籌碼"];
+const EMAIL_ORDER = ["🌐 國際情勢", "📊 市場總覽", "🔥 上漲族群", "🎯 操作建議", "🏆 終極選股池", "🎙️ KOL 觀點", "⚖️ 指數貢獻", "🔄 族群輪動", "🏦 大戶籌碼"];
 
 /**
  * 把完整版 HTML 壓成信件版。**只拿掉信件本來就顯示不出來的東西**，不動看得見的內容。
@@ -1994,7 +2056,7 @@ function renderHome(labels: string[], date: string, order: string[] = READ_ORDER
       title: "📅 一日市場總覽",
       hint: "每天更新的市場背景：外部條件 → 大盤儀表板 → 指數是誰推的。",
       bg: "#eff6ff", border: "#bfdbfe", titleColor: "#1d4ed8",
-      labels: ["🌐 國際情勢", "📊 市場總覽", "⚖️ 指數貢獻"],
+      labels: ["🌐 國際情勢", "🎙️ KOL 觀點", "📊 市場總覽", "⚖️ 指數貢獻"],
     },
     {
       title: "🐢 非每日變動",
@@ -2075,6 +2137,7 @@ function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName
     : "";
   const marketDashboardHtml = renderMarketDashboard(market, retailHistory, marginHistory, mo);
   const intlHtml = renderIntl(a.intl);
+  const kolHtml = renderKol(a.kol);
   const rrgHtml = renderRrg(a.rrg);
   const contribHtml = renderIndexContribution(contrib);
   const tdccHtml = renderTdcc(tdcc);
@@ -2118,6 +2181,7 @@ function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName
     // 終極選股池：全訊號統合後的最終結論，動線上排在操作建議之後（先看族群層級的結論，再看個股層級的收斂）
     { label: "🏆 終極選股池", html: renderPicks(picks ?? null, forEmail) },
     { label: "🌐 國際情勢", html: intlHtml },
+    { label: "🎙️ KOL 觀點", html: kolHtml },
     { label: "🧭 長線策略", html: longTermStrategyHtml },
     // 圖例/評分說明只有信件版還是獨立段落（見上方 groupGHtml 的說明）
     ...(forEmail

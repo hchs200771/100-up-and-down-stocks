@@ -11,6 +11,8 @@ CONTROLLER_PROMPT="$PROJECT_DIR/scripts/prompts/group-task-controller.md"
 FINALIZER_PROMPT="$PROJECT_DIR/scripts/prompts/group-finalizer.md"
 INTL_PROMPT="$PROJECT_DIR/scripts/prompts/intl-brief-worker.md"
 INTL_MODEL="${CLAUDE_INTL_MODEL:-sonnet}"
+KOL_PROMPT="$PROJECT_DIR/scripts/prompts/kol-brief-worker.md"
+KOL_MODEL="${CLAUDE_KOL_MODEL:-sonnet}"
 WORKER_RUNNER="$PROJECT_DIR/scripts/run-claude-group-workers.sh"
 TMP_DIR="$PROJECT_DIR/data/tmp"
 TASK_DIR="$TMP_DIR/group-tasks"
@@ -248,7 +250,7 @@ if stage_enabled fetch; then
   # 它們的產出只有 send-report 要用，等到那之前才收（見 AUX_PIDS）。
   # 每個都用 timed 包起來，事後看 timing 表就知道該優化誰。
   # 失敗一律只 warn：這些是加值分頁，不該擋住主流程。
-  log "進度 1.2/5：背景平行抓輔助資料（指數貢獻／融資選擇權／集保／國際／信用利差／RRG／設質+CB）"
+  log "進度 1.2/5：背景平行抓輔助資料（指數貢獻／融資選擇權／集保／國際／信用利差／RRG／設質+CB／KOL）"
 
   timed index-contribution run_tsx scripts/build-index-contribution.ts \
     || log "[warn] build-index-contribution.ts failed; 指數貢獻分頁略過，不影響其他區塊" &
@@ -288,6 +290,19 @@ if stage_enabled fetch; then
   # 設質+CB：週更且同 ISO 週內冪等（重跑會直接用上次結果），每天跑只有一次真的抓。
   timed cb-pledge run_tsx scripts/screen-cb-pledge.ts \
     || log "[warn] screen-cb-pledge.ts failed; 設質+CB 子頁沿用上次結果" &
+  AUX_PIDS="$AUX_PIDS $!"
+
+  # 財經 KOL：抓 Podcast/YouTube 新節目（含字幕）→ worker 整理重點。整段跟主流程無關，
+  # 背景跑、send 前才收；送信前由 attach-kol 併進 analysis。失敗只是沒有 KOL 分頁。
+  (
+    rm -f "$TMP_DIR/kol-items.json" "$TMP_DIR/kol-brief.json"
+    timed kol-fetch run_tsx scripts/fetch-kol-feeds.ts \
+      || log "[warn] fetch-kol-feeds.ts failed; KOL 分頁略過"
+    if [ -f "$TMP_DIR/kol-items.json" ]; then
+      timed kol-brief run_claude_prompt_with_timeout "$KOL_PROMPT" 600 "$KOL_MODEL" \
+        || log "[warn] KOL worker 非零退出；KOL 分頁可能略過"
+    fi
+  ) &
   AUX_PIDS="$AUX_PIDS $!"
 fi
 
@@ -453,6 +468,7 @@ if stage_enabled send; then
     for _p in $AUX_PIDS; do wait "$_p" 2>/dev/null || true; done
     log "進度 4.5/5：輔助資料全部結束"
   fi
+  run_tsx scripts/attach-kol.ts || log "[warn] attach-kol.ts failed; 報告將沒有 KOL 分頁"
 
   # 選股池吃 analysis + scorecard + RRG + 設質CB，必須排在它們全部產出之後、送信之前。
   timed stock-picks run_tsx scripts/build-stock-picks.ts \
