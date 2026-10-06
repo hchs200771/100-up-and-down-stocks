@@ -35,6 +35,7 @@ interface FetchedItem {
   url: string;
   publishedAt: string;
   basis: string;
+  deferred?: boolean;
 }
 
 interface BriefItem {
@@ -87,9 +88,10 @@ function main() {
   const seen = readJson<Record<string, string>>(seenPath) ?? {};
   // 只標記「上了報告」或「已有逐字稿仍被判定無料」的節目。只有節目說明而被跳過的
   // （常見是 YouTube 字幕還沒生出來）留著，lookback 期間內隔天再試一次。
+  // 轉文字額度用完而延後的（deferred）即使上了報告也先不標，下次有逐字稿再重新判讀。
   const used = new Set(items.map((it) => it.url));
   for (const it of fetched.items) {
-    if (!seen[it.id] && (used.has(it.url) || it.basis === "transcript")) seen[it.id] = day;
+    if (!seen[it.id] && !it.deferred && (used.has(it.url) || it.basis === "transcript")) seen[it.id] = day;
   }
   writeFileSync(seenPath, `${JSON.stringify(seen, null, 2)}\n`, "utf8");
 
