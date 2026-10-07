@@ -2,7 +2,8 @@
 set -u
 
 # Publish the daily report to GitHub Pages.
-# Assembles data/site/ from the latest report, commits it, and pushes to main;
+# Assembles data/site/ from the latest report, commits it together with the
+# accumulated data history (HISTORY_PATHS below), and pushes to main;
 # the "Deploy report to GitHub Pages" workflow then publishes it.
 # Skips gracefully (exit 0) when there is nothing new to publish.
 
@@ -49,14 +50,33 @@ fi
 [ -f "$PROJECT_DIR/data/broker-watch.html" ] && cp "$PROJECT_DIR/data/broker-watch.html" "$SITE_DIR/broker-watch.html"
 node --import tsx "$SCRIPT_DIR/sync-site-nav.ts" "$SITE_DIR"
 
-git add data/site
+# 累積型的歷史資料跟網站一起 commit，換一台機器 pull 下來就能接著跑、也能直接回測。
+# 只放「重抓很慢或抓不回來」的：Google News 只能往回查約 30 天、FactSet 速報回補要一小時、
+# 月營收 100 多個月；*-latest.json 與子頁 HTML 每次都會重產，不在這裡（網站副本在 data/site）。
+HISTORY_PATHS=(
+  data/target-price-history
+  data/revenue-history
+  data/financials-history
+  data/revenue-decline-history
+  data/stock-picks-history
+  data/tdcc-history
+  data/cb-pledge-history
+  data/broker-watch-history
+  data/market-history.json
+  data/margin-history.json
+  data/sector-flows-history.json
+)
+COMMIT_PATHS=(data/site)
+for p in "${HISTORY_PATHS[@]}"; do [ -e "$p" ] && COMMIT_PATHS+=("$p"); done
 
-if git diff --cached --quiet -- data/site; then
-  echo "[publish] data/site unchanged — nothing to publish."
+git add -- "${COMMIT_PATHS[@]}"
+
+if git diff --cached --quiet -- "${COMMIT_PATHS[@]}"; then
+  echo "[publish] data/site and history unchanged — nothing to publish."
   exit 0
 fi
 
-git commit -m "chore: publish daily report site $(date +%Y-%m-%d)" -- data/site
+git commit -m "chore: publish daily report site $(date +%Y-%m-%d)" -- "${COMMIT_PATHS[@]}"
 if ! git push origin main; then
   echo "[publish] git push failed — check network/auth." >&2
   exit 1
