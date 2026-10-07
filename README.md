@@ -147,6 +147,7 @@ npm run positions        # 分析凱基期貨持倉（見下方）
 | 全台股因子掃描（2026-10-03） | 17條固定規則；原研究沒有可靠打敗基準的新條件 | [結論](docs/wide-market-scan-conclusion.md)／[數字](docs/factor-experiments-wide-results.md) |
 | 新因子研究（2026-10-05，10-07 補齊行情重跑） | 日間動能、隔夜反轉、組合與大盤殘差代理，持有2／5／20日；補齊行情後配對增益都接近零，不加入正式選股。毛利／總資產尚未測 | [研究判讀](docs/novel-factor-backtest-review.md)／[完整結果](docs/novel-factor-backtest-results.md)／[固定規則](docs/novel-factor-backtest-config.json) |
 | 營收衰退放空（2026-10-07） | 單月 YoY ≤ −20% 下月平均跑輸母體 1.22%（t −5.6），前後段與 50M 門檻皆成立；加 MoM 連 3 月衰退更強；股價跌深後大致仍未反映；毛利率單獨很弱。已接入每日流程：子頁 `/revenue-decline.html`（附個股期貨），另有 `/revenue-industry.html` 看產業族群性 | [結論](docs/revenue-short-backtest.md) |
+| 法人目標價（2026-10-07） | FactSet 共識空間 ≥ 20% 下月沒有超額（−0.66%，t −1.6，前後段方向相反）；共識下修後 60 日約跑輸 3%（t −2.9），上修不顯著。已接入每日流程：子頁 `/target-price.html`（共識＋個別券商新聞標題），以下修為警訊、不當買進訊號 | [結論](docs/target-price-backtest.md) |
 | 週三價平合風險溫度計（2026-10-05，10-07 前瞻檢查） | 2023–2025 高檔訊號有增量，但加盤中振幅控制後不顯著；2026 前瞻幾乎無增量；同星期價平合偏高 2026 仍有 +15pp。最大 OI 區間的位置 2026 反而比同寬置中差 13pp。只當觀察，不用來減碼 | [研究判讀](docs/weekly-straddle-risk-review.md)／[2026 前瞻](docs/weekly-straddle-forward-results.md)／[OI 區間](docs/option-range-review.md)（[2026 前瞻](docs/option-range-forward-results.md)） |
 | 選擇權未平倉 P/C 比與外資選擇權部位（2026-10-07） | 主要和當天及過去漲跌同步，2019–2022 沒有預測力；2023 起 P/C 比偏高後 20 日較強（t +3.3），但方向與前期相反且集中在 2024–2025。外資淨部位樣本外失效。只當行情溫度計 | [研究判讀](docs/option-pc-ratio-review.md)／[回測數字](docs/option-pc-ratio-results.md) |
 

@@ -43,6 +43,8 @@ fi
 # 營收產業族群子頁（scripts/build-revenue-industry.ts 產出；強弱勢是否集中在特定產業）
 [ -f "$PROJECT_DIR/data/revenue-industry.html" ] && cp "$PROJECT_DIR/data/revenue-industry.html" "$SITE_DIR/revenue-industry.html"
 [ -f "$PROJECT_DIR/data/theme-radar.html" ] && cp "$PROJECT_DIR/data/theme-radar.html" "$SITE_DIR/themes.html"
+# 法人目標價子頁（scripts/fetch-target-prices.ts 產出，每日更新）
+[ -f "$PROJECT_DIR/data/target-price.html" ] && cp "$PROJECT_DIR/data/target-price.html" "$SITE_DIR/target-price.html"
 # 贏家分點子頁（scripts/fetch-broker-watch.ts 產出，每日更新）
 [ -f "$PROJECT_DIR/data/broker-watch.html" ] && cp "$PROJECT_DIR/data/broker-watch.html" "$SITE_DIR/broker-watch.html"
 node --import tsx "$SCRIPT_DIR/sync-site-nav.ts" "$SITE_DIR"

@@ -16,17 +16,17 @@ React/TypeScript app plus a Node/TypeScript automation flow for Taiwan stock-mar
 - Run exactly `npm run report`. Use alternate or partial commands only to debug a failed run when requested.
 - Monitor the process and report stage starts/completions, warnings or fallbacks, and a brief heartbeat at least every 60 seconds. Do not dump prompts or large JSON payloads.
 - Once the trading date is known, run `$notion-holdings-health` through the interactive Notion connector; it may proceed alongside the shell pipeline. Include its checked count and attention items in the final result.
-- Write the daily trade and holdings review in two places, not in chat: the full version (with sizes, prices, P&L) as a dated section on the current month's Notion 持股健檢 page, and a public version in `data/trade-review-latest.json` (`date` = trading date; `summary`, `trades[]`, `holdings[]` with `name`/`kind`/`side`/`status`/`note`) before the send stage. The site is public: the JSON must never contain quantities, prices, cost, or P&L.
+- Write the daily trade and holdings review in two places, not in chat: the full version (with sizes, prices, P&L) as a dated section on the current month's Notion 持股健檢 page, and a public version in `data/trade-review-latest.json` (`date` = trading date; `summary`, `trades[]`, `holdings[]` with `name`/`kind`/`side`/`status`/`note`) before the `send` stage. The site is public: the JSON must never contain quantities, prices, cost, or P&L.
 - In Notion holdings, change a position's status or trade details only when the user explicitly mentions that position's change. Unmentioned positions remain held as recorded, but still receive fresh health reviews.
-- Report the trading date and whether the report was sent or published.
+- Report the trading date and whether the report was published to the site. The report is web-only; nothing is emailed.
 
-`npm run report:codex` and `npm run report:claude` select a runtime explicitly; both target fetch → classify → research → finalize → send. Use `.claude/skills/daily-stock-report/SKILL.md` only when the user explicitly asks for the manual Claude skill path. For the Codex pipeline, keep the controller on the strongest model (currently `gpt-6.1-sol`), the finalizer on GPT-5.6 Sol, and per-category research on GPT-5.6 Luna unless the user requests another split.
+`npm run report:codex` and `npm run report:claude` select a runtime explicitly; both target fetch → classify → research → finalize → send → publish (`send` renders the site HTML; it no longer emails). Use `.claude/skills/daily-stock-report/SKILL.md` only when the user explicitly asks for the manual Claude skill path. For the Codex pipeline, keep the controller on the strongest model (currently `gpt-6.1-sol`), the finalizer on GPT-5.6 Sol, and per-category research on GPT-5.6 Luna unless the user requests another split.
 
 ## Task routing
 
 - Classification, worker search, finalizer, or report-prompt changes: use `.claude/skills/stock-report-maintenance/SKILL.md`; start in `scripts/prompts/`, `scripts/refine-group-tasks.ts`, and `scripts/run-daily-report-codex-parallel.sh`. Validate through `npm run report`.
 - Scheduling or launchd: current policy is manual-only. Legacy references are `scripts/launchd/com.maxhuang.daily-stock-report-codex.plist` and `scripts/run-daily-report-codex-parallel.sh`. Do not modify or load `~/Library/LaunchAgents` unless explicitly asked.
-- Analysis schema or email HTML: start with `scripts/send-report.ts`; treat `data/analysis-latest.json` as example input and `data/report-latest.html` as generated output. Preserve the analysis contract unless migration is requested.
+- Analysis schema or report HTML: start with `scripts/send-report.ts`; treat `data/analysis-latest.json` as example input and `data/report-latest.html` as generated output. Preserve the analysis contract unless migration is requested.
 - Frontend work lives in `src/`; the local server entry is `server.ts`.
 
 ## Repository constraints

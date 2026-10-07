@@ -461,6 +461,12 @@ if stage_enabled fetch; then
     || log "[warn] fetch-broker-watch.ts failed; 贏家分點區塊略過" &
   AUX_PIDS="$AUX_PIDS $!"
 
+  # 法人目標價：鉅亨 FactSet 共識速報＋個別券商新聞，算跟收盤的空間，每天累積進
+  # data/target-price-history/。純規則、只打新聞列表 API，幾十個請求。
+  timed target-price run_tsx scripts/fetch-target-prices.ts \
+    || log "[warn] fetch-target-prices.ts failed; 目標價子頁沿用上次結果" &
+  AUX_PIDS="$AUX_PIDS $!"
+
   # 季報毛利率：季更，同一季抓過就 skip，平常這步是空轉。
   # 財報有兩個半月的公布時滯，所以就算天天跑，內容一季才會變一次。
   timed financials run_tsx scripts/fetch-quarterly-financials.ts \
