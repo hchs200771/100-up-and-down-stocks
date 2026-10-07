@@ -33,6 +33,7 @@ export const SUBPAGES: { file: string; label: string }[] = [
   { file: "revenue-decline.html", label: "📉 營收衰退" },
   { file: "revenue-industry.html", label: "🏭 營收族群" },
   { file: "target-price.html", label: "🎯 目標價" },
+  { file: "investor-conf.html", label: "🎤 法說會" },
 ];
 
 /** 太長的標籤在分頁列上用短名。只影響顯示，內部 label 不變。 */
@@ -80,6 +81,7 @@ export const NAV_GROUPS: { title: string; items: NavItem[] }[] = [
       { tab: "🏦 大戶籌碼" },
       { file: "broker-watch.html" },
       { file: "target-price.html" },
+      { file: "investor-conf.html" },
       { file: "revenue.html" },
       { file: "revenue-decline.html" },
       { file: "cb-pledge.html" },

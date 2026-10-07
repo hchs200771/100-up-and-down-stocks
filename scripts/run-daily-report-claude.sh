@@ -400,6 +400,11 @@ if stage_enabled fetch; then
   timed missed-days run_tsx scripts/backfill-missed-days.ts \
     || log "[warn] backfill-missed-days.ts failed; 均線與報酬率可能因缺格而失真"
 
+  # 法說會判讀：簡報下載慢、影音轉文字有額度，可能跑上一小時，所以完全脫離主流程（不進 AUX_PIDS、
+  # 不等它）。它每判讀完一場就更新 data/investor-conf.html，publish 當下跑到哪就發佈到哪，剩下的下次補。
+  bash "$PROJECT_DIR/scripts/start-investor-conf.sh" | tee -a "$LOG_FILE" \
+    || log "[warn] 法說會判讀背景啟動失敗；法說會子頁沿用上次結果"
+
   # 輔助資料：全部只依賴 market-latest.json（或完全獨立的外部來源），彼此之間沒有相依，
   # 所以整批背景平行丟出去，這裡不 wait，直接往下跑分類與 research。
   # 它們的產出只有 send-report 要用，等到那之前才收（見 AUX_PIDS）。

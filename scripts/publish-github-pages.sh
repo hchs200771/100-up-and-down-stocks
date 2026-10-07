@@ -46,6 +46,8 @@ fi
 [ -f "$PROJECT_DIR/data/theme-radar.html" ] && cp "$PROJECT_DIR/data/theme-radar.html" "$SITE_DIR/themes.html"
 # 法人目標價子頁（scripts/fetch-target-prices.ts 產出，每日更新）
 [ -f "$PROJECT_DIR/data/target-price.html" ] && cp "$PROJECT_DIR/data/target-price.html" "$SITE_DIR/target-price.html"
+# 法說會判讀子頁（scripts/fetch-investor-conferences.ts 在背景產出，跑到哪發佈到哪，沒跑完的下次補）
+[ -f "$PROJECT_DIR/data/investor-conf.html" ] && cp "$PROJECT_DIR/data/investor-conf.html" "$SITE_DIR/investor-conf.html"
 # 贏家分點子頁（scripts/fetch-broker-watch.ts 產出，每日更新）
 [ -f "$PROJECT_DIR/data/broker-watch.html" ] && cp "$PROJECT_DIR/data/broker-watch.html" "$SITE_DIR/broker-watch.html"
 node --import tsx "$SCRIPT_DIR/sync-site-nav.ts" "$SITE_DIR"
@@ -55,6 +57,7 @@ node --import tsx "$SCRIPT_DIR/sync-site-nav.ts" "$SITE_DIR"
 # 月營收 100 多個月；*-latest.json 與子頁 HTML 每次都會重產，不在這裡（網站副本在 data/site）。
 HISTORY_PATHS=(
   data/target-price-history
+  data/investor-conf-history
   data/revenue-history
   data/financials-history
   data/revenue-decline-history

@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["headline", "score", "verdict", "reason", "keyNumbers", "guidance", "drivers", "risks", "qaHighlights", "tone", "evidence"],
+  "properties": {
+    "headline": { "type": "string" },
+    "score": { "type": "integer", "minimum": 1, "maximum": 5 },
+    "verdict": { "type": "string", "enum": ["重點關注", "值得留意", "一般", "可略過"] },
+    "reason": { "type": "string" },
+    "keyNumbers": {
+      "type": "array",
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["label", "value"],
+        "properties": {
+          "label": { "type": "string" },
+          "value": { "type": "string" }
+        }
+      }
+    },
+    "guidance": { "type": "string" },
+    "drivers": { "type": "array", "items": { "type": "string" }, "maxItems": 4 },
+    "risks": { "type": "array", "items": { "type": "string" }, "maxItems": 4 },
+    "qaHighlights": { "type": "array", "items": { "type": "string" }, "maxItems": 4 },
+    "tone": { "type": "string", "enum": ["轉佳", "持平", "轉差", "無法判斷"] },
+    "evidence": { "type": "string", "enum": ["簡報+影音", "僅簡報", "僅影音", "簡報多為圖片", "僅摘要"] }
+  }
+}
