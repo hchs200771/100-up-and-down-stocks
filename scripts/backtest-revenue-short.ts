@@ -44,6 +44,8 @@ const SHORT_COST = 0.00665;
 const arg = (name: string) => process.argv.find((a) => a.startsWith(`--${name}=`))?.split("=")[1]
   ?? (process.argv.includes(`--${name}`) ? process.argv[process.argv.indexOf(`--${name}`) + 1] : undefined);
 const MIN_TURNOVER = Number(arg("min-turnover") ?? 20) * 1e6;
+/** 敏感度：排除金融保險（金控營收含投資收益，YoY 波動和本業無關） */
+const EX_FIN = process.argv.includes("--ex-fin");
 /** 一個訊號當月至少要有幾檔，少於這個數那個月不算（單檔運氣太大） */
 const MIN_NAMES = 3;
 const SPLIT = "2023-01";
@@ -94,6 +96,13 @@ function holdReturn(s: StockPanel, entry: number, exit: number): number | null {
   return null;
 }
 
+/** 進場前 60 個交易日的還原報酬（訊號前一天收盤 vs 61 天前收盤）；跨過無法還原的除權就 null */
+function priorReturn(s: StockPanel, entry: number): number | null {
+  const a = entry - 61, b = entry - 1;
+  if (a < 0 || !ok(s.adjustedClose[a]) || !ok(s.adjustedClose[b]) || s.segmentId[a] < 0 || s.segmentId[a] !== s.segmentId[b]) return null;
+  return s.adjustedClose[b] / s.adjustedClose[a] - 1;
+}
+
 /** 前 20 個交易日的平均成交額；整個市場缺檔的日子不算進分母（缺檔≠沒成交） */
 function avgTurnover(s: StockPanel, before: number, marketOk: (i: number) => boolean): number {
   let sum = 0, n = 0;
@@ -116,6 +125,7 @@ interface Feat {
   yoy3m: number | null;   // 近 3 個月合計 YoY（抗農曆年）
   gmYoy: number | null;   // 最新已公布季 毛利率 − 去年同季（pp，小數）
   gmQoq: number | null;
+  prior: number | null;
 }
 
 type Rule = { id: string; label: string; test: (f: Feat) => boolean };
@@ -126,6 +136,11 @@ const RULES: Rule[] = [
   { id: "yoy3each_m20", label: "連 3 月 YoY 都 ≤ −20%", test: (f) => allLe(f.yoys, -0.2) },
   { id: "yoy3m_m20", label: "近 3 月合計 YoY ≤ −20%", test: (f) => f.yoy3m !== null && f.yoy3m <= -0.2 },
   { id: "mom3each_m10", label: "連 3 月 MoM 都 ≤ −10%（字面解讀）", test: (f) => allLe(f.moms, -0.1) },
+  // 2026-10-07 追加（寬鬆版）：連 3 月「有衰退」就算，不設幅度
+  { id: "yoy3each_neg", label: "＋ 連 3 月 YoY 都 < 0", test: (f) => allLe(f.yoys, -1e-9) },
+  { id: "mom3each_neg", label: "＋ 連 3 月 MoM 都 < 0", test: (f) => allLe(f.moms, -1e-9) },
+  { id: "yoy_mom3_neg", label: "＋ 連 3 月 YoY 與 MoM 都 < 0", test: (f) => allLe(f.yoys, -1e-9) && allLe(f.moms, -1e-9) },
+  { id: "yoy20_mom3_neg", label: "＋ 單月 YoY ≤ −20% ＋ 連 3 月 MoM 都 < 0", test: (f) => f.yoy <= -0.2 && allLe(f.moms, -1e-9) },
   { id: "gm_yoy_down", label: "毛利率年減（任何幅度）", test: (f) => f.gmYoy !== null && f.gmYoy < 0 },
   { id: "gm_yoy_m3", label: "毛利率年減 ≥ 3pp", test: (f) => f.gmYoy !== null && f.gmYoy <= -0.03 },
   { id: "gm_both_down", label: "毛利率年減且季減", test: (f) => f.gmYoy !== null && f.gmQoq !== null && f.gmYoy < 0 && f.gmQoq < 0 },
@@ -192,6 +207,10 @@ function main() {
   const quint: Record<string, number[][]> = { yoy3m: [[], [], [], [], []], gmYoy: [[], [], [], [], []] };
   const universeLog: { month: string; entryDate: string; universe: number; ewPct: number; taiexTrPct: number | null }[] = [];
   let missingWindow = 0;
+  const PRIOR_SPLIT_RULES = ["yoy1_m20", "yoy3each_m20", "yoy3each_neg", "yoy_mom3_neg"];
+  const priorSplit: Record<string, { excess: number; n: number }[][]> = Object.fromEntries(PRIOR_SPLIT_RULES.map((id) => [id, [[], [], []]]));
+  const priorWithin: Record<string, number[][]> = Object.fromEntries(PRIOR_SPLIT_RULES.map((id) => [id, [[], [], []]]));
+  const priorBase: number[][] = [[], [], []];
 
   for (const c of cohorts) {
     // TWSE 歷史日檔有缺（2021–2025 被擋過），只要求進出場那兩天兩個市場都在；
@@ -205,6 +224,7 @@ function main() {
     const feats: Feat[] = [];
     for (const [code, row] of Object.entries(snap.stocks)) {
       if (SKIP_INDUSTRIES.has(row.ind) || isTib(row.n) || row.ind === "存託憑證") continue;
+      if (EX_FIN && /金融|保險/.test(row.ind)) continue;
       if (!(row.prevY >= MIN_BASE) || !(row.rev > 0)) continue;
       const s = panel.get(code);
       if (!s) continue;
@@ -232,7 +252,7 @@ function main() {
       feats.push({
         code, ret, ret3: c.exit3 !== null ? holdReturn(s, c.entry, c.exit3) : null,
         yoy: row.rev / row.prevY - 1, yoys, moms,
-        yoy3m: ok3 && sumPrev >= MIN_BASE * 3 ? sum / sumPrev - 1 : null, gmYoy, gmQoq,
+        yoy3m: ok3 && sumPrev >= MIN_BASE * 3 ? sum / sumPrev - 1 : null, gmYoy, gmQoq, prior: priorReturn(s, c.entry),
       });
     }
     if (feats.length < 200) continue;
@@ -251,6 +271,32 @@ function main() {
         excess3: ew3 !== null && h3.length >= MIN_NAMES ? mean(h3.map((f) => f.ret3!)) - ew3 : null,
         names: hit.map((f) => f.code),
       });
+    }
+    // 「股價是不是已經跌完了」：依進場前 60 日報酬在當月母體的三分位，把命中股拆三組，
+    // 各組跟母體平均比。低＝已經跌最多的那 1/3。
+    const priors = feats.filter((f) => f.prior !== null).map((f) => f.prior!).sort((a, b) => a - b);
+    if (priors.length >= 100) {
+      const t1 = priors[Math.floor(priors.length / 3)], t2 = priors[Math.floor(priors.length * 2 / 3)];
+      const bucketOf = (p: number) => (p < t1 ? 0 : p < t2 ? 1 : 2);
+      for (const id of PRIOR_SPLIT_RULES) {
+        const rule = RULES.find((r) => r.id === id)!;
+        const hit = feats.filter((f) => f.prior !== null && rule.test(f));
+        for (let b = 0; b < 3; b++) {
+          const part = hit.filter((f) => bucketOf(f.prior!) === b);
+          if (part.length >= MIN_NAMES) priorSplit[id][b].push({ excess: mean(part.map((f) => f.ret)) - ew, n: part.length });
+        }
+        // 母體本身各三分位的超額（不看營收），用來扣掉「跌深反彈／動能」本身的效果
+        if (id === PRIOR_SPLIT_RULES[0]) for (let b = 0; b < 3; b++) {
+          const part = feats.filter((f) => f.prior !== null && bucketOf(f.prior!) === b);
+          priorBase[b].push(mean(part.map((f) => f.ret)) - ew);
+        }
+        // 同一個價格三分位內，命中 vs 沒命中（最乾淨的比較）
+        for (let b = 0; b < 3; b++) {
+          const inB = feats.filter((f) => f.prior !== null && bucketOf(f.prior!) === b);
+          const h = inB.filter(rule.test), nh = inB.filter((f) => !rule.test(f));
+          if (h.length >= MIN_NAMES && nh.length >= MIN_NAMES) priorWithin[id][b].push(mean(h.map((f) => f.ret)) - mean(nh.map((f) => f.ret)));
+        }
+      }
     }
     // 五分位：看是不是「越差越差」的單調關係，而不是只有門檻那一刀
     for (const key of ["yoy3m", "gmYoy"] as const) {
@@ -280,11 +326,24 @@ function main() {
     quintile: i + 1, months: xs.length, meanExcessPct: xs.length ? +(mean(xs) * 100).toFixed(2) : null, t: tstat(xs) === null ? null : +tstat(xs)!.toFixed(2),
   }))]));
 
+  const BUCKET = ["前60日跌最多 1/3", "中間 1/3", "前60日漲最多 1/3"];
+  const fmtT = (xs: number[]) => (tstat(xs) === null ? "—" : tstat(xs)!.toFixed(2));
+  const priorTable = PRIOR_SPLIT_RULES.map((id) => ({
+    id, label: RULES.find((r) => r.id === id)!.label,
+    buckets: [0, 1, 2].map((b) => {
+      const xs = priorSplit[id][b].map((x) => x.excess), w = priorWithin[id][b];
+      return { bucket: BUCKET[b], months: xs.length, avgNames: xs.length ? +mean(priorSplit[id][b].map((x) => x.n)).toFixed(1) : null,
+        meanExcessPct: xs.length ? +(mean(xs) * 100).toFixed(2) : null, t: xs.length ? +fmtT(xs) : null,
+        withinBucketPct: w.length ? +(mean(w) * 100).toFixed(2) : null, withinT: w.length ? +fmtT(w) : null, withinMonths: w.length };
+    }),
+  }));
+  const priorBaseline = [0, 1, 2].map((b) => ({ bucket: BUCKET[b], meanExcessPct: priorBase[b].length ? +(mean(priorBase[b]) * 100).toFixed(2) : null, t: priorBase[b].length ? +fmtT(priorBase[b]) : null }));
+
   mkdirSync(OUT_DIR, { recursive: true });
   const out = { generatedAt: new Date().toISOString(), minTurnoverNtd: MIN_TURNOVER, shortCostPerMonth: SHORT_COST, split: SPLIT,
     cohorts: universeLog.length, skippedForMissingData: missingWindow, firstMonth: universeLog[0]?.month, lastMonth: universeLog.at(-1)?.month,
-    universe: universeLog, rules: results, quintiles };
-  writeFileSync(`${OUT_DIR}/results${MIN_TURNOVER === 20e6 ? "" : `-t${MIN_TURNOVER / 1e6}`}.json`, JSON.stringify(out, null, 2));
+    universe: universeLog, rules: results, quintiles, priorBaseline, priorTable, exFin: EX_FIN };
+  writeFileSync(`${OUT_DIR}/results${MIN_TURNOVER === 20e6 ? "" : `-t${MIN_TURNOVER / 1e6}`}${EX_FIN ? "-exfin" : ""}.json`, JSON.stringify(out, null, 2));
 
   console.log(`期數 ${universeLog.length}（${out.firstMonth}～${out.lastMonth}，缺資料略過 ${missingWindow}），平均母體 ${Math.round(mean(universeLog.map((u) => u.universe)))} 檔，流動性門檻 ${MIN_TURNOVER / 1e6}M`);
   console.log("規則 | 月數 | 平均檔數 | 月超額% | t | 跑輸率% | 放空淨月報% | 放空年化% | 放空MDD% | 前段超額% | 後段超額% | 3月超額%");
@@ -293,6 +352,10 @@ function main() {
     if (!a) { console.log(`${r.label} | 無樣本`); continue; }
     console.log([r.label, a.months, a.avgNames, a.meanExcessPct, a.t, a.underperformRate, a.shortNetMeanPct, a.shortNetAnnualPct, a.shortMaxDrawdownPct,
       r.before?.meanExcessPct ?? "—", r.after?.meanExcessPct ?? "—", r.excess3mMeanPct ?? "—"].join(" | "));
+  }
+  console.log("母體依前60日報酬三分位（不看營收）: " + priorBaseline.map((b) => `${b.bucket} ${b.meanExcessPct}% (t ${b.t})`).join("  "));
+  for (const r of priorTable) {
+    console.log(`${r.label}｜依前60日報酬拆組：` + r.buckets.map((b) => `${b.bucket}: 對母體 ${b.meanExcessPct}% (t ${b.t}, ${b.months}月, ${b.avgNames}檔)／同組內命中−未命中 ${b.withinBucketPct}% (t ${b.withinT})`).join("  ||  "));
   }
   for (const [k, qs] of Object.entries(quintiles)) console.log(`${k} 五分位（1=最差）: ` + (qs as any[]).map((q) => `Q${q.quintile} ${q.meanExcessPct}% (t ${q.t})`).join("  "));
 }
