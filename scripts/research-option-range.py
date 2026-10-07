@@ -195,14 +195,14 @@ def band_outcomes(lower, upper, daily, settlement, points=None):
     return result
 
 
-def oi_observations(records, settlements, prices, risk_rows):
+def oi_observations(records, settlements, prices, risk_rows, chain_years=range(2019, 2026)):
     grouped=collections.defaultdict(list)
     for record in records:
         if record["date"]<record["expiry"]:
             grouped[(record["date"],record["contract"],record["expiry"])].append(record)
     risk_by_date={r["date"]:r for r in risk_rows}
     chain_by_date={}
-    for year in range(2019,2026):
+    for year in chain_years:
         chain_by_date.update(json.loads((common.CACHE/f"{year}-atm.json").read_text())["chains"])
     output, audit = [], {"non_tuesday_wednesday":0,"invalid_global":0,"invalid_otm":0,"missing_settlement":0}
     for (date,contract,expiry), group in sorted(grouped.items()):

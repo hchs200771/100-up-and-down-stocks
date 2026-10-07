@@ -17,15 +17,15 @@ ENDPOINT = "https://www.twse.com.tw/exchangeReport/MI_5MINS_INDEX"
 SETTLEMENT_ENDPOINT = "https://www.taifex.com.tw/cht/5/optIndxFSP?start_year=2019&start_month=01&end_year=2025&end_month=12"
 
 
-def parse_settlements(source):
+def parse_settlements(source, min_count=300):
     result = {}
     for tr in re.findall(r"<tr\b[^>]*>(.*?)</tr>", source, re.I | re.S):
         cells = [html.unescape(re.sub("<[^>]+>", "", x)).strip()
                  for x in re.findall(r"<td\b[^>]*>(.*?)</td>", tr, re.I | re.S)]
         if len(cells) >= 3 and re.fullmatch(r"\d{4}/\d{2}/\d{2}", cells[0]) and re.fullmatch(r"\d{6}(?:W[1245])?", cells[1]) and cells[2] != "-":
             result[cells[1]] = {"date": cells[0].replace("/", "-"), "value": float(cells[2].replace(",", ""))}
-    if len(result) < 300:
-        raise ValueError(f"incomplete official 2019–2025 settlement table: {len(result)} contracts")
+    if len(result) < min_count:
+        raise ValueError(f"incomplete official settlement table: {len(result)} contracts (expected >= {min_count})")
     return result
 
 
