@@ -79,6 +79,9 @@ function loadPanel() {
   return { calendar, panel, tr, missing: new Set(missing) };
 }
 
+/** 跟 build-revenue-industry.ts 同一套：括號後的說明不算產業名 */
+const indName = (s: string) => s.replace(/[（(].*$/, "").trim() || s;
+
 const ok = (v: number) => Number.isFinite(v) && v > 0;
 
 /**
@@ -117,6 +120,7 @@ function avgTurnover(s: StockPanel, before: number, marketOk: (i: number) => boo
 // ---------- 因子 ----------
 interface Feat {
   code: string;
+  ind: string;
   ret: number;
   ret3: number | null;
   yoy: number;            // 單月 YoY
@@ -211,6 +215,9 @@ function main() {
   const priorSplit: Record<string, { excess: number; n: number }[][]> = Object.fromEntries(PRIOR_SPLIT_RULES.map((id) => [id, [[], [], []]]));
   const priorWithin: Record<string, number[][]> = Object.fromEntries(PRIOR_SPLIT_RULES.map((id) => [id, [[], [], []]]));
   const priorBase: number[][] = [[], [], []];
+  // 產業族群性（2026-10-07 追加，規則與 build-revenue-industry.ts 相同：已公布 ≥5 家、命中 ≥3 家、二項 z ≥ 2）
+  const cluster = { strongInd: [] as number[], weakInd: [] as number[], strongIn: [] as number[], strongOut: [] as number[],
+    strongInVsOut: [] as number[], weakInVsOut: [] as number[], nStrongInd: [] as number[], nWeakInd: [] as number[] };
 
   for (const c of cohorts) {
     // TWSE 歷史日檔有缺（2021–2025 被擋過），只要求進出場那兩天兩個市場都在；
@@ -250,7 +257,7 @@ function main() {
         if (g !== null && gq !== null) gmQoq = g - gq;
       }
       feats.push({
-        code, ret, ret3: c.exit3 !== null ? holdReturn(s, c.entry, c.exit3) : null,
+        code, ind: indName(row.ind), ret, ret3: c.exit3 !== null ? holdReturn(s, c.entry, c.exit3) : null,
         yoy: row.rev / row.prevY - 1, yoys, moms,
         yoy3m: ok3 && sumPrev >= MIN_BASE * 3 ? sum / sumPrev - 1 : null, gmYoy, gmQoq, prior: priorReturn(s, c.entry),
       });
@@ -298,6 +305,33 @@ function main() {
         }
       }
     }
+    {
+      // 族群判定用整份月營收快照（不限流動性），跟子頁一樣
+      const byInd = new Map<string, { n: number; s: number; w: number }>();
+      let n = 0, ns = 0, nw = 0;
+      for (const r of Object.values(snap.stocks)) {
+        if (isTib(r.n) || r.ind === "存託憑證" || !r.ind || !(r.prevY >= MIN_BASE) || !(r.rev > 0)) continue;
+        const y = r.rev / r.prevY - 1, k = indName(r.ind);
+        const g = byInd.get(k) ?? { n: 0, s: 0, w: 0 };
+        g.n++; n++;
+        if (y >= 0.2) { g.s++; ns++; }
+        if (y <= -0.2) { g.w++; nw++; }
+        byInd.set(k, g);
+      }
+      const z = (k: number, m: number, p: number) => (k - m * p) / Math.sqrt(m * p * (1 - p));
+      const strongSet = new Set([...byInd].filter(([, g]) => g.n >= 5 && g.s >= 3 && z(g.s, g.n, ns / n) >= 2).map(([k]) => k));
+      const weakSet = new Set([...byInd].filter(([, g]) => g.n >= 5 && g.w >= 3 && z(g.w, g.n, nw / n) >= 2).map(([k]) => k));
+      cluster.nStrongInd.push(strongSet.size); cluster.nWeakInd.push(weakSet.size);
+      const avg = (xs: Feat[]) => (xs.length >= MIN_NAMES ? mean(xs.map((f) => f.ret)) : null);
+      const push = (arr: number[], v: number | null) => { if (v !== null) arr.push(v); };
+      push(cluster.strongInd, avg(feats.filter((f) => strongSet.has(f.ind))) === null ? null : avg(feats.filter((f) => strongSet.has(f.ind)))! - ew);
+      push(cluster.weakInd, avg(feats.filter((f) => weakSet.has(f.ind))) === null ? null : avg(feats.filter((f) => weakSet.has(f.ind)))! - ew);
+      const st = feats.filter((f) => f.yoy >= 0.2), wk = feats.filter((f) => f.yoy <= -0.2);
+      const si = avg(st.filter((f) => strongSet.has(f.ind))), so = avg(st.filter((f) => !strongSet.has(f.ind)));
+      if (si !== null && so !== null) { cluster.strongIn.push(si - ew); cluster.strongOut.push(so - ew); cluster.strongInVsOut.push(si - so); }
+      const wi = avg(wk.filter((f) => weakSet.has(f.ind))), wo = avg(wk.filter((f) => !weakSet.has(f.ind)));
+      if (wi !== null && wo !== null) cluster.weakInVsOut.push(wi - wo);
+    }
     // 五分位：看是不是「越差越差」的單調關係，而不是只有門檻那一刀
     for (const key of ["yoy3m", "gmYoy"] as const) {
       const xs = feats.filter((f) => f[key] !== null).sort((a, b) => a[key]! - b[key]!);
@@ -339,10 +373,18 @@ function main() {
   }));
   const priorBaseline = [0, 1, 2].map((b) => ({ bucket: BUCKET[b], meanExcessPct: priorBase[b].length ? +(mean(priorBase[b]) * 100).toFixed(2) : null, t: priorBase[b].length ? +fmtT(priorBase[b]) : null }));
 
+  const cs = (xs: number[]) => ({ months: xs.length, meanPct: xs.length ? +(mean(xs) * 100).toFixed(2) : null, t: tstat(xs) === null ? null : +tstat(xs)!.toFixed(2) });
+  const clusterSummary = {
+    avgStrongIndustries: +mean(cluster.nStrongInd).toFixed(1), avgWeakIndustries: +mean(cluster.nWeakInd).toFixed(1),
+    強勢族群產業全部個股對母體: cs(cluster.strongInd), 弱勢族群產業全部個股對母體: cs(cluster.weakInd),
+    強勢個股_在強勢族群內對母體: cs(cluster.strongIn), 強勢個股_不在族群內對母體: cs(cluster.strongOut),
+    強勢個股_族群內減族群外: cs(cluster.strongInVsOut), 弱勢個股_族群內減族群外: cs(cluster.weakInVsOut),
+  };
+
   mkdirSync(OUT_DIR, { recursive: true });
   const out = { generatedAt: new Date().toISOString(), minTurnoverNtd: MIN_TURNOVER, shortCostPerMonth: SHORT_COST, split: SPLIT,
     cohorts: universeLog.length, skippedForMissingData: missingWindow, firstMonth: universeLog[0]?.month, lastMonth: universeLog.at(-1)?.month,
-    universe: universeLog, rules: results, quintiles, priorBaseline, priorTable, exFin: EX_FIN };
+    universe: universeLog, rules: results, quintiles, priorBaseline, priorTable, exFin: EX_FIN, clusterSummary };
   writeFileSync(`${OUT_DIR}/results${MIN_TURNOVER === 20e6 ? "" : `-t${MIN_TURNOVER / 1e6}`}${EX_FIN ? "-exfin" : ""}.json`, JSON.stringify(out, null, 2));
 
   console.log(`期數 ${universeLog.length}（${out.firstMonth}～${out.lastMonth}，缺資料略過 ${missingWindow}），平均母體 ${Math.round(mean(universeLog.map((u) => u.universe)))} 檔，流動性門檻 ${MIN_TURNOVER / 1e6}M`);
@@ -357,6 +399,7 @@ function main() {
   for (const r of priorTable) {
     console.log(`${r.label}｜依前60日報酬拆組：` + r.buckets.map((b) => `${b.bucket}: 對母體 ${b.meanExcessPct}% (t ${b.t}, ${b.months}月, ${b.avgNames}檔)／同組內命中−未命中 ${b.withinBucketPct}% (t ${b.withinT})`).join("  ||  "));
   }
+  console.log("產業族群性: " + JSON.stringify(clusterSummary));
   for (const [k, qs] of Object.entries(quintiles)) console.log(`${k} 五分位（1=最差）: ` + (qs as any[]).map((q) => `Q${q.quintile} ${q.meanExcessPct}% (t ${q.t})`).join("  "));
 }
 

@@ -2348,7 +2348,7 @@ function renderHome(labels: string[], date: string, order: string[] = READ_ORDER
   // 營收產業族群：強弱勢是否集中在特定產業，跟月營收一起更新。
   const industryCard = `<a href="${SITE_URL}revenue-industry.html" style="text-decoration:none; display:block;"><div style="border:1px solid #e5e7eb; border-radius:6px; padding:9px 12px; margin-bottom:6px; background:#fff; font-size:13px; line-height:1.65;">
         <span style="float:right; color:#c7d2fe;">↗</span>
-        <strong style="color:#374151; white-space:nowrap;">🏭 營收產業族群</strong><span style="color:#d1d5db;"> · </span><span style="color:#6b7280; font-size:12px;">營收強勢（YoY≥20%）與弱勢（YoY≤−20%）是否集中在特定產業，看整個產業是在往上還是往下。觀察用，尚未回測。獨立頁面。</span>
+        <strong style="color:#374151; white-space:nowrap;">🏭 營收產業族群</strong><span style="color:#d1d5db;"> · </span><span style="color:#6b7280; font-size:12px;">營收強勢（YoY≥20%）與弱勢（YoY≤−20%）是否集中在特定產業，看整個產業是在往上還是往下。觀察用：回測顯示族群本身對報酬沒有額外預測力。獨立頁面。</span>
       </div></a>`;
 
   // 首頁分組：依「多久變一次」分色塊，讀者可以先看每天會動的，慢變數另外一區。
