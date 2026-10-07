@@ -76,7 +76,8 @@ export function writeResearchSnapshot(output: any): void {
       'scripts/lib/expanded-portfolio.ts', 'scripts/backtest-price-market-events.ts', 'scripts/backtest-wide-market.ts', 'docs/novel-factor-backtest-config.json'].map((path) => [path, digest(path)])),
   };
   mkdirSync('research/novel-factors', { recursive: true });
-  writeFileSync('research/novel-factors/2026-10-05-summary.json', JSON.stringify({ schemaVersion: 1, generatedAt: output.generatedAt,
+  const runDate = new Date(output.generatedAt).toLocaleDateString('sv-SE', { timeZone: 'Asia/Taipei' });
+  writeFileSync(`research/novel-factors/${runDate}-summary.json`, JSON.stringify({ schemaVersion: 1, generatedAt: output.generatedAt,
     decision: 'No new factor adopted; fixed-rule proxy tests do not establish reliable positive incremental returns. Gross profit/assets untested.',
     config: output.config, inputCoverage: output.inputCoverage, blockedFactors: output.blockedFactors, coverage, summaries, fingerprints }, null, 2) + '\n');
 }
@@ -218,7 +219,8 @@ export function main() {
   mkdirSync('data/backtest/novel-factors', { recursive: true });
   writeFileSync('data/backtest/novel-factors/results.json', JSON.stringify(output) + '\n');
   writeResearchSnapshot(output);
-  const lines = ['# 新選股因子固定規則回測（2026-10-05）', '',
+  const runDate = new Date(output.generatedAt).toLocaleDateString('sv-SE', { timeZone: 'Asia/Taipei' });
+  const lines = [`# 新選股因子固定規則回測（${runDate}）`, '',
     '本輪沒有足夠證據支持新增正式選股權重。這只適用於本次固定窗口與代理模型，不能宣稱整個因子家族無效。', '',
     `資料：${calendar[0]}～${calendar.at(-1)}，${panel.size}個歷史代碼、${calendar.length}個交易日；行情來源缺日${sourceMissing.length}筆。訊號起點${config.evaluationStart}。`, '',
     '收盤形成訊號，隔日開盤買進，每次等權前10檔。持有2／5／20個交易日，皆跨日；2日是隔日開盤至再隔日收盤，並非尾盤買、翌日開盤賣。每期完整換倉，買費0.1425%、賣費0.4425%，另測買賣各0.5%不利滑價。', '',
@@ -226,7 +228,9 @@ export function main() {
     '2020–2026已被專案研究看過；後段2024–2026只檢查期間穩定性，不是乾淨樣本外。規則先固定，沒有挑參數。以約60交易日時間區塊bootstrap 10,000次（2／5／20日策略分別30／12／3期），90項報酬／勝率比較做Bonferroni校正。有效期代表執行資料可評估，不等於全期；無法出場的期數列無效，不補成獲利，且不提供不完整連續年化與回撤。', '',
     '毛利／總資產：尚未回測。缺完整歷史資產、TTM毛利、公告時間與當時版本；不能以近期財報回填。', ''];
   lines.push('## 資料覆蓋與解讀', '',
-    '缺日補抓31個交易日後，證交所回傳HTTP403，已停止請求。現有TWSE仍缺466日，TPEx完整；舊文件稱完整資料不代表本工作區已備齊。全期平均只使用完整窗口，可能受非隨機缺口與無效執行影響。', '',
+    sourceMissing.length
+      ? `行情來源仍缺${sourceMissing.length}筆交易日檔。全期平均只使用完整窗口，可能受非隨機缺口與無效執行影響。`
+      : '上市與櫃買日線在整段期間無缺日；有效期少於已形成期，來自停牌、無法進出場等執行限制，不是來源缺口。', '',
     '| 持有日數 | 因子家族 | 計畫期數 | 完整行情已形成期 | 暖機不足 | 來源缺口排除 | 無完整候選 | 第一～最後訊號 |',
     '| ---: | --- | ---: | ---: | ---: | ---: | ---: | --- |');
   for (const horizon of config.holdingSessions) for (const [familyId, family] of Object.entries(config.families) as [string, any][]) {
@@ -234,7 +238,8 @@ export function main() {
     const formed = rows.filter((r) => r.status === 'evaluated');
     lines.push(`| ${horizon} | ${familyId} | ${rows.length} | ${formed.length} | ${rows.filter((r) => r.status === 'insufficient_warmup').length} | ${rows.filter((r) => r.status === 'missing_source').length} | ${rows.filter((r) => r.status === 'no_complete_candidates').length} | ${formed[0]?.date ?? '—'}～${formed.at(-1)?.date ?? '—'} |`);
   }
-  lines.push('', '殘差策略2024–2026沒有可評估窗口，因此不能判斷近期表現。表中各策略有效期不同，不能直接相減平均超額；「配對增益」只比較雙方可評估的同一期。勝率是組合期數勝率，不是單股交易勝率。', '');
+  const lateResidual = coverage.filter((r) => r.family === 'residual' && r.status === 'evaluated' && r.date >= '2024-01-01').length;
+  lines.push('', `${lateResidual ? '' : '殘差策略2024–2026沒有可評估窗口，因此不能判斷近期表現。'}表中各策略有效期不同，不能直接相減平均超額；「配對增益」只比較雙方可評估的同一期。勝率是組合期數勝率，不是單股交易勝率。`, '');
   for (const horizon of config.holdingSessions) for (const period of ['all', '2020_2023', '2024_2026']) {
     lines.push(`## 持有${horizon}交易日：${period}`, '', '| 規則 | 有效／已形成期 | 打敗含息指數勝率 | 每期淨超額 | 同期配對增益 | 配對期數 | 90比較校正CI | 校正p | 滑價後淨超額 | 滑價後配對增益 |', '| --- | ---: | ---: | ---: | ---: | ---: | --- | ---: | ---: | ---: |');
     for (const [rule, s] of Object.entries(summaries[horizon][period]) as [string, any][]) {
