@@ -19,6 +19,7 @@ import { existsSync, readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import { renderSubpageNav } from "./lib/nav";
+import { yahooUrl } from "./lib/stock-links";
 
 dotenv.config({ path: resolve(process.cwd(), ".env.local"), override: true, quiet: true });
 
@@ -207,7 +208,7 @@ export function renderHtml(report: { tradingDate: string; notion: boolean; items
     const recent = (i.recent ?? []).map((d) => `<span class="day" title="${d.date}">${d.date.slice(5)} ${netCell(d.net)}</span>`).join("");
     const link = `https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=${i.stockCode}&BHID=${i.brokerHq ?? i.brokerCode}&b=${i.brokerCode}`;
     return `<tr class="${i.triggered ? "hit" : ""}">
-<td>${i.triggered ? "🚨 " : ""}${esc(i.stockName)} <span class="muted">${esc(i.stockCode)}</span></td>
+<td>${i.triggered ? "🚨 " : ""}<a href="${yahooUrl(i.stockCode)}" target="_blank" rel="noopener">${esc(i.stockName)}</a> <span class="muted">${esc(i.stockCode)}</span></td>
 <td><a href="${link}" target="_blank" rel="noopener">${esc(i.broker)}</a></td>
 <td>${i.grade && i.grade !== "未分級" ? `<span class="chip">${esc(i.grade)}</span>` : '<span class="muted">—</span>'}</td>
 <td>${today}</td>

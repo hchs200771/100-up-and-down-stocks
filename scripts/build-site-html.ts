@@ -10,7 +10,7 @@
  */
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { resolve } from "node:path";
-import { SUBPAGES, navText } from "./lib/nav";
+import { HOME_LABEL, NAV_BLOCK_RE, SUBPAGES, navText, renderSiteNav } from "./lib/nav";
 
 const SITE_URL = "https://hchs200771.github.io/100-up-and-down-stocks/";
 
@@ -39,9 +39,11 @@ if (fragment.includes("<!--RRG_EMBED-->")) {
   }
 }
 
-// 舊報告片段的 JS 分頁列是較早的子頁清單（依序新增：題材雷達、贏家分點、營收衰退、營收族群）。
-// 發布時換成目前的完整清單，讓新子頁不用等重產報告就出現在同一列。
-{
+// 導覽列換成目前的版本：新增子頁或調整分組時，不用等重產報告就會出現在主頁上。
+// 更早的片段（JS 產生的平鋪分頁列）沒有 <nav> 區塊，保留舊的子頁清單替換作為相容。
+if (NAV_BLOCK_RE.test(fragment)) {
+  fragment = fragment.replace(NAV_BLOCK_RE, () => renderSiteNav("index.html", HOME_LABEL));
+} else {
   const pills = (pages: typeof SUBPAGES) => JSON.stringify(pages.map((page) => [page.file, `${navText(page.label)} ↗`]));
   const current = pills(SUBPAGES);
   for (let n = SUBPAGES.length - 1; n >= 2 && !fragment.includes(current); n--) {

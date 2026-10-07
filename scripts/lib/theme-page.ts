@@ -1,5 +1,6 @@
 import { completedWeekEnd, matchTheme, type ThemeArticle, type ThemeDefinition, type ThemeSignal } from "./theme-radar";
 import { renderSubpageNav } from "./nav";
+import { linkifyStocks } from "./stock-links";
 
 interface Snapshot {
   date: string;
@@ -46,7 +47,7 @@ export function renderThemePage(snapshot: Snapshot, articles: ThemeArticle[], th
     <td>${ready ? `${((score?.recentShare ?? 0) * 100).toFixed(1)}%` : "—"}</td>
     <td>${ready ? `${(score?.ratio ?? 0).toFixed(1)} 倍` : "—"}</td>
     <td>${hits.length}</td>
-    <td>${esc(theme.tickers.join("、") || "—")}</td>
+    <td>${theme.tickers.length ? linkifyStocks(esc(theme.tickers.join("、")), "") : "—"}</td>
   </tr>`).join("");
   const articleRows = recent.map(({ article, names }) => {
     let link = esc(article.title);

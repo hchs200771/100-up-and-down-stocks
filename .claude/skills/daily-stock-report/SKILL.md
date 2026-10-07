@@ -1,6 +1,6 @@
 ---
 name: daily-stock-report
-description: 台股盤後分析工作流。抓當日漲跌幅前 100 名、用 Claude 本地分析做產業分類與盤後總結、寄信出去。取代原本使用 Gemini API 的流程。Trigger when user asks to run daily stock report, 跑台股盤後, 產生盤後報告, etc.
+description: 台股盤後分析工作流。抓當日漲跌幅前 100 名、用 Claude 本地分析做產業分類與盤後總結、發布到網頁。取代原本使用 Gemini API 的流程。Trigger when user asks to run daily stock report, 跑台股盤後, 產生盤後報告, etc.
 ---
 
 # Daily Stock Report Skill
@@ -92,7 +92,7 @@ npx tsx scripts/fetch-intl-market.ts
 
 各市場收盤時間不同：對台股傍晚跑的盤後報告，亞股是「當日」收盤，美股/費半/原油/殖利率是「隔夜」前一交易日。這些數字是 Step 4 國際情勢 worker 的判讀依據，也會直接呈現在報告的「🌐 國際情勢」表格。
 
-若此步驟失敗（Yahoo 掛掉），**繼續流程**：國際情勢 worker 會少掉精準數字、只能靠 WebSearch 敘述，但不影響台股報告與寄信。
+若此步驟失敗（Yahoo 掛掉），**繼續流程**：國際情勢 worker 會少掉精準數字、只能靠 WebSearch 敘述，但不影響台股報告產出。
 
 ### Step 1.65 — 抓信用利差（純 script，可跳過）
 
@@ -229,24 +229,11 @@ npx tsx scripts/fetch-tdcc-holders.ts && npx tsx scripts/build-tdcc-divergence.t
 
 **回測需知**：TDCC 只保留 52 週歷史，所以最多只有 52 次調倉可回測；配上多個可調參數幾乎必然過度配適。要做回測請先累積足夠週數，並且務必處理**還原股價**（除權息旺季會讓未還原價看起來像暴跌）與**交易成本**（手續費 0.1425%×2 + 證交稅 0.3% ≈ 每趟 0.6%）。
 
-### 信件版與網頁版是兩份不同的 HTML
+### 只產網頁，不寄信
 
-`send-report.ts` 產兩份：`data/report-latest.html`（網頁版，給 `build-site-html.ts`）與 `data/report-email.html`（信件版，實際寄出的）。
+2026-10-07 起報告**只發布到網頁**（GitHub Pages），`send-report.ts` 只產 `data/report-latest.html` 給 `build-site-html.ts`，寄信的程式已經移除。`--no-email` 旗標仍可以帶（流程腳本還在用），但不會有任何作用。
 
-**Gmail 在 102KB 截斷信件**，而這份報告 300KB 以上——光「上漲族群」一段就 85KB，塞不進去。所以目標不是壓到 102KB（做不到），而是**讓截斷落在不重要的地方**：
-
-- **`EMAIL_ORDER` 是信件專用的段落順序**，與 `READ_ORDER`（網頁分頁順序）刻意不同。網頁的動線把「指數貢獻」排在「上漲族群」前面，那在有分頁的網頁上合理；但在信件裡它是 50KB 的實體段落，會把最重要的族群內容整個推到截斷線之後。信件版把上漲族群提到市場總覽之後。**改動線時兩張表都要看。**
-- 目前結果：截斷線落在上漲族群第 30/33 組，前面三段（總覽、國際、市場總覽）完整。之前是 6 組左右。
-- 信件版最上方有一條提示，說明可能被截斷、互動圖表要看網頁版。
-
-**`slimForEmail()` 只拿掉信件本來就顯示不出來的東西**（`<script>`、style 內的空白、縮排），不動看得見的內容。兩個踩過的坑：
-
-- **不能用 `/>\s+</g → "><"`**。標籤之間的空白是有意義的內容，會把 `<strong>華新科</strong> <span>2492</span>` 壓成「華新科2492」、「領先 9 IC設計」壓成「領先 9IC設計」。正確做法是把**含換行的縮排壓成一個空格**（`> <`），瀏覽器本來就會折成一個空格，渲染結果完全不變。
-- **不要在這裡拿掉 `<svg>`**。Gmail 確實不支援，但 Apple Mail 畫得出來；而且實測只省 27KB，救不了 102KB。
-
-驗證方式：用 jsdom 把兩份的每個 `.tabpanel` 取 `textContent` 正規化後逐段比對，除了「🏠 總覽」（兩版順序本來就不同）之外必須完全一致。
-
-**`--no-email` 只產 HTML 不寄信。不要用 `GAS_WEBHOOK_URL= npx tsx ...` 去擋**——`.env.local` 是用 `override: true` 載入的，前綴的環境變數會被蓋掉，信照樣寄出去。
+網頁版的首頁是「今日重點」（`renderHome`）：盤後總結、市場溫度計、操作三分類、各名單狀態與資料日期。導覽列是 `scripts/lib/nav.ts` 的分組下拉選單（今日／大盤／族群／個股／策略），主頁與所有子頁共用。敘述文字裡的公司名稱由 `scripts/lib/stock-links.ts` 的 `linkifyStocks` 自動接上 Yahoo 連結；誤連的名稱加進該檔的 `AMBIGUOUS`／`TRAPS`。
 
 ### 「📊 市場總覽」的互動圖表
 
@@ -262,8 +249,6 @@ npx tsx scripts/fetch-tdcc-holders.ts && npx tsx scripts/build-tdcc-divergence.t
 - **融資序列的日期軸不一定跟微臺對齊**（來自不同檔案）。對不上的日子畫成**斷點，不要內插**。
 - 改欄位時，伺服器端的 SVG 與 JS 裡的 `paint()`／`row()` 要一起改——兩邊是各自獨立的繪製程式碼，改一邊不會報錯，只會讓信件版與網頁版長得不一樣。
 
-**寄信的旗標**：`npx tsx scripts/send-report.ts --no-email` 只產 HTML 不寄信。**不要用 `GAS_WEBHOOK_URL= npx tsx ...` 去擋**——`.env.local` 是用 `override: true` 載入的，前綴的環境變數會被蓋掉，信照樣寄出去。
-
 ### Step 1.69 — 終極選股池（純 script，可跳過）
 
 ```
@@ -272,7 +257,7 @@ npx tsx scripts/build-stock-picks.ts
 
 **水線 C，背景執行**：與 Step 1.5／1.6／1.65／1.66／1.67／1.68 同批平行丟。它讀當日 `market-latest.json` 與大戶／CB 等訊號，輸出 `data/stock-picks-latest.json`，`send-report.ts` 據此產出「終極選股池」分頁。
 
-**一定要在 Step 7 寄信之前跑完。** 檔案裡的交易日與 `analysis.date` 不符時該分頁會被整個略過（2026-09-02 實測漏跑，信件少了這個分頁，只好補跑再重產一次網頁版）。
+**一定要在 Step 7 產 HTML 之前跑完。** 檔案裡的交易日與 `analysis.date` 不符時該分頁會被整個略過（2026-09-02 實測漏跑，信件少了這個分頁，只好補跑再重產一次網頁版）。
 
 ### Step 1.7 — 題材偵察 worker（背景 spawn，越早越好）
 
@@ -434,7 +419,7 @@ rm -f data/tmp/playbook.txt
 
 以前這裡分「階段 A 強勢 / 階段 B 弱勢」兩批，理由是怕 B 失敗污染 A——但**每個 worker 各自寫自己的 `<id>.txt`、彼此完全隔離**，任一個失敗本來就只損失那一個檔案，分批並不會提供額外保護，卻硬生生多等一輪最慢 worker 的時間（實測約多 2 分鐘）。所以合併成一批。
 
-失敗處理不變：某個 worker 沒寫出檔，assemble 時該組就沿用 classification 裡的簡述或留空，不影響其他組與寄信。優先確保報告能寄出。
+失敗處理不變：某個 worker 沒寫出檔，assemble 時該組就沿用 classification 裡的簡述或留空，不影響其他組與產出。優先確保報告能寄出。
 
 **⚠️ spawn 完立刻核對數量（必做）**：spawn 是會偶發失敗的（曾遇到 classifier 暫時不可用，15 個裡有 1 個直接回 error）。送出後**當場數一遍成功啟動的數量是否等於預期數量**，對不上就**立刻補送缺的那一個**，不要等到 Step 6 才從 `ls data/tmp/stories/` 發現少檔——那時候補送等於整條流程多等一輪。
 
@@ -511,7 +496,7 @@ data/tmp/intl-brief.txt
 最後只回覆一行：done intl
 ```
 
-**為什麼這樣做：** 國際判讀長文由 worker 自己寫檔，不經過主對話 output（省 token）；與台股族群 worker 同批平行，整體時間幾乎不變。`intl-brief.txt` 連同 `intl-market-latest.json` 會在 Step 6 由 `assemble-analysis.ts` 自動併進 `analysis.intl`，報告裡呈現為「🌐 國際情勢」區塊。worker 失敗或檔案沒寫出來也沒關係——assemble 會只放數字表、或整段略過，不影響台股報告與寄信。
+**為什麼這樣做：** 國際判讀長文由 worker 自己寫檔，不經過主對話 output（省 token）；與台股族群 worker 同批平行，整體時間幾乎不變。`intl-brief.txt` 連同 `intl-market-latest.json` 會在 Step 6 由 `assemble-analysis.ts` 自動併進 `analysis.intl`，報告裡呈現為「🌐 國際情勢」區塊。worker 失敗或檔案沒寫出來也沒關係——assemble 會只放數字表、或整段略過，不影響台股報告產出。
 
 ### 故事的機械事實檢查（assemble 時自動執行）
 
@@ -580,21 +565,13 @@ npx tsx scripts/assemble-analysis.ts
 
 跑完看一眼它印出的統計（幾組有 story、summary 是否 set）確認沒漏。
 
-### Step 7 — 寄信（POST 到 GAS）
+### Step 7 — 產生網頁 HTML
 
 ```
 npx tsx scripts/send-report.ts
 ```
 
-這個腳本會：讀 analysis-latest.json → 產 HTML → 寫 `data/report-latest.html` → 更新 `data/history.json` → POST 到 `GAS_WEBHOOK_URL` 寄信。
-
-如果 `GAS_WEBHOOK_URL` 還沒設，會失敗。這時候改跑：
-
-```
-npx tsx scripts/send-report.ts data/analysis-latest.json --no-email
-```
-
-只產 HTML 預覽不寄信，並跟使用者說「GAS webhook 還沒設，已跳過寄信」。
+這個腳本會：讀 analysis-latest.json → 產 HTML → 寫 `data/report-latest.html` → 更新 `data/history.json`。不寄信；發布到網頁由 `scripts/publish-github-pages.sh` 負責。
 
 ### Step 8 — 寫記憶 markdown
 
@@ -629,11 +606,11 @@ timestamp: <同 analysis>
 
 ### Step 9 —（必做）部署到 GitHub Pages
 
-> **這是流程的最後一步，一定要執行，不能只跑到寄信就當完成。** 寄信成功 ≠ 任務完成；報告網站沒更新等於沒發布。
+> **這是流程的最後一步，一定要執行，不能只跑到產 HTML 就當完成。** HTML 產出 ≠ 任務完成；報告網站沒更新等於沒發布。
 >
 > **本專案已於 2026-07 從 Vercel 全面改用 GitHub Pages，Vercel 已停用、不要再嘗試部署到 Vercel。**
 
-寄信（Step 7）完成後，**你（互動流程）要親自執行**這支腳本：
+產 HTML（Step 7）完成後，**你（互動流程）要親自執行**這支腳本：
 
 ```
 bash scripts/publish-github-pages.sh
@@ -652,7 +629,7 @@ gh run watch $(gh run list --workflow=pages.yml --limit 1 --json databaseId -q '
 - **綠燈** → 部署完成，繼續下一步。
 - **紅燈** → 先看失敗原因：`gh run view <run-id> --log-failed | tail -40`。
   - 若是**環境性/暫時性失敗**（下載 action 時 429 Too Many Requests、runner 網路錯誤、`Internal server error`），直接 `gh run rerun <run-id>` 重跑一次，再 watch 一輪。這類失敗跟報告內容無關，重跑通常就過。
-  - 若**重跑第二次仍失敗**，或失敗原因來自我們自己的內容（build-site 產物有問題、檔案過大、workflow 設定錯），**不要再重跑**，在結尾回報明講「已寄信但網站未部署」並附上失敗原因。
+  - 若**重跑第二次仍失敗**，或失敗原因來自我們自己的內容（build-site 產物有問題、檔案過大、workflow 設定錯），**不要再重跑**，在結尾回報明講「報告已產出但網站未部署」並附上失敗原因。
 
 最後再驗一次線上內容真的換成今天的（避免 workflow 綠燈但頁面沒更新）：
 
@@ -668,8 +645,7 @@ curl -s https://hchs200771.github.io/100-up-and-down-stocks/ | grep -o "<今日 
 - 當日時間戳
 - 漲最多 / 跌最多的股票
 - 漲跌方各自分了幾個族群
-- 是否已寄信（或為何沒寄）
-- **是否已部署到 GitHub Pages（Step 9）**——附上 commit 與網址。**只有在 Actions workflow 綠燈、且線上頁面確認是今天的日期時，才能說「已部署」**；push 成功但 workflow 失敗要明講「已寄信但網站未部署」與失敗原因，不可含糊帶過
+- **是否已部署到 GitHub Pages（Step 9）**——附上 commit 與網址。**只有在 Actions workflow 綠燈、且線上頁面確認是今天的日期時，才能說「已部署」**；push 成功但 workflow 失敗要明講「報告已產出但網站未部署」與失敗原因，不可含糊帶過
 
 ## 需要注意的
 

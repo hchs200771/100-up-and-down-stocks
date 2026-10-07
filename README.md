@@ -34,12 +34,7 @@ cp .env.example .env.local   # 再把內容換成下面的變數
 npm run report
 ```
 
-`.env.local` 目前只需要一個變數：
-
-```bash
-# Google Apps Script webhook，用來寄信。沒設定時只產 HTML 預覽，不寄信
-GAS_WEBHOOK_URL=https://script.google.com/macros/s/.../exec
-```
+報告只發布到網頁（GitHub Pages），2026-10-07 起不再寄信，`.env.local` 沒有必填的變數。
 
 `npm run report` 會自動選引擎：本機有 `codex` 就用 Codex，沒有就用 Claude Code。
 要指定時用 `npm run report:codex` 或 `npm run report:claude`，也可以設 `DAILY_REPORT_ENGINE=codex|claude`。
@@ -101,8 +96,7 @@ npm run report:picks     # 只重算終極選股池
 npm run backtest:picks   # 選股池分數校準＋前 5 名前瞻追蹤（輸出 data/stock-picks-backtest.json，每日流程自動跑）
 npm run backtest:novel   # 新因子研究：日間／隔夜拆解、大盤殘差動能（需本機全市場歷史行情）
 npm run themes:refresh   # 重抓題材新聞觀察
-npm run report:send      # 用現有分析重產 HTML 並寄信
-npx tsx scripts/send-report.ts data/analysis-latest.json --no-email   # 只產 HTML 預覽
+npm run report:send      # 用現有分析重產網頁 HTML
 npm run screen:cb        # 重跑董監設質＋CB 篩選
 npm run positions        # 分析凱基期貨持倉（見下方）
 ```

@@ -218,7 +218,7 @@ const $=id=>document.getElementById(id);
 const pct=v=>v==null?'<span class="none">—</span>':'<span class="'+(v<0?'neg':'pos')+'">'+(v>0?'+':'')+(v*100).toFixed(1)+'%</span>';
 const pp=v=>v==null?'<span class="none">—</span>':'<span class="'+(v<0?'neg':'pos')+'">'+(v>0?'+':'')+(v*100).toFixed(1)+'pp</span>';
 const share=v=>(v*100).toFixed(0)+'%';
-const names=xs=>xs.map(f=>f.name+' '+(f.yoy>0?'+':'')+(f.yoy*100).toFixed(0)+'%').join('、');
+const names=xs=>xs.map(f=>'<a href="https://tw.stock.yahoo.com/quote/'+f.code+'" target="_blank" rel="noopener">'+f.name+'</a> '+(f.yoy>0?'+':'')+(f.yoy*100).toFixed(0)+'%').join('、');
 function render(){
   const d=DATA[cur];
   $('months').innerHTML=DATA.map((m,i)=>'<button class="'+(i===cur?'on':'')+'" data-i="'+i+'">'+m.month+(m.partial?' 公布中':' 已公布完')+'</button>').join('');

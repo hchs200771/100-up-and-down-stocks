@@ -1,13 +1,8 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { significantInstitutionalBuys, type InstitutionalStrength } from "./institutional-strength.ts";
-import "dotenv/config";
-import dotenv from "dotenv";
-import { READ_ORDER, SUBPAGES, navText } from "./lib/nav";
-dotenv.config({ path: resolve(process.cwd(), ".env.local"), override: true });
-
-// 網頁版報告（GitHub Pages）。Email 版沒有互動圖，用這個連結把讀者導回網頁版。
-const SITE_URL = "https://hchs200771.github.io/100-up-and-down-stocks/";
+import { HOME_LABEL, READ_ORDER, TAB_ALIASES, renderSiteNav } from "./lib/nav";
+import { linkifyStocks, yahooUrl } from "./lib/stock-links";
 
 // 中文字型堆疊：先吃各平台的系統黑體（蘋方／思源／正黑），最後才退回 sans-serif。
 // 原本只寫 sans-serif，Windows/Android 常掉到細明體或簡中字型，數字與中文粗細也不一致。
@@ -263,8 +258,6 @@ interface StockLookup {
 }
 
 const HISTORY_MAX = 5;
-const EMAIL_SUBJECT = "📈 台股盤後資金流向與 AI 總結";
-const EMAIL_TO = "hchs200771@gmail.com";
 
 function buildStockLookup(market: { gainers?: MarketStock[]; losers?: MarketStock[] }): Map<string, string> {
   const lookup = new Map<string, string>();
@@ -430,7 +423,7 @@ function renderCategoryBlock(
     const pct = pctRaw !== undefined && pctRaw !== "" ? pctRaw : "";
     const futuresHtml = renderFuturesBadge(meta);
     const chipBadges = renderStockChipBadges(meta);
-    const href = code ? `https://tw.stock.yahoo.com/quote/${code}.TW/technical-analysis` : "#";
+    const href = code ? yahooUrl(code, "technical-analysis") : "#";
     const codeHtml = code ? `<span style="color: #6b7280; font-size: 12px;">${code}</span>` : "";
     const pctHtml = pct !== "" ? `<span style="color: ${pctColor}; font-weight: bold; margin-left: 4px;">${pct}</span>` : "";
     stocksHtml += `<a href="${href}" target="_blank" style="text-decoration: none; display: inline-block; background-color: white; border: 1px solid ${stockBorder}; padding: 4px 8px; border-radius: 6px; margin: 0 6px 6px 0; font-size: 14px;">
@@ -1623,10 +1616,6 @@ function renderIndexContribution(c: IndexContribution | null | undefined): strin
         <strong>產業的帶子是不是集中在一兩檔</strong>（集中＝個股事件，分散＝真的族群動能）。
       </div>
       ${renderSankey(c)}
-      <div style="font-size:11px; color:#9ca3af; margin:0 0 14px;">
-        這張流向圖是 SVG，Email 用戶端多半不支援而不會顯示；下方的分布圖與表格是純表格，信件裡照樣完整。
-        要看流向圖請開 <a href="${SITE_URL}" style="color:#b45309; font-weight:bold;">→ 網頁版報告</a>。
-      </div>
       <div style="font-size:12px; color:#6b7280; font-weight:bold; margin-bottom:6px;">
         產業貢獻分布（面積＝絕對貢獻，紅＝推升、綠＝拖累）
       </div>
@@ -1734,8 +1723,6 @@ function renderRrg(rrg: RrgBlock | null | undefined): string {
       <p style="font-size:11px; color:#9ca3af; margin:0 0 14px;">
         圖上方可切換四個市場（台股族群／全球資產／美股板塊／全球市場）、120／60／20 日視窗與軌跡長度；
         勾選框控制是否畫在圖上，點族群名稱可展開成分股並連到 Yahoo 股市。
-        Email 版不會顯示互動圖，請開
-        <a href="${SITE_URL}" style="color:#7e22ce; font-weight:bold;">→ 網頁版報告</a>的「🔄 族群輪動」分頁；
         下方文字結論不看圖也讀得懂（結論只針對台股族群）。
       </p>
       <table style="width:100%; border-collapse:collapse; margin-bottom:14px;"><tbody>${quadHtml}</tbody></table>
@@ -1923,7 +1910,7 @@ function renderTdcc(d: DivergenceReport | null | undefined): string {
       <div style="font-size:11px; color:#9ca3af; margin-top:10px; line-height:1.6;">
         資料源：集保結算所「集保戶股權分散表」，每週五結算、隔天公布，所以這份榜單一週更新一次。
         排序用標準化分數（z-score）而非絕對門檻——大型股大戶比例週變動 1% 已是巨量、小型股 1% 只是雜訊，
-        絕對門檻會讓榜單被小型股洗版。信件版只呈現「${defView.label} × ${defCut.label}」，其餘組合請看網頁版。
+        絕對門檻會讓榜單被小型股洗版。
       </div>
       <script type="application/json" class="tdcc-data">${JSON.stringify(payload).replace(/</g, "\\u003c")}</script>
       <script>
@@ -2017,7 +2004,7 @@ function renderPickFutures(p: PickEntry): string {
   return `<span style="font-size:11px; background-color:#e0e7ff; color:#4338ca; padding:1px 5px; border-radius:4px; margin-left:4px; white-space:nowrap;">期貨(${label})</span>`;
 }
 
-function renderPicks(picks: PicksReport | null, forEmail: boolean): string {
+function renderPicks(picks: PicksReport | null): string {
   if (!picks || (!picks.long.length && !picks.short.length)) return "";
 
   const escapeTheme = (value: string): string => value.replace(/[&<>"']/g, (char) => ({
@@ -2088,7 +2075,7 @@ function renderPicks(picks: PicksReport | null, forEmail: boolean): string {
       <h3 style="margin:0 0 4px; color:#1f2937; font-size:15px;">${title}</h3>
       <p style="font-size:12px; color:#6b7280; margin:0 0 8px; line-height:1.6;">${hint}</p>
       ${table(list, accent)}
-      ${forEmail ? `<p style="font-size:12px; color:#9ca3af; margin:8px 0 0;">個股訊號明細與進出場計畫請開網頁版。</p>` : `<div style="margin-top:10px;">${detailBlocks(list)}</div>`}
+      <div style="margin-top:10px;">${detailBlocks(list)}</div>
     </div>`;
   };
 
@@ -2185,34 +2172,11 @@ function renderTradeReview(r: TradeReview | null): string {
 }
 
 /**
- * 每個分頁「在回答什麼問題」。key 必須與 sections 的 label 完全一致。
+ * 頁面層級的樣式。
  *
- * 為什麼要有這張表：tab 上只有名字，第一次看報告的人分不出「指數貢獻」與
- * 「族群輪動」差在哪（一個看今天、一個看這段期間）。這裡寫的是用途，不是內容摘要。
- */
-const TAB_GUIDE: Record<string, string> = {
-  "🔥 上漲族群": "今天哪些族群在漲、背後的產業故事，以及每個族群的進場評分與建議動作。",
-  "🧊 下跌族群": "今天哪些族群在跌、為什麼跌，哪些是該避開的、哪些只是回檔。",
-  "🎯 操作建議": "把當日結論收斂成三類：可以現在介入、需要再觀察、直接避開。",
-  "📊 市場總覽": "一段盤後總結，加上大盤指數、成交量、法人買賣超、當沖比、散戶部位的儀表板。",
-  "⚖️ 指數貢獻": "指數這幾點到底是誰推的、誰在拖。資金流向圖看力道來源，分布圖看主戰場在哪。",
-  "🔄 族群輪動": "中期資金在族群之間怎麼輪動（RRG 四象限）。看的是趨勢，不是單日漲跌。",
-  "🏦 大戶籌碼": "集保大戶這週買了什麼。可切「背離（籌碼先動、價還沒動）」與「同向（籌碼與趨勢一致）」，門檻 200~1000 張可調。週資料。",
-  "🌐 國際情勢": "過去一天的國際大事時間軸、美股指標股、亞股原物料匯率與信用利差——台股開盤前的外部條件。",
-  "🎙️ KOL 觀點": "追蹤的財經 Podcast／YouTube 上次報告後的新節目重點，對照今天盤面。只在有新節目時出現。",
-  "🧭 長線策略": "跳出當日波動，長線的進出場想法與部位思考。",
-  "📒 交易檢討": "自己最近的進出場與持倉健檢：理由、停損與出場計畫是否一致，下次可以怎麼調整。",
-  "🏆 終極選股池": "全部訊號統合後的最終結論：長線 10 檔＋短線 10 檔，含入選理由與進出場計畫。",
-  "🔖 圖例說明": "報告裡各種標記、badge、顏色代表什麼意思。",
-  "🧮 評分說明": "進場評分 0-100 是怎麼算出來的，四個構面各佔多少。",
-};
-
-/**
- * 網頁版專用樣式（信件版不輸出）。
- *
- * 內容區的樣式全是 inline——信件只吃 inline，而網頁與信件共用同一份渲染。這段只補
- * 信件本來就做不到、或做了也沒意義的部分：
- * - 分頁列：sticky 固定在頂端；手機（≤640px）改成單排橫向捲動，不再堆成三四排吃掉半個螢幕。
+ * 內容區的樣式大多是 inline（以前要兼顧 Email，2026-10 起不再寄信）。這段只補
+ * inline 做不到的部分：
+ * - 導覽列的樣式跟著 lib/nav.ts 的 <nav> 一起輸出，不在這裡。
  * - 深色模式：內容有上百處寫死的淺色 inline 顏色，逐一改 token 成本太高，所以用
  *   「反相 + 色相轉 180°」整頁翻成深色——亮度反轉、色相不變，紅漲綠跌的語意保留。
  *   內嵌的互動 RRG 有自己的深色主題，若兩者都生效會負負得正變回淺色，所以下方 script
@@ -2220,218 +2184,223 @@ const TAB_GUIDE: Record<string, string> = {
  */
 const WEB_CSS = `<style>
   body{margin:0;background:#fff;}
-  .rpt-tabbar{position:sticky;top:0;z-index:30;padding:10px 0;margin-top:0;background:rgba(255,255,255,.94);-webkit-backdrop-filter:saturate(1.5) blur(8px);backdrop-filter:saturate(1.5) blur(8px);border-bottom:1px solid #eef0f4;}
-  .rpt-tab{font:inherit;font-size:14px;font-weight:600;line-height:1.3;cursor:pointer;border:1px solid #e5e7eb;border-radius:999px;padding:7px 14px;background:#fff;color:#374151;white-space:nowrap;text-decoration:none;display:inline-block;transition:background-color .15s,border-color .15s,color .15s;}
-  .rpt-tab:hover{border-color:#a5b4fc;color:#4338ca;background:#f5f7ff;}
-  .rpt-tab.on{background:#4f46e5;border-color:#4f46e5;color:#fff;box-shadow:0 1px 3px rgba(79,70,229,.35);}
-  .rpt-tab.ext{border-style:dashed;color:#6b7280;}
-  .rpt-tab:focus-visible,.homecard:focus-visible{outline:2px solid #6366f1;outline-offset:2px;}
+  a.stk{color:inherit;text-decoration:underline dotted #a5b4fc;text-underline-offset:3px;}
+  a.stk:hover{color:#4338ca;text-decoration-color:#4338ca;}
   @media (max-width:640px){
-    .rpt-tabbar{flex-wrap:nowrap !important;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin-left:-16px;margin-right:-16px;padding:8px 16px;gap:6px !important;}
-    .rpt-tabbar::-webkit-scrollbar{display:none;}
-    .rpt-tab{font-size:13px;padding:6px 12px;flex:none;}
     .rpt h1{font-size:21px !important;}
     /* 雙欄區塊在手機上已經上下堆疊，改成滿版，不要只佔 300px 留一條空白 */
-    .home-col,.split-col{display:block !important;width:auto !important;min-width:0 !important;margin-left:0 !important;}
+    .split-col{display:block !important;width:auto !important;min-width:0 !important;margin-left:0 !important;}
   }
   @media (prefers-color-scheme:dark){
-    html,body{background:#141414;}
-    .rpt{filter:invert(.92) hue-rotate(180deg);background:#fff;}
+    /* 反相 .86 而不是滿格：白底翻成 #242424 的深灰，不是接近純黑（使用者覺得太暗）。
+       html 底色要跟反相後的白底一致，否則內容區兩側會出現色差。 */
+    html,body{background:#242424;}
+    .rpt{filter:invert(.86) hue-rotate(180deg);background:#fff;}
     .rpt img{filter:invert(1) hue-rotate(180deg);}
   }
 </style>`;
 
-/** 建議的閱讀順序：由外而內、由結果到原因，最後才是可以動手的結論。 */
-// READ_ORDER 與分頁列的顯示規則集中在 lib/nav.ts——子頁要產生一模一樣的麵包屑，
-// 兩邊不能各寫一份。
-
-/**
- * Email 版的段落順序，與網頁版（READ_ORDER）**刻意不同**。
- *
- * Gmail 在 102KB 就會截斷信件、把後面收進「查看完整訊息」。這份報告 300KB 以上，
- * 一定會被截，所以重點不是塞進 102KB（辦不到，光上漲族群就 90KB 以上），而是
- * **讓截斷落在不重要的地方**。
- *
- * 網頁版的動線把「指數貢獻」排在「上漲族群」前面（先看大盤是誰推的，再看個股），
- * 那在有分頁的網頁上很合理；但在信件裡它是 50KB 的實體段落，會把最重要的族群內容
- * 整個推到截斷線之後。所以信件版把上漲族群提到市場總覽之後，圖表重的段落往後放。
- *
- * 改動線時**兩張表都要看**：READ_ORDER 管網頁的分頁與「建議第 N 站」徽章，
- * 這張只管信件的段落順序。
- */
-const EMAIL_ORDER = ["🌐 國際情勢", "📊 市場總覽", "🔥 上漲族群", "🎯 操作建議", "🏆 終極選股池", "🎙️ KOL 觀點", "⚖️ 指數貢獻", "🔄 族群輪動", "🏦 大戶籌碼"];
-
-/**
- * 把完整版 HTML 壓成信件版。**只拿掉信件本來就顯示不出來的東西**，不動看得見的內容。
- *
- * - `<script>`：信件用戶端一律剝除，留著純粹是體積（含 tab 切換、圖表互動、
- *   大戶籌碼那 13KB 的 JSON payload）。
- * - 標籤之間的縮排空白：HTML 是用樣板字串寫的，縮排佔了可觀比例。
- * - inline style 裡冒號與分號後的空白：每個 chip 的 style 字串會重複兩百次。
- *
- * **不要**在這裡拿掉 `<svg>`：Gmail 確實不支援，但 Apple Mail 等用戶端畫得出來，
- * 刪掉是拿別的用戶端的體驗換 Gmail 的體積，不划算（實測也只省 27KB，救不了 102KB）。
- */
-function slimForEmail(html: string): string {
-  return html
-    .replace(/<script[\s\S]*?<\/script>/g, "")
-    // style="..." 內部壓縮：只動屬性值裡的空白，不碰標籤外的文字內容
-    .replace(/style="([^"]*)"/g, (_m, css: string) => `style="${css.replace(/\s*([:;])\s*/g, "$1").replace(/;$/, "").trim()}"`)
-    // 縮排空白壓成**一個空格**，不是刪掉。標籤之間的空白在 HTML 裡是有意義的內容，
-    // 瀏覽器本來就會把它折成一個空格；刪掉會讓相鄰的行內元素黏在一起。
-    // 實測踩過兩次：`<strong>華新科</strong> <span>2492</span>` → 「華新科2492」、
-    // 「領先 9 IC設計」→「領先 9IC設計」。壓成一個空格則渲染結果完全不變。
-    .replace(/>[ \t]*\n[ \t\n]*</g, "> <")
-    .replace(/[ \t]{2,}/g, " ");
+/** 讀 data/ 底下的 JSON；缺檔或壞檔回 null（首頁摘要是加分項，不能擋掉整份報告）。 */
+function readDataJson<T>(rel: string): T | null {
+  try {
+    return JSON.parse(readFileSync(resolve(process.cwd(), rel), "utf-8")) as T;
+  } catch {
+    return null;
+  }
 }
 
+interface HomeInput {
+  a: Analysis;
+  market?: MarketBlock | null;
+  mo?: MarginOptionsReport | null;
+  picks?: PicksReport | null;
+  tdcc?: DivergenceReport | null;
+  tradeReview?: TradeReview | null;
+  /** 今天實際有輸出的分頁；不在裡面的分頁不給連結，免得點了落回首頁。 */
+  tabs: string[];
+}
+
+/** 台股慣例：紅漲綠跌。 */
+const upDown = (n: number) => (n > 0 ? "#dc2626" : n < 0 ? "#16a34a" : "#6b7280");
+const signed = (n: number, digits = 1) => `${n > 0 ? "+" : ""}${n.toFixed(digits)}`;
+
 /**
- * 總覽分頁：介紹每個分頁的用途並可一鍵跳過去。
+ * 首頁「今日重點」：打開就看到今天的結論，一個畫面看完。
  *
- * 刻意做成漸進增強——這裡只輸出純文字卡片，沒有 <a>、沒有「前往」字樣。
- * 有 JS 時（網頁版）由下方 script 把卡片變成可點按鈕並補上箭頭；
- * 沒有 JS 時（Email，所有分頁本來就依序攤開）它就是一份開頭導讀，不會出現點不動的死連結。
+ * 由上而下：一段盤後總結 → 市場溫度計（指數、廣度、法人、融資、散戶、選擇權）→
+ * 操作三分類 → 各名單今天的狀態與資料日期 → 國際／KOL／交易檢討各一句。
+ * 每一塊都連到詳細分頁或子頁。
+ *
+ * 跟報告其他部分一樣用 inline style；溫度計格子用 inline-block，窄螢幕自動折行。
  */
-/**
- * @param order 這份輸出實際採用的段落順序（網頁是 READ_ORDER、信件是 EMAIL_ORDER）。
- *   **一定要跟外層排序用的是同一份表**，否則「建議第 N 站」會跟卡片與段落的實際
- *   先後對不上——之前就發生過徽章順序 4,2,3,5,1 的情況。
- */
-function renderHome(labels: string[], date: string, order: string[] = READ_ORDER): string {
-  // 動線上「今天真的有輸出」的段落，卡片徽章與建議動線都以它為準
-  const steps = order.filter((l) => labels.includes(l));
-  // labels 進來時已由 sortByReadOrder 排好，這裡直接沿用——分頁列、面板順序、
-  // 卡片順序必須是同一份順序，否則「建議第 N 站」會跟上方分頁列對不起來。
-  const ordered = labels;
-  // 分頁改名時 TAB_GUIDE 會對不上，卡片就只剩標題、沒人會發現。出個聲。
-  const missing = ordered.filter((l) => !TAB_GUIDE[l]);
-  if (missing.length > 0) {
-    console.warn(`[warn] 總覽缺少分頁說明，請補 TAB_GUIDE：${missing.join("、")}`);
+function renderHome(h: HomeInput): string {
+  const { a } = h;
+  const tabHref = (label: string) => (h.tabs.includes(label) ? `#tab=${encodeURIComponent(label)}` : null);
+  const more = (href: string | null, text = "看詳細") =>
+    href ? `<a href="${href}" style="color:#4f46e5; font-size:12px; font-weight:bold; text-decoration:none; white-space:nowrap;">${text} →</a>` : "";
+  const card = (title: string, inner: string, link = "") =>
+    `<div style="background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:12px 14px; margin-bottom:12px;">
+      <div style="margin-bottom:8px;"><span style="font-size:15px; font-weight:800; color:#111827;">${title}</span>${link ? `<span style="float:right;">${link}</span>` : ""}</div>
+      ${inner}
+    </div>`;
+
+  // 1. 盤後總結
+  const summary = `<div style="background:#eef2ff; border:1px solid #c7d2fe; border-radius:10px; padding:12px 14px; margin-bottom:12px;">
+      <div style="font-size:12px; font-weight:bold; color:#4f46e5; margin-bottom:4px;">📝 今天的結論 · ${a.timestamp}</div>
+      <p style="margin:0; font-size:14px; line-height:1.8; color:#1f2937;">${a.summary.replace(/\n/g, "<br>")}</p>
+    </div>`;
+
+  // 2. 市場溫度計：每格一個數字＋一行補充。inline-block 讓寬螢幕排成一列、手機自動折行。
+  const tiles: string[] = [];
+  const tile = (label: string, value: string, sub: string, color = "#111827") =>
+    tiles.push(`<div style="display:inline-block; vertical-align:top; box-sizing:border-box; width:132px; margin:0 4px 6px 0; padding:8px 9px; border:1px solid #e5e7eb; border-radius:8px; background:#f9fafb;">
+      <div style="font-size:11px; color:#6b7280;">${label}</div>
+      <div style="font-size:16px; font-weight:800; color:${color}; line-height:1.4; white-space:nowrap;">${value}</div>
+      <div style="font-size:11px; color:#6b7280; line-height:1.4;">${sub}</div>
+    </div>`);
+  const m = h.market;
+  const idx = (name: string, x?: { close: number; change: number }) => {
+    if (!x) return;
+    const prev = x.close - x.change;
+    const pct = prev ? (x.change / prev) * 100 : 0;
+    tile(name, x.close.toLocaleString(), `<span style="color:${upDown(x.change)}; font-weight:bold;">${signed(x.change, 2)}（${signed(pct, 2)}%）</span>`);
+  };
+  idx("加權指數", m?.taiex);
+  idx("櫃買指數", m?.tpex);
+  if (m?.breadth) {
+    const b = m.breadth;
+    tile("上漲／下跌", `<span style="color:#dc2626;">${b.up}</span> / <span style="color:#16a34a;">${b.down}</span>`, `漲停 ${b.limitUp}／跌停 ${b.limitDown}`);
+  }
+  if (m?.institutional) {
+    const i = m.institutional;
+    tile("三大法人（上市）", `${signed(i.totalNet)} 億`, `外 ${signed(i.foreignNet)}／投 ${signed(i.trustNet)}／自 ${signed(i.dealerNet)}`, upDown(i.totalNet));
+  }
+  const mg = h.mo?.margin;
+  if (mg) {
+    const mt = mg.maintenance;
+    tile("融資餘額（上市）", `${mg.twseAmount.toLocaleString()} 億`, `<span style="color:${upDown(mg.dAmount)};">${signed(mg.dAmount)} 億</span>${mt === null ? "" : `　維持率 ${mt.toFixed(0)}%`}`);
+  }
+  // 跟儀表板一樣只用當天快照；不從歷史序列回補，免得把好幾天前的數字當成今天的
+  const retail = m?.microFuturesRetail ? { pct: m.microFuturesRetail.retailNetPct, date: m.microFuturesRetail.dataDate } : null;
+  if (retail) {
+    // 散戶是反指標：淨空（負值）對大盤偏多，所以顏色跟數字方向相反
+    tile("微台散戶淨多空", `${signed(retail.pct, 2)}%`, `${retail.pct < 0 ? "散戶偏空（反指標偏多）" : "散戶偏多（反指標偏空）"}<br>${retail.date}`, upDown(retail.pct));
+  }
+  const op = h.mo?.options;
+  if (op) {
+    const net = op.bull.lots - op.bear.lots;
+    const dNet = op.bull.dLots - op.bear.dLots;
+    tile("外資選擇權淨部位", `${net > 0 ? "偏多" : net < 0 ? "偏空" : "中性"} ${Math.abs(net).toLocaleString()} 口`, `日變化 ${dNet > 0 ? "+" : ""}${dNet.toLocaleString()} 口`, upDown(net));
+  }
+  const gauges = tiles.length ? card("🌡️ 市場溫度計", `<div style="margin-bottom:-6px;">${tiles.join("")}</div>`, more(tabHref("📊 市場總覽"), "儀表板")) : "";
+
+  // 3. 操作三分類：playbook 是「可現在介入：…；…\n需關注：…\n避開：…」的文字，拆成三列。
+  // 每段開頭的「族群（代表股）」加粗；格式對不上就整段原文照放，不硬拆。
+  const BUCKETS = [
+    { key: "可現在介入", title: "可介入", color: "#dc2626", bg: "#fef2f2" },
+    { key: "需關注", title: "觀察", color: "#d97706", bg: "#fffbeb" },
+    { key: "避開", title: "避開", color: "#16a34a", bg: "#f0fdf4" },
+  ];
+  let playbook = "";
+  if (a.playbook) {
+    const lines = a.playbook.split(/\n+/).map((l) => l.trim()).filter(Boolean);
+    const parsed = BUCKETS.map((b) => {
+      const line = lines.find((l) => l.startsWith(b.key));
+      return { ...b, items: line ? line.replace(new RegExp(`^${b.key}[：:]\\s*`), "").replace(/。$/, "").split("；").filter(Boolean) : [] };
+    });
+    const body = parsed.some((p) => p.items.length)
+      ? parsed
+          .filter((p) => p.items.length)
+          .map(
+            (p) => `<div style="background:${p.bg}; border-left:4px solid ${p.color}; border-radius:6px; padding:8px 10px; margin-bottom:6px;">
+          <div style="font-size:12px; font-weight:800; color:${p.color}; margin-bottom:2px;">${p.title}</div>
+          ${p.items
+            .map((it) => {
+              const mm = /^([^，,（]+（[^）]*）)(.*)$/.exec(it);
+              return `<div style="font-size:13px; line-height:1.7; color:#374151;">· ${mm ? `<strong style="color:#111827;">${mm[1]}</strong>${mm[2]}` : it}</div>`;
+            })
+            .join("")}
+        </div>`,
+          )
+          .join("")
+      : `<p style="margin:0; font-size:13px; line-height:1.8;">${a.playbook.replace(/\n/g, "<br>")}</p>`;
+    playbook = card("🎯 今天怎麼做", body, more(tabHref("🎯 操作建議"), "含長線策略"));
   }
 
-  // 標題與說明排同一行：原本上下兩行讓每張卡片吃掉 78px，右側大半是空的。
-  // 用一般的行內流排版（不是固定欄寬表格），窄螢幕上說明會自然換行到下一行。
-  // float 的箭頭必須寫在文字之前，某些 Email 用戶端才會正確靠右。
-  const card = (label: string) => {
-    const desc = TAB_GUIDE[label] ?? "";
-    // 用「在實際存在的段落之中排第幾」而不是在 order 表裡的索引：
-    // 動線上的段落可能整個缺席（例如今天沒有操作建議），用表索引會跳號（1,2,3,5,6）。
-    const step = steps.indexOf(label);
-    const badge = step >= 0
-      ? `<span style="display:inline-block; background:#eef2ff; color:#4f46e5; font-size:10px; font-weight:bold; border-radius:999px; padding:1px 6px; margin-left:5px; vertical-align:1px;">建議第 ${step + 1} 站</span>`
-      : "";
-    return `<div class="homecard" data-goto="${label}" style="border:1px solid #e5e7eb; border-radius:6px; padding:9px 12px; margin-bottom:6px; background:#fff; font-size:13px; line-height:1.65;">
-        <span class="homecard-arrow" style="float:right; color:#c7d2fe;"></span>
-        <strong style="color:#374151; white-space:nowrap;">${label}</strong>${badge}<span style="color:#d1d5db;"> · </span><span style="color:#6b7280; font-size:12px;">${desc}</span>
-      </div>`;
+  // 4. 各名單今天的狀態。右側標資料日期：日資料若不是今天，標橘色提醒是舊的。
+  const rows: string[] = [];
+  const row = (title: string, text: string, href: string | null, asOf: string, daily = false) => {
+    const stale = daily && asOf !== a.date;
+    rows.push(`<tr>
+      <td style="padding:7px 8px 7px 0; border-top:1px solid #f1f5f9; white-space:nowrap; vertical-align:top; font-size:13px; font-weight:bold;">${href ? `<a href="${href}" style="color:#4338ca; text-decoration:none;">${title}</a>` : title}</td>
+      <td style="padding:7px 8px; border-top:1px solid #f1f5f9; font-size:13px; line-height:1.6; color:#374151;">${text}</td>
+      <td style="padding:7px 0 7px 8px; border-top:1px solid #f1f5f9; white-space:nowrap; vertical-align:top; text-align:right; font-size:11px; color:${stale ? "#d97706" : "#9ca3af"};">${asOf}${stale ? " 舊" : ""}</td>
+    </tr>`);
   };
+  if (h.picks) {
+    const top = h.picks.long.slice(0, 3).map((p) => p.name).join("、");
+    row("🏆 選股池", `長線 ${h.picks.long.length}、波段 ${h.picks.short.length} 檔${top ? `；長線前三：${top}` : ""}`, tabHref("🏆 終極選股池"), h.picks.date, true);
+  }
+  type BrokerItem = { stockName: string; broker: string; triggered?: boolean; net?: number };
+  const bw = readDataJson<{ tradingDate: string; items: BrokerItem[] }>("data/broker-watch-latest.json");
+  if (bw) {
+    const hit = bw.items.filter((i) => i.triggered);
+    row(
+      "🕵️ 贏家分點",
+      hit.length ? `觸發 ${hit.length} 組：${hit.slice(0, 4).map((i) => `${i.stockName}（${i.broker}）`).join("、")}${hit.length > 4 ? " 等" : ""}` : `今天沒有觸發（追蹤 ${bw.items.length} 組）`,
+      "broker-watch.html",
+      bw.tradingDate,
+      true,
+    );
+  }
+  // 回測（docs/target-price-backtest.md）：空間大小沒有預測力，共識「下修」後 60 日約跑輸 3%。
+  // 所以這列先講近 7 日被下修的（警訊），空間 ≥ 門檻的檔數只當附註。
+  type TargetRow = { name: string; qualified: boolean; stale: boolean; lastEvent: { date: string; direction: "up" | "down" } };
+  const tp = readDataJson<{ closeDate: string; gate: number; rows: TargetRow[] }>("data/target-price-latest.json");
+  if (tp) {
+    const weekAgo = new Date(Date.parse(`${tp.closeDate}T00:00:00+08:00`) - 7 * 86_400_000).toISOString().slice(0, 10);
+    const down = tp.rows.filter((r) => !r.stale && r.lastEvent.direction === "down" && r.lastEvent.date > weekAgo);
+    const downText = down.length
+      ? `近 7 日共識被下修 ${down.length} 檔：${down.slice(0, 4).map((r) => r.name).join("、")}${down.length > 4 ? " 等" : ""}（回測之後 60 日約跑輸 3%）`
+      : "近 7 日沒有共識被下修";
+    row("🎯 目標價", `${downText}；空間 ≥${Math.round(tp.gate * 100)}% 有 ${tp.rows.filter((r) => r.qualified).length} 檔（只當參考）`, "target-price.html", tp.closeDate, true);
+  }
+  if (h.tdcc) {
+    row("🏦 大戶籌碼", `${h.tdcc.universe} 檔的集保大戶週變化（${h.tdcc.prevWeek} → ${h.tdcc.curWeek}）`, tabHref("🏦 大戶籌碼"), h.tdcc.curWeek);
+  }
+  const rev = readDataJson<{ month: string; partial: boolean; counts: Record<string, number> }>("data/revenue-momentum-latest.json");
+  if (rev) {
+    row("📈 月營收", `YoY≥20% 共 ${rev.counts["門檻"] ?? 0} 家，核心 ${rev.counts["核心"] ?? 0}、動能 ${rev.counts["動能"] ?? 0}${rev.partial ? "（公布中，名單每天增加）" : ""}`, "revenue.html", `${rev.month} 營收`);
+  }
+  const dec = readDataJson<{ active: string; lists: { month: string; entries: unknown[] }[] }>("data/revenue-decline-latest.json");
+  const decList = dec?.lists.find((l) => l.month === dec.active);
+  if (dec && decList) {
+    row("📉 營收衰退", `YoY≤−20% 共 ${decList.entries.length} 家（避開／放空候選）`, "revenue-decline.html", `${dec.active} 營收`);
+  }
+  const cb = readDataJson<{ isoWeek: string; candidates: unknown[] }>("data/cb-pledge-latest.json");
+  if (cb) {
+    row("🔐 設質CB", `事件觀察池 ${cb.candidates.length} 檔`, "cb-pledge.html", cb.isoWeek);
+  }
+  const lists = rows.length
+    ? card("📋 名單與訊號", `<table style="width:100%; border-collapse:collapse;">${rows.join("")}</table>`)
+    : "";
 
-  // 設質+CB 事件池是獨立子頁（CB 日更、設質月更），不是分頁——卡片直接外連，網頁與信件都能點。
-  const cbCard = `<a href="${SITE_URL}cb-pledge.html" style="text-decoration:none; display:block;"><div style="border:1px solid #e5e7eb; border-radius:6px; padding:9px 12px; margin-bottom:6px; background:#fff; font-size:13px; line-height:1.65;">
-        <span style="float:right; color:#c7d2fe;">↗</span>
-        <strong style="color:#374151; white-space:nowrap;">🔐 設質+CB 事件觀察池</strong><span style="color:#d1d5db;"> · </span><span style="color:#6b7280; font-size:12px;">追蹤轉換、潛在稀釋、融資與治理風險；分數代表事件關注度，不代表預期報酬。CB 日更、設質月更。</span>
-      </div></a>`;
-
-  // 月營收動能名單同樣是獨立子頁。它在每月 1~10 號**每天**都會長大（公司陸續公布），
-  // 其餘日子靜止，所以跟設質+CB 一起放在「非每日變動」，但描述要點出這個節奏。
-  const revCard = `<a href="${SITE_URL}revenue.html" style="text-decoration:none; display:block;"><div style="border:1px solid #e5e7eb; border-radius:6px; padding:9px 12px; margin-bottom:6px; background:#fff; font-size:13px; line-height:1.65;">
-        <span style="float:right; color:#c7d2fe;">↗</span>
-        <strong style="color:#374151; white-space:nowrap;">📈 月營收動能名單</strong><span style="color:#d1d5db;"> · </span><span style="color:#6b7280; font-size:12px;">單月營收 YoY≥20% 的篩選名單，核心層再加「連 3 月成長＋24 月營收新高」。每月 1~10 號公司陸續公布，名單天天長大。獨立頁面。</span>
-      </div></a>`;
-
-  // 營收衰退名單：避開／放空候選，同樣是月更子頁；有個股期貨的排最前面。
-  const declineCard = `<a href="${SITE_URL}revenue-decline.html" style="text-decoration:none; display:block;"><div style="border:1px solid #e5e7eb; border-radius:6px; padding:9px 12px; margin-bottom:6px; background:#fff; font-size:13px; line-height:1.65;">
-        <span style="float:right; color:#c7d2fe;">↗</span>
-        <strong style="color:#374151; white-space:nowrap;">📉 月營收衰退名單</strong><span style="color:#d1d5db;"> · </span><span style="color:#6b7280; font-size:12px;">單月營收 YoY≤−20%，回測下個月平均跑輸大盤約 1.2%。避開或放空候選，標出有個股期貨的標的。獨立頁面。</span>
-      </div></a>`;
-
-  // 營收產業族群：強弱勢是否集中在特定產業，跟月營收一起更新。
-  const industryCard = `<a href="${SITE_URL}revenue-industry.html" style="text-decoration:none; display:block;"><div style="border:1px solid #e5e7eb; border-radius:6px; padding:9px 12px; margin-bottom:6px; background:#fff; font-size:13px; line-height:1.65;">
-        <span style="float:right; color:#c7d2fe;">↗</span>
-        <strong style="color:#374151; white-space:nowrap;">🏭 營收產業族群</strong><span style="color:#d1d5db;"> · </span><span style="color:#6b7280; font-size:12px;">營收強勢（YoY≥20%）與弱勢（YoY≤−20%）是否集中在特定產業，看整個產業是在往上還是往下。觀察用：回測顯示族群本身對報酬沒有額外預測力。獨立頁面。</span>
-      </div></a>`;
-
-  // 首頁分組：依「多久變一次」分色塊，讀者可以先看每天會動的，慢變數另外一區。
-  // labels 進來已依 READ_ORDER 排好，各色塊內沿用該順序；沒被任何色塊認領的分頁
-  // 落到「其他」，分頁改名或新增時不會從首頁消失。
-  const BLOCKS: { title: string; hint: string; bg: string; border: string; titleColor: string; labels: string[]; extraHtml?: string }[] = [
-    {
-      title: "🔥 今日族群與操作",
-      // 圖例位置兩版不同：網頁版附在上漲/下跌分頁底部、信件版是最後的獨立段落
-      hint: `每天的主菜：漲跌族群與可執行結論。圖例與評分說明${order === EMAIL_ORDER ? "在本信最後" : "收在上漲/下跌分頁最上方的「本頁說明」，點開就有"}。`,
-      bg: "#fff7ed", border: "#fed7aa", titleColor: "#c2410c",
-      labels: ["🔥 上漲族群", "🧊 下跌族群", "🎯 操作建議", "🏆 終極選股池", "📒 交易檢討"],
-    },
-    {
-      title: "📅 一日市場總覽",
-      hint: "每天更新的市場背景：外部條件 → 大盤儀表板 → 指數是誰推的。",
-      bg: "#eff6ff", border: "#bfdbfe", titleColor: "#1d4ed8",
-      labels: ["🌐 國際情勢", "🎙️ KOL 觀點", "📊 市場總覽", "⚖️ 指數貢獻"],
-    },
-    {
-      title: "🐢 定期追蹤",
-      hint: "更新頻率依資料源而定：CB 每日、集保與 RRG 每週、設質與營收每月；轉折時優先檢查。",
-      bg: "#f0fdf4", border: "#bbf7d0", titleColor: "#15803d",
-      labels: ["🔄 族群輪動", "🏦 大戶籌碼"],
-      extraHtml: cbCard + revCard + declineCard + industryCard,
-    },
-    {
-      title: "📚 其他",
-      hint: "",
-      bg: "#f8fafc", border: "#e2e8f0", titleColor: "#334155",
-      labels: [], // 由 leftovers 填入
-    },
-  ];
-  const claimed = new Set(BLOCKS.flatMap((b) => b.labels));
-  BLOCKS[BLOCKS.length - 1].labels = ordered.filter((l) => !claimed.has(l));
-
-  const renderBlock = (b: (typeof BLOCKS)[number], style = "") => {
-    const present = b.labels.filter((l) => ordered.includes(l));
-    if (!present.length && !b.extraHtml) return "";
-    return `<div style="background-color:${b.bg}; border:1px solid ${b.border}; border-radius:8px; padding:12px 14px; margin-bottom:10px; ${style}">
-        <div style="font-weight:bold; color:${b.titleColor}; margin-bottom:2px;">${b.title}</div>
-        ${b.hint ? `<p style="font-size:12px; color:#6b7280; line-height:1.6; margin:0 0 8px;">${b.hint}</p>` : `<div style="margin-bottom:8px;"></div>`}
-        ${present.map(card).join("")}${b.extraHtml ?? ""}
-      </div>`;
+  // 5. 背景與自我檢討，各一句
+  const ctx: string[] = [];
+  // 只放第一句，其餘看詳細分頁
+  const line = (title: string, full: string | undefined, href: string | null) => {
+    const text = full?.trim().split(/(?<=。)/)[0];
+    if (!text) return;
+    ctx.push(`<div style="padding:7px 0; border-top:1px solid #f1f5f9; font-size:13px; line-height:1.7; color:#374151;">
+      <strong style="color:#111827;">${title}</strong>　${text} ${more(href)}
+    </div>`);
   };
+  line("🌐 國際", a.intl?.summary, tabHref("🌐 國際情勢"));
+  line("🎙️ KOL", a.kol?.overview, tabHref("🎙️ KOL 觀點"));
+  line("📒 交易檢討", h.tradeReview?.summary, tabHref("📒 交易檢討"));
+  const context = ctx.length ? card("🧭 背景與檢討", `<div style="margin-top:-7px;">${ctx.join("")}</div>`) : "";
 
-  // 色塊的先後 = 該塊裡「最早的那一站」的先後。色塊是依更新頻率分的，跟動線是兩個軸，
-  // 但至少要讓帶第 1 站的色塊排在帶第 4 站的上面——否則讀者照徽章讀，眼睛得先往下再往上跳。
-  // 不寫死順序，READ_ORDER 改了這裡自動跟著對。沒有任何一站的色塊（例如「其他」）排最後。
-  const firstStep = (b: (typeof BLOCKS)[number]) => {
-    const idx = b.labels.map((l) => steps.indexOf(l)).filter((i) => i >= 0);
-    return idx.length ? Math.min(...idx) : Number.MAX_SAFE_INTEGER;
-  };
-  const flow = [BLOCKS[0], BLOCKS[1], BLOCKS[2]].sort((x, y) => firstStep(x) - firstStep(y));
-
-  // 動線最前面的色塊獨佔整列，其餘兩塊在寬螢幕左右並排（inline-block 49%），
-  // 窄螢幕/信件視窗因 min-width 排不下會自動上下堆疊。不用 flex/grid 是為了 Email 相容。
-  const twoCol =
-    `<div>` +
-    `<div class="home-col" style="display:inline-block; width:49%; min-width:300px; vertical-align:top;">${renderBlock(flow[1], "margin-right:0;")}</div>` +
-    `<div class="home-col" style="display:inline-block; width:49%; min-width:300px; vertical-align:top; margin-left:1%;">${renderBlock(flow[2])}</div>` +
-    `</div>`;
-
-  const orderText = steps
-    .map((l) => l.replace(/^\S+\s/, ""))
-    .join(" → ");
-
-  return `<div style="margin-bottom:20px;">
-      <div style="background-color:#f8fafc; border:1px solid #e2e8f0; padding:12px 15px; border-radius:8px; margin-bottom:10px;">
-        <h3 style="margin-top:0; margin-bottom:6px; color:#334155;">🏠 這份報告怎麼看</h3>
-        <p style="font-size:13px; color:#4b5563; line-height:1.8; margin:0;">
-          這是 ${date} 的台股盤後報告。它不預測明天，而是回答三件事：<strong>今天實際發生了什麼</strong>、
-          <strong>錢流去了哪裡</strong>、<strong>這是單日雜訊還是正在成形的趨勢</strong>。
-          ${orderText ? `第一次看建議照這個順序：<strong>${orderText}</strong>。` : ""}
-        </p>
-        <div class="home-hint" style="font-size:11px; color:#9ca3af; margin-top:6px; line-height:1.6; display:none;">
-          點任一張卡片可直接跳到該分頁；隨時可以從上方的分頁列回到這裡。
-        </div>
-      </div>
-      ${renderBlock(flow[0])}
-      ${twoCol}
-      ${renderBlock(BLOCKS[3])}
-    </div>`;
+  return `<div style="margin-bottom:20px;">${summary}${gauges}${playbook}${lists}${context}</div>`;
 }
 
 function sortGroupsByMemberCount(groups: CategoryGroup[]): CategoryGroup[] {
@@ -2445,7 +2414,7 @@ function sortGroupsByMemberCount(groups: CategoryGroup[]): CategoryGroup[] {
     .map(({ group }) => group);
 }
 
-function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName: Map<string, string>, market?: MarketBlock | null, retailHistory?: MarketHistoryEntry[], contrib?: IndexContribution | null, tdcc?: DivergenceReport | null, marginHistory?: MarginHistoryEntry[], mo?: MarginOptionsReport | null, picks?: PicksReport | null, forEmail = false, tradeReview?: TradeReview | null): string {
+function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName: Map<string, string>, market?: MarketBlock | null, retailHistory?: MarketHistoryEntry[], contrib?: IndexContribution | null, tdcc?: DivergenceReport | null, marginHistory?: MarginHistoryEntry[], mo?: MarginOptionsReport | null, picks?: PicksReport | null, tradeReview?: TradeReview | null): string {
   const sortedGainers = sortGroupsByMemberCount(a.gainers);
   const gainersHtml = sortedGainers.map((g) => renderCategoryBlock(g, stockMap, codeByName, "gainer")).join("");
   const losersHtml = sortGroupsByMemberCount(a.losers)
@@ -2476,27 +2445,23 @@ function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName
       <p style="line-height: 1.6; margin-bottom: 0;">${a.summary.replace(/\n/g, "<br>")}</p>
     </div>`;
 
-  // 圖例／評分說明的歸屬：
-  // - 網頁版：不再是獨立分頁，改成放在會用到它們的分頁**最上方的摺疊區塊**
-  //   （<details>，預設收合、要看再點開），讀者不用滑到最底才發現有說明。
-  //   badge 都出現在上漲/下跌族群；進場評分只有強勢族群有，所以評分說明只附在上漲。
-  // - 信件版：維持單份、照舊排在最後。信件是線性攤開的（Gmail 對 <details> 支援
-  //   也不可靠），圖例出現兩次只是灌體積，而 102KB 截斷的壓力一直都在。
+  // 圖例／評分說明放在會用到它們的分頁**最上方的摺疊區塊**（<details>，預設收合）。
+  // badge 都出現在上漲/下跌族群；進場評分只有強勢族群有，所以評分說明只附在上漲。
   const foldNote = (label: string, inner: string) =>
     `<details style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; margin-bottom:14px;">
       <summary style="cursor:pointer; padding:9px 14px; font-size:13px; font-weight:bold; color:#475569; user-select:none;">📖 ${label}（點開）</summary>
       <div style="padding:0 10px;">${inner}</div>
     </details>`;
-  const groupGHtml = `${forEmail ? "" : foldNote("本頁說明：圖例與進場評分", legendHtml + rubricHtml)}<h3 style="color: #dc2626; margin-top: 0;">🔥 強勢焦點（族群共振：檔數多→少）</h3>${gainersHtml}`;
-  const groupLHtml = `${forEmail ? "" : foldNote("本頁說明：圖例", legendHtml)}<h3 style="color: #16a34a; margin-top: 0;">🧊 弱勢焦點（族群共振：檔數多→少）</h3>${losersHtml}`;
+  const groupGHtml = `${foldNote("本頁說明：圖例與進場評分", legendHtml + rubricHtml)}<h3 style="color: #dc2626; margin-top: 0;">🔥 強勢焦點（族群共振：檔數多→少）</h3>${gainersHtml}`;
+  const groupLHtml = `${foldNote("本頁說明：圖例", legendHtml)}<h3 style="color: #16a34a; margin-top: 0;">🧊 弱勢焦點（族群共振：檔數多→少）</h3>${losersHtml}`;
 
-  // 每個區塊都是一個 tab panel；瀏覽器端由下方 script 產生頂部切換鈕、預設只顯示第一個（上漲族群）。
-  // email 無 JS 時所有 panel 都顯示（完整退回），不會壞。
+  // 每個區塊都是一個 tab panel，由頂端導覽列（lib/nav.ts）的 #tab= 連結切換，預設落在首頁。
   const sections: Array<{ label: string; html: string }> = [
     { label: "🔥 上漲族群", html: groupGHtml },
     { label: "🧊 下跌族群", html: groupLHtml },
     // 操作建議：可現在介入 / 需關注 / 避開，放在族群後、總覽前，方便快速決策。
-    { label: "🎯 操作建議", html: playbookHtml },
+    // 長線策略併在操作建議下面：短線三分類＋長線主線，都是「我要怎麼做」。
+    { label: "🎯 操作建議", html: playbookHtml + longTermStrategyHtml },
     // 盤後總結與市場儀表板都是整體市場觀點，合併成一個「市場總覽」tab。
     { label: "📊 市場總覽", html: `${summaryHtml}${marketDashboardHtml}` },
     // 指數貢獻：把當日指數漲跌拆回產業與個股，緊接在市場總覽之後回答「這幾點是誰推的」
@@ -2506,50 +2471,39 @@ function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName
     // 大戶籌碼：週資料（TDCC 每週五結算），與每日資料放在一起時要留意更新頻率不同
     { label: "🏦 大戶籌碼", html: tdccHtml },
     // 終極選股池：全訊號統合後的最終結論，動線上排在操作建議之後（先看族群層級的結論，再看個股層級的收斂）
-    { label: "🏆 終極選股池", html: renderPicks(picks ?? null, forEmail) },
+    { label: "🏆 終極選股池", html: renderPicks(picks ?? null) },
     { label: "🌐 國際情勢", html: intlHtml },
     { label: "🎙️ KOL 觀點", html: kolHtml },
-    { label: "🧭 長線策略", html: longTermStrategyHtml },
     { label: "📒 交易檢討", html: renderTradeReview(tradeReview ?? null) },
-    // 圖例/評分說明只有信件版還是獨立段落（見上方 groupGHtml 的說明）
-    ...(forEmail
-      ? [
-          { label: "🔖 圖例說明", html: legendHtml },
-          { label: "🧮 評分說明", html: rubricHtml },
-        ]
-      : []),
   ].filter((s) => s.html && s.html.trim());
 
-  // 依建議閱讀順序重排。這是唯一的排序來源：分頁列、面板順序、總覽卡片全部吃它，
-  // 三者只要有一個不同步，「建議第 N 站」就會跟上方分頁列對不起來。
-  // Email 版沒有分頁、段落是依序攤開的，所以這個順序同時也是信件的閱讀順序。
-  const order = forEmail ? EMAIL_ORDER : READ_ORDER;
+  // 面板順序照 READ_ORDER；不在動線上的（下跌族群、交易檢討）排最後，維持原相對順序。
   const rank = (label: string) => {
-    const i = order.indexOf(label);
-    return i < 0 ? 99 : i; // 不在動線上的（圖例、評分說明等）沉到最後，維持原相對順序
+    const i = READ_ORDER.indexOf(label);
+    return i < 0 ? 99 : i;
   };
   sections.sort((x, y) => rank(x.label) - rank(y.label));
 
-  // 總覽放最前面：網頁版是預設落地頁（activate(0)），Email 版沒有 JS，
-  // 所有分頁本來就依序攤開，它自然成為開頭的導讀。
-  sections.unshift({ label: "🏠 總覽", html: renderHome(sections.map((s) => s.label), a.timestamp, order) });
-
-  const panelsHtml = sections
-    .map((s) => `<div class="tabpanel" data-label="${s.label}">${s.html}</div>`)
-    .join("");
-
-  // 單欄 + RWD：viewport 讓手機正確縮放；容器 max-width 1060（分頁列最滿時需要的寬度）、左右留白隨螢幕縮放。
-  // 所有看得到的樣式都是 inline（信件版只剩這些）；網頁版另外帶一段 <style>（WEB_CSS），
-  // 只做信件本來就做不到的事：分頁列固定在頂端／手機橫向捲動、hover、深色模式。
-  return `<meta name="viewport" content="width=device-width, initial-scale=1">
-  ${forEmail ? "" : WEB_CSS}
-  <div class="rpt" style="font-family:${FONT_STACK}; font-variant-numeric:tabular-nums; -webkit-text-size-adjust:100%; max-width:1060px; margin:0 auto; color:#1f2937; line-height:1.6; padding:0 16px;">
-    <div style="padding:20px 0 14px; border-bottom:1px solid #e5e7eb; margin-bottom:${forEmail ? "14px" : "4px"};">
+  const header = `<div style="padding:20px 0 14px; border-bottom:1px solid #e5e7eb; margin-bottom:4px;">
       <div style="font-size:12px; font-weight:bold; color:#6366f1; letter-spacing:1px; margin-bottom:4px;">台股盤後報告 · 漲跌幅前 100 名資金流向</div>
       <h1 style="margin:0; font-size:24px; line-height:1.35; color:#111827; font-weight:800;">📈 台股盤後資金流向與 AI 總結 <span style="display:inline-block; vertical-align:middle; font-size:14px; font-weight:bold; color:#4338ca; background:#eef2ff; border:1px solid #c7d2fe; border-radius:999px; padding:2px 10px; white-space:nowrap;">${a.timestamp}</span></h1>
-    </div>
-    ${forEmail ? `<div style="background:#fffbeb; border:1px solid #fde68a; border-radius:8px; padding:9px 12px; font-size:12px; color:#92400e; line-height:1.6; margin-bottom:16px;">這封信內容較長，Gmail 可能在中途截斷並顯示「查看完整訊息」。互動圖表（可切換的大戶籌碼榜、市場情緒疊圖）在信件裡也無法操作 — <a href="${SITE_URL}" style="color:#b45309; font-weight:bold;">開啟網頁版</a>看完整內容。</div>` : ""}
-    <div id="tabbar" class="rpt-tabbar" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px;"></div>
+    </div>`;
+
+  sections.unshift({ label: HOME_LABEL, html: renderHome({ a, market, mo, picks, tdcc, tradeReview, tabs: sections.map((s) => s.label) }) });
+
+  // 敘述文字裡提到的公司（盤後總結、族群故事、操作建議、KOL…）一律接上 Yahoo 連結；
+  // 表格與 chip 本來就有連結，linkifyStocks 會跳過既有的 <a>。
+  const panelsHtml = linkifyStocks(
+    sections.map((s) => `<div class="tabpanel" data-label="${s.label}">${s.html}</div>`).join(""),
+  );
+
+  // 單欄 + RWD：viewport 讓手機正確縮放；容器 max-width 1060、左右留白隨螢幕縮放。
+  // 內容樣式是 inline；WEB_CSS 只做 inline 做不到的事：hover、手機版面、深色模式。
+  return `<meta name="viewport" content="width=device-width, initial-scale=1">
+  ${WEB_CSS}
+  <div class="rpt" style="font-family:${FONT_STACK}; font-variant-numeric:tabular-nums; -webkit-text-size-adjust:100%; max-width:1060px; margin:0 auto; color:#1f2937; line-height:1.6; padding:0 16px;">
+    ${header}
+    ${renderSiteNav("index.html", HOME_LABEL)}
     ${panelsHtml}
     <div style="text-align:center; margin-top:32px; padding:18px 0 24px; border-top:1px solid #e5e7eb; color:#9ca3af; font-size:12px;">
       Generated via Claude Code workflow
@@ -2559,76 +2513,38 @@ function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName
   (function(){
     // 深色模式由 WEB_CSS 整頁反相處理；內嵌 RRG 鎖在淺色主題，才不會被反相兩次（見 WEB_CSS 說明）
     document.documentElement.setAttribute('data-theme','light');
-    var bar=document.getElementById('tabbar');
+    var nav=document.querySelector('.gnav');
     var panels=[].slice.call(document.querySelectorAll('.tabpanel'));
-    if(!bar||!panels.length)return;
-    var btns=[];
-    // 分頁鈕的外觀全部在 WEB_CSS（.rpt-tab / .on），這裡只切 class。
+    if(!nav||!panels.length)return;
+    var labels=panels.map(function(p){return p.getAttribute('data-label');});
+    var idxByLabel={};
+    labels.forEach(function(l,i){idxByLabel[l]=i;});
+    var ALIASES=${JSON.stringify(TAB_ALIASES)};
+    // 導覽列是全站共用的（lib/nav.ts），今天沒有輸出的分頁（例如沒有新 KOL 節目）就藏起來
+    [].slice.call(nav.querySelectorAll('[data-tab]')).forEach(function(a){
+      if(idxByLabel[a.getAttribute('data-tab')]===undefined)a.style.display='none';
+    });
     function activate(i){
       panels.forEach(function(p,j){p.style.display=j===i?'':'none';});
-      btns.forEach(function(b,j){
-        var on=j===i;
-        b.className='rpt-tab'+(on?' on':'');
-        b.setAttribute('aria-selected',on?'true':'false');
-      });
-      // 手機上分頁列是橫向捲動的一排：把目前分頁捲到可見範圍中間
-      var cur=btns[i];
-      if(cur&&bar.scrollWidth>bar.clientWidth){bar.scrollLeft=cur.offsetLeft-(bar.clientWidth-cur.offsetWidth)/2;}
+      if(window.gnavMark)window.gnavMark(labels[i]);
     }
-    // 分頁列是 sticky：在長頁面底部切分頁時，捲回分頁列位置，新分頁才會從頭開始看
+    // 導覽列是 sticky：在長頁面底部切分頁時，捲回導覽列位置，新分頁才會從頭開始看
     function toTop(){
-      var head=bar.previousElementSibling;
+      var head=nav.previousElementSibling;
       var y=head?head.getBoundingClientRect().bottom+window.pageYOffset:0;
       if(window.pageYOffset>y)window.scrollTo(0,y);
     }
-    var idxByLabel={};
-    var NAV_TEXT=${JSON.stringify(Object.fromEntries(sections.map((s) => [s.label, navText(s.label)])))};
-    bar.setAttribute('role','tablist');
-    panels.forEach(function(p,i){
-      var label=p.getAttribute('data-label')||('Tab '+(i+1));
-      idxByLabel[label]=i;
-      var b=document.createElement('button');
-      b.type='button';
-      b.textContent=NAV_TEXT[label]||label;
-      b.className='rpt-tab';
-      b.setAttribute('role','tab');
-      // hash 深連結：子頁（設質+CB）要能連回特定分頁，重新整理也要留在原分頁
-      b.onclick=function(){activate(i);toTop();location.hash='tab='+encodeURIComponent(label);};
-      btns.push(b);bar.appendChild(b);
-    });
-    // 子頁入口：設質+CB 與月營收是獨立頁面，放在分頁列最後當第一級導覽，
-    // 樣式與分頁鈕一致但用 <a>（虛線框），讓它看得出是「離開這一頁」。
-    ${JSON.stringify(SUBPAGES.map((x) => [x.file, navText(x.label) + " ↗"]))}.forEach(function(x){
-      var ext=document.createElement('a');
-      ext.href=x[0];
-      ext.textContent=x[1];
-      ext.className='rpt-tab ext';
-      bar.appendChild(ext);
-    });
-    // 總覽卡片：只有在 JS 跑得動時才變成可點的入口，並補上箭頭與提示。
-    // Email 沒有 JS，卡片維持純文字，不會出現點不動的死連結。
-    [].slice.call(document.querySelectorAll('.homecard')).forEach(function(card){
-      var target=idxByLabel[card.getAttribute('data-goto')];
-      if(target===undefined)return;
-      card.style.cursor='pointer';
-      var arrow=card.querySelector('.homecard-arrow');
-      if(arrow){arrow.textContent=' →';arrow.style.color='#4f46e5';arrow.style.float='right';}
-      card.onclick=function(){activate(target);window.scrollTo(0,0);};
-      card.onmouseenter=function(){card.style.borderColor='#4f46e5';card.style.background='#f5f3ff';};
-      card.onmouseleave=function(){card.style.borderColor='#e5e7eb';card.style.background='#fff';};
-    });
-    var hint=document.querySelector('.home-hint');
-    if(hint)hint.style.display='';
-    // 進站時若帶 #tab=xxx（從子頁連回來或重新整理）就開那一頁，否則落在總覽
+    // 導覽連結都是 #tab=xxx：切分頁一律走 hashchange，重新整理或從子頁連回來也會停在同一頁
     function fromHash(){
       var m=/^#tab=(.+)$/.exec(location.hash||'');
       if(!m)return -1;
-      var i=idxByLabel[decodeURIComponent(m[1])];
+      var label=decodeURIComponent(m[1]);
+      var i=idxByLabel[ALIASES[label]||label];
       return i===undefined?-1:i;
     }
     var start=fromHash();
     activate(start<0?0:start);
-    window.addEventListener('hashchange',function(){var i=fromHash();if(i>=0)activate(i);});
+    window.addEventListener('hashchange',function(){var i=fromHash();activate(i<0?0:i);toTop();});
   })();
   </script>`;
 }
@@ -2655,26 +2571,6 @@ function updateHistory(a: Analysis): void {
   mkdirSync(dirname(historyPath), { recursive: true });
   writeFileSync(historyPath, JSON.stringify(trimmed, null, 2), "utf-8");
   console.log(`Updated history (${trimmed.length} records) at ${historyPath}`);
-}
-
-async function sendEmail(html: string): Promise<void> {
-  const url = process.env.GAS_WEBHOOK_URL;
-  if (!url) {
-    throw new Error("GAS_WEBHOOK_URL env var is not set");
-  }
-  const res = await fetch(url, {
-    method: "POST",
-    headers: { "Content-Type": "text/plain;charset=utf-8" },
-    body: JSON.stringify({
-      to: EMAIL_TO,
-      subject: EMAIL_SUBJECT,
-      htmlBody: html,
-    }),
-  });
-  if (!res.ok) {
-    throw new Error(`GAS webhook returned ${res.status}: ${await res.text()}`);
-  }
-  console.log(`Email webhook responded ${res.status}`);
 }
 
 async function main() {
@@ -2823,32 +2719,12 @@ async function main() {
     }
   }
 
-  // 網頁版（給 build-site-html.ts）與信件版分開產：兩者的段落順序不同，
-  // 而且信件版會再過一次 slimForEmail 把信件顯示不出來的東西拿掉。
-  const html = renderHtml(analysis, stockMap, codeByName, marketBlock, retailHistory, contrib, tdcc, marginHistory, marginOptions, picks, false, tradeReview);
-  const emailHtml = slimForEmail(
-    renderHtml(analysis, stockMap, codeByName, marketBlock, retailHistory, contrib, tdcc, marginHistory, marginOptions, picks, true, tradeReview),
-  );
-
+  const html = renderHtml(analysis, stockMap, codeByName, marketBlock, retailHistory, contrib, tdcc, marginHistory, marginOptions, picks, tradeReview);
   const htmlOutPath = resolve(process.cwd(), "data/report-latest.html");
   writeFileSync(htmlOutPath, html, "utf-8");
-  console.log(`Wrote HTML preview to ${htmlOutPath}`);
-  writeFileSync(resolve(process.cwd(), "data/report-email.html"), emailHtml, "utf-8");
-  console.log(
-    `Email 版 ${(emailHtml.length / 1024).toFixed(0)}KB（網頁版 ${(html.length / 1024).toFixed(0)}KB）` +
-      `${emailHtml.length > 102 * 1024 ? "，仍超過 Gmail 102KB 截斷線，但重點段落已排在截斷線之前" : ""}`,
-  );
+  console.log(`Wrote HTML preview to ${htmlOutPath}（${(html.length / 1024).toFixed(0)}KB）`);
 
   updateHistory(analysis);
-
-  // 注意：.env.local 是用 override:true 載入的，所以「GAS_WEBHOOK_URL= 前綴」擋不掉寄信，
-  // 一定要用這個旗標（而且旗標必須能單獨當第一個參數傳，見上方 inputPath 的處理）。
-  const shouldSend = !process.argv.includes("--no-email");
-  if (shouldSend) {
-    await sendEmail(emailHtml);
-  } else {
-    console.log("Skipped email (--no-email flag)");
-  }
 }
 
 main().catch((err) => {
