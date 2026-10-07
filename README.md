@@ -154,6 +154,7 @@ npm run positions        # 分析凱基期貨持倉（見下方）
 | 新因子研究（2026-10-05，10-07 補齊行情重跑） | 日間動能、隔夜反轉、組合與大盤殘差代理，持有2／5／20日；補齊行情後配對增益都接近零，不加入正式選股。毛利／總資產尚未測 | [研究判讀](docs/novel-factor-backtest-review.md)／[完整結果](docs/novel-factor-backtest-results.md)／[固定規則](docs/novel-factor-backtest-config.json) |
 | 營收衰退放空（2026-10-07） | 單月 YoY ≤ −20% 下月平均跑輸母體 1.22%（t −5.6），前後段與 50M 門檻皆成立；加 MoM 連 3 月衰退更強；股價跌深後大致仍未反映；毛利率單獨很弱。已接入每日流程：子頁 `/revenue-decline.html`（附個股期貨），另有 `/revenue-industry.html` 看產業族群性 | [結論](docs/revenue-short-backtest.md) |
 | 週三價平合風險溫度計（2026-10-05，10-07 前瞻檢查） | 2023–2025 高檔訊號有增量，但加盤中振幅控制後不顯著；2026 前瞻幾乎無增量；同星期價平合偏高 2026 仍有 +15pp。最大 OI 區間的位置 2026 反而比同寬置中差 13pp。只當觀察，不用來減碼 | [研究判讀](docs/weekly-straddle-risk-review.md)／[2026 前瞻](docs/weekly-straddle-forward-results.md)／[OI 區間](docs/option-range-review.md)（[2026 前瞻](docs/option-range-forward-results.md)） |
+| 選擇權未平倉 P/C 比與外資選擇權部位（2026-10-07） | 主要和當天及過去漲跌同步，2019–2022 沒有預測力；2023 起 P/C 比偏高後 20 日較強（t +3.3），但方向與前期相反且集中在 2024–2025。外資淨部位樣本外失效。只當行情溫度計 | [研究判讀](docs/option-pc-ratio-review.md)／[回測數字](docs/option-pc-ratio-results.md) |
 
 新因子的精簡數字快照保存在 [research/novel-factors/](research/novel-factors/)（依執行日期命名，10-05 為有行情缺口的首輪），隨專案提供；逐期持倉與原始行情在被忽略的 `data/backtest/`，換機後需另外準備。重跑方式與資料需求見研究判讀。「暫不採用」代表本次規格沒有足夠支持，並不代表所有版本都已被證明無效；尚未回測的項目另列資料缺口。
 
