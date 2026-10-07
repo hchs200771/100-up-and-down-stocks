@@ -1,0 +1,64 @@
+{
+  "frozenOn": "2026-10-05",
+  "purpose": "Exploratory fixed-rule tests of new price-factor families; no parameter search or daily-report changes",
+  "evaluationStart": "2020-01-02",
+  "end": "2026-09-30",
+  "holdingSessions": [
+    2,
+    5,
+    20
+  ],
+  "signalSessions": 20,
+  "trainingSessions": 252,
+  "topCount": 10,
+  "minimumSignalVolumeShares": 100000,
+  "entry": "Next trading session open after signal close",
+  "exit": "Holding-session last close; 2-session holding crosses one night and is not a pure close-to-open strategy",
+  "rebalance": "Non-overlapping cohorts, fixed evaluationStart phase independently for each holding horizon",
+  "buyFee": 0.001425,
+  "sellFee": 0.004425,
+  "adverseSlippageEachSide": 0.005,
+  "families": {
+    "split": {
+      "baseline": "baseline_split",
+      "universe": "Contemporaneous TWSE/TPEx ordinary-stock rows; original 61-session indicator eligibility plus 21 actual traded OHLC observations for decomposition",
+      "strategies": [
+        "baseline_split",
+        "day_momentum",
+        "night_reversal",
+        "split_combination"
+      ]
+    },
+    "residual": {
+      "baseline": "baseline_residual",
+      "universe": "Same eligibility plus 273 actual traded OHLC observations in one resolved price segment and estimable market regression",
+      "strategies": [
+        "baseline_residual",
+        "market_residual",
+        "residual_combination"
+      ]
+    }
+  },
+  "rules": {
+    "baseline_split": "Rank adjusted 20-session total return descending on split-complete universe",
+    "day_momentum": "Rank summed 20-session open-to-close log returns descending",
+    "night_reversal": "Rank summed 20-session prior-close-to-open adjusted log returns ascending",
+    "split_combination": "Equal average of cross-sectional day-momentum and negative-night-return percentile ranks",
+    "baseline_residual": "Rank adjusted 20-session total return descending on residual-complete universe",
+    "market_residual": "Fit stock daily log returns to intercept + TAIEX daily log returns over prior252 sessions ending before signal20; rank signal20 residual sum / training residual SD descending",
+    "residual_combination": "Equal average of cross-sectional total-return and market-residual percentile ranks"
+  },
+  "inference": "Paired net-return and benchmark-excess-win differences; 10000 circular blocks spanning60 sessions (30/12/3 cohorts for2/5/20-session holdings) only within contiguous pairs; Bonferroni across5 new rules x3 horizons x2 outcomes x3 reported periods=90 comparisons",
+  "limitations": [
+    "Market residual is a daily market-only proxy, not original Fama-French residual momentum replication",
+    "2020-2026 has already been examined in this project; 2024-2026 is retrospective period stability only, not clean out-of-sample",
+    "No substitution of untradable selections; failed buys stay cash; unresolved exits invalidate cohort; invalid periods cannot be silently chained into CAGR",
+    "Gross profit/assets requires historic total assets, TTM gross profit and point-in-time filing data; unavailable accounting inputs must be reported rather than fabricated",
+    "This tests price strategies, not incremental filters on the monthly revenue/gross-margin portfolio"
+  ],
+  "sources": {
+    "split": "https://doi.org/10.1016/j.pacfin.2023.102151",
+    "residual": "https://www.sciencedirect.com/science/article/pii/S0927539811000041",
+    "grossProfitAssets": "https://mysimon.rochester.edu/novy-marx/research/OSoV.pdf"
+  }
+}

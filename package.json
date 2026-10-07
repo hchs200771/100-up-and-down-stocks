@@ -36,7 +36,8 @@
     "backtest:wide:fetch": "python3 scripts/fetch-wide-market-history.py",
     "backtest:wide": "node --import tsx scripts/backtest-wide-market.ts",
     "backtest:wide:actions": "python3 scripts/fetch-wide-action-references.py",
-    "backtest:wide:render": "node --import tsx scripts/render-wide-backtest-report.ts"
+    "backtest:wide:render": "node --import tsx scripts/render-wide-backtest-report.ts",
+    "backtest:novel": "node --import tsx scripts/backtest-novel-factors.ts"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",

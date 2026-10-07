@@ -66,6 +66,8 @@ export function simulateCohort(input: {
   holdings: CohortHolding[];
   benchmarkRows: Map<string, BenchmarkRow>;
   benchmarkTR: Map<string, number>;
+  /** Defaults to the original 20-session experiment contract. */
+  holdingSessions?: number;
 }): CohortResult {
   const { dates, holdings, benchmarkRows, benchmarkTR } = input;
   const investedWeight = holdings.reduce((sum, h) => sum + h.weight, 0);
@@ -77,7 +79,10 @@ export function simulateCohort(input: {
     invalidReasons.push(`${code}: ${reason}`);
   };
 
-  if (dates.length !== 20) invalidReasons.push(`exactly 20 session dates are required, got ${dates.length}`);
+  const holdingSessions = input.holdingSessions ?? 20;
+  if (!Number.isInteger(holdingSessions) || holdingSessions < 1 || dates.length !== holdingSessions) {
+    invalidReasons.push(`exactly ${holdingSessions} session dates are required, got ${dates.length}`);
+  }
   if (new Set(dates).size !== dates.length || dates.some((d, i) => i > 0 && d <= dates[i - 1])) {
     invalidReasons.push("dates must be unique and strictly increasing");
   }

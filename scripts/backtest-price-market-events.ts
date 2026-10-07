@@ -37,14 +37,14 @@ export function normalizeAction(dataset: string, original: Record<string, any>):
 }
 
 /** Circular blocks preserve adjacent-cohort dependence; all thresholds were fixed before execution. */
-export function pairedBlockInterval(deltas: number[], seed = 1729, comparisons = 15, groupIds?: number[]) {
+export function pairedBlockInterval(deltas: number[], seed = 1729, comparisons = 15, groupIds?: number[], blockLength = 3) {
   if (groupIds && groupIds.length !== deltas.length) throw new Error('Bootstrap group IDs must match observations');
+  if (!Number.isInteger(blockLength) || blockLength < 1) throw new Error('Bootstrap block length must be a positive integer');
   if (deltas.length < 12) return { count: deltas.length, meanDeltaPct: mean(deltas), ci95: null, familywiseCi: null, adjustedP: null };
   const originalMean = mean(deltas)!;
   let state = seed >>> 0;
   const random = () => { state = (Math.imul(state, 1664525) + 1013904223) >>> 0; return state / 4294967296; };
   const draws: number[] = [];
-  const blockLength = 3;
   const groups = new Map<number, number[]>();
   deltas.forEach((_, i) => {
     const group = groupIds?.[i] ?? 0;

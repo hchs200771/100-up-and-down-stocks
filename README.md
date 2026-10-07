@@ -99,6 +99,7 @@ npx tsx scripts/backfill-missed-days.ts   # 補漏跑日的收盤價／融資／
 npm run report:score     # 只重算族群記分板（當日快照已存在會跳過）
 npm run report:picks     # 只重算終極選股池
 npm run backtest:picks   # 選股池分數校準＋前 5 名前瞻追蹤（輸出 data/stock-picks-backtest.json，每日流程自動跑）
+npm run backtest:novel   # 新因子研究：日間／隔夜拆解、大盤殘差動能（需本機全市場歷史行情）
 npm run themes:refresh   # 重抓題材新聞觀察
 npm run report:send      # 用現有分析重產 HTML 並寄信
 npx tsx scripts/send-report.ts data/analysis-latest.json --no-email   # 只產 HTML 預覽
@@ -143,6 +144,17 @@ npm run positions        # 分析凱基期貨持倉（見下方）
 1. 在台灣的 Windows／Linux 主機執行 `scripts/kgi/fetch_kgi_positions.py`，產出 `data/kgi-positions.json`（安裝方式與環境變數見檔案開頭說明）。
 2. 把檔案放到 Mac 的 `data/` 下，執行 `npm run positions`。
 
+## 選股研究與回測
+
+研究結果包含未改善策略、暫不採用與資料不足的實驗，供後續研究者查閱，避免重複測試或只保留成功案例。
+
+| 研究 | 結論與範圍 | 紀錄 |
+| --- | --- | --- |
+| 全台股因子掃描（2026-10-03） | 17條固定規則；原研究沒有可靠打敗基準的新條件 | [結論](docs/wide-market-scan-conclusion.md)／[數字](docs/factor-experiments-wide-results.md) |
+| 新因子研究（2026-10-05） | 日間動能、隔夜反轉、組合與大盤殘差代理，持有2／5／20日；目前不加入正式選股。行情缺口限制結論，毛利／總資產尚未測 | [研究判讀](docs/novel-factor-backtest-review.md)／[完整結果](docs/novel-factor-backtest-results.md)／[固定規則](docs/novel-factor-backtest-config.json) |
+
+新因子的精簡數字快照保存在 [research/novel-factors/2026-10-05-summary.json](research/novel-factors/2026-10-05-summary.json)，隨專案提供；逐期持倉與原始行情在被忽略的 `data/backtest/`，換機後需另外準備。重跑方式與資料需求見研究判讀。「暫不採用」代表本次規格沒有足夠支持，並不代表所有版本都已被證明無效；尚未回測的項目另列資料缺口。
+
 ## 開發
 
 ```bash
@@ -157,6 +169,7 @@ npm run lint     # TypeScript 型別檢查
 - `scripts/prompts/`：controller、worker、finalizer 的 prompt
 - `.claude/skills/`：Claude Code 手動流程（`daily-stock-report`）與維護說明（`stock-report-maintenance`）
 - `docs/wide-market-scan-conclusion.md`：全台股因子掃描的結論（17 條規則、81 個窗口）
+- [新因子研究判讀](docs/novel-factor-backtest-review.md)：包含沒有改善的結果、限制、尚未測的項目與重跑方式
 
 ## 舊版網頁 App
 

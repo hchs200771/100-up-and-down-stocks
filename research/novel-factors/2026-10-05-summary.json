@@ -1,0 +1,3702 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-05T09:38:11.765Z",
+  "decision": "No new factor adopted; fixed-rule proxy tests do not establish reliable positive incremental returns. Gross profit/assets untested.",
+  "config": {
+    "frozenOn": "2026-10-05",
+    "purpose": "Exploratory fixed-rule tests of new price-factor families; no parameter search or daily-report changes",
+    "evaluationStart": "2020-01-02",
+    "end": "2026-09-30",
+    "holdingSessions": [
+      2,
+      5,
+      20
+    ],
+    "signalSessions": 20,
+    "trainingSessions": 252,
+    "topCount": 10,
+    "minimumSignalVolumeShares": 100000,
+    "entry": "Next trading session open after signal close",
+    "exit": "Holding-session last close; 2-session holding crosses one night and is not a pure close-to-open strategy",
+    "rebalance": "Non-overlapping cohorts, fixed evaluationStart phase independently for each holding horizon",
+    "buyFee": 0.001425,
+    "sellFee": 0.004425,
+    "adverseSlippageEachSide": 0.005,
+    "families": {
+      "split": {
+        "baseline": "baseline_split",
+        "universe": "Contemporaneous TWSE/TPEx ordinary-stock rows; original 61-session indicator eligibility plus 21 actual traded OHLC observations for decomposition",
+        "strategies": [
+          "baseline_split",
+          "day_momentum",
+          "night_reversal",
+          "split_combination"
+        ]
+      },
+      "residual": {
+        "baseline": "baseline_residual",
+        "universe": "Same eligibility plus 273 actual traded OHLC observations in one resolved price segment and estimable market regression",
+        "strategies": [
+          "baseline_residual",
+          "market_residual",
+          "residual_combination"
+        ]
+      }
+    },
+    "rules": {
+      "baseline_split": "Rank adjusted 20-session total return descending on split-complete universe",
+      "day_momentum": "Rank summed 20-session open-to-close log returns descending",
+      "night_reversal": "Rank summed 20-session prior-close-to-open adjusted log returns ascending",
+      "split_combination": "Equal average of cross-sectional day-momentum and negative-night-return percentile ranks",
+      "baseline_residual": "Rank adjusted 20-session total return descending on residual-complete universe",
+      "market_residual": "Fit stock daily log returns to intercept + TAIEX daily log returns over prior252 sessions ending before signal20; rank signal20 residual sum / training residual SD descending",
+      "residual_combination": "Equal average of cross-sectional total-return and market-residual percentile ranks"
+    },
+    "inference": "Paired net-return and benchmark-excess-win differences; 10000 circular blocks spanning60 sessions (30/12/3 cohorts for2/5/20-session holdings) only within contiguous pairs; Bonferroni across5 new rules x3 horizons x2 outcomes x3 reported periods=90 comparisons",
+    "limitations": [
+      "Market residual is a daily market-only proxy, not original Fama-French residual momentum replication",
+      "2020-2026 has already been examined in this project; 2024-2026 is retrospective period stability only, not clean out-of-sample",
+      "No substitution of untradable selections; failed buys stay cash; unresolved exits invalidate cohort; invalid periods cannot be silently chained into CAGR",
+      "Gross profit/assets requires historic total assets, TTM gross profit and point-in-time filing data; unavailable accounting inputs must be reported rather than fabricated",
+      "This tests price strategies, not incremental filters on the monthly revenue/gross-margin portfolio"
+    ],
+    "sources": {
+      "split": "https://doi.org/10.1016/j.pacfin.2023.102151",
+      "residual": "https://www.sciencedirect.com/science/article/pii/S0927539811000041",
+      "grossProfitAssets": "https://mysimon.rochester.edu/novy-marx/research/OSoV.pdf"
+    }
+  },
+  "inputCoverage": {
+    "sessions": 1880,
+    "start": "2019-01-02",
+    "end": "2026-09-30",
+    "historicalCodes": 2084,
+    "missingSourceDates": [
+      "twse/2021-09-07",
+      "twse/2021-09-08",
+      "twse/2021-09-09",
+      "twse/2021-09-10",
+      "twse/2021-09-13",
+      "twse/2021-09-14",
+      "twse/2021-09-15",
+      "twse/2021-09-16",
+      "twse/2021-09-17",
+      "twse/2021-09-22",
+      "twse/2021-09-23",
+      "twse/2021-09-24",
+      "twse/2021-09-27",
+      "twse/2021-09-28",
+      "twse/2021-09-29",
+      "twse/2021-09-30",
+      "twse/2021-10-01",
+      "twse/2021-10-04",
+      "twse/2021-10-05",
+      "twse/2021-10-06",
+      "twse/2021-10-07",
+      "twse/2021-10-08",
+      "twse/2021-10-12",
+      "twse/2021-10-13",
+      "twse/2021-10-14",
+      "twse/2021-10-15",
+      "twse/2021-10-18",
+      "twse/2021-10-19",
+      "twse/2021-10-20",
+      "twse/2021-10-21",
+      "twse/2021-10-22",
+      "twse/2021-10-25",
+      "twse/2021-10-26",
+      "twse/2021-10-27",
+      "twse/2021-10-28",
+      "twse/2021-10-29",
+      "twse/2021-11-01",
+      "twse/2021-11-02",
+      "twse/2021-11-03",
+      "twse/2021-11-04",
+      "twse/2021-11-05",
+      "twse/2021-11-08",
+      "twse/2021-11-09",
+      "twse/2021-11-10",
+      "twse/2021-11-11",
+      "twse/2021-11-12",
+      "twse/2021-11-15",
+      "twse/2021-11-16",
+      "twse/2021-11-17",
+      "twse/2021-11-18",
+      "twse/2021-11-19",
+      "twse/2021-11-22",
+      "twse/2021-11-23",
+      "twse/2021-11-24",
+      "twse/2021-11-25",
+      "twse/2021-11-26",
+      "twse/2021-11-29",
+      "twse/2021-11-30",
+      "twse/2021-12-01",
+      "twse/2021-12-02",
+      "twse/2021-12-03",
+      "twse/2021-12-06",
+      "twse/2021-12-07",
+      "twse/2021-12-08",
+      "twse/2021-12-09",
+      "twse/2021-12-10",
+      "twse/2021-12-13",
+      "twse/2021-12-14",
+      "twse/2021-12-15",
+      "twse/2021-12-16",
+      "twse/2021-12-17",
+      "twse/2021-12-20",
+      "twse/2021-12-21",
+      "twse/2021-12-22",
+      "twse/2021-12-23",
+      "twse/2021-12-24",
+      "twse/2021-12-27",
+      "twse/2021-12-28",
+      "twse/2021-12-29",
+      "twse/2021-12-30",
+      "twse/2022-01-03",
+      "twse/2022-01-04",
+      "twse/2022-01-05",
+      "twse/2022-01-06",
+      "twse/2022-01-07",
+      "twse/2022-01-10",
+      "twse/2022-01-11",
+      "twse/2022-01-12",
+      "twse/2022-01-13",
+      "twse/2022-01-14",
+      "twse/2022-01-17",
+      "twse/2022-01-18",
+      "twse/2022-01-19",
+      "twse/2022-01-20",
+      "twse/2022-01-21",
+      "twse/2022-01-24",
+      "twse/2022-01-25",
+      "twse/2022-01-26",
+      "twse/2022-02-07",
+      "twse/2022-02-08",
+      "twse/2022-02-09",
+      "twse/2022-02-10",
+      "twse/2022-02-11",
+      "twse/2022-02-14",
+      "twse/2022-02-15",
+      "twse/2022-02-16",
+      "twse/2022-02-17",
+      "twse/2022-02-18",
+      "twse/2022-02-21",
+      "twse/2022-02-22",
+      "twse/2022-02-23",
+      "twse/2022-02-24",
+      "twse/2022-02-25",
+      "twse/2022-03-01",
+      "twse/2022-03-02",
+      "twse/2022-03-03",
+      "twse/2022-03-04",
+      "twse/2022-03-07",
+      "twse/2022-03-08",
+      "twse/2022-03-09",
+      "twse/2022-03-10",
+      "twse/2022-03-11",
+      "twse/2022-03-14",
+      "twse/2022-03-15",
+      "twse/2022-03-16",
+      "twse/2022-03-17",
+      "twse/2022-03-18",
+      "twse/2022-03-21",
+      "twse/2022-03-22",
+      "twse/2022-03-23",
+      "twse/2022-03-24",
+      "twse/2022-03-25",
+      "twse/2022-03-28",
+      "twse/2022-03-29",
+      "twse/2022-03-30",
+      "twse/2022-03-31",
+      "twse/2022-04-01",
+      "twse/2022-04-06",
+      "twse/2022-04-07",
+      "twse/2022-04-08",
+      "twse/2022-04-11",
+      "twse/2022-04-12",
+      "twse/2022-04-13",
+      "twse/2022-04-14",
+      "twse/2022-04-15",
+      "twse/2022-04-18",
+      "twse/2022-04-19",
+      "twse/2022-04-20",
+      "twse/2022-04-21",
+      "twse/2022-04-22",
+      "twse/2022-04-25",
+      "twse/2022-04-26",
+      "twse/2022-04-27",
+      "twse/2022-04-28",
+      "twse/2022-04-29",
+      "twse/2022-05-03",
+      "twse/2022-05-04",
+      "twse/2022-05-05",
+      "twse/2022-05-06",
+      "twse/2022-05-09",
+      "twse/2022-05-10",
+      "twse/2022-05-11",
+      "twse/2022-05-12",
+      "twse/2022-05-13",
+      "twse/2022-05-16",
+      "twse/2022-05-17",
+      "twse/2022-05-18",
+      "twse/2022-05-19",
+      "twse/2022-05-20",
+      "twse/2022-05-23",
+      "twse/2022-05-24",
+      "twse/2022-05-25",
+      "twse/2022-05-26",
+      "twse/2022-05-27",
+      "twse/2022-05-30",
+      "twse/2022-05-31",
+      "twse/2022-06-01",
+      "twse/2022-06-02",
+      "twse/2022-06-06",
+      "twse/2022-06-07",
+      "twse/2022-06-08",
+      "twse/2022-06-09",
+      "twse/2022-06-10",
+      "twse/2022-06-13",
+      "twse/2022-06-14",
+      "twse/2022-06-15",
+      "twse/2022-06-16",
+      "twse/2022-06-17",
+      "twse/2022-06-20",
+      "twse/2022-06-21",
+      "twse/2022-06-22",
+      "twse/2022-06-23",
+      "twse/2022-06-24",
+      "twse/2022-06-27",
+      "twse/2022-06-28",
+      "twse/2022-06-29",
+      "twse/2022-06-30",
+      "twse/2022-07-01",
+      "twse/2022-07-04",
+      "twse/2022-07-05",
+      "twse/2022-07-06",
+      "twse/2022-07-07",
+      "twse/2022-07-08",
+      "twse/2022-07-11",
+      "twse/2022-07-12",
+      "twse/2022-07-13",
+      "twse/2022-07-14",
+      "twse/2022-07-15",
+      "twse/2022-07-18",
+      "twse/2022-07-19",
+      "twse/2022-07-20",
+      "twse/2022-07-21",
+      "twse/2022-07-22",
+      "twse/2022-07-25",
+      "twse/2022-07-26",
+      "twse/2022-07-27",
+      "twse/2022-07-28",
+      "twse/2022-07-29",
+      "twse/2022-08-01",
+      "twse/2022-08-02",
+      "twse/2022-08-03",
+      "twse/2022-08-04",
+      "twse/2022-08-05",
+      "twse/2022-08-08",
+      "twse/2022-08-09",
+      "twse/2022-08-10",
+      "twse/2022-08-11",
+      "twse/2022-08-12",
+      "twse/2022-08-15",
+      "twse/2022-08-16",
+      "twse/2022-08-17",
+      "twse/2022-08-18",
+      "twse/2022-08-19",
+      "twse/2022-08-22",
+      "twse/2022-08-23",
+      "twse/2022-08-24",
+      "twse/2022-08-25",
+      "twse/2022-08-26",
+      "twse/2022-08-29",
+      "twse/2022-08-30",
+      "twse/2022-08-31",
+      "twse/2022-09-01",
+      "twse/2022-09-02",
+      "twse/2022-09-05",
+      "twse/2022-09-06",
+      "twse/2022-09-07",
+      "twse/2022-09-08",
+      "twse/2022-09-12",
+      "twse/2022-09-13",
+      "twse/2022-09-14",
+      "twse/2022-09-15",
+      "twse/2022-09-16",
+      "twse/2022-09-19",
+      "twse/2022-09-20",
+      "twse/2022-09-21",
+      "twse/2022-09-22",
+      "twse/2022-09-23",
+      "twse/2022-09-26",
+      "twse/2022-09-27",
+      "twse/2022-09-28",
+      "twse/2022-09-29",
+      "twse/2022-09-30",
+      "twse/2022-10-03",
+      "twse/2022-10-04",
+      "twse/2022-10-05",
+      "twse/2022-10-06",
+      "twse/2022-10-11",
+      "twse/2022-10-12",
+      "twse/2022-10-13",
+      "twse/2022-10-14",
+      "twse/2022-10-17",
+      "twse/2022-10-18",
+      "twse/2023-01-30",
+      "twse/2023-01-31",
+      "twse/2023-02-01",
+      "twse/2023-02-02",
+      "twse/2023-02-03",
+      "twse/2023-02-06",
+      "twse/2023-02-07",
+      "twse/2023-02-08",
+      "twse/2023-02-09",
+      "twse/2023-02-10",
+      "twse/2023-02-13",
+      "twse/2023-02-14",
+      "twse/2023-02-15",
+      "twse/2023-02-16",
+      "twse/2023-02-17",
+      "twse/2023-02-20",
+      "twse/2023-02-21",
+      "twse/2023-02-22",
+      "twse/2023-02-23",
+      "twse/2023-02-24",
+      "twse/2023-03-01",
+      "twse/2023-03-02",
+      "twse/2023-03-03",
+      "twse/2023-03-06",
+      "twse/2023-03-07",
+      "twse/2023-03-08",
+      "twse/2023-10-20",
+      "twse/2023-10-23",
+      "twse/2023-10-24",
+      "twse/2023-10-25",
+      "twse/2023-10-26",
+      "twse/2023-10-27",
+      "twse/2023-10-30",
+      "twse/2023-10-31",
+      "twse/2023-11-01",
+      "twse/2023-11-02",
+      "twse/2023-11-03",
+      "twse/2023-11-06",
+      "twse/2023-11-07",
+      "twse/2023-11-08",
+      "twse/2023-11-09",
+      "twse/2023-11-10",
+      "twse/2023-11-13",
+      "twse/2023-11-14",
+      "twse/2023-11-15",
+      "twse/2023-11-16",
+      "twse/2023-11-17",
+      "twse/2023-11-20",
+      "twse/2023-11-21",
+      "twse/2023-11-22",
+      "twse/2023-11-23",
+      "twse/2023-11-24",
+      "twse/2023-11-27",
+      "twse/2023-11-28",
+      "twse/2023-11-29",
+      "twse/2023-11-30",
+      "twse/2023-12-01",
+      "twse/2023-12-04",
+      "twse/2024-02-15",
+      "twse/2024-02-16",
+      "twse/2024-02-19",
+      "twse/2024-02-20",
+      "twse/2024-02-21",
+      "twse/2024-02-22",
+      "twse/2024-02-23",
+      "twse/2024-02-26",
+      "twse/2024-02-27",
+      "twse/2024-03-01",
+      "twse/2024-03-05",
+      "twse/2024-03-06",
+      "twse/2024-03-07",
+      "twse/2024-03-08",
+      "twse/2024-03-11",
+      "twse/2024-03-12",
+      "twse/2024-03-13",
+      "twse/2024-03-14",
+      "twse/2024-03-15",
+      "twse/2024-03-18",
+      "twse/2024-03-19",
+      "twse/2024-03-20",
+      "twse/2024-03-21",
+      "twse/2024-03-22",
+      "twse/2024-03-25",
+      "twse/2024-03-26",
+      "twse/2024-03-27",
+      "twse/2024-03-28",
+      "twse/2024-03-29",
+      "twse/2024-04-01",
+      "twse/2024-04-02",
+      "twse/2024-04-03",
+      "twse/2024-04-09",
+      "twse/2024-04-11",
+      "twse/2024-04-15",
+      "twse/2024-04-17",
+      "twse/2024-04-18",
+      "twse/2024-04-19",
+      "twse/2024-04-22",
+      "twse/2024-04-23",
+      "twse/2024-04-25",
+      "twse/2024-04-29",
+      "twse/2024-05-09",
+      "twse/2024-05-14",
+      "twse/2024-05-17",
+      "twse/2024-05-20",
+      "twse/2024-05-21",
+      "twse/2024-05-22",
+      "twse/2024-05-23",
+      "twse/2024-05-27",
+      "twse/2024-05-28",
+      "twse/2024-05-29",
+      "twse/2024-05-30",
+      "twse/2024-05-31",
+      "twse/2024-06-03",
+      "twse/2024-06-04",
+      "twse/2024-06-05",
+      "twse/2024-06-06",
+      "twse/2024-06-07",
+      "twse/2024-06-11",
+      "twse/2024-06-12",
+      "twse/2024-08-16",
+      "twse/2024-08-20",
+      "twse/2024-08-21",
+      "twse/2024-08-22",
+      "twse/2024-08-23",
+      "twse/2024-08-26",
+      "twse/2024-08-27",
+      "twse/2024-08-28",
+      "twse/2024-08-29",
+      "twse/2024-08-30",
+      "twse/2024-09-02",
+      "twse/2024-09-03",
+      "twse/2024-09-04",
+      "twse/2024-09-05",
+      "twse/2024-09-06",
+      "twse/2024-09-09",
+      "twse/2024-09-11",
+      "twse/2024-09-13",
+      "twse/2024-09-18",
+      "twse/2024-09-19",
+      "twse/2024-09-20",
+      "twse/2024-09-23",
+      "twse/2025-08-08",
+      "twse/2025-08-11",
+      "twse/2025-08-12",
+      "twse/2025-08-13",
+      "twse/2025-08-14",
+      "twse/2025-08-15",
+      "twse/2025-08-18",
+      "twse/2025-08-19",
+      "twse/2025-08-20",
+      "twse/2025-08-21",
+      "twse/2025-08-22",
+      "twse/2025-08-25",
+      "twse/2025-08-26",
+      "twse/2025-08-27",
+      "twse/2025-08-28",
+      "twse/2025-08-29",
+      "twse/2025-09-01",
+      "twse/2025-09-02",
+      "twse/2025-09-03",
+      "twse/2025-09-04",
+      "twse/2025-09-05",
+      "twse/2025-09-08",
+      "twse/2025-09-09",
+      "twse/2025-09-10",
+      "twse/2025-09-11",
+      "twse/2025-09-12",
+      "twse/2025-09-15",
+      "twse/2025-09-16",
+      "twse/2025-09-17",
+      "twse/2025-09-18",
+      "twse/2025-09-19",
+      "twse/2025-09-22",
+      "twse/2025-09-23",
+      "twse/2025-09-24",
+      "twse/2025-09-25",
+      "twse/2025-09-26",
+      "twse/2025-09-30",
+      "twse/2025-10-01",
+      "twse/2025-10-02",
+      "twse/2025-10-03",
+      "twse/2025-10-07",
+      "twse/2025-10-08",
+      "twse/2025-10-09",
+      "twse/2025-10-13",
+      "twse/2025-10-14",
+      "twse/2025-10-15",
+      "twse/2025-10-16",
+      "twse/2025-10-17",
+      "twse/2025-10-20",
+      "twse/2025-10-21",
+      "twse/2025-10-22",
+      "twse/2025-10-23",
+      "twse/2025-10-27"
+    ]
+  },
+  "blockedFactors": [
+    {
+      "factor": "gross_profit_assets",
+      "reason": "No complete historical total-assets / TTM gross-profit panel with verified filing timestamps and as-reported vintages. Recent income snapshots do not supply assets."
+    }
+  ],
+  "coverage": [
+    {
+      "horizon": 2,
+      "family": "split",
+      "planned": 818,
+      "formed": 405,
+      "firstSignal": "2020-01-02",
+      "lastSignal": "2026-09-23",
+      "excludedByStatus": {
+        "insufficient_warmup": 0,
+        "missing_source": 413,
+        "no_complete_candidates": 0
+      }
+    },
+    {
+      "horizon": 2,
+      "family": "residual",
+      "planned": 818,
+      "formed": 189,
+      "firstSignal": "2020-02-24",
+      "lastSignal": "2021-09-02",
+      "excludedByStatus": {
+        "insufficient_warmup": 15,
+        "missing_source": 614,
+        "no_complete_candidates": 0
+      }
+    },
+    {
+      "horizon": 5,
+      "family": "split",
+      "planned": 327,
+      "formed": 159,
+      "firstSignal": "2020-01-02",
+      "lastSignal": "2026-09-17",
+      "excludedByStatus": {
+        "insufficient_warmup": 0,
+        "missing_source": 168,
+        "no_complete_candidates": 0
+      }
+    },
+    {
+      "horizon": 5,
+      "family": "residual",
+      "planned": 327,
+      "formed": 75,
+      "firstSignal": "2020-02-24",
+      "lastSignal": "2021-08-25",
+      "excludedByStatus": {
+        "insufficient_warmup": 6,
+        "missing_source": 246,
+        "no_complete_candidates": 0
+      }
+    },
+    {
+      "horizon": 20,
+      "family": "split",
+      "planned": 81,
+      "formed": 37,
+      "firstSignal": "2020-01-02",
+      "lastSignal": "2026-08-06",
+      "excludedByStatus": {
+        "insufficient_warmup": 0,
+        "missing_source": 44,
+        "no_complete_candidates": 0
+      }
+    },
+    {
+      "horizon": 20,
+      "family": "residual",
+      "planned": 81,
+      "formed": 18,
+      "firstSignal": "2020-03-10",
+      "lastSignal": "2021-07-28",
+      "excludedByStatus": {
+        "insufficient_warmup": 2,
+        "missing_source": 61,
+        "no_complete_candidates": 0
+      }
+    }
+  ],
+  "summaries": {
+    "2": {
+      "all": {
+        "baseline_split": {
+          "cohortCount": 405,
+          "validCohorts": 354,
+          "invalidCohorts": 51,
+          "absoluteWinRatePct": 46.61016949152542,
+          "excessWinRatePct": 42.93785310734463,
+          "excessWinRateBoundsWithInvalidPct": [
+            37.53086419753087,
+            50.123456790123456
+          ],
+          "activeAbsoluteWinRatePct": 46.61016949152542,
+          "activeExcessWinRatePct": 42.93785310734463,
+          "meanCohortNetReturnPct": -0.5179499749139638,
+          "meanCohortNetExcessPct": -0.7331316344392573,
+          "activeCohorts": 354,
+          "averageInvestedWeightPct": 95.9604519774011,
+          "meanStockCount": 10,
+          "failedEntryCount": 179,
+          "staleMarks": 0,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": null,
+          "pairedExcessWinVsBaseline": null,
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -1.4676266117546237,
+            "meanNetExcessPct": -1.682808271279916,
+            "excessWinRatePct": 32.20338983050848,
+            "pairedMeanDeltaPct": 0
+          }
+        },
+        "day_momentum": {
+          "cohortCount": 405,
+          "validCohorts": 368,
+          "invalidCohorts": 37,
+          "absoluteWinRatePct": 46.46739130434783,
+          "excessWinRatePct": 41.84782608695652,
+          "excessWinRateBoundsWithInvalidPct": [
+            38.02469135802469,
+            47.160493827160494
+          ],
+          "activeAbsoluteWinRatePct": 46.59400544959128,
+          "activeExcessWinRatePct": 41.689373297002724,
+          "meanCohortNetReturnPct": -0.5132066634835505,
+          "meanCohortNetExcessPct": -0.6919933339440542,
+          "activeCohorts": 367,
+          "averageInvestedWeightPct": 97.74456521739128,
+          "meanStockCount": 10,
+          "failedEntryCount": 97,
+          "staleMarks": 0,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": {
+            "count": 340,
+            "meanDeltaPct": 0.03484468777578147,
+            "blockLength": 30,
+            "ci95": [
+              -0.6233122672767167,
+              0.7496070501699692
+            ],
+            "familywiseCi": [
+              -1.1321246819432047,
+              1.501582576778928
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 340,
+            "meanDeltaPct": -0.8823529411764706,
+            "blockLength": 30,
+            "ci95": [
+              -12.941176470588236,
+              11.176470588235293
+            ],
+            "familywiseCi": [
+              -24.41176470588235,
+              22.941176470588236
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -1.480682868000035,
+            "meanNetExcessPct": -1.6594695384605387,
+            "excessWinRatePct": 30.434782608695652,
+            "pairedMeanDeltaPct": 0.01693871195360613
+          }
+        },
+        "night_reversal": {
+          "cohortCount": 405,
+          "validCohorts": 349,
+          "invalidCohorts": 56,
+          "absoluteWinRatePct": 45.55873925501432,
+          "excessWinRatePct": 42.12034383954155,
+          "excessWinRateBoundsWithInvalidPct": [
+            36.2962962962963,
+            50.123456790123456
+          ],
+          "activeAbsoluteWinRatePct": 45.689655172413794,
+          "activeExcessWinRatePct": 41.95402298850575,
+          "meanCohortNetReturnPct": -0.23402520695682033,
+          "meanCohortNetExcessPct": -0.3945396110780117,
+          "activeCohorts": 348,
+          "averageInvestedWeightPct": 97.02005730659023,
+          "meanStockCount": 10,
+          "failedEntryCount": 121,
+          "staleMarks": 0,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": {
+            "count": 308,
+            "meanDeltaPct": 0.2450114670192491,
+            "blockLength": 30,
+            "ci95": [
+              -1.0216472919144999,
+              1.400302219811763
+            ],
+            "familywiseCi": [
+              -2.219391330537405,
+              2.2311333037351586
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 308,
+            "meanDeltaPct": -0.6493506493506493,
+            "blockLength": 30,
+            "ci95": [
+              -20.77922077922078,
+              18.181818181818183
+            ],
+            "familywiseCi": [
+              -37.98701298701299,
+              32.467532467532465
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -1.197070302475551,
+            "meanNetExcessPct": -1.357584706596743,
+            "excessWinRatePct": 25.787965616045845,
+            "pairedMeanDeltaPct": 0.23288174123770453
+          }
+        },
+        "split_combination": {
+          "cohortCount": 405,
+          "validCohorts": 368,
+          "invalidCohorts": 37,
+          "absoluteWinRatePct": 40.48913043478261,
+          "excessWinRatePct": 34.78260869565217,
+          "excessWinRateBoundsWithInvalidPct": [
+            31.604938271604937,
+            40.74074074074074
+          ],
+          "activeAbsoluteWinRatePct": 40.48913043478261,
+          "activeExcessWinRatePct": 34.78260869565217,
+          "meanCohortNetReturnPct": -0.48524920623603096,
+          "meanCohortNetExcessPct": -0.6732039716085894,
+          "activeCohorts": 368,
+          "averageInvestedWeightPct": 98.39673913043477,
+          "meanStockCount": 10,
+          "failedEntryCount": 68,
+          "staleMarks": 0,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": {
+            "count": 325,
+            "meanDeltaPct": -0.014379790370708257,
+            "blockLength": 30,
+            "ci95": [
+              -1.077730992300437,
+              0.962829930182066
+            ],
+            "familywiseCi": [
+              -2.249621130614002,
+              1.8977578712208012
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 325,
+            "meanDeltaPct": -9.23076923076923,
+            "blockLength": 30,
+            "ci95": [
+              -24.307692307692307,
+              6.461538461538462
+            ],
+            "familywiseCi": [
+              -37.84615384615385,
+              20
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -1.45949288707382,
+            "meanNetExcessPct": -1.6474476524463793,
+            "excessWinRatePct": 20.380434782608695,
+            "pairedMeanDeltaPct": -0.0378111433941911
+          }
+        },
+        "baseline_residual": {
+          "cohortCount": 189,
+          "validCohorts": 164,
+          "invalidCohorts": 25,
+          "absoluteWinRatePct": 53.65853658536586,
+          "excessWinRatePct": 48.78048780487805,
+          "excessWinRateBoundsWithInvalidPct": [
+            42.32804232804233,
+            55.55555555555556
+          ],
+          "activeAbsoluteWinRatePct": 53.65853658536586,
+          "activeExcessWinRatePct": 48.78048780487805,
+          "meanCohortNetReturnPct": -0.23118574483853632,
+          "meanCohortNetExcessPct": -0.41667723435613296,
+          "activeCohorts": 164,
+          "averageInvestedWeightPct": 96.58536585365853,
+          "meanStockCount": 10,
+          "failedEntryCount": 65,
+          "staleMarks": 0,
+          "performance": null,
+          "baseline": "baseline_residual",
+          "consecutiveCoveredTimeline": true,
+          "pairedVsBaseline": null,
+          "pairedExcessWinVsBaseline": null,
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -1.1899338056228055,
+            "meanNetExcessPct": -1.3754252951404018,
+            "excessWinRatePct": 39.02439024390244,
+            "pairedMeanDeltaPct": 0
+          }
+        },
+        "market_residual": {
+          "cohortCount": 189,
+          "validCohorts": 171,
+          "invalidCohorts": 18,
+          "absoluteWinRatePct": 43.859649122807014,
+          "excessWinRatePct": 42.10526315789473,
+          "excessWinRateBoundsWithInvalidPct": [
+            38.095238095238095,
+            47.61904761904761
+          ],
+          "activeAbsoluteWinRatePct": 43.859649122807014,
+          "activeExcessWinRatePct": 42.10526315789473,
+          "meanCohortNetReturnPct": -0.6542461087452246,
+          "meanCohortNetExcessPct": -0.8259520285028326,
+          "activeCohorts": 171,
+          "averageInvestedWeightPct": 97.71929824561401,
+          "meanStockCount": 10,
+          "failedEntryCount": 42,
+          "staleMarks": 0,
+          "performance": null,
+          "baseline": "baseline_residual",
+          "consecutiveCoveredTimeline": true,
+          "pairedVsBaseline": {
+            "count": 162,
+            "meanDeltaPct": -0.3929530580601748,
+            "blockLength": 30,
+            "ci95": [
+              -1.1320818862057915,
+              0.3966191776780546
+            ],
+            "familywiseCi": [
+              -1.8904747478275425,
+              1.283353403442468
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 162,
+            "meanDeltaPct": -6.790123456790123,
+            "blockLength": 30,
+            "ci95": [
+              -19.753086419753085,
+              4.938271604938271
+            ],
+            "familywiseCi": [
+              -29.012345679012345,
+              14.814814814814815
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -1.6200675230424162,
+            "meanNetExcessPct": -1.791773442800025,
+            "excessWinRatePct": 30.994152046783626,
+            "pairedMeanDeltaPct": -0.4013273351066854
+          }
+        },
+        "residual_combination": {
+          "cohortCount": 189,
+          "validCohorts": 168,
+          "invalidCohorts": 21,
+          "absoluteWinRatePct": 48.80952380952381,
+          "excessWinRatePct": 44.047619047619044,
+          "excessWinRateBoundsWithInvalidPct": [
+            39.15343915343915,
+            50.264550264550266
+          ],
+          "activeAbsoluteWinRatePct": 48.80952380952381,
+          "activeExcessWinRatePct": 44.047619047619044,
+          "meanCohortNetReturnPct": -0.4621573889201945,
+          "meanCohortNetExcessPct": -0.6529883916364672,
+          "activeCohorts": 168,
+          "averageInvestedWeightPct": 96.78571428571428,
+          "meanStockCount": 10,
+          "failedEntryCount": 57,
+          "staleMarks": 0,
+          "performance": null,
+          "baseline": "baseline_residual",
+          "consecutiveCoveredTimeline": true,
+          "pairedVsBaseline": {
+            "count": 162,
+            "meanDeltaPct": -0.24895223615616385,
+            "blockLength": 30,
+            "ci95": [
+              -0.9170116148628021,
+              0.4319361563924531
+            ],
+            "familywiseCi": [
+              -1.6620574248630735,
+              1.2872722217862076
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 162,
+            "meanDeltaPct": -4.320987654320987,
+            "blockLength": 30,
+            "ci95": [
+              -14.814814814814815,
+              11.11111111111111
+            ],
+            "familywiseCi": [
+              -24.074074074074073,
+              32.098765432098766
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -1.4206007411270902,
+            "meanNetExcessPct": -1.6114317438433636,
+            "excessWinRatePct": 34.523809523809526,
+            "pairedMeanDeltaPct": -0.2507745896812977
+          }
+        }
+      },
+      "2020_2023": {
+        "baseline_split": {
+          "cohortCount": 250,
+          "validCohorts": 215,
+          "invalidCohorts": 35,
+          "absoluteWinRatePct": 47.906976744186046,
+          "excessWinRatePct": 43.72093023255814,
+          "excessWinRateBoundsWithInvalidPct": [
+            37.6,
+            51.6
+          ],
+          "activeAbsoluteWinRatePct": 47.906976744186046,
+          "activeExcessWinRatePct": 43.72093023255814,
+          "meanCohortNetReturnPct": -0.46851946034047687,
+          "meanCohortNetExcessPct": -0.6474740360989798,
+          "activeCohorts": 215,
+          "averageInvestedWeightPct": 95.58139534883719,
+          "meanStockCount": 10,
+          "failedEntryCount": 118,
+          "staleMarks": 0,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": null,
+          "pairedExcessWinVsBaseline": null,
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -1.4149162353503848,
+            "meanNetExcessPct": -1.5938708111088875,
+            "excessWinRatePct": 34.41860465116279,
+            "pairedMeanDeltaPct": 0
+          }
+        },
+        "day_momentum": {
+          "cohortCount": 250,
+          "validCohorts": 224,
+          "invalidCohorts": 26,
+          "absoluteWinRatePct": 47.32142857142857,
+          "excessWinRatePct": 44.19642857142857,
+          "excessWinRateBoundsWithInvalidPct": [
+            39.6,
+            50
+          ],
+          "activeAbsoluteWinRatePct": 47.32142857142857,
+          "activeExcessWinRatePct": 44.19642857142857,
+          "meanCohortNetReturnPct": -0.4722823726061439,
+          "meanCohortNetExcessPct": -0.5963976687177384,
+          "activeCohorts": 224,
+          "averageInvestedWeightPct": 97.5892857142857,
+          "meanStockCount": 10,
+          "failedEntryCount": 62,
+          "staleMarks": 0,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": {
+            "count": 203,
+            "meanDeltaPct": 0.019067684645887324,
+            "blockLength": 30,
+            "ci95": [
+              -0.7642316910017591,
+              1.0930761714158748
+            ],
+            "familywiseCi": [
+              -1.5332476859499193,
+              2.349544764130676
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 203,
+            "meanDeltaPct": 0.49261083743842365,
+            "blockLength": 30,
+            "ci95": [
+              -16.25615763546798,
+              19.211822660098523
+            ],
+            "familywiseCi": [
+              -34.97536945812808,
+              36.45320197044335
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -1.4386207143143868,
+            "meanNetExcessPct": -1.5627360104259813,
+            "excessWinRatePct": 33.92857142857143,
+            "pairedMeanDeltaPct": -0.000728445049629542
+          }
+        },
+        "night_reversal": {
+          "cohortCount": 250,
+          "validCohorts": 211,
+          "invalidCohorts": 39,
+          "absoluteWinRatePct": 47.39336492890995,
+          "excessWinRatePct": 45.023696682464454,
+          "excessWinRateBoundsWithInvalidPct": [
+            38,
+            53.6
+          ],
+          "activeAbsoluteWinRatePct": 47.39336492890995,
+          "activeExcessWinRatePct": 45.023696682464454,
+          "meanCohortNetReturnPct": -0.1251472991583146,
+          "meanCohortNetExcessPct": -0.24776992038614581,
+          "activeCohorts": 211,
+          "averageInvestedWeightPct": 97.10900473933647,
+          "meanStockCount": 10,
+          "failedEntryCount": 72,
+          "staleMarks": 0,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": {
+            "count": 183,
+            "meanDeltaPct": 0.3538598262998623,
+            "blockLength": 30,
+            "ci95": [
+              -1.2876147750447418,
+              1.8450497160768555
+            ],
+            "familywiseCi": [
+              -2.6622957124749025,
+              2.9684269141967192
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 183,
+            "meanDeltaPct": 3.278688524590164,
+            "blockLength": 30,
+            "ci95": [
+              -21.85792349726776,
+              27.3224043715847
+            ],
+            "familywiseCi": [
+              -43.71584699453552,
+              46.994535519125684
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -1.0901608060257493,
+            "meanNetExcessPct": -1.2127834272535807,
+            "excessWinRatePct": 28.90995260663507,
+            "pairedMeanDeltaPct": 0.33783305587804446
+          }
+        },
+        "split_combination": {
+          "cohortCount": 250,
+          "validCohorts": 221,
+          "invalidCohorts": 29,
+          "absoluteWinRatePct": 42.53393665158371,
+          "excessWinRatePct": 36.65158371040724,
+          "excessWinRateBoundsWithInvalidPct": [
+            32.4,
+            44
+          ],
+          "activeAbsoluteWinRatePct": 42.53393665158371,
+          "activeExcessWinRatePct": 36.65158371040724,
+          "meanCohortNetReturnPct": -0.4269142263428568,
+          "meanCohortNetExcessPct": -0.5713135242087518,
+          "activeCohorts": 221,
+          "averageInvestedWeightPct": 98.552036199095,
+          "meanStockCount": 10,
+          "failedEntryCount": 40,
+          "staleMarks": 0,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": {
+            "count": 192,
+            "meanDeltaPct": 0.07893624601167303,
+            "blockLength": 30,
+            "ci95": [
+              -1.5111850173428643,
+              1.3831216801324622
+            ],
+            "familywiseCi": [
+              -3.4992380062845707,
+              2.6117208898012634
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 192,
+            "meanDeltaPct": -6.25,
+            "blockLength": 30,
+            "ci95": [
+              -28.125,
+              17.1875
+            ],
+            "familywiseCi": [
+              -50,
+              36.979166666666664
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -1.4032835992060524,
+            "meanNetExcessPct": -1.5476828970719474,
+            "excessWinRatePct": 20.361990950226243,
+            "pairedMeanDeltaPct": 0.05016573610110989
+          }
+        },
+        "baseline_residual": {
+          "cohortCount": 189,
+          "validCohorts": 164,
+          "invalidCohorts": 25,
+          "absoluteWinRatePct": 53.65853658536586,
+          "excessWinRatePct": 48.78048780487805,
+          "excessWinRateBoundsWithInvalidPct": [
+            42.32804232804233,
+            55.55555555555556
+          ],
+          "activeAbsoluteWinRatePct": 53.65853658536586,
+          "activeExcessWinRatePct": 48.78048780487805,
+          "meanCohortNetReturnPct": -0.23118574483853632,
+          "meanCohortNetExcessPct": -0.41667723435613296,
+          "activeCohorts": 164,
+          "averageInvestedWeightPct": 96.58536585365853,
+          "meanStockCount": 10,
+          "failedEntryCount": 65,
+          "staleMarks": 0,
+          "performance": null,
+          "baseline": "baseline_residual",
+          "consecutiveCoveredTimeline": true,
+          "pairedVsBaseline": null,
+          "pairedExcessWinVsBaseline": null,
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -1.1899338056228055,
+            "meanNetExcessPct": -1.3754252951404018,
+            "excessWinRatePct": 39.02439024390244,
+            "pairedMeanDeltaPct": 0
+          }
+        },
+        "market_residual": {
+          "cohortCount": 189,
+          "validCohorts": 171,
+          "invalidCohorts": 18,
+          "absoluteWinRatePct": 43.859649122807014,
+          "excessWinRatePct": 42.10526315789473,
+          "excessWinRateBoundsWithInvalidPct": [
+            38.095238095238095,
+            47.61904761904761
+          ],
+          "activeAbsoluteWinRatePct": 43.859649122807014,
+          "activeExcessWinRatePct": 42.10526315789473,
+          "meanCohortNetReturnPct": -0.6542461087452246,
+          "meanCohortNetExcessPct": -0.8259520285028326,
+          "activeCohorts": 171,
+          "averageInvestedWeightPct": 97.71929824561401,
+          "meanStockCount": 10,
+          "failedEntryCount": 42,
+          "staleMarks": 0,
+          "performance": null,
+          "baseline": "baseline_residual",
+          "consecutiveCoveredTimeline": true,
+          "pairedVsBaseline": {
+            "count": 162,
+            "meanDeltaPct": -0.3929530580601748,
+            "blockLength": 30,
+            "ci95": [
+              -1.1320818862057915,
+              0.3966191776780546
+            ],
+            "familywiseCi": [
+              -1.8904747478275425,
+              1.283353403442468
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 162,
+            "meanDeltaPct": -6.790123456790123,
+            "blockLength": 30,
+            "ci95": [
+              -19.753086419753085,
+              4.938271604938271
+            ],
+            "familywiseCi": [
+              -29.012345679012345,
+              14.814814814814815
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -1.6200675230424162,
+            "meanNetExcessPct": -1.791773442800025,
+            "excessWinRatePct": 30.994152046783626,
+            "pairedMeanDeltaPct": -0.4013273351066854
+          }
+        },
+        "residual_combination": {
+          "cohortCount": 189,
+          "validCohorts": 168,
+          "invalidCohorts": 21,
+          "absoluteWinRatePct": 48.80952380952381,
+          "excessWinRatePct": 44.047619047619044,
+          "excessWinRateBoundsWithInvalidPct": [
+            39.15343915343915,
+            50.264550264550266
+          ],
+          "activeAbsoluteWinRatePct": 48.80952380952381,
+          "activeExcessWinRatePct": 44.047619047619044,
+          "meanCohortNetReturnPct": -0.4621573889201945,
+          "meanCohortNetExcessPct": -0.6529883916364672,
+          "activeCohorts": 168,
+          "averageInvestedWeightPct": 96.78571428571428,
+          "meanStockCount": 10,
+          "failedEntryCount": 57,
+          "staleMarks": 0,
+          "performance": null,
+          "baseline": "baseline_residual",
+          "consecutiveCoveredTimeline": true,
+          "pairedVsBaseline": {
+            "count": 162,
+            "meanDeltaPct": -0.24895223615616385,
+            "blockLength": 30,
+            "ci95": [
+              -0.9170116148628021,
+              0.4319361563924531
+            ],
+            "familywiseCi": [
+              -1.6620574248630735,
+              1.2872722217862076
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 162,
+            "meanDeltaPct": -4.320987654320987,
+            "blockLength": 30,
+            "ci95": [
+              -14.814814814814815,
+              11.11111111111111
+            ],
+            "familywiseCi": [
+              -24.074074074074073,
+              32.098765432098766
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -1.4206007411270902,
+            "meanNetExcessPct": -1.6114317438433636,
+            "excessWinRatePct": 34.523809523809526,
+            "pairedMeanDeltaPct": -0.2507745896812977
+          }
+        }
+      },
+      "2024_2026": {
+        "baseline_split": {
+          "cohortCount": 155,
+          "validCohorts": 139,
+          "invalidCohorts": 16,
+          "absoluteWinRatePct": 44.60431654676259,
+          "excessWinRatePct": 41.726618705035975,
+          "excessWinRateBoundsWithInvalidPct": [
+            37.41935483870968,
+            47.74193548387097
+          ],
+          "activeAbsoluteWinRatePct": 44.60431654676259,
+          "activeExcessWinRatePct": 41.726618705035975,
+          "meanCohortNetReturnPct": -0.5944072456571271,
+          "meanCohortNetExcessPct": -0.8656236030950809,
+          "activeCohorts": 139,
+          "averageInvestedWeightPct": 96.54676258992805,
+          "meanStockCount": 10,
+          "failedEntryCount": 61,
+          "staleMarks": 0,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": null,
+          "pairedExcessWinVsBaseline": null,
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -1.549157050077724,
+            "meanNetExcessPct": -1.8203734075156786,
+            "excessWinRatePct": 28.776978417266186,
+            "pairedMeanDeltaPct": 0
+          }
+        },
+        "day_momentum": {
+          "cohortCount": 155,
+          "validCohorts": 144,
+          "invalidCohorts": 11,
+          "absoluteWinRatePct": 45.13888888888889,
+          "excessWinRatePct": 38.19444444444444,
+          "excessWinRateBoundsWithInvalidPct": [
+            35.483870967741936,
+            42.58064516129032
+          ],
+          "activeAbsoluteWinRatePct": 45.45454545454545,
+          "activeExcessWinRatePct": 37.76223776223776,
+          "meanCohortNetReturnPct": -0.5768666715150712,
+          "meanCohortNetExcessPct": -0.8406977020738792,
+          "activeCohorts": 143,
+          "averageInvestedWeightPct": 97.9861111111111,
+          "meanStockCount": 10,
+          "failedEntryCount": 35,
+          "staleMarks": 0,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": {
+            "count": 137,
+            "meanDeltaPct": 0.0582222909536538,
+            "blockLength": 30,
+            "ci95": [
+              -1.0121951796031632,
+              1.059177424678004
+            ],
+            "familywiseCi": [
+              -2.205463971956023,
+              1.9779042587616051
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 137,
+            "meanDeltaPct": -2.9197080291970803,
+            "blockLength": 30,
+            "ci95": [
+              -18.248175182481752,
+              5.839416058394161
+            ],
+            "familywiseCi": [
+              -34.306569343065696,
+              11.678832116788321
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -1.5461128848443748,
+            "meanNetExcessPct": -1.8099439154031818,
+            "excessWinRatePct": 25,
+            "pairedMeanDeltaPct": 0.043117054082488185
+          }
+        },
+        "night_reversal": {
+          "cohortCount": 155,
+          "validCohorts": 138,
+          "invalidCohorts": 17,
+          "absoluteWinRatePct": 42.7536231884058,
+          "excessWinRatePct": 37.68115942028986,
+          "excessWinRateBoundsWithInvalidPct": [
+            33.5483870967742,
+            44.516129032258064
+          ],
+          "activeAbsoluteWinRatePct": 43.06569343065693,
+          "activeExcessWinRatePct": 37.22627737226277,
+          "meanCohortNetReturnPct": -0.40049795004004274,
+          "meanCohortNetExcessPct": -0.6189483410489082,
+          "activeCohorts": 137,
+          "averageInvestedWeightPct": 96.88405797101449,
+          "meanStockCount": 10,
+          "failedEntryCount": 49,
+          "staleMarks": 0,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": {
+            "count": 125,
+            "meanDeltaPct": 0.08565746903243115,
+            "blockLength": 30,
+            "ci95": [
+              -2.042836507660353,
+              1.939139687959872
+            ],
+            "familywiseCi": [
+              -4.189964378527049,
+              3.5719538788935727
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 125,
+            "meanDeltaPct": -6.4,
+            "blockLength": 30,
+            "ci95": [
+              -40,
+              21.6
+            ],
+            "familywiseCi": [
+              -70.4,
+              46.4
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -1.360533373134307,
+            "meanNetExcessPct": -1.5789837641431717,
+            "excessWinRatePct": 21.014492753623188,
+            "pairedMeanDeltaPct": 0.07923301660424723
+          }
+        },
+        "split_combination": {
+          "cohortCount": 155,
+          "validCohorts": 147,
+          "invalidCohorts": 8,
+          "absoluteWinRatePct": 37.41496598639456,
+          "excessWinRatePct": 31.97278911564626,
+          "excessWinRateBoundsWithInvalidPct": [
+            30.32258064516129,
+            35.483870967741936
+          ],
+          "activeAbsoluteWinRatePct": 37.41496598639456,
+          "activeExcessWinRatePct": 31.97278911564626,
+          "meanCohortNetReturnPct": -0.5729500943747479,
+          "meanCohortNetExcessPct": -0.8263862088559645,
+          "activeCohorts": 147,
+          "averageInvestedWeightPct": 98.16326530612244,
+          "meanStockCount": 10,
+          "failedEntryCount": 28,
+          "staleMarks": 0,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": {
+            "count": 133,
+            "meanDeltaPct": -0.14909166244151437,
+            "blockLength": 30,
+            "ci95": [
+              -1.6185590585217173,
+              1.2018204751823993
+            ],
+            "familywiseCi": [
+              -3.498917549585877,
+              2.3591000821842605
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 133,
+            "meanDeltaPct": -13.533834586466165,
+            "blockLength": 30,
+            "ci95": [
+              -31.57894736842105,
+              0.7518796992481203
+            ],
+            "familywiseCi": [
+              -57.89473684210526,
+              10.526315789473685
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -1.543998006929442,
+            "meanNetExcessPct": -1.7974341214106586,
+            "excessWinRatePct": 20.408163265306122,
+            "pairedMeanDeltaPct": -0.16481536040996403
+          }
+        },
+        "baseline_residual": {
+          "cohortCount": 0,
+          "validCohorts": 0,
+          "invalidCohorts": 0,
+          "absoluteWinRatePct": null,
+          "excessWinRatePct": null,
+          "excessWinRateBoundsWithInvalidPct": null,
+          "activeAbsoluteWinRatePct": null,
+          "activeExcessWinRatePct": null,
+          "meanCohortNetReturnPct": null,
+          "meanCohortNetExcessPct": null,
+          "activeCohorts": 0,
+          "averageInvestedWeightPct": null,
+          "meanStockCount": null,
+          "failedEntryCount": 0,
+          "staleMarks": 0,
+          "performance": null,
+          "baseline": "baseline_residual",
+          "consecutiveCoveredTimeline": true,
+          "pairedVsBaseline": null,
+          "pairedExcessWinVsBaseline": null,
+          "pairedCoverageComplete": true,
+          "slippage": {
+            "meanNetReturnPct": null,
+            "meanNetExcessPct": null,
+            "excessWinRatePct": null,
+            "pairedMeanDeltaPct": null
+          }
+        },
+        "market_residual": {
+          "cohortCount": 0,
+          "validCohorts": 0,
+          "invalidCohorts": 0,
+          "absoluteWinRatePct": null,
+          "excessWinRatePct": null,
+          "excessWinRateBoundsWithInvalidPct": null,
+          "activeAbsoluteWinRatePct": null,
+          "activeExcessWinRatePct": null,
+          "meanCohortNetReturnPct": null,
+          "meanCohortNetExcessPct": null,
+          "activeCohorts": 0,
+          "averageInvestedWeightPct": null,
+          "meanStockCount": null,
+          "failedEntryCount": 0,
+          "staleMarks": 0,
+          "performance": null,
+          "baseline": "baseline_residual",
+          "consecutiveCoveredTimeline": true,
+          "pairedVsBaseline": {
+            "count": 0,
+            "meanDeltaPct": null,
+            "ci95": null,
+            "familywiseCi": null,
+            "adjustedP": null
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 0,
+            "meanDeltaPct": null,
+            "ci95": null,
+            "familywiseCi": null,
+            "adjustedP": null
+          },
+          "pairedCoverageComplete": true,
+          "slippage": {
+            "meanNetReturnPct": null,
+            "meanNetExcessPct": null,
+            "excessWinRatePct": null,
+            "pairedMeanDeltaPct": null
+          }
+        },
+        "residual_combination": {
+          "cohortCount": 0,
+          "validCohorts": 0,
+          "invalidCohorts": 0,
+          "absoluteWinRatePct": null,
+          "excessWinRatePct": null,
+          "excessWinRateBoundsWithInvalidPct": null,
+          "activeAbsoluteWinRatePct": null,
+          "activeExcessWinRatePct": null,
+          "meanCohortNetReturnPct": null,
+          "meanCohortNetExcessPct": null,
+          "activeCohorts": 0,
+          "averageInvestedWeightPct": null,
+          "meanStockCount": null,
+          "failedEntryCount": 0,
+          "staleMarks": 0,
+          "performance": null,
+          "baseline": "baseline_residual",
+          "consecutiveCoveredTimeline": true,
+          "pairedVsBaseline": {
+            "count": 0,
+            "meanDeltaPct": null,
+            "ci95": null,
+            "familywiseCi": null,
+            "adjustedP": null
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 0,
+            "meanDeltaPct": null,
+            "ci95": null,
+            "familywiseCi": null,
+            "adjustedP": null
+          },
+          "pairedCoverageComplete": true,
+          "slippage": {
+            "meanNetReturnPct": null,
+            "meanNetExcessPct": null,
+            "excessWinRatePct": null,
+            "pairedMeanDeltaPct": null
+          }
+        }
+      }
+    },
+    "5": {
+      "all": {
+        "baseline_split": {
+          "cohortCount": 159,
+          "validCohorts": 131,
+          "invalidCohorts": 28,
+          "absoluteWinRatePct": 56.48854961832062,
+          "excessWinRatePct": 48.091603053435115,
+          "excessWinRateBoundsWithInvalidPct": [
+            39.62264150943396,
+            57.23270440251572
+          ],
+          "activeAbsoluteWinRatePct": 56.48854961832062,
+          "activeExcessWinRatePct": 48.091603053435115,
+          "meanCohortNetReturnPct": 0.010267517225865387,
+          "meanCohortNetExcessPct": -0.6914350158913899,
+          "activeCohorts": 131,
+          "averageInvestedWeightPct": 96.79389312977098,
+          "meanStockCount": 10,
+          "failedEntryCount": 62,
+          "staleMarks": 4,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": null,
+          "pairedExcessWinVsBaseline": null,
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -0.9529579618487208,
+            "meanNetExcessPct": -1.654660494965976,
+            "excessWinRatePct": 38.93129770992366,
+            "pairedMeanDeltaPct": 0
+          }
+        },
+        "day_momentum": {
+          "cohortCount": 159,
+          "validCohorts": 134,
+          "invalidCohorts": 25,
+          "absoluteWinRatePct": 51.49253731343284,
+          "excessWinRatePct": 45.52238805970149,
+          "excessWinRateBoundsWithInvalidPct": [
+            38.36477987421384,
+            54.088050314465406
+          ],
+          "activeAbsoluteWinRatePct": 51.49253731343284,
+          "activeExcessWinRatePct": 45.52238805970149,
+          "meanCohortNetReturnPct": -0.4227787965599881,
+          "meanCohortNetExcessPct": -1.0043144884888786,
+          "activeCohorts": 134,
+          "averageInvestedWeightPct": 97.76119402985073,
+          "meanStockCount": 10,
+          "failedEntryCount": 34,
+          "staleMarks": 16,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": {
+            "count": 120,
+            "meanDeltaPct": 0.0329300512711469,
+            "blockLength": 12,
+            "ci95": [
+              -1.296190490122147,
+              1.1339051071743582
+            ],
+            "familywiseCi": [
+              -2.685227996841953,
+              1.9160654765628575
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 120,
+            "meanDeltaPct": 0.8333333333333334,
+            "blockLength": 12,
+            "ci95": [
+              -14.166666666666666,
+              14.166666666666666
+            ],
+            "familywiseCi": [
+              -27.5,
+              23.333333333333332
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -1.3913202416673496,
+            "meanNetExcessPct": -1.9728559335962392,
+            "excessWinRatePct": 39.55223880597015,
+            "pairedMeanDeltaPct": 0.02016457812417091
+          }
+        },
+        "night_reversal": {
+          "cohortCount": 159,
+          "validCohorts": 121,
+          "invalidCohorts": 38,
+          "absoluteWinRatePct": 39.66942148760331,
+          "excessWinRatePct": 34.710743801652896,
+          "excessWinRateBoundsWithInvalidPct": [
+            26.41509433962264,
+            50.314465408805034
+          ],
+          "activeAbsoluteWinRatePct": 39.66942148760331,
+          "activeExcessWinRatePct": 34.710743801652896,
+          "meanCohortNetReturnPct": -0.5064292643288558,
+          "meanCohortNetExcessPct": -0.9597975863185298,
+          "activeCohorts": 121,
+          "averageInvestedWeightPct": 97.35537190082643,
+          "meanStockCount": 10,
+          "failedEntryCount": 45,
+          "staleMarks": 29,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": {
+            "count": 105,
+            "meanDeltaPct": -0.06562203369617328,
+            "blockLength": 12,
+            "ci95": [
+              -2.9582962596705733,
+              2.6983582571985716
+            ],
+            "familywiseCi": [
+              -5.9766542687262785,
+              4.956445158061182
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 105,
+            "meanDeltaPct": -17.142857142857142,
+            "blockLength": 12,
+            "ci95": [
+              -43.80952380952381,
+              7.619047619047619
+            ],
+            "familywiseCi": [
+              -61.904761904761905,
+              26.666666666666668
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -1.4701003353387734,
+            "meanNetExcessPct": -1.9234686573284467,
+            "excessWinRatePct": 28.925619834710744,
+            "pairedMeanDeltaPct": -0.07160257730781973
+          }
+        },
+        "split_combination": {
+          "cohortCount": 159,
+          "validCohorts": 137,
+          "invalidCohorts": 22,
+          "absoluteWinRatePct": 41.605839416058394,
+          "excessWinRatePct": 36.496350364963504,
+          "excessWinRateBoundsWithInvalidPct": [
+            31.446540880503143,
+            45.28301886792453
+          ],
+          "activeAbsoluteWinRatePct": 41.605839416058394,
+          "activeExcessWinRatePct": 36.496350364963504,
+          "meanCohortNetReturnPct": -0.4187250987557458,
+          "meanCohortNetExcessPct": -0.8382100684475661,
+          "activeCohorts": 137,
+          "averageInvestedWeightPct": 98.3941605839416,
+          "meanStockCount": 10,
+          "failedEntryCount": 27,
+          "staleMarks": 13,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": {
+            "count": 115,
+            "meanDeltaPct": -0.23650501659687057,
+            "blockLength": 12,
+            "ci95": [
+              -2.4913637472093813,
+              1.731688473025509
+            ],
+            "familywiseCi": [
+              -4.397322634657694,
+              3.0422557923305282
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 115,
+            "meanDeltaPct": -16.52173913043478,
+            "blockLength": 12,
+            "ci95": [
+              -36.52173913043478,
+              2.608695652173913
+            ],
+            "familywiseCi": [
+              -53.04347826086956,
+              18.26086956521739
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -1.3936050538322116,
+            "meanNetExcessPct": -1.8130900235240324,
+            "excessWinRatePct": 25.547445255474454,
+            "pairedMeanDeltaPct": -0.24972603525067552
+          }
+        },
+        "baseline_residual": {
+          "cohortCount": 75,
+          "validCohorts": 66,
+          "invalidCohorts": 9,
+          "absoluteWinRatePct": 56.060606060606055,
+          "excessWinRatePct": 51.515151515151516,
+          "excessWinRateBoundsWithInvalidPct": [
+            45.33333333333333,
+            57.333333333333336
+          ],
+          "activeAbsoluteWinRatePct": 56.060606060606055,
+          "activeExcessWinRatePct": 51.515151515151516,
+          "meanCohortNetReturnPct": 0.5507752166148038,
+          "meanCohortNetExcessPct": 0.22881869553451373,
+          "activeCohorts": 66,
+          "averageInvestedWeightPct": 96.66666666666666,
+          "meanStockCount": 10,
+          "failedEntryCount": 28,
+          "staleMarks": 3,
+          "performance": null,
+          "baseline": "baseline_residual",
+          "consecutiveCoveredTimeline": true,
+          "pairedVsBaseline": null,
+          "pairedExcessWinVsBaseline": null,
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -0.41656251356709273,
+            "meanNetExcessPct": -0.7385190346473826,
+            "excessWinRatePct": 43.93939393939394,
+            "pairedMeanDeltaPct": 0
+          }
+        },
+        "market_residual": {
+          "cohortCount": 75,
+          "validCohorts": 72,
+          "invalidCohorts": 3,
+          "absoluteWinRatePct": 50,
+          "excessWinRatePct": 45.83333333333333,
+          "excessWinRateBoundsWithInvalidPct": [
+            44,
+            48
+          ],
+          "activeAbsoluteWinRatePct": 50,
+          "activeExcessWinRatePct": 45.83333333333333,
+          "meanCohortNetReturnPct": -0.5373919089709377,
+          "meanCohortNetExcessPct": -0.955167596150275,
+          "activeCohorts": 72,
+          "averageInvestedWeightPct": 97.49999999999999,
+          "meanStockCount": 10,
+          "failedEntryCount": 18,
+          "staleMarks": 0,
+          "performance": null,
+          "baseline": "baseline_residual",
+          "consecutiveCoveredTimeline": true,
+          "pairedVsBaseline": {
+            "count": 66,
+            "meanDeltaPct": -1.1533548023261704,
+            "blockLength": 12,
+            "ci95": [
+              -2.265124497984896,
+              -0.14211822159985027
+            ],
+            "familywiseCi": [
+              -3.092413730199411,
+              0.5145727972202674
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 66,
+            "meanDeltaPct": -4.545454545454546,
+            "blockLength": 12,
+            "ci95": [
+              -12.121212121212121,
+              4.545454545454546
+            ],
+            "familywiseCi": [
+              -18.181818181818183,
+              9.090909090909092
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -1.5021939795284314,
+            "meanNetExcessPct": -1.9199696667077693,
+            "excessWinRatePct": 41.666666666666664,
+            "pairedMeanDeltaPct": -1.1524319292742295
+          }
+        },
+        "residual_combination": {
+          "cohortCount": 75,
+          "validCohorts": 69,
+          "invalidCohorts": 6,
+          "absoluteWinRatePct": 49.275362318840585,
+          "excessWinRatePct": 47.82608695652174,
+          "excessWinRateBoundsWithInvalidPct": [
+            44,
+            52
+          ],
+          "activeAbsoluteWinRatePct": 49.275362318840585,
+          "activeExcessWinRatePct": 47.82608695652174,
+          "meanCohortNetReturnPct": -0.2917468386326666,
+          "meanCohortNetExcessPct": -0.6703243802571137,
+          "activeCohorts": 69,
+          "averageInvestedWeightPct": 96.52173913043477,
+          "meanStockCount": 10,
+          "failedEntryCount": 26,
+          "staleMarks": 3,
+          "performance": null,
+          "baseline": "baseline_residual",
+          "consecutiveCoveredTimeline": true,
+          "pairedVsBaseline": {
+            "count": 66,
+            "meanDeltaPct": -1.0275539308723014,
+            "blockLength": 12,
+            "ci95": [
+              -1.6398111981079073,
+              -0.5102861415241984
+            ],
+            "familywiseCi": [
+              -2.299317229262003,
+              -0.1523724357343107
+            ],
+            "adjustedP": 0.080991900809919
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 66,
+            "meanDeltaPct": -4.545454545454546,
+            "blockLength": 12,
+            "ci95": [
+              -15.151515151515152,
+              3.0303030303030303
+            ],
+            "familywiseCi": [
+              -28.78787878787879,
+              10.606060606060606
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -1.2492591997451168,
+            "meanNetExcessPct": -1.627836741369563,
+            "excessWinRatePct": 42.028985507246375,
+            "pairedMeanDeltaPct": -1.0188371270976033
+          }
+        }
+      },
+      "2020_2023": {
+        "baseline_split": {
+          "cohortCount": 98,
+          "validCohorts": 79,
+          "invalidCohorts": 19,
+          "absoluteWinRatePct": 59.49367088607595,
+          "excessWinRatePct": 54.43037974683544,
+          "excessWinRateBoundsWithInvalidPct": [
+            43.87755102040816,
+            63.26530612244898
+          ],
+          "activeAbsoluteWinRatePct": 59.49367088607595,
+          "activeExcessWinRatePct": 54.43037974683544,
+          "meanCohortNetReturnPct": 0.387608789077327,
+          "meanCohortNetExcessPct": 0.08767965577427951,
+          "activeCohorts": 79,
+          "averageInvestedWeightPct": 95.69620253164555,
+          "meanStockCount": 10,
+          "failedEntryCount": 47,
+          "staleMarks": 3,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": null,
+          "pairedExcessWinVsBaseline": null,
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -0.5684490350094588,
+            "meanNetExcessPct": -0.8683781683125068,
+            "excessWinRatePct": 44.30379746835443,
+            "pairedMeanDeltaPct": 0
+          }
+        },
+        "day_momentum": {
+          "cohortCount": 98,
+          "validCohorts": 79,
+          "invalidCohorts": 19,
+          "absoluteWinRatePct": 49.36708860759494,
+          "excessWinRatePct": 46.835443037974684,
+          "excessWinRateBoundsWithInvalidPct": [
+            37.755102040816325,
+            57.14285714285714
+          ],
+          "activeAbsoluteWinRatePct": 49.36708860759494,
+          "activeExcessWinRatePct": 46.835443037974684,
+          "meanCohortNetReturnPct": -0.9562466111148994,
+          "meanCohortNetExcessPct": -1.1753553074521368,
+          "activeCohorts": 79,
+          "averageInvestedWeightPct": 97.46835443037973,
+          "meanStockCount": 10,
+          "failedEntryCount": 24,
+          "staleMarks": 15,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": {
+            "count": 69,
+            "meanDeltaPct": -0.413579721606073,
+            "blockLength": 12,
+            "ci95": [
+              -2.403009957490087,
+              1.3656428623910004
+            ],
+            "familywiseCi": [
+              -4.400024198419311,
+              2.6666956206666543
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 69,
+            "meanDeltaPct": -2.898550724637681,
+            "blockLength": 12,
+            "ci95": [
+              -24.63768115942029,
+              15.942028985507246
+            ],
+            "familywiseCi": [
+              -43.47826086956522,
+              30.434782608695652
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -1.9165660919035938,
+            "meanNetExcessPct": -2.135674788240832,
+            "excessWinRatePct": 41.77215189873418,
+            "pairedMeanDeltaPct": -0.4296534110154279
+          }
+        },
+        "night_reversal": {
+          "cohortCount": 98,
+          "validCohorts": 72,
+          "invalidCohorts": 26,
+          "absoluteWinRatePct": 34.72222222222222,
+          "excessWinRatePct": 37.5,
+          "excessWinRateBoundsWithInvalidPct": [
+            27.55102040816326,
+            54.08163265306123
+          ],
+          "activeAbsoluteWinRatePct": 34.72222222222222,
+          "activeExcessWinRatePct": 37.5,
+          "meanCohortNetReturnPct": -0.606507846884517,
+          "meanCohortNetExcessPct": -0.6139348981721232,
+          "activeCohorts": 72,
+          "averageInvestedWeightPct": 97.91666666666666,
+          "meanStockCount": 10,
+          "failedEntryCount": 24,
+          "staleMarks": 20,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": {
+            "count": 59,
+            "meanDeltaPct": -0.15696737163267352,
+            "blockLength": 12,
+            "ci95": [
+              -4.235859302561128,
+              3.353502972114283
+            ],
+            "familywiseCi": [
+              -7.577197342955734,
+              5.834604516543025
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 59,
+            "meanDeltaPct": -20.338983050847457,
+            "blockLength": 12,
+            "ci95": [
+              -55.932203389830505,
+              13.559322033898304
+            ],
+            "familywiseCi": [
+              -83.05084745762711,
+              42.3728813559322
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -1.5747681336485089,
+            "meanNetExcessPct": -1.5821951849361147,
+            "excessWinRatePct": 31.944444444444443,
+            "pairedMeanDeltaPct": -0.18238923267891077
+          }
+        },
+        "split_combination": {
+          "cohortCount": 98,
+          "validCohorts": 84,
+          "invalidCohorts": 14,
+          "absoluteWinRatePct": 44.047619047619044,
+          "excessWinRatePct": 39.285714285714285,
+          "excessWinRateBoundsWithInvalidPct": [
+            33.6734693877551,
+            47.95918367346938
+          ],
+          "activeAbsoluteWinRatePct": 44.047619047619044,
+          "activeExcessWinRatePct": 39.285714285714285,
+          "meanCohortNetReturnPct": -0.48752286166549375,
+          "meanCohortNetExcessPct": -0.7100319116714463,
+          "activeCohorts": 84,
+          "averageInvestedWeightPct": 98.33333333333331,
+          "meanStockCount": 10,
+          "failedEntryCount": 18,
+          "staleMarks": 12,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": {
+            "count": 67,
+            "meanDeltaPct": -0.6429796723677099,
+            "blockLength": 12,
+            "ci95": [
+              -3.9985864821005968,
+              2.226599738676072
+            ],
+            "familywiseCi": [
+              -6.900203067815781,
+              3.6664275318486634
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 67,
+            "meanDeltaPct": -19.402985074626866,
+            "blockLength": 12,
+            "ci95": [
+              -50.74626865671642,
+              11.940298507462687
+            ],
+            "familywiseCi": [
+              -73.13432835820896,
+              35.82089552238806
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -1.461113015612428,
+            "meanNetExcessPct": -1.683622065618381,
+            "excessWinRatePct": 23.80952380952381,
+            "pairedMeanDeltaPct": -0.66628409977565
+          }
+        },
+        "baseline_residual": {
+          "cohortCount": 75,
+          "validCohorts": 66,
+          "invalidCohorts": 9,
+          "absoluteWinRatePct": 56.060606060606055,
+          "excessWinRatePct": 51.515151515151516,
+          "excessWinRateBoundsWithInvalidPct": [
+            45.33333333333333,
+            57.333333333333336
+          ],
+          "activeAbsoluteWinRatePct": 56.060606060606055,
+          "activeExcessWinRatePct": 51.515151515151516,
+          "meanCohortNetReturnPct": 0.5507752166148038,
+          "meanCohortNetExcessPct": 0.22881869553451373,
+          "activeCohorts": 66,
+          "averageInvestedWeightPct": 96.66666666666666,
+          "meanStockCount": 10,
+          "failedEntryCount": 28,
+          "staleMarks": 3,
+          "performance": null,
+          "baseline": "baseline_residual",
+          "consecutiveCoveredTimeline": true,
+          "pairedVsBaseline": null,
+          "pairedExcessWinVsBaseline": null,
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -0.41656251356709273,
+            "meanNetExcessPct": -0.7385190346473826,
+            "excessWinRatePct": 43.93939393939394,
+            "pairedMeanDeltaPct": 0
+          }
+        },
+        "market_residual": {
+          "cohortCount": 75,
+          "validCohorts": 72,
+          "invalidCohorts": 3,
+          "absoluteWinRatePct": 50,
+          "excessWinRatePct": 45.83333333333333,
+          "excessWinRateBoundsWithInvalidPct": [
+            44,
+            48
+          ],
+          "activeAbsoluteWinRatePct": 50,
+          "activeExcessWinRatePct": 45.83333333333333,
+          "meanCohortNetReturnPct": -0.5373919089709377,
+          "meanCohortNetExcessPct": -0.955167596150275,
+          "activeCohorts": 72,
+          "averageInvestedWeightPct": 97.49999999999999,
+          "meanStockCount": 10,
+          "failedEntryCount": 18,
+          "staleMarks": 0,
+          "performance": null,
+          "baseline": "baseline_residual",
+          "consecutiveCoveredTimeline": true,
+          "pairedVsBaseline": {
+            "count": 66,
+            "meanDeltaPct": -1.1533548023261704,
+            "blockLength": 12,
+            "ci95": [
+              -2.265124497984896,
+              -0.14211822159985027
+            ],
+            "familywiseCi": [
+              -3.092413730199411,
+              0.5145727972202674
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 66,
+            "meanDeltaPct": -4.545454545454546,
+            "blockLength": 12,
+            "ci95": [
+              -12.121212121212121,
+              4.545454545454546
+            ],
+            "familywiseCi": [
+              -18.181818181818183,
+              9.090909090909092
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -1.5021939795284314,
+            "meanNetExcessPct": -1.9199696667077693,
+            "excessWinRatePct": 41.666666666666664,
+            "pairedMeanDeltaPct": -1.1524319292742295
+          }
+        },
+        "residual_combination": {
+          "cohortCount": 75,
+          "validCohorts": 69,
+          "invalidCohorts": 6,
+          "absoluteWinRatePct": 49.275362318840585,
+          "excessWinRatePct": 47.82608695652174,
+          "excessWinRateBoundsWithInvalidPct": [
+            44,
+            52
+          ],
+          "activeAbsoluteWinRatePct": 49.275362318840585,
+          "activeExcessWinRatePct": 47.82608695652174,
+          "meanCohortNetReturnPct": -0.2917468386326666,
+          "meanCohortNetExcessPct": -0.6703243802571137,
+          "activeCohorts": 69,
+          "averageInvestedWeightPct": 96.52173913043477,
+          "meanStockCount": 10,
+          "failedEntryCount": 26,
+          "staleMarks": 3,
+          "performance": null,
+          "baseline": "baseline_residual",
+          "consecutiveCoveredTimeline": true,
+          "pairedVsBaseline": {
+            "count": 66,
+            "meanDeltaPct": -1.0275539308723014,
+            "blockLength": 12,
+            "ci95": [
+              -1.6398111981079073,
+              -0.5102861415241984
+            ],
+            "familywiseCi": [
+              -2.299317229262003,
+              -0.1523724357343107
+            ],
+            "adjustedP": 0.080991900809919
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 66,
+            "meanDeltaPct": -4.545454545454546,
+            "blockLength": 12,
+            "ci95": [
+              -15.151515151515152,
+              3.0303030303030303
+            ],
+            "familywiseCi": [
+              -28.78787878787879,
+              10.606060606060606
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -1.2492591997451168,
+            "meanNetExcessPct": -1.627836741369563,
+            "excessWinRatePct": 42.028985507246375,
+            "pairedMeanDeltaPct": -1.0188371270976033
+          }
+        }
+      },
+      "2024_2026": {
+        "baseline_split": {
+          "cohortCount": 61,
+          "validCohorts": 52,
+          "invalidCohorts": 9,
+          "absoluteWinRatePct": 51.92307692307693,
+          "excessWinRatePct": 38.46153846153847,
+          "excessWinRateBoundsWithInvalidPct": [
+            32.78688524590164,
+            47.540983606557376
+          ],
+          "activeAbsoluteWinRatePct": 51.92307692307693,
+          "activeExcessWinRatePct": 38.46153846153847,
+          "meanCohortNetReturnPct": -0.5630009534715474,
+          "meanCohortNetExcessPct": -1.8750899978450033,
+          "activeCohorts": 52,
+          "averageInvestedWeightPct": 98.46153846153844,
+          "meanStockCount": 10,
+          "failedEntryCount": 15,
+          "staleMarks": 1,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": null,
+          "pairedExcessWinVsBaseline": null,
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -1.5371157545468301,
+            "meanNetExcessPct": -2.849204798920287,
+            "excessWinRatePct": 30.76923076923077,
+            "pairedMeanDeltaPct": 0
+          }
+        },
+        "day_momentum": {
+          "cohortCount": 61,
+          "validCohorts": 55,
+          "invalidCohorts": 6,
+          "absoluteWinRatePct": 54.54545454545454,
+          "excessWinRatePct": 43.63636363636363,
+          "excessWinRateBoundsWithInvalidPct": [
+            39.34426229508197,
+            49.18032786885246
+          ],
+          "activeAbsoluteWinRatePct": 54.54545454545454,
+          "activeExcessWinRatePct": 43.63636363636363,
+          "meanCohortNetReturnPct": 0.3434749734370665,
+          "meanCohortNetExcessPct": -0.7586376757961988,
+          "activeCohorts": 55,
+          "averageInvestedWeightPct": 98.18181818181816,
+          "meanStockCount": 10,
+          "failedEntryCount": 10,
+          "staleMarks": 1,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": {
+            "count": 51,
+            "meanDeltaPct": 0.6370315086932682,
+            "blockLength": 12,
+            "ci95": [
+              -0.2589291567650324,
+              1.6431693648732193
+            ],
+            "familywiseCi": [
+              -0.6620385427140673,
+              2.4055512138405244
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 51,
+            "meanDeltaPct": 5.882352941176471,
+            "blockLength": 12,
+            "ci95": [
+              -11.764705882352942,
+              23.529411764705884
+            ],
+            "familywiseCi": [
+              -23.529411764705884,
+              35.294117647058826
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -0.6368762022371063,
+            "meanNetExcessPct": -1.738988851470372,
+            "excessWinRatePct": 36.36363636363637,
+            "pairedMeanDeltaPct": 0.6287418575483338
+          }
+        },
+        "night_reversal": {
+          "cohortCount": 61,
+          "validCohorts": 49,
+          "invalidCohorts": 12,
+          "absoluteWinRatePct": 46.93877551020408,
+          "excessWinRatePct": 30.612244897959183,
+          "excessWinRateBoundsWithInvalidPct": [
+            24.59016393442623,
+            44.26229508196721
+          ],
+          "activeAbsoluteWinRatePct": 46.93877551020408,
+          "activeExcessWinRatePct": 30.612244897959183,
+          "meanCohortNetReturnPct": -0.35937502057359866,
+          "meanCohortNetExcessPct": -1.468003985227536,
+          "activeCohorts": 49,
+          "averageInvestedWeightPct": 96.53061224489794,
+          "meanStockCount": 10,
+          "failedEntryCount": 21,
+          "staleMarks": 9,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": {
+            "count": 46,
+            "meanDeltaPct": 0.051538291048468396,
+            "blockLength": 12,
+            "ci95": [
+              -4.188115722894227,
+              4.334687859842196
+            ],
+            "familywiseCi": [
+              -8.444281606770945,
+              8.711602982039308
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 46,
+            "meanDeltaPct": -13.043478260869565,
+            "blockLength": 12,
+            "ci95": [
+              -50,
+              23.91304347826087
+            ],
+            "familywiseCi": [
+              -76.08695652173913,
+              58.69565217391305
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -1.3163027541489567,
+            "meanNetExcessPct": -2.424931718802894,
+            "excessWinRatePct": 24.489795918367346,
+            "pairedMeanDeltaPct": 0.07049335023336238
+          }
+        },
+        "split_combination": {
+          "cohortCount": 61,
+          "validCohorts": 53,
+          "invalidCohorts": 8,
+          "absoluteWinRatePct": 37.735849056603776,
+          "excessWinRatePct": 32.075471698113205,
+          "excessWinRateBoundsWithInvalidPct": [
+            27.86885245901639,
+            40.98360655737705
+          ],
+          "activeAbsoluteWinRatePct": 37.735849056603776,
+          "activeExcessWinRatePct": 32.075471698113205,
+          "meanCohortNetReturnPct": -0.30968713489878713,
+          "meanCohortNetExcessPct": -1.0413603546587744,
+          "activeCohorts": 53,
+          "averageInvestedWeightPct": 98.49056603773583,
+          "meanStockCount": 10,
+          "failedEntryCount": 9,
+          "staleMarks": 1,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": {
+            "count": 48,
+            "meanDeltaPct": 0.33086585708325944,
+            "blockLength": 12,
+            "ci95": [
+              -2.1234496644187644,
+              2.950562996891481
+            ],
+            "familywiseCi": [
+              -4.224964112362396,
+              5.535720943816417
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 48,
+            "meanDeltaPct": -12.5,
+            "blockLength": 12,
+            "ci95": [
+              -29.166666666666668,
+              4.166666666666667
+            ],
+            "familywiseCi": [
+              -41.666666666666664,
+              14.583333333333334
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -1.2866113030862085,
+            "meanNetExcessPct": -2.0182845228461965,
+            "excessWinRatePct": 28.30188679245283,
+            "pairedMeanDeltaPct": 0.3317195964821011
+          }
+        },
+        "baseline_residual": {
+          "cohortCount": 0,
+          "validCohorts": 0,
+          "invalidCohorts": 0,
+          "absoluteWinRatePct": null,
+          "excessWinRatePct": null,
+          "excessWinRateBoundsWithInvalidPct": null,
+          "activeAbsoluteWinRatePct": null,
+          "activeExcessWinRatePct": null,
+          "meanCohortNetReturnPct": null,
+          "meanCohortNetExcessPct": null,
+          "activeCohorts": 0,
+          "averageInvestedWeightPct": null,
+          "meanStockCount": null,
+          "failedEntryCount": 0,
+          "staleMarks": 0,
+          "performance": null,
+          "baseline": "baseline_residual",
+          "consecutiveCoveredTimeline": true,
+          "pairedVsBaseline": null,
+          "pairedExcessWinVsBaseline": null,
+          "pairedCoverageComplete": true,
+          "slippage": {
+            "meanNetReturnPct": null,
+            "meanNetExcessPct": null,
+            "excessWinRatePct": null,
+            "pairedMeanDeltaPct": null
+          }
+        },
+        "market_residual": {
+          "cohortCount": 0,
+          "validCohorts": 0,
+          "invalidCohorts": 0,
+          "absoluteWinRatePct": null,
+          "excessWinRatePct": null,
+          "excessWinRateBoundsWithInvalidPct": null,
+          "activeAbsoluteWinRatePct": null,
+          "activeExcessWinRatePct": null,
+          "meanCohortNetReturnPct": null,
+          "meanCohortNetExcessPct": null,
+          "activeCohorts": 0,
+          "averageInvestedWeightPct": null,
+          "meanStockCount": null,
+          "failedEntryCount": 0,
+          "staleMarks": 0,
+          "performance": null,
+          "baseline": "baseline_residual",
+          "consecutiveCoveredTimeline": true,
+          "pairedVsBaseline": {
+            "count": 0,
+            "meanDeltaPct": null,
+            "ci95": null,
+            "familywiseCi": null,
+            "adjustedP": null
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 0,
+            "meanDeltaPct": null,
+            "ci95": null,
+            "familywiseCi": null,
+            "adjustedP": null
+          },
+          "pairedCoverageComplete": true,
+          "slippage": {
+            "meanNetReturnPct": null,
+            "meanNetExcessPct": null,
+            "excessWinRatePct": null,
+            "pairedMeanDeltaPct": null
+          }
+        },
+        "residual_combination": {
+          "cohortCount": 0,
+          "validCohorts": 0,
+          "invalidCohorts": 0,
+          "absoluteWinRatePct": null,
+          "excessWinRatePct": null,
+          "excessWinRateBoundsWithInvalidPct": null,
+          "activeAbsoluteWinRatePct": null,
+          "activeExcessWinRatePct": null,
+          "meanCohortNetReturnPct": null,
+          "meanCohortNetExcessPct": null,
+          "activeCohorts": 0,
+          "averageInvestedWeightPct": null,
+          "meanStockCount": null,
+          "failedEntryCount": 0,
+          "staleMarks": 0,
+          "performance": null,
+          "baseline": "baseline_residual",
+          "consecutiveCoveredTimeline": true,
+          "pairedVsBaseline": {
+            "count": 0,
+            "meanDeltaPct": null,
+            "ci95": null,
+            "familywiseCi": null,
+            "adjustedP": null
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 0,
+            "meanDeltaPct": null,
+            "ci95": null,
+            "familywiseCi": null,
+            "adjustedP": null
+          },
+          "pairedCoverageComplete": true,
+          "slippage": {
+            "meanNetReturnPct": null,
+            "meanNetExcessPct": null,
+            "excessWinRatePct": null,
+            "pairedMeanDeltaPct": null
+          }
+        }
+      }
+    },
+    "20": {
+      "all": {
+        "baseline_split": {
+          "cohortCount": 37,
+          "validCohorts": 31,
+          "invalidCohorts": 6,
+          "absoluteWinRatePct": 54.83870967741935,
+          "excessWinRatePct": 41.935483870967744,
+          "excessWinRateBoundsWithInvalidPct": [
+            35.13513513513514,
+            51.35135135135135
+          ],
+          "activeAbsoluteWinRatePct": 54.83870967741935,
+          "activeExcessWinRatePct": 41.935483870967744,
+          "meanCohortNetReturnPct": 2.728113076894437,
+          "meanCohortNetExcessPct": 0.32025839499882885,
+          "activeCohorts": 31,
+          "averageInvestedWeightPct": 95.16129032258063,
+          "meanStockCount": 10,
+          "failedEntryCount": 16,
+          "staleMarks": 20,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": null,
+          "pairedExcessWinVsBaseline": null,
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": 1.7540891624718078,
+            "meanNetExcessPct": -0.6537655194238001,
+            "excessWinRatePct": 41.935483870967744,
+            "pairedMeanDeltaPct": 0
+          }
+        },
+        "day_momentum": {
+          "cohortCount": 37,
+          "validCohorts": 31,
+          "invalidCohorts": 6,
+          "absoluteWinRatePct": 45.16129032258064,
+          "excessWinRatePct": 35.483870967741936,
+          "excessWinRateBoundsWithInvalidPct": [
+            29.72972972972973,
+            45.94594594594595
+          ],
+          "activeAbsoluteWinRatePct": 45.16129032258064,
+          "activeExcessWinRatePct": 35.483870967741936,
+          "meanCohortNetReturnPct": -1.5734545545099825,
+          "meanCohortNetExcessPct": -3.6052666511995843,
+          "activeCohorts": 31,
+          "averageInvestedWeightPct": 97.09677419354837,
+          "meanStockCount": 10,
+          "failedEntryCount": 9,
+          "staleMarks": 25,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": {
+            "count": 27,
+            "meanDeltaPct": -2.0201016974300186,
+            "blockLength": 3,
+            "ci95": [
+              -5.350649013144881,
+              1.6427015775266207
+            ],
+            "familywiseCi": [
+              -7.342658319712348,
+              4.839056118574998
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 27,
+            "meanDeltaPct": -3.7037037037037037,
+            "blockLength": 3,
+            "ci95": [
+              -22.22222222222222,
+              18.51851851851852
+            ],
+            "familywiseCi": [
+              -37.03703703703704,
+              37.03703703703704
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -2.5239353469382118,
+            "meanNetExcessPct": -4.555747443627814,
+            "excessWinRatePct": 32.25806451612903,
+            "pairedMeanDeltaPct": -2.0147422922961975
+          }
+        },
+        "night_reversal": {
+          "cohortCount": 37,
+          "validCohorts": 28,
+          "invalidCohorts": 9,
+          "absoluteWinRatePct": 39.285714285714285,
+          "excessWinRatePct": 42.857142857142854,
+          "excessWinRateBoundsWithInvalidPct": [
+            32.432432432432435,
+            56.75675675675676
+          ],
+          "activeAbsoluteWinRatePct": 39.285714285714285,
+          "activeExcessWinRatePct": 42.857142857142854,
+          "meanCohortNetReturnPct": 0.6243929951696942,
+          "meanCohortNetExcessPct": -1.210188348477024,
+          "activeCohorts": 28,
+          "averageInvestedWeightPct": 97.85714285714285,
+          "meanStockCount": 10,
+          "failedEntryCount": 6,
+          "staleMarks": 96,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": {
+            "count": 24,
+            "meanDeltaPct": -1.3509168742494948,
+            "blockLength": 3,
+            "ci95": [
+              -6.950910284866999,
+              5.178818338465255
+            ],
+            "familywiseCi": [
+              -11.06832802590491,
+              11.241064114239492
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 24,
+            "meanDeltaPct": 4.166666666666667,
+            "blockLength": 3,
+            "ci95": [
+              -33.333333333333336,
+              41.666666666666664
+            ],
+            "familywiseCi": [
+              -66.66666666666667,
+              66.66666666666667
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -0.35552278445529567,
+            "meanNetExcessPct": -2.1901041281020137,
+            "excessWinRatePct": 42.857142857142854,
+            "pairedMeanDeltaPct": -1.3706424111557993
+          }
+        },
+        "split_combination": {
+          "cohortCount": 37,
+          "validCohorts": 30,
+          "invalidCohorts": 7,
+          "absoluteWinRatePct": 60,
+          "excessWinRatePct": 56.666666666666664,
+          "excessWinRateBoundsWithInvalidPct": [
+            45.94594594594595,
+            64.86486486486487
+          ],
+          "activeAbsoluteWinRatePct": 60,
+          "activeExcessWinRatePct": 56.666666666666664,
+          "meanCohortNetReturnPct": 1.6999388865276792,
+          "meanCohortNetExcessPct": -0.299101145685418,
+          "activeCohorts": 30,
+          "averageInvestedWeightPct": 98.33333333333331,
+          "meanStockCount": 10,
+          "failedEntryCount": 6,
+          "staleMarks": 42,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": {
+            "count": 26,
+            "meanDeltaPct": 1.5358448542634093,
+            "blockLength": 3,
+            "ci95": [
+              -3.6715199920059307,
+              7.421088931060611
+            ],
+            "familywiseCi": [
+              -6.536269171084235,
+              12.969500470550019
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 26,
+            "meanDeltaPct": 23.076923076923077,
+            "blockLength": 3,
+            "ci95": [
+              -7.6923076923076925,
+              57.69230769230769
+            ],
+            "familywiseCi": [
+              -30.76923076923077,
+              80.76923076923077
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": 0.7045829440415099,
+            "meanNetExcessPct": -1.294457088171587,
+            "excessWinRatePct": 43.333333333333336,
+            "pairedMeanDeltaPct": 1.4861196471410048
+          }
+        },
+        "baseline_residual": {
+          "cohortCount": 18,
+          "validCohorts": 16,
+          "invalidCohorts": 2,
+          "absoluteWinRatePct": 62.5,
+          "excessWinRatePct": 56.25,
+          "excessWinRateBoundsWithInvalidPct": [
+            50,
+            61.111111111111114
+          ],
+          "activeAbsoluteWinRatePct": 62.5,
+          "activeExcessWinRatePct": 56.25,
+          "meanCohortNetReturnPct": 6.20697163119624,
+          "meanCohortNetExcessPct": 3.4583742354136375,
+          "activeCohorts": 16,
+          "averageInvestedWeightPct": 94.37499999999999,
+          "meanStockCount": 10,
+          "failedEntryCount": 10,
+          "staleMarks": 16,
+          "performance": null,
+          "baseline": "baseline_residual",
+          "consecutiveCoveredTimeline": true,
+          "pairedVsBaseline": null,
+          "pairedExcessWinVsBaseline": null,
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": 5.206155993074895,
+            "meanNetExcessPct": 2.457558597292294,
+            "excessWinRatePct": 50,
+            "pairedMeanDeltaPct": 0
+          }
+        },
+        "market_residual": {
+          "cohortCount": 18,
+          "validCohorts": 17,
+          "invalidCohorts": 1,
+          "absoluteWinRatePct": 52.94117647058824,
+          "excessWinRatePct": 47.05882352941176,
+          "excessWinRateBoundsWithInvalidPct": [
+            44.44444444444444,
+            50
+          ],
+          "activeAbsoluteWinRatePct": 52.94117647058824,
+          "activeExcessWinRatePct": 47.05882352941176,
+          "meanCohortNetReturnPct": 2.3690764546169234,
+          "meanCohortNetExcessPct": -0.5757484551134028,
+          "activeCohorts": 17,
+          "averageInvestedWeightPct": 95.29411764705881,
+          "meanStockCount": 10,
+          "failedEntryCount": 8,
+          "staleMarks": 7,
+          "performance": null,
+          "baseline": "baseline_residual",
+          "consecutiveCoveredTimeline": true,
+          "pairedVsBaseline": {
+            "count": 16,
+            "meanDeltaPct": -4.181651807501416,
+            "blockLength": 3,
+            "ci95": [
+              -9.486923476761405,
+              1.0400488854221215
+            ],
+            "familywiseCi": [
+              -12.963282686992336,
+              4.645935307866303
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 16,
+            "meanDeltaPct": -12.5,
+            "blockLength": 3,
+            "ci95": [
+              -31.25,
+              0
+            ],
+            "familywiseCi": [
+              -50,
+              0
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": 1.3973033789783709,
+            "meanNetExcessPct": -1.5475215307519554,
+            "excessWinRatePct": 47.05882352941177,
+            "pairedMeanDeltaPct": -4.158700048222795
+          }
+        },
+        "residual_combination": {
+          "cohortCount": 18,
+          "validCohorts": 16,
+          "invalidCohorts": 2,
+          "absoluteWinRatePct": 62.5,
+          "excessWinRatePct": 56.25,
+          "excessWinRateBoundsWithInvalidPct": [
+            50,
+            61.111111111111114
+          ],
+          "activeAbsoluteWinRatePct": 62.5,
+          "activeExcessWinRatePct": 56.25,
+          "meanCohortNetReturnPct": 3.839749491800127,
+          "meanCohortNetExcessPct": 1.0911520960175254,
+          "activeCohorts": 16,
+          "averageInvestedWeightPct": 94.99999999999999,
+          "meanStockCount": 10,
+          "failedEntryCount": 10,
+          "staleMarks": 15,
+          "performance": null,
+          "baseline": "baseline_residual",
+          "consecutiveCoveredTimeline": true,
+          "pairedVsBaseline": {
+            "count": 16,
+            "meanDeltaPct": -2.3672221393961137,
+            "blockLength": 3,
+            "ci95": [
+              -5.7190882499061075,
+              0.23571292430867558
+            ],
+            "familywiseCi": [
+              -9.024213917157466,
+              0.9788236134878545
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 16,
+            "meanDeltaPct": 0,
+            "blockLength": 3,
+            "ci95": [
+              0,
+              0
+            ],
+            "familywiseCi": [
+              0,
+              0
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": 2.856269397354371,
+            "meanNetExcessPct": 0.1076720015717689,
+            "excessWinRatePct": 50,
+            "pairedMeanDeltaPct": -2.3498865957205246
+          }
+        }
+      },
+      "2020_2023": {
+        "baseline_split": {
+          "cohortCount": 24,
+          "validCohorts": 21,
+          "invalidCohorts": 3,
+          "absoluteWinRatePct": 42.857142857142854,
+          "excessWinRatePct": 33.33333333333333,
+          "excessWinRateBoundsWithInvalidPct": [
+            29.166666666666668,
+            41.66666666666667
+          ],
+          "activeAbsoluteWinRatePct": 42.857142857142854,
+          "activeExcessWinRatePct": 33.33333333333333,
+          "meanCohortNetReturnPct": 1.9924610076257143,
+          "meanCohortNetExcessPct": -0.11832876550247445,
+          "activeCohorts": 21,
+          "averageInvestedWeightPct": 92.85714285714285,
+          "meanStockCount": 10,
+          "failedEntryCount": 16,
+          "staleMarks": 18,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": null,
+          "pairedExcessWinVsBaseline": null,
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": 1.0486838547424557,
+            "meanNetExcessPct": -1.0621059183857315,
+            "excessWinRatePct": 33.333333333333336,
+            "pairedMeanDeltaPct": 0
+          }
+        },
+        "day_momentum": {
+          "cohortCount": 24,
+          "validCohorts": 20,
+          "invalidCohorts": 4,
+          "absoluteWinRatePct": 45,
+          "excessWinRatePct": 30,
+          "excessWinRateBoundsWithInvalidPct": [
+            25,
+            41.66666666666667
+          ],
+          "activeAbsoluteWinRatePct": 45,
+          "activeExcessWinRatePct": 30,
+          "meanCohortNetReturnPct": -2.0940232752850183,
+          "meanCohortNetExcessPct": -3.8063374780433668,
+          "activeCohorts": 20,
+          "averageInvestedWeightPct": 95.99999999999999,
+          "meanStockCount": 10,
+          "failedEntryCount": 8,
+          "staleMarks": 25,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": {
+            "count": 18,
+            "meanDeltaPct": -1.6423401978636358,
+            "blockLength": 3,
+            "ci95": [
+              -6.243384461590596,
+              3.189613900172035
+            ],
+            "familywiseCi": [
+              -8.71640452472796,
+              6.736420807039684
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 18,
+            "meanDeltaPct": 0,
+            "blockLength": 3,
+            "ci95": [
+              -27.77777777777778,
+              27.77777777777778
+            ],
+            "familywiseCi": [
+              -44.44444444444444,
+              50
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -3.0284111033916234,
+            "meanNetExcessPct": -4.7407253061499715,
+            "excessWinRatePct": 30,
+            "pairedMeanDeltaPct": -1.6536380842309415
+          }
+        },
+        "night_reversal": {
+          "cohortCount": 24,
+          "validCohorts": 18,
+          "invalidCohorts": 6,
+          "absoluteWinRatePct": 50,
+          "excessWinRatePct": 50,
+          "excessWinRateBoundsWithInvalidPct": [
+            37.5,
+            62.5
+          ],
+          "activeAbsoluteWinRatePct": 50,
+          "activeExcessWinRatePct": 50,
+          "meanCohortNetReturnPct": 1.8934031320893585,
+          "meanCohortNetExcessPct": 0.106621663315521,
+          "activeCohorts": 18,
+          "averageInvestedWeightPct": 98.33333333333331,
+          "meanStockCount": 10,
+          "failedEntryCount": 3,
+          "staleMarks": 72,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": {
+            "count": 16,
+            "meanDeltaPct": 0.8393673896074317,
+            "blockLength": 3,
+            "ci95": [
+              -4.499007562251187,
+              8.419404299891312
+            ],
+            "familywiseCi": [
+              -7.27243493125496,
+              15.046679755854006
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 16,
+            "meanDeltaPct": 18.75,
+            "blockLength": 3,
+            "ci95": [
+              -12.5,
+              50
+            ],
+            "familywiseCi": [
+              -31.25,
+              81.25
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": 0.8961221722344186,
+            "meanNetExcessPct": -0.8906592965394196,
+            "excessWinRatePct": 50,
+            "pairedMeanDeltaPct": 0.7688264205566115
+          }
+        },
+        "split_combination": {
+          "cohortCount": 24,
+          "validCohorts": 19,
+          "invalidCohorts": 5,
+          "absoluteWinRatePct": 57.89473684210527,
+          "excessWinRatePct": 63.1578947368421,
+          "excessWinRateBoundsWithInvalidPct": [
+            50,
+            70.83333333333334
+          ],
+          "activeAbsoluteWinRatePct": 57.89473684210527,
+          "activeExcessWinRatePct": 63.1578947368421,
+          "meanCohortNetReturnPct": 1.9434514280213264,
+          "meanCohortNetExcessPct": 0.29969826885384054,
+          "activeCohorts": 19,
+          "averageInvestedWeightPct": 97.89473684210525,
+          "meanStockCount": 10,
+          "failedEntryCount": 5,
+          "staleMarks": 36,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": {
+            "count": 17,
+            "meanDeltaPct": 2.993234813090063,
+            "blockLength": 3,
+            "ci95": [
+              -4.092605538795001,
+              10.87728830877283
+            ],
+            "familywiseCi": [
+              -7.940801481790404,
+              16.59566925211434
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 17,
+            "meanDeltaPct": 35.294117647058826,
+            "blockLength": 3,
+            "ci95": [
+              0,
+              70.58823529411765
+            ],
+            "familywiseCi": [
+              -11.764705882352942,
+              100
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": 0.9500366193633601,
+            "meanNetExcessPct": -0.6937165398041255,
+            "excessWinRatePct": 42.10526315789474,
+            "pairedMeanDeltaPct": 2.9107735945811175
+          }
+        },
+        "baseline_residual": {
+          "cohortCount": 18,
+          "validCohorts": 16,
+          "invalidCohorts": 2,
+          "absoluteWinRatePct": 62.5,
+          "excessWinRatePct": 56.25,
+          "excessWinRateBoundsWithInvalidPct": [
+            50,
+            61.111111111111114
+          ],
+          "activeAbsoluteWinRatePct": 62.5,
+          "activeExcessWinRatePct": 56.25,
+          "meanCohortNetReturnPct": 6.20697163119624,
+          "meanCohortNetExcessPct": 3.4583742354136375,
+          "activeCohorts": 16,
+          "averageInvestedWeightPct": 94.37499999999999,
+          "meanStockCount": 10,
+          "failedEntryCount": 10,
+          "staleMarks": 16,
+          "performance": null,
+          "baseline": "baseline_residual",
+          "consecutiveCoveredTimeline": true,
+          "pairedVsBaseline": null,
+          "pairedExcessWinVsBaseline": null,
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": 5.206155993074895,
+            "meanNetExcessPct": 2.457558597292294,
+            "excessWinRatePct": 50,
+            "pairedMeanDeltaPct": 0
+          }
+        },
+        "market_residual": {
+          "cohortCount": 18,
+          "validCohorts": 17,
+          "invalidCohorts": 1,
+          "absoluteWinRatePct": 52.94117647058824,
+          "excessWinRatePct": 47.05882352941176,
+          "excessWinRateBoundsWithInvalidPct": [
+            44.44444444444444,
+            50
+          ],
+          "activeAbsoluteWinRatePct": 52.94117647058824,
+          "activeExcessWinRatePct": 47.05882352941176,
+          "meanCohortNetReturnPct": 2.3690764546169234,
+          "meanCohortNetExcessPct": -0.5757484551134028,
+          "activeCohorts": 17,
+          "averageInvestedWeightPct": 95.29411764705881,
+          "meanStockCount": 10,
+          "failedEntryCount": 8,
+          "staleMarks": 7,
+          "performance": null,
+          "baseline": "baseline_residual",
+          "consecutiveCoveredTimeline": true,
+          "pairedVsBaseline": {
+            "count": 16,
+            "meanDeltaPct": -4.181651807501416,
+            "blockLength": 3,
+            "ci95": [
+              -9.486923476761405,
+              1.0400488854221215
+            ],
+            "familywiseCi": [
+              -12.963282686992336,
+              4.645935307866303
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 16,
+            "meanDeltaPct": -12.5,
+            "blockLength": 3,
+            "ci95": [
+              -31.25,
+              0
+            ],
+            "familywiseCi": [
+              -50,
+              0
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": 1.3973033789783709,
+            "meanNetExcessPct": -1.5475215307519554,
+            "excessWinRatePct": 47.05882352941177,
+            "pairedMeanDeltaPct": -4.158700048222795
+          }
+        },
+        "residual_combination": {
+          "cohortCount": 18,
+          "validCohorts": 16,
+          "invalidCohorts": 2,
+          "absoluteWinRatePct": 62.5,
+          "excessWinRatePct": 56.25,
+          "excessWinRateBoundsWithInvalidPct": [
+            50,
+            61.111111111111114
+          ],
+          "activeAbsoluteWinRatePct": 62.5,
+          "activeExcessWinRatePct": 56.25,
+          "meanCohortNetReturnPct": 3.839749491800127,
+          "meanCohortNetExcessPct": 1.0911520960175254,
+          "activeCohorts": 16,
+          "averageInvestedWeightPct": 94.99999999999999,
+          "meanStockCount": 10,
+          "failedEntryCount": 10,
+          "staleMarks": 15,
+          "performance": null,
+          "baseline": "baseline_residual",
+          "consecutiveCoveredTimeline": true,
+          "pairedVsBaseline": {
+            "count": 16,
+            "meanDeltaPct": -2.3672221393961137,
+            "blockLength": 3,
+            "ci95": [
+              -5.7190882499061075,
+              0.23571292430867558
+            ],
+            "familywiseCi": [
+              -9.024213917157466,
+              0.9788236134878545
+            ],
+            "adjustedP": 1
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 16,
+            "meanDeltaPct": 0,
+            "blockLength": 3,
+            "ci95": [
+              0,
+              0
+            ],
+            "familywiseCi": [
+              0,
+              0
+            ],
+            "adjustedP": 1
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": 2.856269397354371,
+            "meanNetExcessPct": 0.1076720015717689,
+            "excessWinRatePct": 50,
+            "pairedMeanDeltaPct": -2.3498865957205246
+          }
+        }
+      },
+      "2024_2026": {
+        "baseline_split": {
+          "cohortCount": 13,
+          "validCohorts": 10,
+          "invalidCohorts": 3,
+          "absoluteWinRatePct": 80,
+          "excessWinRatePct": 60,
+          "excessWinRateBoundsWithInvalidPct": [
+            46.15384615384615,
+            69.23076923076923
+          ],
+          "activeAbsoluteWinRatePct": 80,
+          "activeExcessWinRatePct": 60,
+          "meanCohortNetReturnPct": 4.272982422358757,
+          "meanCohortNetExcessPct": 1.241291432051566,
+          "activeCohorts": 10,
+          "averageInvestedWeightPct": 99.99999999999999,
+          "meanStockCount": 10,
+          "failedEntryCount": 0,
+          "staleMarks": 2,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": null,
+          "pairedExcessWinVsBaseline": null,
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": 3.235440308703447,
+            "meanNetExcessPct": 0.20374931839625612,
+            "excessWinRatePct": 60,
+            "pairedMeanDeltaPct": 0
+          }
+        },
+        "day_momentum": {
+          "cohortCount": 13,
+          "validCohorts": 11,
+          "invalidCohorts": 2,
+          "absoluteWinRatePct": 45.45454545454545,
+          "excessWinRatePct": 45.45454545454545,
+          "excessWinRateBoundsWithInvalidPct": [
+            38.46153846153847,
+            53.84615384615385
+          ],
+          "activeAbsoluteWinRatePct": 45.45454545454545,
+          "activeExcessWinRatePct": 45.45454545454545,
+          "meanCohortNetReturnPct": -0.6269659712826448,
+          "meanCohortNetExcessPct": -3.2396833296654335,
+          "activeCohorts": 11,
+          "averageInvestedWeightPct": 99.09090909090907,
+          "meanStockCount": 10,
+          "failedEntryCount": 1,
+          "staleMarks": 0,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": {
+            "count": 9,
+            "meanDeltaPct": -2.7756246965627827,
+            "ci95": null,
+            "familywiseCi": null,
+            "adjustedP": null
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 9,
+            "meanDeltaPct": -11.11111111111111,
+            "ci95": null,
+            "familywiseCi": null,
+            "adjustedP": null
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -1.6067066988411005,
+            "meanNetExcessPct": -4.21942405722389,
+            "excessWinRatePct": 36.36363636363637,
+            "pairedMeanDeltaPct": -2.7369507084267104
+          }
+        },
+        "night_reversal": {
+          "cohortCount": 13,
+          "validCohorts": 10,
+          "invalidCohorts": 3,
+          "absoluteWinRatePct": 20,
+          "excessWinRatePct": 30,
+          "excessWinRateBoundsWithInvalidPct": [
+            23.076923076923077,
+            46.15384615384615
+          ],
+          "activeAbsoluteWinRatePct": 20,
+          "activeExcessWinRatePct": 30,
+          "meanCohortNetReturnPct": -1.6598252512857024,
+          "meanCohortNetExcessPct": -3.580446369703605,
+          "activeCohorts": 10,
+          "averageInvestedWeightPct": 96.99999999999999,
+          "meanStockCount": 10,
+          "failedEntryCount": 3,
+          "staleMarks": 24,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": {
+            "count": 8,
+            "meanDeltaPct": -5.731485401963348,
+            "ci95": null,
+            "familywiseCi": null,
+            "adjustedP": null
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 8,
+            "meanDeltaPct": -25,
+            "ci95": null,
+            "familywiseCi": null,
+            "adjustedP": null
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": -2.6084837064967816,
+            "meanNetExcessPct": -4.5291048249146835,
+            "excessWinRatePct": 30,
+            "pairedMeanDeltaPct": -5.649580074580621
+          }
+        },
+        "split_combination": {
+          "cohortCount": 13,
+          "validCohorts": 11,
+          "invalidCohorts": 2,
+          "absoluteWinRatePct": 63.63636363636363,
+          "excessWinRatePct": 45.45454545454545,
+          "excessWinRateBoundsWithInvalidPct": [
+            38.46153846153847,
+            53.84615384615385
+          ],
+          "activeAbsoluteWinRatePct": 63.63636363636363,
+          "activeExcessWinRatePct": 45.45454545454545,
+          "meanCohortNetReturnPct": 1.2793263148568335,
+          "meanCohortNetExcessPct": -1.3333910435259555,
+          "activeCohorts": 11,
+          "averageInvestedWeightPct": 99.09090909090907,
+          "meanStockCount": 10,
+          "failedEntryCount": 1,
+          "staleMarks": 6,
+          "performance": null,
+          "baseline": "baseline_split",
+          "consecutiveCoveredTimeline": false,
+          "pairedVsBaseline": {
+            "count": 9,
+            "meanDeltaPct": -1.2170028457424928,
+            "ci95": null,
+            "familywiseCi": null,
+            "adjustedP": null
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 9,
+            "meanDeltaPct": 0,
+            "ci95": null,
+            "familywiseCi": null,
+            "adjustedP": null
+          },
+          "pairedCoverageComplete": false,
+          "slippage": {
+            "meanNetReturnPct": 0.2806175048492232,
+            "meanNetExcessPct": -2.332099853533565,
+            "excessWinRatePct": 45.45454545454545,
+            "pairedMeanDeltaPct": -1.2048933646903173
+          }
+        },
+        "baseline_residual": {
+          "cohortCount": 0,
+          "validCohorts": 0,
+          "invalidCohorts": 0,
+          "absoluteWinRatePct": null,
+          "excessWinRatePct": null,
+          "excessWinRateBoundsWithInvalidPct": null,
+          "activeAbsoluteWinRatePct": null,
+          "activeExcessWinRatePct": null,
+          "meanCohortNetReturnPct": null,
+          "meanCohortNetExcessPct": null,
+          "activeCohorts": 0,
+          "averageInvestedWeightPct": null,
+          "meanStockCount": null,
+          "failedEntryCount": 0,
+          "staleMarks": 0,
+          "performance": null,
+          "baseline": "baseline_residual",
+          "consecutiveCoveredTimeline": true,
+          "pairedVsBaseline": null,
+          "pairedExcessWinVsBaseline": null,
+          "pairedCoverageComplete": true,
+          "slippage": {
+            "meanNetReturnPct": null,
+            "meanNetExcessPct": null,
+            "excessWinRatePct": null,
+            "pairedMeanDeltaPct": null
+          }
+        },
+        "market_residual": {
+          "cohortCount": 0,
+          "validCohorts": 0,
+          "invalidCohorts": 0,
+          "absoluteWinRatePct": null,
+          "excessWinRatePct": null,
+          "excessWinRateBoundsWithInvalidPct": null,
+          "activeAbsoluteWinRatePct": null,
+          "activeExcessWinRatePct": null,
+          "meanCohortNetReturnPct": null,
+          "meanCohortNetExcessPct": null,
+          "activeCohorts": 0,
+          "averageInvestedWeightPct": null,
+          "meanStockCount": null,
+          "failedEntryCount": 0,
+          "staleMarks": 0,
+          "performance": null,
+          "baseline": "baseline_residual",
+          "consecutiveCoveredTimeline": true,
+          "pairedVsBaseline": {
+            "count": 0,
+            "meanDeltaPct": null,
+            "ci95": null,
+            "familywiseCi": null,
+            "adjustedP": null
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 0,
+            "meanDeltaPct": null,
+            "ci95": null,
+            "familywiseCi": null,
+            "adjustedP": null
+          },
+          "pairedCoverageComplete": true,
+          "slippage": {
+            "meanNetReturnPct": null,
+            "meanNetExcessPct": null,
+            "excessWinRatePct": null,
+            "pairedMeanDeltaPct": null
+          }
+        },
+        "residual_combination": {
+          "cohortCount": 0,
+          "validCohorts": 0,
+          "invalidCohorts": 0,
+          "absoluteWinRatePct": null,
+          "excessWinRatePct": null,
+          "excessWinRateBoundsWithInvalidPct": null,
+          "activeAbsoluteWinRatePct": null,
+          "activeExcessWinRatePct": null,
+          "meanCohortNetReturnPct": null,
+          "meanCohortNetExcessPct": null,
+          "activeCohorts": 0,
+          "averageInvestedWeightPct": null,
+          "meanStockCount": null,
+          "failedEntryCount": 0,
+          "staleMarks": 0,
+          "performance": null,
+          "baseline": "baseline_residual",
+          "consecutiveCoveredTimeline": true,
+          "pairedVsBaseline": {
+            "count": 0,
+            "meanDeltaPct": null,
+            "ci95": null,
+            "familywiseCi": null,
+            "adjustedP": null
+          },
+          "pairedExcessWinVsBaseline": {
+            "count": 0,
+            "meanDeltaPct": null,
+            "ci95": null,
+            "familywiseCi": null,
+            "adjustedP": null
+          },
+          "pairedCoverageComplete": true,
+          "slippage": {
+            "meanNetReturnPct": null,
+            "meanNetExcessPct": null,
+            "excessWinRatePct": null,
+            "pairedMeanDeltaPct": null
+          }
+        }
+      }
+    }
+  },
+  "fingerprints": {
+    "benchmark": "3facafec69d115f48124e0d768c368d1f85f2b6fe0c3e68e6e9a362ef29357d8",
+    "actions": "0115dca97d40cd4b66826d0292e5ed7fa67dd51b0815fe8ce75ef9a4e3aa3cbf",
+    "priceCachePathAndSha256Digest": "19de83c882eeb944011d51c7630ab8b5248e19343b3211460f3cd2f65d60e8be",
+    "code": {
+      "scripts/backtest-novel-factors.ts": "dc6a5351c6be5b86f1a6266add24a06d5babce31af4c1f0c452a348df2036353",
+      "scripts/lib/novel-price-factors.ts": "d1d28c788f0f045e85e291b63a1b1a013d7552bc288028b2fbfbb2ee2bfac00a",
+      "scripts/lib/wide-market-panel.ts": "3a06ee5324dd2e25d9b7f196628cb027dd2afeca945e033dc1d85af44bc888d8",
+      "scripts/lib/expanded-portfolio.ts": "dbde0080e78a50bcecb00538457de0038325987c3bf0f29775ab2ebbac17fe51",
+      "scripts/backtest-price-market-events.ts": "9a18d12a8f75fe5024650e6a5e39d73afb5166e00f7759c636e48579a35ac135",
+      "scripts/backtest-wide-market.ts": "f0f388617cce2a9e730fb12fe287a44492ee59b55a3dbd0d36214f912ef88902",
+      "docs/novel-factor-backtest-config.json": "b172c76be32a7e192f630cd429fbecc90d476663a2fe0d29a7e620eac1021cb4"
+    }
+  }
+}
