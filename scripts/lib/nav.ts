@@ -34,6 +34,8 @@ export const SUBPAGES: { file: string; label: string }[] = [
   { file: "revenue.html", label: "📈 月營收" },
   { file: "themes.html", label: "📡 題材雷達" },
   { file: "broker-watch.html", label: "🕵️ 贏家分點" },
+  { file: "revenue-decline.html", label: "📉 營收衰退" },
+  { file: "revenue-industry.html", label: "🏭 營收族群" },
 ];
 
 /** 子頁要呈現的完整分頁清單，順序與主頁一致。 */

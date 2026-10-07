@@ -39,7 +39,7 @@ if (fragment.includes("<!--RRG_EMBED-->")) {
   }
 }
 
-// 舊報告片段的 JS 分頁列是較早的子頁清單（依序新增：題材雷達、贏家分點）。
+// 舊報告片段的 JS 分頁列是較早的子頁清單（依序新增：題材雷達、贏家分點、營收衰退、營收族群）。
 // 發布時換成目前的完整清單，讓新子頁不用等重產報告就出現在同一列。
 {
   const pills = (pages: typeof SUBPAGES) => JSON.stringify(pages.map((page) => [page.file, `${navText(page.label)} ↗`]));

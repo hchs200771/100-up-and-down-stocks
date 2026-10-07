@@ -38,6 +38,10 @@ fi
 # 月營收動能名單子頁（scripts/build-revenue-momentum.ts 產出，每日更新——
 # 每月 1~10 號公司陸續公布，名單會天天長大）
 [ -f "$PROJECT_DIR/data/revenue.html" ] && cp "$PROJECT_DIR/data/revenue.html" "$SITE_DIR/revenue.html"
+# 月營收衰退名單子頁（scripts/build-revenue-decline.ts 產出；避開／放空候選，附個股期貨）
+[ -f "$PROJECT_DIR/data/revenue-decline.html" ] && cp "$PROJECT_DIR/data/revenue-decline.html" "$SITE_DIR/revenue-decline.html"
+# 營收產業族群子頁（scripts/build-revenue-industry.ts 產出；強弱勢是否集中在特定產業）
+[ -f "$PROJECT_DIR/data/revenue-industry.html" ] && cp "$PROJECT_DIR/data/revenue-industry.html" "$SITE_DIR/revenue-industry.html"
 [ -f "$PROJECT_DIR/data/theme-radar.html" ] && cp "$PROJECT_DIR/data/theme-radar.html" "$SITE_DIR/themes.html"
 # 贏家分點子頁（scripts/fetch-broker-watch.ts 產出，每日更新）
 [ -f "$PROJECT_DIR/data/broker-watch.html" ] && cp "$PROJECT_DIR/data/broker-watch.html" "$SITE_DIR/broker-watch.html"

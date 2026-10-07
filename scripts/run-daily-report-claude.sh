@@ -474,6 +474,10 @@ if stage_enabled fetch; then
       || log "[warn] fetch-monthly-revenue.ts failed; 月營收動能沿用上次結果"
     timed revenue-momentum run_tsx scripts/build-revenue-momentum.ts \
       || log "[warn] build-revenue-momentum.ts failed; 月營收動能沿用上次結果"
+    timed revenue-decline run_tsx scripts/build-revenue-decline.ts \
+      || log "[warn] build-revenue-decline.ts failed; 營收衰退名單沿用上次結果"
+    timed revenue-industry run_tsx scripts/build-revenue-industry.ts \
+      || log "[warn] build-revenue-industry.ts failed; 營收族群沿用上次結果"
   ) &
   AUX_PIDS="$AUX_PIDS $!"
 

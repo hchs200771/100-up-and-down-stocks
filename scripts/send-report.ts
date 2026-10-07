@@ -2339,6 +2339,18 @@ function renderHome(labels: string[], date: string, order: string[] = READ_ORDER
         <strong style="color:#374151; white-space:nowrap;">📈 月營收動能名單</strong><span style="color:#d1d5db;"> · </span><span style="color:#6b7280; font-size:12px;">單月營收 YoY≥20% 的篩選名單，核心層再加「連 3 月成長＋24 月營收新高」。每月 1~10 號公司陸續公布，名單天天長大。獨立頁面。</span>
       </div></a>`;
 
+  // 營收衰退名單：避開／放空候選，同樣是月更子頁；有個股期貨的排最前面。
+  const declineCard = `<a href="${SITE_URL}revenue-decline.html" style="text-decoration:none; display:block;"><div style="border:1px solid #e5e7eb; border-radius:6px; padding:9px 12px; margin-bottom:6px; background:#fff; font-size:13px; line-height:1.65;">
+        <span style="float:right; color:#c7d2fe;">↗</span>
+        <strong style="color:#374151; white-space:nowrap;">📉 月營收衰退名單</strong><span style="color:#d1d5db;"> · </span><span style="color:#6b7280; font-size:12px;">單月營收 YoY≤−20%，回測下個月平均跑輸大盤約 1.2%。避開或放空候選，標出有個股期貨的標的。獨立頁面。</span>
+      </div></a>`;
+
+  // 營收產業族群：強弱勢是否集中在特定產業，跟月營收一起更新。
+  const industryCard = `<a href="${SITE_URL}revenue-industry.html" style="text-decoration:none; display:block;"><div style="border:1px solid #e5e7eb; border-radius:6px; padding:9px 12px; margin-bottom:6px; background:#fff; font-size:13px; line-height:1.65;">
+        <span style="float:right; color:#c7d2fe;">↗</span>
+        <strong style="color:#374151; white-space:nowrap;">🏭 營收產業族群</strong><span style="color:#d1d5db;"> · </span><span style="color:#6b7280; font-size:12px;">營收強勢（YoY≥20%）與弱勢（YoY≤−20%）是否集中在特定產業，看整個產業是在往上還是往下。觀察用，尚未回測。獨立頁面。</span>
+      </div></a>`;
+
   // 首頁分組：依「多久變一次」分色塊，讀者可以先看每天會動的，慢變數另外一區。
   // labels 進來已依 READ_ORDER 排好，各色塊內沿用該順序；沒被任何色塊認領的分頁
   // 落到「其他」，分頁改名或新增時不會從首頁消失。
@@ -2361,7 +2373,7 @@ function renderHome(labels: string[], date: string, order: string[] = READ_ORDER
       hint: "更新頻率依資料源而定：CB 每日、集保與 RRG 每週、設質與營收每月；轉折時優先檢查。",
       bg: "#f0fdf4", border: "#bbf7d0", titleColor: "#15803d",
       labels: ["🔄 族群輪動", "🏦 大戶籌碼"],
-      extraHtml: cbCard + revCard,
+      extraHtml: cbCard + revCard + declineCard + industryCard,
     },
     {
       title: "📚 其他",

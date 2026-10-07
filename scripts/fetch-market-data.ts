@@ -803,12 +803,14 @@ async function main() {
     if (stock.chips) stock.chips.strength = strengthMap.get(stock.code);
   }
 
-  const stockMap: Record<string, { name: string; pct: string; futures?: { level: string; margin: string }; chips?: Stock["chips"]; flags?: Stock["flags"]; dayTradeRatio?: number }> = {};
+  const stockMap: Record<string, { name: string; pct: string; amount?: number; futures?: { level: string; margin: string }; chips?: Stock["chips"]; flags?: Stock["flags"]; dayTradeRatio?: number }> = {};
   for (const s of allStocksEnriched) {
     const sign = s.pct > 0 ? "+" : "";
     stockMap[s.code] = {
       name: s.name,
       pct: `${sign}${s.pct.toFixed(2)}%`,
+      // 當日成交金額（元）；build-revenue-decline.ts 用來做流動性門檻
+      amount: Number.isFinite(parseFloat(s.amount)) ? parseFloat(s.amount) : undefined,
       futures: s.futures,
       chips: s.chips,
       flags: s.flags,
