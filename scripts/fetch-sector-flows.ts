@@ -89,8 +89,9 @@ async function fetchCloses(symbol: string): Promise<{ closes: number[]; dates: s
       }
       if (closes.length < 2) continue;
       return { closes, dates };
-    } catch {
+    } catch (e) {
       // try next host
+      console.warn(`[warn] sector chart ${symbol} via ${host} failed: ${(e as Error).message}`);
     }
   }
   return null;
@@ -159,7 +160,8 @@ async function fetchFundamentals(symbol: string): Promise<{ pe: number | null; a
       nav: parseMagnitude(pick("nav")),
       shares: parseMagnitude(pick("sharesOut")),
     };
-  } catch {
+  } catch (e) {
+    console.warn(`[warn] sector fundamentals ${symbol} (stockanalysis.com) failed: ${(e as Error).message}`);
     return empty;
   }
 }
@@ -173,10 +175,11 @@ function loadHistory(path: string): HistoryFile {
   if (!existsSync(path)) return {};
   try {
     const raw = JSON.parse(readFileSync(path, "utf8"));
-    return raw && typeof raw === "object" ? raw : {};
-  } catch {
-    console.warn("[warn] sector-flows-history.json unreadable, starting fresh");
-    return {};
+    if (!raw || typeof raw !== "object" || Array.isArray(raw)) throw new Error("not a JSON object");
+    return raw;
+  } catch (e) {
+    // 檔案存在但讀不了：不能回傳 {}，否則後面寫回歷史會把累積的快照全部覆寫掉。
+    throw new Error(`sector-flows-history.json exists but is unreadable or invalid (${path}): ${(e as Error).message}. Fix or restore it before re-running.`);
   }
 }
 

@@ -482,8 +482,9 @@ function main() {
     if (existsSync(MARKET_HISTORY)) {
       try {
         history = JSON.parse(readFileSync(MARKET_HISTORY, "utf-8"));
-      } catch {
-        history = [];
+      } catch (e) {
+        // 存在但讀不了：不能當成空的，否則下面寫回會覆寫掉整份歷史
+        throw new Error(`${MARKET_HISTORY} exists but is unreadable or invalid: ${(e as Error).message}. Fix or restore it before re-running.`);
       }
     }
     history = upsertMarketHistory(history, entry);

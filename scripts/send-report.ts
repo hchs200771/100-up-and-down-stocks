@@ -358,7 +358,7 @@ function renderScorePanel(g: CategoryGroup): string {
   };
 
   const rationaleHtml = g.entryRationale
-    ? `<p style="margin:4px 0 0 0; font-size:11px; color:#374151; line-height:1.3;">${g.entryRationale}</p>`
+    ? `<p style="margin:4px 0 0 0; font-size:11px; color:#374151; line-height:1.3;">${escHtml(g.entryRationale)}</p>`
     : "";
 
   return `<div style="background-color:${tierBg}; border:1px solid ${tierColor}; padding:5px 8px; border-radius:6px; margin-bottom:6px;">
@@ -410,7 +410,7 @@ function renderCategoryBlock(
     headerBadges += `<span style="font-size: 11px; background-color: #e5e7eb; color: #6b7280; padding: 2px 6px; border-radius: 4px; margin-left: 6px;">⚠ 題材未經新聞驗證</span>`;
   }
   if (g.stage) {
-    headerBadges += `<span style="font-size: 11px; background-color: #e0e7ff; color: #4338ca; padding: 2px 6px; border-radius: 4px; margin-left: 6px;">${g.stage}</span>`;
+    headerBadges += `<span style="font-size: 11px; background-color: #e0e7ff; color: #4338ca; padding: 2px 6px; border-radius: 4px; margin-left: 6px;">${escHtml(g.stage)}</span>`;
   }
   if (kind === "loser" && g.retreatSignal) {
     headerBadges += `<span style="font-size: 11px; background-color: #fef9c3; color: #92400e; padding: 2px 6px; border-radius: 4px; margin-left: 6px;">🔻 退潮警訊</span>`;
@@ -424,10 +424,10 @@ function renderCategoryBlock(
     const futuresHtml = renderFuturesBadge(meta);
     const chipBadges = renderStockChipBadges(meta);
     const href = code ? yahooUrl(code, "technical-analysis") : "#";
-    const codeHtml = code ? `<span style="color: #6b7280; font-size: 12px;">${code}</span>` : "";
+    const codeHtml = code ? `<span style="color: #6b7280; font-size: 12px;">${escHtml(code)}</span>` : "";
     const pctHtml = pct !== "" ? `<span style="color: ${pctColor}; font-weight: bold; margin-left: 4px;">${pct}</span>` : "";
-    stocksHtml += `<a href="${href}" target="_blank" style="text-decoration: none; display: inline-block; background-color: white; border: 1px solid ${stockBorder}; padding: 4px 8px; border-radius: 6px; margin: 0 6px 6px 0; font-size: 14px;">
-      <strong style="color: #1f2937;">${name}</strong> ${codeHtml}
+    stocksHtml += `<a href="${escHtml(href)}" target="_blank" style="text-decoration: none; display: inline-block; background-color: white; border: 1px solid ${stockBorder}; padding: 4px 8px; border-radius: 6px; margin: 0 6px 6px 0; font-size: 14px;">
+      <strong style="color: #1f2937;">${escHtml(name)}</strong> ${codeHtml}
       ${pctHtml}
       ${futuresHtml}${chipBadges}
     </a>`;
@@ -438,7 +438,7 @@ function renderCategoryBlock(
   const storyHtml = g.story
     ? `<div style="background-color: ${bgColor}; padding: 10px 12px; border-radius: 8px; border: 1px solid ${storyBorder}; margin-bottom: 10px;">
         <strong style="color: ${storyLabelColor}; font-size: 13px;">${storyLabel}</strong>
-        <p style="margin: 4px 0 0 0; font-size: 14px; color: #374151; line-height: 1.75;">${g.story}</p>
+        <p style="margin: 4px 0 0 0; font-size: 14px; color: #374151; line-height: 1.75;">${escHtml(g.story)}</p>
       </div>`
     : "";
 
@@ -447,7 +447,7 @@ function renderCategoryBlock(
   return `<div style="border: 1px solid #e5e7eb; border-left: 4px solid ${pctColor}; background: #fff; padding: 14px 16px 6px; border-radius: 10px; margin-bottom: 14px;">
     <h4 style="margin: 0 0 10px; font-size: 17px; color: ${headerColor}; display: flex; align-items: center; flex-wrap: wrap;">
       <span style="background-color: ${chipBg}; color: ${headerColor}; padding: 1px 8px; border-radius: 999px; font-size: 12px; margin-right: 8px;">${g.stocks.length}檔</span>
-      ${g.category}${headerBadges}
+      ${escHtml(g.category)}${headerBadges}
     </h4>
     <div style="margin-bottom: 6px;">${stocksHtml}</div>
     ${storyHtml}
@@ -929,7 +929,7 @@ function renderCredit(credit: CreditSpread[] | null | undefined): string {
       const pTxt = p === null ? "" : `<span style="color:#9ca3af;"> 近一年 ${p} 百分位</span>`;
       const m = c.chg1m;
       const mTxt = m === null ? "" : `<span style="color:#9ca3af;"> 月${m > 0 ? "+" : ""}${m}</span>`;
-      return `<span style="display:inline-block; margin:0 10px 4px 0; white-space:nowrap;" title="${c.note}"><span style="color:#6b7280;">${c.name}</span> <strong>${c.bps}bps</strong> <span style="color:${color}; font-weight:bold;">${dTxt}</span>${mTxt}${pTxt}</span>`;
+      return `<span style="display:inline-block; margin:0 10px 4px 0; white-space:nowrap;" title="${escHtml(c.note)}"><span style="color:#6b7280;">${escHtml(c.name)}</span> <strong>${c.bps}bps</strong> <span style="color:${color}; font-weight:bold;">${dTxt}</span>${mTxt}${pTxt}</span>`;
     })
     .join("");
   const asOf = credit[0]?.asOf ?? "";
@@ -968,14 +968,14 @@ function renderIntlEvents(events: IntlEvent[] | null | undefined, window: string
         : "";
       // 重要度高的用左側色條標出來，掃的時候先看有色條那幾條就好。
       const accent = e.level === "高" ? "border-left:3px solid #0284c7;" : "border-left:3px solid transparent;";
-      const chain = e.chain ? `<div style="color:#64748b; font-size:12px; margin-top:2px;">${e.chain}</div>` : "";
-      return `<tr><td style="padding:6px 8px; ${accent} vertical-align:top; white-space:nowrap; color:#6b7280; font-size:12px;">${e.when}</td>
-      <td style="padding:6px 6px; vertical-align:top; white-space:nowrap;"><span style="background-color:${bg}; color:${fg}; padding:1px 6px; border-radius:10px; font-size:11px;">${e.cat}</span></td>
-      <td style="padding:6px 8px; vertical-align:top;"><span style="color:#1f2937; font-weight:${e.level === "高" ? "bold" : "normal"};">${e.title}</span> ${impactHtml}${chain}</td></tr>`;
+      const chain = e.chain ? `<div style="color:#64748b; font-size:12px; margin-top:2px;">${escHtml(e.chain)}</div>` : "";
+      return `<tr><td style="padding:6px 8px; ${accent} vertical-align:top; white-space:nowrap; color:#6b7280; font-size:12px;">${escHtml(e.when)}</td>
+      <td style="padding:6px 6px; vertical-align:top; white-space:nowrap;"><span style="background-color:${bg}; color:${fg}; padding:1px 6px; border-radius:10px; font-size:11px;">${escHtml(e.cat)}</span></td>
+      <td style="padding:6px 8px; vertical-align:top;"><span style="color:#1f2937; font-weight:${e.level === "高" ? "bold" : "normal"};">${escHtml(e.title)}</span> ${impactHtml}${chain}</td></tr>`;
     })
     .join("");
   const win = window
-    ? `<div style="font-size:12px; color:#64748b; margin:0 0 6px 0;">涵蓋區間：${window}</div>`
+    ? `<div style="font-size:12px; color:#64748b; margin:0 0 6px 0;">涵蓋區間：${escHtml(window)}</div>`
     : "";
   return `<div style="margin-bottom:12px;">
     <div style="font-weight:bold; color:#0369a1; font-size:14px; margin-bottom:4px;">🕒 過去一天大事</div>
@@ -1006,8 +1006,8 @@ function renderIntlMovers(movers: IntlMover[] | null | undefined): string {
     .map((m) => {
       const up = m.pct >= 0;
       const color = up ? "#dc2626" : "#16a34a";
-      const tw = m.tw ? `<span style="color:#9ca3af;">　台股連動：${m.tw}</span>` : "";
-      return `<div style="margin-top:4px; font-size:12px; color:#475569;"><strong style="color:#1f2937;">${m.name}</strong> <span style="color:${color}; font-weight:bold;">${up ? "+" : ""}${m.pct.toFixed(2)}%</span>　${m.why}${tw}</div>`;
+      const tw = m.tw ? `<span style="color:#9ca3af;">　台股連動：${escHtml(m.tw)}</span>` : "";
+      return `<div style="margin-top:4px; font-size:12px; color:#475569;"><strong style="color:#1f2937;">${m.name}</strong> <span style="color:${color}; font-weight:bold;">${up ? "+" : ""}${m.pct.toFixed(2)}%</span>　${m.why ? escHtml(m.why) : ""}${tw}</div>`;
     })
     .join("");
   return `<div style="margin-bottom:12px;">
@@ -1152,7 +1152,7 @@ function renderIntl(intl: IntlBlock | null | undefined): string {
   }
 
   const summaryHtml = summary
-    ? `<p style="line-height:1.6; margin:0;">${summary.replace(/\n/g, "<br>")}</p>`
+    ? `<p style="line-height:1.6; margin:0;">${escHtml(summary).replace(/\n/g, "<br>")}</p>`
     : "";
 
   // 順序＝閱讀動線：先知道發生了什麼事（時間軸），再看誰動了（指標股、指數），最後看判讀。
@@ -1191,7 +1191,7 @@ function renderKol(kol: KolBlock | null | undefined): string {
         : "";
       return `<div style="border-top:1px solid #e9d5ff; padding:10px 0;">
         <div style="font-size:13px;"><strong style="color:#6b21a8;">${escHtml(it.source)}</strong>${stance} <span style="color:#9ca3af; font-size:12px;">${escHtml(it.publishedAt)}</span></div>
-        <div style="font-size:13px; margin:2px 0 4px;"><a href="${escHtml(it.url)}" style="color:#7c3aed;">${escHtml(it.title)}</a></div>
+        <div style="font-size:13px; margin:2px 0 4px;">${/^https?:\/\//i.test(it.url) ? `<a href="${escHtml(it.url)}" style="color:#7c3aed;">${escHtml(it.title)}</a>` : escHtml(it.title)}</div>
         <div style="line-height:1.6;">${escHtml(it.insight).replace(/\n/g, "<br>")} ${notesOnly}</div>
         ${tickers}
       </div>`;
@@ -1674,7 +1674,7 @@ function renderRrg(rrg: RrgBlock | null | undefined): string {
           <span style="display:inline-block; background:${m.bg}; color:${m.color}; border:1px solid ${m.color}33; border-radius:4px; padding:2px 8px; font-weight:bold;">${q}</span>
           <span style="color:#9ca3af; font-size:11px;"> ${list.length}</span>
         </td>
-        <td style="padding:6px 8px; font-size:13px; color:#374151;">${list.join("、") || "—"}<div style="color:#9ca3af; font-size:11px; margin-top:2px;">${m.desc}</div></td>
+        <td style="padding:6px 8px; font-size:13px; color:#374151;">${list.map(escHtml).join("、") || "—"}<div style="color:#9ca3af; font-size:11px; margin-top:2px;">${m.desc}</div></td>
       </tr>`;
     })
     .join("");
@@ -1691,10 +1691,10 @@ function renderRrg(rrg: RrgBlock | null | undefined): string {
           return `<div style="border-left:3px solid ${m.color}; padding:6px 0 6px 10px; margin-bottom:10px;">
             <div style="font-size:13px;">
               <span style="color:${m.color}; font-weight:bold;">[${m.label}]</span>
-              <strong style="color:#1f2937;"> ${al.sector}</strong>
-              <span style="color:#6b7280;"> — ${al.kind}</span>
+              <strong style="color:#1f2937;"> ${escHtml(al.sector)}</strong>
+              <span style="color:#6b7280;"> — ${escHtml(al.kind)}</span>
             </div>
-            <div style="font-size:12px; color:#4b5563; line-height:1.6; margin-top:3px;">${al.detail}</div>
+            <div style="font-size:12px; color:#4b5563; line-height:1.6; margin-top:3px;">${escHtml(al.detail)}</div>
           </div>`;
         })
         .join("")
@@ -1707,7 +1707,7 @@ function renderRrg(rrg: RrgBlock | null | undefined): string {
         ${regime
           .map(
             (r) =>
-              `<div style="font-size:12px; color:#4b5563; line-height:1.6; margin-bottom:4px;">・<strong>${r.kind}</strong>（${r.sectors.length} 個族群）：${r.note}</div>`,
+              `<div style="font-size:12px; color:#4b5563; line-height:1.6; margin-bottom:4px;">・<strong>${escHtml(r.kind)}</strong>（${r.sectors.length} 個族群）：${escHtml(r.note)}</div>`,
           )
           .join("")}
       </div>`
@@ -2034,7 +2034,7 @@ function renderPicks(picks: PicksReport | null): string {
           <td style="padding:6px 8px; text-align:right; white-space:nowrap;">${p.close}</td>
           <td style="padding:6px 8px; text-align:center;"><span style="background:${accent}; color:#fff; border-radius:10px; padding:1px 8px; font-weight:bold; font-size:12px;">${p.score}</span></td>
           <td style="padding:6px 8px; white-space:nowrap; font-size:12px; color:#6b7280;">${p.type}</td>
-          <td style="padding:6px 8px; font-size:12px; line-height:1.6; color:#4b5563;">${badges}${badges ? "<br>" : ""}${p.reason}${themeNote(p) ? `<br><span style="color:#0369a1;">${themeNote(p)}</span>` : ""}${warn ? `<br><span style="color:#b45309;">⚠ ${warn}</span>` : ""}</td>
+          <td style="padding:6px 8px; font-size:12px; line-height:1.6; color:#4b5563;">${badges}${badges ? "<br>" : ""}${escHtml(p.reason)}${themeNote(p) ? `<br><span style="color:#0369a1;">${themeNote(p)}</span>` : ""}${warn ? `<br><span style="color:#b45309;">⚠ ${warn}</span>` : ""}</td>
         </tr>`;
       })
       .join("");
@@ -2048,7 +2048,7 @@ function renderPicks(picks: PicksReport | null): string {
     list
       .map((p) => {
         const sigRows = p.signals
-          .map((s) => `<li style="color:${s.tone === "pos" ? "#166534" : "#b45309"};"><strong>${s.label}</strong>：${s.detail}</li>`)
+          .map((s) => `<li style="color:${s.tone === "pos" ? "#166534" : "#b45309"};"><strong>${escHtml(s.label)}</strong>：${escHtml(s.detail)}</li>`)
           .join("");
         const mRows = Object.entries(p.metrics)
           .filter(([, v]) => v && v !== "—")
@@ -2247,7 +2247,7 @@ function renderHome(h: HomeInput): string {
   // 1. 盤後總結
   const summary = `<div style="background:#eef2ff; border:1px solid #c7d2fe; border-radius:10px; padding:12px 14px; margin-bottom:12px;">
       <div style="font-size:12px; font-weight:bold; color:#4f46e5; margin-bottom:4px;">📝 今天的結論 · ${a.timestamp}</div>
-      <p style="margin:0; font-size:14px; line-height:1.8; color:#1f2937;">${a.summary.replace(/\n/g, "<br>")}</p>
+      <p style="margin:0; font-size:14px; line-height:1.8; color:#1f2937;">${escHtml(a.summary).replace(/\n/g, "<br>")}</p>
     </div>`;
 
   // 2. 市場溫度計：每格一個數字＋一行補充。inline-block 讓寬螢幕排成一列、手機自動折行。
@@ -2316,14 +2316,15 @@ function renderHome(h: HomeInput): string {
           <div style="font-size:12px; font-weight:800; color:${p.color}; margin-bottom:2px;">${p.title}</div>
           ${p.items
             .map((it) => {
-              const mm = /^([^，,（]+（[^）]*）)(.*)$/.exec(it);
-              return `<div style="font-size:13px; line-height:1.7; color:#374151;">· ${mm ? `<strong style="color:#111827;">${mm[1]}</strong>${mm[2]}` : it}</div>`;
+              const itEsc = escHtml(it);
+              const mm = /^([^，,（]+（[^）]*）)(.*)$/.exec(itEsc);
+              return `<div style="font-size:13px; line-height:1.7; color:#374151;">· ${mm ? `<strong style="color:#111827;">${mm[1]}</strong>${mm[2]}` : itEsc}</div>`;
             })
             .join("")}
         </div>`,
           )
           .join("")
-      : `<p style="margin:0; font-size:13px; line-height:1.8;">${a.playbook.replace(/\n/g, "<br>")}</p>`;
+      : `<p style="margin:0; font-size:13px; line-height:1.8;">${escHtml(a.playbook).replace(/\n/g, "<br>")}</p>`;
     playbook = card("🎯 今天怎麼做", body, more(tabHref("🎯 操作建議"), "含長線策略"));
   }
 
@@ -2338,7 +2339,7 @@ function renderHome(h: HomeInput): string {
     </tr>`);
   };
   if (h.picks) {
-    const top = h.picks.long.slice(0, 3).map((p) => p.name).join("、");
+    const top = h.picks.long.slice(0, 3).map((p) => escHtml(p.name)).join("、");
     row("🏆 選股池", `長線 ${h.picks.long.length}、波段 ${h.picks.short.length} 檔${top ? `；長線前三：${top}` : ""}`, tabHref("🏆 終極選股池"), h.picks.date, true);
   }
   type BrokerItem = { stockName: string; broker: string; triggered?: boolean; net?: number };
@@ -2347,7 +2348,7 @@ function renderHome(h: HomeInput): string {
     const hit = bw.items.filter((i) => i.triggered);
     row(
       "🕵️ 贏家分點",
-      hit.length ? `觸發 ${hit.length} 組：${hit.slice(0, 4).map((i) => `${i.stockName}（${i.broker}）`).join("、")}${hit.length > 4 ? " 等" : ""}` : `今天沒有觸發（追蹤 ${bw.items.length} 組）`,
+      hit.length ? `觸發 ${hit.length} 組：${hit.slice(0, 4).map((i) => `${escHtml(i.stockName)}（${escHtml(i.broker)}）`).join("、")}${hit.length > 4 ? " 等" : ""}` : `今天沒有觸發（追蹤 ${bw.items.length} 組）`,
       "broker-watch.html",
       bw.tradingDate,
       true,
@@ -2361,7 +2362,7 @@ function renderHome(h: HomeInput): string {
     const weekAgo = new Date(Date.parse(`${tp.closeDate}T00:00:00+08:00`) - 7 * 86_400_000).toISOString().slice(0, 10);
     const down = tp.rows.filter((r) => !r.stale && r.lastEvent.direction === "down" && r.lastEvent.date > weekAgo);
     const downText = down.length
-      ? `近 7 日共識被下修 ${down.length} 檔：${down.slice(0, 4).map((r) => r.name).join("、")}${down.length > 4 ? " 等" : ""}（回測之後 60 日約跑輸 3%）`
+      ? `近 7 日共識被下修 ${down.length} 檔：${down.slice(0, 4).map((r) => escHtml(r.name)).join("、")}${down.length > 4 ? " 等" : ""}（回測之後 60 日約跑輸 3%）`
       : "近 7 日沒有共識被下修";
     row("🎯 目標價", `${downText}；空間 ≥${Math.round(tp.gate * 100)}% 有 ${tp.rows.filter((r) => r.qualified).length} 檔（只當參考）`, "target-price.html", tp.closeDate, true);
   }
@@ -2392,7 +2393,7 @@ function renderHome(h: HomeInput): string {
     const text = full?.trim().split(/(?<=。)/)[0];
     if (!text) return;
     ctx.push(`<div style="padding:7px 0; border-top:1px solid #f1f5f9; font-size:13px; line-height:1.7; color:#374151;">
-      <strong style="color:#111827;">${title}</strong>　${text} ${more(href)}
+      <strong style="color:#111827;">${title}</strong>　${escHtml(text)} ${more(href)}
     </div>`);
   };
   line("🌐 國際", a.intl?.summary, tabHref("🌐 國際情勢"));
@@ -2422,13 +2423,13 @@ function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName
   const longTermStrategyHtml = a.longTermStrategy
     ? `<div style="background-color: #eef6ff; border: 1px solid #bfdbfe; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
       <h3 style="margin-top: 0; color: #1d4ed8;">🧭 長線策略與進出場</h3>
-      <p style="line-height: 1.7; margin-bottom: 0; color: #1e3a8a;">${a.longTermStrategy.replace(/\n/g, "<br>")}</p>
+      <p style="line-height: 1.7; margin-bottom: 0; color: #1e3a8a;">${escHtml(a.longTermStrategy).replace(/\n/g, "<br>")}</p>
     </div>`
     : "";
   const playbookHtml = a.playbook
     ? `<div style="background-color: #fff7ed; border: 1px solid #fed7aa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
       <h3 style="margin-top: 0; color: #c2410c;">🎯 操作建議</h3>
-      <p style="line-height: 1.7; margin-bottom: 0; color: #7c2d12;">${a.playbook.replace(/\n/g, "<br>")}</p>
+      <p style="line-height: 1.7; margin-bottom: 0; color: #7c2d12;">${escHtml(a.playbook).replace(/\n/g, "<br>")}</p>
     </div>`
     : "";
   const marketDashboardHtml = renderMarketDashboard(market, retailHistory, marginHistory, mo);
@@ -2442,7 +2443,7 @@ function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName
 
   const summaryHtml = `<div style="background-color: #f3f4f6; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
       <h3 style="margin-top: 0; color: #1f2937;">📝 盤後總結</h3>
-      <p style="line-height: 1.6; margin-bottom: 0;">${a.summary.replace(/\n/g, "<br>")}</p>
+      <p style="line-height: 1.6; margin-bottom: 0;">${escHtml(a.summary).replace(/\n/g, "<br>")}</p>
     </div>`;
 
   // 圖例／評分說明放在會用到它們的分頁**最上方的摺疊區塊**（<details>，預設收合）。
@@ -2556,7 +2557,8 @@ function updateHistory(a: Analysis): void {
     try {
       history = JSON.parse(readFileSync(historyPath, "utf-8"));
     } catch (e) {
-      console.warn("history.json unreadable, starting fresh");
+      // 存在但讀不了：不能當成空的，否則下面寫回會把歷史覆寫成只剩今天
+      throw new Error(`${historyPath} exists but is unreadable or invalid: ${(e as Error).message}. Fix or restore it before re-running.`);
     }
   }
   const record: HistoryRecord = {

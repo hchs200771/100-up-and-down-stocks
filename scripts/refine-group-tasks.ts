@@ -461,8 +461,9 @@ function loadTally(): OvernightDumpTally {
   if (!existsSync(TALLY_PATH)) return {};
   try {
     return JSON.parse(readFileSync(TALLY_PATH, "utf8"));
-  } catch {
-    return {};
+  } catch (e) {
+    // 存在但讀不了：不能回傳 {}，否則 saveTally 會覆寫掉累積的紀錄
+    throw new Error(`${TALLY_PATH} exists but is unreadable or invalid: ${(e as Error).message}. Fix or restore it before re-running.`);
   }
 }
 

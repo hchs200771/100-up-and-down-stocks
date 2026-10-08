@@ -109,6 +109,7 @@ async function fetchChart(symbol: string, query: string): Promise<Chart | null> 
       };
     } catch (e) {
       // try next host
+      console.warn(`[warn] Yahoo chart ${symbol} via ${host} failed: ${(e as Error).message}`);
     }
   }
   return null;
@@ -260,7 +261,8 @@ async function fetchCbcUsdTwd(): Promise<{ close: number; prevClose: number; epo
     }
     if (rows.length < 2) return null;
     return { close: rows[0].rate, prevClose: rows[1].rate, epoch: null, date: rows[0].date };
-  } catch {
+  } catch (e) {
+    console.warn(`[warn] CBC USD/TWD fetch failed: ${(e as Error).message}`);
     return null;
   }
 }

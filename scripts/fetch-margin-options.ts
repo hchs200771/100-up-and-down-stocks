@@ -134,7 +134,10 @@ async function fetchCloses(yyyymmdd: string): Promise<Map<string, number>> {
   const raw = await fetchText(
     `https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=${yyyymmdd}&type=ALLBUT0999&response=json`,
     "TWSE MI_INDEX",
-  ).catch(() => "");
+  ).catch((e) => {
+    console.warn(`[warn] TWSE MI_INDEX closes ${yyyymmdd} fetch failed: ${(e as Error).message}`);
+    return "";
+  });
   if (!raw) return out;
   const j = JSON.parse(raw);
   const t = (j.tables ?? []).find((x: any) => Array.isArray(x?.fields) && x.fields[0] === "證券代號");
@@ -222,7 +225,10 @@ async function fetchTpexMarginLots(yyyymmdd: string): Promise<number | null> {
   const raw = await fetchText(
     `https://www.tpex.org.tw/www/zh-tw/margin/balance?date=${encodeURIComponent(slashed)}&response=json`,
     "TPEx margin",
-  ).catch(() => "");
+  ).catch((e) => {
+    console.warn(`[warn] TPEx margin lots ${yyyymmdd} fetch failed: ${(e as Error).message}`);
+    return "";
+  });
   if (!raw) return null;
   const j = JSON.parse(raw);
   const t = j.tables?.[0];
@@ -257,7 +263,10 @@ async function fetchOptionDay(ymd: string): Promise<{ date: string; CALL: OptCel
       body: new URLSearchParams({ down_type: "1", queryStartDate: slashed, queryEndDate: slashed, commodityId: "" }),
     },
     true,
-  ).catch(() => "");
+  ).catch((e) => {
+    console.warn(`[warn] TAIFEX options ${ymd} fetch failed: ${(e as Error).message}`);
+    return "";
+  });
   // 查無資料時回的是 HTML 頁而不是 CSV
   if (!csv || csv.trimStart().startsWith("<")) return null;
 
@@ -326,9 +335,12 @@ function loadHistory(): MarginHistoryEntry[] {
   const p = resolve(process.cwd(), OUT_HISTORY);
   if (!existsSync(p)) return [];
   try {
-    return JSON.parse(readFileSync(p, "utf-8"));
-  } catch {
-    return [];
+    const raw = JSON.parse(readFileSync(p, "utf-8"));
+    if (!Array.isArray(raw)) throw new Error("not a JSON array");
+    return raw;
+  } catch (e) {
+    // 檔案存在但讀不了：不能回傳 []，否則呼叫端 saveHistory 會把整份歷史覆寫成只剩一天。
+    throw new Error(`${OUT_HISTORY} exists but is unreadable or invalid (${p}): ${(e as Error).message}. Fix or restore it before re-running.`);
   }
 }
 

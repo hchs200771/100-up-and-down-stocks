@@ -441,7 +441,10 @@ async function main() {
     fetchJson(
       "https://openapi.taifex.com.tw/v1/SingleStockFuturesMargining",
       "TAIFEX 股期保證金",
-    ).catch(() => []),
+    ).catch((e) => {
+      console.warn(`[warn] TAIFEX 股期保證金 fetch failed: ${(e as Error).message}`);
+      return [];
+    }),
   ]);
 
   const futuresMap: Record<string, { level: string; margin: string }> = {};
