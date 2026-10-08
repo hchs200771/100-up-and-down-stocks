@@ -5,7 +5,7 @@ description: 台股盤後分析工作流。抓當日漲跌幅前 100 名、用 C
 
 # Daily Stock Report Skill
 
-這個 Skill 取代了 `src/services/aiService.ts` 裡原本呼叫 Gemini API 的邏輯。
+這個 Skill 取代了早期（已移除的）前端 App 裡呼叫 Gemini API 的邏輯。
 AI 的工作（分類、族群故事、盤後總結）由 Claude 在對話裡直接完成，不呼叫任何 LLM API。
 
 工作目錄：`/Users/huangguanxue/Desktop/Projects/100-up-and-down-stocks`
@@ -654,6 +654,5 @@ curl -s https://hchs200771.github.io/100-up-and-down-stocks/ | grep -o "<今日 
 - 中繼檔在 `data/tmp/`：`classification.json`（你寫的族群結構 + summary + call）、`stories/<id>.txt`（subagent 寫的故事）、`intl-brief.txt`（國際 worker 的判讀）、`group-chips.json`（`group-chips.ts` 產出的族群籌碼彙總）。Step 4 開始前先清空 `data/tmp/stories/` 與 `intl-brief.txt`。analysis-latest.json 由 `assemble-analysis.ts` 從這些檔組出來（含 `data/intl-market-latest.json` 的國際數字），不要再手動逐段重打故事
 - 國際數字源是 Yahoo Finance（`scripts/fetch-intl-market.ts`），免費無金鑰；stooq 已改成需瀏覽器驗證、不能用
 - 信用利差源是 FRED 的 ICE BofA OAS（`scripts/fetch-credit-spreads.ts`），免費無金鑰、T+1；真 CDS 指數（CDX/iTraxx）是付費商品，不要為了「更正統」去接
-- 本流程不應修改 `src/services/aiService.ts`（前端 UI 還在用它）
 - 不需要 `GEMINI_API_KEY` 環境變數
 - **總時間就是這個 Skill 的品質指標之一**。回頭看「執行順序總覽」那張表：互不相依的 script 一律 `run_in_background` 平行丟、所有 worker 一次 spawn 完。判斷「這步能不能跟上一步同時跑」的方法是問「它讀的檔是誰寫的」——沒有相依就不要等。整條流程的 wall-clock 下限約等於「最慢的那個 worker + 分類時間」，跑出來明顯超過就是編排出了問題

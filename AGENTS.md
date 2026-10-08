@@ -1,12 +1,10 @@
 # Agent Instructions
 
-React/TypeScript app plus a Node/TypeScript automation flow for Taiwan stock-market reports.
+Node/TypeScript automation flow for Taiwan stock-market reports.
 
 ## Commands
 
-- Dev server: `npm run dev`
 - Type check: `npm run lint`
-- Production build: `npm run build`
 - Daily report: `npm run report`
 
 ## Daily report
@@ -28,7 +26,6 @@ React/TypeScript app plus a Node/TypeScript automation flow for Taiwan stock-mar
 - Classification, worker search, finalizer, or report-prompt changes: use `.claude/skills/stock-report-maintenance/SKILL.md`; start in `scripts/prompts/`, `scripts/refine-group-tasks.ts`, and `scripts/run-daily-report-codex-parallel.sh`. Validate through `npm run report`.
 - Scheduling or launchd: current policy is manual-only. Legacy references are `scripts/launchd/com.maxhuang.daily-stock-report-codex.plist` and `scripts/run-daily-report-codex-parallel.sh`. Do not modify or load `~/Library/LaunchAgents` unless explicitly asked.
 - Analysis schema or report HTML: start with `scripts/send-report.ts`; treat `data/analysis-latest.json` as example input and `data/report-latest.html` as generated output. Preserve the analysis contract unless migration is requested.
-- Frontend work lives in `src/`; the local server entry is `server.ts`.
 
 ## Repository constraints
 
@@ -40,5 +37,4 @@ React/TypeScript app plus a Node/TypeScript automation flow for Taiwan stock-mar
 
 - Run the narrowest relevant check first.
 - TypeScript: `npm run lint`.
-- Frontend or bundling changes: `npm run build`.
 - Daily workflow changes: `npm run report`.

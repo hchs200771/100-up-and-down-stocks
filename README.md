@@ -168,8 +168,3 @@ npm run lint     # TypeScript 型別檢查
 - `.claude/skills/`：Claude Code 手動流程（`daily-stock-report`）與維護說明（`stock-report-maintenance`）
 - `docs/wide-market-scan-conclusion.md`：全台股因子掃描的結論（17 條規則、81 個窗口）
 - [新因子研究判讀](docs/novel-factor-backtest-review.md)：包含沒有改善的結果、限制、尚未測的項目與重跑方式
-
-## 舊版網頁 App
-
-`src/`、`server.ts` 是專案最初從 Google AI Studio 建立的 React App，用 Gemini API 即時分析。
-每日報告已不再使用它；要啟動的話，在 `.env.local` 設 `GEMINI_API_KEY` 後執行 `npm run dev`。
