@@ -2130,48 +2130,6 @@ function renderPicks(picks: PicksReport | null): string {
 }
 
 /**
- * 交易檢討（data/trade-review-latest.json，由每日功課的持股健檢產出）。
- * 網頁是公開的：檔案只放標的、方向與文字檢討，不放數量、均價、損益——
- * 完整版（含金額）只寫在私人的 Notion 月份頁。
- */
-interface TradeReviewItem {
-  name: string;
-  side?: string;
-  kind?: string;
-  status?: string;
-  note: string;
-}
-interface TradeReview {
-  date: string;
-  summary?: string;
-  trades?: TradeReviewItem[];
-  holdings?: TradeReviewItem[];
-}
-
-function renderTradeReview(r: TradeReview | null): string {
-  if (!r || (!r.trades?.length && !r.holdings?.length)) return "";
-  const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]!);
-  const card = (it: TradeReviewItem) => {
-    const tags = [it.kind, it.side, it.status].filter(Boolean).map((t) =>
-      `<span style="display:inline-block; font-size:11px; color:#475569; background:#f1f5f9; border-radius:999px; padding:1px 7px; margin-left:4px;">${esc(t!)}</span>`,
-    ).join("");
-    return `<div style="border:1px solid #e5e7eb; border-radius:6px; padding:9px 12px; margin-bottom:8px; background:#fff;">
-        <div style="margin-bottom:3px;"><strong style="color:#1f2937;">${esc(it.name)}</strong>${tags}</div>
-        <div style="font-size:13px; color:#374151; line-height:1.75;">${esc(it.note).replace(/\n/g, "<br>")}</div>
-      </div>`;
-  };
-  const block = (title: string, list?: TradeReviewItem[]) =>
-    list?.length ? `<h4 style="margin:14px 0 8px; color:#334155;">${title}</h4>${list.map(card).join("")}` : "";
-  return `<div style="background-color:#f8fafc; border:1px solid #e2e8f0; padding:15px; border-radius:8px; margin-bottom:20px;">
-    <h3 style="margin-top:0; color:#334155;">📒 交易檢討</h3>
-    ${r.summary ? `<p style="font-size:13px; color:#4b5563; line-height:1.8; margin:0 0 4px;">${esc(r.summary).replace(/\n/g, "<br>")}</p>` : ""}
-    ${block("本期進出場", r.trades)}
-    ${block("持倉健檢", r.holdings)}
-    <p style="font-size:11px; color:#9ca3af; line-height:1.6; margin:8px 0 0;">個人交易紀錄的流程檢討，不含部位大小與損益；非投資建議。</p>
-  </div>`;
-}
-
-/**
  * 頁面層級的樣式。
  *
  * 內容區的樣式大多是 inline（以前要兼顧 Email，2026-10 起不再寄信）。這段只補
@@ -2215,7 +2173,6 @@ interface HomeInput {
   mo?: MarginOptionsReport | null;
   picks?: PicksReport | null;
   tdcc?: DivergenceReport | null;
-  tradeReview?: TradeReview | null;
   /** 今天實際有輸出的分頁；不在裡面的分頁不給連結，免得點了落回首頁。 */
   tabs: string[];
 }
@@ -2228,7 +2185,7 @@ const signed = (n: number, digits = 1) => `${n > 0 ? "+" : ""}${n.toFixed(digits
  * 首頁「今日重點」：打開就看到今天的結論，一個畫面看完。
  *
  * 由上而下：一段盤後總結 → 市場溫度計（指數、廣度、法人、融資、散戶、選擇權）→
- * 操作三分類 → 各名單今天的狀態與資料日期 → 國際／KOL／交易檢討各一句。
+ * 操作三分類 → 各名單今天的狀態與資料日期 → 國際／KOL 各一句。
  * 每一塊都連到詳細分頁或子頁。
  *
  * 跟報告其他部分一樣用 inline style；溫度計格子用 inline-block，窄螢幕自動折行。
@@ -2398,8 +2355,7 @@ function renderHome(h: HomeInput): string {
   };
   line("🌐 國際", a.intl?.summary, tabHref("🌐 國際情勢"));
   line("🎙️ KOL", a.kol?.overview, tabHref("🎙️ KOL 觀點"));
-  line("📒 交易檢討", h.tradeReview?.summary, tabHref("📒 交易檢討"));
-  const context = ctx.length ? card("🧭 背景與檢討", `<div style="margin-top:-7px;">${ctx.join("")}</div>`) : "";
+  const context = ctx.length ? card("🧭 背景", `<div style="margin-top:-7px;">${ctx.join("")}</div>`) : "";
 
   return `<div style="margin-bottom:20px;">${summary}${gauges}${playbook}${lists}${context}</div>`;
 }
@@ -2415,7 +2371,7 @@ function sortGroupsByMemberCount(groups: CategoryGroup[]): CategoryGroup[] {
     .map(({ group }) => group);
 }
 
-function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName: Map<string, string>, market?: MarketBlock | null, retailHistory?: MarketHistoryEntry[], contrib?: IndexContribution | null, tdcc?: DivergenceReport | null, marginHistory?: MarginHistoryEntry[], mo?: MarginOptionsReport | null, picks?: PicksReport | null, tradeReview?: TradeReview | null): string {
+function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName: Map<string, string>, market?: MarketBlock | null, retailHistory?: MarketHistoryEntry[], contrib?: IndexContribution | null, tdcc?: DivergenceReport | null, marginHistory?: MarginHistoryEntry[], mo?: MarginOptionsReport | null, picks?: PicksReport | null): string {
   const sortedGainers = sortGroupsByMemberCount(a.gainers);
   const gainersHtml = sortedGainers.map((g) => renderCategoryBlock(g, stockMap, codeByName, "gainer")).join("");
   const losersHtml = sortGroupsByMemberCount(a.losers)
@@ -2475,10 +2431,9 @@ function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName
     { label: "🏆 終極選股池", html: renderPicks(picks ?? null) },
     { label: "🌐 國際情勢", html: intlHtml },
     { label: "🎙️ KOL 觀點", html: kolHtml },
-    { label: "📒 交易檢討", html: renderTradeReview(tradeReview ?? null) },
   ].filter((s) => s.html && s.html.trim());
 
-  // 面板順序照 READ_ORDER；不在動線上的（下跌族群、交易檢討）排最後，維持原相對順序。
+  // 面板順序照 READ_ORDER；不在動線上的（下跌族群）排最後，維持原相對順序。
   const rank = (label: string) => {
     const i = READ_ORDER.indexOf(label);
     return i < 0 ? 99 : i;
@@ -2490,7 +2445,7 @@ function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName
       <h1 style="margin:0; font-size:24px; line-height:1.35; color:#111827; font-weight:800;">📈 台股盤後資金流向與 AI 總結 <span style="display:inline-block; vertical-align:middle; font-size:14px; font-weight:bold; color:#4338ca; background:#eef2ff; border:1px solid #c7d2fe; border-radius:999px; padding:2px 10px; white-space:nowrap;">${a.timestamp}</span></h1>
     </div>`;
 
-  sections.unshift({ label: HOME_LABEL, html: renderHome({ a, market, mo, picks, tdcc, tradeReview, tabs: sections.map((s) => s.label) }) });
+  sections.unshift({ label: HOME_LABEL, html: renderHome({ a, market, mo, picks, tdcc, tabs: sections.map((s) => s.label) }) });
 
   // 敘述文字裡提到的公司（盤後總結、族群故事、操作建議、KOL…）一律接上 Yahoo 連結；
   // 表格與 chip 本來就有連結，linkifyStocks 會跳過既有的 <a>。
@@ -2708,20 +2663,7 @@ async function main() {
     }
   }
 
-  // 交易檢討（每日功課寫入）。日期對不上代表是舊的檢討，寧缺勿舊。
-  const tradeReviewPath = resolve(process.cwd(), "data/trade-review-latest.json");
-  let tradeReview: TradeReview | null = null;
-  if (existsSync(tradeReviewPath)) {
-    try {
-      const parsed: TradeReview = JSON.parse(readFileSync(tradeReviewPath, "utf-8"));
-      if (parsed.date === analysis.date) tradeReview = parsed;
-      else console.warn(`trade-review 日期 ${parsed.date} 與分析 ${analysis.date} 不符，交易檢討分頁略過`);
-    } catch {
-      console.warn("trade-review-latest.json 無法解析，略過");
-    }
-  }
-
-  const html = renderHtml(analysis, stockMap, codeByName, marketBlock, retailHistory, contrib, tdcc, marginHistory, marginOptions, picks, tradeReview);
+  const html = renderHtml(analysis, stockMap, codeByName, marketBlock, retailHistory, contrib, tdcc, marginHistory, marginOptions, picks);
   const htmlOutPath = resolve(process.cwd(), "data/report-latest.html");
   writeFileSync(htmlOutPath, html, "utf-8");
   console.log(`Wrote HTML preview to ${htmlOutPath}（${(html.length / 1024).toFixed(0)}KB）`);

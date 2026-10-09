@@ -22,7 +22,7 @@ export const READ_ORDER = [
 ];
 
 /** 不在 READ_ORDER 動線上、但確實是分頁的（主頁會把它們排在最後）。 */
-export const EXTRA_TABS = ["🧊 下跌族群", "📒 交易檢討"];
+export const EXTRA_TABS = ["🧊 下跌族群"];
 
 /** 子頁：獨立 HTML，不是 index 的分頁，所以用 <a> 而不是分頁鈕。 */
 export const SUBPAGES: { file: string; label: string }[] = [
@@ -34,6 +34,8 @@ export const SUBPAGES: { file: string; label: string }[] = [
   { file: "revenue-industry.html", label: "🏭 營收族群" },
   { file: "target-price.html", label: "🎯 目標價" },
   { file: "investor-conf.html", label: "🎤 法說會" },
+  // 私人頁：內容加密（scripts/build-private-pages.ts），要密碼才看得到
+  { file: "review.html", label: "🔒 交易檢討" },
 ];
 
 /** 太長的標籤在分頁列上用短名。只影響顯示，內部 label 不變。 */
@@ -87,7 +89,7 @@ export const NAV_GROUPS: { title: string; items: NavItem[] }[] = [
       { file: "cb-pledge.html" },
     ],
   },
-  { title: "策略", items: [{ tab: "🎯 操作建議" }, { tab: "📒 交易檢討" }] },
+  { title: "策略", items: [{ tab: "🎯 操作建議" }, { file: "review.html" }] },
 ];
 
 function groupsWithLeftovers(): typeof NAV_GROUPS {

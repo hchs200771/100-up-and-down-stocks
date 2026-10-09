@@ -50,6 +50,12 @@ fi
 [ -f "$PROJECT_DIR/data/investor-conf.html" ] && cp "$PROJECT_DIR/data/investor-conf.html" "$SITE_DIR/investor-conf.html"
 # 贏家分點子頁（scripts/fetch-broker-watch.ts 產出，每日更新）
 [ -f "$PROJECT_DIR/data/broker-watch.html" ] && cp "$PROJECT_DIR/data/broker-watch.html" "$SITE_DIR/broker-watch.html"
+# 私人子頁（交易檢討）：內容用 .env.local 的 SITE_PASSWORD 加密後才放進網站；
+# 沒設密碼就只放說明頁。原始資料檔不進版控。
+if ! node --import tsx "$SCRIPT_DIR/build-private-pages.ts" "$SITE_DIR"; then
+  echo "[publish] build-private-pages failed — private pages skipped." >&2
+  rm -f "$SITE_DIR/review.html"
+fi
 node --import tsx "$SCRIPT_DIR/sync-site-nav.ts" "$SITE_DIR"
 
 # 累積型的歷史資料跟網站一起 commit，換一台機器 pull 下來就能接著跑、也能直接回測。

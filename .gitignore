@@ -34,6 +34,8 @@ data/tw-rrg-embed.html
 data/kgi-positions.json
 data/position-analysis.json
 data/holding-health-latest.json
+# 私人頁的原始資料：只以加密形式發布（scripts/build-private-pages.ts）
+data/trade-review-latest.json
 
 # 每日重抓/重算即可得的衍生產物（data/site/ 下的發佈副本仍追蹤）
 data/intl-market-latest.json
