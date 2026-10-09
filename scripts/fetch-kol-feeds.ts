@@ -12,7 +12,7 @@ import { resolve } from "node:path";
  *    失敗才退回 yt-dlp。財經M平方的 Podcast 也會上 YouTube 且 YouTube 是超集，
  *    所以 M平方只追 YouTube：同一集不重複處理，還順便拿到逐字稿。
  * 2. 音檔轉文字：Podcast 音檔，以及沒有中文字幕的 YouTube（例如被 YouTube 誤判成英文、
- *    只有英文 ASR 的影片，音訊同樣用 player API 直接下載）。轉文字的方式見下方。
+ *    只有英文 ASR 的影片，音訊同樣用 player API 直接下載，被擋就退回 yt-dlp）。轉文字的方式見下方。
  * 3. 節目說明（show notes）：一定拿得到，但股癌這類說明很短，判讀會比較淺，報告上會標註。
  *
  * 轉文字方式（依序取第一個可用的）：
@@ -236,14 +236,45 @@ async function youtubeTranscript(videoId: string, outFile: string): Promise<stri
     console.warn(`fetch-kol-feeds: YouTube API captions failed for ${videoId}: ${(err as Error).message}`);
   }
   const text = youtubeTranscriptViaYtDlp(videoId, outFile);
-  if (text || !TRANSCRIBER || groqExhausted || !player) return text;
+  if (text || !TRANSCRIBER || groqExhausted) return text;
+  let audio: { data: Buffer; ext: string } | null = null;
+  if (player) {
+    try {
+      audio = await youtubeAudio(player);
+    } catch (err) {
+      console.warn(`fetch-kol-feeds: YouTube audio failed for ${videoId}: ${(err as Error).message}, trying yt-dlp`);
+    }
+  }
+  audio ??= youtubeAudioViaYtDlp(videoId);
+  if (!audio) return "";
   try {
-    const audio = await youtubeAudio(player);
-    return audio ? await transcribeAudio(audio.data, audio.ext, outFile) : "";
+    return await transcribeAudio(audio.data, audio.ext, outFile);
   } catch (err) {
-    console.warn(`fetch-kol-feeds: YouTube audio failed for ${videoId}: ${(err as Error).message}`);
+    console.warn(`fetch-kol-feeds: transcribe failed for YouTube ${videoId}: ${(err as Error).message}`);
     return "";
   }
+}
+
+/**
+ * player API 直接下載音訊常被擋（HTTP 403），改用 yt-dlp 抓最小的音訊格式。
+ * 優先 m4a（約 48kbps，一小時約 21MB，在 Groq 25MB 上限內）。
+ */
+function youtubeAudioViaYtDlp(videoId: string): { data: Buffer; ext: string } | null {
+  const tmp = resolve(transcriptDir, `tmp-audio-${videoId}`);
+  try {
+    execFileSync(
+      YTDLP,
+      ["-f", "worstaudio[ext=m4a]/worstaudio", "-o", `${tmp}.%(ext)s`, `https://www.youtube.com/watch?v=${videoId}`],
+      { stdio: "ignore", timeout: 600_000 },
+    );
+  } catch {
+    // yt-dlp 不在或下載失敗，下面找不到檔案就當作沒有
+  }
+  const file = readdirSync(transcriptDir).find((f) => f.startsWith(`tmp-audio-${videoId}.`) && !f.endsWith(".part"));
+  const audio = file ? { data: readFileSync(resolve(transcriptDir, file)), ext: file.split(".").pop()! } : null;
+  for (const f of readdirSync(transcriptDir)) if (f.startsWith(`tmp-audio-${videoId}.`)) rmSync(resolve(transcriptDir, f));
+  if (!audio) console.warn(`fetch-kol-feeds: yt-dlp audio failed for ${videoId}`);
+  return audio;
 }
 
 function youtubeTranscriptViaYtDlp(videoId: string, outFile: string): string {
@@ -355,6 +386,20 @@ async function podcastTranscript(audioUrl: string, outFile: string): Promise<str
   }
 }
 
+// YouTube 頻道 feed 常隨機回 404/500（實測單次成功率約兩成，跟 UA、快取參數無關），多試幾次
+async function fetchFeed(url: string): Promise<string> {
+  for (let attempt = 1; ; attempt++) {
+    try {
+      const res = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0" } });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return await res.text();
+    } catch (err) {
+      if (attempt >= 12) throw new Error(`${(err as Error).message}（試了 ${attempt} 次）`);
+      await new Promise((r) => setTimeout(r, 2000));
+    }
+  }
+}
+
 function taipeiDate(d: Date): string {
   return new Date(d.getTime() + 8 * 3600_000).toISOString().slice(0, 10);
 }
@@ -385,9 +430,7 @@ async function main() {
   for (const src of SOURCES) {
     let items: FeedItem[];
     try {
-      const res = await fetch(src.feed, { headers: { "User-Agent": "Mozilla/5.0" } });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      items = parseFeed(src, await res.text());
+      items = parseFeed(src, await fetchFeed(src.feed));
     } catch (err) {
       console.warn(`fetch-kol-feeds: ${src.name} feed failed: ${(err as Error).message}`);
       continue;
