@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>法說會判讀</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2288%22%3E%F0%9F%8E%A4%3C%2Ftext%3E%3C%2Fsvg%3E">
+<style>
+:root{--bg:#f7f8fa;--card:#fff;--fg:#1a202c;--muted:#64748b;--line:#e2e8f0;--accent:#2563eb;--up:#c2410c;--down:#15803d;--chip:#eef2f7;--warn:#b45309}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1420;--card:#171e2e;--fg:#e5eaf3;--muted:#8b98ad;--line:#28334a;--accent:#7aa2ff;--up:#ff8a5c;--down:#4ade80;--chip:#222c42;--warn:#fbbf24}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.6 -apple-system,"PingFang TC","Noto Sans TC",sans-serif;padding:16px}
+.wrap{max-width:960px;margin:0 auto}
+h1{font-size:20px;margin:4px 0 2px}
+h2{font-size:16px;margin:24px 0 8px}
+.sub,.note{color:var(--muted);font-size:13px;margin:2px 0}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.cards{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.card{flex:1 1 140px;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+.card .cname{font-size:14px;font-weight:700}
+.card .cdesc{color:var(--muted);font-size:11.5px;line-height:1.5;margin-top:2px;flex:1}
+.card b{font-size:17px;line-height:1.2;margin-top:6px}
+.card.total{border-color:var(--accent)}.card.total .cname,.card.total b{color:var(--accent)}
+.filters{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:12px 0;font-size:13px}
+.filters label{display:flex;align-items:center;gap:5px;cursor:pointer;white-space:nowrap}
+.filters .fl{font-weight:700;color:color-mix(in srgb,var(--accent) 78%,var(--muted))}
+.filters select{background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:3px 6px;font:inherit;font-size:13px}
+.count{margin:8px 2px;color:var(--muted);font-size:13px}
+.chip{display:inline-block;background:var(--chip);border-radius:99px;padding:0 8px;font-size:11px;color:var(--muted);white-space:nowrap}
+.none{color:var(--muted)}
+article.conf{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:10px 0}
+article.conf[data-s="5"]{border-color:var(--up);box-shadow:inset 4px 0 0 var(--up)}
+article.conf[data-s="4"]{box-shadow:inset 4px 0 0 var(--warn)}
+.ch{display:flex;gap:12px;align-items:flex-start}
+.score{flex:none;width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:800;background:var(--chip);color:var(--muted)}
+.score.s5{background:var(--up);color:#fff}.score.s4{background:var(--warn);color:#fff}.score.s3{color:var(--fg)}
+.who{min-width:0}
+.nm{font-size:15px;font-weight:700;display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center}
+.meta{color:var(--muted);font-size:12.5px;margin-top:1px}
+.verdict{font-size:12px;font-weight:700;border-radius:6px;padding:0 6px;background:var(--chip)}
+.verdict.v5{color:var(--up)}.verdict.v4{color:var(--warn)}
+.tone-轉佳{color:var(--up)}.tone-轉差{color:var(--down)}
+.hl{font-size:15px;font-weight:700;margin:10px 0 2px}
+.reason{margin:2px 0 8px;color:var(--fg)}
+.nums{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.num{display:inline-flex;flex-direction:column;background:var(--chip);border-radius:8px;padding:4px 10px;font-size:12px;line-height:1.35}
+.num .nl{color:var(--muted)}
+.num b{font-size:13.5px}
+details{margin-top:6px;border-top:1px solid var(--line);padding-top:6px}
+details summary{cursor:pointer;font-size:13px;color:var(--muted);font-weight:600}
+.blk{margin:8px 0}
+.blk .bt{font-size:12px;font-weight:700;color:var(--muted);margin-bottom:2px}
+.blk p{margin:0}
+.blk ul{margin:0;padding-left:20px}
+.blk.up .bt{color:var(--up)}.blk.dn .bt{color:var(--down)}
+.sum{color:var(--muted);font-size:13px;white-space:pre-line}
+.src{margin-top:8px;display:flex;flex-wrap:wrap;gap:4px}
+details.howto{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:12px 0;padding:0;font-size:13px;color:var(--muted)}
+details.howto summary{padding:10px 16px;font-size:14px;color:var(--fg)}
+details.howto .body{padding:0 16px 12px;border-top:1px solid var(--line)}
+details.howto p{margin:6px 0}
+details.howto b{color:var(--fg)}
+.tablebox{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:13px}
+th,td{padding:6px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{color:var(--muted);font-weight:600;white-space:nowrap}
+td.nw{white-space:nowrap}
+td.s{color:var(--muted)}
+.new{display:inline-block;background:var(--up);color:#fff;border-radius:99px;padding:0 6px;font-size:10px;font-weight:700}
+.chip.warnc{color:var(--warn)}
+article.conf[data-st="pending"]{opacity:.75}
+.run{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 16px;margin:12px 0;font-size:13.5px}
+.run.live{border-color:var(--warn)}
+.run .rt{font-weight:700;font-size:14px;margin-bottom:4px}
+.run .rtime{color:var(--muted);font-weight:400;font-size:12.5px}
+.run p{margin:3px 0}
+@media (max-width:640px){body{padding:12px}article.conf{padding:12px}}
+</style>
+</head>
+<body><div class="wrap">
+<nav class="nav gnav"><style>
+nav.gnav{display:block;position:sticky;top:0;z-index:40;margin:0 0 14px;padding:8px 0 6px;background:var(--bg,#fff);border-bottom:1px solid var(--line,#e5e7eb);font-family:inherit}
+.gnav .gnav-top{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.gnav .gnav-g{position:relative}
+.gnav .gnav-btn{display:inline-block;border:1px solid var(--line,#e5e7eb);border-radius:999px;padding:7px 14px;font-size:14px;font-weight:700;line-height:1.3;background:var(--card,#fff);color:var(--fg,#374151);text-decoration:none;cursor:pointer;white-space:nowrap}
+.gnav .gnav-btn:hover{border-color:var(--accent,#6366f1);color:var(--accent,#4338ca)}
+.gnav .gnav-btn.on{background:var(--accent,#4f46e5);border-color:var(--accent,#4f46e5);color:#fff}
+.gnav .gnav-caret{font-size:10px;margin-left:4px;opacity:.7}
+.gnav .gnav-menu{display:none;position:absolute;left:0;top:100%;padding-top:6px;z-index:41;min-width:168px}
+.gnav .gnav-g:nth-last-child(-n+2) .gnav-menu{left:auto;right:0}
+.gnav .gnav-menu-in{background:var(--card,#fff);border:1px solid var(--line,#e5e7eb);border-radius:10px;box-shadow:0 8px 24px rgba(15,23,42,.14);padding:6px}
+.gnav .gnav-item{display:block;border:0;border-radius:6px;padding:8px 12px;font-size:14px;font-weight:600;line-height:1.3;background:transparent;color:var(--fg,#374151);text-decoration:none;white-space:nowrap}
+.gnav .gnav-item:hover{background:var(--chip,#f1f5f9);color:var(--accent,#4338ca)}
+.gnav .gnav-item.on{color:var(--accent,#4338ca);background:var(--chip,#eef2ff)}
+.gnav .gnav-g.open .gnav-menu{display:block}
+@media (any-hover:hover){.gnav .gnav-g:hover .gnav-menu{display:block}}
+.gnav .gnav-sub{display:none;gap:4px;margin-top:6px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.gnav .gnav-sub::-webkit-scrollbar{display:none}
+.gnav .gnav-sub.on{display:flex}
+.gnav .gnav-subitem{flex:none;display:inline-block;border:0;border-radius:6px;padding:4px 10px;font-size:13px;font-weight:600;line-height:1.4;background:transparent;color:var(--muted,#6b7280);text-decoration:none;white-space:nowrap}
+.gnav .gnav-subitem:hover{color:var(--accent,#4338ca)}
+.gnav .gnav-subitem.on{background:var(--chip,#eef2ff);color:var(--accent,#4338ca)}
+@media (max-width:640px){.gnav .gnav-btn{padding:6px 11px;font-size:13px}}
+</style><style>@media (prefers-color-scheme:dark){:root{--bg:#1b2232;--card:#242d40;--line:#36425b;--chip:#2e3a52}}</style><div class="gnav-top"><a class="gnav-btn gnav-home" href="index.html" data-tab="🏠 總覽" data-g="-1">今日</a><div class="gnav-g" data-g="0"><a class="gnav-btn" href="index.html#tab=%F0%9F%93%8A%20%E5%B8%82%E5%A0%B4%E7%B8%BD%E8%A6%BD" aria-haspopup="true">大盤<span class="gnav-caret">▾</span></a><div class="gnav-menu"><div class="gnav-menu-in"><a class="gnav-item" href="index.html#tab=%F0%9F%93%8A%20%E5%B8%82%E5%A0%B4%E7%B8%BD%E8%A6%BD" data-tab="📊 市場總覽" data-g="0">📊 市場總覽</a><a class="gnav-item" href="index.html#tab=%E2%9A%96%EF%B8%8F%20%E6%8C%87%E6%95%B8%E8%B2%A2%E7%8D%BB" data-tab="⚖️ 指數貢獻" data-g="0">⚖️ 指數貢獻</a><a class="gnav-item" href="index.html#tab=%F0%9F%8C%90%20%E5%9C%8B%E9%9A%9B%E6%83%85%E5%8B%A2" data-tab="🌐 國際情勢" data-g="0">🌐 國際情勢</a><a class="gnav-item" href="index.html#tab=%F0%9F%8E%99%EF%B8%8F%20KOL%20%E8%A7%80%E9%BB%9E" data-tab="🎙️ KOL 觀點" data-g="0">🎙️ KOL 觀點</a></div></div></div><div class="gnav-g" data-g="1"><a class="gnav-btn" href="index.html#tab=%F0%9F%94%A5%20%E4%B8%8A%E6%BC%B2%E6%97%8F%E7%BE%A4" aria-haspopup="true">族群<span class="gnav-caret">▾</span></a><div class="gnav-menu"><div class="gnav-menu-in"><a class="gnav-item" href="index.html#tab=%F0%9F%94%A5%20%E4%B8%8A%E6%BC%B2%E6%97%8F%E7%BE%A4" data-tab="🔥 上漲族群" data-g="1">🔥 上漲族群</a><a class="gnav-item" href="index.html#tab=%F0%9F%A7%8A%20%E4%B8%8B%E8%B7%8C%E6%97%8F%E7%BE%A4" data-tab="🧊 下跌族群" data-g="1">🧊 下跌族群</a><a class="gnav-item" href="index.html#tab=%F0%9F%94%84%20%E6%97%8F%E7%BE%A4%E8%BC%AA%E5%8B%95" data-tab="🔄 族群輪動" data-g="1">🔄 族群輪動</a><a class="gnav-item" href="themes.html">📡 題材雷達</a><a class="gnav-item" href="revenue-industry.html">🏭 營收族群</a></div></div></div><div class="gnav-g" data-g="2"><a class="gnav-btn on" href="index.html#tab=%F0%9F%8F%86%20%E7%B5%82%E6%A5%B5%E9%81%B8%E8%82%A1%E6%B1%A0" aria-haspopup="true">個股<span class="gnav-caret">▾</span></a><div class="gnav-menu"><div class="gnav-menu-in"><a class="gnav-item" href="index.html#tab=%F0%9F%8F%86%20%E7%B5%82%E6%A5%B5%E9%81%B8%E8%82%A1%E6%B1%A0" data-tab="🏆 終極選股池" data-g="2">🏆 終極選股池</a><a class="gnav-item" href="index.html#tab=%F0%9F%8F%A6%20%E5%A4%A7%E6%88%B6%E7%B1%8C%E7%A2%BC" data-tab="🏦 大戶籌碼" data-g="2">🏦 大戶籌碼</a><a class="gnav-item" href="broker-watch.html">🕵️ 贏家分點</a><a class="gnav-item" href="target-price.html">🎯 目標價</a><a class="gnav-item on" href="investor-conf.html">🎤 法說會</a><a class="gnav-item" href="revenue.html">📈 月營收</a><a class="gnav-item" href="revenue-decline.html">📉 營收衰退</a><a class="gnav-item" href="cb-pledge.html">🔐 設質+CB</a></div></div></div><div class="gnav-g" data-g="3"><a class="gnav-btn" href="index.html#tab=%F0%9F%8E%AF%20%E6%93%8D%E4%BD%9C%E5%BB%BA%E8%AD%B0" aria-haspopup="true">策略<span class="gnav-caret">▾</span></a><div class="gnav-menu"><div class="gnav-menu-in"><a class="gnav-item" href="index.html#tab=%F0%9F%8E%AF%20%E6%93%8D%E4%BD%9C%E5%BB%BA%E8%AD%B0" data-tab="🎯 操作建議" data-g="3">🎯 操作建議</a><a class="gnav-item" href="review.html">🔒 交易檢討</a></div></div></div></div><div class="gnav-sub" data-g="0"><a class="gnav-subitem" href="index.html#tab=%F0%9F%93%8A%20%E5%B8%82%E5%A0%B4%E7%B8%BD%E8%A6%BD" data-tab="📊 市場總覽" data-g="0">市場總覽</a><a class="gnav-subitem" href="index.html#tab=%E2%9A%96%EF%B8%8F%20%E6%8C%87%E6%95%B8%E8%B2%A2%E7%8D%BB" data-tab="⚖️ 指數貢獻" data-g="0">指數貢獻</a><a class="gnav-subitem" href="index.html#tab=%F0%9F%8C%90%20%E5%9C%8B%E9%9A%9B%E6%83%85%E5%8B%A2" data-tab="🌐 國際情勢" data-g="0">國際情勢</a><a class="gnav-subitem" href="index.html#tab=%F0%9F%8E%99%EF%B8%8F%20KOL%20%E8%A7%80%E9%BB%9E" data-tab="🎙️ KOL 觀點" data-g="0">KOL 觀點</a></div><div class="gnav-sub" data-g="1"><a class="gnav-subitem" href="index.html#tab=%F0%9F%94%A5%20%E4%B8%8A%E6%BC%B2%E6%97%8F%E7%BE%A4" data-tab="🔥 上漲族群" data-g="1">上漲族群</a><a class="gnav-subitem" href="index.html#tab=%F0%9F%A7%8A%20%E4%B8%8B%E8%B7%8C%E6%97%8F%E7%BE%A4" data-tab="🧊 下跌族群" data-g="1">下跌族群</a><a class="gnav-subitem" href="index.html#tab=%F0%9F%94%84%20%E6%97%8F%E7%BE%A4%E8%BC%AA%E5%8B%95" data-tab="🔄 族群輪動" data-g="1">族群輪動</a><a class="gnav-subitem" href="themes.html">題材雷達</a><a class="gnav-subitem" href="revenue-industry.html">營收族群</a></div><div class="gnav-sub on" data-g="2"><a class="gnav-subitem" href="index.html#tab=%F0%9F%8F%86%20%E7%B5%82%E6%A5%B5%E9%81%B8%E8%82%A1%E6%B1%A0" data-tab="🏆 終極選股池" data-g="2">選股池</a><a class="gnav-subitem" href="index.html#tab=%F0%9F%8F%A6%20%E5%A4%A7%E6%88%B6%E7%B1%8C%E7%A2%BC" data-tab="🏦 大戶籌碼" data-g="2">大戶籌碼</a><a class="gnav-subitem" href="broker-watch.html">贏家分點</a><a class="gnav-subitem" href="target-price.html">目標價</a><a class="gnav-subitem on" href="investor-conf.html">法說會</a><a class="gnav-subitem" href="revenue.html">月營收</a><a class="gnav-subitem" href="revenue-decline.html">營收衰退</a><a class="gnav-subitem" href="cb-pledge.html">設質CB</a></div><div class="gnav-sub" data-g="3"><a class="gnav-subitem" href="index.html#tab=%F0%9F%8E%AF%20%E6%93%8D%E4%BD%9C%E5%BB%BA%E8%AD%B0" data-tab="🎯 操作建議" data-g="3">操作建議</a><a class="gnav-subitem" href="review.html">交易檢討</a></div><script>(function(){
+var nav=document.currentScript&&document.currentScript.parentNode;if(!nav)return;
+var groups=[].slice.call(nav.querySelectorAll('.gnav-g'));
+function closeAll(except){groups.forEach(function(g){if(g!==except)g.classList.remove('open');});}
+groups.forEach(function(g){var b=g.querySelector('.gnav-btn');if(!b)return;
+b.addEventListener('click',function(e){e.preventDefault();closeAll(g);g.classList.toggle('open');});});
+document.addEventListener('click',function(e){if(!nav.contains(e.target))closeAll();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll();});
+nav.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('.gnav-item,.gnav-subitem'))closeAll();});
+window.gnavMark=function(label){
+  var gi=-1;
+  [].slice.call(nav.querySelectorAll('[data-tab]')).forEach(function(a){var on=a.getAttribute('data-tab')===label;a.classList.toggle('on',on);if(on)gi=+a.getAttribute('data-g');});
+  groups.forEach(function(g){g.querySelector('.gnav-btn').classList.toggle('on',+g.getAttribute('data-g')===gi);});
+  [].slice.call(nav.querySelectorAll('.gnav-sub')).forEach(function(s){s.classList.toggle('on',+s.getAttribute('data-g')===gi);});
+  showCurrent();
+};
+// 手機上小分頁列是橫向捲動的：把目前這一項捲進畫面
+function showCurrent(){var on=nav.querySelector('.gnav-sub.on .gnav-subitem.on');if(!on)return;var row=on.parentNode;
+if(row.scrollWidth>row.clientWidth)row.scrollLeft=on.offsetLeft-row.offsetLeft-(row.clientWidth-on.offsetWidth)/2;}
+showCurrent();
+})();</script></nav>
+<h1>🎤 法說會判讀</h1>
+<p class="sub">10/2（五） ～ 10/8（四）（最近 7 天）公開資訊觀測站公告的法說會，AI 讀過簡報與影音後，依「有沒有可能影響股價的新資訊」給 1～5 分。更新：2026-10-09 15:20</p>
+<div class="cards">
+<div class="card"><span class="cname">法說會</span><span class="cdesc">最近 7 天上市、上櫃、興櫃合計</span><b>28</b></div>
+<div class="card total"><span class="cname">值得關注</span><span class="cdesc">4 分以上（重點關注／值得留意）</span><b>2</b></div>
+<div class="card"><span class="cname">這次新增</span><span class="cdesc">上次更新之後才出現在公告的</span><b>28</b></div>
+<div class="card"><span class="cname">待補</span><span class="cdesc">還沒判讀，或在等簡報上傳／影音轉文字</span><b>22</b></div>
+</div>
+<details class="howto"><summary>資料怎麼來、分數怎麼看、限制</summary><div class="body">
+<p><b>來源</b>：公開資訊觀測站「法人說明會一覽表」。簡報抽出文字；證交所有錄影的，把語音轉成逐字稿，問答內容也會讀到。再加上月營收動能和當日漲跌幅，由 AI（gpt-6.1-sol）判讀。</p>
+<p><b>分數</b>：5＝重點關注、4＝值得留意、3＝一般、1～2＝可略過。看的是「有沒有市場可能還沒反映的新資訊」，利空也算值得留意，理由裡會寫是利多還是利空。</p>
+<p><b>限制</b>：簡報裡做成圖片的數字抽不到（標「多為圖片」的要自己看原檔）；逐字稿是語音辨識，專有名詞可能有錯字；證交所錄影與 YouTube 會轉，放在公司官網頁面的不會。晚上的場次常隔天才上傳簡報，影音轉文字也有每日額度，所以判讀在背景慢慢做、每天補一些，補到新資料就重新判讀。原始簡報請到公開資訊觀測站的法說會一覽表下載。這不是投資建議。</p>
+</div></details>
+<div class="run live">
+<div class="rt">⏳ 背景仍在處理中<span class="rtime">（2026-10-09 15:20）</span></div>
+<p><b>這次新增 28 場</b>：3707 漢磊、5309 系統電、2010 春源、2221 大甲、2603 長榮、2607 榮運、3008 大立光、3354 律勝、6126 信音、3624 光頡、6120 達運、6517 保勝光學、3194 圓方科技、6174 安碁、3265 台星科、7848 騏億鑫、8421 旭源、1402 遠東新、3516 亞帝歐、6257 矽格、7867 特力屋、8390 金益鼎、9919 康那香、2308 台達電、7951 大易橙、2329 華泰、2399 映泰、9908 大台北</p>
+<p><b>已完整判讀 6 場</b>；已判讀但還在等資料 9 場；還沒判讀 13 場。</p>
+<p class="note">還沒完成的：3707 漢磊、5309 系統電、3354 律勝、6126 信音、3624 光頡、6120 達運、6517 保勝光學、6174 安碁、3265 台星科、7848 騏億鑫、8421 旭源、1402 遠東新、3516 亞帝歐、6257 矽格、7867 特力屋、8390 金益鼎、9919 康那香、2308 台達電、7951 大易橙、2329 華泰、2399 映泰、9908 大台北。法說會判讀在每日報告背景執行、不等它跑完，這些會在下次更新時補上（頁面保留最近 7 天）。</p>
+</div>
+<div class="filters">
+<label><span class="fl">分數</span><select id="fS"><option value="0">全部</option><option value="3">≥ 3</option><option value="4">≥ 4</option></select></label>
+<label><span class="fl">日期</span><select id="fD"><option value="">全部</option><option value="2026-10-08">10/8（四）</option><option value="2026-10-07">10/7（三）</option><option value="2026-10-06">10/6（二）</option><option value="2026-10-05">10/5（一）</option><option value="2026-10-02">10/2（五）</option></select></label>
+<label><span class="fl">市場</span><select id="fM"><option value="">全部</option><option value="sii">上市</option><option value="otc">上櫃</option><option value="rotc">興櫃</option></select></label>
+<label><input type="checkbox" id="fN"><span class="fl">只看這次新增</span></label>
+</div>
+<div class="count" id="count"></div>
+<div id="list"><article class="conf" data-s="5" data-m="otc" data-d="2026-10-07" data-n="1" data-st="partial"><div class="ch">
+<span class="score s5">5</span>
+<div class="who"><div class="nm"><a href="https://tw.stock.yahoo.com/quote/3707.TWO" target="_blank" rel="noopener">3707 漢磊</a> <span class="new">新</span> <span class="chip">上櫃</span> <span class="verdict v5">重點關注</span> <span class="chip tone-轉佳">語氣轉佳</span></div>
+<div class="meta">10/7（三） 14:30 · KGI凱基證券總部大樓(台北市中山區明水路700號)</div></div></div>
+<p class="hl">SiC下半年營收估增逾120%，8吋年底小量量產</p>
+<p class="reason">屬利多：公司量化SiC營收與稼動率回升，並提供8吋量產及客戶時程，足以影響獲利預期，但是否首次揭露仍無法確認。</p>
+<div class="nums"><span class="num"><span class="nl">2026下半年整體業績預估</span><b>較上半年增加3～5%</b></span><span class="num"><span class="nl">2026下半年Si-base業績預估</span><b>較上半年減少20～25%</b></span><span class="num"><span class="nl">2026全年TVS業績預估</span><b>年增75～80%</b></span><span class="num"><span class="nl">GaN業績展望</span><b>2026下半年較上半年增25～30%；2027年目標年增逾20%</b></span><span class="num"><span class="nl">SiC營收與稼動率展望</span><b>下半年營收較上半年增逾120%；第四季稼動率有機會突破80%</b></span><span class="num"><span class="nl">8吋SiC進度</span><b>年底小量量產；5家客戶預計年底Tape-out</b></span></div>
+<details open><summary>展望、動能與風險</summary>
+<div class="blk"><div class="bt">展望</div><p>2026下半年整體業績估較上半年增3～5%；TVS、GaN及SiC成長抵銷舊廠整併影響。2027年GaN目標年增逾20%，SiC增量需求由8吋產線承接；未提供獲利財測。</p></div>
+<div class="blk up"><div class="bt">成長動能</div><ul><li>AI伺服器與地緣政治轉單帶動TVS需求，滿載後將配合客戶擴產。</li><li>GaN稼動率逾100%，AI資料中心客戶提出擴產需求。</li><li>SiC第三季起投片量倍增，公司認為價格有調升空間。</li><li>8吋SiC設備到位、試產良率優於目標，新一代SiC產品完成客戶可靠度測試。</li></ul></div><div class="blk dn"><div class="bt">風險／警訊</div><ul><li>舊廠整併使Si-base下半年業績估減20～25%，整體業績僅溫和成長。</li><li>2026上半年合併EPS仍為負0.57元，未提供轉盈時點或未來毛利率。</li><li>8吋仍處小量量產前階段，Tape-out不等於已有量產訂單，未揭露訂單金額。</li><li>第11頁營收年增18%、毛損率負18%，與第5頁合併財報年增25%、毛利率9%不一致，財務口徑需釐清。</li></ul></div>
+<div class="blk"><div class="bt">公告擇要訊息</div><p class="sum">本公司受邀參加凱基證券於115年10月7日舉辦之法人說明會，說明公司營業成果與營運展望。</p></div>
+<div class="blk"><div class="bt">市場脈絡</div><p class="sum">2026-09 月營收 663 百萬元，YoY +24%，MoM +1%，累計 YoY +26%，YoY 24%，連12月YoY成長，MoM連7月正成長，24月營收新高<br>2026-10-08 跌幅前 100（-4.4493882091212456%）</p></div>
+</details>
+<div class="src"><span class="chip">簡報 22 頁</span> <span class="chip">影音：未設定 GROQ_API_KEY</span> <span class="chip warnc">待補：影音：未設定 GROQ_API_KEY，補上後會重新判讀</span></div>
+</article>
+<article class="conf" data-s="4" data-m="otc" data-d="2026-10-07" data-n="1" data-st="partial"><div class="ch">
+<span class="score s4">4</span>
+<div class="who"><div class="nm"><a href="https://tw.stock.yahoo.com/quote/5309.TWO" target="_blank" rel="noopener">5309 系統電</a> <span class="new">新</span> <span class="chip">上櫃</span> <span class="verdict v4">值得留意</span></div>
+<div class="meta">10/7（三） 14:00 · 臺北市大安區忠孝東路四段87號15樓</div></div></div>
+<p class="hl">BBU拚2027放量，首個GCS案第四季量產</p>
+<p class="reason">偏利多：提出BBU明年放量與GCS第四季量產時程，可能改變營收預期，但未揭露訂單金額，亦無法確認是否首次公布。</p>
+<div class="nums"><span class="num"><span class="nl">2028年營收目標</span><b>突破新台幣100億元</b></span><span class="num"><span class="nl">2026至2028年營收複合成長目標</span><b>&gt;30%</b></span><span class="num"><span class="nl">首個GCS專案量產</span><b>2026年第4季</b></span><span class="num"><span class="nl">上半年工業電腦營收年增</span><b>150%</b></span><span class="num"><span class="nl">第二季毛利率</span><b>22.2%，年減2.3個百分點</b></span><span class="num"><span class="nl">上半年營業損益</span><b>虧損9,520萬元</b></span></div>
+<details open><summary>展望、動能與風險</summary>
+<div class="blk"><div class="bt">展望</div><p>2027年營收挑戰倍數成長，BBU大客戶出貨陸續放量；首個GCS案預計2026年第4季量產，無人機算力模組預計2028年放量。2028年營收目標突破100億元，未提供獲利財測。</p></div>
+<div class="blk up"><div class="bt">成長動能</div><ul><li>BBU通過UL 9540A測試，CSP專案推進商業化導入與新客戶拓展。</li><li>高毛利、長生命週期IPC專案帶動成長，GCS量產增添收入來源。</li><li>Plano自動化廠與和碩合作，支援北美在地製造及客戶拓展。</li></ul></div><div class="blk dn"><div class="bt">風險／警訊</div><ul><li>BBU未揭露訂單金額、確定出貨量與客戶名稱，放量仍取決於驗證及導入。</li><li>第二季毛利率下滑、上半年營業轉虧，研發與費用投入尚未轉化為獲利。</li><li>無人機標案仍屬爭取目標，未披露得標結果；百億營收屬中期目標。</li></ul></div>
+<div class="blk"><div class="bt">公告擇要訊息</div><p class="sum">本公司受邀參加群益金鼎證券舉辦之法人說明會，會中就本公司之營運狀況、經營績效等相關資訊做說明。</p></div>
+<div class="blk"><div class="bt">市場脈絡</div><p class="sum">2026-09 月營收 367 百萬元，YoY +18%，MoM +12%，累計 YoY +10%</p></div>
+</details>
+<div class="src"><span class="chip">簡報 38 頁</span> <span class="chip">影音：未設定 GROQ_API_KEY</span> <span class="chip warnc">待補：影音：未設定 GROQ_API_KEY，補上後會重新判讀</span></div>
+</article>
+<article class="conf" data-s="3" data-m="sii" data-d="2026-10-08" data-n="1" data-st="done"><div class="ch">
+<span class="score s3">3</span>
+<div class="who"><div class="nm"><a href="https://tw.stock.yahoo.com/quote/2010.TW" target="_blank" rel="noopener">2010 春源</a> <span class="new">新</span> <span class="chip">上市</span> <span class="verdict v3">一般</span></div>
+<div class="meta">10/8（四） 14:30 · 臺灣證券交易所1F資訊展示中心(台北市信義區信義路五段7號1樓)</div></div></div>
+<p class="hl">鋼構訂單逾20萬噸，能見度至2027年底</p>
+<p class="reason">偏利多：鋼構訂單具規模與能見度，但公司稱維持既有水準，未揭露新增訂單或獲利上修，改變市場預期的資訊有限。</p>
+<div class="nums"><span class="num"><span class="nl">鋼結構工程在手訂單</span><b>超過20萬噸</b></span><span class="num"><span class="nl">鋼構訂單能見度</span><b>至2027年第4季</b></span><span class="num"><span class="nl">2026上半年營收</span><b>128.84億元，年增7.7%</b></span><span class="num"><span class="nl">2026上半年淨利</span><b>8.87億元，年增16.6%</b></span><span class="num"><span class="nl">2026上半年EPS</span><b>1.35元；去年同期1.16元</b></span><span class="num"><span class="nl">鋼構占產品銷售量</span><b>31.8%</b></span></div>
+<details><summary>展望、動能與風險</summary>
+<div class="blk"><div class="bt">展望</div><p>鋼構在手訂單維持逾20萬噸，能見度至2027年第4季；未提供公司下一季或全年營收、獲利財測。</p></div>
+<div class="blk up"><div class="bt">成長動能</div><ul><li>科技廠擴建、商辦、都更及公共建設支撐鋼構需求。</li><li>機械與汽車市場回暖，有望帶動鋼材需求，但未量化公司受惠幅度。</li></ul></div><div class="blk dn"><div class="bt">風險／警訊</div><ul><li>訂單未揭露金額、毛利率及認列節奏，難推估未來獲利增幅。</li><li>煉焦煤近月每噸上漲50至60美元，鋼材成本與售價波動可能影響利差。</li><li>台灣內銷占銷售量98.8%，對國內需求依賴高。</li></ul></div>
+<div class="blk"><div class="bt">公告擇要訊息</div><p class="sum">本公司業務及財務相關資訊</p></div>
+<div class="blk"><div class="bt">市場脈絡</div><p class="sum">2026-09 月營收 1,988 百萬元，YoY -0%，MoM -0%，累計 YoY +4%</p></div>
+</details>
+<div class="src"><span class="chip">簡報 40 頁</span> <span class="chip">影音：影音在公司網頁，未轉</span></div>
+</article>
+<article class="conf" data-s="3" data-m="otc" data-d="2026-10-08" data-n="1" data-st="done"><div class="ch">
+<span class="score s3">3</span>
+<div class="who"><div class="nm"><a href="https://tw.stock.yahoo.com/quote/2221.TWO" target="_blank" rel="noopener">2221 大甲</a> <span class="new">新</span> <span class="chip">上櫃</span> <span class="verdict v3">一般</span></div>
+<div class="meta">10/8（四） 14:00 · 線上</div></div></div>
+<p class="hl">氫能管件今年已交付，潔淨級營收占比升至65.7%</p>
+<p class="reason">偏利多：氫能管件已取得訂單並交付，但未揭露金額及後續放量時程，獲利成長主要為已公布財報，尚不足改變未來獲利預期。</p>
+<div class="nums"><span class="num"><span class="nl">2026上半年營收</span><b>8.07億元，年增19.2%</b></span><span class="num"><span class="nl">2026上半年毛利率</span><b>21.83%，年增0.97個百分點</b></span><span class="num"><span class="nl">2026上半年營業利益</span><b>1.01億元，年增25.8%</b></span><span class="num"><span class="nl">2026上半年EPS</span><b>1.86元，年增63.2%</b></span><span class="num"><span class="nl">潔淨級營收占比</span><b>2026上半年65.70%；2025全年60.56%</b></span></div>
+<details><summary>展望、動能與風險</summary>
+<div class="blk"><div class="bt">展望</div><p>公司看好半導體建廠與先進封裝擴產帶動潔淨管材需求；美國資料中心冷卻管件需求強勁、日本外銷市場逐步復甦。未提供下一季或全年量化財測。</p></div>
+<div class="blk up"><div class="bt">成長動能</div><ul><li>台積電、先進封裝及記憶體擴廠，帶動潔淨管材與大川研工程服務需求。</li><li>氫能特殊管件2026年正式取得訂單並完成交付。</li><li>布局儲能消防系統及ALD前驅物氣化模組，延伸既有高壓管路技術。</li></ul></div><div class="blk dn"><div class="bt">風險／警訊</div><ul><li>氫能訂單未揭露金額、毛利率或後續交付規模，獲利貢獻難估。</li><li>儲能消防及ALD模組未提供商業化訂單或放量時程。</li><li>潔淨級比重提高，推估營運對半導體建廠進度的敏感度增加。</li></ul></div>
+<div class="blk"><div class="bt">公告擇要訊息</div><p class="sum">本公司受邀參加10月8日中信證券、10月12日合庫證券及10月13日富邦證券舉辦之線上法人說明會，說明本公司營運概況。</p></div>
+<div class="blk"><div class="bt">市場脈絡</div><p class="sum">2026-09 月營收 188 百萬元，YoY +45%，MoM -6%，累計 YoY +31%，YoY 45%，連6月YoY成長，同期歷史新高</p></div>
+</details>
+<div class="src"><span class="chip">簡報 25 頁</span></div>
+</article>
+<article class="conf" data-s="3" data-m="sii" data-d="2026-10-08" data-n="1" data-st="done"><div class="ch">
+<span class="score s3">3</span>
+<div class="who"><div class="nm"><a href="https://tw.stock.yahoo.com/quote/2603.TW" target="_blank" rel="noopener">2603 長榮</a> <span class="new">新</span> <span class="chip">上市</span> <span class="verdict v3">一般</span></div>
+<div class="meta">10/8（四） 15:00 · 張榮發基金會國際會議中心11樓(台北市中正區中山南路11號11樓)</div></div></div>
+<p class="hl">運價回升，2027年運力規劃增至240萬TEU</p>
+<p class="reason">偏利多：運價回升且擴船時程具體，但未提供新訂單、獲利財測或運價續強指引，尚不足以改變未來獲利預期。</p>
+<div class="nums"><span class="num"><span class="nl">2026上半年營收</span><b>1,916.72億元</b></span><span class="num"><span class="nl">2026上半年EPS</span><b>11.24元</b></span><span class="num"><span class="nl">季度毛利率</span><b>2026 Q1為15.48%，Q2為22.80%</b></span><span class="num"><span class="nl">平均運費</span><b>2026年6月1,271、8月1,577美元／TEU</b></span><span class="num"><span class="nl">年底集團運力規劃</span><b>2026年2,071,215、2027年2,401,149 TEU</b></span><span class="num"><span class="nl">2027年雙能源船規劃</span><b>累計33艘，占總艙位20.69%</b></span></div>
+<details><summary>展望、動能與風險</summary>
+<div class="blk"><div class="bt">展望</div><p>未提供下一季或全年營收、獲利及運價明確展望；規劃2027年底集團運力達240萬TEU，2031年達277萬TEU。</p></div>
+<div class="blk up"><div class="bt">成長動能</div><ul><li>6至8月平均運費上升，支持近期營收動能。</li><li>遠東至歐洲、北美年初至7月貨量分別年增12.2%、5.1%。</li><li>新船交付與雙能源船隊擴張具年度時程，但未量化獲利貢獻。</li></ul></div><div class="blk dn"><div class="bt">風險／警訊</div><ul><li>燃油成本上升，2026年1至8月占營業成本23%。</li><li>戰爭、航道限制與極端氣候增加成本及船期不確定性。</li><li>運價市場分化，未說明近期運費上升能否延續。</li><li>公司與同業新船陸續交付，新增運力的消化及收益仍待觀察。</li></ul></div>
+<div class="blk"><div class="bt">公告擇要訊息</div><p class="sum">受邀參加永豐金證券舉辦之法說會，說明本公司之營運概況。</p></div>
+<div class="blk"><div class="bt">市場脈絡</div><p class="sum">2026-09 月營收 49,711 百萬元，YoY +64%，MoM +1%，累計 YoY +15%，YoY 64%，連6月YoY成長，MoM連7月正成長，24月營收新高，比前三月加速 23pp</p></div>
+</details>
+<div class="src"><span class="chip">簡報 29 頁</span> <span class="chip">影音：影音在公司網頁，未轉</span></div>
+</article>
+<article class="conf" data-s="3" data-m="sii" data-d="2026-10-08" data-n="1" data-st="done"><div class="ch">
+<span class="score s3">3</span>
+<div class="who"><div class="nm"><a href="https://tw.stock.yahoo.com/quote/2607.TW" target="_blank" rel="noopener">2607 榮運</a> <span class="new">新</span> <span class="chip">上市</span> <span class="verdict v3">一般</span></div>
+<div class="meta">10/8（四） 16:00 · 張榮發基金會國際會議中心11樓(台北市中正區中山南路11號)</div></div></div>
+<p class="hl">物流中心擴至近三倍，尚無獲利貢獻時程</p>
+<p class="reason">偏利多：物流擴建與區域布局提供成長題材，但未交代新增訂單、放量時程或獲利貢獻，尚不足以改變獲利預期。</p>
+<div class="nums"><span class="num"><span class="nl">2026上半年營收</span><b>90.44億元，年增2.40%</b></span><span class="num"><span class="nl">2026上半年歸屬母公司淨利</span><b>14.31億元，年減13.22%</b></span><span class="num"><span class="nl">2026上半年EPS</span><b>2.68元；年增72.90%主要受現金減資50%、股數減半影響</b></span><span class="num"><span class="nl">2026上半年毛利率</span><b>20.87%</b></span><span class="num"><span class="nl">2026年8月營收</span><b>20.73億元，年增49.39%</b></span><span class="num"><span class="nl">大園保稅國際物流中心規模</span><b>擴增至近原有的3倍</b></span></div>
+<details><summary>展望、動能與風險</summary>
+<div class="blk"><div class="bt">展望</div><p>未提供明確展望；僅提出深化亞洲與北美空運布局、拓展高科技及新能源物流，未量化下一季或全年營收、獲利及擴建貢獻。</p></div>
+<div class="blk up"><div class="bt">成長動能</div><ul><li>近洋線貨量增加，上半年內陸貨櫃場業務年增8.1%、台中港業務年增5.4%。</li><li>大園物流中心擴建、美國達拉斯倉辦整合及新設印尼公司，擴充區域服務能力。</li><li>拓展高科技、汽車、光電與儲能設備等物流客戶。</li></ul></div><div class="blk dn"><div class="bt">風險／警訊</div><ul><li>上半年營收成長但營業淨利年減11.91%，未說明獲利下滑原因與改善時程。</li><li>EPS成長受股數減半影響，不能視為實質獲利成長。</li><li>擴建與新市場布局缺乏訂單金額、利用率及獲利貢獻資訊。</li><li>紅海安全、能源供應、油價與極端天候增加營運不確定性。</li></ul></div>
+<div class="blk"><div class="bt">公告擇要訊息</div><p class="sum">受邀參加永豐金證券舉辦之法人說明會，說明本公司之營運概況。</p></div>
+<div class="blk"><div class="bt">市場脈絡</div><p class="sum">2026-08 月營收 2,073 百萬元，YoY +49%，MoM +2%，累計 YoY +13%</p></div>
+</details>
+<div class="src"><span class="chip">簡報 19 頁（多為圖片）</span> <span class="chip">影音：影音在公司網頁，未轉</span></div>
+</article>
+<article class="conf" data-s="3" data-m="sii" data-d="2026-10-08" data-n="1" data-st="done"><div class="ch">
+<span class="score s3">3</span>
+<div class="who"><div class="nm"><a href="https://tw.stock.yahoo.com/quote/3008.TW" target="_blank" rel="noopener">3008 大立光</a> <span class="new">新</span> <span class="chip">上市</span> <span class="verdict v3">一般</span></div>
+<div class="meta">10/8（四） 14:30 · 線上法說會</div></div></div>
+<p class="hl">第三季營收年減11%，本業獲利續弱</p>
+<p class="reason">偏利空：營收與本業獲利走弱，但內容僅回顧財報，未說明惡化原因或提供足以改變未來獲利預期的新展望。</p>
+<div class="nums"><span class="num"><span class="nl">第三季營收</span><b>156.51億元，年減11%</b></span><span class="num"><span class="nl">第三季營業毛利</span><b>66.07億元</b></span><span class="num"><span class="nl">第三季營業利益</span><b>47.35億元</b></span><span class="num"><span class="nl">第三季EPS</span><b>39.62元</b></span><span class="num"><span class="nl">前三季營業利益</span><b>156.95億元，年減9%</b></span><span class="num"><span class="nl">前三季業外收入</span><b>37.84億元，年增770%</b></span></div>
+<details><summary>展望、動能與風險</summary>
+<div class="blk"><div class="bt">展望</div><p>未提供明確展望；擇要訊息雖提及第四季展望，所附簡報未揭露具體內容。</p></div>
+<div class="blk dn"><div class="bt">風險／警訊</div><ul><li>第三季營收較第二季增加，但營業毛利與營業利益均下降，顯示本業獲利承壓。</li><li>前三季營業利益年減9%，淨利年增10%伴隨業外收入大增，不能直接視為本業改善。</li><li>鏡頭出貨比重圖表數字未抽出，無法判讀產品結構變化。</li></ul></div>
+<div class="blk"><div class="bt">公告擇要訊息</div><p class="sum">115年第三季營運報告及說明115年第四季營運展望</p></div>
+<div class="blk"><div class="bt">市場脈絡</div><p class="sum">2026-09 月營收 5,779 百萬元，YoY -7%，MoM +15%，累計 YoY +2%</p></div>
+</details>
+<div class="src"><span class="chip">簡報 7 頁</span> <span class="chip">影音：影音在公司網頁，未轉</span></div>
+</article>
+<article class="conf" data-s="3" data-m="otc" data-d="2026-10-08" data-n="1" data-st="partial"><div class="ch">
+<span class="score s3">3</span>
+<div class="who"><div class="nm"><a href="https://tw.stock.yahoo.com/quote/3354.TWO" target="_blank" rel="noopener">3354 律勝</a> <span class="new">新</span> <span class="chip">上櫃</span> <span class="verdict v3">一般</span></div>
+<div class="meta">10/8（四） 14:00 · 線上法說會</div></div></div>
+<p class="hl">布局AI封裝與高速傳輸材料，未揭放量時程</p>
+<p class="reason">AI封裝與高速傳輸材料屬潛在利多，但未揭露訂單、客戶導入或放量時程，尚不足以改變獲利預期。</p>
+<div class="nums"><span class="num"><span class="nl">液態感光PSPI耐熱規格</span><b>320°C以上</b></span><span class="num"><span class="nl">BRINA材料低溫固化規格</span><b>約200°C／低於230°C</b></span></div>
+<details><summary>展望、動能與風險</summary>
+<div class="blk"><div class="bt">展望</div><p>未提供明確展望</p></div>
+<div class="blk up"><div class="bt">成長動能</div><ul><li>耐高溫可剝PSPI瞄準CPO、HBM及多晶片互連製程保護。</li><li>低損耗PTFE布局AI伺服器與800G／1.6T／3.2T高速傳輸。</li><li>BRINA感光介電材料布局先進封裝RDL與VCSEL光通訊。</li></ul></div><div class="blk dn"><div class="bt">風險／警訊</div><ul><li>未揭露新產品認證進度、訂單金額、營收貢獻或量產時程，商業化成效難以判斷。</li><li>簡報多為圖片，財務與產品結構數據可能未完整抽出，無法確認獲利轉折。</li></ul></div>
+<div class="blk"><div class="bt">公告擇要訊息</div><p class="sum">本公司受邀參加台新證券舉辦之法人說明會，說明本公司近期營運概況。</p></div>
+<div class="blk"><div class="bt">市場脈絡</div><p class="sum">2026-09 月營收 12 百萬元，YoY +38%，MoM +33%，累計 YoY +32%<br>2026-10-08 漲幅前 100（+4.918032786885246%）</p></div>
+</details>
+<div class="src"><span class="chip">簡報 25 頁（多為圖片）</span> <span class="chip">影音：未設定 GROQ_API_KEY</span> <span class="chip warnc">待補：影音：未設定 GROQ_API_KEY，補上後會重新判讀</span></div>
+</article>
+<article class="conf" data-s="3" data-m="otc" data-d="2026-10-08" data-n="1" data-st="partial"><div class="ch">
+<span class="score s3">3</span>
+<div class="who"><div class="nm"><a href="https://tw.stock.yahoo.com/quote/6126.TWO" target="_blank" rel="noopener">6126 信音</a> <span class="new">新</span> <span class="chip">上櫃</span> <span class="verdict v3">一般</span></div>
+<div class="meta">10/8（四） 14:00 · 線上法人說明會</div></div></div>
+<p class="hl">車用併購推升營收，毛利率降至19.15%</p>
+<p class="reason">營收預算與車用布局偏利多、毛利率下滑偏利空，但未交代預算是否上修或毛利改善時程，尚不足以改變獲利預期。</p>
+<div class="nums"><span class="num"><span class="nl">2026年預算</span><b>1.93億美元；2025年營收1.30億美元</b></span><span class="num"><span class="nl">2026上半年營收</span><b>29.13億元，年增51.36%</b></span><span class="num"><span class="nl">上半年毛利率</span><b>19.15%；去年同期23.95%</b></span><span class="num"><span class="nl">單季毛利率</span><b>Q1 20.7%、Q2 17.9%</b></span><span class="num"><span class="nl">上半年EPS</span><b>0.54元；去年同期0.46元</b></span><span class="num"><span class="nl">上半年車用營收</span><b>9.94億元，年增446%，占比34%</b></span></div>
+<details><summary>展望、動能與風險</summary>
+<div class="blk"><div class="bt">展望</div><p>列示2026年預算1.93億美元，未說明是否調整；2028年布局圖列車用占比40%、新能源13%、筆電34%。未提供下一季獲利、毛利率或訂單能見度指引。</p></div>
+<div class="blk up"><div class="bt">成長動能</div><ul><li>國聯電子於2025年底納入合併，擴大汽車連接器與線束布局，是車用營收躍升的重要背景。</li><li>新能源上半年營收年增48%；高速連接器與線材路線圖延伸至PCIe Gen 6／Gen 7，但未提供訂單金額或量產貢獻。</li></ul></div><div class="blk dn"><div class="bt">風險／警訊</div><ul><li>上半年毛利率年減4.8個百分點，Q2較Q1再降2.8個百分點，未說明原因及持續性。</li><li>上半年營收年增51.36%，歸屬台灣股權淨利僅年增18.58%，獲利增幅落後營收。</li><li>併購挹注與既有業務成長未完整拆分，難以判斷營收高成長的延續性。</li></ul></div>
+<div class="blk"><div class="bt">公告擇要訊息</div><p class="sum">本公司受邀參加凱基證券舉辦之線上法人說明會，
+說明公司營運&amp;問題交流。</p></div>
+<div class="blk"><div class="bt">市場脈絡</div><p class="sum">2026-09 月營收 484 百萬元，YoY +40%，MoM -6%，累計 YoY +53%，YoY 40%，連12月YoY成長，同期歷史新高</p></div>
+</details>
+<div class="src"><span class="chip">簡報 32 頁</span> <span class="chip">影音：未設定 GROQ_API_KEY</span> <span class="chip warnc">待補：影音：未設定 GROQ_API_KEY，補上後會重新判讀</span></div>
+</article>
+<article class="conf" data-s="3" data-m="otc" data-d="2026-10-07" data-n="1" data-st="partial"><div class="ch">
+<span class="score s3">3</span>
+<div class="who"><div class="nm"><a href="https://tw.stock.yahoo.com/quote/3624.TWO" target="_blank" rel="noopener">3624 光頡</a> <span class="new">新</span> <span class="chip">上櫃</span> <span class="verdict v3">一般</span></div>
+<div class="meta">10/7（三） 14:00 · 台北市松山區復興北路99號2樓(&amp;#29319;亞商務暨會議中心)</div></div></div>
+<p class="hl">第二季毛利率升至32.8%，未給後續展望</p>
+<p class="reason">財報改善偏利多，但未解釋毛利率提升原因與持續性，也無新訂單或放量時程，尚不足以改變未來獲利預期。</p>
+<div class="nums"><span class="num"><span class="nl">2026年第二季營收</span><b>8.95億元，年增26.8%、季增22.9%</b></span><span class="num"><span class="nl">2026年第二季毛利率</span><b>32.8%；第一季28.6%、去年同期29.1%</b></span><span class="num"><span class="nl">2026年第二季EPS</span><b>1.11元</b></span><span class="num"><span class="nl">2026年上半年EPS</span><b>1.86元；去年同期0.52元</b></span><span class="num"><span class="nl">AI應用銷售占比</span><b>13%</b></span><span class="num"><span class="nl">汽車工業銷售占比</span><b>44%</b></span></div>
+<details><summary>展望、動能與風險</summary>
+<div class="blk"><div class="bt">展望</div><p>未提供明確展望</p></div>
+<div class="blk up"><div class="bt">成長動能</div><ul><li>AI伺服器、GPU、資料中心及電源應用已列入主要市場。</li><li>持續開發車用、醫療及工業高階元件，提升製程以符合第三代半導體規格需求。</li></ul></div><div class="blk dn"><div class="bt">風險／警訊</div><ul><li>未揭露訂單能見度、擴產或新產品放量時程，成長持續性難以確認。</li><li>第二季存貨年增37.9%、應收帳款年增31.9%，均高於營收增幅。</li><li>去年第二季有業外虧損，EPS由虧轉盈不能全歸因於本業改善。</li></ul></div>
+<div class="blk"><div class="bt">公告擇要訊息</div><p class="sum">本公司受邀參加中國信託證券舉辦之法說會</p></div>
+<div class="blk"><div class="bt">市場脈絡</div><p class="sum">2026-09 月營收 380 百萬元，YoY +67%，MoM +4%，累計 YoY +35%，YoY 67%，連12月YoY成長，MoM連5月正成長，5年新高，比前三月加速 22pp<br>2026-10-08 漲幅前 100（+9.717868338557993%）</p></div>
+</details>
+<div class="src"><span class="chip">簡報 16 頁</span> <span class="chip">影音：未設定 GROQ_API_KEY</span> <span class="chip warnc">待補：影音：未設定 GROQ_API_KEY，補上後會重新判讀</span></div>
+</article>
+<article class="conf" data-s="3" data-m="sii" data-d="2026-10-07" data-n="1" data-st="partial"><div class="ch">
+<span class="score s3">3</span>
+<div class="who"><div class="nm"><a href="https://tw.stock.yahoo.com/quote/6120.TW" target="_blank" rel="noopener">6120 達運</a> <span class="new">新</span> <span class="chip">上市</span> <span class="verdict v3">一般</span></div>
+<div class="meta">10/7（三） 14:30 · 線上法說會</div></div></div>
+<p class="hl">上半年本業虧損擴大，轉盈仰賴業外收益</p>
+<p class="reason">偏利空：已公布的本業虧損擴大，新布局雖有認證進度，但缺乏訂單金額、放量時程與獲利展望。</p>
+<div class="nums"><span class="num"><span class="nl">2026上半年營收</span><b>87.56億元，年減4%</b></span><span class="num"><span class="nl">2026上半年毛利率</span><b>3.8%，去年同期4.6%</b></span><span class="num"><span class="nl">2026上半年營業損失</span><b>3.13億元，去年同期虧損1.20億元</b></span><span class="num"><span class="nl">2026上半年業外收益</span><b>12.31億元</b></span><span class="num"><span class="nl">2026上半年EPS</span><b>1.42元，去年同期-0.12元</b></span><span class="num"><span class="nl">2026上半年製造服務營收占比</span><b>97.14%</b></span></div>
+<details><summary>展望、動能與風險</summary>
+<div class="blk"><div class="bt">展望</div><p>未提供明確營收或獲利展望；預計2026年第四季取得ISO 13485認證，智慧節點計畫將於五縣市逐步完成，未揭露收入貢獻時程。</p></div>
+<div class="blk up"><div class="bt">成長動能</div><ul><li>高階顯示器、車載防窺與高亮技術，以及工控背光ODM。</li><li>自供電戶外電子紙已通過日本客戶認證，拓展智慧站牌與廣告看板應用。</li><li>微針、生物晶片及智慧場域布局，尚未量化營收貢獻。</li></ul></div><div class="blk dn"><div class="bt">風險／警訊</div><ul><li>上半年毛利率下滑、營業費用年增20%，本業虧損擴大。</li><li>稅後轉盈主要依靠業外收益，簡報未說明其來源與持續性。</li><li>系統整合營收占比由2025年3.43%降至2026上半年2.67%，新業務仍未形成明顯支撐。</li></ul></div>
+<div class="blk"><div class="bt">公告擇要訊息</div><p class="sum">本公司受邀參加台新證券舉辦之線上法人說明會，說明本公司之財務與營運概況。</p></div>
+<div class="blk"><div class="bt">市場脈絡</div><p class="sum">2026-09 月營收 1,335 百萬元，YoY -5%，MoM -0%，累計 YoY -5%</p></div>
+</details>
+<div class="src"><span class="chip">簡報 26 頁</span> <span class="chip">影音：未設定 GROQ_API_KEY</span> <span class="chip warnc">待補：影音：未設定 GROQ_API_KEY，補上後會重新判讀</span></div>
+</article>
+<article class="conf" data-s="3" data-m="otc" data-d="2026-10-07" data-n="1" data-st="partial"><div class="ch">
+<span class="score s3">3</span>
+<div class="who"><div class="nm"><a href="https://tw.stock.yahoo.com/quote/6517.TWO" target="_blank" rel="noopener">6517 保勝光學</a> <span class="new">新</span> <span class="chip">上櫃</span> <span class="verdict v3">一般</span></div>
+<div class="meta">10/7（三） 14:30 · 線上法說會</div></div></div>
+<p class="hl">毛利率降至36%，高階光學布局未量化</p>
+<p class="reason">偏利空：毛利率持續下滑，但主要回顧已公布財務，未提供新訂單或獲利展望，不足以改變未來獲利預期。</p>
+<div class="nums"><span class="num"><span class="nl">2025年營收</span><b>4.90億元</b></span><span class="num"><span class="nl">2026Q2營收（簡報標示期間）</span><b>2.18億元</b></span><span class="num"><span class="nl">毛利率走勢</span><b>2023年43%→2024年40%→2025年37%→2026Q2 36%</b></span><span class="num"><span class="nl">投影設備營收占比</span><b>2025年28%→2026Q2 35%</b></span><span class="num"><span class="nl">運動光學營收占比</span><b>2025年54%→2026Q2 48%</b></span><span class="num"><span class="nl">AOI、半導體及國防航太營收占比</span><b>2025年與2026Q2均為16%</b></span></div>
+<details><summary>展望、動能與風險</summary>
+<div class="blk"><div class="bt">展望</div><p>未提供明確營運展望；技術路線圖列出2026至2027年精度提升目標，但未連結訂單、營收或獲利貢獻。</p></div>
+<div class="blk up"><div class="bt">成長動能</div><ul><li>投影設備營收占比提升，產品組合有所變化。</li><li>精進非球面研拋技術，布局半導體、航太及生醫光學應用。</li></ul></div><div class="blk dn"><div class="bt">風險／警訊</div><ul><li>毛利率連年下降，未說明原因及改善時程。</li><li>AOI、半導體及國防航太占比仍為16%，尚未呈現占比提升。</li><li>未揭露新客戶、訂單金額或商業放量時程；部分市場與客戶圖表文字未完整抽出。</li></ul></div>
+<div class="blk"><div class="bt">公告擇要訊息</div><p class="sum">本公司受邀參加凱基證券舉辦之線上法說會</p></div>
+<div class="blk"><div class="bt">市場脈絡</div><p class="sum">2026-09 月營收 34 百萬元，YoY +27%，MoM -27%，累計 YoY +2%<br>2026-10-08 跌幅前 100（-3.64963503649635%）</p></div>
+</details>
+<div class="src"><span class="chip">簡報 30 頁</span> <span class="chip">影音：未設定 GROQ_API_KEY</span> <span class="chip warnc">待補：影音：未設定 GROQ_API_KEY，補上後會重新判讀</span></div>
+</article>
+<article class="conf" data-s="3" data-m="rotc" data-d="2026-10-06" data-n="1" data-st="done"><div class="ch">
+<span class="score s3">3</span>
+<div class="who"><div class="nm"><a href="https://tw.stock.yahoo.com/quote/3194.TW" target="_blank" rel="noopener">3194 圓方科技</a> <span class="new">新</span> <span class="chip">興櫃</span> <span class="verdict v3">一般</span></div>
+<div class="meta">10/6（二） 14:30 · 宏泰金融大樓16樓 (台北市松山區民生東路三段156號16樓)</div></div></div>
+<p class="hl">自研產品推升毛利率，營收仍年減三成</p>
+<p class="reason">產品組合改善屬利多，但主要回顧已公布財報，未量化未來訂單、成長時程或毛利率改善的持續性。</p>
+<div class="nums"><span class="num"><span class="nl">2026上半年營收</span><b>1.13億元，年減30.77%</b></span><span class="num"><span class="nl">2026上半年毛利率</span><b>43.78%，年增3.78個百分點</b></span><span class="num"><span class="nl">2026上半年營業淨利</span><b>1,382.2萬元，年減6.29%</b></span><span class="num"><span class="nl">2026上半年營業利益率</span><b>12.23%，年增3.20個百分點</b></span><span class="num"><span class="nl">2026上半年稅後淨利</span><b>1,823.2萬元，年增111.46%</b></span><span class="num"><span class="nl">2026上半年基本EPS</span><b>1.31元，年增111.29%</b></span></div>
+<details><summary>展望、動能與風險</summary>
+<div class="blk"><div class="bt">展望</div><p>短期提升高毛利維運合約續約率，中長期推動產品平台化及邊緣AI應用；未提供下一季或全年量化展望、訂單能見度與落地時程。</p></div>
+<div class="blk up"><div class="bt">成長動能</div><ul><li>自主研發軟硬體比重提升，公司指出這是毛利率改善的原因。</li><li>專案標準化與維運／訂閱服務，有望提高交付效率與經常性收入。</li><li>智慧會議預檢及邊緣AI應用，但未披露新增訂單或營收貢獻。</li></ul></div><div class="blk dn"><div class="bt">風險／警訊</div><ul><li>上半年營收年減30.77%，未說明下滑原因及後續回升時點。</li><li>營業淨利仍衰退，稅後淨利倍增與本業表現落差的來源未交代。</li><li>未揭露自研產品占比、維運續約率，難驗證獲利結構改善能否延續。</li></ul></div>
+<div class="blk"><div class="bt">公告擇要訊息</div><p class="sum">本公司受邀參加群益金鼎證券於115年10月6日所舉辦之法人說明會，會中就本公司已公開發怖之財務數字、經營績效等相關資訊做說明。</p></div>
+
+</details>
+<div class="src"><span class="chip">簡報 18 頁</span></div>
+</article>
+<article class="conf" data-s="1" data-m="otc" data-d="2026-10-07" data-n="1" data-st="partial"><div class="ch">
+<span class="score s1">1</span>
+<div class="who"><div class="nm"><a href="https://tw.stock.yahoo.com/quote/6174.TWO" target="_blank" rel="noopener">6174 安碁</a> <span class="new">新</span> <span class="chip">上櫃</span> <span class="verdict v1">可略過</span></div>
+<div class="meta">10/7（三） 14:30 · 台北市中正區忠孝東路二段95號13樓</div></div></div>
+<p class="hl">安碁法說資料無法辨識新展望</p>
+<p class="reason">月營收成長屬已知利多，但簡報未抽出內容且無逐字稿，無法確認有改變獲利預期的新資訊。</p>
+
+<details><summary>展望、動能與風險</summary>
+<div class="blk"><div class="bt">展望</div><p>未提供明確展望</p></div>
+<div class="blk up"><div class="bt">成長動能</div><ul><li>市場脈絡：9月營收年增33%、累計年增27%，但無法從法說資料確認成長來源。</li></ul></div><div class="blk dn"><div class="bt">風險／警訊</div><ul><li>19頁簡報均未抽出可讀文字，且無影音逐字稿，無法評估毛利率、訂單與成長持續性。</li></ul></div>
+<div class="blk"><div class="bt">公告擇要訊息</div><p class="sum">本公司受邀參加兆豐證券所舉辦之法人說明會。</p></div>
+<div class="blk"><div class="bt">市場脈絡</div><p class="sum">2026-09 月營收 68 百萬元，YoY +33%，MoM +1%，累計 YoY +27%<br>2026-10-08 漲幅前 100（+9.965635738831615%）</p></div>
+</details>
+<div class="src"><span class="chip">簡報 19 頁（多為圖片）</span> <span class="chip">影音：未設定 GROQ_API_KEY</span> <span class="chip warnc">待補：影音：未設定 GROQ_API_KEY，補上後會重新判讀</span></div>
+</article>
+<article class="conf" data-s="1" data-m="otc" data-d="2026-10-06" data-n="1" data-st="partial"><div class="ch">
+<span class="score s1">1</span>
+<div class="who"><div class="nm"><a href="https://tw.stock.yahoo.com/quote/3265.TWO" target="_blank" rel="noopener">3265 台星科</a> <span class="new">新</span> <span class="chip">上櫃</span> <span class="verdict v1">可略過</span></div>
+<div class="meta">10/6（二） 14:30 · 台北市中山區明水路700號</div></div></div>
+<p class="hl">台星科無法說內容，僅見9月營收年增11%</p>
+<p class="reason">月營收成長屬已公布利多，但缺乏法說內容，無法確認有改變未來獲利預期的新資訊。</p>
+
+<details><summary>展望、動能與風險</summary>
+<div class="blk"><div class="bt">展望</div><p>未提供明確展望</p></div>
+<div class="blk dn"><div class="bt">風險／警訊</div><ul><li>無簡報與逐字稿，無法評估訂單、毛利率及成長持續性。</li></ul></div>
+<div class="blk"><div class="bt">公告擇要訊息</div><p class="sum">本公司受邀參加凱基證券(股)公司舉辦之法人說明會，說明本公司營運概況。</p></div>
+<div class="blk"><div class="bt">市場脈絡</div><p class="sum">2026-09 月營收 400 百萬元，YoY +11%，MoM -1%，累計 YoY +16%<br>2026-10-08 漲幅前 100（+9.90783410138249%）</p></div>
+</details>
+<div class="src"><span class="chip">簡報尚未上傳</span> <span class="chip">影音：未設定 GROQ_API_KEY</span> <span class="chip warnc">待補：影音：未設定 GROQ_API_KEY，補上後會重新判讀</span></div>
+</article>
+<article class="conf" data-s="0" data-m="rotc" data-d="2026-10-07" data-n="1" data-st="pending"><div class="ch">
+<span class="score s0">–</span>
+<div class="who"><div class="nm"><a href="https://tw.stock.yahoo.com/quote/7848.TW" target="_blank" rel="noopener">7848 騏億鑫</a> <span class="new">新</span> <span class="chip">興櫃</span></div>
+<div class="meta">10/7（三） 14:30 · 台開&amp;#12068;樓19樓1901會議室(台北市重慶南路&amp;#12032;段2號)</div></div></div>
+<p class="hl none">尚未判讀，下次更新會補上</p>
+<p class="sum">受邀參加永豐&amp;#12198;證券舉辦之法&amp;#12040;說明會，說明本公司近期營運概況、財務及業務相關資訊。</p><div class="src"><span class="chip">簡報 27 頁</span></div></article>
+<article class="conf" data-s="0" data-m="otc" data-d="2026-10-07" data-n="1" data-st="pending"><div class="ch">
+<span class="score s0">–</span>
+<div class="who"><div class="nm"><a href="https://tw.stock.yahoo.com/quote/8421.TWO" target="_blank" rel="noopener">8421 旭源</a> <span class="new">新</span> <span class="chip">上櫃</span></div>
+<div class="meta">10/7（三） 14:30 · 台北市中正區忠孝東路一段85號6樓大會議室。</div></div></div>
+<p class="hl none">尚未判讀；影音轉文字中，下次更新會補上</p>
+<p class="sum">本公司受邀台中銀證券舉辦之法人說明會。</p><div class="src"><span class="chip">簡報 26 頁（多為圖片）</span> <span class="chip">影音：未設定 GROQ_API_KEY</span></div></article>
+<article class="conf" data-s="0" data-m="sii" data-d="2026-10-06" data-n="1" data-st="pending"><div class="ch">
+<span class="score s0">–</span>
+<div class="who"><div class="nm"><a href="https://tw.stock.yahoo.com/quote/1402.TW" target="_blank" rel="noopener">1402 遠東新</a> <span class="new">新</span> <span class="chip">上市</span></div>
+<div class="meta">10/6（二） 14:00 · 台北南港展覽館</div></div></div>
+<p class="hl none">尚未判讀，下次更新會補上</p>
+<p class="sum">本公司受邀參加由凱基證券於2026/10/6在台北南港展覽館
+所舉辦TITAS投資人說明會，說明2026年度第二季度營運與財務概況</p><div class="src"><span class="chip">簡報 22 頁</span> <span class="chip">影音：影音在公司網頁，未轉</span></div></article>
+<article class="conf" data-s="0" data-m="otc" data-d="2026-10-06" data-n="1" data-st="pending"><div class="ch">
+<span class="score s0">–</span>
+<div class="who"><div class="nm"><a href="https://tw.stock.yahoo.com/quote/3516.TWO" target="_blank" rel="noopener">3516 亞帝歐</a> <span class="new">新</span> <span class="chip">上櫃</span></div>
+<div class="meta">10/6（二） 14:30 · 台開大樓19樓會議室 台北市重慶南路一段2號</div></div></div>
+<p class="hl none">尚未判讀；影音轉文字中，下次更新會補上</p>
+<p class="sum">公告本公司受邀參加永豐金證券舉辦之法人說明會</p><div class="src"><span class="chip">簡報 21 頁</span> <span class="chip">影音：未設定 GROQ_API_KEY</span></div></article>
+<article class="conf" data-s="0" data-m="sii" data-d="2026-10-06" data-n="1" data-st="pending"><div class="ch">
+<span class="score s0">–</span>
+<div class="who"><div class="nm"><a href="https://tw.stock.yahoo.com/quote/6257.TW" target="_blank" rel="noopener">6257 矽格</a> <span class="new">新</span> <span class="chip">上市</span></div>
+<div class="meta">10/6（二） 14:30 · 台北市中山區明水路700號</div></div></div>
+<p class="hl none">尚未判讀；影音轉文字中，下次更新會補上</p>
+<p class="sum">本公司受邀參加凱基證券舉辦之聯合法人說明會.說明本公司營運概況</p><div class="src"><span class="chip">簡報 23 頁</span> <span class="chip">影音：未設定 GROQ_API_KEY</span></div></article>
+<article class="conf" data-s="0" data-m="rotc" data-d="2026-10-06" data-n="1" data-st="pending"><div class="ch">
+<span class="score s0">–</span>
+<div class="who"><div class="nm"><a href="https://tw.stock.yahoo.com/quote/7867.TW" target="_blank" rel="noopener">7867 特力屋</a> <span class="new">新</span> <span class="chip">興櫃</span></div>
+<div class="meta">10/6（二） 14:30 · 台北遠東國際大飯店二樓宴會廳（地址：臺北市大安區敦化南路二段201號2F)</div></div></div>
+<p class="hl none">尚未判讀，下次更新會補上</p>
+<p class="sum">(1)本公司依「有價證券初次上市前業績發表會實施要點規定」，於上市前辦理股票初次上市前業績發表會。
+(2)本次業績發表會將說明產業發展、財務業務狀況、未來風險、公司治理及企業社會責任及臺灣證券交易所股份有限公司董事會暨上市審議委員會要求補充揭露事項。</p><div class="src"><span class="chip">簡報 33 頁</span></div></article>
+<article class="conf" data-s="0" data-m="otc" data-d="2026-10-06" data-n="1" data-st="pending"><div class="ch">
+<span class="score s0">–</span>
+<div class="who"><div class="nm"><a href="https://tw.stock.yahoo.com/quote/8390.TWO" target="_blank" rel="noopener">8390 金益鼎</a> <span class="new">新</span> <span class="chip">上櫃</span></div>
+<div class="meta">10/6（二） 14:30 · 線上法說會</div></div></div>
+<p class="hl none">尚未判讀；影音轉文字中，下次更新會補上</p>
+<p class="sum">本公司受邀參加中信證券舉辦之線上法人說明會，說明本公司營運成果及未來展望。</p><div class="src"><span class="chip">無簡報</span> <span class="chip">影音：本次轉檔數已滿，下次轉</span></div></article>
+<article class="conf" data-s="0" data-m="sii" data-d="2026-10-06" data-n="1" data-st="pending"><div class="ch">
+<span class="score s0">–</span>
+<div class="who"><div class="nm"><a href="https://tw.stock.yahoo.com/quote/9919.TW" target="_blank" rel="noopener">9919 康那香</a> <span class="new">新</span> <span class="chip">上市</span></div>
+<div class="meta">10/6（二） 14:30 · 凱基證券線上法人說明會</div></div></div>
+<p class="hl none">尚未判讀，下次更新會補上</p>
+<p class="sum">本公司受邀參加凱基證券舉辦之線上法人說明會，進行本公司民國115年第二季營運概況說明。</p><div class="src"><span class="chip">簡報尚未上傳</span></div></article>
+<article class="conf" data-s="0" data-m="sii" data-d="2026-10-05" data-n="1" data-st="pending"><div class="ch">
+<span class="score s0">–</span>
+<div class="who"><div class="nm"><a href="https://tw.stock.yahoo.com/quote/2308.TW" target="_blank" rel="noopener">2308 台達電</a> <span class="new">新</span> <span class="chip">上市</span></div>
+<div class="meta">10/5（一） 21:00 · 美國</div></div></div>
+<p class="hl none">尚未判讀，下次更新會補上</p>
+<p class="sum">本公司受Jefferies證券邀請，將於上述時間地點，向法人投資者說明本公司115年第2季之財務報告相關資訊。</p><div class="src"><span class="chip">簡報 20 頁</span></div></article>
+<article class="conf" data-s="0" data-m="rotc" data-d="2026-10-05" data-n="1" data-st="pending"><div class="ch">
+<span class="score s0">–</span>
+<div class="who"><div class="nm"><a href="https://tw.stock.yahoo.com/quote/7951.TW" target="_blank" rel="noopener">7951 大易橙</a> <span class="new">新</span> <span class="chip">興櫃</span></div>
+<div class="meta">10/5（一） 14:30 · 台北君悅酒店3F凱悅廳一區</div></div></div>
+<p class="hl none">尚未判讀，下次更新會補上</p>
+<p class="sum">受邀參加台新綜合證券舉辦之興櫃前法人說明會，說明本公司營運概況
+與未來展望。</p><div class="src"><span class="chip">無簡報</span></div></article>
+<article class="conf" data-s="0" data-m="sii" data-d="2026-10-02" data-n="1" data-st="pending"><div class="ch">
+<span class="score s0">–</span>
+<div class="who"><div class="nm"><a href="https://tw.stock.yahoo.com/quote/2329.TW" target="_blank" rel="noopener">2329 華泰</a> <span class="new">新</span> <span class="chip">上市</span></div>
+<div class="meta">10/2（五） 14:30 · 凱基證券大樓12樓會議廳(台北市中山區明水路700號)</div></div></div>
+<p class="hl none">尚未判讀；影音轉文字中，下次更新會補上</p>
+<p class="sum">受邀參加凱基證券舉辦之法人說明會，報告本公司營運狀況。</p><div class="src"><span class="chip">簡報 25 頁</span> <span class="chip">影音：本次轉檔數已滿，下次轉</span></div></article>
+<article class="conf" data-s="0" data-m="sii" data-d="2026-10-02" data-n="1" data-st="pending"><div class="ch">
+<span class="score s0">–</span>
+<div class="who"><div class="nm"><a href="https://tw.stock.yahoo.com/quote/2399.TW" target="_blank" rel="noopener">2399 映泰</a> <span class="new">新</span> <span class="chip">上市</span></div>
+<div class="meta">10/2（五） 14:30 · 福邦證券(台北市忠孝西路一段6號14樓)</div></div></div>
+<p class="hl none">尚未判讀；影音轉文字中，下次更新會補上</p>
+<p class="sum">受邀參加福邦證券舉辦之法人說明會，就本公司已公開之財務業務資訊作說明。</p><div class="src"><span class="chip">簡報 14 頁</span> <span class="chip">影音：本次轉檔數已滿，下次轉</span></div></article>
+<article class="conf" data-s="0" data-m="sii" data-d="2026-10-02" data-n="1" data-st="pending"><div class="ch">
+<span class="score s0">–</span>
+<div class="who"><div class="nm"><a href="https://tw.stock.yahoo.com/quote/9908.TW" target="_blank" rel="noopener">9908 大台北</a> <span class="new">新</span> <span class="chip">上市</span></div>
+<div class="meta">10/2（五） 14:30 · 台灣證交所一樓資訊展示中心(台北市信義路5段7號)</div></div></div>
+<p class="hl none">尚未判讀，下次更新會補上</p>
+<p class="sum">本公司近期財務及營運概況說明</p><div class="src"><span class="chip">簡報 30 頁</span> <span class="chip">影音：影音在公司網頁，未轉</span></div></article></div>
+<h2>接下來 7 天</h2>
+<div class="tablebox"><table><thead><tr><th>日期</th><th>時間</th><th>公司</th><th>市場</th><th>擇要訊息</th></tr></thead><tbody><tr><td class="nw">10/12（一）</td><td class="nw">14:00</td><td class="nw"><a href="https://tw.stock.yahoo.com/quote/6281.TW" target="_blank" rel="noopener">6281 全國電</a></td><td class="nw">上市</td><td class="s">本公司受邀參加凱基證券主辦之線上法說會，說明本公司之營運概況、財務及業務相關資訊。</td></tr><tr><td class="nw">10/12（一）</td><td class="nw">14:30</td><td class="nw"><a href="https://tw.stock.yahoo.com/quote/4934.TW" target="_blank" rel="noopener">4934 太極</a></td><td class="nw">上市</td><td class="s">盛新材料(6930)-受邀參加第一金證券舉辦之興櫃前法人說明會
+說明公司營運概況及未來展望。</td></tr><tr><td class="nw">10/12（一）</td><td class="nw">15:00</td><td class="nw"><a href="https://tw.stock.yahoo.com/quote/2408.TW" target="_blank" rel="noopener">2408 南亞科</a></td><td class="nw">上市</td><td class="s">(1)2026年第3季營運狀況說明
+(2)參加方式：請參見 https://www.nanya.com/tw/IR/13/Investor Calendar</td></tr><tr><td class="nw">10/12（一）</td><td class="nw">16:00</td><td class="nw"><a href="https://tw.stock.yahoo.com/quote/2881.TW" target="_blank" rel="noopener">2881 富邦金</a></td><td class="nw">上市</td><td class="s">討論富邦金控財務及業務相關資訊</td></tr><tr><td class="nw">10/13（二）</td><td class="nw">09:00</td><td class="nw"><a href="https://tw.stock.yahoo.com/quote/1598.TW" target="_blank" rel="noopener">1598 岱宇</a></td><td class="nw">上市</td><td class="s">本公司受邀參加115年10月13日至114年10月14日由寬量國際主辦之「20th QIC CEO Week」，說明本公司之營運概況、財務及業務相關資訊。</td></tr><tr><td class="nw">10/13（二）</td><td class="nw">09:00</td><td class="nw"><a href="https://tw.stock.yahoo.com/quote/2328.TW" target="_blank" rel="noopener">2328 廣宇</a></td><td class="nw">上市</td><td class="s">本公司受邀參加寬量國際主辦之「20th QIC CEO Week」，說明本公司之營運概況、財務及業務相關資訊。</td></tr><tr><td class="nw">10/13（二）</td><td class="nw">09:00</td><td class="nw"><a href="https://tw.stock.yahoo.com/quote/7769.TW" target="_blank" rel="noopener">7769 鴻勁</a></td><td class="nw">上市</td><td class="s">本公司受邀參加元大證券舉辦之美國NDR，說明本公司營運概況。</td></tr><tr><td class="nw">10/13（二）</td><td class="nw">09:00</td><td class="nw"><a href="https://tw.stock.yahoo.com/quote/7786.TW" target="_blank" rel="noopener">7786 東方風能</a></td><td class="nw">上市</td><td class="s">本公司受邀參加寬量國際主辦之20th QIC CEO Week，向投資人說明本公司未來營運發展計劃、財務及業務等相關資訊。</td></tr><tr><td class="nw">10/13（二）</td><td class="nw">09:00</td><td class="nw"><a href="https://tw.stock.yahoo.com/quote/7799.TW" target="_blank" rel="noopener">7799 禾榮科</a></td><td class="nw">上市</td><td class="s">本公司受邀參加115年10月13日由寬量國際主辦之「20th QIC CEO Week」，說明本公司之營運概況、財務及業務相關資訊。</td></tr><tr><td class="nw">10/13（二）</td><td class="nw">09:00</td><td class="nw"><a href="https://tw.stock.yahoo.com/quote/7850.TW" target="_blank" rel="noopener">7850 寶泰生醫</a></td><td class="nw">興櫃</td><td class="s">公司受邀參加由寬量國際主辦之「20th QIC CEO Week
+」，說明本公司之營運概況、財務及業務相關資訊。</td></tr><tr><td class="nw">10/13（二）</td><td class="nw">12:00</td><td class="nw"><a href="https://tw.stock.yahoo.com/quote/4958.TW" target="_blank" rel="noopener">4958 臻鼎-KY</a></td><td class="nw">上市</td><td class="s">本公司受邀參加寬量國際主辦之「20th QIC CEO Week」，
+說明PCB產業展望、公司營運績效相關資訊。</td></tr><tr><td class="nw">10/13（二）</td><td class="nw">12:00</td><td class="nw"><a href="https://tw.stock.yahoo.com/quote/6725.TWO" target="_blank" rel="noopener">6725 矽科宏晟</a></td><td class="nw">上櫃</td><td class="s">本公司受邀參加115年10月13日至115年10月14日由寬量國際主辦「20th QIC CEO Week」，說明本公司之營運概況、財務及業務相關資訊。</td></tr><tr><td class="nw">10/13（二）</td><td class="nw">12:30</td><td class="nw"><a href="https://tw.stock.yahoo.com/quote/2412.TW" target="_blank" rel="noopener">2412 中華電</a></td><td class="nw">上市</td><td class="s">會議由國票證券主辦</td></tr><tr><td class="nw">10/13（二）</td><td class="nw">14:00</td><td class="nw"><a href="https://tw.stock.yahoo.com/quote/6903.TWO" target="_blank" rel="noopener">6903 巨漢</a></td><td class="nw">上櫃</td><td class="s">本公司受邀參加寬量國際主辦之「20th QIC CEO Week」，說明本公司之營運概況、財務及業務相關資訊</td></tr><tr><td class="nw">10/13（二）</td><td class="nw">14:30</td><td class="nw"><a href="https://tw.stock.yahoo.com/quote/1725.TW" target="_blank" rel="noopener">1725 元禎</a></td><td class="nw">上市</td><td class="s">公司簡介與營運狀況說明。</td></tr><tr><td class="nw">10/14（三）</td><td class="nw">09:00</td><td class="nw"><a href="https://tw.stock.yahoo.com/quote/6414.TW" target="_blank" rel="noopener">6414 樺漢</a></td><td class="nw">上市</td><td class="s">本公司受邀參加寬量國際主辦之「20th QIC CEO Week」，說明本公司之營運概況、財務及業務相關資訊。</td></tr><tr><td class="nw">10/14（三）</td><td class="nw">09:00</td><td class="nw"><a href="https://tw.stock.yahoo.com/quote/6190.TWO" target="_blank" rel="noopener">6190 萬泰科</a></td><td class="nw">上櫃</td><td class="s">本公司受邀參加寬量國際主辦之「20th QIC CEO Week」，向投資人說明本公司之營運概況、財務及業務相關資訊。</td></tr><tr><td class="nw">10/14（三）</td><td class="nw">10:00</td><td class="nw"><a href="https://tw.stock.yahoo.com/quote/6894.TWO" target="_blank" rel="noopener">6894 衛司特</a></td><td class="nw">上櫃</td><td class="s">本公司受邀參加由寬量國際主辦之「20th QIC CEO Week」，向投資人說明本公司之營運概況、財務及業務相關資訊。</td></tr><tr><td class="nw">10/14（三）</td><td class="nw">11:00</td><td class="nw"><a href="https://tw.stock.yahoo.com/quote/4722.TW" target="_blank" rel="noopener">4722 國精化</a></td><td class="nw">上市</td><td class="s">本公司受邀參加寬量國際主辦之「20th QIC CEO Week」，說明本公司之營運概況、財務及業務相關資訊。</td></tr><tr><td class="nw">10/14（三）</td><td class="nw">14:00</td><td class="nw"><a href="https://tw.stock.yahoo.com/quote/8354.TWO" target="_blank" rel="noopener">8354 冠好</a></td><td class="nw">上櫃</td><td class="s">說明本公司營運概況</td></tr><tr><td class="nw">10/14（三）</td><td class="nw">14:00</td><td class="nw"><a href="https://tw.stock.yahoo.com/quote/7776.TW" target="_blank" rel="noopener">7776 奧孟亞</a></td><td class="nw">興櫃</td><td class="s">本公司受邀參加凱基證券舉辦之法人說明會，說明本公司研發進程、商務開發成果及市場展望。</td></tr><tr><td class="nw">10/14（三）</td><td class="nw">14:20</td><td class="nw"><a href="https://tw.stock.yahoo.com/quote/2340.TW" target="_blank" rel="noopener">2340 台亞</a></td><td class="nw">上市</td><td class="s">本公司舉辦財務業務概況座談會</td></tr><tr><td class="nw">10/14（三）</td><td class="nw">14:20</td><td class="nw"><a href="https://tw.stock.yahoo.com/quote/7753.TWO" target="_blank" rel="noopener">7753 星亞</a></td><td class="nw">上櫃</td><td class="s">本公司舉辦財務業務概況座談會</td></tr><tr><td class="nw">10/15（四）</td><td class="nw">14:00</td><td class="nw"><a href="https://tw.stock.yahoo.com/quote/1540.TW" target="_blank" rel="noopener">1540 喬福</a></td><td class="nw">上市</td><td class="s">近期財務狀況</td></tr><tr><td class="nw">10/15（四）</td><td class="nw">14:00</td><td class="nw"><a href="https://tw.stock.yahoo.com/quote/2330.TW" target="_blank" rel="noopener">2330 台積電</a></td><td class="nw">上市</td><td class="s">(1)公布本公司2026年第3季財務報告及2026年第4季業績展望。(2)參加方式：請參見https://investor.tsmc.com/chinese/quarterly-r…</td></tr><tr><td class="nw">10/15（四）</td><td class="nw">14:30</td><td class="nw"><a href="https://tw.stock.yahoo.com/quote/2402.TW" target="_blank" rel="noopener">2402 毅嘉</a></td><td class="nw">上市</td><td class="s">本公司受邀參加兆豐證券舉辦之法人說明會，說明本公司之財務、營運及業務相關資訊。</td></tr><tr><td class="nw">10/15（四）</td><td class="nw">15:00</td><td class="nw"><a href="https://tw.stock.yahoo.com/quote/7754.TW" target="_blank" rel="noopener">7754 安基生技</a></td><td class="nw">興櫃</td><td class="s">本公司受邀參加富邦綜合證券舉辦之法人說明會</td></tr></tbody></table></div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+function apply(){const s=+$('fS').value,m=$('fM').value,d=$('fD').value,nw=$('fN').checked;let n=0;const all=document.querySelectorAll('article.conf');
+all.forEach(a=>{const ok=+a.dataset.s>=s&&(!m||a.dataset.m===m)&&(!d||a.dataset.d===d)&&(!nw||a.dataset.n==='1');a.hidden=!ok;if(ok)n++;});
+$('count').textContent='顯示 '+n+' / '+all.length+' 場';}
+['fS','fM','fD','fN'].forEach(id=>$(id).addEventListener('change',apply));
+apply();
+</script>
+</body>
+</html>
