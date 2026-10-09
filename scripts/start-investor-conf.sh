@@ -13,10 +13,12 @@ mkdir -p "$LOG_DIR"
 LOG="$LOG_DIR/investor-conf-$(date +%Y-%m-%d_%H%M%S).log"
 
 cd "$PROJECT_DIR" || exit 1
+# 判讀跑完後自己再發佈一次，不用等下一次每日報告；publish 會用現有的 report-latest.html 重組整個站。
 # macOS 沒有 setsid：退回 nohup，launcher 結束後子程序由 launchd 收養，一樣不會被主流程等待或帶走。
+RUN='node --import tsx scripts/fetch-investor-conferences.ts "$@"; echo "[investor-conf] 判讀結束，自動發佈"; bash scripts/publish-github-pages.sh'
 if command -v setsid >/dev/null 2>&1; then
-  setsid nohup node --import tsx scripts/fetch-investor-conferences.ts "$@" > "$LOG" 2>&1 < /dev/null &
+  setsid nohup bash -c "$RUN" _ "$@" > "$LOG" 2>&1 < /dev/null &
 else
-  nohup node --import tsx scripts/fetch-investor-conferences.ts "$@" > "$LOG" 2>&1 < /dev/null &
+  nohup bash -c "$RUN" _ "$@" > "$LOG" 2>&1 < /dev/null &
 fi
 echo "法說會判讀已在背景啟動（pid $!），log: $LOG"
