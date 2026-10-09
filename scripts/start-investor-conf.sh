@@ -13,5 +13,10 @@ mkdir -p "$LOG_DIR"
 LOG="$LOG_DIR/investor-conf-$(date +%Y-%m-%d_%H%M%S).log"
 
 cd "$PROJECT_DIR" || exit 1
-setsid nohup node --import tsx scripts/fetch-investor-conferences.ts "$@" > "$LOG" 2>&1 < /dev/null &
+# macOS 沒有 setsid：退回 nohup，launcher 結束後子程序由 launchd 收養，一樣不會被主流程等待或帶走。
+if command -v setsid >/dev/null 2>&1; then
+  setsid nohup node --import tsx scripts/fetch-investor-conferences.ts "$@" > "$LOG" 2>&1 < /dev/null &
+else
+  nohup node --import tsx scripts/fetch-investor-conferences.ts "$@" > "$LOG" 2>&1 < /dev/null &
+fi
 echo "法說會判讀已在背景啟動（pid $!），log: $LOG"
