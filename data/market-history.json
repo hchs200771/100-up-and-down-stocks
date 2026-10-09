@@ -1135,8 +1135,68 @@
   },
   {
     "date": "2026-10-02",
-    "retailNetPct": 13.4,
+    "retailNetPct": 13.395851525621069,
     "retailNetLots": 10585,
-    "taiexClose": 48475.74
+    "twseDayTradePct": 20.14,
+    "tpexDayTradePct": 22.15,
+    "taiexClose": 48475.74,
+    "taiexChange": 122.25,
+    "tpexClose": 426.93,
+    "tpexChange": 8.11,
+    "up": 1053,
+    "down": 987,
+    "limitUp": 48,
+    "limitDown": 4
+  },
+  {
+    "date": "2026-10-05",
+    "retailNetPct": 13.395851525621069,
+    "retailNetLots": 10585,
+    "twseDayTradePct": 19.03,
+    "tpexDayTradePct": 18.37,
+    "taiexClose": 49712.04,
+    "taiexChange": 1236.3,
+    "tpexClose": 432.48,
+    "tpexChange": 5.55,
+    "up": 828,
+    "down": 1228,
+    "limitUp": 42,
+    "limitDown": 3
+  },
+  {
+    "date": "2026-10-06",
+    "retailNetPct": -18.408671104450562,
+    "retailNetLots": -15846,
+    "twseDayTradePct": 19.85,
+    "tpexDayTradePct": 19.35,
+    "taiexClose": 49822.55,
+    "taiexChange": 110.51,
+    "tpexClose": 430.86,
+    "tpexChange": -1.62,
+    "up": 930,
+    "down": 1091,
+    "limitUp": 28,
+    "limitDown": 5
+  },
+  {
+    "date": "2026-10-07",
+    "retailNetPct": -0.05,
+    "retailNetLots": -46,
+    "taiexClose": 49806.37
+  },
+  {
+    "date": "2026-10-08",
+    "retailNetPct": null,
+    "retailNetLots": null,
+    "twseDayTradePct": 19.21,
+    "tpexDayTradePct": 20.9,
+    "taiexClose": 49313.44,
+    "taiexChange": -492.93,
+    "tpexClose": 426.71,
+    "tpexChange": -3.75,
+    "up": 852,
+    "down": 1155,
+    "limitUp": 32,
+    "limitDown": 3
   }
 ]

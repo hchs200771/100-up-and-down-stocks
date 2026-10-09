@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>月營收衰退名單</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2288%22%3E%F0%9F%93%89%3C%2Ftext%3E%3C%2Fsvg%3E">
+<style>
+:root{--bg:#f7f8fa;--card:#fff;--fg:#1a202c;--muted:#64748b;--line:#e2e8f0;--accent:#2563eb;--up:#c2410c;--down:#15803d;--chip:#eef2f7}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1420;--card:#171e2e;--fg:#e5eaf3;--muted:#8b98ad;--line:#28334a;--accent:#7aa2ff;--up:#ff8a5c;--down:#4ade80;--chip:#222c42}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.6 -apple-system,"PingFang TC","Noto Sans TC",sans-serif;padding:16px}
+.wrap{max-width:1200px;margin:0 auto}
+h1{font-size:20px;margin:4px 0 2px}
+.sub,.note{color:var(--muted);font-size:13px;margin:2px 0}
+.note{color:var(--up)}
+.cards{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.card{flex:1 1 150px;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+.card .cname{font-size:14px;font-weight:700}
+.card .cdesc{color:var(--muted);font-size:11.5px;line-height:1.5;margin-top:2px;flex:1}
+.card b{font-size:17px;line-height:1.2;margin-top:6px}
+.card.total{border-color:var(--accent)}.card.total .cname,.card.total b{color:var(--accent)}
+.filters{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:12px 0;font-size:13px}
+.filters label{display:flex;align-items:center;gap:5px;cursor:pointer;white-space:nowrap}
+.filters .fl{font-weight:700;color:color-mix(in srgb,var(--accent) 78%,var(--muted))}
+.filters select{max-width:160px;background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:3px 6px;font:inherit;font-size:13px}
+.months button{font:inherit;font-size:13px;padding:4px 12px;margin-right:6px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--fg);cursor:pointer}
+.months button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.tablebox{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;min-width:960px;font-size:13px}
+th,td{padding:6px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+th:nth-child(-n+4),td:nth-child(-n+4){text-align:left}
+th{position:sticky;top:0;background:var(--card);cursor:pointer;user-select:none;color:var(--muted);font-weight:600}
+tr:hover td{background:color-mix(in srgb,var(--accent) 6%,transparent)}
+a{color:var(--accent);text-decoration:none}
+td a:hover{text-decoration:underline}
+.chip{display:inline-block;background:var(--chip);border-radius:99px;padding:0 8px;font-size:11px;color:var(--muted)}
+.chip.fut{color:#4338ca;background:#e0e7ff;white-space:nowrap}
+.new{display:inline-block;background:var(--down);color:#fff;border-radius:99px;padding:0 6px;font-size:10px;margin-left:4px}
+.pos{color:var(--up)}.neg{color:var(--down)}.none{color:var(--muted)}
+.count{margin:8px 2px;color:var(--muted);font-size:13px}
+.nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.nav a{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:7px 12px;font-size:13px;font-weight:700;background:var(--card);color:var(--fg)}
+.nav a:hover{border-color:var(--accent);color:var(--accent)}
+.nav a.here{background:var(--accent);border-color:var(--accent);color:#fff}
+details.howto{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:12px 0;font-size:13px;color:var(--muted)}
+details.howto summary{cursor:pointer;padding:10px 16px;font-size:14px;font-weight:600;color:var(--fg)}
+details.howto .body{padding:0 16px 12px;border-top:1px solid var(--line)}
+details.howto p{margin:6px 0}
+details.howto b{color:var(--fg)}
+</style>
+</head>
+<body><div class="wrap">
+<nav class="nav gnav"><style>
+nav.gnav{display:block;position:sticky;top:0;z-index:40;margin:0 0 14px;padding:8px 0 6px;background:var(--bg,#fff);border-bottom:1px solid var(--line,#e5e7eb);font-family:inherit}
+.gnav .gnav-top{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.gnav .gnav-g{position:relative}
+.gnav .gnav-btn{display:inline-block;border:1px solid var(--line,#e5e7eb);border-radius:999px;padding:7px 14px;font-size:14px;font-weight:700;line-height:1.3;background:var(--card,#fff);color:var(--fg,#374151);text-decoration:none;cursor:pointer;white-space:nowrap}
+.gnav .gnav-btn:hover{border-color:var(--accent,#6366f1);color:var(--accent,#4338ca)}
+.gnav .gnav-btn.on{background:var(--accent,#4f46e5);border-color:var(--accent,#4f46e5);color:#fff}
+.gnav .gnav-caret{font-size:10px;margin-left:4px;opacity:.7}
+.gnav .gnav-menu{display:none;position:absolute;left:0;top:100%;padding-top:6px;z-index:41;min-width:168px}
+.gnav .gnav-g:nth-last-child(-n+2) .gnav-menu{left:auto;right:0}
+.gnav .gnav-menu-in{background:var(--card,#fff);border:1px solid var(--line,#e5e7eb);border-radius:10px;box-shadow:0 8px 24px rgba(15,23,42,.14);padding:6px}
+.gnav .gnav-item{display:block;border:0;border-radius:6px;padding:8px 12px;font-size:14px;font-weight:600;line-height:1.3;background:transparent;color:var(--fg,#374151);text-decoration:none;white-space:nowrap}
+.gnav .gnav-item:hover{background:var(--chip,#f1f5f9);color:var(--accent,#4338ca)}
+.gnav .gnav-item.on{color:var(--accent,#4338ca);background:var(--chip,#eef2ff)}
+.gnav .gnav-g.open .gnav-menu{display:block}
+@media (any-hover:hover){.gnav .gnav-g:hover .gnav-menu{display:block}}
+.gnav .gnav-sub{display:none;gap:4px;margin-top:6px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.gnav .gnav-sub::-webkit-scrollbar{display:none}
+.gnav .gnav-sub.on{display:flex}
+.gnav .gnav-subitem{flex:none;display:inline-block;border:0;border-radius:6px;padding:4px 10px;font-size:13px;font-weight:600;line-height:1.4;background:transparent;color:var(--muted,#6b7280);text-decoration:none;white-space:nowrap}
+.gnav .gnav-subitem:hover{color:var(--accent,#4338ca)}
+.gnav .gnav-subitem.on{background:var(--chip,#eef2ff);color:var(--accent,#4338ca)}
+@media (max-width:640px){.gnav .gnav-btn{padding:6px 11px;font-size:13px}}
+</style><style>@media (prefers-color-scheme:dark){:root{--bg:#1b2232;--card:#242d40;--line:#36425b;--chip:#2e3a52}}</style><div class="gnav-top"><a class="gnav-btn gnav-home" href="index.html" data-tab="🏠 總覽" data-g="-1">今日</a><div class="gnav-g" data-g="0"><a class="gnav-btn" href="index.html#tab=%F0%9F%93%8A%20%E5%B8%82%E5%A0%B4%E7%B8%BD%E8%A6%BD" aria-haspopup="true">大盤<span class="gnav-caret">▾</span></a><div class="gnav-menu"><div class="gnav-menu-in"><a class="gnav-item" href="index.html#tab=%F0%9F%93%8A%20%E5%B8%82%E5%A0%B4%E7%B8%BD%E8%A6%BD" data-tab="📊 市場總覽" data-g="0">📊 市場總覽</a><a class="gnav-item" href="index.html#tab=%E2%9A%96%EF%B8%8F%20%E6%8C%87%E6%95%B8%E8%B2%A2%E7%8D%BB" data-tab="⚖️ 指數貢獻" data-g="0">⚖️ 指數貢獻</a><a class="gnav-item" href="index.html#tab=%F0%9F%8C%90%20%E5%9C%8B%E9%9A%9B%E6%83%85%E5%8B%A2" data-tab="🌐 國際情勢" data-g="0">🌐 國際情勢</a><a class="gnav-item" href="index.html#tab=%F0%9F%8E%99%EF%B8%8F%20KOL%20%E8%A7%80%E9%BB%9E" data-tab="🎙️ KOL 觀點" data-g="0">🎙️ KOL 觀點</a></div></div></div><div class="gnav-g" data-g="1"><a class="gnav-btn" href="index.html#tab=%F0%9F%94%A5%20%E4%B8%8A%E6%BC%B2%E6%97%8F%E7%BE%A4" aria-haspopup="true">族群<span class="gnav-caret">▾</span></a><div class="gnav-menu"><div class="gnav-menu-in"><a class="gnav-item" href="index.html#tab=%F0%9F%94%A5%20%E4%B8%8A%E6%BC%B2%E6%97%8F%E7%BE%A4" data-tab="🔥 上漲族群" data-g="1">🔥 上漲族群</a><a class="gnav-item" href="index.html#tab=%F0%9F%A7%8A%20%E4%B8%8B%E8%B7%8C%E6%97%8F%E7%BE%A4" data-tab="🧊 下跌族群" data-g="1">🧊 下跌族群</a><a class="gnav-item" href="index.html#tab=%F0%9F%94%84%20%E6%97%8F%E7%BE%A4%E8%BC%AA%E5%8B%95" data-tab="🔄 族群輪動" data-g="1">🔄 族群輪動</a><a class="gnav-item" href="themes.html">📡 題材雷達</a><a class="gnav-item" href="revenue-industry.html">🏭 營收族群</a></div></div></div><div class="gnav-g" data-g="2"><a class="gnav-btn on" href="index.html#tab=%F0%9F%8F%86%20%E7%B5%82%E6%A5%B5%E9%81%B8%E8%82%A1%E6%B1%A0" aria-haspopup="true">個股<span class="gnav-caret">▾</span></a><div class="gnav-menu"><div class="gnav-menu-in"><a class="gnav-item" href="index.html#tab=%F0%9F%8F%86%20%E7%B5%82%E6%A5%B5%E9%81%B8%E8%82%A1%E6%B1%A0" data-tab="🏆 終極選股池" data-g="2">🏆 終極選股池</a><a class="gnav-item" href="index.html#tab=%F0%9F%8F%A6%20%E5%A4%A7%E6%88%B6%E7%B1%8C%E7%A2%BC" data-tab="🏦 大戶籌碼" data-g="2">🏦 大戶籌碼</a><a class="gnav-item" href="broker-watch.html">🕵️ 贏家分點</a><a class="gnav-item" href="target-price.html">🎯 目標價</a><a class="gnav-item" href="investor-conf.html">🎤 法說會</a><a class="gnav-item" href="revenue.html">📈 月營收</a><a class="gnav-item on" href="revenue-decline.html">📉 營收衰退</a><a class="gnav-item" href="cb-pledge.html">🔐 設質+CB</a></div></div></div><div class="gnav-g" data-g="3"><a class="gnav-btn" href="index.html#tab=%F0%9F%8E%AF%20%E6%93%8D%E4%BD%9C%E5%BB%BA%E8%AD%B0" aria-haspopup="true">策略<span class="gnav-caret">▾</span></a><div class="gnav-menu"><div class="gnav-menu-in"><a class="gnav-item" href="index.html#tab=%F0%9F%8E%AF%20%E6%93%8D%E4%BD%9C%E5%BB%BA%E8%AD%B0" data-tab="🎯 操作建議" data-g="3">🎯 操作建議</a><a class="gnav-item" href="review.html">🔒 交易檢討</a></div></div></div></div><div class="gnav-sub" data-g="0"><a class="gnav-subitem" href="index.html#tab=%F0%9F%93%8A%20%E5%B8%82%E5%A0%B4%E7%B8%BD%E8%A6%BD" data-tab="📊 市場總覽" data-g="0">市場總覽</a><a class="gnav-subitem" href="index.html#tab=%E2%9A%96%EF%B8%8F%20%E6%8C%87%E6%95%B8%E8%B2%A2%E7%8D%BB" data-tab="⚖️ 指數貢獻" data-g="0">指數貢獻</a><a class="gnav-subitem" href="index.html#tab=%F0%9F%8C%90%20%E5%9C%8B%E9%9A%9B%E6%83%85%E5%8B%A2" data-tab="🌐 國際情勢" data-g="0">國際情勢</a><a class="gnav-subitem" href="index.html#tab=%F0%9F%8E%99%EF%B8%8F%20KOL%20%E8%A7%80%E9%BB%9E" data-tab="🎙️ KOL 觀點" data-g="0">KOL 觀點</a></div><div class="gnav-sub" data-g="1"><a class="gnav-subitem" href="index.html#tab=%F0%9F%94%A5%20%E4%B8%8A%E6%BC%B2%E6%97%8F%E7%BE%A4" data-tab="🔥 上漲族群" data-g="1">上漲族群</a><a class="gnav-subitem" href="index.html#tab=%F0%9F%A7%8A%20%E4%B8%8B%E8%B7%8C%E6%97%8F%E7%BE%A4" data-tab="🧊 下跌族群" data-g="1">下跌族群</a><a class="gnav-subitem" href="index.html#tab=%F0%9F%94%84%20%E6%97%8F%E7%BE%A4%E8%BC%AA%E5%8B%95" data-tab="🔄 族群輪動" data-g="1">族群輪動</a><a class="gnav-subitem" href="themes.html">題材雷達</a><a class="gnav-subitem" href="revenue-industry.html">營收族群</a></div><div class="gnav-sub on" data-g="2"><a class="gnav-subitem" href="index.html#tab=%F0%9F%8F%86%20%E7%B5%82%E6%A5%B5%E9%81%B8%E8%82%A1%E6%B1%A0" data-tab="🏆 終極選股池" data-g="2">選股池</a><a class="gnav-subitem" href="index.html#tab=%F0%9F%8F%A6%20%E5%A4%A7%E6%88%B6%E7%B1%8C%E7%A2%BC" data-tab="🏦 大戶籌碼" data-g="2">大戶籌碼</a><a class="gnav-subitem" href="broker-watch.html">贏家分點</a><a class="gnav-subitem" href="target-price.html">目標價</a><a class="gnav-subitem" href="investor-conf.html">法說會</a><a class="gnav-subitem" href="revenue.html">月營收</a><a class="gnav-subitem on" href="revenue-decline.html">營收衰退</a><a class="gnav-subitem" href="cb-pledge.html">設質CB</a></div><div class="gnav-sub" data-g="3"><a class="gnav-subitem" href="index.html#tab=%F0%9F%8E%AF%20%E6%93%8D%E4%BD%9C%E5%BB%BA%E8%AD%B0" data-tab="🎯 操作建議" data-g="3">操作建議</a><a class="gnav-subitem" href="review.html">交易檢討</a></div><script>(function(){
+var nav=document.currentScript&&document.currentScript.parentNode;if(!nav)return;
+var groups=[].slice.call(nav.querySelectorAll('.gnav-g'));
+function closeAll(except){groups.forEach(function(g){if(g!==except)g.classList.remove('open');});}
+groups.forEach(function(g){var b=g.querySelector('.gnav-btn');if(!b)return;
+b.addEventListener('click',function(e){e.preventDefault();closeAll(g);g.classList.toggle('open');});});
+document.addEventListener('click',function(e){if(!nav.contains(e.target))closeAll();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll();});
+nav.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('.gnav-item,.gnav-subitem'))closeAll();});
+window.gnavMark=function(label){
+  var gi=-1;
+  [].slice.call(nav.querySelectorAll('[data-tab]')).forEach(function(a){var on=a.getAttribute('data-tab')===label;a.classList.toggle('on',on);if(on)gi=+a.getAttribute('data-g');});
+  groups.forEach(function(g){g.querySelector('.gnav-btn').classList.toggle('on',+g.getAttribute('data-g')===gi);});
+  [].slice.call(nav.querySelectorAll('.gnav-sub')).forEach(function(s){s.classList.toggle('on',+s.getAttribute('data-g')===gi);});
+  showCurrent();
+};
+// 手機上小分頁列是橫向捲動的：把目前這一項捲進畫面
+function showCurrent(){var on=nav.querySelector('.gnav-sub.on .gnav-subitem.on');if(!on)return;var row=on.parentNode;
+if(row.scrollWidth>row.clientWidth)row.scrollLeft=on.offsetLeft-row.offsetLeft-(row.clientWidth-on.offsetWidth)/2;}
+showCurrent();
+})();</script></nav>
+<h1>📉 月營收衰退名單</h1>
+<p class="sub">單月營收 YoY ≤ −20%，下個月傾向跑輸大盤。用途是<b>避開</b>或當<b>放空候選</b>，不是買進名單。更新：2026-10-09 15:06（期貨與成交額取自 2026-10-08）</p>
+
+<div class="months" id="months"></div>
+<p class="note" id="mnote"></p>
+<div class="cards" id="cards"></div>
+<details class="howto"><summary>怎麼用、回測結果與限制</summary><div class="body">
+<p><b>回測（2019-01～2026-07，91 個月）</b>：單月 YoY ≤ −20% 的股票，下個月平均跑輸同一流動性母體 <b>1.22%</b>（t −5.6），76% 的月份跑輸；2023 前後兩段幾乎一樣，持有 3 個月的超額擴大到約 −2.7%。流動性門檻提高到 5,000 萬也成立。</p>
+<p><b>放空的實際報酬會比回測少</b>：融券來回成本約 0.665%／月，扣完淨報酬約每月 0.5～0.8%。小型股可能沒券、遇到平盤以下限制或股東會強制回補。<b>有個股期貨</b>的標的可以直接用期貨放空，不受這些限制，所以排在最前面。</p>
+<p><b>MoM 連續衰退</b>：連 3 個月營收比上個月少的股票，回測每月跑輸 1.46%（t −5.6）；和 YoY 衰退同時成立時擴大到 1.9%，但每月只有十幾檔。</p>
+<p><b>股價是不是已經跌完了？</b>大致上沒有：在前 60 日跌最多的那 1/3 股票裡，營收衰退股仍比同組其他股票多跑輸約 1%。例外是 YoY 連 3 月以上 ≤ −20% 又已經跌深的，利空大多已反映。</p>
+<p><b>毛利率</b>：回測顯示毛利率年減單獨用幾乎沒有放空價值，跟營收條件合併也只多一點點，這裡只當附註。</p>
+<p><b>生效時間</b>：回測在營收月份的次月 11 日之後才進場、持有約一個月。每月 1~10 號，「生效中」是上一個已公布完的月份；「公布中」是正在陸續公布的新月份，名單還會長大。</p>
+<p>完整研究：<a href="https://github.com/hchs200771/100-up-and-down-stocks/blob/main/docs/revenue-short-backtest.md">revenue-short-backtest.md</a>。這不是投資建議。</p>
+</div></details>
+<div class="filters">
+<label><input type="checkbox" id="fFut"><span class="fl">只看有期貨</span></label>
+<label><input type="checkbox" id="fSt"><span class="fl">YoY 連 3 月以上</span></label>
+<label><input type="checkbox" id="fMs"><span class="fl">MoM 連 3 月衰退</span></label>
+<label><input type="checkbox" id="fGm"><span class="fl">毛利率年減</span></label>
+<label><span class="fl">產業</span><select id="fInd"><option value="">全部</option><option>光電業</option><option>其他電子業</option><option>化學工業</option><option>半導體業</option><option>塑膠工業</option><option>生技醫療業</option><option>航運業</option><option>貿易百貨</option><option>通信網路業</option><option>鋼鐵工業</option><option>電子通路業</option><option>電子零組件業</option><option>電腦及週邊設備業</option></select></label>
+</div>
+<div class="count" id="count"></div>
+<div class="tablebox"><table><thead><tr><th data-k="c" title="股票代號，點了開雅虎股市">代號</th><th data-k="n" title="公司名稱，點了開雅虎股市">名稱</th><th data-k="fu" title="有沒有個股期貨，以及期交所公告的原始保證金比例（級距 1 = 13.5%、級距 2 = 16.2%、級距 3 = 20.25%）。跟漲跌 100 名單同一來源。有期貨就能直接用期貨放空或避險，不受融券張數、平盤以下與強制回補限制">期貨</th><th data-k="ind" title="公開資訊觀測站的產業分類">產業</th><th data-k="y" title="單月營收年增率。名單門檻是 ≤ −20%">YoY</th><th data-k="y3" title="近 3 個月營收合計，跟去年同期 3 個月合計比的年增率。比單月穩定，不受單月出貨時點影響">3月合計YoY</th><th data-k="st" title="連續幾個月單月 YoY ≤ −20%（含本月）。1＝本月才掉下來。回測：連 3 月以上、而且前 60 日已經跌最多的那批，利空大多已反映，額外跑輸不顯著">YoY連續月</th><th data-k="ms" title="連續幾個月營收比上個月少（MoM &lt; 0，含本月）。回測：再加上 MoM 連 3 月衰退，平均每月跑輸從 1.2% 擴大到約 1.8%，但檔數少很多。注意農曆年前後的季節性下滑">MoM連續月</th><th data-k="r60" title="前 60 個交易日的股價漲跌（未還原除權息）。回測：即使是前 60 日跌最多的那 1/3，營收衰退股仍比同組其他股票多跑輸約 1%，大致上沒有跌完">前60日</th><th data-k="gm" title="最新一季單季毛利率減去年同季（pp）。回測顯示毛利率下滑單獨用幾乎沒有放空價值，這欄只當附註">毛利率年增減</th><th data-k="r" title="當月營收，單位億元">營收(億)</th><th data-k="to" title="最近一個交易日的成交金額，單位億元">成交額(億)</th><th data-k="px" title="最近一個交易日的收盤價">收盤</th><th data-k="f" title="第一次進這個月名單的日期">首次進榜</th></tr></thead><tbody id="tb"></tbody></table></div>
+</div>
+<script>
+const DATA=[{"month":"2026-09","partial":false,"coverage":1525,"universe":600,"counts":{"名單":36,"有期貨":11,"連3月":9,"MoM連3月":6,"毛利率年減":16,"今日新到":31},"rows":[{"c":"2915","n":"潤泰全","sfx":".TW","ind":"貿易百貨","y":-0.6402155214385408,"y3":-0.387540391146891,"st":1,"ms":1,"r60":0.1526418786692758,"gm":0.12596495345735514,"gmq":"2026Q2","r":110846,"to":81513792,"px":58.9,"f":"2026-10-09","nw":1,"fu":13.5,"fut":"級距1 13.50%"},{"c":"2485","n":"兆赫","sfx":".TW","ind":"通信網路業","y":-0.5038868569998192,"y3":0.17031558152605908,"st":1,"ms":2,"r60":-0.12156448202959835,"gm":0.26006177049252827,"gmq":"2026Q2","r":142700,"to":479913318,"px":41.55,"f":"2026-10-09","nw":1,"fu":20.25,"fut":"級距3 20.25%"},{"c":"6443","n":"元晶","sfx":".TW","ind":"光電業","y":-0.4815741436701385,"y3":-0.3243217113878659,"st":2,"ms":0,"r60":-0.09698996655518388,"gm":-0.0591395566008549,"gmq":"2026Q2","r":96562,"to":75259853,"px":27,"f":"2026-10-09","nw":1,"fu":20.25,"fut":"級距3 20.25%"},{"c":"2458","n":"義隆","sfx":".TW","ind":"半導體業","y":-0.46899350649350646,"y3":-0.3302681715031024,"st":2,"ms":3,"r60":-0.2646239554317549,"gm":-0.00628851271309655,"gmq":"2026Q2","r":601864,"to":158958253,"px":132,"f":"2026-10-07","nw":0,"fu":13.5,"fut":"級距1 13.50%"},{"c":"1314","n":"中石化","sfx":".TW","ind":"塑膠工業","y":-0.45033203502384755,"y3":-0.3584768888592006,"st":5,"ms":2,"r60":0.03661327231121292,"gm":0.15759297100881028,"gmq":"2026Q2","r":864808,"to":512893034,"px":9.06,"f":"2026-10-09","nw":1,"fu":13.5,"fut":"級距1 13.50%"},{"c":"2474","n":"可成","sfx":".TW","ind":"其他電子業","y":-0.34188957708684864,"y3":-0.36397667087426955,"st":8,"ms":0,"r60":0.0316622691292876,"gm":-0.015931023052993543,"gmq":"2026Q2","r":1028108,"to":377554307,"px":195.5,"f":"2026-10-09","nw":1,"fu":13.5,"fut":"級距1 13.50%"},{"c":"3211","n":"順達","sfx":".TWO","ind":"電腦及週邊設備業","y":-0.3405395208771824,"y3":0.016370959126020823,"st":1,"ms":1,"r60":-0.11818181818181817,"gm":0.0059407879528321494,"gmq":"2026Q2","r":776092,"to":1142925045,"px":388,"f":"2026-10-07","nw":0,"fu":20.25,"fut":"級距3 20.25%"},{"c":"5269","n":"祥碩","sfx":".TW","ind":"半導體業","y":-0.3002406049092967,"y3":-0.3335803137101663,"st":4,"ms":0,"r60":-0.022950819672131195,"gm":-0.021689152017983826,"gmq":"2026Q2","r":994941,"to":621205820,"px":1490,"f":"2026-10-09","nw":1,"fu":20.25,"fut":"級距3 20.25%"},{"c":"2385","n":"群光","sfx":".TW","ind":"電子零組件業","y":-0.2498554780546942,"y3":-0.2021806869781516,"st":2,"ms":3,"r60":-0.004784688995215336,"gm":-0.04112091128503639,"gmq":"2026Q2","r":6214354,"to":206275096,"px":104,"f":"2026-10-09","nw":1,"fu":13.5,"fut":"級距1 13.50%"},{"c":"6116","n":"彩晶","sfx":".TW","ind":"光電業","y":-0.24215182834269344,"y3":-0.07264447502155158,"st":1,"ms":1,"r60":-0.03821656050955413,"gm":0.09478670632410428,"gmq":"2026Q2","r":756359,"to":287221996,"px":15.1,"f":"2026-10-09","nw":1,"fu":20.25,"fut":"級距3 20.25%"},{"c":"6121","n":"新普","sfx":".TWO","ind":"電腦及週邊設備業","y":-0.2059511218343263,"y3":-0.02393217386008739,"st":1,"ms":2,"r60":-0.053315994798439514,"gm":0.040819463974396925,"gmq":"2026Q2","r":6047377,"to":199461962,"px":364,"f":"2026-10-07","nw":0,"fu":13.5,"fut":"級距1 13.50%"},{"c":"3049","n":"精金","sfx":".TW","ind":"光電業","y":-0.7289442517198222,"y3":-0.7201413110189663,"st":8,"ms":0,"r60":0.02127659574468077,"gm":0.8501082373927794,"gmq":"2026Q2","r":32270,"to":31681096,"px":12,"f":"2026-10-09","nw":1,"fu":null,"fut":null},{"c":"5222","n":"全訊","sfx":".TW","ind":"半導體業","y":-0.6980895885961746,"y3":-0.23715037392282456,"st":1,"ms":1,"r60":-0.19047619047619047,"gm":-0.12181852537759386,"gmq":"2026Q2","r":26771,"to":22066217,"px":102,"f":"2026-10-07","nw":0,"fu":null,"fut":null},{"c":"3025","n":"星通","sfx":".TW","ind":"通信網路業","y":-0.6185643019236478,"y3":-0.40035532935395735,"st":1,"ms":0,"r60":-0.020905923344947674,"gm":0.03717128637671796,"gmq":"2026Q2","r":39836,"to":35236718,"px":56.2,"f":"2026-10-09","nw":1,"fu":null,"fut":null},{"c":"6983","n":"華洋精機","sfx":".TWO","ind":"其他電子業","y":-0.6087901903471875,"y3":-0.38450330759988405,"st":1,"ms":0,"r60":0.08080808080808088,"gm":null,"gmq":"2026Q2","r":32925,"to":26595485,"px":374.5,"f":"2026-10-09","nw":1,"fu":null,"fut":null},{"c":"3055","n":"蔚華科","sfx":".TW","ind":"電子通路業","y":-0.5727550072953973,"y3":0.16898717453606782,"st":1,"ms":1,"r60":0.27065527065527073,"gm":0.06998076693011443,"gmq":"2026Q2","r":25768,"to":84561168,"px":223,"f":"2026-10-09","nw":1,"fu":null,"fut":null},{"c":"4707","n":"磐亞","sfx":".TWO","ind":"化學工業","y":-0.46546725575545733,"y3":-0.3695128557078923,"st":2,"ms":3,"r60":null,"gm":0.16151925848536197,"gmq":"2026Q2","r":65453,"to":165037446,"px":32.8,"f":"2026-10-09","nw":1,"fu":null,"fut":null},{"c":"8064","n":"東捷","sfx":".TWO","ind":"光電業","y":-0.42599625609540026,"y3":-0.42292094188943896,"st":3,"ms":0,"r60":0.04705882352941182,"gm":-0.002876318399183342,"gmq":"2026Q2","r":149024,"to":236286502,"px":133.5,"f":"2026-10-09","nw":1,"fu":null,"fut":null},{"c":"2630","n":"亞航","sfx":".TW","ind":"航運業","y":-0.4230274519450039,"y3":-0.33335983261591096,"st":6,"ms":0,"r60":-0.2744783306581059,"gm":-0.04678278622538601,"gmq":"2026Q2","r":337773,"to":21967903,"px":45.2,"f":"2026-10-09","nw":1,"fu":null,"fut":null},{"c":"5011","n":"久陽","sfx":".TWO","ind":"鋼鐵工業","y":-0.39774334037555914,"y3":-0.39576314395870726,"st":4,"ms":1,"r60":0.04418604651162794,"gm":0.0874645877587619,"gmq":"2026Q2","r":255137,"to":33661982,"px":22.45,"f":"2026-10-09","nw":1,"fu":null,"fut":null},{"c":"3062","n":"建漢","sfx":".TW","ind":"通信網路業","y":-0.3876623878750387,"y3":-0.053939666371930595,"st":1,"ms":2,"r60":-0.0431034482758621,"gm":0.005523646419196844,"gmq":"2026Q2","r":253400,"to":21223733,"px":22.2,"f":"2026-10-09","nw":1,"fu":null,"fut":null},{"c":"3615","n":"安可","sfx":".TWO","ind":"光電業","y":-0.3291458727700338,"y3":-0.3685761185235069,"st":8,"ms":0,"r60":null,"gm":-0.13650493551219908,"gmq":"2026Q2","r":46780,"to":31146416,"px":42.9,"f":"2026-10-09","nw":1,"fu":null,"fut":null},{"c":"2020","n":"美亞","sfx":".TW","ind":"鋼鐵工業","y":-0.28986009999442053,"y3":-0.46856479264288375,"st":3,"ms":0,"r60":0.13647058823529412,"gm":0.05405506694787948,"gmq":"2026Q2","r":292736,"to":27547987,"px":24.15,"f":"2026-10-09","nw":1,"fu":null,"fut":null},{"c":"3483","n":"力致","sfx":".TWO","ind":"電腦及週邊設備業","y":-0.2785141885147834,"y3":-0.25945255726319494,"st":2,"ms":0,"r60":null,"gm":-0.059790890570173255,"gmq":"2026Q2","r":654897,"to":31880251,"px":79,"f":"2026-10-09","nw":1,"fu":null,"fut":null},{"c":"6143","n":"振曜","sfx":".TWO","ind":"通信網路業","y":-0.2688018868604978,"y3":-0.12583768852896404,"st":1,"ms":3,"r60":-0.22535211267605637,"gm":-0.0016306431584600656,"gmq":"2026Q2","r":608253,"to":38540459,"px":77,"f":"2026-10-09","nw":1,"fu":null,"fut":null},{"c":"3317","n":"尼克森","sfx":".TWO","ind":"半導體業","y":-0.26866106228188036,"y3":-0.16142806672181753,"st":2,"ms":0,"r60":-0.20643729189789117,"gm":0.02551242574907886,"gmq":"2026Q2","r":175819,"to":587966237,"px":71.5,"f":"2026-10-09","nw":1,"fu":null,"fut":null},{"c":"6716","n":"應廣","sfx":".TWO","ind":"半導體業","y":-0.2675921133123147,"y3":0.5472685411288634,"st":1,"ms":1,"r60":0.5303867403314917,"gm":0.10581733534893983,"gmq":"2026Q2","r":77822,"to":59269364,"px":138.5,"f":"2026-10-09","nw":1,"fu":null,"fut":null},{"c":"2465","n":"麗臺","sfx":".TW","ind":"電腦及週邊設備業","y":-0.25428458447032687,"y3":0.698462960514922,"st":1,"ms":1,"r60":0.009422850412249772,"gm":0.023440225395573555,"gmq":"2026Q2","r":1063596,"to":200887327,"px":85.7,"f":"2026-10-09","nw":1,"fu":null,"fut":null},{"c":"6719","n":"力智","sfx":".TW","ind":"半導體業","y":-0.25327957294565284,"y3":-0.19013432261721597,"st":1,"ms":1,"r60":-0.21311475409836067,"gm":0.0348204243353924,"gmq":"2026Q2","r":302427,"to":357573505,"px":192,"f":"2026-10-09","nw":1,"fu":null,"fut":null},{"c":"3138","n":"耀登","sfx":".TW","ind":"通信網路業","y":-0.24897332045394205,"y3":-0.14480149116945507,"st":1,"ms":1,"r60":-0.07348837209302328,"gm":0.039145003669313505,"gmq":"2026Q2","r":132952,"to":25655569,"px":99.6,"f":"2026-10-09","nw":1,"fu":null,"fut":null},{"c":"8227","n":"巨有科技","sfx":".TWO","ind":"半導體業","y":-0.2383128518350348,"y3":-0.05386915912137502,"st":1,"ms":0,"r60":1.0180722891566263,"gm":-0.0923080563655797,"gmq":"2026Q2","r":156008,"to":449592784,"px":335,"f":"2026-10-09","nw":1,"fu":null,"fut":null},{"c":"8054","n":"安國","sfx":".TWO","ind":"半導體業","y":-0.23806422372551328,"y3":0.7473812222510334,"st":1,"ms":1,"r60":null,"gm":-0.1356091155630446,"gmq":"2026Q2","r":226954,"to":49621067,"px":81,"f":"2026-10-09","nw":1,"fu":null,"fut":null},{"c":"3289","n":"宜特","sfx":".TWO","ind":"其他電子業","y":-0.2153574002489681,"y3":-0.11400398682763435,"st":1,"ms":3,"r60":-0.09235668789808915,"gm":-0.00931436214567316,"gmq":"2026Q2","r":359280,"to":43741263,"px":142.5,"f":"2026-10-09","nw":1,"fu":null,"fut":null},{"c":"3694","n":"海華","sfx":".TW","ind":"通信網路業","y":-0.21395152690424468,"y3":-0.1483037147190035,"st":1,"ms":1,"r60":-0.22374429223744297,"gm":-0.000341786606846195,"gmq":"2026Q2","r":909598,"to":28678330,"px":51,"f":"2026-10-09","nw":1,"fu":null,"fut":null},{"c":"6412","n":"群電","sfx":".TW","ind":"電子零組件業","y":-0.2097689407185338,"y3":-0.17961089843792366,"st":1,"ms":3,"r60":-0.13813459268004724,"gm":-0.033905636497950115,"gmq":"2026Q2","r":2413451,"to":51902346,"px":73,"f":"2026-10-07","nw":0,"fu":null,"fut":null},{"c":"6620","n":"漢達","sfx":".TWO","ind":"生技醫療業","y":-0.20117765852440972,"y3":-0.5776341942218399,"st":2,"ms":0,"r60":0.49122807017543857,"gm":null,"gmq":"2026Q2","r":70409,"to":275646892,"px":127.5,"f":"2026-10-09","nw":1,"fu":null,"fut":null}]}];
+const ACTIVE="2026-09";
+let cur=Math.max(0,DATA.findIndex(d=>d.month===ACTIVE)),sortK=null,sortD=1;
+const $=id=>document.getElementById(id);
+const pct=v=>v==null?'<span class="none">—</span>':'<span class="'+(v<0?'neg':'pos')+'">'+(v>0?'+':'')+(v*100).toFixed(1)+'%</span>';
+const pp=v=>v==null?'<span class="none">—</span>':'<span class="'+(v<0?'neg':'pos')+'">'+(v>0?'+':'')+(v*100).toFixed(1)+'pp</span>';
+const yi=(r,t)=>'<a href="https://tw.stock.yahoo.com/quote/'+r.c+r.sfx+'" target="_blank" rel="noopener">'+t+'</a>';
+function months(){$('months').innerHTML=DATA.map((d,i)=>'<button class="'+(i===cur?'on':'')+'" data-i="'+i+'">'+d.month+(d.month===ACTIVE?' 生效中':' 公布中')+'</button>').join('');}
+function render(){
+  const d=DATA[cur];months();
+  $('mnote').textContent=d.partial?('⚠️ '+d.month+' 還在公布中（已收 '+d.coverage+' 家，全市場約 1900 家），名單接下來幾天會繼續長大；依回測定義要到次月 11 日才生效。'):'';
+  const c=d.counts;
+  $('cards').innerHTML=[['total','名單',c['名單'],'母體 '+d.universe+' 檔中 YoY ≤ −20%'],['','有期貨',c['有期貨'],'可直接用個股期貨放空／避險'],['','YoY 連 3 月',c['連3月'],'連續 3 個月以上 YoY ≤ −20%'],['','MoM 連 3 月',c['MoM連3月'],'連 3 個月營收比上月少，回測更強'],['','毛利率年減',c['毛利率年減'],'附註用，回測單獨效果弱'],['','今日新到',c['今日新到'],'今天第一次進這個月名單']].map(([k,n,v,ds])=>'<div class="card '+k+'"><span class="cname">'+n+'</span><span class="cdesc">'+ds+'</span><b>'+v+'</b></div>').join('');
+  let rows=d.rows.filter(r=>(!$('fFut').checked||r.fu!=null)&&(!$('fSt').checked||r.st>=3)&&(!$('fMs').checked||r.ms>=3)&&(!$('fGm').checked||(r.gm!=null&&r.gm<0))&&(!$('fInd').value||r.ind===$('fInd').value));
+  if(sortK)rows=[...rows].sort((a,b)=>{const x=a[sortK],y=b[sortK];if(x==null&&y==null)return 0;if(x==null)return 1;if(y==null)return -1;return (x>y?1:x<y?-1:0)*sortD;});
+  $('count').textContent='顯示 '+rows.length+' / '+d.rows.length+' 檔';
+  $('tb').innerHTML=rows.map(r=>'<tr><td>'+yi(r,r.c)+'</td><td>'+yi(r,r.n)+(r.nw?'<span class="new">新</span>':'')+'</td><td>'+(r.fut?'<span class="chip fut">'+r.fut+'</span>':'<span class="none">—</span>')+'</td><td>'+r.ind+'</td><td>'+pct(r.y)+'</td><td>'+pct(r.y3)+'</td><td>'+r.st+'</td><td>'+r.ms+'</td><td>'+pct(r.r60)+'</td><td'+(r.gmq?' title="'+r.gmq+'"':'')+'>'+pp(r.gm)+'</td><td>'+(r.r/1e5).toFixed(2)+'</td><td>'+(r.to==null?'<span class="none">—</span>':(r.to/1e8).toFixed(2))+'</td><td>'+(r.px==null?'<span class="none">—</span>':r.px)+'</td><td>'+r.f+'</td></tr>').join('');
+}
+$('months').addEventListener('click',e=>{const b=e.target.closest('button');if(b){cur=+b.dataset.i;render();}});
+['fFut','fSt','fMs','fGm','fInd'].forEach(id=>$(id).addEventListener('change',render));
+document.querySelectorAll('th').forEach(th=>th.addEventListener('click',()=>{const k=th.dataset.k;if(sortK===k)sortD=-sortD;else{sortK=k;sortD=1;}render();}));
+render();
+</script>
+</body>
+</html>
