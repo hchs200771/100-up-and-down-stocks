@@ -1585,8 +1585,7 @@
   "note": "會後將於「公開資訊觀測站」及公司網站揭露相關資訊。",
   "deck": null,
   "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
-  "deckStatus": "下載失敗",
+  "videoStatus": "處理中",
   "context": {
    "revenue": "2026-09 月營收 485 百萬元，YoY +38%，MoM -1%，累計 YoY +43%，YoY 38%，連9月YoY成長，同期歷史新高",
    "move": null
@@ -1613,7 +1612,7 @@
   "analyzedEvidence": 0,
   "firstSeen": "2026-10-09T15:18:12+08:00",
   "state": "partial",
-  "pendingNote": "簡報下載失敗，下次重試；影音：本次轉檔數已滿，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "9919-2026-10-06": {
   "key": "9919-2026-10-06",
@@ -1672,7 +1671,7 @@
   "videoUrl": null,
   "note": "無",
   "deck": {
-   "file": "230820260730E001.pdf",
+   "file": "230820260730M001.pdf",
    "pages": 20,
    "chars": 4944,
    "imageHeavy": false
@@ -1752,7 +1751,6 @@
   "deck": null,
   "transcript": null,
   "videoStatus": "無影片",
-  "deckStatus": "下載失敗",
   "context": {
    "revenue": null,
    "move": null
@@ -1776,8 +1774,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 0,
   "firstSeen": "2026-10-09T15:18:12+08:00",
-  "state": "partial",
-  "pendingNote": "簡報下載失敗，下次重試"
+  "state": "done",
+  "pendingNote": ""
  },
  "2329-2026-10-02": {
   "key": "2329-2026-10-02",
@@ -1799,7 +1797,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 1,586 百萬元，YoY -9%，MoM -10%，累計 YoY +7%",
@@ -1856,7 +1854,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-10-09T15:18:12+08:00",
   "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "2399-2026-10-02": {
   "key": "2399-2026-10-02",
@@ -1872,9 +1870,9 @@
   "videoUrl": "http://irconference.twse.com.tw/2399_10_20261002_ch.MP4",
   "note": "無",
   "deck": {
-   "file": "239920261001E003.pdf",
+   "file": "239920261001M003.pdf",
    "pages": 14,
-   "chars": 4140,
+   "chars": 2882,
    "imageHeavy": false
   },
   "transcript": null,
@@ -2014,5 +2012,230 @@
   "firstSeen": "2026-10-09T15:18:12+08:00",
   "state": "done",
   "pendingNote": ""
+ },
+ "1338-2026-10-01": {
+  "key": "1338-2026-10-01",
+  "code": "1338",
+  "name": "廣華-KY",
+  "market": "sii",
+  "date": "2026-10-01",
+  "time": "14:00",
+  "place": "統一證券B2-203會議室(台北市東興路8號B2)",
+  "summary": "本公司受邀參加統一證券與IR Trust共同舉辦之廣華(1338)法說會，有意報名者請洽統一證券 李小姐，Email: maggie.lee@uni-psg.com",
+  "fileZh": "133820261001M001.pdf",
+  "fileEn": "133820261001E001.pdf",
+  "videoUrl": "http://irconference.twse.com.tw/1338_40_20261001_ch.mp4",
+  "note": "完整財務業務資訊請至公開資訊觀測站之法人說明會一覽表或法說會項目下查閱。",
+  "deck": null,
+  "transcript": null,
+  "videoStatus": "處理中",
+  "context": {
+   "revenue": null,
+   "move": null
+  },
+  "analysis": null,
+  "firstSeen": "2026-10-12T01:57:57+08:00",
+  "state": "pending",
+  "pendingNote": "尚未判讀；影音轉文字中"
+ },
+ "2317-2026-10-01": {
+  "key": "2317-2026-10-01",
+  "code": "2317",
+  "name": "鴻海",
+  "market": "sii",
+  "date": "2026-10-01",
+  "time": "16:00",
+  "place": "台北市內湖區基湖路32號",
+  "summary": "115年10月1日受BofA邀請參加投資人會議，說明本公司營運概況。",
+  "fileZh": "231720260812M001.pdf",
+  "fileEn": "231720260812E001.pdf",
+  "videoUrl": null,
+  "note": "無",
+  "deck": null,
+  "transcript": null,
+  "videoStatus": "無影片",
+  "context": {
+   "revenue": "2026-09 月營收 1,158,633 百萬元，YoY +38%，MoM +26%，累計 YoY +40%，YoY 38%，連12月YoY成長，5年新高",
+   "move": null
+  },
+  "analysis": null,
+  "firstSeen": "2026-10-12T01:57:57+08:00",
+  "state": "pending",
+  "pendingNote": "尚未判讀"
+ },
+ "2520-2026-10-01": {
+  "key": "2520-2026-10-01",
+  "code": "2520",
+  "name": "冠德",
+  "market": "sii",
+  "date": "2026-10-01",
+  "time": "14:00",
+  "place": "台北市民權東路三段169號(冠德民權大樓15樓會議室)",
+  "summary": "本公司受邀參加國泰證券舉辦之法人說明會，說明本公司115年第2季營運成果。",
+  "fileZh": "252020261001M001.pdf",
+  "fileEn": "252020261001E001.pdf",
+  "videoUrl": "https://youtu.be/Kc82uP84rPs",
+  "note": "無",
+  "deck": null,
+  "transcript": null,
+  "videoStatus": "處理中",
+  "context": {
+   "revenue": "2026-09 月營收 2,157 百萬元，YoY +17%，MoM +20%，累計 YoY +17%",
+   "move": null
+  },
+  "analysis": null,
+  "firstSeen": "2026-10-12T01:57:57+08:00",
+  "state": "pending",
+  "pendingNote": "尚未判讀；影音轉文字中"
+ },
+ "2546-2026-10-01": {
+  "key": "2546-2026-10-01",
+  "code": "2546",
+  "name": "根基",
+  "market": "sii",
+  "date": "2026-10-01",
+  "time": "14:30",
+  "place": "台北市松山區民權東路三段169號(冠德民權大樓15樓會議室)",
+  "summary": "本公司受邀參加國泰證券舉辦之法人說明會，說明本公司115年第2季營運成果。",
+  "fileZh": "254620261001M001.pdf",
+  "fileEn": "254620261001E001.pdf",
+  "videoUrl": "https://youtu.be/DCDLjZbtH4c",
+  "note": "無",
+  "deck": null,
+  "transcript": null,
+  "videoStatus": "處理中",
+  "context": {
+   "revenue": "2026-09 月營收 2,046 百萬元，YoY -12%，MoM +15%，累計 YoY +8%",
+   "move": null
+  },
+  "analysis": null,
+  "firstSeen": "2026-10-12T01:57:57+08:00",
+  "state": "pending",
+  "pendingNote": "尚未判讀；影音轉文字中"
+ },
+ "3013-2026-10-01": {
+  "key": "3013-2026-10-01",
+  "code": "3013",
+  "name": "晟銘電",
+  "market": "sii",
+  "date": "2026-10-01",
+  "time": "14:30",
+  "place": "南港中信金融園區B棟13樓1302會議室(台北市南港區經貿二路188號13樓)",
+  "summary": "本公司受邀參加中國信託綜合證券舉辦之法人說明會。",
+  "fileZh": "301320261001M001.pdf",
+  "fileEn": "301320261001E001.pdf",
+  "videoUrl": "http://irconference.twse.com.tw/3013_10_20261001_ch.MP4",
+  "note": "無",
+  "deck": null,
+  "transcript": null,
+  "videoStatus": "處理中",
+  "context": {
+   "revenue": "2026-09 月營收 1,101 百萬元，YoY +8%，MoM +17%，累計 YoY +20%",
+   "move": null
+  },
+  "analysis": null,
+  "firstSeen": "2026-10-12T01:57:57+08:00",
+  "state": "pending",
+  "pendingNote": "尚未判讀；影音轉文字中"
+ },
+ "6825-2026-10-01": {
+  "key": "6825-2026-10-01",
+  "code": "6825",
+  "name": "和暢科技",
+  "market": "rotc",
+  "date": "2026-10-01",
+  "time": "14:30",
+  "place": "台北寒舍艾美酒店3樓翡翠廳(台北市信義區松仁路38號)",
+  "summary": "本次上櫃前業績發表會將由本公司經營團隊說明產業發展、財\n務業務狀況、未來&#12213;險、財團法&#12040;中華&#11936;國證券櫃檯買賣中&#12092;\n董事會暨上櫃審議委員會要求補充揭露事項。",
+  "fileZh": "682520260930M001.pdf",
+  "fileEn": "682520260930E001.pdf",
+  "videoUrl": null,
+  "note": "",
+  "deck": null,
+  "transcript": null,
+  "videoStatus": "無影片",
+  "context": {
+   "revenue": null,
+   "move": null
+  },
+  "analysis": null,
+  "firstSeen": "2026-10-12T01:57:57+08:00",
+  "state": "pending",
+  "pendingNote": "尚未判讀"
+ },
+ "6938-2026-10-01": {
+  "key": "6938-2026-10-01",
+  "code": "6938",
+  "name": "藍新資訊",
+  "market": "rotc",
+  "date": "2026-10-01",
+  "time": "14:30",
+  "place": "台北君悅酒店3樓凱悅廳二區宴會廳(台北市信義區松壽路2號)",
+  "summary": "本次業績發表會將由本公司經營團隊說明產業發展、財務業務狀況、未來風險、公司治理及企業社會責任、有價證券上櫃審議委員會詢問重點暨財團法人中華民國證券櫃檯買賣中心要求於公開說明書及評估報告補充揭露事項。",
+  "fileZh": "693820261001M001.pdf",
+  "fileEn": "693820261001E001.pdf",
+  "videoUrl": null,
+  "note": "",
+  "deck": null,
+  "transcript": null,
+  "videoStatus": "無影片",
+  "context": {
+   "revenue": null,
+   "move": null
+  },
+  "analysis": null,
+  "firstSeen": "2026-10-12T01:57:57+08:00",
+  "state": "pending",
+  "pendingNote": "尚未判讀"
+ },
+ "7689-2026-10-01": {
+  "key": "7689-2026-10-01",
+  "code": "7689",
+  "name": "大鵬科CLMX",
+  "market": "sii",
+  "date": "2026-10-01",
+  "time": "14:30",
+  "place": "富邦金融大樓(台北市大安區仁愛路四段169號15樓)",
+  "summary": "本公司受邀參加富邦證券舉辦之法人說明會，\n說明本公司營運概況與未來展望。",
+  "fileZh": "768920261001M001.pdf",
+  "fileEn": "768920261001E001.pdf",
+  "videoUrl": "https://www.youtube.com/watch?v=1zYM2wnfAzw",
+  "note": "無。",
+  "deck": null,
+  "transcript": null,
+  "videoStatus": "處理中",
+  "context": {
+   "revenue": "2026-08 月營收 432 百萬元，YoY +4%，MoM -17%，累計 YoY +33%",
+   "move": null
+  },
+  "analysis": null,
+  "firstSeen": "2026-10-12T01:57:57+08:00",
+  "state": "pending",
+  "pendingNote": "尚未判讀；影音轉文字中"
+ },
+ "7743-2026-10-01": {
+  "key": "7743-2026-10-01",
+  "code": "7743",
+  "name": "金利食安",
+  "market": "otc",
+  "date": "2026-10-01",
+  "time": "14:30",
+  "place": "台開大樓19樓1901會議室(地址：台北市重慶南路一段2號)",
+  "summary": "本公司受邀參加永豐金證券舉辦之法人說明會",
+  "fileZh": "774320261005M001.pdf",
+  "fileEn": "774320261005E001.pdf",
+  "videoUrl": "https://youtu.be/aaE9DcviCgo?si=8RDAgleNHuxC6sdf",
+  "note": "無",
+  "deck": null,
+  "transcript": null,
+  "videoStatus": "處理中",
+  "context": {
+   "revenue": "2026-09 月營收 52 百萬元，YoY -24%，MoM -10%，累計 YoY +2%",
+   "move": "2026-10-08 跌幅前 100（-3.7037037037037033%）"
+  },
+  "analysis": null,
+  "firstSeen": "2026-10-12T01:57:57+08:00",
+  "state": "pending",
+  "pendingNote": "尚未判讀；影音轉文字中"
  }
 }

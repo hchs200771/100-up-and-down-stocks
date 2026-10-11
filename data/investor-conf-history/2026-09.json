@@ -1,0 +1,52 @@
+{
+ "2317-2026-09-22": {
+  "key": "2317-2026-09-22",
+  "code": "2317",
+  "name": "鴻海",
+  "market": "sii",
+  "date": "2026-09-22",
+  "time": "09:00",
+  "place": "電話會議",
+  "summary": "115年9月22日受Wolfe邀請參加投資人會議，說明本公司營運概況。\n115年9月30日受康和證券邀請參加投資人會議，說明本公司營運概況。\n115年10月1日受SIG邀請參加投資人會議，說明本公司營運概況。",
+  "fileZh": "231720260812M001.pdf",
+  "fileEn": "231720260812E001.pdf",
+  "videoUrl": null,
+  "note": "無",
+  "deck": null,
+  "transcript": null,
+  "videoStatus": "無影片",
+  "context": {
+   "revenue": "2026-09 月營收 1,158,633 百萬元，YoY +38%，MoM +26%，累計 YoY +40%，YoY 38%，連12月YoY成長，5年新高",
+   "move": null
+  },
+  "analysis": null,
+  "firstSeen": "2026-10-12T01:57:57+08:00",
+  "state": "pending",
+  "pendingNote": "尚未判讀"
+ },
+ "2356-2026-09-11": {
+  "key": "2356-2026-09-11",
+  "code": "2356",
+  "name": "英業達",
+  "market": "sii",
+  "date": "2026-09-11",
+  "time": "15:00",
+  "place": "線上說明會",
+  "summary": "2026/9/11受邀參加CLSA; 2026/9/16受邀參加KeyBanc; 2026/10/13受邀參加SIG線上投資人說明會",
+  "fileZh": "235620260819M006.pdf",
+  "fileEn": "235620260819E006.pdf",
+  "videoUrl": null,
+  "note": "無",
+  "deck": null,
+  "transcript": null,
+  "videoStatus": "無影片",
+  "context": {
+   "revenue": "2026-09 月營收 98,636 百萬元，YoY +63%，MoM +18%，累計 YoY +43%，YoY 63%，連9月YoY成長，同期歷史新高，比前三月加速 8pp",
+   "move": null
+  },
+  "analysis": null,
+  "firstSeen": "2026-10-12T01:57:57+08:00",
+  "state": "pending",
+  "pendingNote": "尚未判讀"
+ }
+}
