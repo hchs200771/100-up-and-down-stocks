@@ -278,7 +278,7 @@ async function fetchList(months: string[]): Promise<ConfRow[]> {
     const [y, m] = ym.split("-").map(Number);
     for (const market of ["sii", "otc", "rotc"] as Market[]) {
       const res = await post(`${MOPS}/mops/web/ajax_t100sb02_1`, {
-        encodeURIComponent: "1", step: "1", firstin: "1", off: "1", TYPEK: market, year: String(y - 1911), month: String(m), co_id: "",
+        encodeURIComponent: "1", step: "1", firstin: "1", off: "1", TYPEK: market, year: String(y - 1911), month: String(m).padStart(2, "0"), co_id: "",
       });
       const rows = parseList(await res.text(), market);
       log(`一覽表 ${ym} ${MARKET_LABEL[market]}：${rows.length} 場`);
@@ -704,7 +704,7 @@ async function main() {
     if (!histories.has(ym)) histories.set(ym, readJson(resolve(HISTORY_DIR, `${ym}.json`), {}));
     return histories.get(ym)!;
   };
-  // 一覽表只查得到當月與之後（上個月回「查無資料」），所以月初那幾天，上個月底的場次從歷史補回視窗
+  // 一覽表的月份要補零（month=9 回「查無資料」，09 才有）；歷史仍保留，一覽表撈不到的場次從歷史補回視窗
   const fromList = new Set(list.map((r) => r.key));
   const fromHistory: ConfRow[] = months
     .flatMap((ym) => Object.values(history(ym)))
