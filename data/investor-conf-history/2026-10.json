@@ -1876,7 +1876,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-08 月營收 198 百萬元，YoY +40%，MoM +3%，累計 YoY +7%",
@@ -1932,7 +1932,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-10-09T15:18:12+08:00",
   "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "9908-2026-10-02": {
   "key": "9908-2026-10-02",
@@ -1954,7 +1954,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "影音在公司網頁，未轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 265 百萬元，YoY +5%，MoM -1%，累計 YoY +1%",
@@ -2237,5 +2237,107 @@
   "firstSeen": "2026-10-12T01:57:57+08:00",
   "state": "pending",
   "pendingNote": "尚未判讀；影音轉文字中"
+ },
+ "2408-2026-10-12": {
+  "key": "2408-2026-10-12",
+  "code": "2408",
+  "name": "南亞科",
+  "market": "sii",
+  "date": "2026-10-12",
+  "time": "15:00",
+  "place": "線上法說會",
+  "summary": "(1)2026年第3季營運狀況說明\n(2)參加方式：請參見 https://www.nanya.com/tw/IR/13/Investor Calendar",
+  "fileZh": null,
+  "fileEn": null,
+  "videoUrl": "https://www.nanya.com/tw/IR/13/Investor Calendar?Year=2026",
+  "note": "無",
+  "deck": null,
+  "transcript": null,
+  "videoStatus": "影音在公司網頁，未轉",
+  "deckStatus": "尚未上傳",
+  "context": {
+   "revenue": "2026-09 月營收 45,091 百萬元，YoY +577%，MoM +1%，累計 YoY +627%，YoY 577%，連12月YoY成長，MoM連12月正成長，5年新高",
+   "move": null
+  },
+  "analysis": null,
+  "firstSeen": "2026-10-12T01:59:32+08:00",
+  "state": "pending",
+  "pendingNote": "尚未判讀；簡報還沒上傳"
+ },
+ "2881-2026-10-12": {
+  "key": "2881-2026-10-12",
+  "code": "2881",
+  "name": "富邦金",
+  "market": "sii",
+  "date": "2026-10-12",
+  "time": "16:00",
+  "place": "歐洲",
+  "summary": "討論富邦金控財務及業務相關資訊",
+  "fileZh": "288120261008M002.pdf",
+  "fileEn": "288120261008E002.pdf",
+  "videoUrl": null,
+  "note": "受Citi邀約參加投資人會議",
+  "deck": null,
+  "transcript": null,
+  "videoStatus": "無影片",
+  "context": {
+   "revenue": "2026-08 月營收 40,551 百萬元，YoY -48%，MoM +280%，累計 YoY +172%",
+   "move": null
+  },
+  "analysis": null,
+  "firstSeen": "2026-10-12T01:59:32+08:00",
+  "state": "pending",
+  "pendingNote": "尚未判讀"
+ },
+ "4934-2026-10-12": {
+  "key": "4934-2026-10-12",
+  "code": "4934",
+  "name": "太極",
+  "market": "sii",
+  "date": "2026-10-12",
+  "time": "14:30",
+  "place": "台北君悅酒店3樓凱悅二廳(台北市信義區松壽路2號)",
+  "summary": "盛新材料(6930)-受邀參加第一金證券舉辦之興櫃前法人說明會\n說明公司營運概況及未來展望。",
+  "fileZh": null,
+  "fileEn": null,
+  "videoUrl": null,
+  "note": "代子公司盛新材料(6930)申報",
+  "deck": null,
+  "transcript": null,
+  "videoStatus": "無影片",
+  "deckStatus": "尚未上傳",
+  "context": {
+   "revenue": "2026-09 月營收 18 百萬元，YoY +35%，MoM -24%，累計 YoY +136%",
+   "move": "2026-10-08 漲幅前 100（+9.967845659163988%）"
+  },
+  "analysis": null,
+  "firstSeen": "2026-10-12T01:59:32+08:00",
+  "state": "pending",
+  "pendingNote": "尚未判讀；簡報還沒上傳"
+ },
+ "6281-2026-10-12": {
+  "key": "6281-2026-10-12",
+  "code": "6281",
+  "name": "全國電",
+  "market": "sii",
+  "date": "2026-10-12",
+  "time": "14:00",
+  "place": "線上法說會",
+  "summary": "本公司受邀參加凱基證券主辦之線上法說會，說明本公司之營運概況、財務及業務相關資訊。",
+  "fileZh": "628120261008M001.pdf",
+  "fileEn": "628120261008E001.pdf",
+  "videoUrl": null,
+  "note": "無",
+  "deck": null,
+  "transcript": null,
+  "videoStatus": "無影片",
+  "context": {
+   "revenue": "2026-09 月營收 1,494 百萬元，YoY +10%，MoM -12%，累計 YoY +1%",
+   "move": null
+  },
+  "analysis": null,
+  "firstSeen": "2026-10-12T01:59:32+08:00",
+  "state": "pending",
+  "pendingNote": "尚未判讀"
  }
 }
