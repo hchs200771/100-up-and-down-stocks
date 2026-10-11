@@ -1,17 +1,17 @@
 {
   "month": "2026-09",
-  "coverage": 1525,
+  "coverage": 1549,
   "partial": false,
   "combinedJanFeb": false,
-  "universe": 600,
-  "illiquid": 683,
+  "universe": 610,
+  "illiquid": 694,
   "counts": {
-    "名單": 36,
+    "名單": 37,
     "有期貨": 11,
     "連3月": 9,
     "MoM連3月": 6,
-    "毛利率年減": 16,
-    "今日新到": 31
+    "毛利率年減": 17,
+    "今日新到": 1
   },
   "entries": [
     {
@@ -34,7 +34,7 @@
         "margin": "13.50%"
       },
       "firstSeen": "2026-10-09",
-      "fresh": true
+      "fresh": false
     },
     {
       "code": "2485",
@@ -56,7 +56,7 @@
         "margin": "20.25%"
       },
       "firstSeen": "2026-10-09",
-      "fresh": true
+      "fresh": false
     },
     {
       "code": "6443",
@@ -78,7 +78,7 @@
         "margin": "20.25%"
       },
       "firstSeen": "2026-10-09",
-      "fresh": true
+      "fresh": false
     },
     {
       "code": "2458",
@@ -122,7 +122,7 @@
         "margin": "13.50%"
       },
       "firstSeen": "2026-10-09",
-      "fresh": true
+      "fresh": false
     },
     {
       "code": "2474",
@@ -144,7 +144,7 @@
         "margin": "13.50%"
       },
       "firstSeen": "2026-10-09",
-      "fresh": true
+      "fresh": false
     },
     {
       "code": "3211",
@@ -188,7 +188,7 @@
         "margin": "20.25%"
       },
       "firstSeen": "2026-10-09",
-      "fresh": true
+      "fresh": false
     },
     {
       "code": "2385",
@@ -210,7 +210,7 @@
         "margin": "13.50%"
       },
       "firstSeen": "2026-10-09",
-      "fresh": true
+      "fresh": false
     },
     {
       "code": "6116",
@@ -232,7 +232,7 @@
         "margin": "20.25%"
       },
       "firstSeen": "2026-10-09",
-      "fresh": true
+      "fresh": false
     },
     {
       "code": "6121",
@@ -273,7 +273,7 @@
       "close": 12,
       "futures": null,
       "firstSeen": "2026-10-09",
-      "fresh": true
+      "fresh": false
     },
     {
       "code": "5222",
@@ -311,7 +311,7 @@
       "close": 56.2,
       "futures": null,
       "firstSeen": "2026-10-09",
-      "fresh": true
+      "fresh": false
     },
     {
       "code": "6983",
@@ -330,7 +330,7 @@
       "close": 374.5,
       "futures": null,
       "firstSeen": "2026-10-09",
-      "fresh": true
+      "fresh": false
     },
     {
       "code": "3055",
@@ -349,7 +349,7 @@
       "close": 223,
       "futures": null,
       "firstSeen": "2026-10-09",
-      "fresh": true
+      "fresh": false
     },
     {
       "code": "4707",
@@ -368,7 +368,7 @@
       "close": 32.8,
       "futures": null,
       "firstSeen": "2026-10-09",
-      "fresh": true
+      "fresh": false
     },
     {
       "code": "8064",
@@ -387,7 +387,7 @@
       "close": 133.5,
       "futures": null,
       "firstSeen": "2026-10-09",
-      "fresh": true
+      "fresh": false
     },
     {
       "code": "2630",
@@ -406,7 +406,7 @@
       "close": 45.2,
       "futures": null,
       "firstSeen": "2026-10-09",
-      "fresh": true
+      "fresh": false
     },
     {
       "code": "5011",
@@ -425,7 +425,7 @@
       "close": 22.45,
       "futures": null,
       "firstSeen": "2026-10-09",
-      "fresh": true
+      "fresh": false
     },
     {
       "code": "3062",
@@ -444,6 +444,25 @@
       "close": 22.2,
       "futures": null,
       "firstSeen": "2026-10-09",
+      "fresh": false
+    },
+    {
+      "code": "3362",
+      "name": "先進光",
+      "market": "tpex",
+      "industry": "光電業",
+      "rev": 223771,
+      "yoy": -0.37161511351988885,
+      "yoy3m": -0.21659750963812396,
+      "declineStreak": 2,
+      "momDeclineStreak": 2,
+      "r60": 0.10465116279069764,
+      "marginQuarter": "2026Q2",
+      "marginYoy": -0.13793856087541198,
+      "turnover": 750980241,
+      "close": 190,
+      "futures": null,
+      "firstSeen": "2026-10-11",
       "fresh": true
     },
     {
@@ -463,7 +482,7 @@
       "close": 42.9,
       "futures": null,
       "firstSeen": "2026-10-09",
-      "fresh": true
+      "fresh": false
     },
     {
       "code": "2020",
@@ -482,7 +501,7 @@
       "close": 24.15,
       "futures": null,
       "firstSeen": "2026-10-09",
-      "fresh": true
+      "fresh": false
     },
     {
       "code": "3483",
@@ -501,7 +520,7 @@
       "close": 79,
       "futures": null,
       "firstSeen": "2026-10-09",
-      "fresh": true
+      "fresh": false
     },
     {
       "code": "6143",
@@ -520,7 +539,7 @@
       "close": 77,
       "futures": null,
       "firstSeen": "2026-10-09",
-      "fresh": true
+      "fresh": false
     },
     {
       "code": "3317",
@@ -539,7 +558,7 @@
       "close": 71.5,
       "futures": null,
       "firstSeen": "2026-10-09",
-      "fresh": true
+      "fresh": false
     },
     {
       "code": "6716",
@@ -558,7 +577,7 @@
       "close": 138.5,
       "futures": null,
       "firstSeen": "2026-10-09",
-      "fresh": true
+      "fresh": false
     },
     {
       "code": "2465",
@@ -577,7 +596,7 @@
       "close": 85.7,
       "futures": null,
       "firstSeen": "2026-10-09",
-      "fresh": true
+      "fresh": false
     },
     {
       "code": "6719",
@@ -596,7 +615,7 @@
       "close": 192,
       "futures": null,
       "firstSeen": "2026-10-09",
-      "fresh": true
+      "fresh": false
     },
     {
       "code": "3138",
@@ -615,7 +634,7 @@
       "close": 99.6,
       "futures": null,
       "firstSeen": "2026-10-09",
-      "fresh": true
+      "fresh": false
     },
     {
       "code": "8227",
@@ -634,7 +653,7 @@
       "close": 335,
       "futures": null,
       "firstSeen": "2026-10-09",
-      "fresh": true
+      "fresh": false
     },
     {
       "code": "8054",
@@ -653,7 +672,7 @@
       "close": 81,
       "futures": null,
       "firstSeen": "2026-10-09",
-      "fresh": true
+      "fresh": false
     },
     {
       "code": "3289",
@@ -672,7 +691,7 @@
       "close": 142.5,
       "futures": null,
       "firstSeen": "2026-10-09",
-      "fresh": true
+      "fresh": false
     },
     {
       "code": "3694",
@@ -691,7 +710,7 @@
       "close": 51,
       "futures": null,
       "firstSeen": "2026-10-09",
-      "fresh": true
+      "fresh": false
     },
     {
       "code": "6412",
@@ -729,7 +748,7 @@
       "close": 127.5,
       "futures": null,
       "firstSeen": "2026-10-09",
-      "fresh": true
+      "fresh": false
     }
   ]
 }
