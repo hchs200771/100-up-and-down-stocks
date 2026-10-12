@@ -88,7 +88,7 @@
   "summary": "本公司受邀參加10月8日中信證券、10月12日合庫證券及10月13日富邦證券舉辦之線上法人說明會，說明本公司營運概況。",
   "fileZh": "222120261008M001.pdf",
   "fileEn": "222120261008E001.pdf",
-  "videoUrl": null,
+  "videoUrl": "http://irconference.twse.com.tw/2221_7_20261008_ch.mp4",
   "note": "無",
   "deck": {
    "file": "222120261008M001.pdf",
@@ -96,18 +96,21 @@
    "chars": 3378,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "無影片",
+  "transcript": {
+   "minutes": 42,
+   "chars": 7713
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 188 百萬元，YoY +45%，MoM -6%，累計 YoY +31%，YoY 45%，連6月YoY成長，同期歷史新高",
-   "move": null
+   "move": "2026-10-12 跌幅前 100（-9.895833333333332%）"
   },
   "analysis": {
-   "headline": "氫能管件今年已交付，潔淨級營收占比升至65.7%",
-   "score": 3,
-   "verdict": "一般",
-   "reason": "偏利多：氫能管件已取得訂單並交付，但未揭露金額及後續放量時程，獲利成長主要為已公布財報，尚不足改變未來獲利預期。",
+   "headline": "明年潔淨級已有在手訂單，大川研拚工程倍增",
+   "score": 4,
+   "verdict": "值得留意",
+   "reason": "屬利多：明年潔淨級需求已由期待轉為在手訂單，並提出大川研成長目標與時程，但訂單金額及獲利貢獻尚未量化。",
    "keyNumbers": [
     {
      "label": "2026上半年營收",
@@ -118,36 +121,47 @@
      "value": "21.83%，年增0.97個百分點"
     },
     {
-     "label": "2026上半年營業利益",
-     "value": "1.01億元，年增25.8%"
-    },
-    {
      "label": "2026上半年EPS",
      "value": "1.86元，年增63.2%"
     },
     {
-     "label": "潔淨級營收占比",
-     "value": "2026上半年65.70%；2025全年60.56%"
+     "label": "產能利用率",
+     "value": "潔淨級接近100%；化工級約80%"
+    },
+    {
+     "label": "規劃資本支出",
+     "value": "約2,000萬元，改善瓶頸製程；未明確拆分年度"
+    },
+    {
+     "label": "大川研營收占比",
+     "value": "約占合併營收30%～40%"
     }
    ],
-   "guidance": "公司看好半導體建廠與先進封裝擴產帶動潔淨管材需求；美國資料中心冷卻管件需求強勁、日本外銷市場逐步復甦。未提供下一季或全年量化財測。",
+   "guidance": "預估第四季營收與第三季相近或微增，下半年優於上半年；2027年各事業體可望優於2026年。大川研明年二次配工程以倍數成長為目標，TGCM預期成長約10%～30%；洽談中的耗材代理業務預期第四季至明年開始貢獻營收。",
    "drivers": [
-    "台積電、先進封裝及記憶體擴廠，帶動潔淨管材與大川研工程服務需求。",
-    "氫能特殊管件2026年正式取得訂單並完成交付。",
-    "布局儲能消防系統及ALD前驅物氣化模組，延伸既有高壓管路技術。"
+    "半導體建廠、先進封裝及記憶體擴產帶動潔淨管件與大川研服務需求。",
+    "以增聘人力、增加工時及改善瓶頸擴大產出；管理層認為同價下增量有助毛利率提升。",
+    "美國資料中心冷卻管件需求增強，日本外銷市場逐步復甦。",
+    "氫能管件今年已交付接收站訂單，預期明年承接運輸船需求，量體可為接收站數倍。"
    ],
    "risks": [
-    "氫能訂單未揭露金額、毛利率或後續交付規模，獲利貢獻難估。",
-    "儲能消防及ALD模組未提供商業化訂單或放量時程。",
-    "潔淨級比重提高，推估營運對半導體建廠進度的敏感度增加。"
+    "潔淨級產能接近滿載，成長依賴人力與工時擴充，交付能力仍待驗證。",
+    "2027年在手訂單未揭露金額、交期及毛利率；工程倍增屬目標，耗材代理仍在洽談。",
+    "日本氫能開發進度受阻，船用管件訂單尚屬預期。",
+    "美中科技限制造成中國半導體建廠終止或延後，安徽大甲營運起伏。"
    ],
-   "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "qaHighlights": [
+    "2027年潔淨級已有在手訂單，管理層強調去年同期看到的仍是期待訂單。",
+    "海外建廠供貨交至台灣港口，運輸由工程客戶處理，目前無海外設廠需求。",
+    "擴產以增加人力與工時為主，約2,000萬元資本支出集中改善瓶頸。",
+    "大川研明年重點為二次配工程倍數成長；耗材代理最快第四季至明年貢獻營收。"
+   ],
+   "tone": "轉佳",
+   "evidence": "簡報+影音"
   },
-  "analyzedAt": "2026-10-09T15:19:23+08:00",
+  "analyzedAt": "2026-10-12T21:56:40+08:00",
   "model": "gpt-6.1-sol",
-  "analyzedEvidence": 1,
+  "analyzedEvidence": 3,
   "firstSeen": "2026-10-09T15:18:12+08:00",
   "state": "done",
   "pendingNote": ""
@@ -176,7 +190,7 @@
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 49,711 百萬元，YoY +64%，MoM +1%，累計 YoY +15%，YoY 64%，連6月YoY成長，MoM連7月正成長，24月營收新高，比前三月加速 23pp",
-   "move": null
+   "move": "2026-10-12 漲幅前 100（+9.89247311827957%）"
   },
   "analysis": {
    "headline": "運價回升，2027年運力規劃增至240萬TEU",
@@ -336,7 +350,7 @@
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 5,779 百萬元，YoY -7%，MoM +15%，累計 YoY +2%",
-   "move": null
+   "move": "2026-10-12 漲幅前 100（+9.984984984984985%）"
   },
   "analysis": {
    "headline": "第三季營收年減11%，本業獲利續弱",
@@ -407,11 +421,11 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "未設定 GROQ_API_KEY",
+  "videoStatus": "Groq 額度已滿，下次轉",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 12 百萬元，YoY +38%，MoM +33%，累計 YoY +32%",
-   "move": "2026-10-08 漲幅前 100（+4.918032786885246%）"
+   "move": null
   },
   "analysis": {
    "headline": "布局AI封裝與高速傳輸材料，未揭放量時程",
@@ -447,7 +461,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-10-09T15:18:12+08:00",
   "state": "partial",
-  "pendingNote": "影音：未設定 GROQ_API_KEY"
+  "pendingNote": "影音：Groq 額度已滿，下次轉"
  },
  "6126-2026-10-08": {
   "key": "6126-2026-10-08",
@@ -469,7 +483,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "未設定 GROQ_API_KEY",
+  "videoStatus": "Groq 額度已滿，下次轉",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 484 百萬元，YoY +40%，MoM -6%，累計 YoY +53%，YoY 40%，連12月YoY成長，同期歷史新高",
@@ -525,7 +539,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-10-09T15:18:12+08:00",
   "state": "partial",
-  "pendingNote": "影音：未設定 GROQ_API_KEY"
+  "pendingNote": "影音：Groq 額度已滿，下次轉"
  },
  "3624-2026-10-07": {
   "key": "3624-2026-10-07",
@@ -547,11 +561,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "未設定 GROQ_API_KEY",
+  "videoStatus": "Groq 額度已滿，下次轉",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 380 百萬元，YoY +67%，MoM +4%，累計 YoY +35%，YoY 67%，連12月YoY成長，MoM連5月正成長，5年新高，比前三月加速 22pp",
-   "move": "2026-10-08 漲幅前 100（+9.717868338557993%）"
+   "move": "2026-10-12 跌幅前 100（-4.857142857142857%）"
   },
   "analysis": {
    "headline": "第二季毛利率升至32.8%，未給後續展望",
@@ -603,7 +617,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-10-09T15:18:12+08:00",
   "state": "partial",
-  "pendingNote": "影音：未設定 GROQ_API_KEY"
+  "pendingNote": "影音：Groq 額度已滿，下次轉"
  },
  "3707-2026-10-07": {
   "key": "3707-2026-10-07",
@@ -625,11 +639,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "未設定 GROQ_API_KEY",
+  "videoStatus": "Groq 額度已滿，下次轉",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 663 百萬元，YoY +24%，MoM +1%，累計 YoY +26%，YoY 24%，連12月YoY成長，MoM連7月正成長，24月營收新高",
-   "move": "2026-10-08 跌幅前 100（-4.4493882091212456%）"
+   "move": "2026-10-12 跌幅前 100（-4.307334109429569%）"
   },
   "analysis": {
    "headline": "SiC下半年營收估增逾120%，8吋年底小量量產",
@@ -684,7 +698,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-10-09T15:18:12+08:00",
   "state": "partial",
-  "pendingNote": "影音：未設定 GROQ_API_KEY"
+  "pendingNote": "影音：Groq 額度已滿，下次轉"
  },
  "5309-2026-10-07": {
   "key": "5309-2026-10-07",
@@ -706,11 +720,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "未設定 GROQ_API_KEY",
+  "videoStatus": "Groq 額度已滿，下次轉",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 367 百萬元，YoY +18%，MoM +12%，累計 YoY +10%",
-   "move": null
+   "move": "2026-10-12 漲幅前 100（+7.817109144542774%）"
   },
   "analysis": {
    "headline": "BBU拚2027放量，首個GCS案第四季量產",
@@ -763,7 +777,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-10-09T15:18:12+08:00",
   "state": "partial",
-  "pendingNote": "影音：未設定 GROQ_API_KEY"
+  "pendingNote": "影音：Groq 額度已滿，下次轉"
  },
  "6120-2026-10-07": {
   "key": "6120-2026-10-07",
@@ -785,7 +799,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "未設定 GROQ_API_KEY",
+  "videoStatus": "Groq 額度已滿，下次轉",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 1,335 百萬元，YoY -5%，MoM -0%，累計 YoY -5%",
@@ -842,7 +856,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-10-09T15:18:12+08:00",
   "state": "partial",
-  "pendingNote": "影音：未設定 GROQ_API_KEY"
+  "pendingNote": "影音：Groq 額度已滿，下次轉"
  },
  "6174-2026-10-07": {
   "key": "6174-2026-10-07",
@@ -864,11 +878,11 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "未設定 GROQ_API_KEY",
+  "videoStatus": "Groq 額度已滿，下次轉",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 68 百萬元，YoY +33%，MoM +1%，累計 YoY +27%",
-   "move": "2026-10-08 漲幅前 100（+9.965635738831615%）"
+   "move": "2026-10-12 跌幅前 100（-4.53125%）"
   },
   "analysis": {
    "headline": "安碁法說資料無法辨識新展望",
@@ -892,7 +906,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-10-09T15:18:12+08:00",
   "state": "partial",
-  "pendingNote": "影音：未設定 GROQ_API_KEY"
+  "pendingNote": "影音：Groq 額度已滿，下次轉"
  },
  "6517-2026-10-07": {
   "key": "6517-2026-10-07",
@@ -914,11 +928,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "未設定 GROQ_API_KEY",
+  "videoStatus": "Groq 額度已滿，下次轉",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 34 百萬元，YoY +27%，MoM -27%，累計 YoY +2%",
-   "move": "2026-10-08 跌幅前 100（-3.64963503649635%）"
+   "move": null
   },
   "analysis": {
    "headline": "毛利率降至36%，高階光學布局未量化",
@@ -970,7 +984,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-10-09T15:18:12+08:00",
   "state": "partial",
-  "pendingNote": "影音：未設定 GROQ_API_KEY"
+  "pendingNote": "影音：Groq 額度已滿，下次轉"
  },
  "7848-2026-10-07": {
   "key": "7848-2026-10-07",
@@ -1071,7 +1085,7 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "未設定 GROQ_API_KEY",
+  "videoStatus": "Groq 額度已滿，下次轉",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 108 百萬元，YoY +13%，MoM -11%，累計 YoY +17%",
@@ -1128,7 +1142,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-10-09T15:18:12+08:00",
   "state": "partial",
-  "pendingNote": "影音：未設定 GROQ_API_KEY"
+  "pendingNote": "影音：Groq 額度已滿，下次轉"
  },
  "1402-2026-10-06": {
   "key": "1402-2026-10-06",
@@ -1304,11 +1318,11 @@
   "note": "會後將於公開資訊觀測站公告相關資訊 。",
   "deck": null,
   "transcript": null,
-  "videoStatus": "未設定 GROQ_API_KEY",
+  "videoStatus": "本次轉檔數已滿，下次轉",
   "deckStatus": "尚未上傳",
   "context": {
    "revenue": "2026-09 月營收 400 百萬元，YoY +11%，MoM -1%，累計 YoY +16%",
-   "move": "2026-10-08 漲幅前 100（+9.90783410138249%）"
+   "move": "2026-10-12 漲幅前 100（+9.853249475890985%）"
   },
   "analysis": {
    "headline": "台星科無法說內容，僅見9月營收年增11%",
@@ -1330,7 +1344,7 @@
   "analyzedEvidence": 0,
   "firstSeen": "2026-10-09T15:18:12+08:00",
   "state": "partial",
-  "pendingNote": "影音：未設定 GROQ_API_KEY"
+  "pendingNote": "影音：本次轉檔數已滿，下次轉"
  },
  "3516-2026-10-06": {
   "key": "3516-2026-10-06",
@@ -1352,7 +1366,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "未設定 GROQ_API_KEY",
+  "videoStatus": "本次轉檔數已滿，下次轉",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 47 百萬元，YoY -41%，MoM -25%，累計 YoY +10%",
@@ -1409,7 +1423,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-10-09T15:18:12+08:00",
   "state": "partial",
-  "pendingNote": "影音：未設定 GROQ_API_KEY"
+  "pendingNote": "影音：本次轉檔數已滿，下次轉"
  },
  "6257-2026-10-06": {
   "key": "6257-2026-10-06",
@@ -1431,7 +1445,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "未設定 GROQ_API_KEY",
+  "videoStatus": "本次轉檔數已滿，下次轉",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 2,089 百萬元，YoY +26%，MoM +1%，累計 YoY +21%，YoY 26%，連12月YoY成長，MoM連3月正成長，5年新高，比前三月加速 1pp",
@@ -1489,7 +1503,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-10-09T15:18:12+08:00",
   "state": "partial",
-  "pendingNote": "影音：未設定 GROQ_API_KEY"
+  "pendingNote": "影音：本次轉檔數已滿，下次轉"
  },
  "7867-2026-10-06": {
   "key": "7867-2026-10-06",
@@ -1637,7 +1651,7 @@
   "deckStatus": "尚未上傳",
   "context": {
    "revenue": "2026-09 月營收 260 百萬元，YoY +12%，MoM +15%，累計 YoY +1%",
-   "move": "2026-10-08 漲幅前 100（+9.897610921501705%）"
+   "move": null
   },
   "analysis": {
    "headline": "康那香例行說明第二季營運，未見新展望",
@@ -2725,22 +2739,76 @@
   "time": "15:00",
   "place": "線上法說會",
   "summary": "(1)2026年第3季營運狀況說明\n(2)參加方式：請參見 https://www.nanya.com/tw/IR/13/Investor Calendar",
-  "fileZh": null,
-  "fileEn": null,
+  "fileZh": "240820261012M001.pdf",
+  "fileEn": "240820261012E001.pdf",
   "videoUrl": "https://www.nanya.com/tw/IR/13/Investor Calendar?Year=2026",
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "240820261012M001.pdf",
+   "pages": 18,
+   "chars": 4860,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "影音在公司網頁，未轉",
-  "deckStatus": "尚未上傳",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 45,091 百萬元，YoY +577%，MoM +1%，累計 YoY +627%，YoY 577%，連12月YoY成長，MoM連12月正成長，5年新高",
    "move": null
   },
-  "analysis": null,
+  "analysis": {
+   "headline": "長約重訂推升毛利率，售價優勢可望延續",
+   "score": 4,
+   "verdict": "值得留意",
+   "reason": "屬利多：毛利率季增6.2個百分點，公司解釋源自長約重新議價且預期售價優勢延續，但未量化後續獲利或確認財測上修。",
+   "keyNumbers": [
+    {
+     "label": "第三季營收",
+     "value": "1,336.49億元，季增61.9%、年增611.7%"
+    },
+    {
+     "label": "第三季毛利率",
+     "value": "85.7%，季增6.2個百分點"
+    },
+    {
+     "label": "第三季EPS",
+     "value": "25.40元"
+    },
+    {
+     "label": "AI基礎設施營收占比",
+     "value": "超過20%"
+    },
+    {
+     "label": "2026年資本支出上限",
+     "value": "697億元，前三季已支出276億元"
+    },
+    {
+     "label": "新廠投產及產能目標",
+     "value": "2027年第四季投產；2028年底月投片3萬片、2030年底5萬片"
+    }
+   ],
+   "guidance": "預期有利售價可望延續；新廠2027年第四季投產前出貨維持平穩。2026年位元銷售量年增目標為高十位數百分比；1C客戶驗證預計2027年第一季開始。未提供下一季營收或獲利財測。",
+   "drivers": [
+    "長期合約重新議價帶動售價與毛利率提升，公司預期售價優勢延續。",
+    "AI需求擴及網路、儲存與系統管理；未來擴建以客戶長約AI專案為主要目標。",
+    "新廠投產與客製化AI／WoW產品提供後續成長方向。"
+   ],
+   "risks": [
+    "第三季位元出貨量季減中個位數，近期營收成長主要依靠售價。",
+    "新廠投產前出貨受限，新增產能貢獻需等至2027年第四季後。",
+    "售價上漲已造成傳統應用降規或延長產品生命週期。",
+    "擴產支出大，長約價格、訂單金額與未來毛利率均未量化。"
+   ],
+   "qaHighlights": [],
+   "tone": "無法判斷",
+   "evidence": "僅簡報"
+  },
+  "analyzedAt": "2026-10-12T21:53:35+08:00",
+  "model": "gpt-6.1-sol",
+  "analyzedEvidence": 1,
   "firstSeen": "2026-10-12T01:59:32+08:00",
-  "state": "pending",
-  "pendingNote": "尚未判讀；簡報還沒上傳"
+  "state": "done",
+  "pendingNote": ""
  },
  "2881-2026-10-12": {
   "key": "2881-2026-10-12",
@@ -2830,22 +2898,75 @@
   "time": "14:30",
   "place": "台北君悅酒店3樓凱悅二廳(台北市信義區松壽路2號)",
   "summary": "盛新材料(6930)-受邀參加第一金證券舉辦之興櫃前法人說明會\n說明公司營運概況及未來展望。",
-  "fileZh": null,
-  "fileEn": null,
-  "videoUrl": null,
+  "fileZh": "493420261012M001.pdf",
+  "fileEn": "493420261012E001.pdf",
+  "videoUrl": "https://youtu.be/3D7Fmiwj_bs",
   "note": "代子公司盛新材料(6930)申報",
-  "deck": null,
+  "deck": {
+   "file": "493420261012M001.pdf",
+   "pages": 35,
+   "chars": 8097,
+   "imageHeavy": false
+  },
   "transcript": null,
-  "videoStatus": "無影片",
-  "deckStatus": "尚未上傳",
+  "videoStatus": "Groq 額度已滿，下次轉",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 18 百萬元，YoY +35%，MoM -24%，累計 YoY +136%",
-   "move": "2026-10-08 漲幅前 100（+9.967845659163988%）"
+   "move": null
   },
-  "analysis": null,
+  "analysis": {
+   "headline": "盛新半絕緣SiC拚放量，占比目標逾五成",
+   "score": 4,
+   "verdict": "值得留意",
+   "reason": "屬利多：半絕緣產品提出量產放量及占比逾五成的具體展望，但未揭露訂單金額與獲利影響，且無法確認是否首次公布。",
+   "keyNumbers": [
+    {
+     "label": "盛新2026上半年營收",
+     "value": "3,695.3萬元，已超越2025全年"
+    },
+    {
+     "label": "盛新2025全年營收",
+     "value": "3,388.6萬元"
+    },
+    {
+     "label": "半絕緣產品目前占比",
+     "value": "30%–40%"
+    },
+    {
+     "label": "半絕緣產品目標占比",
+     "value": "超過50%"
+    },
+    {
+     "label": "長晶爐設備",
+     "value": "65台，4–8吋產品共用"
+    },
+    {
+     "label": "已完成長晶尺寸",
+     "value": "12吋SiC晶球"
+    }
+   ],
+   "guidance": "展望圖列2027年從客戶驗證邁向量產放量；多家客戶預計完成最終驗證，半絕緣產品占比由三至四成提升至逾五成。未提供季度營收、獲利財測或明確出貨月份。",
+   "drivers": [
+    "半絕緣SiC切入RF、5G、低軌衛星與雷達，客戶最終驗證帶動量產機會。",
+    "8吋導電型SiC布局日系車用供應鏈，產品已進入客戶驗證後期。",
+    "12吋材料延伸AI散熱、先進封裝，並與客戶合作開發光子與AR應用。"
+   ],
+   "risks": [
+    "基本資訊標示4934太極，簡報實為6930盛新；所附月營收與股價脈絡不能直接歸屬盛新。",
+    "客戶驗證尚未全面完成，未揭露訂單金額、量產規模及毛利率，放量對獲利的影響難估。",
+    "12吋完成長晶不等於量產商業化；AI、光子與AR應用仍缺訂單及出貨時程。"
+   ],
+   "qaHighlights": [],
+   "tone": "無法判斷",
+   "evidence": "僅簡報"
+  },
+  "analyzedAt": "2026-10-12T21:54:45+08:00",
+  "model": "gpt-6.1-sol",
+  "analyzedEvidence": 1,
   "firstSeen": "2026-10-12T01:59:32+08:00",
-  "state": "pending",
-  "pendingNote": "尚未判讀；簡報還沒上傳"
+  "state": "partial",
+  "pendingNote": "影音：Groq 額度已滿，下次轉"
  },
  "6281-2026-10-12": {
   "key": "6281-2026-10-12",
@@ -2858,7 +2979,7 @@
   "summary": "本公司受邀參加凱基證券主辦之線上法說會，說明本公司之營運概況、財務及業務相關資訊。",
   "fileZh": "628120261008M001.pdf",
   "fileEn": "628120261008E001.pdf",
-  "videoUrl": null,
+  "videoUrl": "http://irconference.twse.com.tw/6281_19_20261012_ch.mp4",
   "note": "無",
   "deck": {
    "file": "628120261008M001.pdf",
@@ -2866,18 +2987,21 @@
    "chars": 1883,
    "imageHeavy": true
   },
-  "transcript": null,
-  "videoStatus": "無影片",
+  "transcript": {
+   "minutes": 22,
+   "chars": 4807
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 1,494 百萬元，YoY +10%，MoM -12%，累計 YoY +1%",
    "move": null
   },
   "analysis": {
-   "headline": "上半年毛利率微升，展店與數位轉型未量化",
+   "headline": "DC店每年更替10至15間，未提獲利展望",
    "score": 3,
    "verdict": "一般",
-   "reason": "屬輕微利多，但主要回顧已公布財報，展店與數位轉型缺乏量化目標及時程，未提供足以改變獲利預期的新資訊。",
+   "reason": "屬溫和利多：毛利率小幅改善並持續升級店型，但多為財報回顧與既有策略，沒有足以改變未來獲利預期的新資訊。",
    "keyNumbers": [
     {
      "label": "2026上半年營收",
@@ -2896,32 +3020,117 @@
      "value": "2.26元，去年同期2.23元"
     },
     {
-     "label": "上半年營業費用率",
-     "value": "17.27%，年增0.48個百分點"
+     "label": "DC大坪數店型",
+     "value": "超過80間，占門市四分之一以上"
     },
     {
-     "label": "2026年9月門市數",
-     "value": "318間"
+     "label": "DC店型年度更替",
+     "value": "每年10至15間"
     }
    ],
-   "guidance": "Digital City店型將持續拓展，但未提供展店數量、時程或下一季／全年明確財測。",
+   "guidance": "未提供明確營收或獲利展望；對2027年內需審慎看待，持續拓展DC店型、優化電商與會員經營，未量化效益或提出完成時程。",
    "drivers": [
-    "提升實體店格、持續拓展Digital City店型。",
-    "透過APP會員、Line推播及購物平台改版推進虛實整合，效益尚未量化。"
+    "DC大坪數店型增加體驗空間，導入生活用品等多元商品。",
+    "會員數據、個人化行銷與電商優化，有望改善轉換率及人力效率，但效益尚未量化。"
    ],
    "risks": [
-    "上半年營收仍衰退，費用率上升抵銷大部分毛利率改善。",
-    "未說明毛利率改善原因與持續性，難判斷後續獲利走勢。",
-    "簡報多為圖片且無逐字稿，營運近況與問答資訊有限。"
+    "管理層指出房市信用管制及資金流向股市壓抑家電買氣，上半年營收仍衰退。",
+    "上半年費用率升至17.27%，年增0.48個百分點，抵銷大部分毛利率改善。",
+    "耐久財需求有限，過度密集展店可能排擠既有門市銷售。"
    ],
-   "qaHighlights": [],
+   "qaHighlights": [
+    "現場無投資人提問；管理層補充DC店型每年以10至15間進行更替，採汰弱留強模式，不能直接視為淨新增店數。",
+    "管理層口頭說明上半年銀行存款增加約4.5億元、存貨減少約1.1億元。",
+    "DC店型已超過80間，但未揭露單店營收、投資回收期或獲利貢獻。"
+   ],
    "tone": "無法判斷",
    "evidence": "簡報多為圖片"
   },
-  "analyzedAt": "2026-10-12T02:06:07+08:00",
+  "analyzedAt": "2026-10-12T21:54:54+08:00",
+  "model": "gpt-6.1-sol",
+  "analyzedEvidence": 3,
+  "firstSeen": "2026-10-12T01:59:32+08:00",
+  "state": "done",
+  "pendingNote": ""
+ },
+ "7955-2026-10-12": {
+  "key": "7955-2026-10-12",
+  "code": "7955",
+  "name": "車麗屋",
+  "market": "rotc",
+  "date": "2026-10-12",
+  "time": "14:30",
+  "place": "臺北市信義區松仁路38號(台北寒舍艾美酒店3樓翡翠廳)",
+  "summary": "受邀參加元大證券舉辦之興櫃前法人說明會",
+  "fileZh": "795520261012M001.pdf",
+  "fileEn": "795520261012E001.pdf",
+  "videoUrl": null,
+  "note": "",
+  "deck": {
+   "file": "795520261012M001.pdf",
+   "pages": 29,
+   "chars": 9522,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "無影片",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": null,
+   "move": null
+  },
+  "analysis": {
+   "headline": "A7近滿租、2027年營運，租賃毛利逾五成",
+   "score": 4,
+   "verdict": "值得留意",
+   "reason": "偏利多：A7近滿租且明定2027年營運，搭配租賃毛利逾五成與多年雙位數成長展望，但尚未量化獲利貢獻。",
+   "keyNumbers": [
+    {
+     "label": "公司年營收（未標明年度）",
+     "value": "約20億元"
+    },
+    {
+     "label": "2026～2028年營收及獲利成長展望",
+     "value": "雙位數成長"
+    },
+    {
+     "label": "未來租賃業務平均毛利率",
+     "value": "逾50%"
+    },
+    {
+     "label": "林口A7開發時程",
+     "value": "2026年第四季完工取照，2027年正式營運"
+    },
+    {
+     "label": "台中綠廊道開發進度",
+     "value": "30場停車場全數營運；22個商場中已取得2場建照"
+    },
+    {
+     "label": "相較同業的採購額外折扣（公司稱）",
+     "value": "20%～30%"
+    }
+   ],
+   "guidance": "公司預期2026～2028年營收及獲利呈雙位數成長；林口A7預計2026年第四季完工取照、2027年正式營運，目前招租率近滿租，未提供年度財測金額或租金獲利貢獻。",
+   "drivers": [
+    "A7生活館新增門市與租金收入，高毛利租賃業務有望改善獲利結構。",
+    "Point S台灣獨家代理結合加盟／代理模式，突破大型直營店土地限制。",
+    "台中綠廊道商場逐步開發，停車場已全數營運。",
+    "高車齡存量支撐輪胎、耗材及維修需求。"
+   ],
+   "risks": [
+    "加盟展店數百家的目標未附時程、簽約數或獲利貢獻。",
+    "A7收益仍取決於完工取照及正式開業；台中22個商場目前僅2場取得建照。",
+    "財務成果頁未抽出營收、EPS及毛利率數字，無法驗證上半年獲利改善幅度與原因。",
+    "多年雙位數成長及租賃毛利展望缺乏年度拆分、成本與投資金額。"
+   ],
+   "qaHighlights": [],
+   "tone": "無法判斷",
+   "evidence": "僅簡報"
+  },
+  "analyzedAt": "2026-10-12T21:54:23+08:00",
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
-  "firstSeen": "2026-10-12T01:59:32+08:00",
+  "firstSeen": "2026-10-12T21:52:48+08:00",
   "state": "done",
   "pendingNote": ""
  }
