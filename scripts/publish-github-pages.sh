@@ -39,6 +39,8 @@ fi
 # 月營收動能名單子頁（scripts/build-revenue-momentum.ts 產出，每日更新——
 # 每月 1~10 號公司陸續公布，名單會天天長大）
 [ -f "$PROJECT_DIR/data/revenue.html" ] && cp "$PROJECT_DIR/data/revenue.html" "$SITE_DIR/revenue.html"
+# 營收名單逐檔配置分析（scripts/build-revenue-picks.ts 從 data/revenue-picks-latest.json 產出；一次性研究快照）
+[ -f "$PROJECT_DIR/data/revenue-picks.html" ] && cp "$PROJECT_DIR/data/revenue-picks.html" "$SITE_DIR/revenue-picks.html"
 # 月營收衰退名單子頁（scripts/build-revenue-decline.ts 產出；避開／放空候選，附個股期貨）
 [ -f "$PROJECT_DIR/data/revenue-decline.html" ] && cp "$PROJECT_DIR/data/revenue-decline.html" "$SITE_DIR/revenue-decline.html"
 # 營收產業族群子頁（scripts/build-revenue-industry.ts 產出；強弱勢是否集中在特定產業）

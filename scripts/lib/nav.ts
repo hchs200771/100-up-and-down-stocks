@@ -28,6 +28,7 @@ export const EXTRA_TABS = ["🧊 下跌族群"];
 export const SUBPAGES: { file: string; label: string }[] = [
   { file: "cb-pledge.html", label: "🔐 設質+CB" },
   { file: "revenue.html", label: "📈 月營收" },
+  { file: "revenue-picks.html", label: "🧮 營收配置" },
   { file: "themes.html", label: "📡 題材雷達" },
   { file: "broker-watch.html", label: "🕵️ 贏家分點" },
   { file: "revenue-decline.html", label: "📉 營收衰退" },
@@ -85,6 +86,7 @@ export const NAV_GROUPS: { title: string; items: NavItem[] }[] = [
       { file: "target-price.html" },
       { file: "investor-conf.html" },
       { file: "revenue.html" },
+      { file: "revenue-picks.html" },
       { file: "revenue-decline.html" },
       { file: "cb-pledge.html" },
     ],
