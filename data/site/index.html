@@ -306,6 +306,24 @@ showCurrent();
     <tr><td style="padding: 6px 10px 6px 0; color: #6b7280; white-space: nowrap; width: 1%; border-top: 1px solid #eef2f7;">融資餘額(上市)</td><td style="padding: 6px 8px; border-top: 1px solid #eef2f7; font-weight: bold;">6,464.1 億</td><td style="padding: 6px 8px; border-top: 1px solid #eef2f7; color: #dc2626; font-weight: bold;">+64.1 億<span style="color:#9ca3af; font-weight:normal; font-size:11px;">　9,406,720 張／上櫃 2,419,564 張</span></td></tr>
     <tr><td style="padding: 6px 10px 6px 0; color: #6b7280; white-space: nowrap; width: 1%; border-top: 1px solid #eef2f7;">融資維持率</td><td style="padding: 6px 8px; border-top: 1px solid #eef2f7; color: #334155; font-weight: bold;" colspan="2">197.1%<span style="color:#9ca3af; font-weight:normal; font-size:11px;">　自算值，追繳線 166%／斷頭線 130%　涵蓋 1225 檔</span></td></tr>
   </table>
+  <div style="margin-top:12px; padding:10px 12px; background:#fff; border:1px solid #e2e8f0; border-left:4px solid #dc2626; border-radius:6px; font-size:13px; line-height:1.7;">
+    <div style="font-weight:bold; color:#334155; margin-bottom:2px;">📈 大盤趨勢</div>
+    <div><strong style="color:#dc2626;">月線之上</strong>：收 49,313.44，高於 MA20 +3.4%，已連續 14 個交易日站上月線。</div>
+    <div style="color:#475569;">MA20 47,688（上揚）／MA60 45,727（上揚，收盤高於 +7.8%）；MA20 在 MA60 之上（多頭排列），08-27 起黃金交叉。</div>
+    <div style="margin-top:4px;"><span style="display:inline-block; margin:2px 6px 2px 0; padding:1px 8px; border-radius:10px; font-size:12px; background:#fef2f2; color:#dc2626; white-space:nowrap;">月線規則：持有</span><span style="display:inline-block; margin:2px 6px 2px 0; padding:1px 8px; border-radius:10px; font-size:12px; background:#fef2f2; color:#dc2626; white-space:nowrap;">波段規則 MA20>MA60：持有</span><span style="display:inline-block; margin:2px 6px 2px 0; padding:1px 8px; border-radius:10px; font-size:12px; background:#f1f5f9; color:#475569; white-space:nowrap;">季節：5～10 月（偏弱季）</span><span style="display:inline-block; margin:2px 6px 2px 0; padding:1px 8px; border-radius:10px; font-size:12px; background:#fef2f2; color:#dc2626; white-space:nowrap;">追蹤組合：持有（未驗證）</span></div>
+    <details style="margin-top:6px;">
+      <summary style="cursor:pointer; color:#2563eb;">原因：回測依據（加權指數 2000～2026，點開）</summary>
+      <ul style="margin:6px 0 0; padding-left:18px; color:#475569;">
+        <li style="margin-bottom:4px;"><strong>月線的價值在躲大空頭，不在多賺。</strong>收盤站上 MA20 持有、跌破空手：年化 9.5%、最大回撤 -24%；買進持有是 6.6%、-66%。但 2020 年後的多頭裡，每條均線規則都輸給買進持有（月線規則 19.9% 對 23.3%）。</li>
+        <li style="margin-bottom:4px;"><strong>收盤確認就當下進出。</strong>改成隔天開盤成交，年化掉到 6.3%；連 2 日確認剩 4.4%、連 3 日 3.6%。指數漲幅幾乎都在隔夜跳空，多等一天就讓掉了。</li>
+        <li style="margin-bottom:4px;"><strong>MA20 對 MA60 決定波段。</strong>黃金交叉持有、死亡交叉出場：一年約 2 次、勝率 55%、持有中位數 45 天，一半以上的單子抱超過 2 個月；年化 8.2%、回撤 -30%。只看月線一年會進出 12 次、持有中位數 6 天。</li>
+        <li style="margin-bottom:4px;"><strong>被洗是常態。</strong>每條規則的短單合計都是虧的（虧掉 6～7 成），靠少數長波段賺回來；事前無法分辨哪一筆會變長波段。高點回落 8%、ATR 移動停利都更差。</li>
+        <li style="margin-bottom:4px;"><strong>其他大盤因子都不顯著。</strong>動能、波動、融資、外資台指期淨多單、美股 SPY 都測過；融資 20 日減少之後 60 日反而偏弱，三個年代都一樣。</li>
+        <li style="margin-bottom:4px;"><strong>季節是唯一方向一致的訊號，但還不夠顯著。</strong>11～4 月 25 年中有 19 年贏過 5～10 月（t=1.4）。「11～4 月全抱、5～10 月只在 MA20>MA60」年化 12.2%，是看過結果才挑出的組合，只做前瞻追蹤。</li>
+        <li style="margin-bottom:4px;">以上都是 1 倍名目本金；用台指期保證金開槓桿，報酬和回撤等比放大。完整數字見 docs/taiex-swing-results.md。</li>
+      </ul>
+    </details>
+  </div>
   <div style="background-color:#f8fafc; border:1px solid #e2e8f0; padding:12px 15px; border-radius:8px; margin-top:10px; margin-bottom:0;" class="rt-root">
     <div style="font-size:12px; font-weight:bold; color:#334155; margin-bottom:4px;">市場情緒趨勢（近40日）</div>
     <div style="font-size:11px; color:#6b7280; margin-bottom:6px;">長條＝微臺散戶淨多空（正值紅＝偏多、負值綠＝偏空，單位萬口）；折線＝加權指數與上市融資餘額</div>
