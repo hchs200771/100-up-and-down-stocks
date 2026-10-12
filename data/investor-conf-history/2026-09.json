@@ -14181,9 +14181,15 @@
   "fileEn": "156020260907E002.pdf",
   "videoUrl": null,
   "note": "115/09/15(13:00-17:00)、115/09/16(09:00-12:00)",
-  "deck": null,
+  "deck": {
+   "file": "156020260907M002.pdf",
+   "pages": 36,
+   "chars": 8893,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 909 百萬元，YoY +30%，MoM +1%，累計 YoY +25%，YoY 30%，連12月YoY成長，MoM連4月正成長，5年新高，比前三月加速 6pp",
    "move": null
@@ -14237,9 +14243,15 @@
   "fileEn": "159020260819E004.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "159020260819M004.pdf",
+   "pages": 27,
+   "chars": 3632,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": null,
    "move": null
@@ -14262,9 +14274,15 @@
   "fileEn": "230120260731E001.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "230120260731M001.pdf",
+   "pages": 20,
+   "chars": 5392,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 18,848 百萬元，YoY +22%，MoM -4%，累計 YoY +26%，YoY 22%，連12月YoY成長，同期歷史新高",
    "move": null
@@ -14287,9 +14305,15 @@
   "fileEn": "231220260915E001.pdf",
   "videoUrl": "http://irconference.twse.com.tw/2312_20_20260915_ch.mp4",
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "231220260915M001.pdf",
+   "pages": 19,
+   "chars": 3051,
+   "imageHeavy": false
+  },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "本次轉檔數已滿，下次轉",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-08 月營收 13,452 百萬元，YoY +22%，MoM -16%，累計 YoY +4%",
    "move": null
@@ -14297,7 +14321,7 @@
   "analysis": null,
   "firstSeen": "2026-10-12T01:59:32+08:00",
   "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "pendingNote": "尚未判讀；影音：本次轉檔數已滿，下次轉"
  },
  "2317-2026-09-15": {
   "key": "2317-2026-09-15",
@@ -14312,9 +14336,15 @@
   "fileEn": "231720260812E001.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "231720260812M001.pdf",
+   "pages": 40,
+   "chars": 8596,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 1,158,633 百萬元，YoY +38%，MoM +26%，累計 YoY +40%，YoY 38%，連12月YoY成長，5年新高",
    "move": null
@@ -14337,9 +14367,15 @@
   "fileEn": "235320260818E002.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "235320260818M002.pdf",
+   "pages": 10,
+   "chars": 2320,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 34,737 百萬元，YoY +18%，MoM +15%，累計 YoY +24%",
    "move": null
@@ -14362,9 +14398,15 @@
   "fileEn": "236020260730E001.pdf",
   "videoUrl": "https://www.chromaate.com/tw/investors/quarterly_results",
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "236020260730M001.pdf",
+   "pages": 18,
+   "chars": 6240,
+   "imageHeavy": false
+  },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "影音在公司網頁，未轉",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 6,860 百萬元，YoY +206%，MoM +22%，累計 YoY +120%，YoY 206%，連12月YoY成長，MoM連3月正成長，5年新高，比前三月加速 72pp",
    "move": null
@@ -14387,9 +14429,15 @@
   "fileEn": "237920260730E002.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "237920260730M002.pdf",
+   "pages": 17,
+   "chars": 5386,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 12,378 百萬元，YoY +23%，MoM -1%，累計 YoY +16%，YoY 23%，連9月YoY成長，同期歷史新高",
    "move": null
@@ -14412,9 +14460,15 @@
   "fileEn": "238520260807E001.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "238520260807M001.pdf",
+   "pages": 14,
+   "chars": 3259,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 6,214 百萬元，YoY -25%，MoM -5%，累計 YoY -10%",
    "move": null
@@ -14437,9 +14491,15 @@
   "fileEn": "240820260819E001.pdf",
   "videoUrl": null,
   "note": "本公司受邀參加UBS Taiwan Summit 2026",
-  "deck": null,
+  "deck": {
+   "file": "240820260819M001.pdf",
+   "pages": 14,
+   "chars": 4307,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 45,091 百萬元，YoY +577%，MoM +1%，累計 YoY +627%，YoY 577%，連12月YoY成長，MoM連12月正成長，5年新高",
    "move": null
@@ -14462,9 +14522,15 @@
   "fileEn": "302320260909E001.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "302320260909M001.pdf",
+   "pages": 68,
+   "chars": 18046,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 3,349 百萬元，YoY +26%，MoM +2%，累計 YoY +15%，YoY 26%，連7月YoY成長，MoM連7月正成長，5年新高",
    "move": null
@@ -14487,9 +14553,15 @@
   "fileEn": "303720260730E001.pdf",
   "videoUrl": null,
   "note": "無。",
-  "deck": null,
+  "deck": {
+   "file": "303720260730M001.pdf",
+   "pages": 9,
+   "chars": 2732,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 18,651 百萬元，YoY +65%，MoM +5%，累計 YoY +38%，YoY 65%，連12月YoY成長，MoM連7月正成長，5年新高，比前三月加速 19pp",
    "move": null
@@ -14512,9 +14584,15 @@
   "fileEn": "303820260915E001.pdf",
   "videoUrl": "https://youtu.be/EeKjvPQYfOo",
   "note": "內容檔案於當日會後公告於公開資訊觀測站。",
-  "deck": null,
+  "deck": {
+   "file": "303820260915M001.pdf",
+   "pages": 27,
+   "chars": 6294,
+   "imageHeavy": false
+  },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "本次轉檔數已滿，下次轉",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 233 百萬元，YoY +2%，MoM -5%，累計 YoY -6%",
    "move": null
@@ -14522,7 +14600,7 @@
   "analysis": null,
   "firstSeen": "2026-10-12T01:59:32+08:00",
   "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "pendingNote": "尚未判讀；影音：本次轉檔數已滿，下次轉"
  },
  "3054-2026-09-15": {
   "key": "3054-2026-09-15",
@@ -14537,9 +14615,15 @@
   "fileEn": "305420260915E001.pdf",
   "videoUrl": "https://youtu.be/k18cTiF2K7s",
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "305420260915M001.pdf",
+   "pages": 33,
+   "chars": 8632,
+   "imageHeavy": false
+  },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "本次轉檔數已滿，下次轉",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 37 百萬元，YoY +215%，MoM +1%，累計 YoY +342%",
    "move": null
@@ -14547,7 +14631,7 @@
   "analysis": null,
   "firstSeen": "2026-10-12T01:59:32+08:00",
   "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "pendingNote": "尚未判讀；影音：本次轉檔數已滿，下次轉"
  },
  "3443-2026-09-15": {
   "key": "3443-2026-09-15",
@@ -14562,9 +14646,15 @@
   "fileEn": "344320260730E001.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "344320260730M001.pdf",
+   "pages": 20,
+   "chars": 2893,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 7,145 百萬元，YoY +98%，MoM +22%，累計 YoY +103%，YoY 98%，連12月YoY成長，MoM連7月正成長，5年新高",
    "move": null
@@ -14587,9 +14677,15 @@
   "fileEn": "359620260827E001.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "359620260827M001.pdf",
+   "pages": 6,
+   "chars": 1279,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 5,064 百萬元，YoY +9%，MoM +7%，累計 YoY +3%",
    "move": null
@@ -14612,9 +14708,15 @@
   "fileEn": "364420260914E001.pdf",
   "videoUrl": null,
   "note": "",
-  "deck": null,
+  "deck": {
+   "file": "364420260914M001.pdf",
+   "pages": 24,
+   "chars": 7690,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": null,
    "move": null
@@ -14637,9 +14739,15 @@
   "fileEn": "370220260818E001.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "370220260818M001.pdf",
+   "pages": 18,
+   "chars": 5409,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-08 月營收 142,238 百萬元，YoY +80%，MoM -3%，累計 YoY +62%",
    "move": null
@@ -14662,9 +14770,15 @@
   "fileEn": "371120260730E001.pdf",
   "videoUrl": null,
   "note": "簡報檔內容與115年7月30日召開之法人說明會相同。",
-  "deck": null,
+  "deck": {
+   "file": "371120260730M001.pdf",
+   "pages": 17,
+   "chars": 8259,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-08 月營收 82,247 百萬元，YoY +46%，MoM +11%，累計 YoY +28%",
    "move": null
@@ -14687,9 +14801,15 @@
   "fileEn": "410420260915E001.pdf",
   "videoUrl": "http://irconference.twse.com.tw/4104_34_20260915_ch.mp4",
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "410420260915M001.pdf",
+   "pages": 17,
+   "chars": 1435,
+   "imageHeavy": true
+  },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "本次轉檔數已滿，下次轉",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 960 百萬元，YoY +25%，MoM +2%，累計 YoY +15%，YoY 25%，連4月YoY成長，5年新高，比前三月加速 2pp",
    "move": null
@@ -14697,7 +14817,7 @@
   "analysis": null,
   "firstSeen": "2026-10-12T01:59:32+08:00",
   "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "pendingNote": "尚未判讀；影音：本次轉檔數已滿，下次轉"
  },
  "4138-2026-09-15": {
   "key": "4138-2026-09-15",
@@ -14714,7 +14834,8 @@
   "note": "無",
   "deck": null,
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "本次轉檔數已滿，下次轉",
+  "deckStatus": "下載失敗",
   "context": {
    "revenue": "2026-09 月營收 128 百萬元，YoY +6%，MoM +14%，累計 YoY +3%",
    "move": null
@@ -14722,7 +14843,7 @@
   "analysis": null,
   "firstSeen": "2026-10-12T01:59:32+08:00",
   "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "pendingNote": "尚未判讀；簡報下載失敗，下次重試；影音：本次轉檔數已滿，下次轉"
  },
  "4173-2026-09-15": {
   "key": "4173-2026-09-15",
@@ -14737,9 +14858,15 @@
   "fileEn": "417320260915E001.pdf",
   "videoUrl": "http://irconference.twse.com.tw/4173_18_20260915_ch.mp4",
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "417320260915M001.pdf",
+   "pages": 35,
+   "chars": 5071,
+   "imageHeavy": false
+  },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "本次轉檔數已滿，下次轉",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 179 百萬元，YoY +42%，MoM +24%，累計 YoY +8%，YoY 42%，連3月YoY成長，5年新高，比前三月加速 38pp",
    "move": null
@@ -14747,7 +14874,7 @@
   "analysis": null,
   "firstSeen": "2026-10-12T01:59:32+08:00",
   "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "pendingNote": "尚未判讀；影音：本次轉檔數已滿，下次轉"
  },
  "4417-2026-09-15": {
   "key": "4417-2026-09-15",
@@ -14762,9 +14889,15 @@
   "fileEn": "441720260915E001.pdf",
   "videoUrl": "https://youtu.be/jl6M3Ue7eL4?si=dbFA_y9_gGBi2YrV",
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "441720260915M001.pdf",
+   "pages": 49,
+   "chars": 3562,
+   "imageHeavy": true
+  },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "本次轉檔數已滿，下次轉",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 341 百萬元，YoY +3%，MoM -13%，累計 YoY +4%",
    "move": null
@@ -14772,7 +14905,7 @@
   "analysis": null,
   "firstSeen": "2026-10-12T01:59:32+08:00",
   "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "pendingNote": "尚未判讀；影音：本次轉檔數已滿，下次轉"
  },
  "4749-2026-09-15": {
   "key": "4749-2026-09-15",
@@ -14787,9 +14920,15 @@
   "fileEn": "474920260818E001.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "474920260818M001.pdf",
+   "pages": 29,
+   "chars": 6427,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 431 百萬元，YoY +12%，MoM -11%，累計 YoY +20%",
    "move": "2026-10-08 跌幅前 100（-4.0455120101137805%）"
@@ -14814,7 +14953,8 @@
   "note": "相關資訊及法說會檔案依規定亦揭露於公開資訊觀測站歡迎投資人參閱。",
   "deck": null,
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "本次轉檔數已滿，下次轉",
+  "deckStatus": "尚未上傳",
   "context": {
    "revenue": null,
    "move": "2026-10-08 漲幅前 100（+8.386075949367088%）"
@@ -14822,7 +14962,7 @@
   "analysis": null,
   "firstSeen": "2026-10-12T01:59:32+08:00",
   "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "pendingNote": "尚未判讀；影音：本次轉檔數已滿，下次轉"
  },
  "5284-2026-09-15": {
   "key": "5284-2026-09-15",
@@ -14840,6 +14980,7 @@
   "deck": null,
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "尚未上傳",
   "context": {
    "revenue": null,
    "move": null
@@ -14862,9 +15003,15 @@
   "fileEn": "614320260911E001.pdf",
   "videoUrl": "http://irconference.twse.com.tw/6143_25_20260915_ch.mp3",
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "614320260911M001.pdf",
+   "pages": 17,
+   "chars": 1077,
+   "imageHeavy": true
+  },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "本次轉檔數已滿，下次轉",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 608 百萬元，YoY -27%，MoM -10%，累計 YoY +6%",
    "move": null
@@ -14872,7 +15019,7 @@
   "analysis": null,
   "firstSeen": "2026-10-12T01:59:32+08:00",
   "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "pendingNote": "尚未判讀；影音：本次轉檔數已滿，下次轉"
  },
  "6187-2026-09-15": {
   "key": "6187-2026-09-15",
@@ -14887,9 +15034,15 @@
   "fileEn": "618720260826E003.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "618720260826M003.pdf",
+   "pages": 16,
+   "chars": 1615,
+   "imageHeavy": true
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 1,160 百萬元，YoY +109%，MoM +5%，累計 YoY +58%，YoY 109%，連9月YoY成長，MoM連9月正成長，5年新高，比前三月加速 21pp",
    "move": null
@@ -14912,9 +15065,15 @@
   "fileEn": "621320260813E002.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "621320260813M002.pdf",
+   "pages": 26,
+   "chars": 6192,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 5,824 百萬元，YoY +111%，MoM +15%，累計 YoY +50%，YoY 111%，連12月YoY成長，MoM連7月正成長，5年新高，比前三月加速 30pp",
    "move": null
@@ -14937,9 +15096,15 @@
   "fileEn": "623920260728E002.pdf",
   "videoUrl": "http://irconference.twse.com.tw/6239_222_20260915_ch.MP4",
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "623920260728M002.pdf",
+   "pages": 29,
+   "chars": 11498,
+   "imageHeavy": false
+  },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "本次轉檔數已滿，下次轉",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 8,507 百萬元，YoY +27%，MoM -1%，累計 YoY +30%，YoY 27%，連12月YoY成長，同期歷史新高，比前三月加速 2pp",
    "move": null
@@ -14947,7 +15112,7 @@
   "analysis": null,
   "firstSeen": "2026-10-12T01:59:32+08:00",
   "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "pendingNote": "尚未判讀；影音：本次轉檔數已滿，下次轉"
  },
  "6282-2026-09-15": {
   "key": "6282-2026-09-15",
@@ -14962,9 +15127,15 @@
   "fileEn": "628220260914E001.pdf",
   "videoUrl": "http://irconference.twse.com.tw/6282_56_20260915_ch.MP4",
   "note": "完整財務業務資訊請至公開資訊觀測站之法人說明會一覽表或法說會項目下查閱。",
-  "deck": null,
+  "deck": {
+   "file": "628220260914M001.pdf",
+   "pages": 16,
+   "chars": 3809,
+   "imageHeavy": false
+  },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "本次轉檔數已滿，下次轉",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 3,833 百萬元，YoY +24%，MoM +3%，累計 YoY +28%，YoY 24%，連12月YoY成長，5年新高",
    "move": null
@@ -14972,7 +15143,7 @@
   "analysis": null,
   "firstSeen": "2026-10-12T01:59:32+08:00",
   "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "pendingNote": "尚未判讀；影音：本次轉檔數已滿，下次轉"
  },
  "6523-2026-09-15": {
   "key": "6523-2026-09-15",
@@ -14987,9 +15158,15 @@
   "fileEn": "652320260915E002.pdf",
   "videoUrl": "http://irconference.twse.com.tw/6523_33_20260915_ch.MP4",
   "note": "無。",
-  "deck": null,
+  "deck": {
+   "file": "652320260915M002.pdf",
+   "pages": 17,
+   "chars": 9328,
+   "imageHeavy": false
+  },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "本次轉檔數已滿，下次轉",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 70 百萬元，YoY -13%，MoM -46%，累計 YoY -15%",
    "move": null
@@ -14997,7 +15174,7 @@
   "analysis": null,
   "firstSeen": "2026-10-12T01:59:32+08:00",
   "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "pendingNote": "尚未判讀；影音：本次轉檔數已滿，下次轉"
  },
  "6757-2026-09-15": {
   "key": "6757-2026-09-15",
@@ -15012,9 +15189,15 @@
   "fileEn": "675720260915E001.pdf",
   "videoUrl": "http://irconference.twse.com.tw/6757_13_20260915_ch.MP4",
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "675720260915M001.pdf",
+   "pages": 29,
+   "chars": 6618,
+   "imageHeavy": false
+  },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "本次轉檔數已滿，下次轉",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 1,739 百萬元，YoY +36%，MoM -3%，累計 YoY +24%，YoY 36%，連12月YoY成長，同期歷史新高，比前三月加速 11pp",
    "move": null
@@ -15022,7 +15205,7 @@
   "analysis": null,
   "firstSeen": "2026-10-12T01:59:32+08:00",
   "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "pendingNote": "尚未判讀；影音：本次轉檔數已滿，下次轉"
  },
  "6862-2026-09-15": {
   "key": "6862-2026-09-15",
@@ -15037,9 +15220,15 @@
   "fileEn": "686220260915E001.pdf",
   "videoUrl": "https://zh-tw.trio.com.tw/cate-375636.htm",
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "686220260915M001.pdf",
+   "pages": 17,
+   "chars": 6771,
+   "imageHeavy": false
+  },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "影音在公司網頁，未轉",
+  "deckStatus": "ok",
   "context": {
    "revenue": null,
    "move": null
@@ -15062,9 +15251,15 @@
   "fileEn": "771120260915E001.pdf",
   "videoUrl": "http://irconference.twse.com.tw/7711_10_20260915_ch.MP4",
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "771120260915M001.pdf",
+   "pages": 10,
+   "chars": 1744,
+   "imageHeavy": false
+  },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "本次轉檔數已滿，下次轉",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 4,518 百萬元，YoY +42%，MoM +110%，累計 YoY +57%，YoY 42%，連5月YoY成長",
    "move": null
@@ -15072,7 +15267,7 @@
   "analysis": null,
   "firstSeen": "2026-10-12T01:59:32+08:00",
   "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "pendingNote": "尚未判讀；影音：本次轉檔數已滿，下次轉"
  },
  "7717-2026-09-15": {
   "key": "7717-2026-09-15",
@@ -15087,9 +15282,15 @@
   "fileEn": "771720260915E001.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "771720260915M001.pdf",
+   "pages": 19,
+   "chars": 5553,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": null,
    "move": "2026-10-08 跌幅前 100（-4.152823920265781%）"
@@ -15112,9 +15313,15 @@
   "fileEn": "790920260903E001.pdf",
   "videoUrl": null,
   "note": "",
-  "deck": null,
+  "deck": {
+   "file": "790920260903M001.pdf",
+   "pages": 36,
+   "chars": 7546,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": null,
    "move": null
@@ -15137,9 +15344,15 @@
   "fileEn": "810320260915E001.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "810320260915M001.pdf",
+   "pages": 13,
+   "chars": 1893,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 403 百萬元，YoY +28%，MoM +0%，累計 YoY +30%，YoY 28%，連12月YoY成長，MoM連4月正成長，同期歷史新高",
    "move": null
@@ -15162,9 +15375,15 @@
   "fileEn": "815020260811E001.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "815020260811M001.pdf",
+   "pages": 19,
+   "chars": 2987,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 2,792 百萬元，YoY +34%，MoM +0%，累計 YoY +30%，YoY 34%，連12月YoY成長，同期歷史新高",
    "move": null
@@ -15187,9 +15406,15 @@
   "fileEn": "829920260813E001.pdf",
   "videoUrl": null,
   "note": "會議細節請洽UBS證券",
-  "deck": null,
+  "deck": {
+   "file": "829920260813M001.pdf",
+   "pages": 40,
+   "chars": 12209,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 30,639 百萬元，YoY +370%，MoM +8%，累計 YoY +291%，YoY 370%，連12月YoY成長，MoM連10月正成長，5年新高，比前三月加速 19pp",
    "move": null
@@ -15212,9 +15437,15 @@
   "fileEn": "846220260914E001.pdf",
   "videoUrl": "https://drive.google.com/file/d/1VTJScYdIYPQIuiDW9D-UtrOmyz49ZxZc/view?usp=drive_link",
   "note": "報名相關事宜請洽李小姐 電話：(02)2545-6888#8967，email:10791@entrust.com.tw",
-  "deck": null,
+  "deck": {
+   "file": "846220260914M001.pdf",
+   "pages": 37,
+   "chars": 14874,
+   "imageHeavy": false
+  },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "影音在公司網頁，未轉",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 624 百萬元，YoY +16%，MoM +0%，累計 YoY +19%",
    "move": null
@@ -15237,9 +15468,15 @@
   "fileEn": "993920260820E001.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "993920260820M001.pdf",
+   "pages": 24,
+   "chars": 6194,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 2,535 百萬元，YoY +4%，MoM -11%，累計 YoY +3%",
    "move": null
@@ -15262,9 +15499,15 @@
   "fileEn": "230320260729E001.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "230320260729M001.pdf",
+   "pages": 14,
+   "chars": 5760,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 25,350 百萬元，YoY +27%，MoM +1%，累計 YoY +16%，YoY 27%，連11月YoY成長，MoM連7月正成長，5年新高，比前三月加速 3pp",
    "move": null
@@ -15287,9 +15530,15 @@
   "fileEn": "232420260911E001.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "232420260911M001.pdf",
+   "pages": 20,
+   "chars": 4330,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 94,434 百萬元，YoY +35%，MoM +40%，累計 YoY +20%，YoY 35%，連7月YoY成長",
    "move": null
@@ -15312,9 +15561,15 @@
   "fileEn": "233020260716E001.pdf",
   "videoUrl": null,
   "note": "無。",
-  "deck": null,
+  "deck": {
+   "file": "233020260716E001.pdf",
+   "pages": 12,
+   "chars": 4668,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 511,857 百萬元，YoY +55%，MoM -1%，累計 YoY +41%，YoY 55%，連12月YoY成長，同期歷史新高",
    "move": null
@@ -15337,9 +15592,15 @@
   "fileEn": "235620260819E007.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "235620260819M007.pdf",
+   "pages": 8,
+   "chars": 1773,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 98,636 百萬元，YoY +63%，MoM +18%，累計 YoY +43%，YoY 63%，連9月YoY成長，同期歷史新高，比前三月加速 8pp",
    "move": null
@@ -15362,9 +15623,15 @@
   "fileEn": "239520260805E001.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "239520260805M001.pdf",
+   "pages": 7,
+   "chars": 2297,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 10,749 百萬元，YoY +73%，MoM +3%，累計 YoY +49%，YoY 73%，連12月YoY成長，同期歷史新高",
    "move": null
@@ -15387,9 +15654,15 @@
   "fileEn": "244920260904E001.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "244920260904M001.pdf",
+   "pages": 16,
+   "chars": 6938,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 4,071 百萬元，YoY +24%，MoM -0%，累計 YoY +34%，YoY 24%，連12月YoY成長，同期歷史新高",
    "move": null
@@ -15412,9 +15685,15 @@
   "fileEn": "275420260914E001.pdf",
   "videoUrl": "http://irconference.twse.com.tw/2754_4_20260914_ch.mp4",
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "275420260914M001.pdf",
+   "pages": 27,
+   "chars": 5864,
+   "imageHeavy": false
+  },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "本次轉檔數已滿，下次轉",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 497 百萬元，YoY +1%，MoM -14%，累計 YoY +6%",
    "move": null
@@ -15422,7 +15701,7 @@
   "analysis": null,
   "firstSeen": "2026-10-12T01:59:32+08:00",
   "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "pendingNote": "尚未判讀；影音：本次轉檔數已滿，下次轉"
  },
  "2832-2026-09-14": {
   "key": "2832-2026-09-14",
@@ -15437,9 +15716,15 @@
   "fileEn": "283220260914E001.pdf",
   "videoUrl": "http://irconference.twse.com.tw/2832_22_20260914_ch.MP4",
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "283220260914M001.pdf",
+   "pages": 15,
+   "chars": 3035,
+   "imageHeavy": false
+  },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "本次轉檔數已滿，下次轉",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-08 月營收 927 百萬元，YoY +12%，MoM -6%，累計 YoY +6%",
    "move": null
@@ -15447,7 +15732,7 @@
   "analysis": null,
   "firstSeen": "2026-10-12T01:59:32+08:00",
   "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "pendingNote": "尚未判讀；影音：本次轉檔數已滿，下次轉"
  },
  "2850-2026-09-14": {
   "key": "2850-2026-09-14",
@@ -15462,9 +15747,15 @@
   "fileEn": "285020260914E001.pdf",
   "videoUrl": "http://irconference.twse.com.tw/2850_19_20260914_ch.mp4",
   "note": "內容檔案於當日會後公告於公開資訊觀測站",
-  "deck": null,
+  "deck": {
+   "file": "285020260914E001.pdf",
+   "pages": 19,
+   "chars": 8126,
+   "imageHeavy": false
+  },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "本次轉檔數已滿，下次轉",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-08 月營收 2,693 百萬元，YoY +5%，MoM +11%，累計 YoY +10%",
    "move": null
@@ -15472,7 +15763,7 @@
   "analysis": null,
   "firstSeen": "2026-10-12T01:59:32+08:00",
   "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "pendingNote": "尚未判讀；影音：本次轉檔數已滿，下次轉"
  },
  "3034-2026-09-14": {
   "key": "3034-2026-09-14",
@@ -15487,9 +15778,15 @@
   "fileEn": "303420260806E001.pdf",
   "videoUrl": null,
   "note": "本次會議以小組方式進行。",
-  "deck": null,
+  "deck": {
+   "file": "303420260806M001.pdf",
+   "pages": 9,
+   "chars": 3179,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 10,347 百萬元，YoY +25%，MoM +0%，累計 YoY +6%，YoY 25%，連6月YoY成長，MoM連7月正成長，同期歷史新高，比前三月加速 1pp",
    "move": null
@@ -15512,9 +15809,15 @@
   "fileEn": "310520260909E001.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "310520260909E001.pdf",
+   "pages": 39,
+   "chars": 10302,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 2,030 百萬元，YoY +30%，MoM +5%，累計 YoY +33%，YoY 30%，連12月YoY成長，MoM連8月正成長，同期歷史新高",
    "move": null
@@ -15537,9 +15840,15 @@
   "fileEn": "344320260730E001.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "344320260730M001.pdf",
+   "pages": 20,
+   "chars": 2893,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 7,145 百萬元，YoY +98%，MoM +22%，累計 YoY +103%，YoY 98%，連12月YoY成長，MoM連7月正成長，5年新高",
    "move": null
@@ -15562,9 +15871,15 @@
   "fileEn": "348120260818E001.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "348120260818M001.pdf",
+   "pages": 18,
+   "chars": 5225,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-08 月營收 18,697 百萬元，YoY +0%，MoM -1%，累計 YoY +12%",
    "move": null
@@ -15587,9 +15902,15 @@
   "fileEn": "352920260827E002.pdf",
   "videoUrl": null,
   "note": "會議簡報等資料將依規定於期限前揭露於公開資訊觀測站。",
-  "deck": null,
+  "deck": {
+   "file": "352920260827M002.pdf",
+   "pages": 33,
+   "chars": 14955,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 177 百萬元，YoY +13%，MoM -50%，累計 YoY +21%",
    "move": "2026-10-08 跌幅前 100（-3.316749585406302%）"
@@ -15612,9 +15933,15 @@
   "fileEn": "353320260812E002.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "353320260812M002.pdf",
+   "pages": 19,
+   "chars": 8649,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 3,357 百萬元，YoY +16%，MoM +5%，累計 YoY +18%",
    "move": "2026-10-08 漲幅前 100（+4.931506849315069%）"
@@ -15637,9 +15964,15 @@
   "fileEn": "355520260911E001.pdf",
   "videoUrl": "http://irconference.twse.com.tw/3555_4_20260914_ch.mp4",
   "note": "無。",
-  "deck": null,
+  "deck": {
+   "file": "355520260911M001.pdf",
+   "pages": 17,
+   "chars": 2837,
+   "imageHeavy": false
+  },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "本次轉檔數已滿，下次轉",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 47 百萬元，YoY -1%，MoM +1%，累計 YoY +253%",
    "move": "2026-10-08 跌幅前 100（-3.067484662576687%）"
@@ -15647,7 +15980,7 @@
   "analysis": null,
   "firstSeen": "2026-10-12T01:59:32+08:00",
   "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "pendingNote": "尚未判讀；影音：本次轉檔數已滿，下次轉"
  },
  "4958-2026-09-14": {
   "key": "4958-2026-09-14",
@@ -15662,9 +15995,15 @@
   "fileEn": "495820260907E002.pdf",
   "videoUrl": null,
   "note": "115/09/14(09:00~12:50)，115/09/15(09:00~11:50)， 115/09/16(14:00~16:50)",
-  "deck": null,
+  "deck": {
+   "file": "495820260907M002.pdf",
+   "pages": 38,
+   "chars": 11177,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": null,
    "move": null
@@ -15687,9 +16026,15 @@
   "fileEn": "496620260907E001.pdf",
   "videoUrl": null,
   "note": "無。",
-  "deck": null,
+  "deck": {
+   "file": "496620260907M001.pdf",
+   "pages": 24,
+   "chars": 11371,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": null,
    "move": null
@@ -15712,9 +16057,15 @@
   "fileEn": "499120260805E001.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "499120260805M001.pdf",
+   "pages": 13,
+   "chars": 6907,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": null,
    "move": null
@@ -15737,9 +16088,15 @@
   "fileEn": "623920260728E002.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "623920260728M002.pdf",
+   "pages": 29,
+   "chars": 11498,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 8,507 百萬元，YoY +27%，MoM -1%，累計 YoY +30%，YoY 27%，連12月YoY成長，同期歷史新高，比前三月加速 2pp",
    "move": null
@@ -15762,9 +16119,15 @@
   "fileEn": "640920260910E001.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "640920260910M001.pdf",
+   "pages": 40,
+   "chars": 6634,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 1,873 百萬元，YoY +7%，MoM +5%，累計 YoY -3%",
    "move": null
@@ -15787,9 +16150,15 @@
   "fileEn": "641520260828E001.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "641520260828M001.pdf",
+   "pages": 10,
+   "chars": 3304,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": null,
    "move": null
@@ -15812,9 +16181,15 @@
   "fileEn": "651020260817E001.pdf",
   "videoUrl": null,
   "note": "無。",
-  "deck": null,
+  "deck": {
+   "file": "651020260817M001.pdf",
+   "pages": 22,
+   "chars": 5388,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 652 百萬元，YoY +56%，MoM +2%，累計 YoY +36%，YoY 56%，連9月YoY成長，MoM連7月正成長，5年新高，比前三月加速 8pp",
    "move": "2026-10-08 漲幅前 100（+9.933774834437086%）"
@@ -15840,6 +16215,7 @@
   "deck": null,
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "尚未上傳",
   "context": {
    "revenue": "2026-09 月營收 271 百萬元，YoY +30%，MoM -3%，累計 YoY +48%，YoY 30%，連12月YoY成長，同期歷史新高",
    "move": null
@@ -15862,9 +16238,15 @@
   "fileEn": "677020260911E001.pdf",
   "videoUrl": null,
   "note": "無。",
-  "deck": null,
+  "deck": {
+   "file": "677020260911M001.pdf",
+   "pages": 25,
+   "chars": 6431,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 7,665 百萬元，YoY +94%，MoM +9%，累計 YoY +52%，YoY 94%，連12月YoY成長，MoM連7月正成長，5年新高，比前三月加速 22pp",
    "move": null
@@ -15887,9 +16269,15 @@
   "fileEn": "790920260903E001.pdf",
   "videoUrl": null,
   "note": "",
-  "deck": null,
+  "deck": {
+   "file": "790920260903M001.pdf",
+   "pages": 36,
+   "chars": 7546,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": null,
    "move": null
@@ -15912,9 +16300,15 @@
   "fileEn": "802820260910E001.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "802820260910M001.pdf",
+   "pages": 30,
+   "chars": 5357,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 512 百萬元，YoY +33%，MoM +1%，累計 YoY +30%，YoY 33%，連12月YoY成長，同期歷史新高，比前三月加速 1pp",
    "move": null
@@ -15937,9 +16331,15 @@
   "fileEn": "821020260907E002.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "821020260907M002.pdf",
+   "pages": 12,
+   "chars": 2761,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 2,476 百萬元，YoY +14%，MoM +1%，累計 YoY +46%",
    "move": null
