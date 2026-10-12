@@ -4,7 +4,8 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync
 import { resolve } from "node:path";
 
 /**
- * 財經 KOL 新節目抓取：Podcast RSS + YouTube 頻道 feed，挑出「還沒上過報告」的新節目，
+ * 財經 KOL 新內容抓取：Podcast RSS、YouTube feed、股癌 Telegram 公開預覽與俊哥 X 本機 inbox，
+ * 挑出「還沒上過報告」的新節目／貼文；Telegram 自動翻頁，X 由互動瀏覽器先擷取，
  * 盡量取得全文，寫到 data/tmp/kol-items.json 給 kol-brief-worker 判讀。
  *
  * 全文來源（由好到差）：
@@ -28,7 +29,7 @@ import { resolve } from "node:path";
 interface Source {
   key: string;
   name: string;
-  platform: "youtube" | "podcast";
+  platform: "youtube" | "podcast" | "telegram" | "x";
   feed: string;
 }
 
@@ -38,6 +39,8 @@ const SOURCES: Source[] = [
   { key: "gooaye", name: "股癌", platform: "podcast", feed: "https://feeds.soundon.fm/podcasts/954689a5-3096-43a4-a80b-7810b219cef3.xml" },
   { key: "statementdog", name: "財報狗", platform: "podcast", feed: "https://feed.firstory.me/rss/user/clcftm46z000201z45w1c47fi" },
   { key: "ayen", name: "淡定聽台指", platform: "podcast", feed: "https://rss.buzzsprout.com/1901075.rss" },
+  { key: "gooaye-tg", name: "股癌 Telegram", platform: "telegram", feed: "https://t.me/s/Gooaye" },
+  { key: "qq_timmy", name: "俊哥（X）", platform: "x", feed: "data/kol/x-inbox/QQ_Timmy.json" },
 ];
 
 const LOOKBACK_DAYS = Number(process.env.KOL_LOOKBACK_DAYS ?? 7);
@@ -134,6 +137,103 @@ function parseFeed(src: Source, xml: string): FeedItem[] {
       audio: audio?.replace(/&amp;/g, "&"),
     };
   });
+}
+
+interface PostItem {
+  id: string;
+  url: string;
+  published: Date;
+  text: string;
+  images?: string;
+}
+
+/** 公開預覽的每個訊息各自切段，避免圖片／連結預覽的巢狀 div 混到下一則。 */
+function parseTelegram(html: string): PostItem[] {
+  const starts = [...html.matchAll(/<div\b[^>]*\bclass="[^"]*\btgme_widget_message\b[^"]*"[^>]*\bdata-post="(Gooaye\/\d+)"[^>]*>/g)];
+  const posts: PostItem[] = [];
+  for (const [i, match] of starts.entries()) {
+    const block = html.slice(match.index! + match[0].length, starts[i + 1]?.index ?? html.length);
+    const published = new Date(block.match(/<time\b[^>]*\bdatetime="([^"]+)"/)?.[1] ?? "");
+    if (!Number.isFinite(published.getTime())) continue;
+    const raw = block.match(/<div\b[^>]*\bclass="[^"]*\btgme_widget_message_text\b[^"]*"[^>]*>([\s\S]*?)<\/div>/)?.[1] ?? "";
+    // 有標籤文字的連結仍保留目的網址；先解碼正文，再補 HTML 常見實體。
+    const linked = raw.replace(/<a\b[^>]*\bhref="([^"]+)"[^>]*>([\s\S]*?)<\/a>/gi, (_, href, label) => `${label} (${href})`);
+    const text = decode(linked)
+      .replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCodePoint(parseInt(n, 16)))
+      .replace(/&nbsp;/g, " ");
+    posts.push({ id: `tg:${match[1]}`, url: `https://t.me/${match[1]}`, published, text: text.trim() || "[圖片貼文]" });
+  }
+  return posts;
+}
+
+/** 最多三頁；已碰到回溯期限就不用再往前抓。後頁失敗仍保留前頁。 */
+async function telegramPosts(feed: string, cutoff: number): Promise<PostItem[]> {
+  const posts = new Map<string, PostItem>();
+  let before = "";
+  for (let page = 0; page < 3; page++) {
+    let batch: PostItem[];
+    try {
+      const res = await fetch(`${feed}${before ? `?before=${before}` : ""}`, { headers: { "User-Agent": "Mozilla/5.0" } });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      batch = parseTelegram(await res.text());
+    } catch (err) {
+      console.warn(`fetch-kol-feeds: Telegram page ${page + 1} failed: ${(err as Error).message}`);
+      break;
+    }
+    for (const post of batch) posts.set(post.id, post);
+    if (!batch.length || batch.some((post) => post.published.getTime() < cutoff)) break;
+    const oldest = String(Math.min(...batch.map((post) => Number(post.id.split("/").pop()))));
+    if (oldest === before) break;
+    before = oldest;
+  }
+  return [...posts.values()];
+}
+
+/** X 只能讀互動瀏覽器留下的 inbox；缺檔／格式不符由來源層 warn 並略過。 */
+function xPosts(feed: string): PostItem[] {
+  const inbox = JSON.parse(readFileSync(resolve(cwd, feed), "utf8"));
+  if (inbox?.handle !== "QQ_Timmy" || !Array.isArray(inbox.posts)) throw new Error("invalid X inbox");
+  const posts = new Map<string, PostItem>();
+  for (const post of inbox.posts) {
+    const published = new Date(typeof post?.postedAt === "string" ? post.postedAt : "");
+    if (!post || typeof post.id !== "string" || !/^\d+$/.test(post.id) || !Number.isFinite(published.getTime())
+      || typeof post.text !== "string" || (post.images != null && typeof post.images !== "string")) {
+      console.warn("fetch-kol-feeds: invalid X inbox post, skipped");
+      continue;
+    }
+    const id = `x:QQ_Timmy/${post.id}`;
+    posts.set(id, { id, url: `https://x.com/QQ_Timmy/status/${post.id}`, published, text: post.text, images: post.images ?? "" });
+  }
+  return [...posts.values()];
+}
+
+/** 貼文依逐則已讀狀態篩選，一個來源每天只交一包，不套用節目數上限。 */
+function bundlePosts(src: Source, posts: PostItem[], seen: Record<string, string>, tradingDate: string, cutoff: number) {
+  const fresh = posts
+    .filter((post) => post.published.getTime() >= cutoff && (!seen[post.id] || seen[post.id] === tradingDate))
+    .sort((a, b) => b.published.getTime() - a.published.getTime())
+    .slice(0, 40)
+    .reverse();
+  if (!fresh.length) return null;
+  const oldest = taipeiDate(fresh[0].published);
+  const newest = taipeiDate(fresh[fresh.length - 1].published);
+  const shortDate = (day: string) => `${Number(day.slice(5, 7))}/${Number(day.slice(8, 10))}`;
+  const text = fresh.map((post) => {
+    const stamp = new Date(post.published.getTime() + 8 * 3600_000).toISOString().slice(0, 16).replace("T", " ");
+    return `[${stamp}] ${post.url}\n${post.text}${post.images ? `\n圖片內容：${post.images}` : ""}`;
+  }).join("\n\n").slice(0, MAX_TEXT_CHARS);
+  return {
+    id: `${src.platform === "telegram" ? "tg:Gooaye" : "x:QQ_Timmy"}@${tradingDate}`,
+    source: src.name,
+    platform: src.platform,
+    title: `${fresh.length} 則新貼文（${shortDate(oldest)}–${shortDate(newest)}）`,
+    url: src.platform === "telegram" ? "https://t.me/Gooaye" : "https://x.com/QQ_Timmy",
+    publishedAt: newest,
+    basis: "posts",
+    notes: "",
+    text,
+    postIds: fresh.map((post) => post.id),
+  };
 }
 
 function cacheFile(id: string): string {
@@ -428,6 +528,19 @@ async function main() {
   const out: unknown[] = [];
 
   for (const src of SOURCES) {
+    if (src.platform === "telegram" || src.platform === "x") {
+      try {
+        const posts = src.platform === "telegram" ? await telegramPosts(src.feed, cutoff) : xPosts(src.feed);
+        const bundle = bundlePosts(src, posts, seen, tradingDate, cutoff);
+        if (bundle) {
+          out.push(bundle);
+          console.log(`fetch-kol-feeds: ${src.name} | ${bundle.title} | posts ${bundle.text.length} chars`);
+        }
+      } catch (err) {
+        console.warn(`fetch-kol-feeds: ${src.name} posts failed: ${(err as Error).message}`);
+      }
+      continue;
+    }
     let items: FeedItem[];
     try {
       items = parseFeed(src, await fetchFeed(src.feed));

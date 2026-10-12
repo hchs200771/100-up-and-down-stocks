@@ -177,6 +177,7 @@ interface KolItem {
   tickers?: string[];
   stance?: string;
   basis?: string;
+  opportunity?: { verdict: string; comment: string };
 }
 
 interface KolBlock {
@@ -1177,6 +1178,7 @@ function escHtml(s: string): string {
 function renderKol(kol: KolBlock | null | undefined): string {
   if (!kol || !kol.items || kol.items.length === 0) return "";
   const stanceColor: Record<string, string> = { 偏多: "#dc2626", 偏空: "#16a34a", 中性: "#6b7280" };
+  const opportunityColor: Record<string, string> = { 機會: "#dc2626", 觀察: "#d97706", 非機會: "#6b7280" };
   const cards = kol.items
     .map((it) => {
       const color = stanceColor[it.stance ?? ""] ?? "#6b7280";
@@ -1186,6 +1188,11 @@ function renderKol(kol: KolBlock | null | undefined): string {
       const tickers = it.tickers && it.tickers.length > 0
         ? `<div style="font-size:12px; color:#6b7280; margin-top:4px;">提到：${it.tickers.map(escHtml).join("、")}</div>`
         : "";
+      const assessment = it.opportunity;
+      const assessmentColor = opportunityColor[assessment?.verdict ?? ""] ?? "#6b7280";
+      const opportunity = assessment
+        ? `<div style="font-size:12px; line-height:1.6; margin-top:6px;">💡 機會評估<span style="display:inline-block; font-size:11px; font-weight:bold; color:${assessmentColor}; border:1px solid ${assessmentColor}; border-radius:999px; padding:0 8px; margin-left:6px;">${escHtml(assessment.verdict)}</span> ${escHtml(assessment.comment)}</div>`
+        : "";
       const notesOnly = it.basis === "notes"
         ? `<span style="font-size:11px; color:#9ca3af;">（僅依節目說明，未取得逐字稿）</span>`
         : "";
@@ -1194,6 +1201,7 @@ function renderKol(kol: KolBlock | null | undefined): string {
         <div style="font-size:13px; margin:2px 0 4px;">${/^https?:\/\//i.test(it.url) ? `<a href="${escHtml(it.url)}" style="color:#7c3aed;">${escHtml(it.title)}</a>` : escHtml(it.title)}</div>
         <div style="line-height:1.6;">${escHtml(it.insight).replace(/\n/g, "<br>")} ${notesOnly}</div>
         ${tickers}
+        ${opportunity}
       </div>`;
     })
     .join("");
@@ -1204,7 +1212,7 @@ function renderKol(kol: KolBlock | null | undefined): string {
       <h3 style="margin-top:0; color:#6b21a8;">🎙️ KOL 觀點</h3>
       ${overview}
       ${cards}
-      <div style="font-size:11px; color:#9ca3af; margin-top:6px;">以上為節目內容的 AI 摘要，是他人觀點、不是事實，也不是投資建議；細節以原節目為準。</div>
+      <div style="font-size:11px; color:#9ca3af; margin-top:6px;">以上為節目／貼文內容的 AI 摘要，是他人觀點、不是事實；機會評估為 AI 評論，非投資建議；細節以原節目／貼文為準。</div>
     </div>`;
 }
 

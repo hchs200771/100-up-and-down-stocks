@@ -36,6 +36,7 @@ interface FetchedItem {
   publishedAt: string;
   basis: string;
   deferred?: boolean;
+  postIds?: string[];
 }
 
 interface BriefItem {
@@ -43,6 +44,7 @@ interface BriefItem {
   insight: string;
   tickers?: string[];
   stance?: string;
+  opportunity?: { verdict: string; comment: string };
 }
 
 function readJson<T>(path: string): T | null {
@@ -66,6 +68,7 @@ function main() {
 
   const byId = new Map(fetched.items.map((it) => [it.id, it]));
   const stances = new Set(["偏多", "偏空", "中性"]);
+  const verdicts = new Set(["機會", "觀察", "非機會"]);
   const items = (brief.items ?? [])
     .filter((b) => byId.has(b.id) && b.insight?.trim())
     .map((b) => {
@@ -80,6 +83,8 @@ function main() {
         insight: toTW(b.insight.trim()),
         ...(b.tickers && b.tickers.length > 0 ? { tickers: b.tickers.slice(0, 8) } : {}),
         ...(b.stance && stances.has(b.stance) ? { stance: b.stance } : {}),
+        ...(b.opportunity && verdicts.has(b.opportunity.verdict) && typeof b.opportunity.comment === "string" && b.opportunity.comment.trim()
+          ? { opportunity: { verdict: b.opportunity.verdict, comment: toTW(b.opportunity.comment.trim()) } } : {}),
       };
     });
 
@@ -91,6 +96,11 @@ function main() {
   // 轉文字額度用完而延後的（deferred）即使上了報告也先不標，下次有逐字稿再重新判讀。
   const used = new Set(items.map((it) => it.url));
   for (const it of fetched.items) {
+    // 貼文包已有全文，即使沒有可用觀點仍逐則標記，包的每日 id 不當作已讀鍵。
+    if (it.postIds) {
+      for (const id of it.postIds) if (!seen[id]) seen[id] = day;
+      continue;
+    }
     if (!seen[it.id] && !it.deferred && (used.has(it.url) || it.basis === "transcript")) seen[it.id] = day;
   }
   writeFileSync(seenPath, `${JSON.stringify(seen, null, 2)}\n`, "utf8");
