@@ -1583,36 +1583,40 @@
   "fileEn": "839020261006E002.pdf",
   "videoUrl": "http://irconference.twse.com.tw/8390_10_20261006_ch.mp4",
   "note": "會後將於「公開資訊觀測站」及公司網站揭露相關資訊。",
-  "deck": null,
+  "deck": {
+   "file": "839020261006M002.pdf",
+   "pages": 15,
+   "chars": 0,
+   "imageHeavy": true
+  },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "本次轉檔數已滿，下次轉",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 485 百萬元，YoY +38%，MoM -1%，累計 YoY +43%，YoY 38%，連9月YoY成長，同期歷史新高",
    "move": null
   },
   "analysis": {
-   "headline": "9月營收年增38%，法說缺乏展望資料",
-   "score": 2,
+   "headline": "簡報無可讀文字，無法確認新增營運展望",
+   "score": 1,
    "verdict": "可略過",
-   "reason": "月營收成長屬已公布利多，但缺乏法說內容，無法確認有改變未來獲利預期的新資訊。",
+   "reason": "資料不足，無法辨識會改變獲利預期的新利多或利空；已公布的月營收成長不足以提高評分。",
    "keyNumbers": [],
    "guidance": "未提供明確展望",
-   "drivers": [
-    "市場脈絡顯示月營收連9月年增，9月創同期歷史新高；成長原因未提供。"
-   ],
+   "drivers": [],
    "risks": [
-    "無簡報及逐字稿，無法判斷毛利率、訂單與營收成長的持續性。"
+    "簡報未抽出可讀文字且無逐字稿，無法確認營收成長原因、獲利變化與持續性。"
    ],
    "qaHighlights": [],
    "tone": "無法判斷",
-   "evidence": "僅摘要"
+   "evidence": "簡報多為圖片"
   },
-  "analyzedAt": "2026-10-09T15:21:27+08:00",
+  "analyzedAt": "2026-10-12T02:04:35+08:00",
   "model": "gpt-6.1-sol",
-  "analyzedEvidence": 0,
+  "analyzedEvidence": 1,
   "firstSeen": "2026-10-09T15:18:12+08:00",
   "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "pendingNote": "影音：本次轉檔數已滿，下次轉"
  },
  "9919-2026-10-06": {
   "key": "9919-2026-10-06",
@@ -1748,31 +1752,38 @@
   "fileEn": "795120261005E001.pdf",
   "videoUrl": null,
   "note": "",
-  "deck": null,
+  "deck": {
+   "file": "795120261005M001.pdf",
+   "pages": 40,
+   "chars": 0,
+   "imageHeavy": true
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": null,
    "move": null
   },
   "analysis": {
-   "headline": "大易橙法說無簡報影音，缺乏可評估資訊",
+   "headline": "簡報無可讀內容，無法辨識獲利新訊息",
    "score": 1,
    "verdict": "可略過",
-   "reason": "僅有法說活動公告，無法辨識利多或利空，也沒有足以改變獲利預期的新資訊。",
+   "reason": "資料不足，無法判定利多或利空，亦無可驗證、足以改變獲利預期的新資訊。",
    "keyNumbers": [],
    "guidance": "未提供明確展望",
    "drivers": [],
    "risks": [
-    "缺乏財務數據與營運展望，無法評估獲利趨勢。"
+    "簡報文字抽取為空，且無影音逐字稿，無法評估營運與展望。",
+    "缺少月營收資料，無法交叉驗證近期營運動能。"
    ],
    "qaHighlights": [],
    "tone": "無法判斷",
-   "evidence": "僅摘要"
+   "evidence": "簡報多為圖片"
   },
-  "analyzedAt": "2026-10-09T15:21:26+08:00",
+  "analyzedAt": "2026-10-12T02:08:04+08:00",
   "model": "gpt-6.1-sol",
-  "analyzedEvidence": 0,
+  "analyzedEvidence": 1,
   "firstSeen": "2026-10-09T15:18:12+08:00",
   "state": "done",
   "pendingNote": ""
@@ -1791,13 +1802,13 @@
   "videoUrl": "http://irconference.twse.com.tw/2329_14_20261002_ch.mp4",
   "note": "無",
   "deck": {
-   "file": "232920261002E002.pdf",
-   "pages": 25,
-   "chars": 6477,
+   "file": "232920261002M002.pdf",
+   "pages": 26,
+   "chars": 4920,
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "本次轉檔數已滿，下次轉",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 1,586 百萬元，YoY -9%，MoM -10%，累計 YoY +7%",
@@ -1854,7 +1865,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-10-09T15:18:12+08:00",
   "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "pendingNote": "影音：本次轉檔數已滿，下次轉"
  },
  "2399-2026-10-02": {
   "key": "2399-2026-10-02",
@@ -1876,7 +1887,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "本次轉檔數已滿，下次轉",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-08 月營收 198 百萬元，YoY +40%，MoM +3%，累計 YoY +7%",
@@ -1932,7 +1943,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-10-09T15:18:12+08:00",
   "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "pendingNote": "影音：本次轉檔數已滿，下次轉"
  },
  "9908-2026-10-02": {
   "key": "9908-2026-10-02",
@@ -1954,7 +1965,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "影音在公司網頁，未轉",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 265 百萬元，YoY +5%，MoM -1%，累計 YoY +1%",
@@ -2026,17 +2037,72 @@
   "fileEn": "133820261001E001.pdf",
   "videoUrl": "http://irconference.twse.com.tw/1338_40_20261001_ch.mp4",
   "note": "完整財務業務資訊請至公開資訊觀測站之法人說明會一覽表或法說會項目下查閱。",
-  "deck": null,
+  "deck": {
+   "file": "133820261001M001.pdf",
+   "pages": 27,
+   "chars": 4297,
+   "imageHeavy": false
+  },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "本次轉檔數已滿，下次轉",
+  "deckStatus": "ok",
   "context": {
    "revenue": null,
    "move": null
   },
-  "analysis": null,
+  "analysis": {
+   "headline": "上半年稅前虧損1.47億，東莞廠整合將完成",
+   "score": 3,
+   "verdict": "一般",
+   "reason": "偏利空：公司拆解上半年虧損來源，但廠區整合與新客群布局未提供量化效益或放量時程，尚不足以改變未來獲利預期。",
+   "keyNumbers": [
+    {
+     "label": "2026年上半年稅前淨損",
+     "value": "1.465億元"
+    },
+    {
+     "label": "上半年存貨一次性減損及報廢",
+     "value": "6,613.7萬元"
+    },
+    {
+     "label": "上半年二廠折舊及抵押借款利息",
+     "value": "4,328萬元"
+    },
+    {
+     "label": "上半年列示損失與費用合計",
+     "value": "1.409億元"
+    },
+    {
+     "label": "2026年Q2利息保障倍數",
+     "value": "-0.76倍"
+    },
+    {
+     "label": "2026年1至8月日系車企營收占比",
+     "value": "50%"
+    }
+   ],
+   "guidance": "東莞總部廠區即將完成整合，將重組產能並優化廠區及人力；未提供下一季或全年營收、獲利財測及整合效益金額。",
+   "drivers": [
+    "光電、真木與雷雕等高單價產品逐漸增加，朝參與設計的一階供應商轉型。",
+    "台灣布局EPF膠膜產線與海外研發中心，推進原材料垂直整合。",
+    "已進入韓系供應商名錄並獲開放中國供貨選項，另鎖定日系全球車款及美洲市場。"
+   ],
+   "risks": [
+    "上半年仍虧損，列示費用中包含折舊與利息，不能全部視為一次性因素。",
+    "利息保障倍數為負，2026年Q2流動比率降至135%、速動比率降至107%。",
+    "日系客戶占營收一半；新客群、新產品及產能重組均未揭露訂單金額或獲利貢獻時程。",
+    "主要財務與市場預估圖表數字未完整抽出，無法確認毛利率及產品結構改善幅度。"
+   ],
+   "qaHighlights": [],
+   "tone": "無法判斷",
+   "evidence": "僅簡報"
+  },
+  "analyzedAt": "2026-10-12T02:06:09+08:00",
+  "model": "gpt-6.1-sol",
+  "analyzedEvidence": 1,
   "firstSeen": "2026-10-12T01:57:57+08:00",
-  "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "state": "partial",
+  "pendingNote": "影音：本次轉檔數已滿，下次轉"
  },
  "2317-2026-10-01": {
   "key": "2317-2026-10-01",
@@ -2051,17 +2117,71 @@
   "fileEn": "231720260812E001.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "231720260812M001.pdf",
+   "pages": 40,
+   "chars": 8596,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 1,158,633 百萬元，YoY +38%，MoM +26%，累計 YoY +40%，YoY 38%，連12月YoY成長，5年新高",
    "move": null
   },
-  "analysis": null,
+  "analysis": {
+   "headline": "沿用8月簡報，AI機櫃成長展望未更新",
+   "score": 3,
+   "verdict": "一般",
+   "reason": "內容偏利多，但10月會議沿用8月簡報，AI出貨展望已有揭露，未見足以改變獲利預期的新資訊。",
+   "keyNumbers": [
+    {
+     "label": "第二季營收",
+     "value": "2,525,894百萬元，年增41%"
+    },
+    {
+     "label": "第二季EPS",
+     "value": "4.27元，年增34%"
+    },
+    {
+     "label": "第二季營業利益率",
+     "value": "3.75%，年增60個基點"
+    },
+    {
+     "label": "第二季毛利率",
+     "value": "6.12%，年減21個基點"
+    },
+    {
+     "label": "第三季AI機櫃出貨展望",
+     "value": "季增高雙位數"
+    },
+    {
+     "label": "上半年自由現金流",
+     "value": "-150,009百萬元"
+    }
+   ],
+   "guidance": "8月簡報預期第三季營收季對季顯著成長、年對年強勁成長；全年強勁成長，AI機櫃出貨倍數以上成長，明年展望正向；未提供10月更新。",
+   "drivers": [
+    "AI機櫃需求帶動出貨，全年預期提升市佔率。",
+    "產品組合與規模效益提升營業利益率。",
+    "垂直整合延伸至零組件、液冷與資料中心。"
+   ],
+   "risks": [
+    "第二季毛利率年減，營收成長尚未帶動毛利率提升。",
+    "上半年營業現金流為負，自由現金流流出擴大。",
+    "缺少10月更新與影音，無法確認原有出貨展望的達成情況。"
+   ],
+   "qaHighlights": [],
+   "tone": "無法判斷",
+   "evidence": "僅簡報"
+  },
+  "analyzedAt": "2026-10-12T02:08:20+08:00",
+  "model": "gpt-6.1-sol",
+  "analyzedEvidence": 1,
   "firstSeen": "2026-10-12T01:57:57+08:00",
-  "state": "pending",
-  "pendingNote": "尚未判讀"
+  "state": "done",
+  "pendingNote": ""
  },
  "2520-2026-10-01": {
   "key": "2520-2026-10-01",
@@ -2076,17 +2196,72 @@
   "fileEn": "252020261001E001.pdf",
   "videoUrl": "https://youtu.be/Kc82uP84rPs",
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "252020261001M001.pdf",
+   "pages": 35,
+   "chars": 5506,
+   "imageHeavy": false
+  },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "本次轉檔數已滿，下次轉",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 2,157 百萬元，YoY +17%，MoM +20%，累計 YoY +17%",
    "move": null
   },
-  "analysis": null,
+  "analysis": {
+   "headline": "第四季三案開賣，未給獲利認列展望",
+   "score": 3,
+   "verdict": "一般",
+   "reason": "偏利多，揭露新案總銷與開賣時程，但未說明是否為新增計畫、銷售預期及獲利認列，不足以改變獲利預期。",
+   "keyNumbers": [
+    {
+     "label": "2026上半年營收",
+     "value": "132.3億元"
+    },
+    {
+     "label": "2026上半年毛利率",
+     "value": "26%"
+    },
+    {
+     "label": "2026上半年EPS",
+     "value": "1.87元"
+    },
+    {
+     "label": "台中裕毛屋案總銷／開賣",
+     "value": "67億元／2026年10月"
+    },
+    {
+     "label": "直興案總銷／開賣",
+     "value": "36億元／2026年10月"
+    },
+    {
+     "label": "台中G5案總銷／開賣",
+     "value": "16億元／2026年11月"
+    }
+   ],
+   "guidance": "預計2026年第四季推出三案；行23與G9-1案預計2027年第二季開工、2031年完工。未提供下一季或全年營收、獲利財測及交屋認列指引。",
+   "drivers": [
+    "第四季新案開賣，增加後續銷售來源。",
+    "公辦都更與捷運聯開案提供中長期開發儲備。",
+    "科技業擴廠與辦公升級需求支撐營造及商辦市場，但未量化公司新增受惠訂單。"
+   ],
+   "risks": [
+    "信用管制持續、銀行房貸成數審慎，住宅交易量短期難明顯放大。",
+    "K TOWER Y09銷售率僅30%，仍需觀察去化。",
+    "大型開發案完工期程較遠，且受都更、建照及文資審查進度影響。",
+    "總銷金額不等於公司可認列營收或獲利，未揭露分配比例與認列時點。"
+   ],
+   "qaHighlights": [],
+   "tone": "無法判斷",
+   "evidence": "僅簡報"
+  },
+  "analyzedAt": "2026-10-12T02:07:36+08:00",
+  "model": "gpt-6.1-sol",
+  "analyzedEvidence": 1,
   "firstSeen": "2026-10-12T01:57:57+08:00",
-  "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "state": "partial",
+  "pendingNote": "影音：本次轉檔數已滿，下次轉"
  },
  "2546-2026-10-01": {
   "key": "2546-2026-10-01",
@@ -2101,17 +2276,71 @@
   "fileEn": "254620261001E001.pdf",
   "videoUrl": "https://youtu.be/DCDLjZbtH4c",
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "254620261001M001.pdf",
+   "pages": 38,
+   "chars": 7976,
+   "imageHeavy": false
+  },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "本次轉檔數已滿，下次轉",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 2,046 百萬元，YoY -12%，MoM +15%，累計 YoY +8%",
    "move": null
   },
-  "analysis": null,
+  "analysis": {
+   "headline": "毛利率升至14.4%，工程能見度達2030年",
+   "score": 3,
+   "verdict": "一般",
+   "reason": "偏利多，毛利率明顯改善且工程能見度長，但未解釋改善原因與持續性，也未提供足以改變近期獲利預期的新財測。",
+   "keyNumbers": [
+    {
+     "label": "2026第二季簡報列示營收",
+     "value": "112.54億元，年增21.3%（單季或累計口徑未明示）"
+    },
+    {
+     "label": "同期毛利率",
+     "value": "14.4%，去年同期8.0%，增加6.4個百分點"
+    },
+    {
+     "label": "同期EPS",
+     "value": "8.89元，年增156.9%"
+    },
+    {
+     "label": "工程營運能見度",
+     "value": "至2030年"
+    },
+    {
+     "label": "預鑄事業產量目標",
+     "value": "2030年年產量預估4.5萬立方米"
+    },
+    {
+     "label": "台積電南科AP8P3 FAB工程",
+     "value": "約200,515平方公尺，工期2026年12月至2028年1月"
+    }
+   ],
+   "guidance": "未提供明確下一季或全年財測；公司表示工程營運能見度達2030年，預鑄合資事業預估2030年年產量達4.5萬立方米。",
+   "drivers": [
+    "台積電先進封裝及高科技廠房工程，已有跨至2027至2028年的施工排程。",
+    "公共工程、社宅及集團都更案源支撐，分散住宅市場放緩影響。",
+    "與日本東方白石合資預鑄事業，推動施工工業化與降低人力需求。"
+   ],
+   "risks": [
+    "缺工與工料上漲增加成本及工期延誤風險。",
+    "毛利率大幅改善，但簡報未交代原因、一次性因素或能否延續。",
+    "住宅市場受信用管制壓抑；提供的9月營收年減12%，工程能見度仍需轉化為實際認列與獲利。"
+   ],
+   "qaHighlights": [],
+   "tone": "無法判斷",
+   "evidence": "僅簡報"
+  },
+  "analyzedAt": "2026-10-12T02:08:10+08:00",
+  "model": "gpt-6.1-sol",
+  "analyzedEvidence": 1,
   "firstSeen": "2026-10-12T01:57:57+08:00",
-  "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "state": "partial",
+  "pendingNote": "影音：本次轉檔數已滿，下次轉"
  },
  "3013-2026-10-01": {
   "key": "3013-2026-10-01",
@@ -2126,17 +2355,70 @@
   "fileEn": "301320261001E001.pdf",
   "videoUrl": "http://irconference.twse.com.tw/3013_10_20261001_ch.MP4",
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "301320261001M001.pdf",
+   "pages": 49,
+   "chars": 5608,
+   "imageHeavy": true
+  },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "本次轉檔數已滿，下次轉",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 1,101 百萬元，YoY +8%，MoM +17%，累計 YoY +20%",
    "move": null
   },
-  "analysis": null,
+  "analysis": {
+   "headline": "晟銘電預告第四季L11系統整合占比提高",
+   "score": 4,
+   "verdict": "值得留意",
+   "reason": "利多：明確預告第四季L11營收比重增加，提供產品結構變化時點，但未量化增幅與獲利貢獻。",
+   "keyNumbers": [
+    {
+     "label": "2026上半年營收",
+     "value": "61.48億元，年增22%"
+    },
+    {
+     "label": "2026上半年毛利率",
+     "value": "21%，去年同期17%"
+    },
+    {
+     "label": "2026上半年營業利益",
+     "value": "8.21億元，年增91%"
+    },
+    {
+     "label": "2026上半年EPS",
+     "value": "2.78元，去年同期1.38元"
+    },
+    {
+     "label": "2026年1至8月L11系統整合營收占比",
+     "value": "18%"
+    },
+    {
+     "label": "2026年1至8月伺服器營收占比",
+     "value": "73%"
+    }
+   ],
+   "guidance": "公司預告2026年第四季起，L11系統整合營收比重將增加；未提供占比目標、營收或獲利財測。",
+   "drivers": [
+    "L11液冷系統整合占比預期提高，業務涵蓋CDU、Sidecar與浸沒式液冷設備。",
+    "布局GB200／GB300、VR200機櫃與Manifold，以及貨櫃式模組化資料中心；未揭露訂單金額。"
+   ],
+   "risks": [
+    "未說明L11占比提高對毛利率的影響，也未解釋上半年毛利率改善的原因與持續性。",
+    "新產品路線圖缺乏可確認的客戶訂單、出貨規模與獲利貢獻。",
+    "簡報多為圖片且無逐字稿，無法確認管理層補充與問答內容。"
+   ],
+   "qaHighlights": [],
+   "tone": "無法判斷",
+   "evidence": "簡報多為圖片"
+  },
+  "analyzedAt": "2026-10-12T02:09:56+08:00",
+  "model": "gpt-6.1-sol",
+  "analyzedEvidence": 1,
   "firstSeen": "2026-10-12T01:57:57+08:00",
-  "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "state": "partial",
+  "pendingNote": "影音：本次轉檔數已滿，下次轉"
  },
  "6825-2026-10-01": {
   "key": "6825-2026-10-01",
@@ -2151,17 +2433,71 @@
   "fileEn": "682520260930E001.pdf",
   "videoUrl": null,
   "note": "",
-  "deck": null,
+  "deck": {
+   "file": "682520260930M001.pdf",
+   "pages": 30,
+   "chars": 5241,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": null,
    "move": null
   },
-  "analysis": null,
+  "analysis": {
+   "headline": "上半年營收縮減、毛利率降至29%",
+   "score": 3,
+   "verdict": "一般",
+   "reason": "偏利空：上半年營收與毛利率走弱，但未說明原因及後續展望，新專案亦缺乏可驗證的訂單與放量資訊。",
+   "keyNumbers": [
+    {
+     "label": "2026上半年營收",
+     "value": "3.46億元；去年同期4.06億元"
+    },
+    {
+     "label": "2026上半年毛利率",
+     "value": "29%；去年同期31%"
+    },
+    {
+     "label": "2026上半年淨利",
+     "value": "2,608.9萬元；去年同期2,468.6萬元"
+    },
+    {
+     "label": "2026上半年ODM營收",
+     "value": "2.14億元；去年同期2.90億元"
+    },
+    {
+     "label": "2026上半年標準品營收",
+     "value": "1.32億元；去年同期1.17億元"
+    },
+    {
+     "label": "2026上半年ODM營收占比",
+     "value": "62%；去年同期71%"
+    }
+   ],
+   "guidance": "未提供明確展望",
+   "drivers": [
+    "以ARM軟硬體整合及資安能力切入智慧辦公、門禁與邊緣AI。",
+    "規劃高階AOI、微型靈巧手及軍用無人機ODM專案，但抽出文字未揭露訂單金額或量產時程。",
+    "標準品營收較去年同期增加，部分抵銷ODM下滑。"
+   ],
+   "risks": [
+    "ODM營收下滑，上半年整體營收與毛利率同步走弱。",
+    "淨利小幅增加，但未交代營收及毛利下滑下的獲利支撐原因。",
+    "研發時程頁未抽出具體內容，無法確認新題材何時貢獻營收。"
+   ],
+   "qaHighlights": [],
+   "tone": "無法判斷",
+   "evidence": "僅簡報"
+  },
+  "analyzedAt": "2026-10-12T02:08:53+08:00",
+  "model": "gpt-6.1-sol",
+  "analyzedEvidence": 1,
   "firstSeen": "2026-10-12T01:57:57+08:00",
-  "state": "pending",
-  "pendingNote": "尚未判讀"
+  "state": "done",
+  "pendingNote": ""
  },
  "6938-2026-10-01": {
   "key": "6938-2026-10-01",
@@ -2176,17 +2512,50 @@
   "fileEn": "693820261001E001.pdf",
   "videoUrl": null,
   "note": "",
-  "deck": null,
+  "deck": {
+   "file": "693820261001M001.pdf",
+   "pages": 42,
+   "chars": 1724,
+   "imageHeavy": true
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": null,
    "move": null
   },
-  "analysis": null,
+  "analysis": {
+   "headline": "服務收入比重提高，EPS維持6元以上",
+   "score": 2,
+   "verdict": "可略過",
+   "reason": "服務收入比重提高屬偏利多訊息，但缺少幅度、未來訂單與放量時程，尚不足以改變獲利預期。",
+   "keyNumbers": [
+    {
+     "label": "簡報所述EPS水準（未標明年度）",
+     "value": "6元以上"
+    }
+   ],
+   "guidance": "未提供明確展望",
+   "drivers": [
+    "大型主機維護延伸至IT基礎架構服務，累積持續性維運收入。",
+    "聚焦政府、金融與大型企業核心系統，布局雲端、AI算力與資安服務。"
+   ],
+   "risks": [
+    "服務收入比重提高與維護合約高存續率均缺少具體數值，難以評估獲利改善幅度。",
+    "AI與雲端布局未提供訂單金額、營收貢獻或放量時程。",
+    "簡報多為圖片且無逐字稿，關鍵財務圖表資訊不足。"
+   ],
+   "qaHighlights": [],
+   "tone": "無法判斷",
+   "evidence": "簡報多為圖片"
+  },
+  "analyzedAt": "2026-10-12T02:10:58+08:00",
+  "model": "gpt-6.1-sol",
+  "analyzedEvidence": 1,
   "firstSeen": "2026-10-12T01:57:57+08:00",
-  "state": "pending",
-  "pendingNote": "尚未判讀"
+  "state": "done",
+  "pendingNote": ""
  },
  "7689-2026-10-01": {
   "key": "7689-2026-10-01",
@@ -2201,17 +2570,72 @@
   "fileEn": "768920261001E001.pdf",
   "videoUrl": "https://www.youtube.com/watch?v=1zYM2wnfAzw",
   "note": "無。",
-  "deck": null,
+  "deck": {
+   "file": "768920261001M001.pdf",
+   "pages": 50,
+   "chars": 35562,
+   "imageHeavy": false
+  },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "本次轉檔數已滿，下次轉",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-08 月營收 432 百萬元，YoY +4%，MoM -17%，累計 YoY +33%",
    "move": null
   },
-  "analysis": null,
+  "analysis": {
+   "headline": "北美安防與長照新品出貨，放量規模未明",
+   "score": 3,
+   "verdict": "一般",
+   "reason": "偏利多：北美客戶開始出貨、歐洲長照新品有助改善產品組合，但未揭露訂單規模、放量時程或獲利貢獻，尚不足以改變獲利預期。",
+   "keyNumbers": [
+    {
+     "label": "2026上半年營收",
+     "value": "29.56億元，年增40.92%"
+    },
+    {
+     "label": "2026上半年毛利率",
+     "value": "30.75%"
+    },
+    {
+     "label": "2026上半年EPS",
+     "value": "6.51元"
+    },
+    {
+     "label": "2026年1–8月營收",
+     "value": "39.08億元，年增32.76%"
+    },
+    {
+     "label": "2026年8月營收年增率",
+     "value": "4.30%"
+    },
+    {
+     "label": "內湖新廠計畫",
+     "value": "投資約23億元，預計2029年投產，產能增加55%–60%"
+    }
+   ],
+   "guidance": "未提供下一季或全年營收、獲利財測；北美電信通路仍在試賣，正式上市配合伙伴平台整合進度；新一代AI感測平台預計2027年進入原型開發及客戶驗證。",
+   "drivers": [
+    "北美指標安防品牌開始出貨，核心長照客戶新品出貨，區域長照業者開始採購。",
+    "歐洲長照新世代產品完成主要市場客戶導入，公司預期提高高毛利產品占比。",
+    "Apple Access歐洲客戶整合推進，另布局無線消防與高安全等級安防產品。"
+   ],
+   "risks": [
+    "8月營收年增僅4.30%，低於前8月累計增幅；市場脈絡顯示月減17%，近期動能放緩。",
+    "新客戶與新品未揭露訂單金額、放量時程及毛利改善幅度。",
+    "AI平台仍待研發與客戶驗證，高安全等級安防產品仍在開發。",
+    "新廠投資約23億元，預計2029年才投產，短期貢獻有限。"
+   ],
+   "qaHighlights": [],
+   "tone": "無法判斷",
+   "evidence": "僅簡報"
+  },
+  "analyzedAt": "2026-10-12T02:09:44+08:00",
+  "model": "gpt-6.1-sol",
+  "analyzedEvidence": 1,
   "firstSeen": "2026-10-12T01:57:57+08:00",
-  "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "state": "partial",
+  "pendingNote": "影音：本次轉檔數已滿，下次轉"
  },
  "7743-2026-10-01": {
   "key": "7743-2026-10-01",
@@ -2226,17 +2650,71 @@
   "fileEn": "774320261005E001.pdf",
   "videoUrl": "https://youtu.be/aaE9DcviCgo?si=8RDAgleNHuxC6sdf",
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "774320261005M001.pdf",
+   "pages": 43,
+   "chars": 4774,
+   "imageHeavy": true
+  },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "本次轉檔數已滿，下次轉",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 52 百萬元，YoY -24%，MoM -10%，累計 YoY +2%",
    "move": "2026-10-08 跌幅前 100（-3.7037037037037033%）"
   },
-  "analysis": null,
+  "analysis": {
+   "headline": "泰國廠規劃2.5倍台灣產能，產品已進日本超商",
+   "score": 3,
+   "verdict": "一般",
+   "reason": "偏利多：泰國擴產與日本通路具題材，但未揭露訂單金額、放量時程或獲利貢獻，尚不足以改變獲利預期。",
+   "keyNumbers": [
+    {
+     "label": "2026上半年營收",
+     "value": "3.647億元"
+    },
+    {
+     "label": "毛利率",
+     "value": "2026上半年28%；2025年28%、2024年33%"
+    },
+    {
+     "label": "每股盈餘",
+     "value": "2026上半年0.62元；2025全年0.57元"
+    },
+    {
+     "label": "外銷占比",
+     "value": "2026上半年24.76%；2025年13.65%"
+    },
+    {
+     "label": "泰國基地規劃產能",
+     "value": "台灣基地的2.5倍"
+    },
+    {
+     "label": "自有品牌營收占比",
+     "value": "76%"
+    }
+   ],
+   "guidance": "未提供下一季或全年財測。規劃以泰國基地拓展日本及海外市場，簡報標示2027年，但未明確交代投產與放量時點。",
+   "drivers": [
+    "產品已打入日本連鎖便利商店，但未揭露客戶、訂單規模。",
+    "泰國原料及日泰協定關稅優勢，有望提升日本市場價格競爭力。",
+    "擴展航空餐飲、大型餐飲集團客製化原料及RTC／RTE產品。"
+   ],
+   "risks": [
+    "市場脈絡顯示9月營收年減24%、月減10%，近期動能偏弱。",
+    "毛利率由2024年33%降至2025年及2026上半年28%，未說明恢復條件。",
+    "泰國擴產未揭露資本支出、稼動率及獲利貢獻，效益仍待驗證。"
+   ],
+   "qaHighlights": [],
+   "tone": "無法判斷",
+   "evidence": "簡報多為圖片"
+  },
+  "analyzedAt": "2026-10-12T02:10:36+08:00",
+  "model": "gpt-6.1-sol",
+  "analyzedEvidence": 1,
   "firstSeen": "2026-10-12T01:57:57+08:00",
-  "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "state": "partial",
+  "pendingNote": "影音：本次轉檔數已滿，下次轉"
  },
  "2408-2026-10-12": {
   "key": "2408-2026-10-12",
@@ -2277,17 +2755,71 @@
   "fileEn": "288120261008E002.pdf",
   "videoUrl": null,
   "note": "受Citi邀約參加投資人會議",
-  "deck": null,
+  "deck": {
+   "file": "288120261008M002.pdf",
+   "pages": 101,
+   "chars": 42801,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-08 月營收 40,551 百萬元，YoY -48%，MoM +280%，累計 YoY +172%",
    "move": null
   },
-  "analysis": null,
+  "analysis": {
+   "headline": "獲利回顧為主，短年期保單拉低新契約價值率",
+   "score": 3,
+   "verdict": "一般",
+   "reason": "利多以已公布的上半年獲利與AI金融商機為主，未提供足以改變獲利預期的新財測或量化貢獻。",
+   "keyNumbers": [
+    {
+     "label": "上半年稅後淨利",
+     "value": "973.9億元"
+    },
+    {
+     "label": "上半年EPS",
+     "value": "6.67元"
+    },
+    {
+     "label": "上半年FVOCI權益工具稅後處分利益",
+     "value": "910.7億元，另列於淨利之外"
+    },
+    {
+     "label": "人壽新契約CSM",
+     "value": "349億元，年增11.4%"
+    },
+    {
+     "label": "人壽新契約CSM margin",
+     "value": "65.7%，去年同期76.3%"
+    },
+    {
+     "label": "北富銀上半年淨利差",
+     "value": "1.30%，去年同期1.18%"
+    }
+   ],
+   "guidance": "未提供下一季或全年獲利財測；規劃2026年底前開設印度分行，產險目標2027年AI／科技業保費占商業險20%，金控長期ROE目標逾10%。",
+   "drivers": [
+    "北富銀調整資產負債結構、擴大高利差放款，帶動淨利差改善。",
+    "分紅及投資型保單、內部通路跨售推升保費；財管手續費持續成長。",
+    "AI產業衍生企業授信、聯貸及商業保險需求，但未量化未來獲利貢獻。"
+   ],
+   "risks": [
+    "短年期繳與躉繳商品占比提高，新契約CSM margin下降，初年度等價保費年減5.3%。",
+    "接軌IFRS 17並取消覆蓋法，跨年度獲利與資本比率比較須注意口徑差異。",
+    "股票處分利益與評價收益貢獻大，後續獲利受股市、匯率及避險成本影響。"
+   ],
+   "qaHighlights": [],
+   "tone": "無法判斷",
+   "evidence": "僅簡報"
+  },
+  "analyzedAt": "2026-10-12T02:05:22+08:00",
+  "model": "gpt-6.1-sol",
+  "analyzedEvidence": 1,
   "firstSeen": "2026-10-12T01:59:32+08:00",
-  "state": "pending",
-  "pendingNote": "尚未判讀"
+  "state": "done",
+  "pendingNote": ""
  },
  "4934-2026-10-12": {
   "key": "4934-2026-10-12",
@@ -2328,16 +2860,69 @@
   "fileEn": "628120261008E001.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "628120261008M001.pdf",
+   "pages": 31,
+   "chars": 1883,
+   "imageHeavy": true
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 1,494 百萬元，YoY +10%，MoM -12%，累計 YoY +1%",
    "move": null
   },
-  "analysis": null,
+  "analysis": {
+   "headline": "上半年毛利率微升，展店與數位轉型未量化",
+   "score": 3,
+   "verdict": "一般",
+   "reason": "屬輕微利多，但主要回顧已公布財報，展店與數位轉型缺乏量化目標及時程，未提供足以改變獲利預期的新資訊。",
+   "keyNumbers": [
+    {
+     "label": "2026上半年營收",
+     "value": "96.74億元，年減1.60%"
+    },
+    {
+     "label": "上半年毛利率",
+     "value": "20.12%，年增0.58個百分點"
+    },
+    {
+     "label": "上半年營業利益",
+     "value": "2.76億元，年增2.15%"
+    },
+    {
+     "label": "上半年EPS",
+     "value": "2.26元，去年同期2.23元"
+    },
+    {
+     "label": "上半年營業費用率",
+     "value": "17.27%，年增0.48個百分點"
+    },
+    {
+     "label": "2026年9月門市數",
+     "value": "318間"
+    }
+   ],
+   "guidance": "Digital City店型將持續拓展，但未提供展店數量、時程或下一季／全年明確財測。",
+   "drivers": [
+    "提升實體店格、持續拓展Digital City店型。",
+    "透過APP會員、Line推播及購物平台改版推進虛實整合，效益尚未量化。"
+   ],
+   "risks": [
+    "上半年營收仍衰退，費用率上升抵銷大部分毛利率改善。",
+    "未說明毛利率改善原因與持續性，難判斷後續獲利走勢。",
+    "簡報多為圖片且無逐字稿，營運近況與問答資訊有限。"
+   ],
+   "qaHighlights": [],
+   "tone": "無法判斷",
+   "evidence": "簡報多為圖片"
+  },
+  "analyzedAt": "2026-10-12T02:06:07+08:00",
+  "model": "gpt-6.1-sol",
+  "analyzedEvidence": 1,
   "firstSeen": "2026-10-12T01:59:32+08:00",
-  "state": "pending",
-  "pendingNote": "尚未判讀"
+  "state": "done",
+  "pendingNote": ""
  }
 }
