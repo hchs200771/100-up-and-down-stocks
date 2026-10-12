@@ -48,6 +48,11 @@ h2{font-size:16px;margin:22px 0 8px}
 .cards .card{flex:1 1 160px;margin:0}
 .cards .card b{display:block;font-size:18px;margin-top:4px}
 .pos{color:var(--up)}.neg{color:var(--down)}
+.stop{display:inline-block;font-size:13px;font-weight:800;border-radius:6px;padding:1px 8px;margin-right:8px;background:var(--chip);color:var(--fg)}
+.stop-hit{background:var(--up);color:#fff}.stop-none{background:#f59e0b;color:#fff}
+.stopcard-hit{border:2px solid var(--up)}
+table.stops{min-width:0;font-size:15px}table.stops td,table.stops th{text-align:left}
+.stop-row-hit td{color:var(--up);font-weight:700}.stop-row-none td{color:#d97706}
 .tablebox{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:10px}
 table{border-collapse:collapse;width:100%;min-width:640px;font-size:13px}
 th,td{padding:6px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
