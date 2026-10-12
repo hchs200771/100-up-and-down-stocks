@@ -369,6 +369,38 @@ async function groqTranscribe(file: string): Promise<string> {
   }
 }
 
+// 本機轉文字（同 fetch-kol-feeds.ts 的 KOL_TRANSCRIBE_CMD：$1 = 音檔、$2 = 輸出文字檔）。
+// Groq 免費額度是每小時音訊秒數，常被 KOL 與法說會吃滿；滿了就改本機轉，慢但不用等下次。
+const LOCAL_CMD = process.env.KOL_TRANSCRIBE_CMD && process.env.KOL_TRANSCRIBE_CMD !== "off" ? process.env.KOL_TRANSCRIBE_CMD : "";
+
+function localTranscribe(file: string): Promise<string> {
+  const out = file.replace(/\.mp3$/, ".txt");
+  return new Promise((done, fail) => {
+    const child = spawn("sh", ["-c", LOCAL_CMD, "conf-transcribe", file, out], { stdio: "ignore" });
+    child.on("error", fail);
+    child.on("close", (code) => {
+      if (code === 0 && existsSync(out)) {
+        const text = readFileSync(out, "utf8").trim();
+        rmSync(out, { force: true });
+        done(text);
+      } else fail(new Error(`本機轉文字失敗（exit ${code}）`));
+    });
+  });
+}
+
+async function transcribePart(file: string): Promise<string> {
+  if (GROQ_KEY && !groqExhausted) {
+    try {
+      return await groqTranscribe(file);
+    } catch (e) {
+      if (!groqExhausted || !LOCAL_CMD) throw e;
+      log("  Groq 額度已滿，改用本機轉文字");
+    }
+  }
+  if (!LOCAL_CMD) throw new Error("Groq 額度已用完，下次執行再轉");
+  return localTranscribe(file);
+}
+
 const isDirectVideo = (url: string | null) => !!url && /^https?:\/\/[^?#]+\.(mp4|m4a|mp3|m3u8)(\?|$)/i.test(url);
 const youtubeId = (url: string | null) =>
   url?.match(/(?:youtube\.com\/(?:watch\?(?:.*&)?v=|live\/|shorts\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/)?.[1] ?? null;
@@ -461,8 +493,8 @@ async function transcribe(row: ConfRow): Promise<{ meta: ConfResult["transcript"
     return { meta: saved.meta, text: saved.text, status: "ok" };
   }
   if (NO_VIDEO) return { meta: null, text: "", status: "本次未轉" };
-  if (!GROQ_KEY) return { meta: null, text: "", status: "未設定 GROQ_API_KEY" };
-  if (groqExhausted) return { meta: null, text: "", status: "Groq 額度已滿，下次轉" };
+  if (!GROQ_KEY && !LOCAL_CMD) return { meta: null, text: "", status: "未設定 GROQ_API_KEY" };
+  if (groqExhausted && !LOCAL_CMD) return { meta: null, text: "", status: "Groq 額度已滿，下次轉" };
   const url = row.videoUrl.replace(/^http:\/\/irconference\./, "https://irconference.");
   const tmp = resolve(WORK_DIR, "audio-tmp", row.key); // 影片暫存，用完即刪
   // 抽好的音檔（約 15MB／小時）。Groq 額度滿了就留到下次，不用再抓一次影片（大的超過 1GB）；轉完即刪
@@ -510,14 +542,14 @@ async function transcribe(row: ConfRow): Promise<{ meta: ConfResult["transcript"
       log(`  影音 ${row.key}：影片 ${mb.toFixed(0)}MB、${minutes} 分鐘，下載＋抽音軌 ${Math.round((Date.now() - t0) / 1000)}s，${listParts().length} 段送 Groq`);
     } else log(`  影音 ${row.key}：用上次留下的音檔（${minutes} 分鐘）送 Groq`);
     const texts: string[] = [];
-    for (const p of listParts()) texts.push(await groqTranscribe(resolve(pending, p)));
+    for (const p of listParts()) texts.push(await transcribePart(resolve(pending, p)));
     const text = texts.join("\n");
     const meta = { minutes, chars: text.replace(/\s+/g, "").length };
     writeFileSync(cache, JSON.stringify({ meta, text }));
     return { meta, text, status: "ok" };
   } catch (e) {
     const msg = (e as Error).message;
-    keepAudio = groqExhausted && listParts().length > 0;
+    keepAudio = (groqExhausted || !!LOCAL_CMD) && listParts().length > 0;
     log(`  [warn] 影音 ${row.key} 轉文字失敗：${msg}${keepAudio ? "（音檔留到下次）" : ""}`);
     return { meta: null, text: "", status: keepAudio ? "Groq 額度已滿，下次轉" : `失敗：${msg.slice(0, 80)}` };
   } finally {

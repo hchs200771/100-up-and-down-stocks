@@ -5,7 +5,7 @@ import { setDefaultAutoSelectFamilyAttemptTimeout } from "node:net";
 import { resolve } from "node:path";
 
 /**
- * 財經 KOL 新內容抓取：Podcast RSS、YouTube feed、股癌 Telegram 公開預覽與俊哥 X 本機 inbox，
+ * 財經 KOL 新內容抓取：Podcast RSS、YouTube feed、股癌 Telegram 公開預覽與駿哥 X 本機 inbox，
  * 挑出「還沒上過報告」的新節目／貼文；Telegram 自動翻頁，X 由互動瀏覽器先擷取，
  * 盡量取得全文，寫到 data/tmp/kol-items.json 給 kol-brief-worker 判讀。
  *
@@ -40,11 +40,12 @@ interface Source {
 const SOURCES: Source[] = [
   { key: "macromicro", name: "財經M平方", platform: "youtube", feed: "https://www.youtube.com/feeds/videos.xml?channel_id=UC6LU7FUBvbFCh_cQasrHZ_Q" },
   { key: "jcinsight", name: "財女珍妮", platform: "youtube", feed: "https://www.youtube.com/feeds/videos.xml?channel_id=UCdwPn2TO60Ec8QDIFRx50lQ" },
-  { key: "gooaye", name: "股癌", platform: "podcast", feed: "https://feeds.soundon.fm/podcasts/954689a5-3096-43a4-a80b-7810b219cef3.xml" },
+  { key: "gooaye", name: "股癌", platform: "youtube", feed: "https://www.youtube.com/feeds/videos.xml?channel_id=UC23rnlQU_qE3cec9x709peA" },
+  { key: "wilsonrice", name: "股海飯桶", platform: "youtube", feed: "https://www.youtube.com/feeds/videos.xml?channel_id=UCDjTsgUSCsFWDDXkNZHLAXQ" },
   { key: "statementdog", name: "財報狗", platform: "podcast", feed: "https://feed.firstory.me/rss/user/clcftm46z000201z45w1c47fi" },
   { key: "ayen", name: "淡定聽台指", platform: "podcast", feed: "https://rss.buzzsprout.com/1901075.rss" },
   { key: "gooaye-tg", name: "股癌 Telegram", platform: "telegram", feed: "https://t.me/s/Gooaye" },
-  { key: "qq_timmy", name: "俊哥（X）", platform: "x", feed: "data/kol/x-inbox/QQ_Timmy.json" },
+  { key: "qq_timmy", name: "駿哥（X）", platform: "x", feed: "data/kol/x-inbox/QQ_Timmy.json" },
 ];
 
 const LOOKBACK_DAYS = Number(process.env.KOL_LOOKBACK_DAYS ?? 7);
