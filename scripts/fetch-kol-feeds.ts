@@ -1,6 +1,7 @@
 import "dotenv/config";
 import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
+import { setDefaultAutoSelectFamilyAttemptTimeout } from "node:net";
 import { resolve } from "node:path";
 
 /**
@@ -25,6 +26,9 @@ import { resolve } from "node:path";
  *
  * 任何一個來源失敗只 warn，不影響其他來源，也不影響主報告。
  */
+
+// Telegram 等海外主機連線常超過 Node 預設 250ms 的 happy-eyeballs 嘗試時間，會直接 ETIMEDOUT，放寬到 2 秒
+setDefaultAutoSelectFamilyAttemptTimeout(2000);
 
 interface Source {
   key: string;
