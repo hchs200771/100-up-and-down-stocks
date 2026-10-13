@@ -3,42 +3,6 @@
   "date": "2026-10-13",
   "gainers": [
     {
-      "category": "LED/光電元件與照明模組",
-      "stocks": [
-        "雷笛克光學(5230)",
-        "映興(3597)",
-        "冠西電(2466)",
-        "安瑞-KY(3664)",
-        "先益(3531)",
-        "台亞(2340)",
-        "全域(3067)"
-      ],
-      "story": "10/13 光學元件盤中出現雷笛克光學漲停、部分光電股跟進，市場交易主軸偏向車用照明升級與光學元件需求。10/12 報導指出，雷笛克擴大車用光學透鏡及 AI Server 精密結構件出貨，9 月營收 1.41 億元、年增 22.76%，第三季營收年增 20.78%，是族群中基本面證據較完整者；TrendForce 對智慧車燈與車用 LED 的長期需求則屬產業推論。映興較偏 AI 伺服器、網通及車用線組連接器，冠西電主力為光耦合器，台亞則涉及光電元件，受惠鏈位置不同。台亞當日當沖比 71.9%，且外資賣超 1,498 張；雷笛克雖外資買超 512 張，整體法人訊號仍不強，低流動性與高當沖個股可能放大波動，訂單延續性仍待驗證。",
-      "storySource": "worker",
-      "needsRewrite": false,
-      "confidence": "medium",
-      "stage": "高潮",
-      "alsoInLosers": true,
-      "scoreBreakdown": {
-        "trend": null,
-        "timing": 8,
-        "chips": 3,
-        "risk": -25
-      },
-      "signals": {
-        "groupAvgPct": 7.151185596780162,
-        "instNetDirection": "mixed",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 71.91364507938579,
-        "highDayTrade": true,
-        "leaderConcentration": "broad",
-        "speculativeRatio": 0.7142857142857143,
-        "consecutiveDaysInStrong": 3,
-        "memberCountDelta": 4,
-        "retreatSignal": false
-      }
-    },
-    {
       "category": "雲端AI/企業系統整合",
       "stocks": [
         "晉泰(6221)",
@@ -49,29 +13,18 @@
         "宏碁資訊(6811)",
         "寶碩(5210)"
       ],
-      "story": "10/13大世科公告將於10/22舉辦「Data Plus AI」企業AI基礎架構與智慧應用研討會，市場據此交易企業私有雲、AI導入與資安需求升溫；櫃買中心產業鏈資料亦將敦陽科、晉泰、宏碁資訊、大世科列入雲端、AI系統整合服務位置。族群基本面仍取決於雲端遷移、AI專案認列、維運續約與硬體供應成本，活動題材能否轉成訂單尚待驗證。10/13敦陽科上漲9.07%且外資買超336張，籌碼相對完整；晉泰大漲9.97%但法人買超有限。華經雖漲3.69%，外資賣超723張且當沖72.76%，短線高當沖與隔日波動風險明顯，不能視為基本面同步改善。",
-      "storySource": "worker",
-      "needsRewrite": false,
+      "story": "10/13大世科官網消息邀請參觀Cloud Summit 2026，展示跨雲與AI方案；同日敦陽科相關法說資料顯示，截至6/30在手訂單約122億元、今年預計完成約52.6億元，且MDR服務中心已導入生成式AI，提供企業雲端、資安與AI系統整合的基本面支撐。族群上漲較可能反映AI導入、混合雲遷移及資安需求的市場交易，惟專案驗收、毛利率與訂單認列仍待驗證。敦陽科漲9.07%且外資、投信同步買超，籌碼較完整；晉泰漲近10%但法人買超有限。華經雖漲3.69%卻遭外資賣超723張，且當沖比72.8%，短線波動與隔日賣壓風險偏高。",
       "confidence": "medium",
       "stage": "擴散",
+      "entryScore": 44,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 32,
         "timing": 24,
         "chips": 3,
         "risk": -15
       },
-      "signals": {
-        "groupAvgPct": 5.574320735399487,
-        "instNetDirection": "mixed",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 50.90668623011647,
-        "highDayTrade": true,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0.2857142857142857,
-        "consecutiveDaysInStrong": 3,
-        "memberCountDelta": 3,
-        "retreatSignal": false
-      }
+      "entryAction": "不碰減碼",
+      "entryRationale": "企業AI需求延續，但當沖偏高且法人分歧，等回測"
     },
     {
       "category": "金融/銀行與保險",
@@ -83,28 +36,17 @@
         "中信金(2891)",
         "中再保(2851)"
       ],
-      "story": "10/13台股盤中一度重挫逾1,200點，經濟日報盤勢報導指出金融股扮演撐盤角色，資金可能轉向高股息與防禦型資產。華南金9/9公布8月稅後純益33.7億元、前8月240.2億元且年增39.2%，四大子公司獲利創高；上海商銀10/8公告9月合併營收年增10.7%，10/13再公布前9月稅後盈餘152.10億元、EPS 3.10元，提供銀行股基本面支撐。中信金則有外資、投信同步買超，可能反映大型金控配置需求。美好證漲停更偏證券成交與短線情緒，旺旺保、中再保受承保與投資收益預期影響，仍待後續獲利驗證；整體上漲可能同時包含避險與法人買盤，非所有子族群基本面同步改善。",
-      "storySource": "worker",
-      "needsRewrite": false,
+      "story": "10/13台股大跌逾千點，金融股成為資金防禦與輪動承接區，經濟日報指出13家上市金控將於10/15前公告9月自結獲利，市場提前交易獲利能見度。8月獲利資料顯示，壽險金控受股債評價回升帶動，銀行則受核心利息、手續費與投資收益支撐；上海商銀10/8公告9月營收年增10.7%，提供銀行基本面佐證。華南金、中信金獲外資與投信同步買超，籌碼較完整；上海商銀則以外資買盤為主。美好證接近漲停較偏證券成交與自營題材，且外資反向賣超，與銀行保險基本面不同；旺旺保流動性偏低，不宜作族群核心。後續催化劑是9月獲利公告，但評價與市場風險仍待驗證。",
       "confidence": "medium",
+      "entryScore": 68,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 24,
         "timing": 26,
         "chips": 23,
         "risk": -5
       },
-      "signals": {
-        "groupAvgPct": 4.251565719537454,
-        "instNetDirection": "mixed",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 18.05335072930598,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0.16666666666666666,
-        "consecutiveDaysInStrong": 0,
-        "memberCountDelta": null,
-        "retreatSignal": false
-      }
+      "entryAction": "觀察不追",
+      "entryRationale": "防禦需求與法人買盤俱在，獲利公布前不追高"
     },
     {
       "category": "光學鏡頭/成像元件",
@@ -115,29 +57,39 @@
         "久禾光(6498)",
         "今國光(6209)"
       ],
-      "story": "10/13盤面報導顯示，玉晶光、保勝光學與中揚光在大盤重挫中逆勢走強，市場交易焦點落在手機高階鏡頭、精密光學，以及CPO／光通訊送樣題材。玉晶光位居手機鏡頭與光學模組核心，9月營收公告顯示前9月營收年增10.12%，基本面相對穩健；中揚光則有模造玻璃光纖耦合鏡頭送樣、明年下半年量產的市場敘事，但仍待訂單放量驗證；保勝光學偏高階投影、AOI與專業光學，規模較小。族群上漲伴隨高當沖，代表股當沖比約57%至63%，且中揚光外資賣超845張，短線籌碼與題材波動風險偏高。",
-      "storySource": "worker",
-      "needsRewrite": false,
+      "story": "10/13盤面在大盤重挫下逆勢走強，CMoney盤中資料顯示保勝光學與中揚光漲停、玉晶光大漲9.81%；經濟日報同日報導，中揚光模造玻璃光纖耦合鏡頭已小量送樣美國通訊大廠，CPO新品預計明年下半年量產，提供AI光通訊想像。玉晶光則受手機高階鏡頭、FA/FAU與精密光學題材支撐，9月營收公告為26.71億元、前9月年增10.12%。但中揚光外資賣超845張、股價與籌碼背離，玉晶光與中揚光當沖率逾59%，短線可能是資金追價與CPO預期交易，訂單延續性及獲利貢獻仍待驗證；今國光外資大買但漲幅較小，代表股表現分化。",
       "confidence": "medium",
-      "alsoInLosers": true,
+      "entryScore": 55,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 30,
         "timing": 20,
         "chips": 20,
         "risk": -15
       },
-      "signals": {
-        "groupAvgPct": 6.992102128644772,
-        "instNetDirection": "mixed",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 59.92336953427638,
-        "highDayTrade": true,
-        "leaderConcentration": "broad",
-        "speculativeRatio": 0.2,
-        "consecutiveDaysInStrong": 1,
-        "memberCountDelta": 2,
-        "retreatSignal": false
-      }
+      "entryAction": "觀察不追",
+      "entryRationale": "規格升級有中期性，強弱同榜先視為換手"
+    },
+    {
+      "category": "LED/光電元件與照明模組",
+      "stocks": [
+        "雷笛克光學(5230)",
+        "映興(3597)",
+        "冠西電(2466)",
+        "台亞(2340)",
+        "全域(3067)"
+      ],
+      "story": "10/13光電市場出現明顯分化，雷笛克光學漲停、映興接近漲停、冠西電大漲，資金偏向車用照明、光學元件與高階光電題材；但同日LED族群統計為9漲23跌，中位數下跌，並非全面性行情。10/12媒體引述公司營運資訊，雷笛克車用光學透鏡與AI伺服器精密結構件出貨增加，車燈規格升級及高單價產品組合可能支撐需求，訂單延續與毛利率仍待驗證。台亞雖上漲，外資賣超1,498張且當沖比71.9%，短線籌碼風險高；冠西電有處置標記，映興有注意標記，行情可能包含題材與短線資金交易。",
+      "confidence": "medium",
+      "stage": "高潮",
+      "entryScore": 1,
+      "scoreBreakdown": {
+        "trend": 15,
+        "timing": 8,
+        "chips": 3,
+        "risk": -25
+      },
+      "entryAction": "不碰減碼",
+      "entryRationale": "投機籌碼進入高潮且處置股集中，逢高降級"
     },
     {
       "category": "塑化/特用化學與工業材料",
@@ -148,30 +100,40 @@
         "台苯(1310)",
         "台聚(1304)"
       ],
-      "story": "10/13盤勢由高油價與石化報價上行催化，非凡新聞引述產業分析指出，苯價走強帶動苯乙烯與己內醯胺，國喬9月營收亦創歷史新高、年增逾九成；10/8前後產業報價資料顯示，PS、PTA價格上彈，低庫存仍支撐乙二醇，對國喬、東聯等中間原料廠可能有利。惟中國內需與房地產需求偏弱，10月部分檢修裝置復產，供給回升及價差延續性仍待驗證。國喬外資大買且漲近一成，但當沖率50.36%顯示短線籌碼擁擠；東聯、台苯、台聚漲幅較溫和，較像族群溢出，台苯另有苯乙烯產能與營運集中風險。",
-      "storySource": "worker",
-      "needsRewrite": false,
+      "story": "10/13鉅亨與玩股網報導，中東衝突升溫、沙烏地遭攻擊及荷姆茲海峽油輪遇襲，推升原油供應風險，布蘭特原油10/12上漲近2%，資金因此避險轉向塑化；國喬漲9.97%並觸及漲停，台苯、台聚同步走強。產業鏈上，苯乙烯、純苯與泛用樹脂報價受油價及供給疑慮支撐，可能改善國喬SM/ABS與台苯產品價格，但10/13化工期貨中乙二醇下跌3.67%，東聯仍可能受原料乙烯成本抵銷。10/13媒體亦指出台聚LDPE、EVA漲幅落後乙烯，利差仍待驗證。國喬外資大買但當沖率50.36%，短線交易熱度與回吐風險高；國喬特流動性偏低，不宜作核心證據。",
       "confidence": "medium",
       "stage": "擴散",
-      "alsoInLosers": true,
+      "entryScore": 44,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 22,
         "timing": 24,
         "chips": 13,
         "risk": -15
       },
-      "signals": {
-        "groupAvgPct": 6.12788989195189,
-        "instNetDirection": "mixed",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 40.55639658050735,
-        "highDayTrade": true,
-        "leaderConcentration": "broad",
-        "speculativeRatio": 0.2,
-        "consecutiveDaysInStrong": 3,
-        "memberCountDelta": 3,
-        "retreatSignal": false
-      }
+      "entryAction": "不碰減碼",
+      "entryRationale": "油價催化延續但利差未驗證，擴散段不追價"
+    },
+    {
+      "category": "生技/新藥與醫材",
+      "stocks": [
+        "金萬林-創(6645)",
+        "基米-創(4195)",
+        "杏國(4192)",
+        "松瑞藥(4167)",
+        "ABC-KY(6598)"
+      ],
+      "story": "10/13生技醫療行情中，金萬林-創漲停、基米-創與杏國分別上漲，買盤集中在基因檢測、精準醫療與新藥題材；10/13市場行情資料顯示金萬林成交量僅114張，創新板個股流動性偏低，漲勢容易受籌碼推動。產業位置上，金萬林與基米偏檢測服務及產品，杏國偏新藥研發，松瑞藥則屬原料藥與CDMO，基本面驗證節奏不同。10/12法人資料顯示外資賣超松瑞藥1,303張，股價上漲與法人籌碼出現背離；ABC-KY先前9月營收公告年增73.65%，北美呼吸道檢測需求可能支撐第四季，但屬個股營運催化，尚不足以代表整體族群。",
+      "confidence": "medium",
+      "stage": "擴散",
+      "entryScore": 42,
+      "scoreBreakdown": {
+        "trend": 20,
+        "timing": 24,
+        "chips": 13,
+        "risk": -15
+      },
+      "entryAction": "不碰減碼",
+      "entryRationale": "題材分散且投機股偏多，等待臨床營收驗證"
     },
     {
       "category": "AI伺服器/系統組裝",
@@ -181,61 +143,17 @@
         "撼訊(6150)",
         "和碩(4938)"
       ],
-      "story": "10/12和碩受GB300雲端運算T1專案首批出貨、9月營收2147.53億元年增86.9%激勵，10/13產業觀點亦指出AI伺服器進入機櫃整合與產能競賽，需求與規格升級仍是系統組裝鏈的主要催化劑。和碩具整機與ODM出貨驗證，麗臺第三季營收年增70%則偏繪圖卡需求，迎廣偏機殼與機櫃，撼訊偏GPU板卡，受惠程度與毛利結構不同。10/13和碩外資明顯買超，其他個股法人買盤較溫和；迎廣、麗臺、和碩當沖比均逾48%，短線籌碼風險高，訂單延續與獲利轉化仍待後續營收及出貨驗證。",
-      "storySource": "worker",
-      "needsRewrite": false,
+      "story": "10/11營收報導指出，AI伺服器需求與新機拉貨推升電子代工，和碩9月營收2147.53億元、年增86.9%，第三季營收3890.73億元創高；10/12公司相關報導稱，GB300雲端運算T1專案首批已出貨，成為族群最明確催化劑。10/13產業資料則提到AI伺服器進入機櫃與資料中心部署階段，需求可能延續，但訂單規模、毛利與客戶集中度仍待財報驗證。迎廣偏機箱與整機周邊，麗臺、撼訊偏GPU與繪圖卡平台，和碩則具系統整合與量產位置，代表股差異大。四檔平均當沖逾51%，迎廣、麗臺、和碩均超過48%，短線籌碼與隔日波動風險偏高。",
       "confidence": "medium",
+      "entryScore": 68,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 38,
         "timing": 20,
         "chips": 20,
         "risk": -10
       },
-      "signals": {
-        "groupAvgPct": 6.513695158892917,
-        "instNetDirection": "buy",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 51.25851831273007,
-        "highDayTrade": true,
-        "leaderConcentration": "broad",
-        "speculativeRatio": 0,
-        "consecutiveDaysInStrong": 1,
-        "memberCountDelta": 2,
-        "retreatSignal": false
-      }
-    },
-    {
-      "category": "生技/新藥與醫材",
-      "stocks": [
-        "金萬林-創(6645)",
-        "基米-創(4195)",
-        "杏國(4192)",
-        "松瑞藥(4167)"
-      ],
-      "story": "10/8營收公告顯示，金萬林-創9月營收8,364.8萬元、年增103.46%，公司說明多體學資料庫建置服務收入是主要增量，市場因此交易精準醫療、基因檢測與AI服務升級題材；10/13金萬林再漲停，但成交量與流動性有限，延續性仍待驗證。松瑞藥9月營收1.04億元、年增33.74%，但月減11.17%，原料藥需求改善與訂單能見度尚非全面確認。基米-創、杏國偏向新藥與生技題材，10/13分別上漲4.70%與4.47%，未見同期間共通公告支撐。當日外資買超金萬林6張、基米59張，卻賣超松瑞153張，顯示資金偏向小型題材股，族群追價與籌碼分化風險偏高。",
-      "storySource": "worker",
-      "needsRewrite": false,
-      "confidence": "medium",
-      "stage": "擴散",
-      "alsoInLosers": true,
-      "scoreBreakdown": {
-        "trend": null,
-        "timing": 24,
-        "chips": 3,
-        "risk": -15
-      },
-      "signals": {
-        "groupAvgPct": 5.658917833409971,
-        "instNetDirection": "mixed",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": null,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0.75,
-        "consecutiveDaysInStrong": 3,
-        "memberCountDelta": 2,
-        "retreatSignal": false
-      }
+      "entryAction": "觀察不追",
+      "entryRationale": "AI長線主線仍強，但當沖過熱，拉回再布局"
     },
     {
       "category": "營建/不動產與工程承攬",
@@ -245,30 +163,18 @@
         "廣豐(1416)",
         "欣巴巴(9906)"
       ],
-      "story": "10/12欣陸公告9月合併營收43.05億元、年增89.32%，主因大陸建設住宅案「耑序」開始交屋認列，並由交屋進度與工程承攬構成營收支撐；這是族群中較具明確基本面催化的代表。其餘新建、廣豐、欣巴巴當日上漲，可能反映不動產資產、建案交屋與房市題材交易，但缺乏同日共通利多，後續需求、房貸環境、推案去化及認列時點仍待驗證。四檔皆標示低流動性，外資買超金額相對有限，股價上行的籌碼持續性與隔日承接仍有風險。",
-      "storySource": "worker",
-      "needsRewrite": false,
+      "story": "10/12欣陸投控公告9月自結合併營收43.05億元，主因大陸建設住宅專案「耑序」開始交屋，帶動不動產開發收入認列；1至9月累計營收年增3.4%，並抵銷欣達環工工程收入減少，顯示住宅交屋與工程承攬景氣分化。市場可能據此交易營建交屋旺季及建案認列題材，但後續仍受交屋進度、房市政策、融資成本與工程毛利影響。新建、廣豐、欣巴巴漲幅接近，惟成員普遍低流動性，法人買超金額有限，較像題材擴散而非強基本面共振，續航仍待營收與交屋數據驗證。",
       "confidence": "medium",
       "stage": "擴散",
-      "alsoInLosers": true,
+      "entryScore": 37,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 15,
         "timing": 24,
         "chips": 13,
         "risk": -15
       },
-      "signals": {
-        "groupAvgPct": 2.562219970562724,
-        "instNetDirection": "buy",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 11.701690834597036,
-        "highDayTrade": false,
-        "leaderConcentration": "broad",
-        "speculativeRatio": 1,
-        "consecutiveDaysInStrong": 3,
-        "memberCountDelta": 1,
-        "retreatSignal": false
-      }
+      "entryAction": "不碰減碼",
+      "entryRationale": "交屋題材有支撐，低流動性與分化限制追價"
     },
     {
       "category": "一般網通/企業網路設備",
@@ -277,60 +183,17 @@
         "隴華(2424)",
         "合勤控(3704)"
       ],
-      "story": "10/13 合勤控參加 Network X 2026，展示 AI 寬頻網路、智慧雲端管理、寬頻基礎設施與家庭網路方案；同日產業報導也提到 WiFi 8、50G PON 與 AI 解決方案，市場可能據此交易企業網路升級及電信商採購想像。產業鏈上，合勤控偏品牌與寬頻平台，基本面仍取決於電信商導入、庫存與新規格出貨；其陽偏網路資安與邊緣伺服器，隴華則缺乏同等強度的公開事件證據。其陽、隴華漲幅接近漲停但籌碼買超有限，且隴華低流動性，短線追價風險較高；合勤控外資小幅賣超、當沖約35%，題材延續性仍待後續訂單與營收驗證。",
-      "storySource": "worker",
-      "needsRewrite": false,
+      "story": "10/13 網通股上漲，較具日期證據的是合勤控：10/12 公司公告9月營收32.21億元、年增46.15%，顯示寬頻與企業網通出貨仍有支撐。產業鏈上，合勤控涵蓋光纖寬頻、Wi‑Fi、交換器、防火牆與雲端管理，需求變數包括電信商升級10G PON、企業資安支出及Wi‑Fi 7導入；但營收成長能否轉化為獲利，仍取決於產品組合與庫存。其陽、隴華漲幅接近漲停，較可能是小型股資金集中交易，缺乏同日共通公告支持；合勤控外資10/13反而小幅賣超28張，且當沖35.05%，因此這波上漲帶有題材與籌碼推動成分，訂單延續性仍待後續營收驗證。",
       "confidence": "medium",
-      "alsoInLosers": true,
+      "entryScore": 37,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 25,
         "timing": 14,
         "chips": 13,
         "risk": -15
       },
-      "signals": {
-        "groupAvgPct": 7.462252284014294,
-        "instNetDirection": "mixed",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 35.05358162232382,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0.6666666666666666,
-        "consecutiveDaysInStrong": 3,
-        "memberCountDelta": -1,
-        "retreatSignal": false
-      }
-    },
-    {
-      "category": "半導體設備/測試介面",
-      "stocks": [
-        "中探針(6217)",
-        "瑞耘(6532)",
-        "濾能(6823)"
-      ],
-      "story": "10/12產業資料將中探針列入探針卡概念股，AI與HPC晶片測試難度提高，可能推升高階探針卡、測試座及耗材需求；10/13收盤族群上漲，較像規格升級與資金交易的延伸。9/3公司公開說明中探針正與大廠共同開發MEMS探針、清針紙，預計明年貢獻營運，但半導體營收占比仍待提升。瑞耘位於真空製程零組件，受惠晶圓廠設備維護與精密加工需求的推論較間接；濾能主攻化學濾網，且成交流動性偏低。中探針外資10/13買超、瑞耘外資賣超，籌碼分歧，代表股漲幅與基本面連結仍待驗證。",
-      "storySource": "worker",
-      "needsRewrite": false,
-      "confidence": "medium",
-      "alsoInLosers": true,
-      "scoreBreakdown": {
-        "trend": null,
-        "timing": 14,
-        "chips": 23,
-        "risk": -15
-      },
-      "signals": {
-        "groupAvgPct": 6.708357967533524,
-        "instNetDirection": "mixed",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": null,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0.6666666666666666,
-        "consecutiveDaysInStrong": 3,
-        "memberCountDelta": -9,
-        "retreatSignal": false
-      }
+      "entryAction": "不碰減碼",
+      "entryRationale": "網通升級具需求，成員縮減且籌碼分化先看"
     },
     {
       "category": "AI伺服器散熱/機構件",
@@ -339,60 +202,18 @@
         "富驊(5465)",
         "曜越(3540)"
       ],
-      "story": "10/13盤中資訊顯示力致走強，市場將AI伺服器散熱需求延伸至液冷模組與機構設計題材；10/12產業報導指出，2026年AI伺服器液冷滲透率可能突破五成，氣冷轉液冷帶動水冷板、風扇、機箱與相關零組件升級。力致位於伺服器散熱模組，富驊偏伺服器機殼與機構件，曜越則以散熱產品為主，受惠程度與出貨驗證並不相同。9月營收與後續量產訂單仍是基本面關鍵，今日三檔皆獲外資買超但未達顯著水準，股價上漲較可能反映題材交易；曜越流動性較低，且AI需求延續、報價與毛利改善仍待公告數字確認。",
-      "storySource": "worker",
-      "needsRewrite": false,
+      "story": "10/13盤面由力致領漲，市場交易主軸是AI伺服器與高功耗晶片推升液冷、水冷及散熱模組需求；CMoney當日指出力致具散熱模組與風扇供應商題材，但量產進度與營收改善仍待驗證。產業鏈上，力致偏散熱模組、風扇與液冷方案，富驊偏高階伺服器機殼及機構件，曜越則較偏PC與散熱周邊，受惠程度並不一致。10/12產業報導提到長短料、平台轉換造成伺服器零組件營收波動，顯示需求雖在，拉貨節奏與庫存仍有風險。三檔法人合計買超但力道未達顯著，且曜越低流動性，追價與籌碼延續性仍待觀察。",
       "confidence": "medium",
       "stage": "啟動",
-      "alsoInLosers": true,
+      "entryScore": 83,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 38,
         "timing": 32,
         "chips": 23,
         "risk": -10
       },
-      "signals": {
-        "groupAvgPct": 6.511942113207937,
-        "instNetDirection": "buy",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": null,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0.3333333333333333,
-        "consecutiveDaysInStrong": 0,
-        "memberCountDelta": null,
-        "retreatSignal": false
-      }
-    },
-    {
-      "category": "家用品/餐廚與家電",
-      "stocks": [
-        "泰金-KY(6629)",
-        "永邑-KY(2939)",
-        "慶豐富(9935)"
-      ],
-      "story": "10/12慶豐富公布9月營收4.77億元、年增12.6%，第3季營收13.84億元創近七季高點，主因北美電商與專業市場通路放量、窗簾客製化需求支撐，成為族群較具基本面證據的催化劑。10/8永邑-KY公告9月營收年增9.95%，但累計前三季仍年減6.03%，反映單月改善尚待延續。10/13泰金-KY、永邑-KY與慶豐富上漲，可能是營收題材與低基期交易，並非共同重大新聞；慶豐富外資買超214張提供籌碼支撐，其餘個股量能與外資買盤有限，訂單延續性及消費需求仍待驗證。",
-      "storySource": "worker",
-      "needsRewrite": false,
-      "confidence": "medium",
-      "scoreBreakdown": {
-        "trend": null,
-        "timing": 26,
-        "chips": 13,
-        "risk": -15
-      },
-      "signals": {
-        "groupAvgPct": 4.072481747142794,
-        "instNetDirection": "mixed",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 10.250392016694398,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 1,
-        "consecutiveDaysInStrong": 0,
-        "memberCountDelta": null,
-        "retreatSignal": false
-      }
+      "entryAction": "標準持有",
+      "entryRationale": "AI散熱啟動且法人承接，可分批建立波段倉"
     },
     {
       "category": "驅動IC/顯示控制IC",
@@ -401,30 +222,18 @@
         "聯詠(3034)",
         "點晶(3288)"
       ],
-      "story": "天鈺、聯詠與點晶走高，顯示驅動及控制晶片受到買盤關注。面板拉貨、終端庫存和顯示規格升級牽動晶片需求，產品單價及高階應用占比是毛利率的主要變數。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
-      "confidence": "low",
+      "story": "10/12產業新聞指出，全球手機與消費電子需求降溫，但台系驅動IC業者靠新品、市占提升及車用需求突圍；10/7營收公告顯示，聯詠Q3營收309.71億元、年增26%，天鈺Q3營收62.53億元、季增16.09%，旺季拉貨與顯示器驅動IC出貨是本波基本面支撐。聯詠位於LCD驅動IC與TV SoC，天鈺受惠顯示器出貨與產品組合改善，點晶則偏LED及馬達驅動IC，產業連結較弱。10/13盤面上漲可能反映旺季與營收題材，惟第四季需求、晶圓與記憶體成本、報價轉嫁及新品放量仍待驗證；聯詠與天鈺法人合計買超較具支持，點晶成交與法人買超有限，籌碼風險較高。",
+      "confidence": "medium",
       "stage": "啟動",
-      "alsoInLosers": true,
+      "entryScore": 70,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 25,
         "timing": 32,
         "chips": 23,
         "risk": -10
       },
-      "signals": {
-        "groupAvgPct": 3.5456249780884064,
-        "instNetDirection": "buy",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 28.030107775332382,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0.3333333333333333,
-        "consecutiveDaysInStrong": 0,
-        "memberCountDelta": null,
-        "retreatSignal": false
-      }
+      "entryAction": "標準持有",
+      "entryRationale": "旺季出貨配合法人買盤，啟動段可續抱"
     },
     {
       "category": "螺絲扣件/精密金屬件",
@@ -433,28 +242,17 @@
         "裕慶-KY(6957)",
         "寶緯(4558)"
       ],
-      "story": "同協、裕慶-KY與寶緯上榜，精密金屬加工及結構零件受到關注。電子、工業與建築應用的客戶拉貨，搭配鋁材等原料成本、模具開發及加工良率，左右接單品質與毛利。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
-      "confidence": "low",
+      "story": "10/7–10/9美國鳳凰城螺絲暨機械設備展吸引106家台灣業者，10/12報導的台美扣件產業合作MOU與北美高階市場拓展，提供扣件、精密金屬件高值化及出口需求題材，但實際訂單仍待驗證。10/12裕慶-KY公告9月營收4.29億元，月增75.29%、年增43.98%，主因遞延訂單出貨、商用展示架急單及三班生產，基本面支撐相對明確。族群上漲仍偏個股驅動，同協與寶緯成交及流動性較弱，且同協外資、合計籌碼分別賣超63張、76張；裕慶-KY亦遭外資小幅賣超，追價須留意籌碼與展覽題材落地風險。",
+      "confidence": "medium",
+      "entryScore": 29,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 15,
         "timing": 26,
         "chips": 3,
         "risk": -15
       },
-      "signals": {
-        "groupAvgPct": 3.2640162179673435,
-        "instNetDirection": "mixed",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": null,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 1,
-        "consecutiveDaysInStrong": 0,
-        "memberCountDelta": null,
-        "retreatSignal": false
-      }
+      "entryAction": "不碰減碼",
+      "entryRationale": "訂單偏個股且法人調節，題材未成主線"
     },
     {
       "category": "被動元件",
@@ -462,30 +260,18 @@
         "天二科技(6834)",
         "鈺鎧(5228)"
       ],
-      "story": "天二科技漲停、鈺鎧跟進，電阻與電感等被動元件受到關注。AI電源、車用與工業設備提高耐壓及穩定性要求，後續營運重點在高規產品占比、客戶庫存與稼動率。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "天二科技漲停、鈺鎧上漲逾七成百分點，被動元件買盤集中於電阻與電感供應商。伺服器、車用及工業電源需求帶動高可靠度產品布局，報價、庫存去化與產能利用率是後續追蹤重點。",
       "confidence": "low",
       "stage": "擴散",
-      "alsoInLosers": true,
+      "entryScore": 52,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 30,
         "timing": 24,
         "chips": 13,
         "risk": -15
       },
-      "signals": {
-        "groupAvgPct": 8.523489932885907,
-        "instNetDirection": "mixed",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 51.38169927151951,
-        "highDayTrade": true,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0.5,
-        "consecutiveDaysInStrong": 3,
-        "memberCountDelta": 1,
-        "retreatSignal": false
-      }
+      "entryAction": "不碰減碼",
+      "entryRationale": "高階需求可追蹤，但當沖與分化壓低勝率"
     },
     {
       "category": "原油/煉油與能源商品",
@@ -493,28 +279,17 @@
         "台塑化(6505)",
         "期街口布蘭特正2(00715L)"
       ],
-      "story": "台塑化大漲，布蘭特原油正向槓桿ETF也上榜，能源價格曝險受到關注。台塑化獲利同時取決於煉油價差與原料庫存評價，原油ETF則直接受期貨價格、轉倉成本及每日槓桿重設影響。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "台塑化大漲，布蘭特原油正向槓桿ETF亦上揚，能源價格成為盤面交易焦點。台塑化獲利同時取決於煉油利差、石化利差與庫存評價，原油ETF則反映期貨價格及轉倉效果，兩者上漲的獲利傳導機制不同。",
       "confidence": "low",
+      "entryScore": 49,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 10,
         "timing": 26,
         "chips": 13,
         "risk": 0
       },
-      "signals": {
-        "groupAvgPct": 6.700778642936596,
-        "instNetDirection": "mixed",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 32.895881544816255,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0,
-        "consecutiveDaysInStrong": 0,
-        "memberCountDelta": null,
-        "retreatSignal": false
-      }
+      "entryAction": "不碰減碼",
+      "entryRationale": "油價交易偏事件驅動，槓桿商品不作長抱"
     },
     {
       "category": "消費電子/精密機構件",
@@ -522,29 +297,35 @@
         "廣寰科(3287)",
         "閎暉(3311)"
       ],
-      "story": "廣寰科與閎暉接近漲停，消費電子及精密零組件出現強勁買盤。影音周邊、智慧終端與新產品導入的訂單節奏，以及產品組合和客戶集中度，是兩家公司營運改善的重要因素。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "廣寰科與閎暉接近漲停，消費電子周邊與精密機構件延續強勢。終端新品備貨、客戶庫存調整及產品組合升級是接單觀察重點，兩家公司仍需分別檢視周邊設備與機構件業務的獲利貢獻。",
       "confidence": "low",
-      "alsoInLosers": true,
+      "entryScore": 42,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 15,
         "timing": 14,
         "chips": 13,
         "risk": 0
       },
-      "signals": {
-        "groupAvgPct": 9.925278300208408,
-        "instNetDirection": "buy",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 3.583581552349295,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0,
-        "consecutiveDaysInStrong": 3,
-        "memberCountDelta": 0,
-        "retreatSignal": false
-      }
+      "entryAction": "不碰減碼",
+      "entryRationale": "新品補漲但族群分化，等待營收擴散"
+    },
+    {
+      "category": "事務機/影像掃描與安防設備",
+      "stocks": [
+        "奇偶(3356)",
+        "安瑞-KY(3664)"
+      ],
+      "story": "奇偶與安瑞-KY大漲，監控影像及企業安全設備受到買盤關注。影像AI分析、企業資安投入與設備汰換提供升級需求，後續需檢視新案導入、海外通路及軟硬體收入組合。",
+      "confidence": "low",
+      "entryScore": 42,
+      "scoreBreakdown": {
+        "trend": 20,
+        "timing": 14,
+        "chips": 13,
+        "risk": -5
+      },
+      "entryAction": "不碰減碼",
+      "entryRationale": "資安升級有中期需求，個股集中先觀察"
     },
     {
       "category": "工業電腦/嵌入式系統",
@@ -552,28 +333,17 @@
         "廣積(8050)",
         "融程電(3416)"
       ],
-      "story": "廣積接近漲停，融程電也進入強勢榜，工業電腦的邊緣運算與強固型終端需求受到關注。工業AI部署、交通及物流應用的專案導入，配合客戶去庫存進度，決定訂單回升幅度。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "廣積接近漲停、融程電上揚，工業電腦買盤聚焦邊緣運算與強固型設備。工廠、交通及戶外應用升級帶來長周期專案需求，客戶拉貨與新平台導入速度影響營收表現。",
       "confidence": "low",
+      "entryScore": 63,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 30,
         "timing": 20,
         "chips": 13,
         "risk": 0
       },
-      "signals": {
-        "groupAvgPct": 6.491635148618233,
-        "instNetDirection": "buy",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 34.999346902139145,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0,
-        "consecutiveDaysInStrong": 2,
-        "memberCountDelta": 0,
-        "retreatSignal": false
-      }
+      "entryAction": "觀察不追",
+      "entryRationale": "邊緣運算具長線性，待龍頭與成員再擴散"
     },
     {
       "category": "傳統PCB/EMS板廠",
@@ -581,30 +351,36 @@
         "久威(6114)",
         "精成科(6191)"
       ],
-      "story": "久威與精成科走高，PCB及電子組裝鏈延續買盤。產品組合、客戶拉貨與工廠稼動率左右獲利，車用、工業及運算設備訂單的貢獻，是辨別需求復甦強度的關鍵。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "久威與精成科收高，PCB及電子製造服務延續買盤。客戶補庫存、車用與工業板需求及產能布局影響訂單，稼動率、產品組合與整合效益是後續營運觀察重點。",
       "confidence": "low",
       "stage": "退潮",
-      "alsoInLosers": true,
+      "entryScore": 15,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 25,
         "timing": 2,
         "chips": 3,
         "risk": -15
       },
-      "signals": {
-        "groupAvgPct": 4.770118034409666,
-        "instNetDirection": "sell",
-        "instVsPriceDivergence": true,
-        "avgDayTradeRatio": 54.3666663989742,
-        "highDayTrade": true,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0.5,
-        "consecutiveDaysInStrong": 1,
-        "memberCountDelta": -7,
-        "retreatSignal": false
-      }
+      "entryAction": "不碰減碼",
+      "entryRationale": "產業有需求但籌碼已退潮，新錢暫不進場"
+    },
+    {
+      "category": "家用品/餐廚與家電",
+      "stocks": [
+        "泰金-KY(6629)",
+        "慶豐富(9935)"
+      ],
+      "story": "泰金-KY與慶豐富上揚，戶外家用品與窗飾供應鏈受到關注。歐美通路補庫存、季節性備貨及關稅政策影響訂單配置，匯率、運費與原料成本則牽動毛利。",
+      "confidence": "low",
+      "entryScore": 44,
+      "scoreBreakdown": {
+        "trend": 10,
+        "timing": 26,
+        "chips": 13,
+        "risk": -5
+      },
+      "entryAction": "不碰減碼",
+      "entryRationale": "通路補庫存偏短線，等待訂單與毛利驗證"
     },
     {
       "category": "零售電商/生活消費",
@@ -612,30 +388,18 @@
         "新零售(3085)",
         "麗豐-KY(4137)"
       ],
-      "story": "新零售與麗豐-KY均上漲逾五％，通路營運與美妝消費受到關注。線上線下銷售轉換、加盟通路補貨與消費者支出，搭配行銷費用和存貨管理，決定收入成長能否轉為獲利。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "新零售與麗豐-KY均上漲逾五％，零售通路與美容保養消費受到關注。促銷檔期、通路拓展與消費者支出影響銷售，麗豐-KY另需追蹤加盟通路與區域市場需求。",
       "confidence": "low",
       "stage": "退潮",
-      "alsoInLosers": true,
+      "entryScore": 10,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 10,
         "timing": 2,
         "chips": 3,
         "risk": -5
       },
-      "signals": {
-        "groupAvgPct": 5.1813819255679725,
-        "instNetDirection": "sell",
-        "instVsPriceDivergence": true,
-        "avgDayTradeRatio": 27.478141996733534,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 1,
-        "consecutiveDaysInStrong": 3,
-        "memberCountDelta": 1,
-        "retreatSignal": false
-      }
+      "entryAction": "不碰減碼",
+      "entryRationale": "消費題材已退潮，缺乏基本面共振先避開"
     },
     {
       "category": "工業自動化/工具機設備",
@@ -643,29 +407,17 @@
         "伸興(1558)",
         "高僑(6234)"
       ],
-      "story": "伸興與高僑走高，機械設備的接單及產品更新受到關注。伸興以縫紉機需求和通路庫存為重點，高僑則受自動化投資及專案驗收影響，兩者營運彈性均與產能利用率和出貨組合相關。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "伸興與高僑收高，機械設備與自動化需求獲買盤關注。伸興的縫紉機接單連結終端消費與品牌庫存，高僑則受工廠自動化投資及專案驗收影響，兩者需分別追蹤出貨與認列節奏。",
       "confidence": "low",
-      "alsoInLosers": true,
+      "entryScore": 40,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 28,
         "timing": 14,
         "chips": 3,
         "risk": -5
       },
-      "signals": {
-        "groupAvgPct": 3.577381351690258,
-        "instNetDirection": "mixed",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 7.309104464157371,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0.5,
-        "consecutiveDaysInStrong": 3,
-        "memberCountDelta": -3,
-        "retreatSignal": false
-      }
+      "entryAction": "不碰減碼",
+      "entryRationale": "自動化趨勢仍在，但成員收斂且法人保守"
     },
     {
       "category": "紡織成衣/化纖",
@@ -673,676 +425,450 @@
         "利勤(4426)",
         "福懋(1434)"
       ],
-      "story": "利勤與福懋走高，機能布料及紡織材料受到關注。品牌客戶補庫、運動與戶外用品需求，以及原料成本和產品組合，影響織造與加工業務的毛利及稼動率。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "利勤與福懋收高，紡織及功能性布料需求受到關注。品牌客戶補庫存、機能材料新品與紗料成本影響接單及毛利，後續需檢視出貨量與產品組合改善程度。",
       "confidence": "low",
+      "entryScore": 37,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 15,
         "timing": 14,
         "chips": 13,
         "risk": -5
       },
-      "signals": {
-        "groupAvgPct": 3.0564573065476695,
-        "instNetDirection": "buy",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 16.945132624439754,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0.5,
-        "consecutiveDaysInStrong": 3,
-        "memberCountDelta": 0,
-        "retreatSignal": false
-      }
+      "entryAction": "不碰減碼",
+      "entryRationale": "補庫存尚待確認，連續擴散前不追價"
     },
     {
       "category": "運動用品/碳纖維複材",
       "stocks": [
         "波力-KY(8467)"
       ],
-      "story": "波力-KY接近漲停，碳纖維運動器材的品牌訂單與產品升級成為個股焦點。球拍及其他複材用品的高階化、客戶庫存消化與產能利用率，牽動接單品質和毛利表現。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "波力-KY接近漲停，碳纖維球拍與運動用品訂單受到關注。品牌客戶新品周期、運動消費需求及複材產品組合影響接單與毛利，需追蹤營收能否支撐股價漲幅。",
       "confidence": "low",
       "stage": "啟動",
+      "entryScore": 60,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 20,
         "timing": 32,
         "chips": 13,
         "risk": -5
       },
-      "signals": {
-        "groupAvgPct": 9.967497291440953,
-        "instNetDirection": "buy",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 8.96450057771226,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 1,
-        "consecutiveDaysInStrong": 0,
-        "memberCountDelta": null,
-        "retreatSignal": false
-      }
-    },
-    {
-      "category": "事務機/影像掃描與安防設備",
-      "stocks": [
-        "奇偶(3356)"
-      ],
-      "story": "奇偶接近漲停，安防影像設備與AI辨識應用受到買盤關注。智慧監控、邊緣影像分析與海外通路需求，是評估攝影機及影像管理系統出貨成長的主要方向。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
-      "confidence": "low",
-      "alsoInLosers": true,
-      "scoreBreakdown": {
-        "trend": null,
-        "timing": 14,
-        "chips": 13,
-        "risk": 0
-      },
-      "signals": {
-        "groupAvgPct": 9.913793103448278,
-        "instNetDirection": "buy",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 19.818210514233243,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0,
-        "consecutiveDaysInStrong": 3,
-        "memberCountDelta": -1,
-        "retreatSignal": false
-      }
+      "entryAction": "觀察不追",
+      "entryRationale": "訂單題材剛啟動但單股風險高，列觀察"
     },
     {
       "category": "NB機構件/轉軸與精密結構件",
       "stocks": [
         "濱川(1569)"
       ],
-      "story": "濱川接近漲停，筆電精密機構件成為強勢支線。新機種導入、輕薄化設計與金屬結構件加工需求，牽動接單和良率，營運彈性取決於客戶拉貨及稼動率。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "濱川接近漲停，筆電精密金屬機構件成為補漲焦點。AI PC換機、新機種材料與結構設計變化影響零組件價值，接單量、良率與稼動率將決定營運改善程度。",
       "confidence": "low",
       "stage": "啟動",
+      "entryScore": 65,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 20,
         "timing": 32,
         "chips": 13,
         "risk": 0
       },
-      "signals": {
-        "groupAvgPct": 9.905020352781547,
-        "instNetDirection": "buy",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": null,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0,
-        "consecutiveDaysInStrong": 0,
-        "memberCountDelta": null,
-        "retreatSignal": false
-      }
+      "entryAction": "觀察不追",
+      "entryRationale": "AI PC規格升級可追蹤，先等量產驗證"
     },
     {
       "category": "教育服務/幼教連鎖",
       "stocks": [
         "大地-KY(8437)"
       ],
-      "story": "大地-KY大漲，幼教服務的招生與營運改善成為個股焦點。園所利用率、學費收入、人口結構及教育政策共同影響收入，成本控管與加盟服務占比則決定獲利品質。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "大地-KY接近漲停，幼教服務股獲資金關注。招生人數、園所營運效率及教育政策左右收入與成本結構，後續需觀察營收、現金流及區域市場需求。",
       "confidence": "low",
       "stage": "啟動",
+      "entryScore": 55,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 15,
         "timing": 32,
         "chips": 13,
         "risk": -5
       },
-      "signals": {
-        "groupAvgPct": 9.75609756097561,
-        "instNetDirection": "buy",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": null,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 1,
-        "consecutiveDaysInStrong": 0,
-        "memberCountDelta": null,
-        "retreatSignal": false
-      }
+      "entryAction": "觀察不追",
+      "entryRationale": "招生題材單一且流動性低，只列事件觀察"
     },
     {
-      "category": "海外DR/特殊交易事件",
+      "category": "連接器/高速介面與線束",
       "stocks": [
-        "美德醫療-DR(9103)"
+        "中探針(6217)"
       ],
-      "story": "美德醫療-DR大漲，醫療耗材需求之外，存託憑證的供需與折溢價也是價格波動來源。海外原股表現、DR流動性及醫療防護用品訂單，構成此股的主要交易觀察項目。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "中探針接近漲停，精密探針與連接元件受到買盤追捧。高頻高速傳輸、精密接觸及電子產品規格升級帶動產品要求，客戶驗證與新產品出貨比重影響後續獲利。",
       "confidence": "low",
-      "stage": "高潮",
+      "entryScore": 54,
       "scoreBreakdown": {
-        "trend": null,
-        "timing": 8,
-        "chips": 3,
-        "risk": 0
+        "trend": 32,
+        "timing": 14,
+        "chips": 13,
+        "risk": -5
       },
-      "signals": {
-        "groupAvgPct": 8.668730650154801,
-        "instNetDirection": "sell",
-        "instVsPriceDivergence": true,
-        "avgDayTradeRatio": 36.219812386695416,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0,
-        "consecutiveDaysInStrong": 1,
-        "memberCountDelta": 0,
-        "retreatSignal": false
-      }
+      "entryAction": "不碰減碼",
+      "entryRationale": "高速介面具長線性，但族群分化不追單股"
     },
     {
       "category": "生技醫療/健康照護",
       "stocks": [
         "南六(6504)"
       ],
-      "story": "南六漲幅突出，不織布及衛生耗材的需求與獲利修復受到关注。醫療防護、個人清潔用品的客戶拉貨，以及纖維原料成本和產品組合，是毛利變化的主要來源。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "南六上漲逾八％，不織布與衛生材料需求受到關注。醫療及個人清潔用品拉貨、原料成本與海外產能利用率共同影響毛利，營收回升能否轉為獲利改善是行情觀察重點。",
       "confidence": "low",
-      "alsoInLosers": true,
+      "entryScore": 39,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 15,
         "timing": 26,
         "chips": 13,
         "risk": -15
       },
-      "signals": {
-        "groupAvgPct": 8.57874519846351,
-        "instNetDirection": "buy",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 45.39454315805468,
-        "highDayTrade": true,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 1,
-        "consecutiveDaysInStrong": 0,
-        "memberCountDelta": null,
-        "retreatSignal": false
-      }
+      "entryAction": "不碰減碼",
+      "entryRationale": "需求偏防禦但當沖過熱，等待獲利改善"
+    },
+    {
+      "category": "海外DR/特殊交易事件",
+      "stocks": [
+        "美德醫療-DR(9103)"
+      ],
+      "story": "美德醫療-DR上漲逾八％，除醫療耗材需求外，存託憑證的流動性與籌碼亦影響價格。原股與DR價差、成交量及交易資訊是評估本波漲勢的重點。",
+      "confidence": "low",
+      "stage": "高潮",
+      "entryScore": 11,
+      "scoreBreakdown": {
+        "trend": 0,
+        "timing": 8,
+        "chips": 3,
+        "risk": 0
+      },
+      "entryAction": "不碰減碼",
+      "entryRationale": "DR籌碼交易已高潮，不以產業邏輯追價"
     },
     {
       "category": "電線電纜/漆包線",
       "stocks": [
         "大山(1615)"
       ],
-      "story": "大山大漲，電線電纜鏈的電網與工程需求受到關注。銅價變動、工程標案交貨及電力設備更新，影響營收與存貨評價，獲利仍需對照加工利差和訂單執行進度。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "大山上漲逾八％，電線電纜受電網更新與工程需求題材帶動关注。銅價變化、工程訂單及產品報價傳導速度左右毛利與營運資金，後續營收及訂單能見度是追蹤重點。",
       "confidence": "low",
       "stage": "高潮",
+      "entryScore": 33,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 32,
         "timing": 8,
         "chips": 3,
         "risk": -10
       },
-      "signals": {
-        "groupAvgPct": 8.300395256916996,
-        "instNetDirection": "sell",
-        "instVsPriceDivergence": true,
-        "avgDayTradeRatio": 46.29983531107445,
-        "highDayTrade": true,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0,
-        "consecutiveDaysInStrong": 2,
-        "memberCountDelta": 0,
-        "retreatSignal": false
-      }
+      "entryAction": "不碰減碼",
+      "entryRationale": "電網需求長線成立，但高潮段先降溫"
+    },
+    {
+      "category": "半導體設備/測試介面",
+      "stocks": [
+        "瑞耘(6532)"
+      ],
+      "story": "瑞耘上漲逾八％，半導體設備零組件延續資本支出題材。晶圓廠擴產、製程升級與設備客戶採購帶來需求，訂單轉量產、交貨認列與產品加工精度影響獲利表現。",
+      "confidence": "low",
+      "stage": "退潮",
+      "entryScore": 43,
+      "scoreBreakdown": {
+        "trend": 38,
+        "timing": 2,
+        "chips": 3,
+        "risk": 0
+      },
+      "entryAction": "不碰減碼",
+      "entryRationale": "資本支出長線未壞，短線退潮等止穩"
     },
     {
       "category": "面板材料",
       "stocks": [
         "榮惠-KY創(6924)"
       ],
-      "story": "榮惠-KY創走強，顯示材料的規格升級與客戶導入成為交易焦點。光學膜及顯示材料需求取決於面板產品組合、終端拉貨與材料認證，新產品比重影響毛利率。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "榮惠-KY創上漲近八％，顯示材料供應鏈獲買盤關注。面板客戶稼動率、顯示規格升級與材料認證節奏影響接單，需追蹤營收及高附加價值產品占比。",
       "confidence": "low",
       "stage": "退潮",
-      "alsoInLosers": true,
+      "entryScore": 25,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 20,
         "timing": 2,
         "chips": 3,
         "risk": 0
       },
-      "signals": {
-        "groupAvgPct": 7.849829351535837,
-        "instNetDirection": "sell",
-        "instVsPriceDivergence": true,
-        "avgDayTradeRatio": null,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0,
-        "consecutiveDaysInStrong": 2,
-        "memberCountDelta": -2,
-        "retreatSignal": false
-      }
+      "entryAction": "不碰減碼",
+      "entryRationale": "材料升級可追蹤，但退潮段不接落刀"
     },
     {
       "category": "ASIC/IP矽智財",
       "stocks": [
         "揚智(3041)"
       ],
-      "story": "揚智上漲近七成百分點，多媒體系統晶片的訂單與產品更新受到關注。機上盒及影音平台需求、客戶庫存與新一代SoC導入，是評估出貨和產品單價的主要因素。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "揚智上漲近七％，多媒體SoC及數位影音平台受到關注。機上盒客戶庫存、終端影音設備更新與新晶片導入牽動出貨，產品組合與研發投入影響獲利修復速度。",
       "confidence": "low",
-      "alsoInLosers": true,
+      "entryScore": 49,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 20,
         "timing": 26,
         "chips": 13,
         "risk": -10
       },
-      "signals": {
-        "groupAvgPct": 6.903765690376567,
-        "instNetDirection": "buy",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 45.89984663272399,
-        "highDayTrade": true,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0,
-        "consecutiveDaysInStrong": 0,
-        "memberCountDelta": null,
-        "retreatSignal": false
-      }
+      "entryAction": "不碰減碼",
+      "entryRationale": "影音晶片偏修復題材，當沖過高先觀察"
     },
     {
       "category": "綠能/太陽能與電力工程",
       "stocks": [
         "中茂(5205)"
       ],
-      "story": "中茂走高，綠能案場與電力工程題材受到關注。再生能源政策、案場建置進度及併網時程，是收入認列的主要變數，專案成本與後續營運收入決定獲利延續性。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "中茂上漲逾五％，綠能與電力工程題材延續買盤。能源政策、案場建置與工程認列節奏是收入觀察軸，資金需求及專案執行效率影響現金流。",
       "confidence": "low",
+      "entryScore": 42,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 30,
         "timing": 14,
         "chips": 3,
         "risk": -5
       },
-      "signals": {
-        "groupAvgPct": 5.327868852459017,
-        "instNetDirection": "none",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": null,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 1,
-        "consecutiveDaysInStrong": 3,
-        "memberCountDelta": -1,
-        "retreatSignal": false
-      }
+      "entryAction": "不碰減碼",
+      "entryRationale": "政策需求仍在，現金流與案場認列未驗證"
     },
     {
       "category": "CCL/銅箔基板",
       "stocks": [
         "南亞(1303)"
       ],
-      "story": "南亞上漲逾五％，以銅箔基板與電子材料切入高階PCB需求。AI運算提高板材的低損耗與耐熱要求，高規材料認證、出貨占比及產能配置是主要觀察軸，塑化業務景氣也影響整體獲利。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "南亞上漲逾五％，電子材料布局使其同時連結高階PCB需求與塑化景氣。AI伺服器板材規格升級帶動CCL及相關材料價值，電子材料占比與塑化產品利差共同決定整體獲利。",
       "confidence": "low",
-      "alsoInLosers": true,
+      "entryScore": 65,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 38,
         "timing": 14,
         "chips": 23,
         "risk": -10
       },
-      "signals": {
-        "groupAvgPct": 5.2805280528052805,
-        "instNetDirection": "buy",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 62.30574922704595,
-        "highDayTrade": true,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0,
-        "consecutiveDaysInStrong": 3,
-        "memberCountDelta": 0,
-        "retreatSignal": false
-      }
+      "entryAction": "觀察不追",
+      "entryRationale": "AI板材長線主線未壞，強弱分化等回測"
+    },
+    {
+      "category": "觸控面板/顯示模組",
+      "stocks": [
+        "先益(3531)"
+      ],
+      "story": "先益上漲五％，顯示與背光模組需求受到關注。工業、車用及消費終端規格升級影響產品組合，客戶拉貨、新機種導入及材料成本是毛利追蹤重點。",
+      "confidence": "low",
+      "entryScore": 39,
+      "scoreBreakdown": {
+        "trend": 15,
+        "timing": 26,
+        "chips": 3,
+        "risk": -5
+      },
+      "entryAction": "不碰減碼",
+      "entryRationale": "顯示模組偏週期補漲，法人未承接不追"
     },
     {
       "category": "功率元件/電源管理IC",
       "stocks": [
         "海德威(3268)"
       ],
-      "story": "海德威走高，電源與電池管理晶片需求受到關注。終端設備對安全保護、低功耗及電源效率的要求提高，客戶設計導入、產品組合和庫存去化進度影響出貨表現。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "海德威上漲逾四％，電源管理與控制晶片延續買盤。電子設備電源效率及控制功能升級提供需求，客戶庫存、晶圓成本與新品出貨占比是獲利觀察重點。",
       "confidence": "low",
       "stage": "退潮",
-      "alsoInLosers": true,
+      "entryScore": 30,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 30,
         "timing": 2,
         "chips": 3,
         "risk": -5
       },
-      "signals": {
-        "groupAvgPct": 4.414587332053743,
-        "instNetDirection": "sell",
-        "instVsPriceDivergence": true,
-        "avgDayTradeRatio": null,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 1,
-        "consecutiveDaysInStrong": 1,
-        "memberCountDelta": 0,
-        "retreatSignal": false
-      }
+      "entryAction": "不碰減碼",
+      "entryRationale": "電源效率需求長線在，退潮未止先避開"
     },
     {
       "category": "數位內容/軟體服務與出版",
       "stocks": [
         "辣椒(4946)"
       ],
-      "story": "辣椒走高，遊戲內容與營運事件成為個股焦點。新遊戲上市、授權合作及既有產品付費表現，影響收入認列，行銷投入和玩家留存則決定獲利持續性。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "辣椒上漲逾四％，遊戲營運與數位內容題材受到關注。新遊戲推出、代理授權及玩家付費表現影響收入，營運費用與產品生命周期決定獲利持續性。",
       "confidence": "low",
       "stage": "退潮",
-      "alsoInLosers": true,
+      "entryScore": 15,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 10,
         "timing": 2,
         "chips": 3,
         "risk": 0
       },
-      "signals": {
-        "groupAvgPct": 4.30622009569378,
-        "instNetDirection": "sell",
-        "instVsPriceDivergence": true,
-        "avgDayTradeRatio": null,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0,
-        "consecutiveDaysInStrong": 3,
-        "memberCountDelta": 0,
-        "retreatSignal": false
-      }
+      "entryAction": "不碰減碼",
+      "entryRationale": "遊戲題材退潮且持續性低，不配置新資金"
     },
     {
       "category": "航運/散裝與貨櫃",
       "stocks": [
         "長榮(2603)"
       ],
-      "story": "長榮走高，貨櫃航運的運價與船舶供需受到關注。主要航線即期運價、繞航造成的有效運力變化，以及旺季貨量與新船交付，牽動獲利和股利預期。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "長榮上漲逾三％，貨櫃航運延續前一交易日買盤。航線運價、船舶供給、旺季貨量及繞航安排影響獲利，現貨與合約運價變化是後續追蹤重點。",
       "confidence": "low",
+      "entryScore": 55,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 22,
         "timing": 20,
         "chips": 23,
         "risk": -10
       },
-      "signals": {
-        "groupAvgPct": 3.326810176125244,
-        "instNetDirection": "buy",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 41.444182046634225,
-        "highDayTrade": true,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0,
-        "consecutiveDaysInStrong": 1,
-        "memberCountDelta": -2,
-        "retreatSignal": false
-      }
+      "entryAction": "觀察不追",
+      "entryRationale": "運價循環有支撐，當沖偏高只宜觀察"
     },
     {
       "category": "低軌衛星/微波通訊",
       "stocks": [
         "攸泰科技(6928)"
       ],
-      "story": "攸泰科技走高，交易焦點放在低軌衛星地面設備與通訊終端。衛星網路布建帶動地面接取需求，客戶認證、商用部署與終端出貨進度，是題材轉化為營收的重要環節。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "攸泰科技上漲逾三％，衛星通訊終端與地面設備題材獲關注。低軌衛星服務擴張帶動終端整合需求，客戶認證、商用部署與量產訂單進度是營運觀察重點。",
       "confidence": "low",
       "stage": "退潮",
-      "alsoInLosers": true,
+      "entryScore": 30,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 30,
         "timing": 2,
         "chips": 3,
         "risk": -5
       },
-      "signals": {
-        "groupAvgPct": 3.2036613272311207,
-        "instNetDirection": "sell",
-        "instVsPriceDivergence": true,
-        "avgDayTradeRatio": 36.221941715602874,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 1,
-        "consecutiveDaysInStrong": 0,
-        "memberCountDelta": null,
-        "retreatSignal": false
-      }
+      "entryAction": "不碰減碼",
+      "entryRationale": "衛星需求具長尾，但籌碼退潮先等止穩"
     },
     {
       "category": "食品餐飲/內需消費",
       "stocks": [
         "福懋油(1225)"
       ],
-      "story": "福懋油走高，食用油與油脂加工的成本和需求受到關注。黃豆等原料價格、匯率及產品售價調整，影響加工利差，食品與飼料客戶拉貨則決定出貨量。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "福懋油上漲逾三％，食用油與穀物加工供應鏈受到關注。黃豆及植物油價格、原料採購成本與食品需求共同影響利差，庫存評價及售價傳導是獲利追蹤重點。",
       "confidence": "low",
       "stage": "高潮",
+      "entryScore": 21,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 15,
         "timing": 8,
         "chips": 3,
         "risk": -5
       },
-      "signals": {
-        "groupAvgPct": 3.1120331950207465,
-        "instNetDirection": "sell",
-        "instVsPriceDivergence": true,
-        "avgDayTradeRatio": 31.361806440050948,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 1,
-        "consecutiveDaysInStrong": 1,
-        "memberCountDelta": 0,
-        "retreatSignal": false
-      }
-    },
-    {
-      "category": "醫療器材/骨科與診療設備",
-      "stocks": [
-        "ABC-KY(6598)"
-      ],
-      "story": "ABC-KY走高，生醫陶瓷與牙科、骨科材料的應用受到關注。醫療產品法規認證、通路拓展及新產品導入周期較長，高附加價值材料占比是獲利結構的重要觀察點。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
-      "confidence": "low",
-      "stage": "啟動",
-      "scoreBreakdown": {
-        "trend": null,
-        "timing": 32,
-        "chips": 13,
-        "risk": -5
-      },
-      "signals": {
-        "groupAvgPct": 3.0035335689045937,
-        "instNetDirection": "buy",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": null,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 1,
-        "consecutiveDaysInStrong": 0,
-        "memberCountDelta": null,
-        "retreatSignal": false
-      }
+      "entryAction": "不碰減碼",
+      "entryRationale": "原料利差偏週期且已高潮，追價報酬差"
     },
     {
       "category": "電信服務",
       "stocks": [
         "台灣大(3045)"
       ],
-      "story": "台灣大走高，電信服務的穩定現金流與企業應用受到關注。5G資費升級、用戶平均收入及整合綜效，是本業獲利重點，企業雲端與資安服務則提供額外成長來源。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "台灣大上漲近三％，電信服務的經常性現金流與股利題材獲關注。5G資費升級、用戶組合及企業服務需求影響營收，網路整合效益與資本支出左右獲利及配息能力。",
       "confidence": "low",
       "stage": "啟動",
+      "entryScore": 80,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 25,
         "timing": 32,
         "chips": 23,
         "risk": 0
       },
-      "signals": {
-        "groupAvgPct": 2.880658436213992,
-        "instNetDirection": "buy",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 36.592502849163736,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0,
-        "consecutiveDaysInStrong": 0,
-        "memberCountDelta": null,
-        "retreatSignal": false
-      }
+      "entryAction": "標準持有",
+      "entryRationale": "現金流穩、法人承接且剛啟動，可續抱"
     },
     {
       "category": "物流/倉儲",
       "stocks": [
         "榮運(2607)"
       ],
-      "story": "榮運走高，陸運、倉儲及物流服務的需求受到關注。貨櫃進出口量、倉儲利用率和運輸成本，影響本業獲利，服務報價與客戶貨量是主要營運指標。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "榮運上漲逾二％，物流、倉儲與貨櫃運輸需求受到關注。進出口貨量、倉儲利用率及運輸成本影響本業，投資收益亦是整體獲利的重要觀察項目。",
       "confidence": "low",
       "stage": "啟動",
+      "entryScore": 65,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 20,
         "timing": 32,
         "chips": 13,
         "risk": 0
       },
-      "signals": {
-        "groupAvgPct": 2.4432809773123907,
-        "instNetDirection": "buy",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 11.313363572192364,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0,
-        "consecutiveDaysInStrong": 1,
-        "memberCountDelta": 0,
-        "retreatSignal": false
-      }
+      "entryAction": "觀察不追",
+      "entryRationale": "物流需求穩定但催化有限，啟動段先觀察"
     },
     {
       "category": "ASIC/IP矽智財",
       "stocks": [
         "聯陽(3014)"
       ],
-      "story": "聯陽走高，PC與周邊平台的介面控制晶片受到關注。新平台導入、顯示傳輸及高速介面規格更新，牽動設計採用與產品組合，客戶庫存及終端換機需求影響拉貨節奏。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "聯陽收高，PC控制與高速影音介面晶片受到關注。電腦平台更新、影音傳輸規格升級及客戶庫存變化影響出貨，新產品占比與晶圓成本是毛利追蹤重點。",
       "confidence": "low",
       "stage": "啟動",
-      "alsoInLosers": true,
+      "entryScore": 75,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 30,
         "timing": 32,
         "chips": 13,
         "risk": 0
       },
-      "signals": {
-        "groupAvgPct": 2.422145328719723,
-        "instNetDirection": "buy",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 29.162472351987862,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0,
-        "consecutiveDaysInStrong": 0,
-        "memberCountDelta": null,
-        "retreatSignal": false
-      }
+      "entryAction": "標準持有",
+      "entryRationale": "平台升級配合法人買盤，啟動段可續抱"
     },
     {
       "category": "航空/客貨運",
       "stocks": [
         "長榮航(2618)"
       ],
-      "story": "長榮航走高，航空客貨運的需求與收益率受到關注。旅遊旺季、載客率及航空貨運價格影響收入，燃油成本、匯率與機隊配置則牽動獲利率。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "長榮航上漲逾二％，客貨運需求與航線收益受到關注。旅遊旺季、長程線載客率及航空貨運價格影響收入，燃油成本與匯率則牽動獲利。",
       "confidence": "low",
       "stage": "啟動",
+      "entryScore": 65,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 20,
         "timing": 32,
         "chips": 13,
         "risk": 0
       },
-      "signals": {
-        "groupAvgPct": 2.380952380952381,
-        "instNetDirection": "buy",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 16.93159807737812,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0,
-        "consecutiveDaysInStrong": 0,
-        "memberCountDelta": null,
-        "retreatSignal": false
-      }
+      "entryAction": "觀察不追",
+      "entryRationale": "客貨運回升但油價壓力在，先觀察續航"
+    },
+    {
+      "category": "工業過濾/製程淨化設備",
+      "stocks": [
+        "濾能(6823)"
+      ],
+      "story": "濾能收高，半導體廠潔淨製程與空氣過濾需求受到關注。先進製程對污染控制要求提高，晶圓廠擴建與濾材耗材更換帶來需求，客戶驗證及產能布局影響接單。",
+      "confidence": "low",
+      "stage": "啟動",
+      "entryScore": 75,
+      "scoreBreakdown": {
+        "trend": 35,
+        "timing": 32,
+        "chips": 13,
+        "risk": -5
+      },
+      "entryAction": "標準持有",
+      "entryRationale": "先進製程耗材需求明確，啟動段可分批布局"
     },
     {
       "category": "其他強勢個股事件整理",
       "stocks": [
         "暉盛-創(7730)",
         "川飛(1516)",
+        "永邑-KY(2939)",
         "天品(6199)"
       ],
-      "story": "10/12至10/13的強勢表現，主要由個股營收與題材預期驅動，未形成明確共通產業新聞。暉盛-創位於半導體、IC載板與PCB製程設備鏈，6/12交易所資料揭示其電漿表面處理、蝕刻及去膠布局，9月營收公告年增64.42%，可能支撐市場對需求延續的想像；天品9月營收公告為8,573.2萬元、年增146.61%，基本面催化較直接。川飛則受10/8公布9月營收1,106萬元、年增1,473.26%帶動，但基期低且流動性偏弱，延續性仍待驗證。暉盛-創10/13漲9.87%，天品漲3.47%，川飛接近漲停；籌碼雖偏買方，暉盛先前法人波動與個股事件集中風險仍高。",
-      "storySource": "worker",
-      "needsRewrite": false,
+      "story": "10/13暉盛-創、川飛接近漲停，永邑-KY與天品同步收高，較像個股營收題材與資金追價交織，而非單一產業鏈共振。10/12公開資訊觀測站列示天品發布115年9月營業收入資訊，可能成為短線交易線索；其餘個股在指定期間缺乏可確認的共同重大訊息。暉盛-創與川飛漲幅最強，但外資買超僅141張與33張，未達顯著，川飛、永邑-KY流動性偏低，持續性仍待驗證。天品外資買超859張、總計900張，籌碼相對集中；整體平均當沖未超過40%，但個股事件與隔日追價風險仍高。",
       "confidence": "medium",
       "stage": "擴散",
+      "entryScore": 32,
       "scoreBreakdown": {
-        "trend": null,
+        "trend": 5,
         "timing": 24,
         "chips": 13,
         "risk": -10
       },
-      "signals": {
-        "groupAvgPct": 7.694203944203944,
-        "instNetDirection": "buy",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 35.75856254208892,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0.3333333333333333,
-        "consecutiveDaysInStrong": 3,
-        "memberCountDelta": 1,
-        "retreatSignal": false
-      }
+      "entryAction": "不碰減碼",
+      "entryRationale": "個股事件缺乏共通產業邏輯，只作短線觀察"
     }
   ],
   "losers": [
     {
-      "category": "半導體設備/測試介面",
+      "category": "半導體設備/檢測與自動化",
       "stocks": [
         "蔚華科(3055)",
         "竹陞科技(6739)",
@@ -1357,53 +883,28 @@
         "辛耘(3583)",
         "志聖(2467)"
       ],
-      "story": "10/13 弘塑分析資料仍指向CoWoS、SoIC與HBM設備需求，以及自製比例提升可能改善第四季毛利；但當日族群平均下跌6.92%，致茂、弘塑、辛耘等大型代表股遭外資與部分投信賣超，顯示高估值先進封裝題材出現獲利了結。8/12法人資料提到台積電AP6至AP8與日月光FOCoS、oS擴產將帶動設備拉貨，基本面支撐尚在，但設備進機、驗收與營收認列仍待驗證。弘塑偏濕製程整合，辛耘兼具清洗與再生晶圓，致茂則偏量測測試，個股跌幅與籌碼差異明顯；揚博雖獲外資買超仍下跌，反映整體風險偏好降溫。",
-      "storySource": "worker",
-      "needsRewrite": false,
+      "story": "10/13盤後族群資料顯示，半導體先進製程與封裝設備概念股20檔全數下跌、平均跌4.58%，本族群跌幅更深，反映高估值與法人調節壓力；外資賣超致茂535張、辛耘597張、志聖334張，弘塑也遭賣超244張。產業位置上，弘塑、辛耘供應濕製程與再生晶圓，均華、志聖切入封裝自動化與貼膜，致茂則偏量測測試。10/12產業整理指出台積電持續推動設備零配件在地化，並有先進封裝擴產需求，但訂單交機、驗收與收入認列仍待驗證；10/13全數收跌顯示市場先交易籌碼風險，並非基本面同步反轉。致茂、辛耘、志聖跌幅較大且外資明顯賣超；揚博雖獲外資買超394張仍跌6.25%，顯示買盤承接不足。",
       "confidence": "medium",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -6.917928909356096,
-        "instNetDirection": "mixed",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 29.384194220307485,
-        "highDayTrade": false,
-        "leaderConcentration": "broad",
-        "speculativeRatio": 0,
-        "consecutiveDaysInStrong": 3,
-        "memberCountDelta": 0,
-        "retreatSignal": true
-      }
+      "retreatSignal": true
     },
     {
       "category": "光通訊/CPO矽光子",
       "stocks": [
+        "全新(2455)",
         "聯亞(3081)",
         "前鼎(4908)",
+        "IET-KY(4971)",
         "上詮(3363)",
         "聯鈞(3450)",
         "訊芯-KY(6451)",
         "華星光(4979)",
+        "環宇-KY(4991)",
         "光環(3234)",
         "波若威(3163)"
       ],
-      "story": "10/13盤面聯亞、前鼎跌近一成，跌勢擴及磊晶、光收發模組、FAU與封裝，屬高評價題材股的集中賣壓。10/13市場報導指出，聯亞、上詮等股價評價已因產業定位出現明顯差異；800G／1.6T升級與CPO仍是需求主軸，但訂單能否轉量產、客戶認證、良率與毛利率仍待驗證。聯亞偏上游雷射磊晶，前鼎、華星光偏模組，上詮偏FAU，聯鈞與訊芯-KY則較接近封裝整合，受惠節奏不同。外資、投信多數賣超，聯鈞投信賣超較重，顯示籌碼風險升高；聯鈞與訊芯-KY當沖比率逾30%，短線波動可能放大。",
-      "storySource": "worker",
-      "needsRewrite": false,
+      "story": "10/13盤後市場資料顯示，聯亞、全新、前鼎等多檔跌幅接近一成，賣壓已從磊晶、雷射光源擴散至模組與耦合環節；同日市場評論指出，聯亞以InP磊晶與CW Laser掌握上游光源，全新偏III-V磊晶，前鼎、上詮則較接近模組與FAU應用，基本面位置並不相同。10/10產業整理仍以AI資料中心800G、1.6T升級及CPO量產預期為主要亮點，但訂單轉營收、客戶驗證、擴產成本與量產時程仍待驗證。10/13聯鈞遭外資與投信合計賣超，反映高估值題材股的籌碼風險；本日多數個股同步下挫，較像獲利了結與估值收縮，不能直接推論產業需求反轉。",
       "confidence": "medium",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -8.440134147992831,
-        "instNetDirection": "sell",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 34.76736844224942,
-        "highDayTrade": false,
-        "leaderConcentration": "broad",
-        "speculativeRatio": 0.125,
-        "consecutiveDaysInStrong": 1,
-        "memberCountDelta": 6,
-        "retreatSignal": true
-      }
+      "retreatSignal": true
     },
     {
       "category": "功率元件/電源管理IC",
@@ -1415,50 +916,9 @@
         "德微(3675)",
         "麗正(2302)"
       ],
-      "story": "10/13族群全數下跌，廣閎科跌7.94%、力士跌6.47%，反映短線獲利了結與高波動題材退潮。10/12產業資料仍將MOSFET、二極體、PMIC列為功率半導體供應鏈，AI資料中心高功耗、車用電動化與規格升級是需求亮點；但報價上漲能否轉化為毛利、庫存與新增產能是否改善，仍待後續營收與法說驗證。廣閎科偏PMIC、DC-DC與馬達驅動，德微偏二極體，尼克森與力士較集中於MOSFET及功率分離元件，基本面敏感度不同。10/13籌碼方面廣閎科、尼克森合計賣超，力士與德微雖獲外資買超仍未能抵銷跌勢；麗正當沖比39.4%，短線交易風險偏高。",
-      "storySource": "worker",
-      "needsRewrite": false,
+      "story": "10/10 安森美新報價起用，市場先前預期部分台廠非合約品可調漲約10%～15%，AI資料中心電源、車用與工業需求仍是功率元件的需求支柱；但10/13族群全面回落，較像漲價題材交易後的獲利了結與籌碼退潮，未等同基本面反轉。10/12產業資料顯示，強茂、台半、德微等屬二極體／MOSFET與IDM環節，尼克森、廣閎科偏MOSFET設計，力士則是功率分離式元件；各家公司受惠產品、客戶與合約結構不同，漲價能否落入營收與毛利仍待後續公告驗證。廣閎科、尼克森跌幅較深且外資偏賣，力士、德微、麗正雖有外資買超仍未能抵銷股價壓力，顯示短線籌碼風險高。",
       "confidence": "medium",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -6.48146419644985,
-        "instNetDirection": "mixed",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 29.80039701421194,
-        "highDayTrade": false,
-        "leaderConcentration": "broad",
-        "speculativeRatio": 0.16666666666666666,
-        "consecutiveDaysInStrong": 1,
-        "memberCountDelta": 5,
-        "retreatSignal": true
-      }
-    },
-    {
-      "category": "化合物半導體/RF射頻",
-      "stocks": [
-        "全新(2455)",
-        "久昌(6720)",
-        "IET-KY(4971)",
-        "環宇-KY(4991)",
-        "宏捷科(8086)"
-      ],
-      "story": "10/10環宇-KY公告9月營收4.35億元、年增112.94%，主因自有光電元件需求、基板供應穩定及晶圓代工訂單增加；10/7宏捷科9月營收年增8.4%，且市場資料指出過半客戶調價預計2027年生效，顯示需求與報價並非全面轉弱。惟10/13族群普跌，宏捷科外資賣超1323張、環宇-KY外資賣超208張，賣壓較像高估值與籌碼退潮。全新偏磊晶、宏捷科偏砷化鎵代工，環宇兼具InP與光電元件，基本面差異大；手機RF庫存、產能利用率及AI光通訊訂單延續性仍待驗證。",
-      "storySource": "worker",
-      "needsRewrite": false,
-      "confidence": "medium",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -8.318324473531193,
-        "instNetDirection": "mixed",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 34.15418181252753,
-        "highDayTrade": false,
-        "leaderConcentration": "broad",
-        "speculativeRatio": 0.4,
-        "consecutiveDaysInStrong": 0,
-        "memberCountDelta": null,
-        "retreatSignal": true
-      }
+      "retreatSignal": true
     },
     {
       "category": "DRAM/NAND記憶體模組與控制IC",
@@ -1469,23 +929,9 @@
         "晶豪科(3006)",
         "鈺創(5351)"
       ],
-      "story": "10/13產業新聞指出，中國長鑫存儲宣布新一代4F² DRAM架構技術突破，市場擔憂供給競爭與報價循環遭重新評價，旺宏、南亞科、華邦電跌逾7%。不過10/11產業報導仍顯示，AI伺服器與資料中心需求排擠傳統DRAM、NAND供給，三家公司9月營收及第三季表現創高，基本面亮點尚未消失。南亞科偏標準DRAM，華邦電涵蓋利基DRAM與NAND，旺宏則以NOR、SLC NAND及eMMC為主，受惠程度不同。10/12法說後股價反跌，顯示利多可能已反映；外資與投信同步賣超，籌碼壓力偏重，後續仍待報價、庫存與長鑫量產進度驗證。",
-      "storySource": "worker",
-      "needsRewrite": false,
+      "story": "10/13盤面新聞指出，中國長鑫存儲宣布新一代4F² DRAM架構取得突破，市場擔憂其未來切入伺服器記憶體，並連動美光、SK海力士等海外記憶體股承壓，成為台股族群下跌催化劑。10/11營收報導仍顯示南亞科、華邦電、旺宏第三季營收創高，AI伺服器需求與高階產能排擠仍支撐DRAM、NAND供需，但長鑫的實際量產時程與價格影響尚待驗證。南亞科偏標準DRAM，華邦電涵蓋利基DRAM與NOR，旺宏以NOR、NAND為主，晶豪科與鈺創則偏記憶體IC設計，基本面與受衝擊程度不同；惟10/13外資大幅賣超多檔，反映高估值與籌碼退潮風險。",
       "confidence": "medium",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -7.035995435601595,
-        "instNetDirection": "sell",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 29.911314012859698,
-        "highDayTrade": false,
-        "leaderConcentration": "broad",
-        "speculativeRatio": 0,
-        "consecutiveDaysInStrong": 2,
-        "memberCountDelta": 4,
-        "retreatSignal": true
-      }
+      "retreatSignal": true
     },
     {
       "category": "生技/新藥與醫材",
@@ -1496,48 +942,9 @@
         "永笙-KY(4178)",
         "禾榮科(7799)"
       ],
-      "story": "10/13生技醫療跌勢集中於再生醫療、生物藥與核醫材等高估值、研發期較長環節；產業資訊顯示，9/12永笙-KY在再生醫療鏈中涉及細胞新藥及細胞供應服務，禾榮科則位於核醫藥與先進醫材布局。10/13盤後法人資料顯示沛爾生醫*-創、泰福-KY、浩宇生醫、永笙-KY同步下跌，且沛爾外資賣超941張，反映籌碼承接偏弱。當日新聞亦列禾榮科召開法說，惟其股價仍跌6.15%，且外資買超166張，呈現價格與法人分歧。下跌主因較可能是高波動題材降溫、臨床及商業化進度仍待驗證；再生醫療核准、授權、訂單延續與營收轉換仍是後續亮點，但短線不宜將個別法說或法人買超直接視為族群反轉訊號。",
-      "storySource": "worker",
-      "needsRewrite": false,
+      "story": "10/13盤面顯示生技／新藥與醫材族群普遍回檔，沛爾生醫*-創跌9.96%、泰福-KY跌8.86%，浩宇生醫、永笙-KY及禾榮科同步下挫；10/13法人交易資料中，沛爾生醫外資賣超941張、泰福賣超183張，反映高估值題材股在資金退潮下承壓。產業鏈涵蓋細胞治療、新藥臨床、生物相似藥與醫材商業化，評價仍取決於臨床、查驗登記、授權及出貨進度。10/13禾榮科法說提供營運說明，但10/7公告9月營收年減27.01%，基本面仍待驗證。",
       "confidence": "medium",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -7.742191281013611,
-        "instNetDirection": "mixed",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 21.41219011140765,
-        "highDayTrade": false,
-        "leaderConcentration": "broad",
-        "speculativeRatio": 0.6,
-        "consecutiveDaysInStrong": 3,
-        "memberCountDelta": 3,
-        "retreatSignal": true
-      }
-    },
-    {
-      "category": "MCU/消費控制IC與音訊晶片",
-      "stocks": [
-        "應廣(6716)",
-        "天擎(6708)",
-        "新唐(4919)"
-      ],
-      "story": "10/13盤面應廣跌停、天擎與新唐同步下挫，較像前期補庫存與MCU漲價題材交易退潮，並非已有明確共通利空。10/13營收資料顯示新唐9月營收約26.4億元、年減2.5%，反映消費電子與工控需求仍待確認；MCU供應鏈後續仍取決於客戶拉貨、通路庫存、報價與規格升級。新唐具工控、車用、BMC及音訊產品，基本面較分散；應廣偏消費控制與風扇控制，天擎則流動性與處置限制提高波動。新唐雖外資單日買超，股價仍跌，顯示籌碼未能抵銷賣壓；新唐當沖逾40%，短線風險偏高。",
-      "storySource": "worker",
-      "needsRewrite": false,
-      "confidence": "medium",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -8.564827607380797,
-        "instNetDirection": "mixed",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 42.63939728003698,
-        "highDayTrade": true,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0.3333333333333333,
-        "consecutiveDaysInStrong": 0,
-        "memberCountDelta": null,
-        "retreatSignal": true
-      }
+      "retreatSignal": true
     },
     {
       "category": "CCL/銅箔基板",
@@ -1546,23 +953,9 @@
         "台光電(2383)",
         "台虹(8039)"
       ],
-      "story": "10/13產業即時新聞指出，CCL族群指數重挫7.25%，台光電與騰輝電子-KY跌停、台虹跌逾6%，主因前期受AI伺服器、高速網通與高階材料漲價題材推升後，高本益比部位遭集中調節，並可能觸發程式單與融資多殺多。10/11產業專題仍提到M7至M9低損耗材料需求、供給與報價偏緊，AI大尺寸多層板是基本面亮點；10/13營運資料亦顯示台光電第三季營收創高，代表需求並未消失，但股價評價與籌碼風險先壓過獲利題材。台光電外資與投信合計賣超，騰輝遭處置，台虹雖有外資買超卻出現53.1%高當沖，反彈持續性仍待驗證。",
-      "storySource": "worker",
-      "needsRewrite": false,
+      "story": "10/13產業即時新聞指出，台光電與騰輝電子-KY跌停、台虹跌逾7%，前期因AI伺服器、高速網通與高階材料漲幅過大的CCL族群出現恐慌性調節，程式單與融資多殺多可能放大跌勢。10/11產業報導仍稱AI伺服器規格升級、供應吃緊與上游成本推動漲價，需求與報價基本面尚未反轉；但短線估值、擴產落地及漲價延續性仍待驗證。台光電外資、投信同步賣超，騰輝受處置影響，台虹雖獲外資買超卻有53.1%高當沖風險，籌碼波動明顯。",
       "confidence": "medium",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -8.876431595148455,
-        "instNetDirection": "mixed",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 43.911631005885454,
-        "highDayTrade": true,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0.3333333333333333,
-        "consecutiveDaysInStrong": 3,
-        "memberCountDelta": 2,
-        "retreatSignal": true
-      }
+      "retreatSignal": true
     },
     {
       "category": "低軌衛星/微波通訊",
@@ -1571,23 +964,20 @@
         "百一(6152)",
         "兆赫(2485)"
       ],
-      "story": "10/13 盤面啟碁跌6.45%、百一跌6.19%、兆赫跌5.73%，三檔同步回檔；富聯網同日行情資料顯示，族群賣壓集中於衛星通訊與地面終端概念。10/12 CMoney收盤資料仍顯示低軌衛星族群近5日平均上漲4.4%，因此本日走弱較可能是前段漲幅後的獲利了結與題材降溫，尚非基本面反轉的直接證據。產業鏈上，啟碁偏網通設備與地面終端，百一、兆赫則較偏網通及衛星設備；啟碁9月營收公告年增17.1%，需求仍有支撐，但訂單延續、庫存與毛利率仍待後續公告驗證。啟碁外資10/13賣超5,533張，籌碼壓力最明顯；兆赫亦遭外資賣超，族群短線波動風險偏高。",
-      "storySource": "worker",
-      "needsRewrite": false,
+      "story": "10/13盤後行情顯示，啟碁、百一、兆赫分別下跌6.45%、6.19%、5.73%，且啟碁外資賣超5,533張、兆赫賣超1,467張，族群賣壓具籌碼面共通性。10/12市場資料仍顯示低軌衛星族群近5日平均上漲4.4%，本次回落較像前波題材交易後的獲利了結與風險收斂。產業位置上，啟碁偏地面終端與網通設備，百一涉及衛星收發器及射頻器材，兆赫則偏高頻通訊模組；地面站建置、終端普及與規格升級仍是需求亮點，但出貨節奏、訂單毛利及衛星營收占比仍待驗證。代表股跌幅接近，顯示市場暫時降低題材溢價；不過百一籌碼變化較小，與啟碁、兆赫的外資調節存在差異。",
       "confidence": "medium",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -6.122551780930652,
-        "instNetDirection": "sell",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 29.08055992222209,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0,
-        "consecutiveDaysInStrong": 0,
-        "memberCountDelta": null,
-        "retreatSignal": true
-      }
+      "retreatSignal": true
+    },
+    {
+      "category": "MCU/消費控制IC與音訊晶片",
+      "stocks": [
+        "應廣(6716)",
+        "天擎(6708)",
+        "新唐(4919)"
+      ],
+      "story": "10/13新唐9月營收資料顯示營收約26.4億元、年減2.5%，基本面尚未全面回升；同日新唐股價仍跌7.47%，反映市場對消費電子、PC與工控拉貨及庫存去化的疑慮。9/9公司新品發表會雖揭示AI MCU、音訊、車載與智慧家庭布局，但訂單轉換與獲利貢獻仍待驗證。應廣跌停且外資賣超323張，賣壓與籌碼風險較直接；天擎跌8.23%並列處置、低流動性，較不適合作為族群核心。新唐外資反買2038張仍下跌，顯示基本面或評價壓力暫蓋過題材，且其當沖比42.6%偏高，短線波動風險明顯。",
+      "confidence": "medium",
+      "retreatSignal": true
     },
     {
       "category": "石英元件/頻率控制",
@@ -1596,95 +986,9 @@
         "安碁(6174)",
         "希華(2484)"
       ],
-      "story": "10/10產業新聞指出，AI資料中心由800G升級至1.6T，帶動高頻、低抖動與訊號同步元件需求，石英元件仍具規格升級與網通、車用應用亮點；10/12希華法說相關報導則稱產業價格已接近低點，網通客戶升級及高頻產品可能成為明年動能。然而10/13族群平均跌逾6%，希華遭外資賣超1,632張，顯示前期題材交易降溫；希華當沖逾五成，短線波動風險高。加高、安碁偏低流動性或籌碼承壓，基本面改善與訂單延續性仍待驗證。",
-      "storySource": "worker",
-      "needsRewrite": false,
+      "story": "10/13族群平均跌逾6%，較像前期急漲後的獲利了結與法人調節；10/8盤後資料顯示，族群近20日平均仍漲26.59%、法人曾合計買超5.9億元，說明本次下跌帶有高檔籌碼退潮。基本面上，10/10產業報導指出AI資料中心由800G升向1.6T，推升高頻、低抖動時脈元件規格需求；但10/12希華董事長表示網通需求回穩及AI、醫療新應用仍屬後續成長期待，訂單延續性尚待營收驗證。希華高頻產品布局較明確，安碁聚焦車用、工控與高速光通訊，加高規模與流動性較弱；希華外資賣超1632張且當沖逾五成，短線波動與隔日沖風險偏高。",
       "confidence": "medium",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -6.144568838819409,
-        "instNetDirection": "sell",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 53.98011081668942,
-        "highDayTrade": true,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0.3333333333333333,
-        "consecutiveDaysInStrong": 0,
-        "memberCountDelta": null,
-        "retreatSignal": true
-      }
-    },
-    {
-      "category": "ASIC/IP矽智財",
-      "stocks": [
-        "晶心科(6533)",
-        "世芯-KY(3661)"
-      ],
-      "story": "10/12盤中產業即時新聞指出，矽智財IP族群重挫，市場在國際科技股震盪與台股高檔月線反壓下，調節高本益比AI題材；10/13行情資料顯示晶心科、世芯-KY仍各跌逾7%，反映資金風險偏好下降。產業鏈上，晶心科以RISC-V CPU IP授權、權利金與AI方案為主，世芯-KY則位於雲端客製ASIC設計服務及先進製程量產環節，收入認列取決於客戶開案、投片和量產節奏。世芯-KY 10/12公告9月營收年增496%，基本面亮點仍在，但10/13外資賣超755張，且當沖率44.3%，短線籌碼壓力與波動風險較高；晶心科則有10/6至10/13處置資訊，股價下跌可能放大交易性因素，後續訂單延續與評價修復仍待驗證。",
-      "storySource": "worker",
-      "needsRewrite": false,
-      "confidence": "medium",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -7.926002868872731,
-        "instNetDirection": "mixed",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 44.30645455031657,
-        "highDayTrade": true,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0.5,
-        "consecutiveDaysInStrong": 0,
-        "memberCountDelta": null,
-        "retreatSignal": true
-      }
-    },
-    {
-      "category": "連接器/高速介面與線束",
-      "stocks": [
-        "佳必琪(6197)",
-        "金橋(6133)"
-      ],
-      "story": "10/13佳必琪與金橋分別下跌7.68%與6.86%，較像高速互連題材急漲後的獲利了結與風險收縮。基本面上，佳必琪10/5公告9月營收9.07億元、年增26.11%，高速光電、連接器與線束仍位於AI資料中心互連供應鏈，但市場可能提前反映PCIe、800G/1.6T及高功率產品放量，後續認證、量產與毛利率仍待驗證；金橋10/12公告9月營收1.13億元、年減2.35%，累計營收仍年增5.62%，需求韌性不如佳必琪。籌碼面金橋外資賣超677張，佳必琪雖三大法人合計買超216張，股價仍重挫且當沖比41.44%，短線波動與隔日沖壓力偏高。",
-      "storySource": "worker",
-      "needsRewrite": false,
-      "confidence": "medium",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -7.270832081428512,
-        "instNetDirection": "mixed",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 34.92899933985547,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0,
-        "consecutiveDaysInStrong": 3,
-        "memberCountDelta": -2,
-        "retreatSignal": true
-      }
-    },
-    {
-      "category": "被動元件",
-      "stocks": [
-        "華新科(2492)",
-        "國巨*(2327)"
-      ],
-      "story": "10/13盤後交易資料顯示，被動元件族群平均下跌約6%，壓力主要來自台股大盤重挫、外資風險部位收縮，以及市場對AI伺服器高階MLCC、晶片電阻報價與補庫存題材的獲利兌現。產業鏈仍受惠於GPU、ASIC與高功率電源增加被動元件用量，但需求能否延續、漲價能否轉化為毛利，仍待後續營收與法說資料驗證。國巨外資、投信合計賣超逾1.1萬張，華新科雖獲外資買超仍遭處置賣壓；國巨當沖約49.9%，短線籌碼與波動風險偏高。",
-      "storySource": "worker",
-      "needsRewrite": false,
-      "confidence": "medium",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -6.018852878336493,
-        "instNetDirection": "mixed",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 49.91850546879476,
-        "highDayTrade": true,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0.5,
-        "consecutiveDaysInStrong": 3,
-        "memberCountDelta": 1,
-        "retreatSignal": true
-      }
+      "retreatSignal": true
     },
     {
       "category": "晶圓代工",
@@ -1692,23 +996,49 @@
         "茂矽(2342)",
         "漢磊(3707)"
       ],
-      "story": "10/13茂矽與漢磊分別下跌6.07%、5.96%，較像高檔獲利了結與短線風險偏好降溫，未必代表基本面同步惡化。產業鏈上，兩者均位於成熟製程、功率與化合物半導體代工，仍受車用及消費電子庫存調整、稼動率與報價影響。漢磊10/7法說表示，SiC上半年利用率低於30%，但第3季估60%、第4季估80%，下半年營收可能較上半年增120%；這是公司展望，訂單延續性仍待驗證。茂矽則缺乏同期明確新催化劑。10/13兩股外資仍買超，顯示股價與籌碼背離，短線賣壓可能來自估值與交易面，市場仍在重新評估復甦速度。",
-      "storySource": "worker",
-      "needsRewrite": false,
+      "story": "10/13盤後市場報導指出，功率半導體族群遭遇賣壓，相關個股多跌逾5%，茂矽下跌6.07%、漢磊下跌5.96%；同日大盤也因整體風險偏好降溫而重挫，族群跌勢可能包含系統性調節。產業面上，茂矽仍處6吋成熟製程與功率元件代工位置，10/7法說相關資料則提及漢磊SiC需求反轉及合作進展，基本面亮點尚未消失，但市場對功率半導體供給競爭、價格與訂單延續性的評價轉弱。9月營收資料顯示漢磊年增24.5%，但增速趨緩；茂矽先前營收回溫與稼動率改善仍待獲利驗證。兩檔當日外資均買超，形成股價與籌碼背離，可能反映承接或隔日調整，不能抵銷短線賣壓。",
       "confidence": "medium",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -6.015679049773404,
-        "instNetDirection": "buy",
-        "instVsPriceDivergence": true,
-        "avgDayTradeRatio": 32.48392265314633,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0,
-        "consecutiveDaysInStrong": 0,
-        "memberCountDelta": null,
-        "retreatSignal": true
-      }
+      "retreatSignal": true
+    },
+    {
+      "category": "化合物半導體/RF射頻",
+      "stocks": [
+        "久昌(6720)",
+        "宏捷科(8086)"
+      ],
+      "story": "10/13盤後行情顯示，久昌下跌9.73%、宏捷科下跌5.72%，且宏捷科外資賣超1,323張、自營商賣超192張，賣壓集中於具成交量的代表股，反映前波題材交易後的籌碼退潮。產業鏈上，兩家公司分別連結射頻元件、砷化鎵晶圓代工與功率放大器，手機、Wi-Fi及高頻應用規格升級仍是需求亮點，但客戶拉貨、晶圓稼動率、產品組合與訂單延續性仍待後續營收或法說驗證。宏捷科基本面與流動性較佳，久昌則因低流動性、跌幅較深，價格波動與流動性風險更高；本次下跌較像籌碼與估值修正，未能直接推論產業需求反轉。",
+      "confidence": "medium",
+      "retreatSignal": true
+    },
+    {
+      "category": "ASIC/IP矽智財",
+      "stocks": [
+        "晶心科(6533)",
+        "世芯-KY(3661)"
+      ],
+      "story": "10/12盤後產業報導指出，矽智財IP族群下跌4.44%，高價IC設計受到AI利空、台股高檔月線反壓與法人調節影響；10/13世芯-KY法人合計賣超699張，其中外資賣超755張，顯示短線評價與資金面壓力延續。產業位置上，世芯-KY承接AI ASIC設計服務，晶心科則以RISC-V CPU IP授權、權利金為主，營收認列分別受客戶NRE、量產進度與新案導入影響。晶心科10/8公告9月營收年減10.11%，但累計仍年增29.74%，基本面呈現短期波動；10/13兩股跌幅近八成，較可能反映高本益比修正，訂單延續性仍待後續營收與法說驗證。世芯-KY當沖比44.31%，需留意高當沖風險；晶心科處置期間至10/13，籌碼波動更大。",
+      "confidence": "medium",
+      "retreatSignal": true
+    },
+    {
+      "category": "連接器/高速介面與線束",
+      "stocks": [
+        "佳必琪(6197)",
+        "金橋(6133)"
+      ],
+      "story": "10/12金橋9月營收公告為1.13億元、年減2.35%，顯示需求與接單能見度仍有壓力；10/13股價再跌6.86%，且外資賣超677張，短線籌碼明顯偏空。佳必琪位於AI伺服器高速連接器、線束與高功率互連環節，既有高速規格升級、PCIe與資料中心需求支撐，但10/13下跌7.68%，較像高位獲利了結與族群風險收斂；其當沖比41.4%，波動與隔日沖壓力偏高。兩家公司基本面並非完全同步，佳必琪仍可能受惠AI基礎建設，金橋則需觀察營收回升與訂單延續性，後續受惠程度仍待驗證。",
+      "confidence": "medium",
+      "retreatSignal": true
+    },
+    {
+      "category": "被動元件",
+      "stocks": [
+        "華新科(2492)",
+        "國巨*(2327)"
+      ],
+      "story": "10/13華新科與國巨分別下跌6.22%及5.82%，族群由前期AI伺服器、高階MLCC與供應吃緊題材轉為獲利了結壓力；10/12盤後族群資料仍顯示國巨20日報酬為正，但估值偏貴且外資賣超，反映短線預期已先交易。產業基本面仍有AI伺服器、車用與工控需求支撐，惟消費電子復甦、通用MLCC報價、客戶庫存與高階產品占比仍待後續營收及法說驗證。國巨10/13外資、投信與自營商合計賣超，華新科則外資買超但處置股標籤增加交易波動；國巨當沖比49.9%，短線籌碼風險偏高。",
+      "confidence": "medium",
+      "retreatSignal": true
     },
     {
       "category": "LED/光電元件與照明模組",
@@ -1716,506 +1046,198 @@
         "萊德光電-KY(7717)",
         "鼎元(2426)"
       ],
-      "story": "10/13盤後資料顯示族群平均跌幅約7.8%，較像前期題材與高估值部位集中退潮，未見兩家公司同日共通利空。產業鏈上，萊德光電位於光纖通訊、光纖雷射被動元件及智慧照明，8/28公司公告上半年營收年增24%、稅後淨利年增47%，但短線仍可能受獲利了結與題材降溫壓力；鼎元則偏光電元件，10/13外資賣超534張、三大法人合計賣超602張，顯示籌碼壓力較直接。需求與規格升級仍可能支撐雷射、感測及特定波長產品，但客戶拉貨、庫存與產能利用率尚待後續營收驗證。鼎元當沖比47.5%，下跌也含高週轉交易風險，不能全數解讀為基本面轉差。",
-      "storySource": "worker",
-      "needsRewrite": false,
+      "story": "10/13盤後資料顯示，族群兩檔代表股同步重挫：萊德光電-KY跌9.40%、鼎元跌6.27%，反映短線高位光電題材遭獲利了結。10/13籌碼資料中，鼎元外資賣超534張、合計賣超602張，賣壓明顯；萊德雖外資小幅買超81張，但不足以抵銷價格急跌，顯示股價與籌碼出現背離。10/12產業分類資料仍顯示光電類股20日中位數上漲，需求與規格升級題材尚未消失，但LED晶粒、雷射與照明模組仍受終端需求、客戶認證、產品組合及庫存調整影響，訂單延續性待驗證。鼎元當沖比47.5%，須特別留意隔日沖與波動放大風險；萊德則較受光纖、低軌衛星等個別題材交易影響，兩者基本面不可直接等同。",
       "confidence": "medium",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -7.835955844646568,
-        "instNetDirection": "mixed",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 47.50649042012654,
-        "highDayTrade": true,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0,
-        "consecutiveDaysInStrong": 3,
-        "memberCountDelta": -1,
-        "retreatSignal": true
-      }
+      "retreatSignal": true
     },
     {
       "category": "低軌衛星/HDI高階PCB",
       "stocks": [
         "高技(5439)"
       ],
-      "story": "高技下跌近七個百分點，高階多層板的AI與高速網路需求預期面臨短線調節。伺服器板層數增加、低損耗材料採用及製程精度提升，可推動產品組合改善，客戶訂單、產能利用率與擴產支出則決定成長能否轉化為獲利。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "高技回檔近七%，高階網通、伺服器與衛星應用的板材規格升級仍是市場評價重點。高速傳輸對層數、訊號完整性與製程良率提出更高要求，高階板訂單占比及新增產能利用率將影響獲利表現。",
       "confidence": "low",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -6.8762278978389,
-        "instNetDirection": "sell",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": null,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0,
-        "consecutiveDaysInStrong": 0,
-        "memberCountDelta": null,
-        "retreatSignal": true
-      }
+      "retreatSignal": true
     },
     {
       "category": "傳統PCB/EMS板廠",
       "stocks": [
         "霖宏(5464)"
       ],
-      "story": "霖宏延續前一交易日弱勢，下跌逾八個百分點，傳統PCB需求與訂單能見度受到市場檢視。消費電子及通訊客戶補庫存、板材成本和稼動率牽動獲利，營收回升是否伴隨毛利率改善，是觀察接單品質的重點。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "霖宏連續出現在弱勢榜，本日跌幅擴大至八%以上，傳統板廠的價格壓力仍重。消費與工業客戶拉貨、庫存調整及稼動率，是判斷訂單回暖能否改善獲利的主要依據。",
       "confidence": "low",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -8.083140877598154,
-        "instNetDirection": "sell",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": null,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0,
-        "consecutiveDaysInStrong": 1,
-        "memberCountDelta": -8,
-        "retreatSignal": true
-      }
-    },
-    {
-      "category": "一般網通/企業網路設備",
-      "stocks": [
-        "凱碩(8059)"
-      ],
-      "story": "凱碩下跌逾七個百分點，一般寬頻與網通設備的需求復甦仍面臨庫存及價格競爭考驗。Wi-Fi規格升級、電信客戶採購與寬頻設備汰換可帶動拉貨，訂單延續性和產品組合改善是判斷營運轉折的核心。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
-      "confidence": "low",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -7.733333333333333,
-        "instNetDirection": "sell",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": null,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 1,
-        "consecutiveDaysInStrong": 3,
-        "memberCountDelta": -3,
-        "retreatSignal": true
-      }
-    },
-    {
-      "category": "生技醫療/健康照護",
-      "stocks": [
-        "合世(1781)"
-      ],
-      "story": "合世下跌逾六個百分點，居家量測醫材需求與通路拉貨節奏成為營運觀察焦點。血壓及健康監測設備受高齡化需求支撐，但客戶庫存、產品認證、品牌與代工組合，決定出貨成長及毛利率表現。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
-      "confidence": "low",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -6.60377358490566,
-        "instNetDirection": "buy",
-        "instVsPriceDivergence": true,
-        "avgDayTradeRatio": null,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 1,
-        "consecutiveDaysInStrong": 0,
-        "memberCountDelta": null,
-        "retreatSignal": true
-      }
-    },
-    {
-      "category": "醫療影像/隱形眼鏡與視光醫材",
-      "stocks": [
-        "睿生光電(6861)"
-      ],
-      "story": "睿生光電下跌逾七個百分點，醫療影像感測器的規格升級與商業化進度受到市場檢視。數位X光設備需求、客戶認證及影像感測產品組合影響訂單能見度，產線良率與出貨規模則牽動獲利改善速度。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
-      "confidence": "low",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -7.078039927404718,
-        "instNetDirection": "sell",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 38.82441059047462,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0,
-        "consecutiveDaysInStrong": 1,
-        "memberCountDelta": 0,
-        "retreatSignal": true
-      }
-    },
-    {
-      "category": "半導體設備/測試介面",
-      "stocks": [
-        "漢唐(2404)"
-      ],
-      "story": "10/13 弘塑分析資料仍指向CoWoS、SoIC與HBM設備需求，以及自製比例提升可能改善第四季毛利；但當日族群平均下跌6.92%，致茂、弘塑、辛耘等大型代表股遭外資與部分投信賣超，顯示高估值先進封裝題材出現獲利了結。8/12法人資料提到台積電AP6至AP8與日月光FOCoS、oS擴產將帶動設備拉貨，基本面支撐尚在，但設備進機、驗收與營收認列仍待驗證。弘塑偏濕製程整合，辛耘兼具清洗與再生晶圓，致茂則偏量測測試，個股跌幅與籌碼差異明顯；揚博雖獲外資買超仍下跌，反映整體風險偏好降溫。",
-      "storySource": "worker",
-      "needsRewrite": false,
-      "confidence": "medium",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -7.6923076923076925,
-        "instNetDirection": "sell",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 27.17215201592371,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0,
-        "consecutiveDaysInStrong": 3,
-        "memberCountDelta": -11,
-        "retreatSignal": true
-      }
+      "retreatSignal": true
     },
     {
       "category": "電源供應器/UPS",
       "stocks": [
         "台達電(2308)"
       ],
-      "story": "台達電下跌逾六個百分點，AI資料中心高功率電源與能源效率題材承受評價調節。機櫃功率提升帶動電源轉換及散熱整合需求，客戶平台導入、產能配置與高階產品占比，是判斷需求能否持續轉化為獲利的重點。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "台達電下跌逾六%，AI資料中心電源與能源效率題材面臨大型權值股賣壓。伺服器功率密度提升帶動高效率電源與電力管理需求，資料中心客戶擴建節奏及新產品營收占比是成長評價核心。",
       "confidence": "low",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -6.578947368421052,
-        "instNetDirection": "sell",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 20.232739651078642,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0,
-        "consecutiveDaysInStrong": 1,
-        "memberCountDelta": -3,
-        "retreatSignal": true
-      }
-    },
-    {
-      "category": "電池/儲能元件",
-      "stocks": [
-        "熙特爾-創(7740)"
-      ],
-      "story": "熙特爾-創下跌逾九個百分點，儲能系統整合與能源管理題材遭到賣壓。電網調頻、企業用電管理及儲能建置政策影響案場需求，專案驗收、併網進度、設備成本與後續維運收入，決定訂單轉為營收及獲利的速度。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
-      "confidence": "low",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -9.130434782608695,
-        "instNetDirection": "sell",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 15.491095386419843,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 1,
-        "consecutiveDaysInStrong": 2,
-        "memberCountDelta": 0,
-        "retreatSignal": true
-      }
-    },
-    {
-      "category": "面板材料",
-      "stocks": [
-        "達興材料(5234)"
-      ],
-      "story": "達興材料延續前一交易日弱勢，下跌近六個百分點，顯示材料需求與高階電子材料導入進度受到檢視。面板稼動率牽動既有材料出貨，新材料認證、量產占比及研發支出，決定產品升級對營運的貢獻。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
-      "confidence": "low",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -5.94679186228482,
-        "instNetDirection": "sell",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 25.561026127098636,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0,
-        "consecutiveDaysInStrong": 2,
-        "memberCountDelta": -2,
-        "retreatSignal": true
-      }
-    },
-    {
-      "category": "光學鏡頭/成像元件",
-      "stocks": [
-        "聯一光(3441)"
-      ],
-      "story": "聯一光下跌近六個百分點，光學鏡頭的工業及影像應用需求面臨短線調節。高解析度成像與精密光學規格升級提供接單機會，客戶認證、訂單組合、良率及產能利用率，是檢視獲利改善的主要因素。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
-      "confidence": "low",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -5.749486652977413,
-        "instNetDirection": "buy",
-        "instVsPriceDivergence": true,
-        "avgDayTradeRatio": null,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 1,
-        "consecutiveDaysInStrong": 1,
-        "memberCountDelta": -2,
-        "retreatSignal": true
-      }
+      "retreatSignal": true
     },
     {
       "category": "AI伺服器散熱/機構件",
       "stocks": [
         "一詮(2486)"
       ],
-      "story": "一詮下跌近六個百分點，AI晶片散熱及封裝金屬零組件題材受到調節。高功耗晶片提高散熱與精密金屬製程要求，客戶認證、量產良率及高階產品出貨占比，是觀察新應用能否帶動獲利提升的重點。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "一詮下跌近六%，市場對AI晶片散熱與精密金屬零組件的成長期待遭遇回檔。晶片功耗提高推升散熱規格，客戶認證、產品良率及高階零件出貨占比決定題材的獲利貢獻。",
       "confidence": "low",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -5.995717344753747,
-        "instNetDirection": "sell",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 23.331950766150054,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0,
-        "consecutiveDaysInStrong": 0,
-        "memberCountDelta": null,
-        "retreatSignal": true
-      }
+      "retreatSignal": true
     },
     {
-      "category": "車用電動化/車電與AM零組件",
+      "category": "半導體設備/測試介面",
       "stocks": [
-        "智伸科(4551)"
+        "漢唐(2404)"
       ],
-      "story": "智伸科下跌逾六個百分點，車用精密加工與系統零組件的接單復甦受到檢視。汽車客戶庫存、車型量產排程及高階零件導入影響出貨，產能利用率與產品組合則決定營收回升能否帶動毛利率改善。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "漢唐回檔近八%，半導體建廠工程股延續前一交易日壓力。先進製程及海外設廠資本支出提供工程需求，但在手訂單轉收入速度、工程成本與海外施工管理影響獲利認列。",
       "confidence": "low",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -6.077348066298343,
-        "instNetDirection": "buy",
-        "instVsPriceDivergence": true,
-        "avgDayTradeRatio": 31.696386474281184,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0,
-        "consecutiveDaysInStrong": 3,
-        "memberCountDelta": 0,
-        "retreatSignal": true
-      }
+      "retreatSignal": true
     },
     {
-      "category": "工業自動化/工具機設備",
+      "category": "電池/儲能元件",
       "stocks": [
-        "富強鑫(6603)"
+        "熙特爾-創(7740)"
       ],
-      "story": "富強鑫下跌逾六個百分點，塑膠射出設備的製造業資本支出需求受到市場檢視。節能、精密及自動化設備升級帶來換機機會，但下游客戶投資意願、外銷訂單與交機節奏，仍決定營收修復速度。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "熙特爾-創下跌逾九%，儲能系統與能源管理題材面臨評價壓力。再生能源併網及用電管理帶動儲能需求，專案完工認列、電力交易收益與電池成本則影響獲利兑现。",
       "confidence": "low",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -6.335616438356165,
-        "instNetDirection": "sell",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": null,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0,
-        "consecutiveDaysInStrong": 3,
-        "memberCountDelta": -4,
-        "retreatSignal": true
-      }
+      "retreatSignal": true
+    },
+    {
+      "category": "醫療影像/隱形眼鏡與視光醫材",
+      "stocks": [
+        "睿生光電(6861)"
+      ],
+      "story": "睿生光電回檔逾七%，醫療影像感測器的評價重點在數位X光設備需求與客戶導入。新產品認證、醫療影像模組出貨及產能利用率，影響營收成長與毛利表現。",
+      "confidence": "low",
+      "retreatSignal": true
+    },
+    {
+      "category": "生技醫療/健康照護",
+      "stocks": [
+        "合世(1781)"
+      ],
+      "story": "合世下跌逾六%，居家健康量測醫材的交易焦點在品牌客戶拉貨與通路補庫存。血壓及健康監測設備需求、產品認證與代工組合，影響出貨穩定度和毛利。",
+      "confidence": "low",
+      "retreatSignal": true
+    },
+    {
+      "category": "面板材料",
+      "stocks": [
+        "達興材料(5234)"
+      ],
+      "story": "達興材料延續前一交易日回檔，顯示材料業務與電子材料升級題材面臨賣壓。面板客戶稼動率影響既有材料需求，新材料認證及量產占比則決定成長與獲利結構。",
+      "confidence": "low",
+      "retreatSignal": true
+    },
+    {
+      "category": "光學鏡頭/成像元件",
+      "stocks": [
+        "聯一光(3441)"
+      ],
+      "story": "聯一光回檔近六%，鏡頭與成像元件需求受終端產品拉貨及新規格導入影響。工業、車用與消費影像應用的產品組合，以及新鏡頭量產良率，是毛利變化的主要觀察點。",
+      "confidence": "low",
+      "retreatSignal": true
+    },
+    {
+      "category": "一般網通/企業網路設備",
+      "stocks": [
+        "凱碩(8059)"
+      ],
+      "story": "凱碩回檔近八%，一般網通設備的交易焦點在寬頻設備升級與客戶庫存調整。電信及企業客戶資本支出、Wi-Fi規格換代與代工訂單毛利，影響營收復甦速度。",
+      "confidence": "low",
+      "retreatSignal": true
     },
     {
       "category": "檢測驗證/安規認證",
       "stocks": [
         "東研信超(6840)"
       ],
-      "story": "東研信超下跌逾六個百分點，電子產品檢測認證需求與服務產能受到檢視。無線通訊規格升級、產品改版及各地法規要求帶動驗證需求，客戶送測量、實驗室利用率與新增認證能力，是營運成長的關鍵。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "東研信超回檔逾六%，檢測認證服務需求與新產品開發、出口法規及無線規格升級連動。客戶送測量、實驗室產能與高階認證案件占比，決定收入及獲利成長。",
       "confidence": "low",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -6.6304347826086945,
-        "instNetDirection": "sell",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": null,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 1,
-        "consecutiveDaysInStrong": 0,
-        "memberCountDelta": null,
-        "retreatSignal": true
-      }
-    },
-    {
-      "category": "塑化/特用化學與工業材料",
-      "stocks": [
-        "奇鈦科(3430)"
-      ],
-      "story": "奇鈦科延續前一交易日弱勢，下跌近七個百分點，特用化學添加劑的需求與報價受到檢視。塑膠及塗料客戶開工率、原料成本與配方升級影響接單，產品組合及成本轉嫁能力決定毛利率表現。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
-      "confidence": "low",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -6.96078431372549,
-        "instNetDirection": "sell",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": null,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 1,
-        "consecutiveDaysInStrong": 3,
-        "memberCountDelta": -1,
-        "retreatSignal": true
-      }
+      "retreatSignal": true
     },
     {
       "category": "消費電子/精密機構件",
       "stocks": [
         "錦明(3230)"
       ],
-      "story": "錦明延續前一交易日弱勢，跌幅接近一成，精密沖壓與消費電子零組件的訂單題材受到賣壓。客戶新品拉貨、模具開發及產品轉型影響營收能見度，稼動率與高附加價值產品占比則牽動獲利。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "錦明延續前一交易日弱勢，本日跌幅接近一成。精密機構件業務受終端消費產品拉貨、客戶產品週期與加工成本影響，新應用訂單及產能利用率是營運改善的關鍵。",
       "confidence": "low",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -9.874826147426981,
-        "instNetDirection": "buy",
-        "instVsPriceDivergence": true,
-        "avgDayTradeRatio": null,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 1,
-        "consecutiveDaysInStrong": 3,
-        "memberCountDelta": -1,
-        "retreatSignal": true
-      }
+      "retreatSignal": true
     },
     {
       "category": "事務機/影像掃描與安防設備",
       "stocks": [
         "全友(2305)"
       ],
-      "story": "全友由前一交易日強勢轉為下跌逾七個百分點，影像掃描設備題材出現短線籌碼換手。文件數位化、專業影像與特定掃描應用需求牽動接單，客戶拉貨持續性、產品組合與費用控管，是檢視營運改善的重點。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "全友由前一交易日強勢榜轉入弱勢榜，本日下跌逾七%，短線買盤出現反轉。影像掃描設備需求、產品組合與客戶拉貨節奏，是判斷營運能否承接股價題材的依據。",
       "confidence": "low",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -7.032348804500704,
-        "instNetDirection": "sell",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 70.63322378609357,
-        "highDayTrade": true,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 0,
-        "consecutiveDaysInStrong": 3,
-        "memberCountDelta": -1,
-        "retreatSignal": true
-      }
+      "retreatSignal": true
+    },
+    {
+      "category": "塑化/特用化學與工業材料",
+      "stocks": [
+        "奇鈦科(3430)"
+      ],
+      "story": "奇鈦科延續前一交易日弱勢，特用化學添加劑股承受賣壓。塑膠與工業客戶需求、原料成本及功能性添加劑報價，影響庫存價差與產品毛利。",
+      "confidence": "low",
+      "retreatSignal": true
+    },
+    {
+      "category": "工業自動化/工具機設備",
+      "stocks": [
+        "富強鑫(6603)"
+      ],
+      "story": "富強鑫下跌逾六%，射出成型設備需求受製造業投資與客戶擴產意願影響。節能、自動化與高精度設備升級提供接單機會，外銷訂單、交機認列和匯率則左右短期獲利。",
+      "confidence": "low",
+      "retreatSignal": true
+    },
+    {
+      "category": "車用電動化/車電與AM零組件",
+      "stocks": [
+        "智伸科(4551)"
+      ],
+      "story": "智伸科回檔逾六%，精密車用零組件的需求與車廠排產及電動化產品導入連動。高精度加工、客戶認證與產品組合升級提供競爭力，量產進度和產能利用率影響毛利。",
+      "confidence": "low",
+      "retreatSignal": true
     },
     {
       "category": "建材/裝修材料",
       "stocks": [
         "綠河-KY(8444)"
       ],
-      "story": "綠河-KY延續近期弱勢，下跌逾九個百分點，木質板材需求與價格承受市場檢視。家具及裝修市場拉貨、出口競爭與木材成本影響接單及毛利率，庫存周轉和產能利用率是營運修復的重要指標。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "綠河-KY連續出現在近期弱勢榜，本日跌幅超過九%，木質板材支線壓力明顯。家具與裝修需求、板材報價及木料能源成本，影響出口接單與加工價差。",
       "confidence": "low",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -9.06344410876133,
-        "instNetDirection": "buy",
-        "instVsPriceDivergence": true,
-        "avgDayTradeRatio": null,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 1,
-        "consecutiveDaysInStrong": 0,
-        "memberCountDelta": null,
-        "retreatSignal": true
-      }
+      "retreatSignal": true
     },
     {
       "category": "營建/不動產與工程承攬",
       "stocks": [
         "永固-KY(5546)"
       ],
-      "story": "永固-KY由前一交易日強勢轉為下跌逾六個百分點，混凝土與工程需求題材出現換手。建案施工量、基礎建設投資及供料進度影響出貨，水泥、骨材與運輸成本則牽動獲利，須連同工程回款觀察營運品質。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "永固-KY由前一交易日強勢榜轉入弱勢榜，建設材料供應題材出現短線反轉。預拌混凝土需求與工程開工量連動，水泥、骨材及運輸成本轉嫁能力是毛利關鍵。",
       "confidence": "low",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -6.2717770034843205,
-        "instNetDirection": "sell",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": 7.81372089388967,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 1,
-        "consecutiveDaysInStrong": 3,
-        "memberCountDelta": -2,
-        "retreatSignal": true
-      }
+      "retreatSignal": true
     },
     {
       "category": "數位內容/軟體服務與出版",
       "stocks": [
         "地心引力(3629)"
       ],
-      "story": "地心引力由前一交易日強勢轉為跌幅接近一成，數位內容及文創業務題材出現劇烈籌碼換手。內容專案、合作案與收入認列具有事件節奏，新增業務能否形成持續營收及費用控管成效，是評估營運改善的重點。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "地心引力由前一交易日強勢榜轉為接近跌停，數位內容題材的短線籌碼波動突出。內容與遊戲專案收入具認列差異，產品營運、合作案落地及現金流是評價支撐的核心。",
       "confidence": "low",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -9.82142857142857,
-        "instNetDirection": "none",
-        "instVsPriceDivergence": false,
-        "avgDayTradeRatio": null,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 1,
-        "consecutiveDaysInStrong": 3,
-        "memberCountDelta": 0,
-        "retreatSignal": true
-      }
+      "retreatSignal": true
     },
     {
       "category": "零售電商/生活消費",
       "stocks": [
         "無敵(8201)"
       ],
-      "story": "無敵下跌逾七個百分點，消費終端與銷售通路的需求題材遭到調節。產品汰換、通路庫存及新品上市牽動出貨，產品組合、銷售費用與轉型業務貢獻，是檢視營運改善是否持續的關鍵。",
-      "storySource": "preliminary",
-      "needsRewrite": false,
+      "story": "無敵回檔逾七%，消費產品與通路業務面臨需求及產品週期變化。新品銷售、通路庫存與業務轉型進度，決定收入能否形成穩定的獲利支撐。",
       "confidence": "low",
-      "retreatSignal": true,
-      "signals": {
-        "groupAvgPct": -7.142857142857142,
-        "instNetDirection": "buy",
-        "instVsPriceDivergence": true,
-        "avgDayTradeRatio": null,
-        "highDayTrade": false,
-        "leaderConcentration": "leader-only",
-        "speculativeRatio": 1,
-        "consecutiveDaysInStrong": 3,
-        "memberCountDelta": 0,
-        "retreatSignal": true
-      }
+      "retreatSignal": true
     },
     {
       "category": "其他弱勢",
@@ -2232,70 +1254,69 @@
         "大華韓國KOSPI50(009829)",
         "欣興(3037)",
         "大量(3167)",
-        "華城(1519)",
         "晶宏(3141)",
+        "華城(1519)",
         "藝舍-KY(2724)",
         "中湛(6236)"
       ],
       "story": "",
-      "storySource": "none",
-      "needsRewrite": false,
       "confidence": "low"
     }
   ],
-  "summary": "",
-  "longTermStrategy": "",
+  "summary": "加權收48,341.31點、跌960.65點，櫃買跌13.59點；主線延續以雲端AI、塑化與生技為主，新主線看AI散熱、驅動IC及電信，金融屬防禦輪動。光學、LED、塑化、生技等強弱同榜，以高檔分化換手看待；半導體設備、CPO、記憶體已現退潮。全市場上漲538家、下跌1,516家、漲停19家、跌停15家，上市／上櫃當沖17.04%／18.74%，微臺散戶淨多19.60%（10/12），反指標仍偏熱，持股水位宜中性偏低。",
+  "longTermStrategy": "未來1至2年仍以AI基礎建設為第一核心研究。已確認和碩GB300專案出貨、企業雲端整合在手訂單與高功耗晶片帶來的散熱需求；合理推論算力部署會把價值由系統組裝延伸到液冷、機構件與企業導入。核心先看和碩、力致與敦陽科，現階段力致屬啟動可分批、和碩與敦陽科等回測；下一個驗證點是營收、毛利與訂單認列能否同步上修，若只剩高當沖與價格強勢便降為波段觀察。第二條是半導體先進製程、封裝與高速材料升級。設備、CCL與CPO今日明顯落入弱勢，但資本支出、800G升1.6T及高階板材規格仍是可延續需求；台光電、漢唐、弘塑列核心研究，南亞、濾能列波段觀察。現階段不接急跌，待龍頭止穩、族群連兩至三日擴散，並由訂單、法說或毛利確認後再加碼；TTM營收轉負或毛利連續惡化才是長線退出訊號。第三條追蹤電力效率與電網更新，台達電、大山可看長尾需求，但今日一強一弱，先等資本支出與高階產品占比驗證。DR、槓桿原油、資產與單一事件股不列長線核心，只作短線輪動。系統近期標記「擴散」族群的T+5平均報酬為-1.20%，因此本輪以回測承接取代追熱度。",
+  "playbook": "可現在介入：驅動IC／聯詠、天鈺，旺季出貨配合法人承接，跌破龍頭前低即降級；電信服務／台灣大，現金流穩且剛啟動，法人轉賣則停看；製程淨化／濾能，先進製程耗材需求明確，量能失守即退出。\n需關注：AI散熱／力致、富驊，長線主線剛啟動但強弱同榜，連2日擴散再升級；AI伺服器／和碩、迎廣，需求在但當沖偏熱，等回測承接；光學鏡頭／玉晶光、中揚光，屬換手分化，弱勢成員止穩才轉多。\n避開：LED光電／雷笛克光學、映興，高潮且投機籌碼集中；半導體設備／弘塑、致茂，退潮未止；CPO／聯亞、上詮，龍頭群同步弱化，止跌前不接。",
   "intl": {
-    "summary": "隔夜美股分化：道瓊漲0.38%，標普跌0.06%、那斯達克跌0.44%，費半跌2.67%；亞股韓股跌5.46%、日股跌1.82%，上證微漲。WTI 93.74美元漲2.06%。\n\n主線是AI與記憶體估值重估：CXMT技術進展使競爭與毛利風險前移，偏向基本面預期修正；微軟自研晶片則顯示AI資本支出仍在，待財報確認。油價上行是通膨與殖利率逆風，尚未越過100美元紅線，但美10年期5.24%已高於4.4–4.5%警戒區。\n\n對台股而言，費半、台積電ADR與記憶體股走弱，電子權值估值承壓；高收益債利差月增46bps、投資等級僅增3bps，較像風險偏好收縮，暫非全面信用事件。",
-    "window": "10/13 13:30 → 10/14 00:29（台北時間）",
+    "summary": "隔夜道瓊漲0.38%，標普跌0.06%、那指跌0.44%，費半大跌2.67%；韓股重挫5.46%、日經跌1.82%，台股電子開盤偏逆風。\n\n中東衝突擴大至能源設施，WTI升至93.74美元，仍未越過100美元紅線，偏供給訊息面，尚未確認傷害需求基本面；後續看油價與通膨是否擴散。AI方面，博通示警資金瓶頸、CXMT加劇記憶體競爭，半導體回檔暫屬估值修正。高收益債利差月增46bps、投等債僅增3bps，壓力升高但未成信用事件。\n\n對台股而言，費半、台積電ADR跌1.98%，美10年殖利率5.24%，電子權值與記憶體承壓；美元偏強、油價上行使估值逆風。",
+    "window": "10/13 13:30 → 10/14 00:58（台北時間）",
     "events": [
       {
-        "when": "10/13 22:46",
+        "when": "10/14 00:53",
         "cat": "科技",
-        "title": "中國CXMT先進記憶體進展，市場擔心競爭提前升溫",
+        "title": "費半收跌2.67%，美光跌3.88%、安謀跌4.15%",
         "impact": "利空",
         "level": "高",
-        "chain": "CXMT→記憶體價格與毛利→AI股估值→台股電子權值"
+        "chain": "AI疑慮→半導體估值下修→台股電子權值承壓"
+      },
+      {
+        "when": "10/13 23:00",
+        "cat": "科技",
+        "title": "CXMT新記憶體架構引發中國競爭與AI投資疑慮",
+        "impact": "利空",
+        "level": "高",
+        "chain": "記憶體競爭→獲利預期降→南亞科等族群風險偏好降"
+      },
+      {
+        "when": "10/13 21:41",
+        "cat": "地緣",
+        "title": "沙烏地聯軍空襲葉門首都附近石油設施",
+        "impact": "利空",
+        "level": "高",
+        "chain": "能源設施風險→油價升→通膨與殖利率壓估值"
       },
       {
         "when": "10/13 21:30",
-        "cat": "地緣",
-        "title": "中東衝突延續，WTI收93.74美元、單日漲2.06%",
+        "cat": "科技",
+        "title": "博通執行長示警資金是AI成長瓶頸並批投資像賭場",
         "impact": "利空",
         "level": "高",
-        "chain": "衝突→油價→通膨與殖利率→成長股估值"
+        "chain": "融資瓶頸→AI資本支出放慢疑慮→伺服器供應鏈降評"
       },
       {
-        "when": "10/13 21:00",
+        "when": "10/13 17:00",
         "cat": "科技",
-        "title": "微軟公佈Maia 300，規劃2027年部署自研AI加速器",
-        "impact": "中性",
-        "level": "中",
-        "chain": "雲端自研晶片→降低GPU依賴→重分配AI供應鏈訂單"
+        "title": "韓股跌5.46%、日經跌1.82%，亞洲科技股拋售擴大",
+        "impact": "利空",
+        "level": "高",
+        "chain": "亞洲半導體重挫→風險偏好降→台股開盤承接力弱"
       },
       {
-        "when": "10/13 20:30",
-        "cat": "財報",
-        "title": "市場等待台積電與艾司摩爾財報確認AI需求",
-        "impact": "中性",
-        "level": "中",
-        "chain": "財測→AI資本支出可信度→半導體評價與台股權值"
-      },
-      {
-        "when": "10/13 18:00",
+        "when": "10/13 15:00",
         "cat": "原物料",
-        "title": "油價受中東供給風險支撐，美元指數收102.58上漲0.40%",
+        "title": "WTI收93.74美元，上漲2.06%逼近百美元門檻",
         "impact": "利空",
         "level": "中",
-        "chain": "能源風險→美元與實質利率→外資風險偏好"
-      },
-      {
-        "when": "10/13 16:00",
-        "cat": "科技",
-        "title": "韓股KOSPI收跌5.46%，記憶體與AI股成跌勢核心",
-        "impact": "利空",
-        "level": "高",
-        "chain": "記憶體競爭疑慮→韓台半導體重估→台股開盤壓力"
+        "chain": "油價上行→通膨降溫變慢→Fed降息空間受限"
       }
     ],
     "indices": [
@@ -2469,8 +1490,8 @@
         "close": 742.96,
         "change": 24.29,
         "pct": 3.38,
-        "why": "AI模型與雲端資本支出題材推升股價3.38%",
-        "tw": "緯穎、廣達、技嘉"
+        "why": "分析師維持正向評等，AI代理Muse下載量突破500萬推升預期",
+        "tw": "廣達、緯創、技嘉"
       },
       {
         "symbol": "AAPL",
@@ -2566,9 +1587,7 @@
         "tag": "晶圓代工",
         "close": 444.35,
         "change": -8.96,
-        "pct": -1.98,
-        "why": "半導體族群遭AI估值與中國競爭疑慮拖累，ADR跌1.98%",
-        "tw": "台積電"
+        "pct": -1.98
       },
       {
         "symbol": "AMD",
@@ -2577,8 +1596,8 @@
         "close": 594.24,
         "change": -13.86,
         "pct": -2.28,
-        "why": "AI股估值退潮與中國競爭疑慮，股價跌2.28%",
-        "tw": "台積電、日月光投控"
+        "why": "AI投資可持續性、融資瓶頸與中國記憶體競爭疑慮拖累晶片股",
+        "tw": "台積電、祥碩、譜瑞-KY"
       },
       {
         "symbol": "INTC",
@@ -2587,8 +1606,8 @@
         "close": 101.35,
         "change": -3.35,
         "pct": -3.2,
-        "why": "AI半導體風險偏好轉弱，股價跌3.20%",
-        "tw": "台積電、聯電"
+        "why": "半導體族群全面回檔，市場同時擔心AI基建融資成本上升",
+        "tw": "矽力*-KY、聯電、日月光投控"
       },
       {
         "symbol": "MU",
@@ -2597,8 +1616,8 @@
         "close": 989.04,
         "change": -39.96,
         "pct": -3.88,
-        "why": "CXMT記憶體技術進展引發供給與毛利壓力疑慮，股價跌3.88%",
-        "tw": "南亞科、華邦電、旺宏"
+        "why": "中國CXMT新記憶體架構加劇競爭疑慮，記憶體股遭獲利了結",
+        "tw": "南亞科、華邦電、威剛"
       },
       {
         "symbol": "ARM",
@@ -2606,7 +1625,9 @@
         "tag": "IP",
         "close": 255.24,
         "change": -11.04,
-        "pct": -4.15
+        "pct": -4.15,
+        "why": "AI晶片與高估值族群遭拋售，融資與資本支出疑慮放大跌幅",
+        "tw": "聯發科、瑞昱、世芯-KY"
       },
       {
         "symbol": "SMCI",
@@ -2614,7 +1635,9 @@
         "tag": "AI伺服器",
         "close": 39.98,
         "change": -1.88,
-        "pct": -4.49
+        "pct": -4.49,
+        "why": "AI伺服器需求與融資可行性疑慮升溫，追價資金退潮",
+        "tw": "美超微、廣達、緯穎"
       }
     ],
     "sectors": [
@@ -2825,7 +1848,7 @@
     ]
   },
   "kol": {
-    "overview": "多數觀點仍認為 AI 長期需求未變，但高估值、資金成本與供應競爭使短線波動加劇；今日玉晶光強勢，南亞科與多檔光通訊股卻走弱。相較近三份歷史，未見明顯轉向。",
+    "overview": "多數觀點仍認為 AI 與資料中心需求未變，但資金成本、估值與部署延遲使短線波動加劇；今天玉晶光在漲幅前 20 名，聯亞、前鼎、上詮等光通訊股卻在跌幅前 20 名。相較近三份歷史，未見明顯轉向。",
     "items": [
       {
         "source": "財經M平方",
@@ -2834,15 +1857,8 @@
         "url": "https://www.youtube.com/watch?v=LB3QSpG_Euw",
         "publishedAt": "2026-10-13",
         "basis": "transcript",
-        "insight": "他認為美債價格波動將比過去更大，因外國資產持有人由官方部門轉向追求報酬的私部門，對利率變動更敏感。",
-        "tickers": [
-          "美國長債"
-        ],
-        "stance": "中性",
-        "opportunity": {
-          "verdict": "觀察",
-          "comment": "利率與持有人結構是明確風險，但未提供利率方向或時點；今日榜單也無法評估債券價格是否已反映。"
-        }
+        "insight": "他認為美債價格波動會比過去更大，因外國資產持有人正由不太在意價格的官方部門，轉向更重視報酬、對利率變動敏感的私部門。",
+        "stance": "中性"
       },
       {
         "source": "財女珍妮",
@@ -2851,18 +1867,17 @@
         "url": "https://www.youtube.com/watch?v=vsF9JabmQPU",
         "publishedAt": "2026-10-13",
         "basis": "transcript",
-        "insight": "她認為半導體與光通訊近期下跌較像高估值下的波動，因 AI 需求、資料中心建設與巨頭資本支出仍在；但資金成本、AI 投資報酬率與記憶體競爭仍是風險。",
+        "insight": "她認為半導體與光通訊下跌較像高估值下的短線波動，因 AI 需求、資料中心建設與巨頭資本支出仍在；但資金成本、AI 投資報酬率與中國記憶體競爭仍是風險。",
         "tickers": [
           "NVDA 輝達",
           "AMD 超微",
-          "美光",
-          "2330 台積電",
-          "META"
+          "MU 美光",
+          "META Meta"
         ],
         "stance": "偏多",
         "opportunity": {
           "verdict": "觀察",
-          "comment": "財報季是近期催化，但高估值與資金瓶頸未解；光通訊多檔走弱、台積電未在前20，尚不足判斷利空已反映。"
+          "comment": "AI 長期需求仍有支撐，但財報是近期催化；高估值、資金瓶頸與記憶體競爭可能放大波動，今日榜單不足以判斷跌勢已反映。"
         }
       },
       {
@@ -2872,11 +1887,14 @@
         "url": "https://t.me/Gooaye",
         "publishedAt": "2026-10-13",
         "basis": "posts",
-        "insight": "他認為短期業者會用誘因拉動數字，中期價格競爭壓力升高，海外本地化產能與供應鏈佈局較有優勢；中國則朝減輕補貼財政負擔方向走。",
+        "insight": "他認為短期業者會用誘因拉動數字，中期價格競爭壓力將升高，因海外本地化產能與供應鏈佈局較能取得優勢；中國則朝減輕補貼財政負擔方向走。",
+        "tickers": [
+          "海外本地化產能與供應鏈"
+        ],
         "stance": "中性",
         "opportunity": {
           "verdict": "觀察",
-          "comment": "只提到產業與補貼方向，未明示市場、個股或催化日期；缺乏受惠者與今日榜單對照，暫不宜下結論。"
+          "comment": "本則未指明個股、催化日期或臺股受惠者；可留意供應鏈在地化，但目前資料不足以判斷題材是否已反映或建立部位。"
         }
       },
       {
@@ -2886,20 +1904,20 @@
         "url": "https://x.com/QQ_Timmy",
         "publishedAt": "2026-10-13",
         "basis": "posts",
-        "insight": "TrendForce認為AI使DRAM轉向伺服器、供給偏緊；摩根士丹利認為800V延後不等於全面延期，下週OCP可能催化。Nomura看好玉晶光光纖聯結器訂單；J.P. Morgan看好聯發科ASIC長期成長但TPUv9出貨延後一季。J.P. Morgan另指AI加速器與CPU未來18個月仍是瓶頸，TrendForce看CPO測試裝置需求升溫。",
+        "insight": "TrendForce認為AI使DRAM供應轉向伺服器且交期偏長；摩根士丹利認為800V延後不等於全面延期，下週OCP可能催化。Nomura看好玉晶光光纖聯結器訂單；J.P. Morgan看好聯發科ASIC長期成長但TPUv9出貨延後一季，並指AI加速器與CPU未來18個月仍是瓶頸；TrendForce另看好CPO測試需求。",
         "tickers": [
-          "DRAM／記憶體族群",
-          "光通訊族群",
-          "3406 玉晶光",
           "2408 南亞科",
-          "聯發科",
-          "AI加速器／CPU",
+          "3406 玉晶光",
+          "2454 聯發科",
+          "2449 京元電子",
+          "3665 貿聯-KY",
+          "AI加速器與CPU",
           "CPO測試設備"
         ],
         "stance": "偏多",
         "opportunity": {
           "verdict": "觀察",
-          "comment": "玉晶光今日漲9.8%在前20強勢榜，南亞科跌7.4%、聯亞與前鼎等光通訊股在跌幅榜；題材分化且TPUv9延後，先觀察OCP與後續出貨。"
+          "comment": "供給偏緊與OCP大會是催化，但聯發科TPUv9延後、CPO仍有量產驗證風險；玉晶光已在今日漲幅前20名，部分題材可能先反映，其餘榜單不足以判斷。"
         }
       }
     ]

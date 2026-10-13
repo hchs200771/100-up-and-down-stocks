@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-13T16:23:19.705Z",
+  "updatedAt": "2026-10-13T16:53:33.822Z",
   "records": [
     {
       "date": "2026-06-29",
@@ -24750,6 +24750,536 @@
       "direction": "loser",
       "members": 21,
       "t1": -3.27
+    },
+    {
+      "date": "2026-10-13",
+      "category": "LED/光電元件與照明模組",
+      "direction": "gainer",
+      "members": 7,
+      "stage": "高潮"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "雲端AI/企業系統整合",
+      "direction": "gainer",
+      "members": 7,
+      "stage": "擴散"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "金融/銀行與保險",
+      "direction": "gainer",
+      "members": 6,
+      "stage": "連1日"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "光學鏡頭/成像元件",
+      "direction": "gainer",
+      "members": 5,
+      "stage": "連2日"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "塑化/特用化學與工業材料",
+      "direction": "gainer",
+      "members": 5,
+      "stage": "擴散"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "AI伺服器/系統組裝",
+      "direction": "gainer",
+      "members": 4,
+      "stage": "連2日"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "生技/新藥與醫材",
+      "direction": "gainer",
+      "members": 4,
+      "stage": "擴散"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "營建/不動產與工程承攬",
+      "direction": "gainer",
+      "members": 4,
+      "stage": "擴散"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "一般網通/企業網路設備",
+      "direction": "gainer",
+      "members": 3,
+      "stage": "連3日+"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "半導體設備/測試介面",
+      "direction": "gainer",
+      "members": 3,
+      "stage": "連3日+"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "AI伺服器散熱/機構件",
+      "direction": "gainer",
+      "members": 3,
+      "stage": "啟動"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "家用品/餐廚與家電",
+      "direction": "gainer",
+      "members": 3,
+      "stage": "回歸"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "驅動IC/顯示控制IC",
+      "direction": "gainer",
+      "members": 3,
+      "stage": "啟動"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "螺絲扣件/精密金屬件",
+      "direction": "gainer",
+      "members": 3,
+      "stage": "回歸"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "被動元件",
+      "direction": "gainer",
+      "members": 2,
+      "stage": "擴散"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "原油/煉油與能源商品",
+      "direction": "gainer",
+      "members": 2,
+      "stage": "連1日"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "消費電子/精密機構件",
+      "direction": "gainer",
+      "members": 2,
+      "stage": "連3日+"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "工業電腦/嵌入式系統",
+      "direction": "gainer",
+      "members": 2,
+      "stage": "連3日+"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "傳統PCB/EMS板廠",
+      "direction": "gainer",
+      "members": 2,
+      "stage": "退潮"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "零售電商/生活消費",
+      "direction": "gainer",
+      "members": 2,
+      "stage": "退潮"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "工業自動化/工具機設備",
+      "direction": "gainer",
+      "members": 2,
+      "stage": "連3日+"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "紡織成衣/化纖",
+      "direction": "gainer",
+      "members": 2,
+      "stage": "連3日+"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "運動用品/碳纖維複材",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "啟動"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "事務機/影像掃描與安防設備",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "連3日+"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "NB機構件/轉軸與精密結構件",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "啟動"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "教育服務/幼教連鎖",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "啟動"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "海外DR/特殊交易事件",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "高潮"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "生技醫療/健康照護",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "回歸"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "電線電纜/漆包線",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "高潮"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "面板材料",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "退潮"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "ASIC/IP矽智財",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "回歸"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "綠能/太陽能與電力工程",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "連3日+"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "CCL/銅箔基板",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "連3日+"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "功率元件/電源管理IC",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "退潮"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "數位內容/軟體服務與出版",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "退潮"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "航運/散裝與貨櫃",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "連2日"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "低軌衛星/微波通訊",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "退潮"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "食品餐飲/內需消費",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "高潮"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "醫療器材/骨科與診療設備",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "啟動"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "電信服務",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "啟動"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "物流/倉儲",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "啟動"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "ASIC/IP矽智財",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "啟動"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "航空/客貨運",
+      "direction": "gainer",
+      "members": 1,
+      "stage": "啟動"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "其他強勢個股事件整理",
+      "direction": "gainer",
+      "members": 3,
+      "stage": "擴散"
+    },
+    {
+      "date": "2026-10-13",
+      "category": "半導體設備/測試介面",
+      "direction": "loser",
+      "members": 12
+    },
+    {
+      "date": "2026-10-13",
+      "category": "光通訊/CPO矽光子",
+      "direction": "loser",
+      "members": 8
+    },
+    {
+      "date": "2026-10-13",
+      "category": "功率元件/電源管理IC",
+      "direction": "loser",
+      "members": 6
+    },
+    {
+      "date": "2026-10-13",
+      "category": "化合物半導體/RF射頻",
+      "direction": "loser",
+      "members": 5
+    },
+    {
+      "date": "2026-10-13",
+      "category": "DRAM/NAND記憶體模組與控制IC",
+      "direction": "loser",
+      "members": 5
+    },
+    {
+      "date": "2026-10-13",
+      "category": "生技/新藥與醫材",
+      "direction": "loser",
+      "members": 5
+    },
+    {
+      "date": "2026-10-13",
+      "category": "MCU/消費控制IC與音訊晶片",
+      "direction": "loser",
+      "members": 3
+    },
+    {
+      "date": "2026-10-13",
+      "category": "CCL/銅箔基板",
+      "direction": "loser",
+      "members": 3
+    },
+    {
+      "date": "2026-10-13",
+      "category": "低軌衛星/微波通訊",
+      "direction": "loser",
+      "members": 3
+    },
+    {
+      "date": "2026-10-13",
+      "category": "石英元件/頻率控制",
+      "direction": "loser",
+      "members": 3
+    },
+    {
+      "date": "2026-10-13",
+      "category": "ASIC/IP矽智財",
+      "direction": "loser",
+      "members": 2
+    },
+    {
+      "date": "2026-10-13",
+      "category": "連接器/高速介面與線束",
+      "direction": "loser",
+      "members": 2
+    },
+    {
+      "date": "2026-10-13",
+      "category": "被動元件",
+      "direction": "loser",
+      "members": 2
+    },
+    {
+      "date": "2026-10-13",
+      "category": "晶圓代工",
+      "direction": "loser",
+      "members": 2
+    },
+    {
+      "date": "2026-10-13",
+      "category": "LED/光電元件與照明模組",
+      "direction": "loser",
+      "members": 2
+    },
+    {
+      "date": "2026-10-13",
+      "category": "低軌衛星/HDI高階PCB",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-10-13",
+      "category": "傳統PCB/EMS板廠",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-10-13",
+      "category": "一般網通/企業網路設備",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-10-13",
+      "category": "生技醫療/健康照護",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-10-13",
+      "category": "醫療影像/隱形眼鏡與視光醫材",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-10-13",
+      "category": "半導體設備/測試介面",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-10-13",
+      "category": "電源供應器/UPS",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-10-13",
+      "category": "電池/儲能元件",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-10-13",
+      "category": "面板材料",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-10-13",
+      "category": "光學鏡頭/成像元件",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-10-13",
+      "category": "AI伺服器散熱/機構件",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-10-13",
+      "category": "車用電動化/車電與AM零組件",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-10-13",
+      "category": "工業自動化/工具機設備",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-10-13",
+      "category": "檢測驗證/安規認證",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-10-13",
+      "category": "塑化/特用化學與工業材料",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-10-13",
+      "category": "消費電子/精密機構件",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-10-13",
+      "category": "事務機/影像掃描與安防設備",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-10-13",
+      "category": "建材/裝修材料",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-10-13",
+      "category": "營建/不動產與工程承攬",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-10-13",
+      "category": "數位內容/軟體服務與出版",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-10-13",
+      "category": "零售電商/生活消費",
+      "direction": "loser",
+      "members": 1
+    },
+    {
+      "date": "2026-10-13",
+      "category": "其他弱勢",
+      "direction": "loser",
+      "members": 16
     }
   ],
   "aggregates": {
