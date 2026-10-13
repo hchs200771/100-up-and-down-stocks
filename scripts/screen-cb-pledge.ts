@@ -4,6 +4,7 @@
  *
  * 這兩項資料同時出現時，代表融資、稀釋、轉換與治理因素值得優先研究；它們不能
  * 單向證明公司派會拉抬，也不能取代基本面與量價確認。本工具只做事件排序與風險標註。
+ * 時間軸：階段與 CB／CBAS 估值供觀察；盲盒落空為回測過的風險提示，在冷卻期扣分，其餘不影響評分。
  *
  * 資料源（全公開、免金鑰）：
  *   1. 董監持股/設質明細（月頻，MOPS 每月 15 日左右公布上月）
@@ -54,6 +55,15 @@ const MIN_STOCK_LOTS = 500;
 const MIN_CB_UNITS = 50;
 /** Yahoo 併發上限，沿用 build-tw-rrg 的經驗值。 */
 const FETCH_CONCURRENCY = 6;
+/** 盲盒落空門檻：已回測（10/15/20% 結果相近），見 docs/cb-time-axis-backtest.md。 */
+const BLIND_BOX_MAX_RETURN_PCT = 10;
+/** 盲盒落空且仍在冷卻期（發行 6–12 個月）時扣分；回測該區間平均落後等權大盤 6.8pp、8 個年度皆為負（docs/cb-time-axis-backtest.md）。12 個月後證據轉弱，不扣。 */
+const BLIND_BOX_PENALTY = 10;
+const TIME_TAGS = ["盲盒落空"];
+/** 資產交換折現率，暫定，券商實際報價會不同。 */
+const CBAS_RATE = 0.02;
+/** 權利金低於此值（每 100 面額）時，槓桿與倍數會失真（深價外選擇權 delta 很低），不顯示。 */
+const CBAS_MIN_PREMIUM = 2;
 
 // 台灣時間的「現在」用共用版（lib/time.ts）。TPEx 的「當月」以台灣日期為準，
 // 跨午夜時用 UTC 會差一個月。
@@ -63,6 +73,33 @@ const num = (v: unknown): number => {
   return Number.isFinite(n) ? n : 0;
 };
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+const utcDate = (date: string) => new Date(`${date.replace(/\//g, "-")}T00:00:00Z`);
+const dateString = (date: Date) => date.toISOString().slice(0, 10).replace(/-/g, "/");
+/** UTC 日曆月運算；月底日期夾到目標月份的最後一天。 */
+function addMonths(date: string, months: number): string {
+  if (!date) return "";
+  const d = utcDate(date);
+  const target = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth() + months, 1));
+  const lastDay = new Date(Date.UTC(target.getUTCFullYear(), target.getUTCMonth() + 1, 0)).getUTCDate();
+  target.setUTCDate(Math.min(d.getUTCDate(), lastDay));
+  return dateString(target);
+}
+
+/** 以月週年為整數，剩餘天數按該日曆月長度折算；判斷條件用未四捨五入的值。 */
+function monthsBetween(start: string, end: string): number | null {
+  if (!start || !end) return null;
+  if (end < start) {
+    const reverse = monthsBetween(end, start);
+    return reverse == null ? null : -reverse;
+  }
+  const a = utcDate(start), b = utcDate(end);
+  let months = (b.getUTCFullYear() - a.getUTCFullYear()) * 12 + b.getUTCMonth() - a.getUTCMonth();
+  if (addMonths(start, months) > end) months--;
+  const anchor = utcDate(addMonths(start, months)).getTime();
+  const next = utcDate(addMonths(start, months + 1)).getTime();
+  return months + (b.getTime() - anchor) / (next - anchor);
+}
 
 async function mapPool<T, R>(items: T[], limit: number, fn: (x: T, i: number) => Promise<R>): Promise<R[]> {
   const out = new Array<R>(items.length);
@@ -196,6 +233,12 @@ interface CbInfo {
   conversionPrice: number;
   conversionStart: string;
   conversionEnd: string;
+  putStart: string;
+  putEnd: string;
+  putPrice: number | null;
+  delistDate: string;
+  issueDateEst: string;
+  maturityDate: string;
   /** 原始發行總額（元） */
   issueAmount: number;
   /** 上月底發行餘額（元） */
@@ -250,8 +293,15 @@ async function fetchCbBoard(): Promise<{ boardDate: string; bonds: CbInfo[] }> {
       bondName: f[1],
       stockCode,
       conversionPrice,
-      conversionStart: f[2],
-      conversionEnd: f[3],
+      conversionStart: f[2].trim(),
+      conversionEnd: f[3].trim(),
+      putStart: (f[6] ?? "").trim(),
+      putEnd: (f[7] ?? "").trim(),
+      putPrice: num(f[8]) || null,
+      delistDate: (f[12] ?? "").trim(),
+      issueDateEst: addMonths(f[2].trim(), -3),
+      // 契約到期日=轉換迄日（不因強贖提前下櫃而改變）；提前終止另見 delistDate
+      maturityDate: f[3].trim(),
       issueAmount,
       outstanding,
       convertedPct: issueAmount > 0 ? +(100 * (1 - outstanding / issueAmount)).toFixed(1) : 0,
@@ -290,39 +340,123 @@ async function fetchCbVolumes(): Promise<Record<string, number>> {
 
 // ── 3) 候選股的現股量價（Yahoo）───────────────────────────────
 
+interface DailyBar {
+  date: string;
+  close: number;
+  high: number;
+  volume: number;
+}
+
 interface StockStat {
   close: number | null;
   ma20: number | null;
   /** 20 日均量（張） */
   avgLots: number | null;
+  series: DailyBar[];
 }
 
 async function fetchStockStat(code: string, market: "twse" | "tpex"): Promise<StockStat> {
   const ticker = `${code}.${market === "twse" ? "TW" : "TWO"}`;
   try {
-    const url = `https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?range=3mo&interval=1d`;
+    const url = `https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?range=5y&interval=1d`;
     const j = await fetchJson(url);
     const r = j?.chart?.result?.[0];
     const closes: (number | null)[] = r?.indicators?.quote?.[0]?.close ?? [];
     const vols: (number | null)[] = r?.indicators?.quote?.[0]?.volume ?? [];
+    const highs: (number | null)[] = r?.indicators?.quote?.[0]?.high ?? [];
+    const timestamps: number[] = r?.timestamp ?? [];
+    // 日線只留日期、收盤、最高、量皆完整的 bar；原有評分統計仍各自排除 null。
+    const series: DailyBar[] = timestamps.flatMap((t, i) => {
+      const close = closes[i], high = highs[i], volume = vols[i];
+      return close == null || high == null || volume == null ? [] : [{
+        date: dateString(new Date((t + 8 * 3600) * 1000)), close, high, volume,
+      }];
+    });
     const c = closes.filter((x): x is number => x != null);
     const v = vols.filter((x): x is number => x != null);
-    if (!c.length) return { close: null, ma20: null, avgLots: null };
+    if (!c.length) return { close: null, ma20: null, avgLots: null, series };
     const last20c = c.slice(-20);
     const last20v = v.slice(-20);
     return {
+      series,
       close: +c[c.length - 1].toFixed(2),
       ma20: +(last20c.reduce((a, b) => a + b, 0) / last20c.length).toFixed(2),
       avgLots: last20v.length ? Math.round(last20v.reduce((a, b) => a + b, 0) / last20v.length / 1000) : null,
     };
   } catch {
-    return { close: null, ma20: null, avgLots: null };
+    return { close: null, ma20: null, avgLots: null, series: [] };
   }
 }
 
 // ── 4) 組合與輸出 ─────────────────────────────────────────────
 
-interface BondView {
+interface BondTimeAxis {
+  putStart: string;
+  putEnd: string;
+  putPrice: number | null;
+  delistDate: string;
+  issueDateEst: string;
+  maturityDate: string;
+  monthsSinceIssue: number | null;
+  monthsToMaturity: number | null;
+  stage: string;
+  timeTags: string[];
+  floorReturnPct: number | null;
+  floorPrice: number | null;
+  floorDate: string | null;
+  redeemLineUpsidePct: number | null;
+  cbasFloorPV: number | null;
+  cbasPremium: number | null;
+  cbasLeverage: number | null;
+  cbasRedeemLineMultiple: number | null;
+}
+
+function bondTimeAxis(b: CbInfo, s: StockStat, today: string): BondTimeAxis {
+  const since = monthsBetween(b.issueDateEst, today);
+  const remaining = monthsBetween(today, b.maturityDate);
+  const expired = b.conversionEnd < today;
+  const stage = expired ? "已到期" : since != null && since < 3 ? "閉鎖期"
+    : since != null && since < 6 ? "盲盒期" : since != null && since < 12 ? "冷卻期"
+    : remaining != null && remaining <= 12 ? "到期前一年" : "滿一年後";
+  const putPending = !!b.putEnd && b.putEnd >= today;
+  const timeTags: string[] = [];
+  if (!expired) {
+    const start = addMonths(b.issueDateEst, 3), end = addMonths(b.issueDateEst, 6);
+    const bars = s.series;
+    if (start && end && end < today && bars.length && bars[0].date <= start && bars[bars.length - 1].date >= end) {
+      const window = bars.filter((bar) => start <= bar.date && bar.date <= end);
+      // 使用現行轉換價：這裡沒有歷史轉換價重設資料。
+      if (window.length && window[0].close > 0
+        && (Math.max(...window.map((bar) => bar.close)) / window[0].close - 1) * 100 < BLIND_BOX_MAX_RETURN_PCT
+        && !window.some((bar) => bar.close >= b.conversionPrice)) timeTags.push("盲盒落空");
+    }
+  }
+  // 補償金／超過面額的賣回收益溢價未建模；待賣回但缺價時保留 null。
+  const floorPrice = b.cbPrice == null ? null : putPending ? b.putPrice : 100;
+  const floorDate = b.cbPrice == null ? null : putPending ? b.putEnd
+    : (b.delistDate && b.delistDate < b.maturityDate ? b.delistDate : b.maturityDate); // 保底日：已公告終止櫃買日則取較早者
+  const years = floorDate ? Math.max(0, (utcDate(floorDate).getTime() - utcDate(today).getTime()) / (365.25 * 86400000)) : null;
+  const pv = !expired && floorPrice != null && years != null ? floorPrice / (1 + CBAS_RATE) ** years : null;
+  const premium = pv != null && b.cbPrice != null ? Math.max(0, b.cbPrice - pv) : null;
+  const stockPx = s.close ?? b.stockPrice;
+  const parity = stockPx == null ? null : stockPx / b.conversionPrice * 100;
+  return {
+    putStart: b.putStart, putEnd: b.putEnd, putPrice: b.putPrice, delistDate: b.delistDate,
+    issueDateEst: b.issueDateEst, maturityDate: b.maturityDate,
+    monthsSinceIssue: since == null ? null : +since.toFixed(1),
+    monthsToMaturity: remaining == null ? null : +remaining.toFixed(1), stage, timeTags,
+    floorPrice, floorDate,
+    floorReturnPct: floorPrice != null && b.cbPrice != null ? +((floorPrice - b.cbPrice) / b.cbPrice * 100).toFixed(1) : null,
+    // 股價達到 130% 強贖線時的 CB 轉換價值，相對目前 CB 價。
+    redeemLineUpsidePct: b.cbPrice == null ? null : +((130 - b.cbPrice) / b.cbPrice * 100).toFixed(1),
+    cbasFloorPV: pv == null ? null : +pv.toFixed(2),
+    cbasPremium: premium == null ? null : +premium.toFixed(2),
+    cbasLeverage: premium != null && premium >= CBAS_MIN_PREMIUM && parity != null ? +(parity / premium).toFixed(1) : null,
+    cbasRedeemLineMultiple: premium != null && premium >= CBAS_MIN_PREMIUM && pv != null ? +((130 - pv) / premium).toFixed(1) : null,
+  };
+}
+
+interface BondView extends BondTimeAxis {
   bondCode: string;
   bondName: string;
   conversionPrice: number;
@@ -360,7 +494,7 @@ interface Candidate {
   flags: string[];
   /** 優先度評分 0-100（見 scoreCandidate 的配分） */
   score: number;
-  scoreBreakdown: { position: number; progress: number; pledge: number; tradable: number; bonus: number };
+  scoreBreakdown: { position: number; progress: number; pledge: number; tradable: number; bonus: number; blindPenalty: number };
 }
 
 /**
@@ -374,6 +508,7 @@ interface Candidate {
  *                  基線月退回用設質比例水位：50% 滿分封頂（分數高代表優先檢查風險）
  *   可執行性 0-15  現股均量 ≥500 張給 10、CB 均量 ≥50 張給 5（買不進的訊號沒有意義）
  *   加分     +5    突破轉換價+MA20（策略一的進場確認已出現）
+ *   扣分     −10   盲盒落空且在冷卻期
  *
  * 「轉換期已過」「CB已轉換>70%」直接 0 分沉底——戲演完了，分數再高都不用看。
  */
@@ -401,7 +536,7 @@ function pickMainBond(bonds: BondView[]): BondView {
 }
 
 function scoreCandidate(c: Omit<Candidate, "score" | "scoreBreakdown">): Candidate["scoreBreakdown"] & { total: number } {
-  const zero = { position: 0, progress: 0, pledge: 0, tradable: 0, bonus: 0, total: 0 };
+  const zero = { position: 0, progress: 0, pledge: 0, tradable: 0, bonus: 0, blindPenalty: 0, total: 0 };
   if (c.flags.includes("轉換期已過") || c.flags.includes("CB已轉換>70%")) return zero;
 
   const position = positionScore(c.vsConversionPct);
@@ -422,10 +557,13 @@ function scoreCandidate(c: Omit<Candidate, "score" | "scoreBreakdown">): Candida
 
   const bonus = c.flags.includes("突破轉換價+MA20") ? 5 : 0;
 
-  let total = Math.max(0, Math.min(100, position + progress + pledgeScore + tradable + bonus));
+  const blindPenalty = c.bonds.some((b) => !b.expired && b.stage === "冷卻期" && b.timeTags.includes("盲盒落空"))
+    ? BLIND_BOX_PENALTY : 0;
+
+  let total = Math.max(0, Math.min(100, position + progress + pledgeScore + tradable + bonus - blindPenalty));
   // 幾乎沒設質又沒有月增時，只剩一般 CB 事件，降低本頁的追蹤優先度。
   if (c.pledgeRatio < 5 && !(c.newPledgeLots != null && c.newPledgeLots > 0)) total = Math.min(total, 59);
-  return { position, progress, pledge: pledgeScore, tradable, bonus, total };
+  return { position, progress, pledge: pledgeScore, tradable, bonus, blindPenalty, total };
 }
 
 /** 分級：只是讓人一眼挑出該先看哪幾檔，跟報告的評分同一個精神。 */
@@ -494,6 +632,7 @@ async function main() {
       const inWindow = b.conversionStart <= today && today <= b.conversionEnd;
       const parity = stockPx && b.conversionPrice ? (stockPx / b.conversionPrice) * 100 : null;
       return {
+        ...bondTimeAxis(b, s, today),
         bondCode: b.bondCode,
         bondName: b.bondName.trim(),
         conversionPrice: b.conversionPrice,
@@ -523,6 +662,9 @@ async function main() {
     if (p.pledgeRatio >= 50) flags.push("設質>50%");
     else if (p.pledgeRatio < 5) flags.push("設質近零");
     if (stockPx && s.ma20 && stockPx > s.ma20 && stockPx > main.conversionPrice) flags.push("突破轉換價+MA20");
+    for (const tag of TIME_TAGS) {
+      if (enriched.some((b) => !b.expired && b.timeTags.includes(tag))) flags.push(tag);
+    }
     const base = {
       code: p.code,
       name: p.name,
@@ -587,6 +729,7 @@ function renderHtml(out: any): string {
       converted: b?.convertedPct ?? null,
       cbUnits: b?.cbAvgUnits ?? null,
       convEnd: b?.conversionEnd ?? "",
+      stage: b?.stage ?? "—",
       bondName: b?.bondName ?? "",
       bondCode: b?.bondCode ?? "",
       flags: c.flags,
@@ -608,6 +751,12 @@ function renderHtml(out: any): string {
           win: x.inWindow,
           start: x.conversionStart,
           end: x.conversionEnd,
+          stage: x.stage ?? "—",
+          tags: x.timeTags ?? [],
+          floorReturn: x.floorReturnPct ?? null,
+          redeemUpside: x.redeemLineUpsidePct ?? null,
+          cbasPremium: x.cbasPremium ?? null,
+          cbasLeverage: x.cbasLeverage ?? null,
         })),
     };
   });
@@ -635,7 +784,7 @@ h1{font-size:22px;font-weight:800;margin:6px 0 4px;line-height:1.35}
 .filters{display:flex;flex-wrap:wrap;gap:6px 14px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:12px 0;font-size:13px}
 .filters label{display:flex;align-items:center;gap:5px;cursor:pointer;white-space:nowrap}
 .tablebox{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:10px}
-table{border-collapse:collapse;width:100%;min-width:980px;font-size:13px;font-variant-numeric:tabular-nums}
+table{border-collapse:collapse;width:100%;min-width:1080px;font-size:13px;font-variant-numeric:tabular-nums}
 th,td{padding:6px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
 th:nth-child(-n+3),td:nth-child(-n+3){text-align:left}
 th{position:sticky;top:0;background:var(--card);cursor:pointer;user-select:none;color:var(--muted);font-weight:600;font-size:12px}
@@ -690,6 +839,7 @@ ${note}
 <li><b>設質關注 0-25</b>：有月增資料時用當月新增設質張數（2000 張滿分）；解質不預設多空。基線月先用設質比例水位（50% 封頂），高分代表風險更值得檢查。</li>
 <li><b>可執行性 0-15</b>：現股 20 日均量 ≥500 張給 10、CB 日均量 ≥50 張給 5。買不進出不掉的訊號沒有意義。</li>
 <li><b>加分 +5</b>：突破轉換價＋站上 MA20（策略的進場確認訊號已出現）。</li>
+<li><b>扣分 −${BLIND_BOX_PENALTY}</b>：任一未到期 CB 為「盲盒落空」且仍在冷卻期（發行 6–12 個月）。回測該區間平均落後等權大盤 6.8pp、8 個年度皆為負；滿 12 個月後證據轉弱，不再扣分。</li>
 </ul>
 <p>「轉換期已過」或「已轉換&gt;70%」代表本頁關注的事件已大幅消退，直接 0 分；「設質近零」（&lt;5% 且無月增）封頂 59 分。</p>
 <h4>一家公司常常不只一檔 CB</h4>
@@ -700,6 +850,14 @@ ${note}
 <li><b>CB溢價%</b>：低＝CB 貼著平價走；<b>已轉換%</b>：高＝戲近尾聲。</li>
 <li><span class="chip go">突破轉換價+MA20</span>＝價格趨勢確認；<span class="chip hot">轉換期未開始</span>＝CB 剛發行，先追蹤時程與條款。</li>
 </ul>
+<h4>時間軸（已回測）</h4>
+<p>發行日以轉換起日往前推 3 個日曆月估算；到期日用轉換迄日（契約到期，不因強贖提前下櫃而改變）；保底日若已公告終止櫃檯買賣日則取較早者。階段依序為：未滿 3 個月「閉鎖期」、3–6 個月「盲盒期」、6–12 個月「冷卻期」、距到期 ≤12 個月「到期前一年」、其餘「滿一年後」；轉換迄日已過則為「已到期」。</p>
+<ul>
+<li><span class="chip hot">盲盒落空</span>（風險提示）：3–6 個月視窗已完整結束且日線涵蓋，最高收盤相對首日漲幅 &lt;${BLIND_BOX_MAX_RETURN_PCT}%，且沒有收盤達到現行轉換價（未取得歷史重設價）。回測顯示這類股票後續 6–12 個月平均落後等權大盤 6.8pp、8 個年度皆為負；僅在冷卻期扣 ${BLIND_BOX_PENALTY} 分，其餘階段不影響評分。</li>
+<li><b>保底%</b>：待賣回用賣回價（缺價則不估算），其餘用面額 100，相對 CB 現價的報酬；補償金／賣回收益溢價未建模，不是年化報酬。<b>強贖線%</b>：股價達轉換價 130% 時，CB 轉換價值 130 相對 CB 現價的漲幅。</li>
+<li><b>CBAS 權利金</b>：CB 價減債券保底現值，最低為 0（每 100 面額）；<b>名目槓桿</b>＝目前轉換價值 ÷權利金（未乘 delta，價外越深越高估）。JSON 另列強贖線時 (130−保底現值) ÷權利金的給付倍數，忽略剩餘時間價值；權利金 &lt;${CBAS_MIN_PREMIUM} 時槓桿與倍數不顯示。</li>
+</ul>
+<p>CBAS 為粗估：固定 2% 折現率、無信用利差／補償利息，券商實際報價會不同。「一年後啟動」「公司起手勢」兩個標記經回測後已移除（扣成本後淨超額為負），詳見 docs/cb-time-axis-backtest.md。階段與估值皆<b>不影響評分</b>。</p>
 <p>此為候選池與優先排序，<b>不是買賣建議</b>；進場仍要等量價確認。資料：設質為月頻（每月中更新上月）、CB 看板日頻，本頁每日重新抓取。</p>
 </div>
 </details>
@@ -708,6 +866,7 @@ ${note}
   <label><input type="checkbox" id="fWindow"> 只看轉換期內</label>
   <label><input type="checkbox" id="fP50"> 只看設質&gt;50%</label>
   <label><input type="checkbox" id="fBreak"> 只看突破轉換價+MA20</label>
+  <label><input type="checkbox" id="fNoBlind"> 排除盲盒落空</label>
   <label><input type="checkbox" id="fAlive" checked> 隱藏已過期/已轉換&gt;70%</label>
 </div>
 <div class="count" id="count"></div>
@@ -717,36 +876,38 @@ ${note}
 <th data-k="code">代號</th><th data-k="name">名稱</th><th data-k="pledgeRatio">設質%</th><th data-k="newPledgeLots">月增(張)</th>
 <th data-k="close">現價</th><th data-k="ma20">MA20</th><th data-k="avgLots">均量(張)</th>
 <th data-k="convPrice">轉換價</th><th data-k="vsConv">vs轉換價</th><th data-k="premium">CB溢價%</th>
-<th data-k="converted">已轉換%</th><th data-k="cbUnits">CB均量</th><th data-k="convEnd">轉換迄日</th><th>旗標</th>
+<th data-k="converted">已轉換%</th><th data-k="cbUnits">CB均量</th><th data-k="convEnd">轉換迄日</th><th data-k="stage">階段</th><th>旗標</th>
 </tr></thead><tbody></tbody></table></div>
 <script>
 const ROWS=${JSON.stringify(rows)};
 const fmt=(v,suf)=>v==null?"—":v+(suf||"");
+const chipsFor=flags=>flags.map(fl=>{
+  const c=fl==="突破轉換價+MA20"?"chip go":fl.indexOf("多CB")===0?"chip":fl==="轉換期未開始"||fl==="設質>50%"||fl==="盲盒落空"?"chip hot":"chip";
+  return '<span class="'+c+'">'+fl+"</span>"}).join("");
 const cls=v=>v==null?"":v>0?" class=pos":v<0?" class=neg":"";
 let sortK="score",sortDir=-1;
 function dead(r){return r.flags.includes("轉換期已過")||r.flags.includes("CB已轉換>70%")}
 function render(){
-  const f={liquid:fLiquid.checked,win:fWindow.checked,p50:fP50.checked,brk:fBreak.checked,alive:fAlive.checked};
+  const f={liquid:fLiquid.checked,win:fWindow.checked,p50:fP50.checked,brk:fBreak.checked,noBlind:fNoBlind.checked,alive:fAlive.checked};
   let rs=ROWS.filter(r=>
     !(f.alive&&dead(r))&&
     !(f.liquid&&(r.flags.includes("現股量低")||r.flags.includes("CB量低")))&&
     !(f.win&&r.flags.includes("轉換期未開始"))&&
     !(f.p50&&!r.flags.includes("設質>50%"))&&
-    !(f.brk&&!r.flags.includes("突破轉換價+MA20")));
+    !(f.brk&&!r.flags.includes("突破轉換價+MA20"))&&
+    !(f.noBlind&&r.flags.includes("盲盒落空")));
   rs.sort((a,b)=>{const x=a[sortK],y=b[sortK];
     if(x==null&&y==null)return 0;if(x==null)return 1;if(y==null)return -1;
     return(x<y?-1:x>y?1:0)*sortDir});
   document.querySelector("#tbl tbody").innerHTML=rs.map((r,ri)=>{
     const url="https://tw.stock.yahoo.com/quote/"+r.code+(r.market==="twse"?".TW":".TWO");
-    const chips=r.flags.map(fl=>{
-      const c=fl==="突破轉換價+MA20"?"chip go":fl.indexOf("多CB")===0?"chip":fl==="轉換期未開始"||fl==="設質>50%"?"chip hot":"chip";
-      return '<span class="'+c+'">'+fl+"</span>"}).join("");
+    const chips=chipsFor(r.flags);
     const head="<tr class='parent' data-i='"+ri+"'><td><span class='tw'>▸</span> "+r.tier+" <b>"+r.score+"</b></td>"+
       "<td><a href='"+url+"' target='_blank'>"+r.code+"</a></td><td>"+r.name+
       "</td><td>"+fmt(r.pledgeRatio)+"</td><td"+cls(r.newPledgeLots)+">"+fmt(r.newPledgeLots)+
       "</td><td>"+fmt(r.close)+"</td><td>"+fmt(r.ma20)+"</td><td>"+fmt(r.avgLots)+
       "</td><td>"+fmt(r.convPrice)+"</td><td"+cls(r.vsConv)+">"+fmt(r.vsConv,"%")+"</td><td>"+fmt(r.premium)+
-      "</td><td>"+fmt(r.converted)+"</td><td>"+fmt(r.cbUnits)+"</td><td>"+r.convEnd+"</td><td>"+chips+"</td></tr>";
+      "</td><td>"+fmt(r.converted)+"</td><td>"+fmt(r.cbUnits)+"</td><td>"+r.convEnd+"</td><td>"+r.stage+"</td><td>"+chips+"</td></tr>";
     // 子列：轉換期未結束的每一檔 CB 各一行。Yahoo 對台灣 CB 收錄不全（測過約半數查無），
     // 所以債券代號連到櫃買官方頁（一定有），另附 Yahoo 連結但標成次要。
     const subs=r.cbs.map(b=>{
@@ -759,7 +920,9 @@ function render(){
         "<td colspan='3' style='text-align:left'>餘額 "+fmt(b.out,"億")+"</td>"+
         "<td>"+fmt(b.cp)+"</td><td"+cls(b.vs)+">"+fmt(b.vs,"%")+"</td><td>"+fmt(b.prem)+
         "</td><td>"+fmt(b.conv)+"</td><td>"+fmt(b.units)+"</td><td>"+b.end+
-        "</td><td><a href='"+tpex+"' target='_blank'>櫃買 ↗</a></td></tr>"}).join("");
+        "</td><td>"+b.stage+"</td><td>保底 "+fmt(b.floorReturn,"%")+" / 強贖線 "+fmt(b.redeemUpside,"%")+
+        "<br>CBAS 權利金 "+fmt(b.cbasPremium)+" / 名目槓桿 "+fmt(b.cbasLeverage,"x")+
+        "<br>"+chipsFor(b.tags)+" <a href='"+tpex+"' target='_blank'>櫃買 ↗</a></td></tr>"}).join("");
     return head+subs}).join("");
   document.querySelectorAll("#tbl tr.parent").forEach(tr=>tr.onclick=e=>{
     if(e.target.tagName==="A")return; // 點代號連結時不要順便展開
