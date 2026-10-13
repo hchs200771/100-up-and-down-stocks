@@ -18,6 +18,11 @@ TASK_DIR="$TMP_DIR/group-tasks"
 TASK_SNAPSHOT_DIR="$TMP_DIR/group-tasks-backup"
 RESULT_DIR="$TMP_DIR/group-results"
 START_STAGE="${CODEX_REPORT_START_STAGE:-fetch}"
+# 斷點續跑：每段完成就記「交易日 段名」，同一交易日的中斷執行會從下一段接著跑，
+# 不重抓資料、不重跑已完成的 worker。CODEX_REPORT_FRESH=1 強制從頭。
+CHECKPOINT_FILE="$TMP_DIR/report-checkpoint"
+AUX_DONE_FILE="$TMP_DIR/report-aux-done"
+RESUME_MAX_AGE_MINUTES="${CODEX_REPORT_RESUME_MAX_AGE_MINUTES:-360}"
 CONTROLLER_MODEL="${CODEX_CONTROLLER_MODEL:-gpt-6.1-sol}"
 CONTROLLER_SPLIT="${CODEX_CONTROLLER_SPLIT:-1}"
 FINALIZER_MODEL="${CODEX_FINALIZER_MODEL:-gpt-5.6-sol}"
@@ -242,6 +247,35 @@ read_json_date() {
   node -e 'try{process.stdout.write(String(JSON.parse(require("fs").readFileSync(process.argv[1],"utf8")).date||""))}catch(e){}' "$1"
 }
 
+mark_stage_done() {
+  printf '%s %s\n' "$(market_trading_date)" "$1" > "$CHECKPOINT_FILE"
+}
+
+aux_done_today() {
+  [ -f "$AUX_DONE_FILE" ] && [ "$(cat "$AUX_DONE_FILE")" = "$(market_trading_date)" ]
+}
+
+# 只在沒有手動指定 START_STAGE 時生效；斷點太舊（預設 6 小時）就當作新的一天重跑。
+resume_from_checkpoint() {
+  [ -z "${CODEX_REPORT_START_STAGE:-}" ] || return 0
+  [ "${CODEX_REPORT_FRESH:-0}" = "1" ] && { rm -f "$CHECKPOINT_FILE"; return 0; }
+  [ -f "$CHECKPOINT_FILE" ] && [ -f "$PROJECT_DIR/data/market-latest.json" ] || return 0
+  [ -n "$(find "$CHECKPOINT_FILE" -mmin "-$RESUME_MAX_AGE_MINUTES" 2>/dev/null)" ] || return 0
+  local cp_date cp_stage next
+  read -r cp_date cp_stage < "$CHECKPOINT_FILE"
+  [ "$cp_date" = "$(market_trading_date)" ] || return 0
+  case "$cp_stage" in
+    fetch) next=classify ;;
+    classify) next=research ;;
+    research) next=finalize ;;
+    finalize) next=send ;;
+    send) next=publish ;;
+    *) return 0 ;;
+  esac
+  START_STAGE="$next"
+  log "從上次中斷處續跑：$cp_date 已完成 ${cp_stage}，START_STAGE=${START_STAGE}（CODEX_REPORT_FRESH=1 可強制從頭）"
+}
+
 stage_enabled() {
   local stage_name="$1"
   case "$START_STAGE" in
@@ -282,6 +316,7 @@ if [ -f "$PROJECT_DIR/.env.local" ]; then
 fi
 
 log "run-daily-report-codex-parallel.sh start"
+resume_from_checkpoint
 log "START_STAGE=$START_STAGE"
 log "CONTROLLER_MODEL=$CONTROLLER_MODEL FINALIZER_MODEL=$FINALIZER_MODEL CODEX_GROUP_WORKER_MODEL=${CODEX_GROUP_WORKER_MODEL:-gpt-5.6-luna} CONTROLLER_SPLIT=$CONTROLLER_SPLIT"
 log "CONTROLLER_TIMEOUT_SECONDS=$CONTROLLER_TIMEOUT_SECONDS GROUP_CONCURRENCY=$GROUP_CONCURRENCY"
@@ -317,6 +352,11 @@ if stage_enabled fetch; then
     || log "[warn] backfill-missed-days.ts failed; 均線與報酬率可能因缺格而失真"
 fi
 
+if stage_enabled fetch; then
+  rm -f "$AUX_DONE_FILE"
+  mark_stage_done fetch
+fi
+
 # 法說會判讀：簡報下載慢、影音轉文字有額度，可能跑上一小時，所以完全脫離主流程（不進 AUX_PIDS、
 # 不等它）。它每判讀完一場就更新 data/investor-conf.html，publish 當下跑到哪就發佈到哪，剩下的下次補。
 if stage_enabled fetch; then
@@ -328,7 +368,7 @@ fi
 # 所以整批背景平行丟出去，這裡不 wait，直接往下跑分類與 research（見 AUX_PIDS）。
 # 每個都用 timed 包起來，事後看 timing 表就知道該優化誰。
 # 失敗一律只 warn：這些是加值分頁，不該擋住主流程。
-if stage_enabled fetch; then
+if stage_enabled fetch || ! aux_done_today; then
   log "進度 1.2/5：背景平行抓輔助資料（指數貢獻／融資選擇權／集保／國際／信用利差／RRG／設質+CB／KOL）"
 
   timed index-contribution run_tsx scripts/build-index-contribution.ts \
@@ -514,6 +554,7 @@ if stage_enabled classify; then
   snapshot_tasks
   SNAPSHOT_COUNT="$(count_json_files "$TASK_SNAPSHOT_DIR")"
   log "進度 2/5：已經做好全部分類，共 $TASK_COUNT 個族群 task；snapshot $SNAPSHOT_COUNT 個檔案"
+  mark_stage_done classify
 else
   if ! ensure_tasks_available; then
     log "No task files available for stage $START_STAGE"
@@ -563,6 +604,7 @@ if stage_enabled research; then
     log "[warn] 國際情勢 worker 沒寫出 intl-brief.txt；報告國際區塊將只有數字表"
   fi
   [ -f "$TMP_DIR/intl-events.json" ] || log "[warn] 國際情勢 worker 沒寫出 intl-events.json；國際大事時間軸略過"
+  mark_stage_done research
 fi
 
 if stage_enabled finalize; then
@@ -583,8 +625,10 @@ if stage_enabled finalize; then
   fi
 
   log "進度 4/5：開始 finalizer 組裝盤後分析"
+  FINALIZER_OK=1
   if ! timed finalizer run_codex_prompt_with_timeout "$FINALIZER_MODEL" "$FINALIZER_PROMPT" "$CONTROLLER_TIMEOUT_SECONDS"; then
     log "finalizer exited non-zero"
+    FINALIZER_OK=0
   fi
 
   if [ ! -f "$PROJECT_DIR/data/analysis-latest.json" ]; then
@@ -602,6 +646,7 @@ if stage_enabled finalize; then
     if [ -n "$SKELETON_DATE" ] && [ "$SKELETON_DATE" != "$ANALYSIS_DATE" ]; then
       log "[warn] analysis-latest.json 日期 $ANALYSIS_DATE 與 skeleton $SKELETON_DATE 不符；改用本次 skeleton，避免送出舊報告"
       cp "$SKELETON_FILE" "$PROJECT_DIR/data/analysis-latest.json"
+      FINALIZER_OK=0
     fi
   fi
   if ! timed analysis-completeness run_tsx scripts/validate-analysis-completeness.ts \
@@ -615,6 +660,12 @@ if stage_enabled finalize; then
   # finalizer 自己寫 analysis-latest.json、不帶 intl；與 Claude runner 一樣在這裡併入國際情勢
   # （數字表 + 若有 data/tmp/intl-brief.txt 則含判讀）。缺這步時國際情勢分頁會整個消失。
   run_tsx scripts/attach-intl.ts || log "[warn] attach-intl.ts failed; 報告將沒有國際區塊"
+  # 用 skeleton 頂替的報告照樣發布，但不記 finalize 完成：下次執行會從 finalize 補跑完整版
+  if [ "$FINALIZER_OK" = 1 ]; then
+    mark_stage_done finalize
+  else
+    log "[warn] 本次發布的是 skeleton 版；重跑 npm run report 會自動從 finalize 補跑"
+  fi
 fi
 
 if [ ! -f "$PROJECT_DIR/data/analysis-latest.json" ]; then
@@ -630,6 +681,7 @@ if stage_enabled send; then
     log "進度 4.5/5：等背景輔助資料收尾"
     for _p in $AUX_PIDS; do wait "$_p" 2>/dev/null || true; done
     log "進度 4.5/5：輔助資料全部結束"
+    market_trading_date > "$AUX_DONE_FILE"
   fi
   run_tsx scripts/attach-kol.ts || log "[warn] attach-kol.ts failed; 報告將沒有 KOL 分頁"
 
@@ -644,6 +696,7 @@ if stage_enabled send; then
     exit 1
   fi
   log "進度 5/5：HTML 已產生，未寄信"
+  [ "${FINALIZER_OK:-1}" = 1 ] && mark_stage_done send
 fi
 
 if stage_enabled publish; then
@@ -651,6 +704,7 @@ if stage_enabled publish; then
   if ! timed publish bash "$PROJECT_DIR/scripts/publish-github-pages.sh" > >(tee -a "$LOG_FILE") 2>&1; then
     log "[warn] publish-github-pages.sh 失敗（不中斷整體流程）"
   fi
+  [ "${FINALIZER_OK:-1}" = 1 ] && mark_stage_done publish
 fi
 
 timing_summary
