@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>回檔買進掃描</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2288%22%3E%F0%9F%AA%83%3C%2Ftext%3E%3C%2Fsvg%3E">
+<style>
+:root{--bg:#f7f8fa;--card:#fff;--fg:#1a202c;--muted:#64748b;--line:#e2e8f0;--accent:#2563eb;--up:#c2410c;--down:#15803d;--chip:#eef2f7}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1420;--card:#171e2e;--fg:#e5eaf3;--muted:#8b98ad;--line:#28334a;--accent:#7aa2ff;--up:#ff8a5c;--down:#4ade80;--chip:#222c42}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.6 -apple-system,"PingFang TC","Noto Sans TC",sans-serif;padding:16px}
+.wrap{max-width:1200px;margin:0 auto}
+h1{font-size:20px;margin:4px 0 2px}
+h2{font-size:16px;margin:20px 0 6px}
+.sub,.note{color:var(--muted);font-size:13px;margin:2px 0}
+.note{color:var(--up)}
+.regime{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:12px 0;font-size:13px}
+.regime.ok{border-color:var(--down)}.regime.bad{border-color:var(--up)}
+.cards{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.card{flex:1 1 150px;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+.card .cname{font-size:14px;font-weight:700}
+.card .cdesc{color:var(--muted);font-size:11.5px;line-height:1.5;margin-top:2px;flex:1}
+.card b{font-size:17px;line-height:1.2;margin-top:6px}
+.card.total{border-color:var(--accent)}.card.total .cname,.card.total b{color:var(--accent)}
+.acct{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:12px 0;font-size:13px}
+.acct input{width:130px;background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:3px 6px;font:inherit}
+.tablebox{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;min-width:860px;font-size:13px}
+th,td{padding:6px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+th:nth-child(-n+2),td:nth-child(-n+2){text-align:left}
+th{background:var(--card);color:var(--muted);font-weight:600}
+tr:hover td{background:color-mix(in srgb,var(--accent) 6%,transparent)}
+a{color:var(--accent);text-decoration:none}
+.chip{display:inline-block;background:var(--chip);border-radius:99px;padding:0 8px;font-size:11px;color:var(--muted);margin-right:3px}
+.pos{color:var(--up)}.neg{color:var(--down)}.none{color:var(--muted)}
+.empty{padding:14px;color:var(--muted);font-size:13px}
+details.howto{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:12px 0;font-size:13px;color:var(--muted)}
+details.howto summary{cursor:pointer;padding:10px 16px;font-size:14px;font-weight:600;color:var(--fg)}
+details.howto .body{padding:0 16px 12px;border-top:1px solid var(--line)}
+details.howto p{margin:6px 0}
+details.howto b{color:var(--fg)}
+</style>
+</head>
+<body><div class="wrap">
+<nav class="nav gnav"><style>
+nav.gnav{display:block;position:sticky;top:0;z-index:40;margin:0 0 14px;padding:8px 0 6px;background:var(--bg,#fff);border-bottom:1px solid var(--line,#e5e7eb);font-family:inherit}
+.gnav .gnav-top{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.gnav .gnav-g{position:relative}
+.gnav .gnav-btn{display:inline-block;border:1px solid var(--line,#e5e7eb);border-radius:999px;padding:7px 14px;font-size:14px;font-weight:700;line-height:1.3;background:var(--card,#fff);color:var(--fg,#374151);text-decoration:none;cursor:pointer;white-space:nowrap}
+.gnav .gnav-btn:hover{border-color:var(--accent,#6366f1);color:var(--accent,#4338ca)}
+.gnav .gnav-btn.on{background:var(--accent,#4f46e5);border-color:var(--accent,#4f46e5);color:#fff}
+.gnav .gnav-caret{font-size:10px;margin-left:4px;opacity:.7}
+.gnav .gnav-menu{display:none;position:absolute;left:0;top:100%;padding-top:6px;z-index:41;min-width:168px}
+.gnav .gnav-g:nth-last-child(-n+2) .gnav-menu{left:auto;right:0}
+.gnav .gnav-menu-in{background:var(--card,#fff);border:1px solid var(--line,#e5e7eb);border-radius:10px;box-shadow:0 8px 24px rgba(15,23,42,.14);padding:6px}
+.gnav .gnav-item{display:block;border:0;border-radius:6px;padding:8px 12px;font-size:14px;font-weight:600;line-height:1.3;background:transparent;color:var(--fg,#374151);text-decoration:none;white-space:nowrap}
+.gnav .gnav-item:hover{background:var(--chip,#f1f5f9);color:var(--accent,#4338ca)}
+.gnav .gnav-item.on{color:var(--accent,#4338ca);background:var(--chip,#eef2ff)}
+.gnav .gnav-g.open .gnav-menu{display:block}
+@media (any-hover:hover){.gnav .gnav-g:hover .gnav-menu{display:block}}
+.gnav .gnav-sub{display:none;gap:4px;margin-top:6px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.gnav .gnav-sub::-webkit-scrollbar{display:none}
+.gnav .gnav-sub.on{display:flex}
+.gnav .gnav-subitem{flex:none;display:inline-block;border:0;border-radius:6px;padding:4px 10px;font-size:13px;font-weight:600;line-height:1.4;background:transparent;color:var(--muted,#6b7280);text-decoration:none;white-space:nowrap}
+.gnav .gnav-subitem:hover{color:var(--accent,#4338ca)}
+.gnav .gnav-subitem.on{background:var(--chip,#eef2ff);color:var(--accent,#4338ca)}
+@media (max-width:640px){.gnav .gnav-btn{padding:6px 11px;font-size:13px}}
+</style><style>@media (prefers-color-scheme:dark){:root{--bg:#1b2232;--card:#242d40;--line:#36425b;--chip:#2e3a52}}</style><div class="gnav-top"><a class="gnav-btn gnav-home" href="index.html" data-tab="🏠 總覽" data-g="-1">今日</a><div class="gnav-g" data-g="0"><a class="gnav-btn" href="index.html#tab=%F0%9F%93%8A%20%E5%B8%82%E5%A0%B4%E7%B8%BD%E8%A6%BD" aria-haspopup="true">大盤<span class="gnav-caret">▾</span></a><div class="gnav-menu"><div class="gnav-menu-in"><a class="gnav-item" href="index.html#tab=%F0%9F%93%8A%20%E5%B8%82%E5%A0%B4%E7%B8%BD%E8%A6%BD" data-tab="📊 市場總覽" data-g="0">📊 市場總覽</a><a class="gnav-item" href="index.html#tab=%E2%9A%96%EF%B8%8F%20%E6%8C%87%E6%95%B8%E8%B2%A2%E7%8D%BB" data-tab="⚖️ 指數貢獻" data-g="0">⚖️ 指數貢獻</a><a class="gnav-item" href="index.html#tab=%F0%9F%8C%90%20%E5%9C%8B%E9%9A%9B%E6%83%85%E5%8B%A2" data-tab="🌐 國際情勢" data-g="0">🌐 國際情勢</a><a class="gnav-item" href="index.html#tab=%F0%9F%8E%99%EF%B8%8F%20KOL%20%E8%A7%80%E9%BB%9E" data-tab="🎙️ KOL 觀點" data-g="0">🎙️ KOL 觀點</a></div></div></div><div class="gnav-g" data-g="1"><a class="gnav-btn" href="index.html#tab=%F0%9F%94%A5%20%E4%B8%8A%E6%BC%B2%E6%97%8F%E7%BE%A4" aria-haspopup="true">族群<span class="gnav-caret">▾</span></a><div class="gnav-menu"><div class="gnav-menu-in"><a class="gnav-item" href="index.html#tab=%F0%9F%94%A5%20%E4%B8%8A%E6%BC%B2%E6%97%8F%E7%BE%A4" data-tab="🔥 上漲族群" data-g="1">🔥 上漲族群</a><a class="gnav-item" href="index.html#tab=%F0%9F%A7%8A%20%E4%B8%8B%E8%B7%8C%E6%97%8F%E7%BE%A4" data-tab="🧊 下跌族群" data-g="1">🧊 下跌族群</a><a class="gnav-item" href="index.html#tab=%F0%9F%94%84%20%E6%97%8F%E7%BE%A4%E8%BC%AA%E5%8B%95" data-tab="🔄 族群輪動" data-g="1">🔄 族群輪動</a><a class="gnav-item" href="themes.html">📡 題材雷達</a><a class="gnav-item" href="revenue-industry.html">🏭 營收族群</a></div></div></div><div class="gnav-g" data-g="2"><a class="gnav-btn" href="index.html#tab=%F0%9F%8F%86%20%E7%B5%82%E6%A5%B5%E9%81%B8%E8%82%A1%E6%B1%A0" aria-haspopup="true">個股<span class="gnav-caret">▾</span></a><div class="gnav-menu"><div class="gnav-menu-in"><a class="gnav-item" href="index.html#tab=%F0%9F%8F%86%20%E7%B5%82%E6%A5%B5%E9%81%B8%E8%82%A1%E6%B1%A0" data-tab="🏆 終極選股池" data-g="2">🏆 終極選股池</a><a class="gnav-item" href="index.html#tab=%F0%9F%8F%A6%20%E5%A4%A7%E6%88%B6%E7%B1%8C%E7%A2%BC" data-tab="🏦 大戶籌碼" data-g="2">🏦 大戶籌碼</a><a class="gnav-item" href="broker-watch.html">🕵️ 贏家分點</a><a class="gnav-item" href="target-price.html">🎯 目標價</a><a class="gnav-item" href="investor-conf.html">🎤 法說會</a><a class="gnav-item" href="revenue.html">📈 月營收</a><a class="gnav-item" href="revenue-picks.html">🧮 營收配置</a><a class="gnav-item" href="revenue-decline.html">📉 營收衰退</a><a class="gnav-item" href="cb-pledge.html">🔐 設質+CB</a></div></div></div><div class="gnav-g" data-g="3"><a class="gnav-btn on" href="index.html#tab=%F0%9F%8E%AF%20%E6%93%8D%E4%BD%9C%E5%BB%BA%E8%AD%B0" aria-haspopup="true">策略<span class="gnav-caret">▾</span></a><div class="gnav-menu"><div class="gnav-menu-in"><a class="gnav-item" href="index.html#tab=%F0%9F%8E%AF%20%E6%93%8D%E4%BD%9C%E5%BB%BA%E8%AD%B0" data-tab="🎯 操作建議" data-g="3">🎯 操作建議</a><a class="gnav-item on" href="pullback-scan.html">🪃 回檔買進</a><a class="gnav-item" href="review.html">🔒 交易檢討</a></div></div></div></div><div class="gnav-sub" data-g="0"><a class="gnav-subitem" href="index.html#tab=%F0%9F%93%8A%20%E5%B8%82%E5%A0%B4%E7%B8%BD%E8%A6%BD" data-tab="📊 市場總覽" data-g="0">市場總覽</a><a class="gnav-subitem" href="index.html#tab=%E2%9A%96%EF%B8%8F%20%E6%8C%87%E6%95%B8%E8%B2%A2%E7%8D%BB" data-tab="⚖️ 指數貢獻" data-g="0">指數貢獻</a><a class="gnav-subitem" href="index.html#tab=%F0%9F%8C%90%20%E5%9C%8B%E9%9A%9B%E6%83%85%E5%8B%A2" data-tab="🌐 國際情勢" data-g="0">國際情勢</a><a class="gnav-subitem" href="index.html#tab=%F0%9F%8E%99%EF%B8%8F%20KOL%20%E8%A7%80%E9%BB%9E" data-tab="🎙️ KOL 觀點" data-g="0">KOL 觀點</a></div><div class="gnav-sub" data-g="1"><a class="gnav-subitem" href="index.html#tab=%F0%9F%94%A5%20%E4%B8%8A%E6%BC%B2%E6%97%8F%E7%BE%A4" data-tab="🔥 上漲族群" data-g="1">上漲族群</a><a class="gnav-subitem" href="index.html#tab=%F0%9F%A7%8A%20%E4%B8%8B%E8%B7%8C%E6%97%8F%E7%BE%A4" data-tab="🧊 下跌族群" data-g="1">下跌族群</a><a class="gnav-subitem" href="index.html#tab=%F0%9F%94%84%20%E6%97%8F%E7%BE%A4%E8%BC%AA%E5%8B%95" data-tab="🔄 族群輪動" data-g="1">族群輪動</a><a class="gnav-subitem" href="themes.html">題材雷達</a><a class="gnav-subitem" href="revenue-industry.html">營收族群</a></div><div class="gnav-sub" data-g="2"><a class="gnav-subitem" href="index.html#tab=%F0%9F%8F%86%20%E7%B5%82%E6%A5%B5%E9%81%B8%E8%82%A1%E6%B1%A0" data-tab="🏆 終極選股池" data-g="2">選股池</a><a class="gnav-subitem" href="index.html#tab=%F0%9F%8F%A6%20%E5%A4%A7%E6%88%B6%E7%B1%8C%E7%A2%BC" data-tab="🏦 大戶籌碼" data-g="2">大戶籌碼</a><a class="gnav-subitem" href="broker-watch.html">贏家分點</a><a class="gnav-subitem" href="target-price.html">目標價</a><a class="gnav-subitem" href="investor-conf.html">法說會</a><a class="gnav-subitem" href="revenue.html">月營收</a><a class="gnav-subitem" href="revenue-picks.html">營收配置</a><a class="gnav-subitem" href="revenue-decline.html">營收衰退</a><a class="gnav-subitem" href="cb-pledge.html">設質CB</a></div><div class="gnav-sub on" data-g="3"><a class="gnav-subitem" href="index.html#tab=%F0%9F%8E%AF%20%E6%93%8D%E4%BD%9C%E5%BB%BA%E8%AD%B0" data-tab="🎯 操作建議" data-g="3">操作建議</a><a class="gnav-subitem on" href="pullback-scan.html">回檔買進</a><a class="gnav-subitem" href="review.html">交易檢討</a></div><script>(function(){
+var nav=document.currentScript&&document.currentScript.parentNode;if(!nav)return;
+var groups=[].slice.call(nav.querySelectorAll('.gnav-g'));
+function closeAll(except){groups.forEach(function(g){if(g!==except)g.classList.remove('open');});}
+groups.forEach(function(g){var b=g.querySelector('.gnav-btn');if(!b)return;
+b.addEventListener('click',function(e){e.preventDefault();closeAll(g);g.classList.toggle('open');});});
+document.addEventListener('click',function(e){if(!nav.contains(e.target))closeAll();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll();});
+nav.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('.gnav-item,.gnav-subitem'))closeAll();});
+window.gnavMark=function(label){
+  var gi=-1;
+  [].slice.call(nav.querySelectorAll('[data-tab]')).forEach(function(a){var on=a.getAttribute('data-tab')===label;a.classList.toggle('on',on);if(on)gi=+a.getAttribute('data-g');});
+  groups.forEach(function(g){g.querySelector('.gnav-btn').classList.toggle('on',+g.getAttribute('data-g')===gi);});
+  [].slice.call(nav.querySelectorAll('.gnav-sub')).forEach(function(s){s.classList.toggle('on',+s.getAttribute('data-g')===gi);});
+  showCurrent();
+};
+// 手機上小分頁列是橫向捲動的：把目前這一項捲進畫面
+function showCurrent(){var on=nav.querySelector('.gnav-sub.on .gnav-subitem.on');if(!on)return;var row=on.parentNode;
+if(row.scrollWidth>row.clientWidth)row.scrollLeft=on.offsetLeft-row.offsetLeft-(row.clientWidth-on.offsetWidth)/2;}
+showCurrent();
+})();</script></nav>
+<h1>🪃 回檔買進掃描</h1>
+<p class="sub">Martin Luk 式：領漲股回檔碰到 EMA9／EMA21／AVWAP 支撐、收盤重新轉強。只掃個股期貨標的、近 20 日期貨平均成交量 ≥ 50 口。<b>目前是前瞻追蹤，不是下單訊號。</b>資料日：2026-10-14，更新：2026-10-14 23:52</p>
+<p class="note">⚠️ 1 檔上市（或在 Yahoo 上的歷史）不到 130 個交易日，不判斷：3718</p><p class="note">⚠️ 1 檔的 Yahoo 日線沒有今天或收盤對不上，今天不判斷：6173</p>
+<div class="regime ok">加權指數 48,625.828 在 EMA50（46,840.88）之上：<b>盤勢濾網通過</b></div>
+<div class="cards">
+<div class="card total"><span class="cname">今日觸發</span><span class="cdesc">收盤符合全部條件</span><b>7</b></div>
+<div class="card"><span class="cname">明日觀察</span><span class="cdesc">領漲股已回檔，收盤離支撐 ≤ 3%</span><b>9</b></div>
+<div class="card"><span class="cname">掃描母體</span><span class="cdesc">期貨標的 248 檔 → 成交量 ≥ 50 口</span><b>191</b></div>
+<div class="card"><span class="cname">紙上部位</span><span class="cdesc">持有中／已出場</span><b>7／0</b></div>
+<div class="card"><span class="cname">已出場平均</span><span class="cdesc">回測 +0.49R、勝率約 21%</span><b>—</b></div>
+</div>
+<details class="howto"><summary>規則、回測結果與限制</summary><div class="body">
+<p><b>觸發條件（收盤判斷）</b>：近 20 日平均振幅（ADR）≥ 3%；EMA9 > EMA21 > EMA50 且 EMA21 上升；1、3、6 個月任一段漲 ≥ 30%；近 10 日最高收盤比今天高 ≥ 5%（先有回檔）；今天盤中碰到前一日 EMA9、EMA21 或半年低點起算的 AVWAP（1% 內）並收在它之上；紅 K 收在當日上半部；沒收漲停；停損（今天低點下 0.5%）距離 1%～5%。同一檔 5 天內只算一次。</p>
+<p><b>出場</b>：盤中跌破停損就出（跳空就以開盤價）；收盤跌破 EMA21 就以收盤價出場；最多抱 60 個交易日。</p>
+<p><b>部位</b>：每筆最多虧帳戶 0.5%。口數 = 帳戶 × 0.5% ÷ 每口風險，單檔名目金額不超過帳戶 35%。一口 = 2,000 股；有小型個股期貨（100 股）的，可用 1/20 口數來做。</p>
+<p><b>回測（2019-07～2026-09，個股期貨標的，單邊成本 0.08%）</b>：1,170 筆，勝率 20.9%，平均 +0.49R，8 年中 7 年為正，2022 年 −0.78R。帳戶模擬（每筆 0.5%、加盤勢濾網）年化 15.8%、最大回撤 26%；同期加權報酬指數 27.1%、最大回撤 29%。<b>單獨操作沒贏大盤</b>，所以先追蹤。</p>
+<p><b>限制</b>：期貨標的用現在的名單回測，有倖存者偏誤；回測沒有期貨成交量門檻；個股期貨實際滑價可能更大；他本人用 5 分鐘線抓盤中進場、停損更緊，這裡只能用日線。</p>
+<p>原始規則來源：Martin Luk 在 X（@martinlukkt）與訪談。這不是投資建議。</p>
+</div></details>
+<div class="acct"><label>帳戶權益（元）<input id="eq" type="number" min="0" step="10000" placeholder="例如 1000000"></label><span class="sub">輸入後自動算每筆 0.5% 風險的口數，只存在這個瀏覽器</span></div>
+<h2>今日觸發</h2>
+<div class="tablebox" id="sig"></div>
+<h2>明日觀察（盤中可設警示價）</h2>
+<div class="tablebox" id="watch"></div>
+<h2>紙上部位：持有中</h2>
+<div class="tablebox" id="open"></div>
+<h2>紙上部位：最近出場</h2>
+<div class="tablebox" id="closed"></div>
+</div>
+<script>
+const D={"signals":[{"code":"6182","name":"合晶","market":"tpex","close":119,"futVol":9180,"margin":"20.25%","adr":6.8,"stop":113.43,"risk":4.68,"riskPerContract":11140,"mom":234,"supports":["AVWAP"],"dup":false},{"code":"3481","name":"群創","market":"twse","close":50.9,"futVol":20880,"margin":"20.25%","adr":4.2,"stop":49.75,"risk":2.26,"riskPerContract":2300,"mom":98,"supports":["EMA21"],"dup":false},{"code":"3037","name":"欣興","market":"twse","close":1185,"futVol":1997,"margin":"20.25%","adr":4.6,"stop":1134.3,"risk":4.28,"riskPerContract":101400,"mom":90,"supports":["EMA21"],"dup":false},{"code":"6116","name":"彩晶","market":"twse","close":15.35,"futVol":1866,"margin":"20.25%","adr":4.7,"stop":14.88,"risk":3.09,"riskPerContract":940,"mom":80,"supports":["EMA9","EMA21"],"dup":false},{"code":"5483","name":"中美晶","market":"tpex","close":208.5,"futVol":1760,"margin":"16.20%","adr":5.4,"stop":201.49,"risk":3.36,"riskPerContract":14020,"mom":76,"supports":["EMA21"],"dup":false},{"code":"5425","name":"台半","market":"tpex","close":97.2,"futVol":962,"margin":"20.25%","adr":4.5,"stop":95.22,"risk":2.04,"riskPerContract":3960,"mom":73,"supports":["EMA21","AVWAP"],"dup":false},{"code":"3324","name":"雙鴻","market":"tpex","close":1490,"futVol":3199,"margin":"20.25%","adr":6.4,"stop":1452.7,"risk":2.5,"riskPerContract":74600,"mom":72,"supports":["EMA21"],"dup":false}],"watch":[{"code":"2409","name":"友達","market":"twse","close":36.25,"futVol":37511,"margin":"20.25%","adr":5.9,"mom":105,"pullback":10.4,"near":[{"name":"EMA9","price":36.18,"dist":0.2}]},{"code":"5347","name":"世界","market":"tpex","close":176,"futVol":1505,"margin":"16.20%","adr":4.4,"mom":44,"pullback":7.9,"near":[{"name":"EMA21","price":175.44,"dist":0.3}]},{"code":"3081","name":"聯亞","market":"tpex","close":2880,"futVol":509,"margin":"22.95%","adr":5.7,"mom":65,"pullback":8.3,"near":[{"name":"EMA21","price":2866.56,"dist":0.5}]},{"code":"4919","name":"新唐","market":"twse","close":150,"futVol":1729,"margin":"20.25%","adr":7.2,"mom":49,"pullback":8,"near":[{"name":"EMA9","price":148.97,"dist":0.7}]},{"code":"8046","name":"南電","market":"twse","close":1430,"futVol":7814,"margin":"21.60%","adr":5.6,"mom":119,"pullback":5,"near":[{"name":"EMA9","price":1420.55,"dist":0.7}]},{"code":"3008","name":"大立光","market":"twse","close":6880,"futVol":8825,"margin":"16.20%","adr":5.8,"mom":186,"pullback":6.1,"near":[{"name":"EMA9","price":6826.97,"dist":0.8}]},{"code":"3406","name":"玉晶光","market":"twse","close":1065,"futVol":6256,"margin":"16.20%","adr":7.2,"mom":127,"pullback":9.4,"near":[{"name":"EMA9","price":1055.19,"dist":0.9}]},{"code":"2383","name":"台光電","market":"twse","close":5520,"futVol":3997,"margin":"20.25%","adr":4.6,"mom":67,"pullback":10.2,"near":[{"name":"EMA21","price":5464.12,"dist":1}]},{"code":"3042","name":"晶技","market":"twse","close":205,"futVol":3064,"margin":"20.25%","adr":6.1,"mom":61,"pullback":11.1,"near":[{"name":"EMA21","price":200.62,"dist":2.2}]}],"open":[{"code":"6182","name":"合晶","market":"tpex","date":"2026-10-14","entry":119,"stop":113.43,"risk":4.68,"status":"open","lastClose":119,"lastDate":"2026-10-14","r":0,"held":0},{"code":"3481","name":"群創","market":"twse","date":"2026-10-14","entry":50.9,"stop":49.75,"risk":2.26,"status":"open","lastClose":50.9,"lastDate":"2026-10-14","r":0,"held":0},{"code":"3037","name":"欣興","market":"twse","date":"2026-10-14","entry":1185,"stop":1134.3,"risk":4.28,"status":"open","lastClose":1185,"lastDate":"2026-10-14","r":0,"held":0},{"code":"6116","name":"彩晶","market":"twse","date":"2026-10-14","entry":15.35,"stop":14.88,"risk":3.09,"status":"open","lastClose":15.35,"lastDate":"2026-10-14","r":0,"held":0},{"code":"5483","name":"中美晶","market":"tpex","date":"2026-10-14","entry":208.5,"stop":201.49,"risk":3.36,"status":"open","lastClose":208.5,"lastDate":"2026-10-14","r":0,"held":0},{"code":"5425","name":"台半","market":"tpex","date":"2026-10-14","entry":97.2,"stop":95.22,"risk":2.04,"status":"open","lastClose":97.2,"lastDate":"2026-10-14","r":0,"held":0},{"code":"3324","name":"雙鴻","market":"tpex","date":"2026-10-14","entry":1490,"stop":1452.7,"risk":2.5,"status":"open","lastClose":1490,"lastDate":"2026-10-14","r":0,"held":0}],"closed":[]};
+const $=id=>document.getElementById(id);
+const yi=(r,t)=>'<a href="https://tw.stock.yahoo.com/quote/'+r.code+(r.market==='twse'?'.TW':'.TWO')+'" target="_blank" rel="noopener">'+t+'</a>';
+const rr=v=>v==null?'<span class="none">—</span>':'<span class="'+(v<0?'neg':'pos')+'">'+(v>0?'+':'')+v.toFixed(2)+'R</span>';
+const tbl=(head,rows)=>rows.length?'<table><thead><tr>'+head.map(h=>'<th>'+h+'</th>').join('')+'</tr></thead><tbody>'+rows.join('')+'</tbody></table>':'<div class="empty">沒有</div>';
+const REASON={stop:'停損',ema21:'跌破EMA21',max:'滿60日'};
+let eq=0;try{eq=+localStorage.getItem('pbEq')||0}catch(e){}
+$('eq').value=eq||'';
+function lots(r){if(!eq)return '<span class="none">—</span>';const n=Math.floor(eq*0.005/r.riskPerContract),cap=Math.floor(eq*0.35/(r.close*2000));const v=Math.min(n,cap);return v>0?v+' 口':'<span class="none">不到 1 口</span>';}
+function render(){
+  $('sig').innerHTML=tbl(['代號','名稱','收盤','停損','停損距離','每口風險','建議口數','觸及支撐','動能','ADR','期貨日均量','保證金'],D.signals.map(r=>'<tr><td>'+yi(r,r.code)+'</td><td>'+yi(r,r.name)+(r.dup?' <span class="chip">5日內重複</span>':'')+'</td><td>'+r.close+'</td><td>'+r.stop+'</td><td>'+r.risk+'%</td><td>'+r.riskPerContract.toLocaleString()+'</td><td>'+lots(r)+'</td><td>'+r.supports.map(s=>'<span class="chip">'+s+'</span>').join('')+'</td><td>+'+r.mom+'%</td><td>'+r.adr+'%</td><td>'+r.futVol.toLocaleString()+'</td><td>'+(r.margin??'—')+'</td></tr>'));
+  $('watch').innerHTML=tbl(['代號','名稱','收盤','回檔','下方支撐（價位／距離）','動能','ADR','期貨日均量'],D.watch.map(r=>'<tr><td>'+yi(r,r.code)+'</td><td>'+yi(r,r.name)+'</td><td>'+r.close+'</td><td>−'+r.pullback+'%</td><td>'+r.near.map(n=>'<span class="chip">'+n.name+' '+n.price+'（−'+n.dist+'%）</span>').join('')+'</td><td>+'+r.mom+'%</td><td>'+r.adr+'%</td><td>'+r.futVol.toLocaleString()+'</td></tr>'));
+  $('open').innerHTML=tbl(['代號','名稱','進場日','進場價','停損','最新收盤','目前 R','持有天數'],D.open.map(p=>'<tr><td>'+yi(p,p.code)+'</td><td>'+yi(p,p.name)+'</td><td>'+p.date+'</td><td>'+p.entry+'</td><td>'+p.stop+'</td><td>'+(p.lastClose??'—')+'</td><td>'+rr(p.r)+'</td><td>'+(p.held??0)+'</td></tr>'));
+  $('closed').innerHTML=tbl(['代號','名稱','進場日','進場價','出場日','出場價','原因','R','持有天數'],D.closed.map(p=>'<tr><td>'+yi(p,p.code)+'</td><td>'+yi(p,p.name)+'</td><td>'+p.date+'</td><td>'+p.entry+'</td><td>'+p.exitDate+'</td><td>'+p.exit+'</td><td>'+REASON[p.exitReason]+'</td><td>'+rr(p.r)+'</td><td>'+p.held+'</td></tr>'));
+}
+$('eq').addEventListener('input',()=>{eq=+$('eq').value||0;try{localStorage.setItem('pbEq',String(eq))}catch(e){}render();});
+render();
+</script>
+</body>
+</html>

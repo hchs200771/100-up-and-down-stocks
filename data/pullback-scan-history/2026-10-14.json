@@ -1,0 +1,301 @@
+{
+ "tradingDate": "2026-10-14",
+ "regime": {
+  "close": 48625.828125,
+  "ema50": 46840.88,
+  "ok": true
+ },
+ "universe": {
+  "listed": 248,
+  "liquid": 191,
+  "minFutVolume": 50,
+  "priced": 189
+ },
+ "signals": [
+  {
+   "code": "6182",
+   "name": "合晶",
+   "market": "tpex",
+   "close": 119,
+   "futVol": 9180,
+   "margin": "20.25%",
+   "adr": 6.8,
+   "stop": 113.43,
+   "risk": 4.68,
+   "riskPerContract": 11140,
+   "mom": 234,
+   "supports": [
+    "AVWAP"
+   ],
+   "dup": false
+  },
+  {
+   "code": "3481",
+   "name": "群創",
+   "market": "twse",
+   "close": 50.9,
+   "futVol": 20880,
+   "margin": "20.25%",
+   "adr": 4.2,
+   "stop": 49.75,
+   "risk": 2.26,
+   "riskPerContract": 2300,
+   "mom": 98,
+   "supports": [
+    "EMA21"
+   ],
+   "dup": false
+  },
+  {
+   "code": "3037",
+   "name": "欣興",
+   "market": "twse",
+   "close": 1185,
+   "futVol": 1997,
+   "margin": "20.25%",
+   "adr": 4.6,
+   "stop": 1134.3,
+   "risk": 4.28,
+   "riskPerContract": 101400,
+   "mom": 90,
+   "supports": [
+    "EMA21"
+   ],
+   "dup": false
+  },
+  {
+   "code": "6116",
+   "name": "彩晶",
+   "market": "twse",
+   "close": 15.35,
+   "futVol": 1866,
+   "margin": "20.25%",
+   "adr": 4.7,
+   "stop": 14.88,
+   "risk": 3.09,
+   "riskPerContract": 940,
+   "mom": 80,
+   "supports": [
+    "EMA9",
+    "EMA21"
+   ],
+   "dup": false
+  },
+  {
+   "code": "5483",
+   "name": "中美晶",
+   "market": "tpex",
+   "close": 208.5,
+   "futVol": 1760,
+   "margin": "16.20%",
+   "adr": 5.4,
+   "stop": 201.49,
+   "risk": 3.36,
+   "riskPerContract": 14020,
+   "mom": 76,
+   "supports": [
+    "EMA21"
+   ],
+   "dup": false
+  },
+  {
+   "code": "5425",
+   "name": "台半",
+   "market": "tpex",
+   "close": 97.2,
+   "futVol": 962,
+   "margin": "20.25%",
+   "adr": 4.5,
+   "stop": 95.22,
+   "risk": 2.04,
+   "riskPerContract": 3960,
+   "mom": 73,
+   "supports": [
+    "EMA21",
+    "AVWAP"
+   ],
+   "dup": false
+  },
+  {
+   "code": "3324",
+   "name": "雙鴻",
+   "market": "tpex",
+   "close": 1490,
+   "futVol": 3199,
+   "margin": "20.25%",
+   "adr": 6.4,
+   "stop": 1452.7,
+   "risk": 2.5,
+   "riskPerContract": 74600,
+   "mom": 72,
+   "supports": [
+    "EMA21"
+   ],
+   "dup": false
+  }
+ ],
+ "watch": [
+  {
+   "code": "2409",
+   "name": "友達",
+   "market": "twse",
+   "close": 36.25,
+   "futVol": 37511,
+   "margin": "20.25%",
+   "adr": 5.9,
+   "mom": 105,
+   "pullback": 10.4,
+   "near": [
+    {
+     "name": "EMA9",
+     "price": 36.18,
+     "dist": 0.2
+    }
+   ]
+  },
+  {
+   "code": "5347",
+   "name": "世界",
+   "market": "tpex",
+   "close": 176,
+   "futVol": 1505,
+   "margin": "16.20%",
+   "adr": 4.4,
+   "mom": 44,
+   "pullback": 7.9,
+   "near": [
+    {
+     "name": "EMA21",
+     "price": 175.44,
+     "dist": 0.3
+    }
+   ]
+  },
+  {
+   "code": "3081",
+   "name": "聯亞",
+   "market": "tpex",
+   "close": 2880,
+   "futVol": 509,
+   "margin": "22.95%",
+   "adr": 5.7,
+   "mom": 65,
+   "pullback": 8.3,
+   "near": [
+    {
+     "name": "EMA21",
+     "price": 2866.56,
+     "dist": 0.5
+    }
+   ]
+  },
+  {
+   "code": "4919",
+   "name": "新唐",
+   "market": "twse",
+   "close": 150,
+   "futVol": 1729,
+   "margin": "20.25%",
+   "adr": 7.2,
+   "mom": 49,
+   "pullback": 8,
+   "near": [
+    {
+     "name": "EMA9",
+     "price": 148.97,
+     "dist": 0.7
+    }
+   ]
+  },
+  {
+   "code": "8046",
+   "name": "南電",
+   "market": "twse",
+   "close": 1430,
+   "futVol": 7814,
+   "margin": "21.60%",
+   "adr": 5.6,
+   "mom": 119,
+   "pullback": 5,
+   "near": [
+    {
+     "name": "EMA9",
+     "price": 1420.55,
+     "dist": 0.7
+    }
+   ]
+  },
+  {
+   "code": "3008",
+   "name": "大立光",
+   "market": "twse",
+   "close": 6880,
+   "futVol": 8825,
+   "margin": "16.20%",
+   "adr": 5.8,
+   "mom": 186,
+   "pullback": 6.1,
+   "near": [
+    {
+     "name": "EMA9",
+     "price": 6826.97,
+     "dist": 0.8
+    }
+   ]
+  },
+  {
+   "code": "3406",
+   "name": "玉晶光",
+   "market": "twse",
+   "close": 1065,
+   "futVol": 6256,
+   "margin": "16.20%",
+   "adr": 7.2,
+   "mom": 127,
+   "pullback": 9.4,
+   "near": [
+    {
+     "name": "EMA9",
+     "price": 1055.19,
+     "dist": 0.9
+    }
+   ]
+  },
+  {
+   "code": "2383",
+   "name": "台光電",
+   "market": "twse",
+   "close": 5520,
+   "futVol": 3997,
+   "margin": "20.25%",
+   "adr": 4.6,
+   "mom": 67,
+   "pullback": 10.2,
+   "near": [
+    {
+     "name": "EMA21",
+     "price": 5464.12,
+     "dist": 1
+    }
+   ]
+  },
+  {
+   "code": "3042",
+   "name": "晶技",
+   "market": "twse",
+   "close": 205,
+   "futVol": 3064,
+   "margin": "20.25%",
+   "adr": 6.1,
+   "mom": 61,
+   "pullback": 11.1,
+   "near": [
+    {
+     "name": "EMA21",
+     "price": 200.62,
+     "dist": 2.2
+    }
+   ]
+  }
+ ]
+}
