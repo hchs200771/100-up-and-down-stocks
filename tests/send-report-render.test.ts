@@ -280,3 +280,42 @@ test("renderCategoryBadges: no badges for high confidence with no stage", () => 
   const badges = renderCategoryBadges({ category: "test", stocks: [], confidence: "high" }, "gainer");
   assert.equal(badges, "");
 });
+
+// Compile the actual render functions without executing the report script or touching data/.
+// Keep these checks tied to production code rather than copying the new renderer here.
+async function actualHomeRenderer() {
+  const { readFileSync } = await import("node:fs");
+  const { runInNewContext } = await import("node:vm");
+  const ts = await import("typescript");
+  const { computeMarketRegime } = await import("../scripts/lib/market-regime.ts");
+  const source = readFileSync(new URL("../scripts/send-report.ts", import.meta.url), "utf8");
+  const ast = ts.createSourceFile("send-report.ts", source, ts.ScriptTarget.Latest, true);
+  const wanted = new Set(["renderHome", "renderMarketRegime", "escHtml"]);
+  const functions = ast.statements.filter((node) => ts.isFunctionDeclaration(node) && wanted.has(node.name?.text ?? ""));
+  assert.equal(functions.length, wanted.size);
+  const js = ts.transpileModule(functions.map((node) => node.getText(ast)).join("\n"), {
+    compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.None },
+  }).outputText;
+  return runInNewContext(`${js}\nrenderHome`, { computeMarketRegime, readDataJson: () => null });
+}
+
+test("actual renderHome: international signal precedes daily figures and supports legacy data", async () => {
+  const renderHome = await actualHomeRenderer();
+  const html = renderHome({
+    a: { date: "2026-10-15", timestamp: "2026-10-15", summary: "今日摘要", intl: { indices: [{ key: "sp500", name: "標普500", close: 6000 }] } },
+    tabs: [],
+  });
+  assert.ok(html.includes('class="market-regime"'));
+  assert.ok(html.indexOf("國際多空燈號") < html.indexOf("今天的結論"));
+  assert.ok(html.includes("資料缺"));
+  assert.ok(html.includes("綠＝可做多"));
+  assert.ok(html.includes("table-layout:fixed"));
+  assert.ok(!html.includes("NaN"));
+});
+
+test("actual renderHome: signal renders even without intl", async () => {
+  const renderHome = await actualHomeRenderer();
+  const html = renderHome({ a: { timestamp: "2026-10-15", summary: "摘要" }, tabs: [] });
+  assert.ok(html.includes("國際多空燈號"));
+  assert.ok(html.includes("黃燈"));
+});

@@ -1,5 +1,6 @@
 import { existsSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { computeMarketRegime, type MarketRegimeIndex } from "./lib/market-regime";
 import * as OpenCC from "opencc-js";
 
 /**
@@ -57,7 +58,7 @@ function main() {
     return;
   }
 
-  let indices: unknown[] = [];
+  let indices: MarketRegimeIndex[] = [];
   let movers: any[] = [];
   if (existsSync(intlMarketPath)) {
     try {
@@ -136,7 +137,7 @@ function main() {
   }
 
   const analysis = JSON.parse(readFileSync(analysisPath, "utf8"));
-  analysis.intl = { summary, window, events, indices, credit, movers, sectors };
+  analysis.intl = { summary, window, events, indices, regime: computeMarketRegime(indices), credit, movers, sectors };
   writeFileSync(analysisPath, `${JSON.stringify(analysis, null, 2)}\n`, "utf8");
   console.log(
     `attach-intl: merged intl into analysis-latest.json (${indices.length} idx, ${credit.length} credit, ${events.length} events, ${movers.length} movers, ${sectors.length} sectors, brief ${summary ? "set" : "EMPTY"})`,

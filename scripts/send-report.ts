@@ -1,3 +1,4 @@
+import { computeMarketRegime, type Ma20Fields, type MarketRegime } from "./lib/market-regime";
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { significantInstitutionalBuys, type InstitutionalStrength } from "./institutional-strength.ts";
@@ -97,7 +98,7 @@ interface MarketBlock {
   institutional?: { foreignNet: number; trustNet: number; dealerNet: number; totalNet: number } | null;
 }
 
-interface IntlIndex {
+interface IntlIndex extends Ma20Fields {
   key: string;
   name: string;
   region: string;
@@ -157,6 +158,7 @@ interface SectorFlow {
 }
 
 interface IntlBlock {
+  regime?: MarketRegime;
   summary: string;
   window?: string;
   events?: IntlEvent[];
@@ -1106,6 +1108,47 @@ function renderSectorFlows(sectors: SectorFlow[] | null | undefined): string {
   </div>`;
 }
 
+/** 同一套規則也供舊快照使用；缺少月線時明示資料缺。 */
+function renderMarketRegime(intl: IntlBlock | null | undefined): string {
+  const indices = intl?.indices ?? [];
+  const regime = computeMarketRegime(indices);
+  const lights = {
+    green: { color: "#16a34a", label: "綠燈 · 適合做多" },
+    yellow: { color: "#d97706", label: "黃燈 · 謹慎、減碼或只做強勢" },
+    red: { color: "#dc2626", label: "紅燈 · 不宜做多" },
+  };
+  const light = lights[regime.signal];
+  const groups = [
+    { title: "美股四大", items: [["sp500", "標普500"], ["dji", "道瓊工業"], ["nasdaq", "那斯達克"], ["sox", "費城半導體"]] },
+    { title: "殖利率／油價／美元（低於月線或月線下彎有利）", items: [["us10y", "美10年期殖利率"], ["wti", "西德州原油"], ["dxy", "美元指數"]] },
+    { title: "日韓／恒生／中概", items: [["nikkei", "日經225"], ["kospi", "韓國KOSPI"], ["hsi", "恒生指數"], ["china_adr", "中概股(金龍)"]] },
+  ];
+  const num = (n: number | undefined) => typeof n === "number" && Number.isFinite(n)
+    ? n.toLocaleString("en-US", { maximumFractionDigits: 2 }) : "資料缺";
+  const tables = groups.map((g) => {
+    const rows = g.items.map(([key, name]) => {
+      const i = indices.find((x) => x.key === key);
+      const validMa = typeof i?.ma20 === "number" && Number.isFinite(i.ma20) && i.ma20 > 0;
+      const above = validMa && typeof i?.aboveMa20 === "boolean" ? i.aboveMa20 : undefined;
+      const gap = typeof i?.ma20GapPct === "number" && Number.isFinite(i.ma20GapPct) ? i.ma20GapPct : undefined;
+      const color = above === undefined ? "#6b7280" : above ? "#dc2626" : "#16a34a";
+      return `<tr><th scope="row" style="text-align:left;font-weight:normal;padding:5px 2px;">${escHtml(i?.name ?? name)}</th><td>${num(i?.close)}</td><td>${validMa ? num(i.ma20) : "資料缺"}</td><td style="color:${color};">${gap === undefined ? "資料缺" : `${gap > 0 ? "+" : ""}${gap.toFixed(2)}%`}</td><td style="color:${color};">${above === undefined ? "資料缺" : above ? "月線上" : "月線下"}</td></tr>`;
+    }).join("");
+    return `<div style="margin-top:10px;font-size:12px;font-weight:bold;color:#475569;">${g.title}</div>
+      <table style="width:100%;table-layout:fixed;border-collapse:collapse;font-size:11px;line-height:1.5;overflow-wrap:anywhere;text-align:right;">
+        <thead><tr><th scope="col" style="width:26%;text-align:left;">指數</th><th scope="col">收盤</th><th scope="col">月線</th><th scope="col">偏離%</th><th scope="col">位置</th></tr></thead><tbody>${rows}</tbody>
+      </table>`;
+  }).join("");
+  return `<section class="market-regime" aria-label="國際多空燈號" style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:10px;padding:12px 14px;margin-bottom:12px;color:#334155;min-width:0;">
+    <h3 style="margin:0 0 8px;font-size:16px;">國際多空燈號</h3>
+    <div style="font-size:20px;font-weight:800;color:${light.color};"><span aria-hidden="true" style="display:inline-block;width:20px;height:20px;border-radius:50%;background:${light.color};vertical-align:middle;"></span> ${light.label} · ${regime.score} / 100</div>
+    <p style="font-size:13px;line-height:1.7;margin:6px 0;">${escHtml(regime.conclusion)}</p>
+    <div style="font-size:11px;color:#64748b;">燈號：綠＝可做多、黃＝謹慎、紅＝不宜；表格沿用紅漲綠跌。以各市場最近已收盤資料判定。</div>
+    ${tables}
+    <details style="font-size:12px;margin-top:10px;line-height:1.7;"><summary>逐項理由與資料缺漏</summary><ul style="padding-left:18px;">${regime.reasons.map((r) => `<li>${escHtml(r)}</li>`).join("")}</ul></details>
+  </section>`;
+}
+
 function renderIntl(intl: IntlBlock | null | undefined): string {
   if (!intl) return "";
   const { summary, indices, credit, events, movers, window, sectors } = intl;
@@ -1125,7 +1168,7 @@ function renderIntl(intl: IntlBlock | null | undefined): string {
     // 依出現順序保留 region 分組，每個 region 一列標題 + 各標的。
     const order: string[] = [];
     const byRegion = new Map<string, IntlIndex[]>();
-    for (const idx of indices) {
+    for (const idx of indices ?? []) {
       if (!byRegion.has(idx.region)) {
         byRegion.set(idx.region, []);
         order.push(idx.region);
@@ -1159,6 +1202,7 @@ function renderIntl(intl: IntlBlock | null | undefined): string {
   // 順序＝閱讀動線：先知道發生了什麼事（時間軸），再看誰動了（指標股、指數），最後看判讀。
   return `<div style="background-color:#f0f9ff; border:1px solid #bae6fd; padding:15px; border-radius:8px; margin-bottom:20px;">
       <h3 style="margin-top:0; color:#0369a1;">🌐 國際情勢</h3>
+      ${renderMarketRegime(intl)}
       ${renderIntlEvents(events, window)}
       ${renderIntlMovers(movers)}
       ${renderSectorFlows(sectors)}
@@ -2365,7 +2409,7 @@ function renderHome(h: HomeInput): string {
   line("🎙️ KOL", a.kol?.overview, tabHref("🎙️ KOL 觀點"));
   const context = ctx.length ? card("🧭 背景", `<div style="margin-top:-7px;">${ctx.join("")}</div>`) : "";
 
-  return `<div style="margin-bottom:20px;">${summary}${gauges}${playbook}${lists}${context}</div>`;
+  return `<div style="margin-bottom:20px;">${renderMarketRegime(a.intl)}${summary}${gauges}${playbook}${lists}${context}</div>`;
 }
 
 function sortGroupsByMemberCount(groups: CategoryGroup[]): CategoryGroup[] {

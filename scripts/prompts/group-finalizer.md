@@ -7,6 +7,7 @@
 目標：
 1. 讀取 `data/market-latest.json`
 2. 讀取 `data/tmp/analysis-skeleton.json`
+   若 `data/intl-market-latest.json` 存在，讀取其 `regime` 燈號、分數與理由，在 `summary`／`playbook` 參考國際月線風險；資料缺則略過，不自行補數字。
 3. 補上需要判斷的欄位，寫成 `data/analysis-latest.json`
 4. 另寫出獨立的長線策略判斷 `longTermStrategy`
 5. 寫出操作建議 `playbook`

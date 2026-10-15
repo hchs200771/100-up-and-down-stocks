@@ -1,6 +1,7 @@
 import { writeFileSync, mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 
+import { computeMa20, computeMarketRegime, type Ma20Fields } from "./lib/market-regime";
 import { twIso } from "./lib/time";
 /**
  * 盤後國際市場快照。
@@ -19,7 +20,7 @@ import { twIso } from "./lib/time";
  * asOfEpoch 保留各標的最後成交時間，需要時可判斷新鮮度。
  */
 
-interface IntlIndex {
+interface IntlIndex extends Ma20Fields {
   key: string;
   name: string;
   region: string;
@@ -37,6 +38,8 @@ const SYMBOLS: { symbol: string; key: string; name: string; region: string; digi
   { symbol: "^SOX", key: "sox", name: "費城半導體", region: "美股" },
   { symbol: "000001.SS", key: "sse", name: "上證指數", region: "中國" },
   { symbol: "000300.SS", key: "csi300", name: "滬深300", region: "中國" },
+  // Yahoo 的 ^HXC（金龍指數）沒有日 K，改用追蹤同一指數的 Invesco PGJ。
+  { symbol: "PGJ", key: "china_adr", name: "中概股(金龍PGJ)", region: "中國" },
   { symbol: "^HSI", key: "hsi", name: "恒生指數", region: "中國" },
   { symbol: "^N225", key: "nikkei", name: "日經225", region: "日韓" },
   { symbol: "^KS11", key: "kospi", name: "韓國KOSPI", region: "日韓" },
@@ -154,7 +157,7 @@ async function fillGapClose(symbol: string, gapDate: string, from: number, to: n
 /**
  * 取「最近一根已收完的日 K 收盤」與其「前一交易日收盤」算單日漲跌幅。
  *
- * 一律從 range=1mo 的日 K 陣列取最後兩根已收完的 K，不用 meta.chartPreviousClose。
+ * 一律從 range=3mo 的日 K 陣列取最後兩根已收完的 K，不用 meta.chartPreviousClose。
  * 那個欄位實測不可靠：range=1d 與 range=2d 會回傳同一個值（於是盤中分支算出
  * close - prev = 0，整排美股顯示 +0.00%），指定 period1/period2 時它又變成整段
  * 視窗起點之前的舊收盤（^SOX 給 12621，實際前一交易日是 11882）。
@@ -166,9 +169,9 @@ async function fillGapClose(symbol: string, gapDate: string, from: number, to: n
  *    更新的 K（擋掉盤前形成中的那根）；若陣列還沒補上剛收完的那一天（日經實測會落後
  *    一天），用 regularMarketPrice 補上去。
  */
-async function fetchOne(symbol: string): Promise<{ close: number; prevClose: number; epoch: number | null } | null> {
-  // 一個月足夠跨過連假，也讓資料源缺幾根 null 時仍湊得出兩根已收完的 K。
-  const chart = await fetchChart(symbol, "interval=1d&range=1mo");
+async function fetchOne(symbol: string): Promise<({ close: number; prevClose: number; epoch: number | null } & Ma20Fields) | null> {
+  // 三個月供 20 根有效收盤與 5 根前月線使用，並留連假與缺值餘裕。
+  const chart = await fetchChart(symbol, "interval=1d&range=3mo");
   if (!chart) return null;
   const meta = chart.meta;
   const off = typeof meta.gmtoffset === "number" ? meta.gmtoffset : 0;
@@ -218,6 +221,7 @@ async function fetchOne(symbol: string): Promise<{ close: number; prevClose: num
     const filled = await fillGapClose(symbol, gap.d, bars[pi].t, bars[li].t, off);
     if (filled !== null) {
       prevClose = filled;
+      gap.c = filled;
     } else {
       console.warn(`[warn] ${symbol}: ${gap.d} 日K與小時線都沒資料，改用 ${bars[pi].d} 當基準，漲跌幅可能跨多日`);
       prevClose = bars[pi].c as number;
@@ -233,7 +237,7 @@ async function fetchOne(symbol: string): Promise<{ close: number; prevClose: num
   }
   if (!isFinite(close) || !isFinite(prevClose) || prevClose === 0) return null;
   // 盤中時回傳的是隔夜那根，regularMarketTime 指的是今天的盤中，貼上去會誤導新鮮度判斷。
-  return { close, prevClose, epoch: isLive ? null : epoch };
+  return { close, prevClose, epoch: isLive ? null : epoch, ...computeMa20(bars.slice(0, li + 1).map((b) => b.c)) };
 }
 
 /**
@@ -270,7 +274,7 @@ async function fetchCbcUsdTwd(): Promise<{ close: number; prevClose: number; epo
 async function main() {
   const results = await Promise.all(
     SYMBOLS.map(async (s) => {
-      let r: { close: number; prevClose: number; epoch: number | null } | null = null;
+      let r: ({ close: number; prevClose: number; epoch: number | null } & Ma20Fields) | null = null;
       if (s.key === "usdtwd") {
         const cbc = await fetchCbcUsdTwd();
         if (cbc) {
@@ -298,6 +302,7 @@ async function main() {
         change: round(change, s.digits),
         pct: Number(pct.toFixed(2)),
         asOfEpoch: r.epoch,
+        ...(r.ma20 === undefined ? {} : { ma20: r.ma20, aboveMa20: r.aboveMa20, ma20GapPct: r.ma20GapPct, ma20Slope: r.ma20Slope }),
       };
       return idx;
     }),
@@ -339,6 +344,7 @@ async function main() {
     timestamp: twIso(now),
     tradingDate,
     indices,
+    regime: computeMarketRegime(indices),
     movers,
   };
 

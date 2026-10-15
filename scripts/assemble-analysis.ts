@@ -1,3 +1,4 @@
+import { computeMarketRegime, type Ma20Fields, type MarketRegime } from "./lib/market-regime";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import * as OpenCC from "opencc-js";
@@ -64,7 +65,7 @@ const playbookPath = resolve(cwd, "data/tmp/playbook.txt");
 const rrgAlertsPath = resolve(cwd, "data/tw-rrg-alerts.json");
 const outPath = resolve(cwd, "data/analysis-latest.json");
 
-interface IntlIndex {
+interface IntlIndex extends Ma20Fields {
   key: string;
   name: string;
   region: string;
@@ -77,7 +78,7 @@ interface IntlIndex {
  * 國際情勢區塊：數字（intl-market-latest.json）+ worker 寫的判讀（intl-brief.txt）。
  * 兩者皆可缺；都缺就不附 intl 欄位，send-report 會自動略過該區塊。
  */
-function buildIntl(): { summary: string; indices: IntlIndex[] } | undefined {
+function buildIntl(): { summary: string; indices: IntlIndex[]; regime: MarketRegime } | undefined {
   let indices: IntlIndex[] = [];
   if (existsSync(intlMarketPath)) {
     try {
@@ -93,7 +94,7 @@ function buildIntl(): { summary: string; indices: IntlIndex[] } | undefined {
     if (txt) summary = toTW(txt);
   }
   if (!summary && indices.length === 0) return undefined;
-  return { summary, indices };
+  return { summary, indices, regime: computeMarketRegime(indices) };
 }
 
 /**
