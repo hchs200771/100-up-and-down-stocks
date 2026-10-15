@@ -7,7 +7,8 @@ set -u
 # the "Deploy report to GitHub Pages" workflow then publishes it.
 # Skips gracefully (exit 0) when there is nothing new to publish.
 
-export PATH="/Users/huangguanxue/.nvm/versions/node/v20.20.2/bin:/Users/huangguanxue/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
+_nvm_bin="$(ls -d "$HOME"/.nvm/versions/node/*/bin 2>/dev/null | sort -V | tail -1 || true)"
+export PATH="${_nvm_bin:+$_nvm_bin:}$HOME/.asdf/shims:$HOME/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 cd "$PROJECT_DIR" || exit 1
@@ -58,6 +59,18 @@ if ! node --import tsx "$SCRIPT_DIR/build-private-pages.ts" "$SITE_DIR"; then
   echo "[publish] build-private-pages failed — private pages skipped." >&2
   rm -f "$SITE_DIR/review.html"
 fi
+# 換到資料不全的機器（沒有 SITE_PASSWORD、少了某些子頁的產生器）時，不讓上一版網站的頁面消失：
+# 沒密碼就沿用上一版已加密的 review.html；這次沒產出的子頁一律從 HEAD 還原。
+if [ -z "${SITE_PASSWORD:-}" ] && ! grep -qsE '^SITE_PASSWORD=.+' "$PROJECT_DIR/.env.local" \
+  && git cat-file -e HEAD:data/site/review.html 2>/dev/null; then
+  git show HEAD:data/site/review.html > "$SITE_DIR/review.html"
+  echo "[publish] 沒有 SITE_PASSWORD — 沿用上一版加密的 review.html"
+fi
+while IFS= read -r f; do
+  [ -e "$f" ] && continue
+  mkdir -p "$(dirname "$f")"
+  git show "HEAD:$f" > "$f" && echo "[publish] 這次沒產出 $f — 沿用上一版"
+done < <(git ls-tree -r --name-only HEAD -- data/site)
 node --import tsx "$SCRIPT_DIR/sync-site-nav.ts" "$SITE_DIR"
 
 # 累積型的歷史資料跟網站一起 commit，換一台機器 pull 下來就能接著跑、也能直接回測。

@@ -9,8 +9,8 @@ set -u
 # 切出「AI伺服器/HDI高階PCB」），這是預期內的——下一步 refine-group-tasks.ts 本來就會
 # 讀目錄裡「所有」task 檔、依 category 重新彙整成單一份，天生就會把它們合併回去。
 
-_nvm_bin="$(ls -d "$HOME"/.nvm/versions/node/*/bin 2>/dev/null | sort -V | tail -1)"
-export PATH="${_nvm_bin:+$_nvm_bin:}$HOME/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
+_nvm_bin="$(ls -d "$HOME"/.nvm/versions/node/*/bin 2>/dev/null | sort -V | tail -1 || true)"
+export PATH="${_nvm_bin:+$_nvm_bin:}$HOME/.asdf/shims:$HOME/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 cd "$PROJECT_DIR" || exit 1
