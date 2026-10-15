@@ -2806,7 +2806,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "影音在公司網頁，未轉",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 45,091 百萬元，YoY +577%，MoM +1%，累計 YoY +627%，YoY 561%，連12月YoY成長，MoM連11月正成長，5年新高",
@@ -2964,11 +2964,8 @@
    "chars": 8097,
    "imageHeavy": false
   },
-  "transcript": {
-   "minutes": 72,
-   "chars": 16983
-  },
-  "videoStatus": "ok",
+  "transcript": null,
+  "videoStatus": "本次轉檔數已滿，下次轉",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 18 百萬元，YoY +35%，MoM -24%，累計 YoY +136%",
@@ -3030,8 +3027,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-10-12T01:59:32+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "影音：本次轉檔數已滿，下次轉"
  },
  "6281-2026-10-12": {
   "key": "6281-2026-10-12",
@@ -3052,11 +3049,8 @@
    "chars": 1883,
    "imageHeavy": true
   },
-  "transcript": {
-   "minutes": 22,
-   "chars": 4807
-  },
-  "videoStatus": "ok",
+  "transcript": null,
+  "videoStatus": "本次轉檔數已滿，下次轉",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 1,494 百萬元，YoY +10%，MoM -12%，累計 YoY +1%",
@@ -3115,8 +3109,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-10-12T01:59:32+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "影音：本次轉檔數已滿，下次轉"
  },
  "7955-2026-10-12": {
   "key": "7955-2026-10-12",
@@ -3699,11 +3693,8 @@
    "chars": 6683,
    "imageHeavy": false
   },
-  "transcript": {
-   "minutes": 22,
-   "chars": 5324
-  },
-  "videoStatus": "ok",
+  "transcript": null,
+  "videoStatus": "Groq 額度已滿，下次轉",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 235 百萬元，YoY +4%，MoM -19%，累計 YoY +14%，YoY 73%，連5月YoY成長，同期歷史新高，比前三月加速 49pp",
@@ -3751,8 +3742,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-10-14T00:23:14+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "影音：Groq 額度已滿，下次轉"
  },
  "4438-2026-10-13": {
   "key": "4438-2026-10-13",
@@ -3898,7 +3889,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "影音在公司網頁，未轉",
   "deckStatus": "ok",
   "context": {
    "revenue": null,
@@ -3976,11 +3967,8 @@
    "chars": 4690,
    "imageHeavy": false
   },
-  "transcript": {
-   "minutes": 23,
-   "chars": 4475
-  },
-  "videoStatus": "ok",
+  "transcript": null,
+  "videoStatus": "Groq 額度已滿，下次轉",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 30 百萬元，YoY +196%，MoM -9%，累計 YoY +99%",
@@ -4040,8 +4028,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-10-14T00:23:14+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "影音：Groq 額度已滿，下次轉"
  },
  "6725-2026-10-13": {
   "key": "6725-2026-10-13",
@@ -6372,7 +6360,7 @@
   "videoUrl": null,
   "note": "",
   "deck": {
-   "file": "693020261008E002.pdf",
+   "file": "693020261008M002.pdf",
    "pages": 35,
    "chars": 8097,
    "imageHeavy": false
