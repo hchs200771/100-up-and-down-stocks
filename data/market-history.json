@@ -1243,5 +1243,11 @@
     "down": 516,
     "limitUp": 40,
     "limitDown": 6
+  },
+  {
+    "date": "2026-10-15",
+    "retailNetPct": 62.65,
+    "retailNetLots": 87570,
+    "taiexClose": 46969.87
   }
 ]
