@@ -4836,12 +4836,12 @@
       "tone": "無法判斷",
       "evidence": "僅摘要"
     },
-    "firstSeen": "2026-10-14T23:26:01+08:00",
-    "state": "done",
-    "pendingNote": "",
     "analyzedAt": "2026-10-17T15:55:29+08:00",
     "model": "gpt-6.1-sol",
-    "analyzedEvidence": 0
+    "analyzedEvidence": 0,
+    "firstSeen": "2026-10-14T23:26:01+08:00",
+    "state": "done",
+    "pendingNote": ""
   },
   "1319-2026-10-14": {
     "key": "1319-2026-10-14",
@@ -4960,12 +4960,12 @@
       "tone": "無法判斷",
       "evidence": "僅摘要"
     },
-    "firstSeen": "2026-10-14T23:26:01+08:00",
-    "state": "done",
-    "pendingNote": "",
     "analyzedAt": "2026-10-17T15:55:40+08:00",
     "model": "gpt-6.1-sol",
-    "analyzedEvidence": 0
+    "analyzedEvidence": 0,
+    "firstSeen": "2026-10-14T23:26:01+08:00",
+    "state": "done",
+    "pendingNote": ""
   },
   "2707-2026-10-14": {
     "key": "2707-2026-10-14",
@@ -6629,12 +6629,12 @@
       "tone": "無法判斷",
       "evidence": "僅簡報"
     },
-    "firstSeen": "2026-10-17T15:54:04+08:00",
-    "state": "done",
-    "pendingNote": "",
     "analyzedAt": "2026-10-17T15:54:43+08:00",
     "model": "gpt-6.1-sol",
-    "analyzedEvidence": 1
+    "analyzedEvidence": 1,
+    "firstSeen": "2026-10-17T15:54:04+08:00",
+    "state": "done",
+    "pendingNote": ""
   },
   "2402-2026-10-15": {
     "key": "2402-2026-10-15",
@@ -6712,12 +6712,12 @@
       "tone": "無法判斷",
       "evidence": "僅簡報"
     },
-    "firstSeen": "2026-10-17T15:54:04+08:00",
-    "state": "done",
-    "pendingNote": "",
     "analyzedAt": "2026-10-17T15:55:20+08:00",
     "model": "gpt-6.1-sol",
-    "analyzedEvidence": 1
+    "analyzedEvidence": 1,
+    "firstSeen": "2026-10-17T15:54:04+08:00",
+    "state": "done",
+    "pendingNote": ""
   },
   "2881-2026-10-15": {
     "key": "2881-2026-10-15",
@@ -6818,8 +6818,11 @@
       "chars": 6208,
       "imageHeavy": false
     },
-    "transcript": null,
-    "videoStatus": "處理中",
+    "transcript": {
+      "minutes": 51,
+      "chars": 12772
+    },
+    "videoStatus": "ok",
     "deckStatus": "ok",
     "context": {
       "revenue": "2026-09 月營收 183 百萬元，YoY +35%，MoM +1%，累計 YoY +21%，YoY 35%，連5月YoY成長，同期歷史新高",
@@ -6875,8 +6878,8 @@
     "model": "gpt-6.1-sol",
     "analyzedEvidence": 1,
     "firstSeen": "2026-10-17T15:54:04+08:00",
-    "state": "partial",
-    "pendingNote": "影音轉文字中"
+    "state": "done",
+    "pendingNote": ""
   },
   "3230-2026-10-15": {
     "key": "3230-2026-10-15",
@@ -6951,12 +6954,12 @@
       "tone": "無法判斷",
       "evidence": "僅簡報"
     },
-    "firstSeen": "2026-10-17T15:54:04+08:00",
-    "state": "partial",
-    "pendingNote": "影音：超過執行時間，下次轉",
     "analyzedAt": "2026-10-17T15:55:47+08:00",
     "model": "gpt-6.1-sol",
-    "analyzedEvidence": 1
+    "analyzedEvidence": 1,
+    "firstSeen": "2026-10-17T15:54:04+08:00",
+    "state": "partial",
+    "pendingNote": "影音：超過執行時間，下次轉"
   },
   "7754-2026-10-15": {
     "key": "7754-2026-10-15",
