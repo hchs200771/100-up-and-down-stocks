@@ -7,11 +7,14 @@
   "entry": 119,
   "stop": 113.43,
   "risk": 4.68,
-  "status": "open",
+  "status": "closed",
   "lastClose": 119,
   "lastDate": "2026-10-14",
-  "r": 0,
-  "held": 0
+  "r": -1.17,
+  "held": 1,
+  "exitDate": "2026-10-15",
+  "exit": 112.5,
+  "exitReason": "stop"
  },
  {
   "code": "3481",
@@ -21,11 +24,14 @@
   "entry": 50.9,
   "stop": 49.75,
   "risk": 2.26,
-  "status": "open",
+  "status": "closed",
   "lastClose": 50.9,
   "lastDate": "2026-10-14",
-  "r": 0,
-  "held": 0
+  "r": -1.13,
+  "held": 1,
+  "exitDate": "2026-10-15",
+  "exit": 49.6,
+  "exitReason": "stop"
  },
  {
   "code": "3037",
@@ -35,11 +41,14 @@
   "entry": 1185,
   "stop": 1134.3,
   "risk": 4.28,
-  "status": "open",
+  "status": "closed",
   "lastClose": 1185,
   "lastDate": "2026-10-14",
-  "r": 0,
-  "held": 0
+  "r": -1.68,
+  "held": 1,
+  "exitDate": "2026-10-15",
+  "exit": 1100,
+  "exitReason": "stop"
  },
  {
   "code": "6116",
@@ -49,11 +58,14 @@
   "entry": 15.35,
   "stop": 14.88,
   "risk": 3.09,
-  "status": "open",
+  "status": "closed",
   "lastClose": 15.35,
   "lastDate": "2026-10-14",
-  "r": 0,
-  "held": 0
+  "r": -1,
+  "held": 1,
+  "exitDate": "2026-10-15",
+  "exit": 14.88,
+  "exitReason": "stop"
  },
  {
   "code": "5483",
@@ -63,11 +75,14 @@
   "entry": 208.5,
   "stop": 201.49,
   "risk": 3.36,
-  "status": "open",
+  "status": "closed",
   "lastClose": 208.5,
   "lastDate": "2026-10-14",
-  "r": 0,
-  "held": 0
+  "r": -1.28,
+  "held": 1,
+  "exitDate": "2026-10-15",
+  "exit": 199.5,
+  "exitReason": "stop"
  },
  {
   "code": "5425",
@@ -77,11 +92,14 @@
   "entry": 97.2,
   "stop": 95.22,
   "risk": 2.04,
-  "status": "open",
+  "status": "closed",
   "lastClose": 97.2,
   "lastDate": "2026-10-14",
-  "r": 0,
-  "held": 0
+  "r": -1.72,
+  "held": 1,
+  "exitDate": "2026-10-15",
+  "exit": 93.8,
+  "exitReason": "stop"
  },
  {
   "code": "3324",
@@ -91,9 +109,68 @@
   "entry": 1490,
   "stop": 1452.7,
   "risk": 2.5,
-  "status": "open",
+  "status": "closed",
   "lastClose": 1490,
   "lastDate": "2026-10-14",
+  "r": -1.74,
+  "held": 1,
+  "exitDate": "2026-10-15",
+  "exit": 1425,
+  "exitReason": "stop"
+ },
+ {
+  "code": "4958",
+  "name": "臻鼎-KY",
+  "market": "twse",
+  "date": "2026-10-16",
+  "entry": 557,
+  "stop": 534.31,
+  "risk": 4.07,
+  "status": "open",
+  "lastClose": 557,
+  "lastDate": "2026-10-16",
+  "r": 0,
+  "held": 0
+ },
+ {
+  "code": "1326",
+  "name": "台化",
+  "market": "twse",
+  "date": "2026-10-16",
+  "entry": 78.7,
+  "stop": 75.12,
+  "risk": 4.55,
+  "status": "open",
+  "lastClose": 78.7,
+  "lastDate": "2026-10-16",
+  "r": 0,
+  "held": 0
+ },
+ {
+  "code": "2441",
+  "name": "超豐",
+  "market": "twse",
+  "date": "2026-10-16",
+  "entry": 121,
+  "stop": 118.41,
+  "risk": 2.14,
+  "status": "open",
+  "lastClose": 121,
+  "lastDate": "2026-10-16",
+  "r": 0,
+  "held": 0
+ },
+ {
+  "code": "2383",
+  "name": "台光電",
+  "market": "twse",
+  "date": "2026-10-16",
+  "entry": 5165,
+  "stop": 4979.98,
+  "risk": 3.58,
+  "status": "open",
+  "lastClose": 5165,
+  "lastDate": "2026-10-16",
   "r": 0,
   "held": 0
  }
