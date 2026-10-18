@@ -1375,13 +1375,43 @@
     "fedwatch": "",
     "indices": [
       {
+        "key": "taiex",
+        "name": "加權指數",
+        "region": "台股",
+        "close": 47111.26,
+        "change": 141.39,
+        "pct": 0.3,
+        "asOfEpoch": 1792128805,
+        "ma20": 48121.225,
+        "aboveMa20": false,
+        "ma20GapPct": -2.1,
+        "ma20Slope": "up"
+      },
+      {
+        "key": "tpex",
+        "name": "櫃買指數",
+        "region": "台股",
+        "close": 400.26,
+        "change": 3.36,
+        "pct": 0.85,
+        "asOfEpoch": null,
+        "ma20": 415.9815,
+        "aboveMa20": false,
+        "ma20GapPct": -3.78,
+        "ma20Slope": "up"
+      },
+      {
         "key": "sp500",
         "name": "標普500",
         "region": "美股",
         "close": 7659.44,
         "change": -84.62,
         "pct": -1.09,
-        "asOfEpoch": 1792183328
+        "asOfEpoch": 1792183328,
+        "ma20": 7739.2416,
+        "aboveMa20": false,
+        "ma20GapPct": -1.03,
+        "ma20Slope": "up"
       },
       {
         "key": "dji",
@@ -1390,7 +1420,11 @@
         "close": 52002.41,
         "change": -175.28,
         "pct": -0.34,
-        "asOfEpoch": 1792183329
+        "asOfEpoch": 1792183329,
+        "ma20": 51531.0795,
+        "aboveMa20": true,
+        "ma20GapPct": 0.91,
+        "ma20Slope": "down"
       },
       {
         "key": "nasdaq",
@@ -1399,7 +1433,11 @@
         "close": 26140.03,
         "change": -573,
         "pct": -2.15,
-        "asOfEpoch": 1792185359
+        "asOfEpoch": 1792185359,
+        "ma20": 27051.1723,
+        "aboveMa20": false,
+        "ma20GapPct": -3.37,
+        "ma20Slope": "up"
       },
       {
         "key": "sox",
@@ -1408,7 +1446,11 @@
         "close": 11137.29,
         "change": -443.92,
         "pct": -3.83,
-        "asOfEpoch": 1792185359
+        "asOfEpoch": 1792185359,
+        "ma20": 12500.4366,
+        "aboveMa20": false,
+        "ma20GapPct": -10.9,
+        "ma20Slope": "up"
       },
       {
         "key": "sse",
@@ -1417,7 +1459,11 @@
         "close": 3716.28,
         "change": 8.81,
         "pct": 0.24,
-        "asOfEpoch": 1792134029
+        "asOfEpoch": 1792134029,
+        "ma20": 3847.7392,
+        "aboveMa20": false,
+        "ma20GapPct": -3.42,
+        "ma20Slope": "down"
       },
       {
         "key": "csi300",
@@ -1429,13 +1475,30 @@
         "asOfEpoch": 1792134029
       },
       {
+        "key": "china_adr",
+        "name": "中概股(金龍PGJ)",
+        "region": "中國",
+        "close": 21.96,
+        "change": -0.3,
+        "pct": -1.35,
+        "asOfEpoch": 1792180800,
+        "ma20": 21.9435,
+        "aboveMa20": true,
+        "ma20GapPct": 0.08,
+        "ma20Slope": "down"
+      },
+      {
         "key": "hsi",
         "name": "恒生指數",
         "region": "中國",
         "close": 24186.83,
         "change": 124.11,
         "pct": 0.52,
-        "asOfEpoch": 1792138118
+        "asOfEpoch": 1792138118,
+        "ma20": 24418.3449,
+        "aboveMa20": false,
+        "ma20GapPct": -0.95,
+        "ma20Slope": "down"
       },
       {
         "key": "nikkei",
@@ -1444,7 +1507,11 @@
         "close": 65324.29,
         "change": 898.34,
         "pct": 1.39,
-        "asOfEpoch": 1792133103
+        "asOfEpoch": 1792133103,
+        "ma20": 66891.5453,
+        "aboveMa20": false,
+        "ma20GapPct": -2.34,
+        "ma20Slope": "up"
       },
       {
         "key": "kospi",
@@ -1453,16 +1520,24 @@
         "close": 5668.05,
         "change": 113.83,
         "pct": 2.05,
-        "asOfEpoch": 1792148740
+        "asOfEpoch": 1792148740,
+        "ma20": 6632.8496,
+        "aboveMa20": false,
+        "ma20GapPct": -14.55,
+        "ma20Slope": "down"
       },
       {
         "key": "wti",
         "name": "西德州原油",
         "region": "原物料/利率",
-        "close": 101.41,
-        "change": 3.44,
-        "pct": 3.51,
-        "asOfEpoch": 1792184398
+        "close": 99.02,
+        "change": 1.05,
+        "pct": 1.07,
+        "asOfEpoch": null,
+        "ma20": 92.819,
+        "aboveMa20": true,
+        "ma20GapPct": 6.68,
+        "ma20Slope": "down"
       },
       {
         "key": "gold",
@@ -1471,7 +1546,11 @@
         "close": 4181.1,
         "change": 11,
         "pct": 0.26,
-        "asOfEpoch": 1792184399
+        "asOfEpoch": null,
+        "ma20": 4214.11,
+        "aboveMa20": false,
+        "ma20GapPct": -0.78,
+        "ma20Slope": "down"
       },
       {
         "key": "dxy",
@@ -1480,7 +1559,11 @@
         "close": 101.84,
         "change": -0.16,
         "pct": -0.16,
-        "asOfEpoch": 1792184399
+        "asOfEpoch": null,
+        "ma20": 101.709,
+        "aboveMa20": true,
+        "ma20GapPct": 0.13,
+        "ma20Slope": "up"
       },
       {
         "key": "us10y",
@@ -1489,7 +1572,11 @@
         "close": 5.1,
         "change": 0.01,
         "pct": 0.18,
-        "asOfEpoch": 1792177195
+        "asOfEpoch": 1792177195,
+        "ma20": 5.1929,
+        "aboveMa20": false,
+        "ma20GapPct": -1.83,
+        "ma20Slope": "up"
       },
       {
         "key": "usdtwd",
@@ -1897,6 +1984,27 @@
         "flowDays1w": null,
         "flowDays4w": null
       }
-    ]
+    ],
+    "regime": {
+      "score": 20.63,
+      "signal": "red",
+      "conclusion": "紅燈不宜做多；注意：部分美股指數位於月線下。",
+      "reasons": [
+        "加權指數在月線下，偏離 -2.10%，月線上彎",
+        "櫃買指數在月線下，偏離 -3.78%，月線上彎",
+        "標普500在月線下，偏離 -1.03%，月線上彎",
+        "那斯達克在月線下，偏離 -3.37%，月線上彎",
+        "道瓊工業在月線上，偏離 0.91%，月線下彎",
+        "費城半導體在月線下，偏離 -10.90%，月線上彎",
+        "美10年期殖利率在月線下，偏離 -1.83%，月線上彎",
+        "西德州原油在月線上，偏離 6.68%，月線下彎",
+        "美元指數在月線上，偏離 0.13%，月線上彎",
+        "日經225在月線下，偏離 -2.34%，月線上彎",
+        "韓國KOSPI在月線下，偏離 -14.55%，月線下彎",
+        "恒生指數在月線下，偏離 -0.95%，月線下彎",
+        "中概股(金龍PGJ)在月線上，偏離 0.08%，月線下彎"
+      ],
+      "missing": []
+    }
   }
 }
