@@ -47,6 +47,8 @@ const SYMBOLS: { symbol: string; key: string; name: string; region: string; digi
   { symbol: "GC=F", key: "gold", name: "黃金", region: "原物料/利率" },
   { symbol: "DX-Y.NYB", key: "dxy", name: "美元指數", region: "原物料/利率" },
   { symbol: "^TNX", key: "us10y", name: "美10年期殖利率", region: "原物料/利率" },
+  // Yahoo 沒有 SCFI，改抓上海航運交易所週五公布的綜合指數（fetchScfi），漲跌是週對週。
+  { symbol: "SCFI", key: "scfi", name: "SCFI運價(週)", region: "原物料/利率" },
   // 美元/台幣不走 Yahoo：TWD=X 是 24 小時的國際盤報價，晚上跑報告時抓到的是紐約盤
   // 還在跳的價，跟新聞講的「台北匯市收盤」對不起來。改抓央行公布的「新臺幣對美元
   // 銀行間成交之收盤匯率」（fetchCbcUsdTwd），symbol 只在 CBC 掛掉時當後備。
@@ -271,6 +273,33 @@ async function fetchCbcUsdTwd(): Promise<{ close: number; prevClose: number; epo
   }
 }
 
+/**
+ * 上海航運交易所 SCFI 綜合指數：每週五公布，一次給本期與上期，週資料不夠算 MA20。
+ */
+async function fetchScfi(): Promise<{ close: number; prevClose: number; epoch: number | null } | null> {
+  try {
+    const res = await fetch("https://en.sse.net.cn/currentIndex?indexName=scfi", {
+      headers: { "User-Agent": "Mozilla/5.0" },
+      signal: AbortSignal.timeout(15000),
+    });
+    if (!res.ok) return null;
+    const json = (await res.json()) as {
+      data?: { currentDate?: string; lineDataList?: { dataItemTypeName?: string; currentContent?: number | null; lastContent?: number | null }[] };
+    };
+    const row = json.data?.lineDataList?.find((x) => x.dataItemTypeName === "SCFI_T");
+    const close = Number(row?.currentContent);
+    const prevClose = Number(row?.lastContent);
+    if (!Number.isFinite(close) || !Number.isFinite(prevClose) || prevClose === 0) return null;
+    const date = json.data?.currentDate;
+    // 公布日當天上海 15:00 收盤後發佈，epoch 指向那一刻，報告端可看出是哪一週的數字。
+    const epoch = date ? Math.floor(Date.parse(`${date}T15:00:00+08:00`) / 1000) : null;
+    return { close, prevClose, epoch };
+  } catch (e) {
+    console.warn(`[warn] SCFI fetch failed: ${(e as Error).message}`);
+    return null;
+  }
+}
+
 async function main() {
   const results = await Promise.all(
     SYMBOLS.map(async (s) => {
@@ -287,7 +316,8 @@ async function main() {
           console.warn("[warn] 央行收盤匯率抓取失敗，改用 Yahoo TWD=X 國際盤報價");
         }
       }
-      if (!r) r = await fetchOne(s.symbol);
+      if (s.key === "scfi") r = await fetchScfi();
+      else if (!r) r = await fetchOne(s.symbol);
       if (!r) {
         console.warn(`[warn] intl fetch failed: ${s.symbol} (${s.name})`);
         return null;
