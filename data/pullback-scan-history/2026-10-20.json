@@ -1,0 +1,256 @@
+{
+ "tradingDate": "2026-10-20",
+ "regime": {
+  "close": 46292.9296875,
+  "ema50": 46833,
+  "ok": false
+ },
+ "universe": {
+  "listed": 248,
+  "liquid": 185,
+  "minFutVolume": 50,
+  "priced": 184
+ },
+ "signals": [
+  {
+   "code": "3653",
+   "name": "健策",
+   "market": "twse",
+   "close": 6650,
+   "futVol": 1877,
+   "margin": "21.60%",
+   "adr": 5.3,
+   "stop": 6442.63,
+   "risk": 3.12,
+   "riskPerContract": 414740,
+   "mom": 109,
+   "supports": [
+    "EMA21"
+   ],
+   "dup": false
+  },
+  {
+   "code": "6526",
+   "name": "達發",
+   "market": "twse",
+   "close": 801,
+   "futVol": 570,
+   "margin": "16.20%",
+   "adr": 5.9,
+   "stop": 771.13,
+   "risk": 3.73,
+   "riskPerContract": 59740,
+   "mom": 61,
+   "supports": [
+    "EMA9",
+    "EMA21"
+   ],
+   "dup": false
+  }
+ ],
+ "watch": [
+  {
+   "code": "8039",
+   "name": "台虹",
+   "market": "twse",
+   "close": 296,
+   "futVol": 4063,
+   "margin": "21.60%",
+   "adr": 6.5,
+   "mom": 109,
+   "pullback": 5,
+   "near": [
+    {
+     "name": "EMA9",
+     "price": 295.96,
+     "dist": 0
+    },
+    {
+     "name": "EMA21",
+     "price": 290.77,
+     "dist": 1.8
+    }
+   ]
+  },
+  {
+   "code": "1326",
+   "name": "台化",
+   "market": "twse",
+   "close": 73.8,
+   "futVol": 1989,
+   "margin": "20.25%",
+   "adr": 5.1,
+   "mom": 46,
+   "pullback": 13.7,
+   "near": [
+    {
+     "name": "EMA21",
+     "price": 73.62,
+     "dist": 0.2
+    }
+   ]
+  },
+  {
+   "code": "2615",
+   "name": "萬海",
+   "market": "twse",
+   "close": 117,
+   "futVol": 1355,
+   "margin": "16.20%",
+   "adr": 4.2,
+   "mom": 61,
+   "pullback": 6.4,
+   "near": [
+    {
+     "name": "EMA21",
+     "price": 116.33,
+     "dist": 0.6
+    }
+   ]
+  },
+  {
+   "code": "3264",
+   "name": "欣銓",
+   "market": "tpex",
+   "close": 247,
+   "futVol": 1515,
+   "margin": "20.25%",
+   "adr": 5.3,
+   "mom": 46,
+   "pullback": 11.2,
+   "near": [
+    {
+     "name": "AVWAP",
+     "price": 245.49,
+     "dist": 0.6
+    }
+   ]
+  },
+  {
+   "code": "3443",
+   "name": "創意",
+   "market": "twse",
+   "close": 7745,
+   "futVol": 5017,
+   "margin": "20.25%",
+   "adr": 5.9,
+   "mom": 139,
+   "pullback": 9.9,
+   "near": [
+    {
+     "name": "EMA21",
+     "price": 7685.97,
+     "dist": 0.8
+    }
+   ]
+  },
+  {
+   "code": "2492",
+   "name": "華新科",
+   "market": "twse",
+   "close": 369,
+   "futVol": 6524,
+   "margin": "20.25%",
+   "adr": 6.9,
+   "mom": 152,
+   "pullback": 13.8,
+   "near": [
+    {
+     "name": "EMA21",
+     "price": 365.8,
+     "dist": 0.9
+    }
+   ]
+  },
+  {
+   "code": "1301",
+   "name": "台塑",
+   "market": "twse",
+   "close": 74.9,
+   "futVol": 4420,
+   "margin": "16.20%",
+   "adr": 5.2,
+   "mom": 42,
+   "pullback": 15.7,
+   "near": [
+    {
+     "name": "EMA21",
+     "price": 73.96,
+     "dist": 1.3
+    }
+   ]
+  },
+  {
+   "code": "3406",
+   "name": "玉晶光",
+   "market": "twse",
+   "close": 1040,
+   "futVol": 6802,
+   "margin": "16.20%",
+   "adr": 8.1,
+   "mom": 112,
+   "pullback": 11.5,
+   "near": [
+    {
+     "name": "EMA21",
+     "price": 1021.79,
+     "dist": 1.8
+    }
+   ]
+  },
+  {
+   "code": "3044",
+   "name": "健鼎",
+   "market": "twse",
+   "close": 567,
+   "futVol": 71,
+   "margin": "16.20%",
+   "adr": 3.4,
+   "mom": 46,
+   "pullback": 6,
+   "near": [
+    {
+     "name": "EMA21",
+     "price": 556.16,
+     "dist": 1.9
+    }
+   ]
+  },
+  {
+   "code": "4958",
+   "name": "臻鼎-KY",
+   "market": "twse",
+   "close": 547,
+   "futVol": 4044,
+   "margin": "20.25%",
+   "adr": 4.7,
+   "mom": 95,
+   "pullback": 8.1,
+   "near": [
+    {
+     "name": "EMA21",
+     "price": 536.89,
+     "dist": 1.9
+    }
+   ]
+  },
+  {
+   "code": "2409",
+   "name": "友達",
+   "market": "twse",
+   "close": 35.75,
+   "futVol": 40588,
+   "margin": "20.25%",
+   "adr": 6,
+   "mom": 83,
+   "pullback": 8.5,
+   "near": [
+    {
+     "name": "EMA21",
+     "price": 35,
+     "dist": 2.1
+    }
+   ]
+  }
+ ]
+}
