@@ -45,6 +45,8 @@ const SYMBOLS: { symbol: string; key: string; name: string; region: string; digi
   { symbol: "^KS11", key: "kospi", name: "韓國KOSPI", region: "日韓" },
   { symbol: "CL=F", key: "wti", name: "西德州原油", region: "原物料/利率" },
   { symbol: "GC=F", key: "gold", name: "黃金", region: "原物料/利率" },
+  // 24 小時交易，日 K 以 UTC 切日；fetchOne 一樣只取已收完的那根。
+  { symbol: "BTC-USD", key: "btc", name: "比特幣", region: "原物料/利率", digits: 0 },
   { symbol: "DX-Y.NYB", key: "dxy", name: "美元指數", region: "原物料/利率" },
   { symbol: "^TNX", key: "us10y", name: "美10年期殖利率", region: "原物料/利率" },
   // Yahoo 沒有 SCFI，改抓上海航運交易所週五公布的綜合指數（fetchScfi），漲跌是週對週。

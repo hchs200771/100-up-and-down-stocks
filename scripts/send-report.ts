@@ -2276,6 +2276,10 @@ function renderHome(h: HomeInput): string {
   };
   idx("加權指數", m?.taiex);
   idx("櫃買指數", m?.tpex);
+  // 黃金、比特幣取自國際快照（美元計價，最近一根已收完的日 K）
+  const intlIdx = readDataJson<{ indices: { key: string; close: number; change: number }[] }>("data/intl-market-latest.json")?.indices;
+  idx("黃金（美元）", intlIdx?.find((x) => x.key === "gold"));
+  idx("比特幣（美元）", intlIdx?.find((x) => x.key === "btc"));
   if (m?.breadth) {
     const b = m.breadth;
     tile("上漲／下跌", `<span style="color:#dc2626;">${b.up}</span> / <span style="color:#16a34a;">${b.down}</span>`, `漲停 ${b.limitUp}／跌停 ${b.limitDown}`);
