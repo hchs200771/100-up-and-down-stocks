@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>創新高掃描</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2288%22%3E%F0%9F%9A%80%3C%2Ftext%3E%3C%2Fsvg%3E">
+<style>
+:root{--bg:#f7f8fa;--card:#fff;--fg:#1a202c;--muted:#64748b;--line:#e2e8f0;--accent:#2563eb;--up:#c2410c;--down:#15803d;--chip:#eef2f7}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1420;--card:#171e2e;--fg:#e5eaf3;--muted:#8b98ad;--line:#28334a;--accent:#7aa2ff;--up:#ff8a5c;--down:#4ade80;--chip:#222c42}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.6 -apple-system,"PingFang TC","Noto Sans TC",sans-serif;padding:16px}
+.wrap{max-width:1200px;margin:0 auto}
+h1{font-size:20px;margin:4px 0 2px}
+h2{font-size:16px;margin:20px 0 6px}
+.sub,.note{color:var(--muted);font-size:13px;margin:2px 0}
+.note{color:var(--up)}
+.cards{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.card{flex:1 1 150px;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+.card .cname{font-size:14px;font-weight:700}
+.card .cdesc{color:var(--muted);font-size:11.5px;line-height:1.5;margin-top:2px;flex:1}
+.card b{font-size:17px;line-height:1.2;margin-top:6px}
+.card.total{border-color:var(--accent)}.card.total .cname,.card.total b{color:var(--accent)}
+.tablebox{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;min-width:860px;font-size:13px}
+th,td{padding:6px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+th:nth-child(-n+2),td:nth-child(-n+2){text-align:left}
+th{background:var(--card);color:var(--muted);font-weight:600}
+tr:hover td{background:color-mix(in srgb,var(--accent) 6%,transparent)}
+a{color:var(--accent);text-decoration:none}
+.chip{display:inline-block;background:var(--chip);border-radius:99px;padding:0 8px;font-size:11px;color:var(--muted);margin-right:3px}
+.pos{color:var(--up)}.neg{color:var(--down)}.none{color:var(--muted)}
+.empty{padding:14px;color:var(--muted);font-size:13px}
+details.howto{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:12px 0;font-size:13px;color:var(--muted)}
+details.howto summary{cursor:pointer;padding:10px 16px;font-size:14px;font-weight:600;color:var(--fg)}
+details.howto .body{padding:0 16px 12px;border-top:1px solid var(--line)}
+details.howto p{margin:6px 0}
+details.howto b{color:var(--fg)}
+</style>
+</head>
+<body><div class="wrap">
+<nav class="nav gnav"><style>
+nav.gnav{display:block;position:sticky;top:0;z-index:40;margin:0 0 14px;padding:8px 0 6px;background:var(--bg,#fff);border-bottom:1px solid var(--line,#e5e7eb);font-family:inherit}
+.gnav .gnav-top{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.gnav .gnav-g{position:relative}
+.gnav .gnav-btn{display:inline-block;border:1px solid var(--line,#e5e7eb);border-radius:999px;padding:7px 14px;font-size:14px;font-weight:700;line-height:1.3;background:var(--card,#fff);color:var(--fg,#374151);text-decoration:none;cursor:pointer;white-space:nowrap}
+.gnav .gnav-btn:hover{border-color:var(--accent,#6366f1);color:var(--accent,#4338ca)}
+.gnav .gnav-btn.on{background:var(--accent,#4f46e5);border-color:var(--accent,#4f46e5);color:#fff}
+.gnav .gnav-caret{font-size:10px;margin-left:4px;opacity:.7}
+.gnav .gnav-menu{display:none;position:absolute;left:0;top:100%;padding-top:6px;z-index:41;min-width:168px}
+.gnav .gnav-g:nth-last-child(-n+2) .gnav-menu{left:auto;right:0}
+.gnav .gnav-menu-in{background:var(--card,#fff);border:1px solid var(--line,#e5e7eb);border-radius:10px;box-shadow:0 8px 24px rgba(15,23,42,.14);padding:6px}
+.gnav .gnav-item{display:block;border:0;border-radius:6px;padding:8px 12px;font-size:14px;font-weight:600;line-height:1.3;background:transparent;color:var(--fg,#374151);text-decoration:none;white-space:nowrap}
+.gnav .gnav-item:hover{background:var(--chip,#f1f5f9);color:var(--accent,#4338ca)}
+.gnav .gnav-item.on{color:var(--accent,#4338ca);background:var(--chip,#eef2ff)}
+.gnav .gnav-g.open .gnav-menu{display:block}
+@media (any-hover:hover){.gnav .gnav-g:hover .gnav-menu{display:block}}
+.gnav .gnav-sub{display:none;gap:4px;margin-top:6px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.gnav .gnav-sub::-webkit-scrollbar{display:none}
+.gnav .gnav-sub.on{display:flex}
+.gnav .gnav-subitem{flex:none;display:inline-block;border:0;border-radius:6px;padding:4px 10px;font-size:13px;font-weight:600;line-height:1.4;background:transparent;color:var(--muted,#6b7280);text-decoration:none;white-space:nowrap}
+.gnav .gnav-subitem:hover{color:var(--accent,#4338ca)}
+.gnav .gnav-subitem.on{background:var(--chip,#eef2ff);color:var(--accent,#4338ca)}
+@media (max-width:640px){.gnav .gnav-btn{padding:6px 11px;font-size:13px}}
+</style><style>@media (prefers-color-scheme:dark){:root{--bg:#1b2232;--card:#242d40;--line:#36425b;--chip:#2e3a52}}</style><div class="gnav-top"><a class="gnav-btn gnav-home" href="index.html" data-tab="🏠 總覽" data-g="-1">今日</a><div class="gnav-g" data-g="0"><a class="gnav-btn" href="index.html#tab=%F0%9F%93%8A%20%E5%B8%82%E5%A0%B4%E7%B8%BD%E8%A6%BD" aria-haspopup="true">大盤<span class="gnav-caret">▾</span></a><div class="gnav-menu"><div class="gnav-menu-in"><a class="gnav-item" href="index.html#tab=%F0%9F%93%8A%20%E5%B8%82%E5%A0%B4%E7%B8%BD%E8%A6%BD" data-tab="📊 市場總覽" data-g="0">📊 市場總覽</a><a class="gnav-item" href="index.html#tab=%E2%9A%96%EF%B8%8F%20%E6%8C%87%E6%95%B8%E8%B2%A2%E7%8D%BB" data-tab="⚖️ 指數貢獻" data-g="0">⚖️ 指數貢獻</a><a class="gnav-item" href="index.html#tab=%F0%9F%8C%90%20%E5%9C%8B%E9%9A%9B%E6%83%85%E5%8B%A2" data-tab="🌐 國際情勢" data-g="0">🌐 國際情勢</a><a class="gnav-item" href="index.html#tab=%F0%9F%8E%99%EF%B8%8F%20KOL%20%E8%A7%80%E9%BB%9E" data-tab="🎙️ KOL 觀點" data-g="0">🎙️ KOL 觀點</a></div></div></div><div class="gnav-g" data-g="1"><a class="gnav-btn" href="index.html#tab=%F0%9F%94%A5%20%E4%B8%8A%E6%BC%B2%E6%97%8F%E7%BE%A4" aria-haspopup="true">族群<span class="gnav-caret">▾</span></a><div class="gnav-menu"><div class="gnav-menu-in"><a class="gnav-item" href="index.html#tab=%F0%9F%94%A5%20%E4%B8%8A%E6%BC%B2%E6%97%8F%E7%BE%A4" data-tab="🔥 上漲族群" data-g="1">🔥 上漲族群</a><a class="gnav-item" href="index.html#tab=%F0%9F%A7%8A%20%E4%B8%8B%E8%B7%8C%E6%97%8F%E7%BE%A4" data-tab="🧊 下跌族群" data-g="1">🧊 下跌族群</a><a class="gnav-item" href="index.html#tab=%F0%9F%94%84%20%E6%97%8F%E7%BE%A4%E8%BC%AA%E5%8B%95" data-tab="🔄 族群輪動" data-g="1">🔄 族群輪動</a><a class="gnav-item" href="themes.html">📡 題材雷達</a><a class="gnav-item" href="revenue-industry.html">🏭 營收族群</a></div></div></div><div class="gnav-g" data-g="2"><a class="gnav-btn" href="index.html#tab=%F0%9F%8F%86%20%E7%B5%82%E6%A5%B5%E9%81%B8%E8%82%A1%E6%B1%A0" aria-haspopup="true">個股<span class="gnav-caret">▾</span></a><div class="gnav-menu"><div class="gnav-menu-in"><a class="gnav-item" href="index.html#tab=%F0%9F%8F%86%20%E7%B5%82%E6%A5%B5%E9%81%B8%E8%82%A1%E6%B1%A0" data-tab="🏆 終極選股池" data-g="2">🏆 終極選股池</a><a class="gnav-item" href="index.html#tab=%F0%9F%8F%A6%20%E5%A4%A7%E6%88%B6%E7%B1%8C%E7%A2%BC" data-tab="🏦 大戶籌碼" data-g="2">🏦 大戶籌碼</a><a class="gnav-item" href="broker-watch.html">🕵️ 贏家分點</a><a class="gnav-item" href="target-price.html">🎯 目標價</a><a class="gnav-item" href="investor-conf.html">🎤 法說會</a><a class="gnav-item" href="revenue.html">📈 月營收</a><a class="gnav-item" href="revenue-picks.html">🧮 營收配置</a><a class="gnav-item" href="revenue-decline.html">📉 營收衰退</a><a class="gnav-item" href="cb-pledge.html">🔐 設質+CB</a></div></div></div><div class="gnav-g" data-g="3"><a class="gnav-btn on" href="index.html#tab=%F0%9F%8E%AF%20%E6%93%8D%E4%BD%9C%E5%BB%BA%E8%AD%B0" aria-haspopup="true">策略<span class="gnav-caret">▾</span></a><div class="gnav-menu"><div class="gnav-menu-in"><a class="gnav-item" href="index.html#tab=%F0%9F%8E%AF%20%E6%93%8D%E4%BD%9C%E5%BB%BA%E8%AD%B0" data-tab="🎯 操作建議" data-g="3">🎯 操作建議</a><a class="gnav-item" href="pullback-scan.html">🪃 回檔買進</a><a class="gnav-item on" href="new-high-scan.html">🚀 創新高</a><a class="gnav-item" href="review.html">🔒 交易檢討</a></div></div></div></div><div class="gnav-sub" data-g="0"><a class="gnav-subitem" href="index.html#tab=%F0%9F%93%8A%20%E5%B8%82%E5%A0%B4%E7%B8%BD%E8%A6%BD" data-tab="📊 市場總覽" data-g="0">市場總覽</a><a class="gnav-subitem" href="index.html#tab=%E2%9A%96%EF%B8%8F%20%E6%8C%87%E6%95%B8%E8%B2%A2%E7%8D%BB" data-tab="⚖️ 指數貢獻" data-g="0">指數貢獻</a><a class="gnav-subitem" href="index.html#tab=%F0%9F%8C%90%20%E5%9C%8B%E9%9A%9B%E6%83%85%E5%8B%A2" data-tab="🌐 國際情勢" data-g="0">國際情勢</a><a class="gnav-subitem" href="index.html#tab=%F0%9F%8E%99%EF%B8%8F%20KOL%20%E8%A7%80%E9%BB%9E" data-tab="🎙️ KOL 觀點" data-g="0">KOL 觀點</a></div><div class="gnav-sub" data-g="1"><a class="gnav-subitem" href="index.html#tab=%F0%9F%94%A5%20%E4%B8%8A%E6%BC%B2%E6%97%8F%E7%BE%A4" data-tab="🔥 上漲族群" data-g="1">上漲族群</a><a class="gnav-subitem" href="index.html#tab=%F0%9F%A7%8A%20%E4%B8%8B%E8%B7%8C%E6%97%8F%E7%BE%A4" data-tab="🧊 下跌族群" data-g="1">下跌族群</a><a class="gnav-subitem" href="index.html#tab=%F0%9F%94%84%20%E6%97%8F%E7%BE%A4%E8%BC%AA%E5%8B%95" data-tab="🔄 族群輪動" data-g="1">族群輪動</a><a class="gnav-subitem" href="themes.html">題材雷達</a><a class="gnav-subitem" href="revenue-industry.html">營收族群</a></div><div class="gnav-sub" data-g="2"><a class="gnav-subitem" href="index.html#tab=%F0%9F%8F%86%20%E7%B5%82%E6%A5%B5%E9%81%B8%E8%82%A1%E6%B1%A0" data-tab="🏆 終極選股池" data-g="2">選股池</a><a class="gnav-subitem" href="index.html#tab=%F0%9F%8F%A6%20%E5%A4%A7%E6%88%B6%E7%B1%8C%E7%A2%BC" data-tab="🏦 大戶籌碼" data-g="2">大戶籌碼</a><a class="gnav-subitem" href="broker-watch.html">贏家分點</a><a class="gnav-subitem" href="target-price.html">目標價</a><a class="gnav-subitem" href="investor-conf.html">法說會</a><a class="gnav-subitem" href="revenue.html">月營收</a><a class="gnav-subitem" href="revenue-picks.html">營收配置</a><a class="gnav-subitem" href="revenue-decline.html">營收衰退</a><a class="gnav-subitem" href="cb-pledge.html">設質CB</a></div><div class="gnav-sub on" data-g="3"><a class="gnav-subitem" href="index.html#tab=%F0%9F%8E%AF%20%E6%93%8D%E4%BD%9C%E5%BB%BA%E8%AD%B0" data-tab="🎯 操作建議" data-g="3">操作建議</a><a class="gnav-subitem" href="pullback-scan.html">回檔買進</a><a class="gnav-subitem on" href="new-high-scan.html">創新高</a><a class="gnav-subitem" href="review.html">交易檢討</a></div><script>(function(){
+var nav=document.currentScript&&document.currentScript.parentNode;if(!nav)return;
+var groups=[].slice.call(nav.querySelectorAll('.gnav-g'));
+function closeAll(except){groups.forEach(function(g){if(g!==except)g.classList.remove('open');});}
+groups.forEach(function(g){var b=g.querySelector('.gnav-btn');if(!b)return;
+b.addEventListener('click',function(e){e.preventDefault();closeAll(g);g.classList.toggle('open');});});
+document.addEventListener('click',function(e){if(!nav.contains(e.target))closeAll();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll();});
+nav.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('.gnav-item,.gnav-subitem'))closeAll();});
+window.gnavMark=function(label){
+  var gi=-1;
+  [].slice.call(nav.querySelectorAll('[data-tab]')).forEach(function(a){var on=a.getAttribute('data-tab')===label;a.classList.toggle('on',on);if(on)gi=+a.getAttribute('data-g');});
+  groups.forEach(function(g){g.querySelector('.gnav-btn').classList.toggle('on',+g.getAttribute('data-g')===gi);});
+  [].slice.call(nav.querySelectorAll('.gnav-sub')).forEach(function(s){s.classList.toggle('on',+s.getAttribute('data-g')===gi);});
+  showCurrent();
+};
+// 手機上小分頁列是橫向捲動的：把目前這一項捲進畫面
+function showCurrent(){var on=nav.querySelector('.gnav-sub.on .gnav-subitem.on');if(!on)return;var row=on.parentNode;
+if(row.scrollWidth>row.clientWidth)row.scrollLeft=on.offsetLeft-row.offsetLeft-(row.clientWidth-on.offsetWidth)/2;}
+showCurrent();
+})();</script></nav>
+<h1>🚀 創新高掃描</h1>
+<p class="sub">剛創過一年新高、小拉回後收盤再創 250 日新高（前高在 2～20 個交易日前）。全上市櫃、20 日均成交值 ≥ 3000 萬、排除收漲停。<b>目前是前瞻追蹤，不是下單訊號。</b>資料日：2026-10-20，更新：2026-10-20 23:51</p>
+
+<div class="cards">
+<div class="card total"><span class="cname">今日觸發</span><span class="cdesc">收盤符合全部條件</span><b>0</b></div>
+<div class="card"><span class="cname">其他新高</span><span class="cdesc">前高 ≥ 20 日前或收漲停，只列參考</span><b>1</b></div>
+<div class="card"><span class="cname">紙上部位</span><span class="cdesc">持有中／累計筆數</span><b>0／0</b></div>
+<div class="card"><span class="cname">MA20 出場</span><span class="cdesc">已出場平均（回測 +1.72%、勝率 25%）</span><b>—</b></div>
+<div class="card"><span class="cname">抱滿 60 日</span><span class="cdesc">已出場平均（回測 +2.85%、勝率 20%）</span><b>—</b></div>
+</div>
+<details class="howto"><summary>規則、回測結果與限制</summary><div class="body">
+<p><b>觸發條件（收盤判斷，還原權值）</b>：收盤 &gt; 前 250 個交易日的最高價；那個最高點在 2～20 個交易日前（剛創過高、拉回後再創高）；沒收漲停；收盤 ≥ 10 元；20 日均成交值 ≥ 3000 萬。同一檔 20 個交易日內只算一次。</p>
+<p><b>停損與出場</b>：停損 = 突破當天 K 棒低點；盤中跌破就出（跳空則以開盤價）。紙上部位同時記兩種出場：① 收盤跌破 MA20 出場（最多 120 日）；② 不看均線、抱滿 60 個交易日。報酬已扣來回成本 0.6%。</p>
+<p><b>回測（全上市櫃，近 5 年 2021-10～2026-09，2454 筆）</b>：① MA20 出場：勝率 24.9%、平均賺 20.2%／賠 4.4%（盈虧比 4.6）、每筆 +1.72%、扣等權大盤 +1.06%，7 年中 6 年贏大盤（2022 年 −2.5%）。② 抱滿 60 日：勝率 19.6%、盈虧比 7.1、每筆 +2.85%、扣大盤 +1.75%，7/7 年贏大盤。</p>
+<p><b>比較過但較差的</b>：很久沒創高的第一根（前高 120～250 日前）每筆只有 +0.5%；停損守前高 −1% 盈虧比更高但每筆更少；第一根黑 K 出場每筆 −0.3%；跌破 MA10 出場 +0.3～0.6%；要求族群同步創高沒有穩定加分。美股 S&amp;P 500 同規則幾乎沒有超額。</p>
+<p><b>限制</b>：勝率只有 2 成上下，連續停損 5～10 次很正常，每筆風險要小；收盤進場要用最後一盤；回測沒限制同時持有檔數；這是機械規則，沒看基本面與新聞。這不是投資建議。</p>
+</div></details>
+<h2>今日觸發（依停損距離排序）</h2>
+<div class="tablebox" id="sig"></div>
+<h2>其他新高（參考，不列入紙上部位）</h2>
+<div class="tablebox" id="others"></div>
+<h2>紙上部位：持有中</h2>
+<div class="tablebox" id="open"></div>
+<h2>紙上部位：兩種出場都結束</h2>
+<div class="tablebox" id="closed"></div>
+</div>
+<script>
+const D={"signals":[],"others":[{"code":"6870","name":"騰雲","market":"tpex","close":345,"chg":9.87,"prevHigh":340,"prevHighDate":"2026-09-24","gap":15,"stop":315.68,"risk":8.5,"ma20":315.57,"money20":53,"limitUp":true,"dup":false}],"open":[],"closed":[]};
+const $=id=>document.getElementById(id);
+const yi=(r,t)=>'<a href="https://tw.stock.yahoo.com/quote/'+r.code+(r.market==='twse'?'.TW':'.TWO')+'" target="_blank" rel="noopener">'+t+'</a>';
+const pc=v=>v==null?'<span class="none">—</span>':'<span class="'+(v<0?'neg':'pos')+'">'+(v>0?'+':'')+v.toFixed(2)+'%</span>';
+const tbl=(head,rows)=>rows.length?'<table><thead><tr>'+head.map(h=>'<th>'+h+'</th>').join('')+'</tr></thead><tbody>'+rows.join('')+'</tbody></table>':'<div class="empty">沒有</div>';
+const REASON={stop:'停損',ma20:'跌破MA20',d60:'滿60日',max:'滿120日'};
+const leg=l=>l.status==='open'?'<span class="none">持有中</span>':pc(l.ret)+' <span class="chip">'+REASON[l.reason]+' '+l.exitDate+'</span>';
+const hrow=r=>'<td>'+yi(r,r.code)+'</td><td>'+yi(r,r.name)+(r.dup?' <span class="chip">20日內重複</span>':'')+(r.limitUp?' <span class="chip">收漲停</span>':'')+'</td><td>'+r.close+'</td><td>'+pc(r.chg)+'</td><td>'+r.prevHigh+'</td><td>'+r.prevHighDate+'（'+r.gap+' 日前）</td><td>'+r.stop+'</td><td>'+r.risk+'%</td><td>'+r.ma20+'</td><td>'+r.money20.toLocaleString()+'</td>';
+const H=['代號','名稱','收盤','漲跌','前高','前高日期','停損（K棒低）','停損距離','MA20','20日均額（百萬）'];
+$('sig').innerHTML=tbl(H,D.signals.map(r=>'<tr>'+hrow(r)+'</tr>'));
+$('others').innerHTML=tbl(H,D.others.map(r=>'<tr>'+hrow(r)+'</tr>'));
+$('open').innerHTML=tbl(['代號','名稱','進場日','進場價','停損','最新收盤','目前報酬','持有天數','MA20 出場','抱滿 60 日'],D.open.map(p=>'<tr><td>'+yi(p,p.code)+'</td><td>'+yi(p,p.name)+'</td><td>'+p.date+'</td><td>'+p.entry+'</td><td>'+p.stop+'</td><td>'+(p.lastClose??'—')+'</td><td>'+pc(p.ret)+'</td><td>'+(p.held??0)+'</td><td>'+leg(p.ma20)+'</td><td>'+leg(p.d60)+'</td></tr>'));
+$('closed').innerHTML=tbl(['代號','名稱','進場日','進場價','停損','MA20 出場','抱滿 60 日'],D.closed.map(p=>'<tr><td>'+yi(p,p.code)+'</td><td>'+yi(p,p.name)+'</td><td>'+p.date+'</td><td>'+p.entry+'</td><td>'+p.stop+'</td><td>'+leg(p.ma20)+'</td><td>'+leg(p.d60)+'</td></tr>'));
+</script>
+</body>
+</html>

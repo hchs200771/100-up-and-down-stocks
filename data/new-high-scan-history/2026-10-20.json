@@ -1,0 +1,26 @@
+{
+ "tradingDate": "2026-10-20",
+ "universe": {
+  "candidates": 149,
+  "priced": 149
+ },
+ "signals": [],
+ "others": [
+  {
+   "code": "6870",
+   "name": "騰雲",
+   "market": "tpex",
+   "close": 345,
+   "chg": 9.87,
+   "prevHigh": 340,
+   "prevHighDate": "2026-09-24",
+   "gap": 15,
+   "stop": 315.68,
+   "risk": 8.5,
+   "ma20": 315.57,
+   "money20": 53,
+   "limitUp": true,
+   "dup": false
+  }
+ ]
+}
