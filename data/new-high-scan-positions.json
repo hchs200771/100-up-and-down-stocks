@@ -1,1 +1,42 @@
-[]
+[
+ {
+  "code": "2006",
+  "name": "東和鋼鐵",
+  "market": "twse",
+  "date": "2026-10-21",
+  "entry": 93.3,
+  "stop": 90.01,
+  "risk": 3.53,
+  "gap": 2,
+  "ma20": {
+   "status": "open"
+  },
+  "d60": {
+   "status": "open"
+  },
+  "lastClose": 93.3,
+  "lastDate": "2026-10-21",
+  "ret": -0.6,
+  "held": 0
+ },
+ {
+  "code": "6491",
+  "name": "晶碩",
+  "market": "twse",
+  "date": "2026-10-21",
+  "entry": 431,
+  "stop": 413.09,
+  "risk": 4.16,
+  "gap": 12,
+  "ma20": {
+   "status": "open"
+  },
+  "d60": {
+   "status": "open"
+  },
+  "lastClose": 431,
+  "lastDate": "2026-10-21",
+  "ret": -0.6,
+  "held": 0
+ }
+]

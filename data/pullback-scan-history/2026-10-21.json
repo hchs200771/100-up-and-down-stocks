@@ -1,0 +1,165 @@
+{
+ "tradingDate": "2026-10-21",
+ "regime": {
+  "close": 46887.76953125,
+  "ema50": 46835.16,
+  "ok": true
+ },
+ "universe": {
+  "listed": 248,
+  "liquid": 191,
+  "minFutVolume": 50,
+  "priced": 190
+ },
+ "signals": [
+  {
+   "code": "3189",
+   "name": "景碩",
+   "market": "twse",
+   "close": 1010,
+   "futVol": 3215,
+   "margin": "21.60%",
+   "adr": 5.5,
+   "stop": 976.1,
+   "risk": 3.36,
+   "riskPerContract": 67800,
+   "mom": 135,
+   "supports": [
+    "EMA9",
+    "EMA21"
+   ],
+   "dup": false
+  },
+  {
+   "code": "2340",
+   "name": "台亞",
+   "market": "twse",
+   "close": 48.75,
+   "futVol": 2277,
+   "margin": "20.25%",
+   "adr": 8,
+   "stop": 47.31,
+   "risk": 2.95,
+   "riskPerContract": 2880,
+   "mom": 56,
+   "supports": [
+    "EMA9"
+   ],
+   "dup": false
+  },
+  {
+   "code": "1326",
+   "name": "台化",
+   "market": "twse",
+   "close": 76.2,
+   "futVol": 2011,
+   "margin": "20.25%",
+   "adr": 5.1,
+   "stop": 74.43,
+   "risk": 2.33,
+   "riskPerContract": 3540,
+   "mom": 53,
+   "supports": [
+    "EMA9"
+   ],
+   "dup": true
+  }
+ ],
+ "watch": [
+  {
+   "code": "1718",
+   "name": "中纖",
+   "market": "twse",
+   "close": 11.6,
+   "futVol": 636,
+   "margin": "20.25%",
+   "adr": 5,
+   "mom": 71,
+   "pullback": 10.1,
+   "near": [
+    {
+     "name": "EMA21",
+     "price": 11.45,
+     "dist": 1.3
+    },
+    {
+     "name": "AVWAP",
+     "price": 11.59,
+     "dist": 0.1
+    }
+   ]
+  },
+  {
+   "code": "2615",
+   "name": "萬海",
+   "market": "twse",
+   "close": 116.5,
+   "futVol": 1340,
+   "margin": "16.20%",
+   "adr": 3.9,
+   "mom": 64,
+   "pullback": 6.8,
+   "near": [
+    {
+     "name": "EMA21",
+     "price": 116.35,
+     "dist": 0.1
+    }
+   ]
+  },
+  {
+   "code": "8046",
+   "name": "南電",
+   "market": "twse",
+   "close": 1340,
+   "futVol": 8211,
+   "margin": "22.95%",
+   "adr": 5.8,
+   "mom": 69,
+   "pullback": 11,
+   "near": [
+    {
+     "name": "EMA21",
+     "price": 1336.87,
+     "dist": 0.2
+    }
+   ]
+  },
+  {
+   "code": "8039",
+   "name": "台虹",
+   "market": "twse",
+   "close": 293,
+   "futVol": 4153,
+   "margin": "21.60%",
+   "adr": 6.7,
+   "mom": 108,
+   "pullback": 5.9,
+   "near": [
+    {
+     "name": "EMA21",
+     "price": 290.97,
+     "dist": 0.7
+    }
+   ]
+  },
+  {
+   "code": "3443",
+   "name": "創意",
+   "market": "twse",
+   "close": 8000,
+   "futVol": 5219,
+   "margin": "20.25%",
+   "adr": 5.8,
+   "mom": 124,
+   "pullback": 5.4,
+   "near": [
+    {
+     "name": "EMA9",
+     "price": 7908.58,
+     "dist": 1.2
+    }
+   ]
+  }
+ ]
+}

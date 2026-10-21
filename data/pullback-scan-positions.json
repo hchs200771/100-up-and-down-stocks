@@ -185,5 +185,33 @@
   "exitDate": "2026-10-19",
   "exit": 4979.98,
   "exitReason": "stop"
+ },
+ {
+  "code": "3189",
+  "name": "景碩",
+  "market": "twse",
+  "date": "2026-10-21",
+  "entry": 1010,
+  "stop": 976.1,
+  "risk": 3.36,
+  "status": "open",
+  "lastClose": 1010,
+  "lastDate": "2026-10-21",
+  "r": 0,
+  "held": 0
+ },
+ {
+  "code": "2340",
+  "name": "台亞",
+  "market": "twse",
+  "date": "2026-10-21",
+  "entry": 48.75,
+  "stop": 47.31,
+  "risk": 2.95,
+  "status": "open",
+  "lastClose": 48.75,
+  "lastDate": "2026-10-21",
+  "r": 0,
+  "held": 0
  }
 ]
