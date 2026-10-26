@@ -70,12 +70,20 @@ export function latestDate(root = process.cwd()): string {
   return date;
 }
 
-export async function checkHoldings(holdings: Holding[], date: string, broker: BrokerReport,
+/** 股名：優先用 data/market-latest.json 的 stockMap（全市場），沒有再退回分點名單。 */
+export function stockNames(root = process.cwd()): Record<string, string> {
+  const path = resolve(root, "data/market-latest.json");
+  if (!existsSync(path)) return {};
+  const stockMap: Record<string, { name?: string }> = JSON.parse(readFileSync(path, "utf8")).stockMap ?? {};
+  return Object.fromEntries(Object.entries(stockMap).filter(([, v]) => v?.name).map(([code, v]) => [code, v.name!]));
+}
+
+export async function checkHoldings(holdings: Holding[], requested: string, broker: BrokerReport,
   lookup: (date: string) => Promise<DailyChips> = institutionsOn,
-  priceLookup?: Parameters<typeof withMa10>[1]) {
+  priceLookup?: Parameters<typeof withMa10>[1], names: Record<string, string> = {}) {
   const sessions: { date: string; data: DailyChips }[] = [];
   const warnings: string[] = [];
-  const cursor = new Date(`${date}T00:00:00Z`);
+  const cursor = new Date(`${requested}T00:00:00Z`);
   for (let back = 0; back < 12 && sessions.length < 5; back++, cursor.setUTCDate(cursor.getUTCDate() - 1)) {
     const day = cursor.toISOString().slice(0, 10);
     try {
@@ -86,6 +94,9 @@ export async function checkHoldings(holdings: Holding[], date: string, broker: B
       break; // 未知日期不能跳過，否則會把更早的資料誤當近五日。
     }
   }
+  // 指定日不是交易日（休市、颱風假）時，改用往前最近的交易日。
+  const date = sessions[0]?.date ?? requested;
+  if (date !== requested) warnings.push(`${requested} 非交易日或尚無資料，改用最近交易日 ${date}`);
   if (sessions.length < 5) warnings.push(`法人資料僅 ${sessions.length} 個交易日，無法計算完整近五日`);
   if (broker.tradingDate !== date) warnings.push(`分點報告日期 ${broker.tradingDate}，目標日期 ${date}；缺少的日期補零，請留意資料時效`);
   const items: ReportItem[] = holdings.map(({ code }) => ({
@@ -104,7 +115,7 @@ export async function checkHoldings(holdings: Holding[], date: string, broker: B
       return sum;
     }, emptyChips()) : null;
     const price = prices.items[index];
-    return { ...holding, name: stockPairs[0]?.stockName ?? holding.code,
+    return { ...holding, name: names[holding.code] ?? stockPairs[0]?.stockName ?? holding.code,
       institutions: { daily, fiveDay, dates: sessions.map((s) => s.date), coveredDays: covered.length },
       brokers: stockPairs.map((p) => ({ broker: p.broker, grade: p.grade, geo: p.geo, threshold: p.threshold,
         direction: p.direction, recent5: p.recent5?.map((d) => ({ ...d, triggered: isTriggered(d.net, p.threshold, p.direction) })),
@@ -124,9 +135,9 @@ async function main() {
   const holdings = args.map((arg) => { const [code, direction] = arg.split(":"); return { code, direction } as Holding; });
   const path = resolve("data/broker-watch-latest.json");
   const broker: BrokerReport = existsSync(path) ? JSON.parse(readFileSync(path, "utf8")) : { tradingDate: date, notion: false, items: [] };
-  const result = await checkHoldings(holdings, date, broker);
+  const result = await checkHoldings(holdings, date, broker, undefined, undefined, stockNames());
   writeFileSync(resolve("data/holdings-chip-latest.json"), JSON.stringify(result, null, 2) + "\n");
-  console.log(`持股籌碼檢查 ${date}（單位：張；法人依序為外資／投信／自營商／合計）`);
+  console.log(`持股籌碼檢查 ${result.date}（單位：張；法人依序為外資／投信／自營商／合計）`);
   for (const warning of result.warnings) console.warn(`[警告] ${warning}`);
   const nets = (chips: Chips | null) => chips ? [chips.foreignNet, chips.trustNet, chips.dealerNet, chips.totalNet].join("／") : "資料不足";
   for (const i of result.items) console.log(`${i.code} ${i.name} ${i.direction} | 法人當日 ${nets(i.institutions.daily)}；五日 ${nets(i.institutions.fiveDay)} | 分點 ${i.brokers.length || i.brokerStatus} | 10日線 ${i.price.ma10 === null ? "資料不足" : `${i.price.aboveMa10 ? "上" : "下"} ${i.price.pct}%`} | ${i.verdict.join("；")}`);

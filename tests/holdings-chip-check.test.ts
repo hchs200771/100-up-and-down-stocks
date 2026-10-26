@@ -52,3 +52,16 @@ test("injected check: failed session is unknown, never backfills a misleading fi
   assert.deepEqual(result.items[0].verdict, ["無明顯籌碼訊號"]);
   assert.match(result.warnings.join("；"), /來源失敗.*僅 0 個交易日/);
 });
+
+test("injected check: non-trading requested date snaps back, names come from the market map", async () => {
+  const market = Object.fromEntries(Array.from({ length: 501 }, (_, n) => [`market${n}`, 10]));
+  const result = await checkHoldings([{ code: "2308", direction: "多" }], "2099-01-08",
+    { tradingDate: "2099-01-06", notion: false, items: [] },
+    async (date) => date > "2099-01-06" ? {} : { "2308": chips },
+    (date) => date.replace(/-/g, "") > "20990106" ? undefined : { ...market, "2308": 10 }, { "2308": "台達電" });
+  assert.equal(result.date, "2099-01-06");
+  assert.equal(result.items[0].name, "台達電");
+  assert.deepEqual(result.items[0].institutions.daily, chips);
+  assert.equal(result.items[0].price.ma10, 10);
+  assert.match(result.warnings.join("；"), /2099-01-08 非交易日.*改用最近交易日 2099-01-06/);
+});
