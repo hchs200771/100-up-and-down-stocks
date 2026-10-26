@@ -25,7 +25,15 @@ dotenv.config({ path: resolve(process.cwd(), ".env.local"), override: true, quie
 
 const NOTION_VERSION = "2025-09-03";
 const DEFAULT_DATA_SOURCE_ID = "f5774c39-be43-426c-8b02-85657137f35e";
-const E01 = "https://fubon-ebrokerdj.fbs.com.tw";
+export const E01_HOSTS = [
+  "https://fubon-ebrokerdj.fbs.com.tw",
+  "https://jdata.yuanta.com.tw",
+  "https://newjust.masterlink.com.tw",
+  "https://concords.moneydj.com",
+  "https://justdata.moneydj.com",
+  "https://stock.capital.com.tw",
+  "https://kgieworld.moneydj.com",
+];
 const UA = { "User-Agent": "Mozilla/5.0" };
 
 export type Direction = "雙向" | "買超" | "賣超";
@@ -86,10 +94,16 @@ export function parseBrokerList(js: string): Map<string, { code: string; name: s
       if (!code || !name) continue;
       const item = { code, name, hq };
       byKey.set(code.toUpperCase(), item);
+      byKey.set(displayBrokerCode(code).toUpperCase(), item);
       byKey.set(normalizeBrokerName(name), item);
     }
   }
   return byKey;
+}
+
+/** e01 分點代號常寫成 UTF-16 hex（0035003800350051 = 585Q），轉回 4 碼給人看、存 Notion。 */
+export function displayBrokerCode(code: string): string {
+  return /^(00[0-9a-f]{2}){4}$/i.test(code) ? code.match(/.{4}/g)!.map((h) => String.fromCharCode(parseInt(h, 16))).join("") : code;
 }
 
 /** 「富邦建國」「富邦-建國」「中國信託（總公司）」都對得上 e01 的名稱。 */
@@ -177,6 +191,28 @@ async function fetchBig5(url: string): Promise<string> {
   const response = await fetch(url, { headers: UA });
   if (!response.ok) throw new Error(`HTTP ${response.status} ${url}`);
   return new TextDecoder("big5").decode(await response.arrayBuffer());
+}
+
+async function fetchE01(path: string, index: number): Promise<string> {
+  let lastError: unknown;
+  for (let attempt = 0; attempt < E01_HOSTS.length; attempt++) {
+    const host = E01_HOSTS[(index + attempt) % E01_HOSTS.length];
+    try {
+      const body = await fetchBig5(`${host}${path}`);
+      const valid = path === "/z/js/zbrokerjs.djjs"
+        ? parseBrokerList(body).size > 0
+        : /GetBcdData\('/.test(body); // 「無資料」是正常回應（近期沒進出），不換站
+      if (!valid) throw new Error(`空白或無法解析的 e01 資料 ${host}${path}`);
+      return body;
+    } catch (error) {
+      lastError = error;
+      if (attempt + 1 < E01_HOSTS.length) {
+        const nextHost = E01_HOSTS[(index + attempt + 1) % E01_HOSTS.length];
+        console.warn(`[broker-watch] [warn] ${host} 抓取失敗（${(error as Error).message}），改用 ${nextHost}`);
+      }
+    }
+  }
+  throw lastError;
 }
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
@@ -295,12 +331,12 @@ async function main() {
     watchlist = JSON.parse(readFileSync(configPath, "utf8")).items;
   }
 
-  const brokers = parseBrokerList(await fetchBig5(`${E01}/z/js/zbrokerjs.djjs`));
+  const brokers = parseBrokerList(await fetchE01("/z/js/zbrokerjs.djjs", 0));
   const historyDir = resolve(process.cwd(), "data/broker-watch-history");
   mkdirSync(historyDir, { recursive: true });
 
   const results = [];
-  for (const item of watchlist) {
+  for (const [index, item] of watchlist.entries()) {
     const broker = brokers.get(item.brokerCode.toUpperCase()) ?? brokers.get(normalizeBrokerName(item.broker));
     if (!item.stockCode || !broker) {
       console.warn(`[broker-watch] [warn] ${item.title}：${!item.stockCode ? "缺股票代號" : `找不到分點「${item.brokerCode || item.broker}」`}，略過`);
@@ -310,7 +346,7 @@ async function main() {
 
     let fresh: DayNet[] = [];
     try {
-      fresh = parseBcdData(await fetchBig5(`${E01}/z/zc/zco/zco0/zco0.djhtm?a=${item.stockCode}&BHID=${broker.hq}&b=${broker.code}`), date);
+      fresh = parseBcdData(await fetchE01(`/z/zc/zco/zco0/zco0.djhtm?a=${item.stockCode}&BHID=${broker.hq}&b=${broker.code}`, index), date);
     } catch (error) {
       console.warn(`[broker-watch] [warn] ${item.title} 抓取失敗：${(error as Error).message}`);
     }
@@ -339,7 +375,7 @@ async function main() {
     // 回寫：最近觸發以歷史推算，重跑冪等；只在值有變時 PATCH。
     if (!notionOk) continue;
     const props: Record<string, unknown> = {};
-    if (!item.brokerCode) props["分點代號"] = { rich_text: [{ type: "text", text: { content: broker.code } }] };
+    if (!item.brokerCode) props["分點代號"] = { rich_text: [{ type: "text", text: { content: displayBrokerCode(broker.code) } }] };
     if (lastTrigger && (lastTrigger.date !== item.lastTriggerDate || lastTrigger.net !== item.lastTriggerNet)) {
       props["最近觸發日"] = { date: { start: lastTrigger.date } };
       props["最近買賣超張數"] = { number: lastTrigger.net };
