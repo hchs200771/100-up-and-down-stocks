@@ -7,9 +7,18 @@
 <meta name="robots" content="noindex">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2288%22%3E%F0%9F%95%B5%EF%B8%8F%3C%2Ftext%3E%3C%2Fsvg%3E">
 <style>
-:root{--bg:#f7f8fa;--card:#fff;--fg:#1a202c;--muted:#64748b;--line:#e2e8f0;--accent:#2563eb;--up:#c2410c;--down:#15803d;--chip:#eef2f7;--hit:#fef3c7}
-@media (prefers-color-scheme:dark){:root{--bg:#0f1420;--card:#171e2e;--fg:#e5eaf3;--muted:#8b98ad;--line:#28334a;--accent:#7aa2ff;--up:#ff8a5c;--down:#4ade80;--chip:#222c42;--hit:#3a2f12}}
+:root{--bg:#f7f8fa;--card:#fff;--fg:#1a202c;--muted:#64748b;--line:#e2e8f0;--accent:#2563eb;--up:#dc2626;--down:#15803d;--chip:#eef2f7;--hit:#fef3c7}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1420;--card:#171e2e;--fg:#e5eaf3;--muted:#8b98ad;--line:#28334a;--accent:#7aa2ff;--up:#f87171;--down:#4ade80;--chip:#222c42;--hit:#3a2f12}}
 *{box-sizing:border-box}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:14px;margin:16px 0}
+.watch-card{min-width:0;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px}
+.watch-card h2{font-size:16px;margin:0 0 6px;overflow-wrap:anywhere}
+.meta{margin:10px 0 0;font-size:13px}.card-note{overflow-wrap:anywhere;white-space:pre-wrap;color:var(--muted);font-size:13px}
+.verify{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px}
+.bars{display:block;height:auto;font-family:inherit;margin-top:8px}
+.axis-label{fill:var(--muted);font-size:12px}.grid{stroke:var(--line)}.zero{stroke:var(--muted)}
+.threshold{stroke:var(--accent);stroke-width:1.5;stroke-dasharray:5 4}
+details.others>summary{cursor:pointer;padding:12px 0;font-weight:600}
 body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.6 -apple-system,"PingFang TC","Noto Sans TC",sans-serif;padding:16px}
 .wrap{max-width:1200px;margin:0 auto}
 h1{font-size:20px;margin:4px 0 2px}
@@ -81,61 +90,496 @@ if(row.scrollWidth>row.clientWidth)row.scrollLeft=on.offsetLeft-row.offsetLeft-(
 showCurrent();
 })();</script></nav>
 <h1>🕵️ 贏家分點追蹤</h1>
-<p class="sub">交易日 2026-10-22｜追蹤 16 組｜<b class="pos">今日 3 組觸發</b>｜單位：張，正為買超、負為賣超｜名單沿用本機快取</p>
+<p class="sub">交易日 2026-10-22｜追蹤 159 組｜<b class="pos">近 5 日 14 組觸發</b>｜單位：張，正為買超、負為賣超｜名單沿用本機快取</p>
 <details class="howto">
 <summary>📖 本頁說明（點開）</summary>
 <div class="body"><ul>
 <li>名單維護在 Notion「投資 / 台股 / 贏家分點 / 分點追蹤名單」，每列一組「股票 × 分點」，取消「啟用」即停止追蹤。</li>
-<li>觸發條件：當日買超（或賣超，依觸發方向）張數達到門檻。「最近觸發」取近期歷史中最後一次達標的日子。</li>
+<li>觸發條件：截至報告交易日（含當日）的最近 5 個交易日，任一天買超／賣超依方向達到門檻；雙向採絕對值。未設門檻不觸發，無交易日補零。卡片依最近觸發日期、該次張數絕對值遞減排序。</li>
 <li>資料來源：富邦 e01 券商分點進出（約 45 個交易日滾動），每天累積存檔，時間越久歷史越長。</li>
 <li>分點不代表特定人，僅作籌碼參考；點分點名稱可到 e01 看完整走勢。</li>
 </ul></div>
 </details>
+<section class="cards" aria-label="近五日觸發分點"><article class="watch-card">
+<h2><a href="https://tw.stock.yahoo.com/quote/2303.TW" target="_blank" rel="noopener">聯電 2303</a> × 土銀-和平</h2>
+<p class="sub">最近觸發 2026-10-22：<span class="pos" style="font-weight:700">+601</span> 張</p>
+<p class="meta"><span class="chip">等級：A</span> 門檻 300 張 · 雙向</p>
+<svg class="bars" viewBox="0 0 420 212" width="100%" role="img" aria-label="聯電 土銀-和平 近五日買賣超（張）">
+<title>2026-10-16：+5 張；2026-10-19：-1 張；2026-10-20：+15 張；2026-10-21：+2 張；2026-10-22：+601 張</title>
+<text x="8" y="14" class="axis-label">張</text>
+<line x1="72" x2="408" y1="172" y2="172" class="grid"/><text x="64" y="176" text-anchor="end" class="axis-label">-700</text><line x1="72" x2="408" y1="135" y2="135" class="grid"/><text x="64" y="139" text-anchor="end" class="axis-label">-350</text><line x1="72" x2="408" y1="98" y2="98" class="zero"/><text x="64" y="102" text-anchor="end" class="axis-label">0</text><line x1="72" x2="408" y1="61" y2="61" class="grid"/><text x="64" y="65" text-anchor="end" class="axis-label">+350</text><line x1="72" x2="408" y1="24" y2="24" class="grid"/><text x="64" y="28" text-anchor="end" class="axis-label">+700</text>
+<line x1="72" x2="72" y1="24" y2="172" class="zero"/>
+<rect x="90.81599999999999" y="97.47142857142858" width="29.568" height="0.5285714285714249" fill="var(--up)"><title>2026-10-16：+5 張</title></rect>
+<line x1="105.6" x2="105.6" y1="172" y2="176" class="zero"/>
+<text x="105.6" y="194" text-anchor="middle" class="axis-label">10/16</text><rect x="158.01600000000002" y="98" width="29.568" height="0.10571428571428498" fill="var(--down)"><title>2026-10-19：-1 張</title></rect>
+<line x1="172.8" x2="172.8" y1="172" y2="176" class="zero"/>
+<text x="172.8" y="194" text-anchor="middle" class="axis-label">10/19</text><rect x="225.216" y="96.41428571428573" width="29.568" height="1.5857142857142748" fill="var(--up)"><title>2026-10-20：+15 張</title></rect>
+<line x1="240" x2="240" y1="172" y2="176" class="zero"/>
+<text x="240" y="194" text-anchor="middle" class="axis-label">10/20</text><rect x="292.41600000000005" y="97.78857142857143" width="29.568" height="0.21142857142856997" fill="var(--up)"><title>2026-10-21：+2 張</title></rect>
+<line x1="307.20000000000005" x2="307.20000000000005" y1="172" y2="176" class="zero"/>
+<text x="307.20000000000005" y="194" text-anchor="middle" class="axis-label">10/21</text><rect x="359.61600000000004" y="34.465714285714284" width="29.568" height="63.534285714285716" fill="var(--up)"><title>2026-10-22：+601 張</title></rect>
+<line x1="374.40000000000003" x2="374.40000000000003" y1="172" y2="176" class="zero"/>
+<text x="374.40000000000003" y="194" text-anchor="middle" class="axis-label">10/22</text>
+<line x1="72" x2="408" y1="66.28571428571428" y2="66.28571428571428" class="threshold"><title>門檻 +300 張</title></line><line x1="72" x2="408" y1="129.71428571428572" y2="129.71428571428572" class="threshold"><title>門檻 -300 張</title></line>
+</svg>
+<p class="sub">虛線：雙向門檻 300 張</p>
+<p class="card-note">備註：來源：分析師；平淡行情也賺的常勝軍，82 左右低檔佈局、5/4 單日大賣約 3000 張出清。近 45 日 P90 29 張、最大 601 張</p>
+<div class="verify"><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2303&amp;BHID=1030&amp;b=1038" target="_blank" rel="noopener">分點進出明細 ↗</a><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco.djhtm?a=2303" target="_blank" rel="noopener">個股主力進出 ↗</a></div>
+</article>
+<article class="watch-card">
+<h2><a href="https://tw.stock.yahoo.com/quote/6269.TW" target="_blank" rel="noopener">台郡 6269</a> × 華南永昌-民權</h2>
+<p class="sub">最近觸發 2026-10-22：<span class="neg" style="font-weight:700">-197</span> 張</p>
+<p class="meta"><span class="chip">等級：未分級</span> 門檻 80 張 · 雙向</p>
+<svg class="bars" viewBox="0 0 420 212" width="100%" role="img" aria-label="台郡 華南永昌-民權 近五日買賣超（張）">
+<title>2026-10-16：-24 張；2026-10-19：-89 張；2026-10-20：-17 張；2026-10-21：-2 張；2026-10-22：-197 張</title>
+<text x="8" y="14" class="axis-label">張</text>
+<line x1="72" x2="408" y1="172" y2="172" class="grid"/><text x="64" y="176" text-anchor="end" class="axis-label">-200</text><line x1="72" x2="408" y1="135" y2="135" class="grid"/><text x="64" y="139" text-anchor="end" class="axis-label">-100</text><line x1="72" x2="408" y1="98" y2="98" class="zero"/><text x="64" y="102" text-anchor="end" class="axis-label">0</text><line x1="72" x2="408" y1="61" y2="61" class="grid"/><text x="64" y="65" text-anchor="end" class="axis-label">+100</text><line x1="72" x2="408" y1="24" y2="24" class="grid"/><text x="64" y="28" text-anchor="end" class="axis-label">+200</text>
+<line x1="72" x2="72" y1="24" y2="172" class="zero"/>
+<rect x="90.81599999999999" y="98" width="29.568" height="8.879999999999995" fill="var(--down)"><title>2026-10-16：-24 張</title></rect>
+<line x1="105.6" x2="105.6" y1="172" y2="176" class="zero"/>
+<text x="105.6" y="194" text-anchor="middle" class="axis-label">10/16</text><rect x="158.01600000000002" y="98" width="29.568" height="32.93000000000001" fill="var(--down)"><title>2026-10-19：-89 張</title></rect>
+<line x1="172.8" x2="172.8" y1="172" y2="176" class="zero"/>
+<text x="172.8" y="194" text-anchor="middle" class="axis-label">10/19</text><rect x="225.216" y="98" width="29.568" height="6.289999999999992" fill="var(--down)"><title>2026-10-20：-17 張</title></rect>
+<line x1="240" x2="240" y1="172" y2="176" class="zero"/>
+<text x="240" y="194" text-anchor="middle" class="axis-label">10/20</text><rect x="292.41600000000005" y="98" width="29.568" height="0.7399999999999949" fill="var(--down)"><title>2026-10-21：-2 張</title></rect>
+<line x1="307.20000000000005" x2="307.20000000000005" y1="172" y2="176" class="zero"/>
+<text x="307.20000000000005" y="194" text-anchor="middle" class="axis-label">10/21</text><rect x="359.61600000000004" y="98" width="29.568" height="72.88999999999999" fill="var(--down)"><title>2026-10-22：-197 張</title></rect>
+<line x1="374.40000000000003" x2="374.40000000000003" y1="172" y2="176" class="zero"/>
+<text x="374.40000000000003" y="194" text-anchor="middle" class="axis-label">10/22</text>
+<line x1="72" x2="408" y1="68.4" y2="68.4" class="threshold"><title>門檻 +80 張</title></line><line x1="72" x2="408" y1="127.6" y2="127.6" class="threshold"><title>門檻 -80 張</title></line>
+</svg>
+<p class="sub">虛線：雙向門檻 80 張</p>
+<p class="card-note">備註：反查：分析師稱口碑分點，5/1~8/10 累計買超 462 張、10/19 賣超 89、10/22 賣超 197（三條線索皆吻合）。他說已清倉，追蹤下一波。門檻取 89 張訊號</p>
+<div class="verify"><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=6269&amp;BHID=9300&amp;b=9312" target="_blank" rel="noopener">分點進出明細 ↗</a><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco.djhtm?a=6269" target="_blank" rel="noopener">個股主力進出 ↗</a></div>
+</article>
+<article class="watch-card">
+<h2><a href="https://tw.stock.yahoo.com/quote/3264.TWO" target="_blank" rel="noopener">欣銓 3264</a> × 華南永昌-古亭</h2>
+<p class="sub">最近觸發 2026-10-22：<span class="neg" style="font-weight:700">-122</span> 張</p>
+<p class="meta"><span class="chip">等級：A</span> 門檻 50 張 · 雙向</p>
+<svg class="bars" viewBox="0 0 420 212" width="100%" role="img" aria-label="欣銓 華南永昌-古亭 近五日買賣超（張）">
+<title>2026-10-16：+19 張；2026-10-19：-18 張；2026-10-20：-45 張；2026-10-21：-18 張；2026-10-22：-122 張</title>
+<text x="8" y="14" class="axis-label">張</text>
+<line x1="72" x2="408" y1="172" y2="172" class="grid"/><text x="64" y="176" text-anchor="end" class="axis-label">-200</text><line x1="72" x2="408" y1="135" y2="135" class="grid"/><text x="64" y="139" text-anchor="end" class="axis-label">-100</text><line x1="72" x2="408" y1="98" y2="98" class="zero"/><text x="64" y="102" text-anchor="end" class="axis-label">0</text><line x1="72" x2="408" y1="61" y2="61" class="grid"/><text x="64" y="65" text-anchor="end" class="axis-label">+100</text><line x1="72" x2="408" y1="24" y2="24" class="grid"/><text x="64" y="28" text-anchor="end" class="axis-label">+200</text>
+<line x1="72" x2="72" y1="24" y2="172" class="zero"/>
+<rect x="90.81599999999999" y="90.97" width="29.568" height="7.030000000000001" fill="var(--up)"><title>2026-10-16：+19 張</title></rect>
+<line x1="105.6" x2="105.6" y1="172" y2="176" class="zero"/>
+<text x="105.6" y="194" text-anchor="middle" class="axis-label">10/16</text><rect x="158.01600000000002" y="98" width="29.568" height="6.659999999999997" fill="var(--down)"><title>2026-10-19：-18 張</title></rect>
+<line x1="172.8" x2="172.8" y1="172" y2="176" class="zero"/>
+<text x="172.8" y="194" text-anchor="middle" class="axis-label">10/19</text><rect x="225.216" y="98" width="29.568" height="16.650000000000006" fill="var(--down)"><title>2026-10-20：-45 張</title></rect>
+<line x1="240" x2="240" y1="172" y2="176" class="zero"/>
+<text x="240" y="194" text-anchor="middle" class="axis-label">10/20</text><rect x="292.41600000000005" y="98" width="29.568" height="6.659999999999997" fill="var(--down)"><title>2026-10-21：-18 張</title></rect>
+<line x1="307.20000000000005" x2="307.20000000000005" y1="172" y2="176" class="zero"/>
+<text x="307.20000000000005" y="194" text-anchor="middle" class="axis-label">10/21</text><rect x="359.61600000000004" y="98" width="29.568" height="45.139999999999986" fill="var(--down)"><title>2026-10-22：-122 張</title></rect>
+<line x1="374.40000000000003" x2="374.40000000000003" y1="172" y2="176" class="zero"/>
+<text x="374.40000000000003" y="194" text-anchor="middle" class="axis-label">10/22</text>
+<line x1="72" x2="408" y1="79.5" y2="79.5" class="threshold"><title>門檻 +50 張</title></line><line x1="72" x2="408" y1="116.5" y2="116.5" class="threshold"><title>門檻 -50 張</title></line>
+</svg>
+<p class="sub">虛線：雙向門檻 50 張</p>
+<p class="card-note">備註：程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-09~22-12 21%、多22-12~26-04 27%）；目前空單 203 張、+3%；近 45 日 P90 24 張</p>
+<div class="verify"><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3264&amp;BHID=9300&amp;b=9309" target="_blank" rel="noopener">分點進出明細 ↗</a><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco.djhtm?a=3264" target="_blank" rel="noopener">個股主力進出 ↗</a></div>
+</article>
+<article class="watch-card">
+<h2><a href="https://tw.stock.yahoo.com/quote/2301.TW" target="_blank" rel="noopener">光寶科 2301</a> × 群益金鼎-忠孝</h2>
+<p class="sub">最近觸發 2026-10-22：<span class="neg" style="font-weight:700">-104</span> 張</p>
+<p class="meta"><span class="chip">等級：未分級</span> 門檻 100 張 · 雙向</p>
+<svg class="bars" viewBox="0 0 420 212" width="100%" role="img" aria-label="光寶科 群益金鼎-忠孝 近五日買賣超（張）">
+<title>2026-10-16：0 張；2026-10-19：0 張；2026-10-20：+2 張；2026-10-21：+2 張；2026-10-22：-104 張</title>
+<text x="8" y="14" class="axis-label">張</text>
+<line x1="72" x2="408" y1="172" y2="172" class="grid"/><text x="64" y="176" text-anchor="end" class="axis-label">-200</text><line x1="72" x2="408" y1="135" y2="135" class="grid"/><text x="64" y="139" text-anchor="end" class="axis-label">-100</text><line x1="72" x2="408" y1="98" y2="98" class="zero"/><text x="64" y="102" text-anchor="end" class="axis-label">0</text><line x1="72" x2="408" y1="61" y2="61" class="grid"/><text x="64" y="65" text-anchor="end" class="axis-label">+100</text><line x1="72" x2="408" y1="24" y2="24" class="grid"/><text x="64" y="28" text-anchor="end" class="axis-label">+200</text>
+<line x1="72" x2="72" y1="24" y2="172" class="zero"/>
+<rect x="90.81599999999999" y="98" width="29.568" height="0" fill="var(--up)"><title>2026-10-16：0 張</title></rect>
+<line x1="105.6" x2="105.6" y1="172" y2="176" class="zero"/>
+<text x="105.6" y="194" text-anchor="middle" class="axis-label">10/16</text><rect x="158.01600000000002" y="98" width="29.568" height="0" fill="var(--up)"><title>2026-10-19：0 張</title></rect>
+<line x1="172.8" x2="172.8" y1="172" y2="176" class="zero"/>
+<text x="172.8" y="194" text-anchor="middle" class="axis-label">10/19</text><rect x="225.216" y="97.26" width="29.568" height="0.7399999999999949" fill="var(--up)"><title>2026-10-20：+2 張</title></rect>
+<line x1="240" x2="240" y1="172" y2="176" class="zero"/>
+<text x="240" y="194" text-anchor="middle" class="axis-label">10/20</text><rect x="292.41600000000005" y="97.26" width="29.568" height="0.7399999999999949" fill="var(--up)"><title>2026-10-21：+2 張</title></rect>
+<line x1="307.20000000000005" x2="307.20000000000005" y1="172" y2="176" class="zero"/>
+<text x="307.20000000000005" y="194" text-anchor="middle" class="axis-label">10/21</text><rect x="359.61600000000004" y="98" width="29.568" height="38.48000000000002" fill="var(--down)"><title>2026-10-22：-104 張</title></rect>
+<line x1="374.40000000000003" x2="374.40000000000003" y1="172" y2="176" class="zero"/>
+<text x="374.40000000000003" y="194" text-anchor="middle" class="axis-label">10/22</text>
+<line x1="72" x2="408" y1="61" y2="61" class="threshold"><title>門檻 +100 張</title></line><line x1="72" x2="408" y1="135" y2="135" class="threshold"><title>門檻 -100 張</title></line>
+</svg>
+<p class="sub">虛線：雙向門檻 100 張</p>
+<p class="card-note">備註：來源：分析師；庫藏股執行分點，且過往績效佳。近 45 日 P90 104、最大 392 張</p>
+<div class="verify"><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2301&amp;BHID=9100&amp;b=0039003100380057" target="_blank" rel="noopener">分點進出明細 ↗</a><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco.djhtm?a=2301" target="_blank" rel="noopener">個股主力進出 ↗</a></div>
+</article>
+<article class="watch-card">
+<h2><a href="https://tw.stock.yahoo.com/quote/3529.TWO" target="_blank" rel="noopener">力旺 3529</a> × 元大-士林</h2>
+<p class="sub">最近觸發 2026-10-21：<span class="pos" style="font-weight:700">+21</span> 張</p>
+<p class="meta"><span class="chip">等級：A</span> 門檻 10 張 · 雙向</p>
+<svg class="bars" viewBox="0 0 420 212" width="100%" role="img" aria-label="力旺 元大-士林 近五日買賣超（張）">
+<title>2026-10-16：0 張；2026-10-19：0 張；2026-10-20：0 張；2026-10-21：+21 張；2026-10-22：0 張</title>
+<text x="8" y="14" class="axis-label">張</text>
+<line x1="72" x2="408" y1="172" y2="172" class="grid"/><text x="64" y="176" text-anchor="end" class="axis-label">-30</text><line x1="72" x2="408" y1="135" y2="135" class="grid"/><text x="64" y="139" text-anchor="end" class="axis-label">-15</text><line x1="72" x2="408" y1="98" y2="98" class="zero"/><text x="64" y="102" text-anchor="end" class="axis-label">0</text><line x1="72" x2="408" y1="61" y2="61" class="grid"/><text x="64" y="65" text-anchor="end" class="axis-label">+15</text><line x1="72" x2="408" y1="24" y2="24" class="grid"/><text x="64" y="28" text-anchor="end" class="axis-label">+30</text>
+<line x1="72" x2="72" y1="24" y2="172" class="zero"/>
+<rect x="90.81599999999999" y="98" width="29.568" height="0" fill="var(--up)"><title>2026-10-16：0 張</title></rect>
+<line x1="105.6" x2="105.6" y1="172" y2="176" class="zero"/>
+<text x="105.6" y="194" text-anchor="middle" class="axis-label">10/16</text><rect x="158.01600000000002" y="98" width="29.568" height="0" fill="var(--up)"><title>2026-10-19：0 張</title></rect>
+<line x1="172.8" x2="172.8" y1="172" y2="176" class="zero"/>
+<text x="172.8" y="194" text-anchor="middle" class="axis-label">10/19</text><rect x="225.216" y="98" width="29.568" height="0" fill="var(--up)"><title>2026-10-20：0 張</title></rect>
+<line x1="240" x2="240" y1="172" y2="176" class="zero"/>
+<text x="240" y="194" text-anchor="middle" class="axis-label">10/20</text><rect x="292.41600000000005" y="46.2" width="29.568" height="51.8" fill="var(--up)"><title>2026-10-21：+21 張</title></rect>
+<line x1="307.20000000000005" x2="307.20000000000005" y1="172" y2="176" class="zero"/>
+<text x="307.20000000000005" y="194" text-anchor="middle" class="axis-label">10/21</text><rect x="359.61600000000004" y="98" width="29.568" height="0" fill="var(--up)"><title>2026-10-22：0 張</title></rect>
+<line x1="374.40000000000003" x2="374.40000000000003" y1="172" y2="176" class="zero"/>
+<text x="374.40000000000003" y="194" text-anchor="middle" class="axis-label">10/22</text>
+<line x1="72" x2="408" y1="73.33333333333334" y2="73.33333333333334" class="threshold"><title>門檻 +10 張</title></line><line x1="72" x2="408" y1="122.66666666666667" y2="122.66666666666667" class="threshold"><title>門檻 -10 張</title></line>
+</svg>
+<p class="sub">虛線：雙向門檻 10 張</p>
+<p class="card-note">備註：程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-09~23-02 26%、空24-10~25-04 36%）；目前多單 22 張、-5%；近 45 日 P90 3 張</p>
+<div class="verify"><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3529&amp;BHID=9800&amp;b=003900380031006a" target="_blank" rel="noopener">分點進出明細 ↗</a><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco.djhtm?a=3529" target="_blank" rel="noopener">個股主力進出 ↗</a></div>
+</article>
+<article class="watch-card">
+<h2><a href="https://tw.stock.yahoo.com/quote/2345.TW" target="_blank" rel="noopener">智邦 2345</a> × 台新-城東</h2>
+<p class="sub">最近觸發 2026-10-21：<span class="pos" style="font-weight:700">+12</span> 張</p>
+<p class="meta"><span class="chip">等級：A</span> 門檻 10 張 · 雙向</p>
+<svg class="bars" viewBox="0 0 420 212" width="100%" role="img" aria-label="智邦 台新-城東 近五日買賣超（張）">
+<title>2026-10-16：0 張；2026-10-19：+2 張；2026-10-20：0 張；2026-10-21：+12 張；2026-10-22：+2 張</title>
+<text x="8" y="14" class="axis-label">張</text>
+<line x1="72" x2="408" y1="172" y2="172" class="grid"/><text x="64" y="176" text-anchor="end" class="axis-label">-20</text><line x1="72" x2="408" y1="135" y2="135" class="grid"/><text x="64" y="139" text-anchor="end" class="axis-label">-10</text><line x1="72" x2="408" y1="98" y2="98" class="zero"/><text x="64" y="102" text-anchor="end" class="axis-label">0</text><line x1="72" x2="408" y1="61" y2="61" class="grid"/><text x="64" y="65" text-anchor="end" class="axis-label">+10</text><line x1="72" x2="408" y1="24" y2="24" class="grid"/><text x="64" y="28" text-anchor="end" class="axis-label">+20</text>
+<line x1="72" x2="72" y1="24" y2="172" class="zero"/>
+<rect x="90.81599999999999" y="98" width="29.568" height="0" fill="var(--up)"><title>2026-10-16：0 張</title></rect>
+<line x1="105.6" x2="105.6" y1="172" y2="176" class="zero"/>
+<text x="105.6" y="194" text-anchor="middle" class="axis-label">10/16</text><rect x="158.01600000000002" y="90.6" width="29.568" height="7.400000000000006" fill="var(--up)"><title>2026-10-19：+2 張</title></rect>
+<line x1="172.8" x2="172.8" y1="172" y2="176" class="zero"/>
+<text x="172.8" y="194" text-anchor="middle" class="axis-label">10/19</text><rect x="225.216" y="98" width="29.568" height="0" fill="var(--up)"><title>2026-10-20：0 張</title></rect>
+<line x1="240" x2="240" y1="172" y2="176" class="zero"/>
+<text x="240" y="194" text-anchor="middle" class="axis-label">10/20</text><rect x="292.41600000000005" y="53.599999999999994" width="29.568" height="44.400000000000006" fill="var(--up)"><title>2026-10-21：+12 張</title></rect>
+<line x1="307.20000000000005" x2="307.20000000000005" y1="172" y2="176" class="zero"/>
+<text x="307.20000000000005" y="194" text-anchor="middle" class="axis-label">10/21</text><rect x="359.61600000000004" y="90.6" width="29.568" height="7.400000000000006" fill="var(--up)"><title>2026-10-22：+2 張</title></rect>
+<line x1="374.40000000000003" x2="374.40000000000003" y1="172" y2="176" class="zero"/>
+<text x="374.40000000000003" y="194" text-anchor="middle" class="axis-label">10/22</text>
+<line x1="72" x2="408" y1="61" y2="61" class="threshold"><title>門檻 +10 張</title></line><line x1="72" x2="408" y1="135" y2="135" class="threshold"><title>門檻 -10 張</title></line>
+</svg>
+<p class="sub">虛線：雙向門檻 10 張</p>
+<p class="card-note">備註：程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多23-09~24-12 42%、多25-04~25-12 33%）；目前空單 121 張、+39%；近 45 日 P90 6 張</p>
+<div class="verify"><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2345&amp;BHID=9B00&amp;b=0039004200320072" target="_blank" rel="noopener">分點進出明細 ↗</a><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco.djhtm?a=2345" target="_blank" rel="noopener">個股主力進出 ↗</a></div>
+</article>
+<article class="watch-card">
+<h2><a href="https://tw.stock.yahoo.com/quote/2408.TW" target="_blank" rel="noopener">南亞科 2408</a> × 兆豐-北高雄</h2>
+<p class="sub">最近觸發 2026-10-20：<span class="pos" style="font-weight:700">+153</span> 張</p>
+<p class="meta"><span class="chip">等級：A</span> 門檻 70 張 · 雙向</p>
+<svg class="bars" viewBox="0 0 420 212" width="100%" role="img" aria-label="南亞科 兆豐-北高雄 近五日買賣超（張）">
+<title>2026-10-16：+96 張；2026-10-19：+7 張；2026-10-20：+153 張；2026-10-21：-2 張；2026-10-22：+32 張</title>
+<text x="8" y="14" class="axis-label">張</text>
+<line x1="72" x2="408" y1="172" y2="172" class="grid"/><text x="64" y="176" text-anchor="end" class="axis-label">-200</text><line x1="72" x2="408" y1="135" y2="135" class="grid"/><text x="64" y="139" text-anchor="end" class="axis-label">-100</text><line x1="72" x2="408" y1="98" y2="98" class="zero"/><text x="64" y="102" text-anchor="end" class="axis-label">0</text><line x1="72" x2="408" y1="61" y2="61" class="grid"/><text x="64" y="65" text-anchor="end" class="axis-label">+100</text><line x1="72" x2="408" y1="24" y2="24" class="grid"/><text x="64" y="28" text-anchor="end" class="axis-label">+200</text>
+<line x1="72" x2="72" y1="24" y2="172" class="zero"/>
+<rect x="90.81599999999999" y="62.480000000000004" width="29.568" height="35.519999999999996" fill="var(--up)"><title>2026-10-16：+96 張</title></rect>
+<line x1="105.6" x2="105.6" y1="172" y2="176" class="zero"/>
+<text x="105.6" y="194" text-anchor="middle" class="axis-label">10/16</text><rect x="158.01600000000002" y="95.41000000000001" width="29.568" height="2.589999999999989" fill="var(--up)"><title>2026-10-19：+7 張</title></rect>
+<line x1="172.8" x2="172.8" y1="172" y2="176" class="zero"/>
+<text x="172.8" y="194" text-anchor="middle" class="axis-label">10/19</text><rect x="225.216" y="41.390000000000015" width="29.568" height="56.609999999999985" fill="var(--up)"><title>2026-10-20：+153 張</title></rect>
+<line x1="240" x2="240" y1="172" y2="176" class="zero"/>
+<text x="240" y="194" text-anchor="middle" class="axis-label">10/20</text><rect x="292.41600000000005" y="98" width="29.568" height="0.7399999999999949" fill="var(--down)"><title>2026-10-21：-2 張</title></rect>
+<line x1="307.20000000000005" x2="307.20000000000005" y1="172" y2="176" class="zero"/>
+<text x="307.20000000000005" y="194" text-anchor="middle" class="axis-label">10/21</text><rect x="359.61600000000004" y="86.16000000000001" width="29.568" height="11.83999999999999" fill="var(--up)"><title>2026-10-22：+32 張</title></rect>
+<line x1="374.40000000000003" x2="374.40000000000003" y1="172" y2="176" class="zero"/>
+<text x="374.40000000000003" y="194" text-anchor="middle" class="axis-label">10/22</text>
+<line x1="72" x2="408" y1="72.1" y2="72.1" class="threshold"><title>門檻 +70 張</title></line><line x1="72" x2="408" y1="123.9" y2="123.9" class="threshold"><title>門檻 -70 張</title></line>
+</svg>
+<p class="sub">虛線：雙向門檻 70 張</p>
+<p class="card-note">備註：程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多25-12~26-01 47%、多26-03~26-06 66%）；目前多單 190 張、-3%；近 45 日 P90 67 張</p>
+<div class="verify"><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2408&amp;BHID=7000&amp;b=0037003000300049" target="_blank" rel="noopener">分點進出明細 ↗</a><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco.djhtm?a=2408" target="_blank" rel="noopener">個股主力進出 ↗</a></div>
+</article>
+<article class="watch-card">
+<h2><a href="https://tw.stock.yahoo.com/quote/6239.TW" target="_blank" rel="noopener">力成 6239</a> × 富邦-竹北</h2>
+<p class="sub">最近觸發 2026-10-20：<span class="pos" style="font-weight:700">+124</span> 張</p>
+<p class="meta"><span class="chip">等級：A</span> 門檻 70 張 · 雙向</p>
+<svg class="bars" viewBox="0 0 420 212" width="100%" role="img" aria-label="力成 富邦-竹北 近五日買賣超（張）">
+<title>2026-10-16：+4 張；2026-10-19：+64 張；2026-10-20：+124 張；2026-10-21：+5 張；2026-10-22：+35 張</title>
+<text x="8" y="14" class="axis-label">張</text>
+<line x1="72" x2="408" y1="172" y2="172" class="grid"/><text x="64" y="176" text-anchor="end" class="axis-label">-200</text><line x1="72" x2="408" y1="135" y2="135" class="grid"/><text x="64" y="139" text-anchor="end" class="axis-label">-100</text><line x1="72" x2="408" y1="98" y2="98" class="zero"/><text x="64" y="102" text-anchor="end" class="axis-label">0</text><line x1="72" x2="408" y1="61" y2="61" class="grid"/><text x="64" y="65" text-anchor="end" class="axis-label">+100</text><line x1="72" x2="408" y1="24" y2="24" class="grid"/><text x="64" y="28" text-anchor="end" class="axis-label">+200</text>
+<line x1="72" x2="72" y1="24" y2="172" class="zero"/>
+<rect x="90.81599999999999" y="96.52" width="29.568" height="1.480000000000004" fill="var(--up)"><title>2026-10-16：+4 張</title></rect>
+<line x1="105.6" x2="105.6" y1="172" y2="176" class="zero"/>
+<text x="105.6" y="194" text-anchor="middle" class="axis-label">10/16</text><rect x="158.01600000000002" y="74.32" width="29.568" height="23.680000000000007" fill="var(--up)"><title>2026-10-19：+64 張</title></rect>
+<line x1="172.8" x2="172.8" y1="172" y2="176" class="zero"/>
+<text x="172.8" y="194" text-anchor="middle" class="axis-label">10/19</text><rect x="225.216" y="52.11999999999999" width="29.568" height="45.88000000000001" fill="var(--up)"><title>2026-10-20：+124 張</title></rect>
+<line x1="240" x2="240" y1="172" y2="176" class="zero"/>
+<text x="240" y="194" text-anchor="middle" class="axis-label">10/20</text><rect x="292.41600000000005" y="96.15" width="29.568" height="1.8499999999999943" fill="var(--up)"><title>2026-10-21：+5 張</title></rect>
+<line x1="307.20000000000005" x2="307.20000000000005" y1="172" y2="176" class="zero"/>
+<text x="307.20000000000005" y="194" text-anchor="middle" class="axis-label">10/21</text><rect x="359.61600000000004" y="85.05" width="29.568" height="12.950000000000003" fill="var(--up)"><title>2026-10-22：+35 張</title></rect>
+<line x1="374.40000000000003" x2="374.40000000000003" y1="172" y2="176" class="zero"/>
+<text x="374.40000000000003" y="194" text-anchor="middle" class="axis-label">10/22</text>
+<line x1="72" x2="408" y1="72.1" y2="72.1" class="threshold"><title>門檻 +70 張</title></line><line x1="72" x2="408" y1="123.9" y2="123.9" class="threshold"><title>門檻 -70 張</title></line>
+</svg>
+<p class="sub">虛線：雙向門檻 70 張</p>
+<p class="card-note">備註：程式掃描 2022-06 起，20% 門檻：3 次獲利波段（多22-09~23-09 32%、空24-03~24-11 45%、多25-08~25-10 44%）；目前多單 307 張、-6%；近 45 日 P90 64 張</p>
+<div class="verify"><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=6239&amp;BHID=9600&amp;b=9624" target="_blank" rel="noopener">分點進出明細 ↗</a><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco.djhtm?a=6239" target="_blank" rel="noopener">個股主力進出 ↗</a></div>
+</article>
+<article class="watch-card">
+<h2><a href="https://tw.stock.yahoo.com/quote/5483.TWO" target="_blank" rel="noopener">中美晶 5483</a> × 富邦-木柵</h2>
+<p class="sub">最近觸發 2026-10-20：<span class="neg" style="font-weight:700">-67</span> 張</p>
+<p class="meta"><span class="chip">等級：A</span> 門檻 60 張 · 雙向</p>
+<svg class="bars" viewBox="0 0 420 212" width="100%" role="img" aria-label="中美晶 富邦-木柵 近五日買賣超（張）">
+<title>2026-10-16：-11 張；2026-10-19：-2 張；2026-10-20：-67 張；2026-10-21：+1 張；2026-10-22：+12 張</title>
+<text x="8" y="14" class="axis-label">張</text>
+<line x1="72" x2="408" y1="172" y2="172" class="grid"/><text x="64" y="176" text-anchor="end" class="axis-label">-70</text><line x1="72" x2="408" y1="135" y2="135" class="grid"/><text x="64" y="139" text-anchor="end" class="axis-label">-35</text><line x1="72" x2="408" y1="98" y2="98" class="zero"/><text x="64" y="102" text-anchor="end" class="axis-label">0</text><line x1="72" x2="408" y1="61" y2="61" class="grid"/><text x="64" y="65" text-anchor="end" class="axis-label">+35</text><line x1="72" x2="408" y1="24" y2="24" class="grid"/><text x="64" y="28" text-anchor="end" class="axis-label">+70</text>
+<line x1="72" x2="72" y1="24" y2="172" class="zero"/>
+<rect x="90.81599999999999" y="98" width="29.568" height="11.628571428571433" fill="var(--down)"><title>2026-10-16：-11 張</title></rect>
+<line x1="105.6" x2="105.6" y1="172" y2="176" class="zero"/>
+<text x="105.6" y="194" text-anchor="middle" class="axis-label">10/16</text><rect x="158.01600000000002" y="98" width="29.568" height="2.114285714285714" fill="var(--down)"><title>2026-10-19：-2 張</title></rect>
+<line x1="172.8" x2="172.8" y1="172" y2="176" class="zero"/>
+<text x="172.8" y="194" text-anchor="middle" class="axis-label">10/19</text><rect x="225.216" y="98" width="29.568" height="70.82857142857142" fill="var(--down)"><title>2026-10-20：-67 張</title></rect>
+<line x1="240" x2="240" y1="172" y2="176" class="zero"/>
+<text x="240" y="194" text-anchor="middle" class="axis-label">10/20</text><rect x="292.41600000000005" y="96.94285714285715" width="29.568" height="1.0571428571428498" fill="var(--up)"><title>2026-10-21：+1 張</title></rect>
+<line x1="307.20000000000005" x2="307.20000000000005" y1="172" y2="176" class="zero"/>
+<text x="307.20000000000005" y="194" text-anchor="middle" class="axis-label">10/21</text><rect x="359.61600000000004" y="85.31428571428572" width="29.568" height="12.685714285714283" fill="var(--up)"><title>2026-10-22：+12 張</title></rect>
+<line x1="374.40000000000003" x2="374.40000000000003" y1="172" y2="176" class="zero"/>
+<text x="374.40000000000003" y="194" text-anchor="middle" class="axis-label">10/22</text>
+<line x1="72" x2="408" y1="34.571428571428555" y2="34.571428571428555" class="threshold"><title>門檻 +60 張</title></line><line x1="72" x2="408" y1="161.42857142857142" y2="161.42857142857142" class="threshold"><title>門檻 -60 張</title></line>
+</svg>
+<p class="sub">虛線：雙向門檻 60 張</p>
+<p class="card-note">備註：程式掃描 2022-06 起，20% 門檻：2 次獲利波段（空24-06~25-03 71%、多25-03~26-07 62%）；目前無未平倉部位；近 45 日 P90 33 張</p>
+<div class="verify"><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=5483&amp;BHID=9600&amp;b=003900360031004d" target="_blank" rel="noopener">分點進出明細 ↗</a><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco.djhtm?a=5483" target="_blank" rel="noopener">個股主力進出 ↗</a></div>
+</article>
+<article class="watch-card">
+<h2><a href="https://tw.stock.yahoo.com/quote/6290.TWO" target="_blank" rel="noopener">良維 6290</a> × 統一-嘉義</h2>
+<p class="sub">最近觸發 2026-10-19：<span class="neg" style="font-weight:700">-308</span> 張</p>
+<p class="meta"><span class="chip">等級：A</span> 門檻 200 張 · 雙向</p>
+<svg class="bars" viewBox="0 0 420 212" width="100%" role="img" aria-label="良維 統一-嘉義 近五日買賣超（張）">
+<title>2026-10-16：+417 張；2026-10-19：-308 張；2026-10-20：-174 張；2026-10-21：-140 張；2026-10-22：0 張</title>
+<text x="8" y="14" class="axis-label">張</text>
+<line x1="72" x2="408" y1="172" y2="172" class="grid"/><text x="64" y="176" text-anchor="end" class="axis-label">-500</text><line x1="72" x2="408" y1="135" y2="135" class="grid"/><text x="64" y="139" text-anchor="end" class="axis-label">-250</text><line x1="72" x2="408" y1="98" y2="98" class="zero"/><text x="64" y="102" text-anchor="end" class="axis-label">0</text><line x1="72" x2="408" y1="61" y2="61" class="grid"/><text x="64" y="65" text-anchor="end" class="axis-label">+250</text><line x1="72" x2="408" y1="24" y2="24" class="grid"/><text x="64" y="28" text-anchor="end" class="axis-label">+500</text>
+<line x1="72" x2="72" y1="24" y2="172" class="zero"/>
+<rect x="90.81599999999999" y="36.28399999999999" width="29.568" height="61.71600000000001" fill="var(--up)"><title>2026-10-16：+417 張</title></rect>
+<line x1="105.6" x2="105.6" y1="172" y2="176" class="zero"/>
+<text x="105.6" y="194" text-anchor="middle" class="axis-label">10/16</text><rect x="158.01600000000002" y="98" width="29.568" height="45.584" fill="var(--down)"><title>2026-10-19：-308 張</title></rect>
+<line x1="172.8" x2="172.8" y1="172" y2="176" class="zero"/>
+<text x="172.8" y="194" text-anchor="middle" class="axis-label">10/19</text><rect x="225.216" y="98" width="29.568" height="25.751999999999995" fill="var(--down)"><title>2026-10-20：-174 張</title></rect>
+<line x1="240" x2="240" y1="172" y2="176" class="zero"/>
+<text x="240" y="194" text-anchor="middle" class="axis-label">10/20</text><rect x="292.41600000000005" y="98" width="29.568" height="20.72" fill="var(--down)"><title>2026-10-21：-140 張</title></rect>
+<line x1="307.20000000000005" x2="307.20000000000005" y1="172" y2="176" class="zero"/>
+<text x="307.20000000000005" y="194" text-anchor="middle" class="axis-label">10/21</text><rect x="359.61600000000004" y="98" width="29.568" height="0" fill="var(--up)"><title>2026-10-22：0 張</title></rect>
+<line x1="374.40000000000003" x2="374.40000000000003" y1="172" y2="176" class="zero"/>
+<text x="374.40000000000003" y="194" text-anchor="middle" class="axis-label">10/22</text>
+<line x1="72" x2="408" y1="68.4" y2="68.4" class="threshold"><title>門檻 +200 張</title></line><line x1="72" x2="408" y1="127.6" y2="127.6" class="threshold"><title>門檻 -200 張</title></line>
+</svg>
+<p class="sub">虛線：雙向門檻 200 張</p>
+<p class="card-note">備註：程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多25-09~25-12 44%、多26-03~26-04 31%）；目前空單 622 張、+4%；近 45 日 P90 174 張</p>
+<div class="verify"><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=6290&amp;BHID=5850&amp;b=5858" target="_blank" rel="noopener">分點進出明細 ↗</a><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco.djhtm?a=6290" target="_blank" rel="noopener">個股主力進出 ↗</a></div>
+</article>
+<article class="watch-card">
+<h2><a href="https://tw.stock.yahoo.com/quote/2049.TW" target="_blank" rel="noopener">上銀 2049</a> × 玉山-城中</h2>
+<p class="sub">最近觸發 2026-10-19：<span class="pos" style="font-weight:700">+73</span> 張</p>
+<p class="meta"><span class="chip">等級：A</span> 門檻 40 張 · 雙向</p>
+<svg class="bars" viewBox="0 0 420 212" width="100%" role="img" aria-label="上銀 玉山-城中 近五日買賣超（張）">
+<title>2026-10-16：+30 張；2026-10-19：+73 張；2026-10-20：+12 張；2026-10-21：-2 張；2026-10-22：+3 張</title>
+<text x="8" y="14" class="axis-label">張</text>
+<line x1="72" x2="408" y1="172" y2="172" class="grid"/><text x="64" y="176" text-anchor="end" class="axis-label">-80</text><line x1="72" x2="408" y1="135" y2="135" class="grid"/><text x="64" y="139" text-anchor="end" class="axis-label">-40</text><line x1="72" x2="408" y1="98" y2="98" class="zero"/><text x="64" y="102" text-anchor="end" class="axis-label">0</text><line x1="72" x2="408" y1="61" y2="61" class="grid"/><text x="64" y="65" text-anchor="end" class="axis-label">+40</text><line x1="72" x2="408" y1="24" y2="24" class="grid"/><text x="64" y="28" text-anchor="end" class="axis-label">+80</text>
+<line x1="72" x2="72" y1="24" y2="172" class="zero"/>
+<rect x="90.81599999999999" y="70.25" width="29.568" height="27.75" fill="var(--up)"><title>2026-10-16：+30 張</title></rect>
+<line x1="105.6" x2="105.6" y1="172" y2="176" class="zero"/>
+<text x="105.6" y="194" text-anchor="middle" class="axis-label">10/16</text><rect x="158.01600000000002" y="30.474999999999994" width="29.568" height="67.525" fill="var(--up)"><title>2026-10-19：+73 張</title></rect>
+<line x1="172.8" x2="172.8" y1="172" y2="176" class="zero"/>
+<text x="172.8" y="194" text-anchor="middle" class="axis-label">10/19</text><rect x="225.216" y="86.9" width="29.568" height="11.099999999999994" fill="var(--up)"><title>2026-10-20：+12 張</title></rect>
+<line x1="240" x2="240" y1="172" y2="176" class="zero"/>
+<text x="240" y="194" text-anchor="middle" class="axis-label">10/20</text><rect x="292.41600000000005" y="98" width="29.568" height="1.8500000000000085" fill="var(--down)"><title>2026-10-21：-2 張</title></rect>
+<line x1="307.20000000000005" x2="307.20000000000005" y1="172" y2="176" class="zero"/>
+<text x="307.20000000000005" y="194" text-anchor="middle" class="axis-label">10/21</text><rect x="359.61600000000004" y="95.225" width="29.568" height="2.7750000000000057" fill="var(--up)"><title>2026-10-22：+3 張</title></rect>
+<line x1="374.40000000000003" x2="374.40000000000003" y1="172" y2="176" class="zero"/>
+<text x="374.40000000000003" y="194" text-anchor="middle" class="axis-label">10/22</text>
+<line x1="72" x2="408" y1="61" y2="61" class="threshold"><title>門檻 +40 張</title></line><line x1="72" x2="408" y1="135" y2="135" class="threshold"><title>門檻 -40 張</title></line>
+</svg>
+<p class="sub">虛線：雙向門檻 40 張</p>
+<p class="card-note">備註：程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-09~24-12 39%、多25-03~26-05 53%）；目前多單 526 張、-10%；近 45 日 P90 30 張</p>
+<div class="verify"><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2049&amp;BHID=8840&amp;b=0038003800340045" target="_blank" rel="noopener">分點進出明細 ↗</a><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco.djhtm?a=2049" target="_blank" rel="noopener">個股主力進出 ↗</a></div>
+</article>
+<article class="watch-card">
+<h2><a href="https://tw.stock.yahoo.com/quote/5347.TWO" target="_blank" rel="noopener">世界 5347</a> × 永豐金證券</h2>
+<p class="sub">最近觸發 2026-10-16：<span class="pos" style="font-weight:700">+1,317</span> 張</p>
+<p class="meta"><span class="chip">等級：B</span> 門檻 400 張 · 雙向</p>
+<svg class="bars" viewBox="0 0 420 212" width="100%" role="img" aria-label="世界 永豐金證券 近五日買賣超（張）">
+<title>2026-10-16：+1,317 張；2026-10-19：+20 張；2026-10-20：-7 張；2026-10-21：-9 張；2026-10-22：+3 張</title>
+<text x="8" y="14" class="axis-label">張</text>
+<line x1="72" x2="408" y1="172" y2="172" class="grid"/><text x="64" y="176" text-anchor="end" class="axis-label">-2,000</text><line x1="72" x2="408" y1="135" y2="135" class="grid"/><text x="64" y="139" text-anchor="end" class="axis-label">-1,000</text><line x1="72" x2="408" y1="98" y2="98" class="zero"/><text x="64" y="102" text-anchor="end" class="axis-label">0</text><line x1="72" x2="408" y1="61" y2="61" class="grid"/><text x="64" y="65" text-anchor="end" class="axis-label">+1,000</text><line x1="72" x2="408" y1="24" y2="24" class="grid"/><text x="64" y="28" text-anchor="end" class="axis-label">+2,000</text>
+<line x1="72" x2="72" y1="24" y2="172" class="zero"/>
+<rect x="90.81599999999999" y="49.27099999999999" width="29.568" height="48.72900000000001" fill="var(--up)"><title>2026-10-16：+1,317 張</title></rect>
+<line x1="105.6" x2="105.6" y1="172" y2="176" class="zero"/>
+<text x="105.6" y="194" text-anchor="middle" class="axis-label">10/16</text><rect x="158.01600000000002" y="97.26" width="29.568" height="0.7399999999999949" fill="var(--up)"><title>2026-10-19：+20 張</title></rect>
+<line x1="172.8" x2="172.8" y1="172" y2="176" class="zero"/>
+<text x="172.8" y="194" text-anchor="middle" class="axis-label">10/19</text><rect x="225.216" y="98" width="29.568" height="0.25900000000000034" fill="var(--down)"><title>2026-10-20：-7 張</title></rect>
+<line x1="240" x2="240" y1="172" y2="176" class="zero"/>
+<text x="240" y="194" text-anchor="middle" class="axis-label">10/20</text><rect x="292.41600000000005" y="98" width="29.568" height="0.3329999999999984" fill="var(--down)"><title>2026-10-21：-9 張</title></rect>
+<line x1="307.20000000000005" x2="307.20000000000005" y1="172" y2="176" class="zero"/>
+<text x="307.20000000000005" y="194" text-anchor="middle" class="axis-label">10/21</text><rect x="359.61600000000004" y="97.889" width="29.568" height="0.1110000000000042" fill="var(--up)"><title>2026-10-22：+3 張</title></rect>
+<line x1="374.40000000000003" x2="374.40000000000003" y1="172" y2="176" class="zero"/>
+<text x="374.40000000000003" y="194" text-anchor="middle" class="axis-label">10/22</text>
+<line x1="72" x2="408" y1="83.2" y2="83.2" class="threshold"><title>門檻 +400 張</title></line><line x1="72" x2="408" y1="112.8" y2="112.8" class="threshold"><title>門檻 -400 張</title></line>
+</svg>
+<p class="sub">虛線：雙向門檻 400 張</p>
+<p class="card-note">備註：反查：分析師稱 B 級口碑分點，2026/1/8 單日賣超 7412 張（e01 完全吻合），2021/8 底部大買。近 45 日 P90 389</p>
+<div class="verify"><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=5347&amp;BHID=9A00&amp;b=0039004100300030" target="_blank" rel="noopener">分點進出明細 ↗</a><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco.djhtm?a=5347" target="_blank" rel="noopener">個股主力進出 ↗</a></div>
+</article>
+<article class="watch-card">
+<h2><a href="https://tw.stock.yahoo.com/quote/2360.TW" target="_blank" rel="noopener">致茂 2360</a> × 富邦證券</h2>
+<p class="sub">最近觸發 2026-10-16：<span class="neg" style="font-weight:700">-150</span> 張</p>
+<p class="meta"><span class="chip">等級：未分級</span> 門檻 150 張 · 雙向</p>
+<svg class="bars" viewBox="0 0 420 212" width="100%" role="img" aria-label="致茂 富邦證券 近五日買賣超（張）">
+<title>2026-10-16：-150 張；2026-10-19：+11 張；2026-10-20：+75 張；2026-10-21：+2 張；2026-10-22：-16 張</title>
+<text x="8" y="14" class="axis-label">張</text>
+<line x1="72" x2="408" y1="172" y2="172" class="grid"/><text x="64" y="176" text-anchor="end" class="axis-label">-200</text><line x1="72" x2="408" y1="135" y2="135" class="grid"/><text x="64" y="139" text-anchor="end" class="axis-label">-100</text><line x1="72" x2="408" y1="98" y2="98" class="zero"/><text x="64" y="102" text-anchor="end" class="axis-label">0</text><line x1="72" x2="408" y1="61" y2="61" class="grid"/><text x="64" y="65" text-anchor="end" class="axis-label">+100</text><line x1="72" x2="408" y1="24" y2="24" class="grid"/><text x="64" y="28" text-anchor="end" class="axis-label">+200</text>
+<line x1="72" x2="72" y1="24" y2="172" class="zero"/>
+<rect x="90.81599999999999" y="98" width="29.568" height="55.5" fill="var(--down)"><title>2026-10-16：-150 張</title></rect>
+<line x1="105.6" x2="105.6" y1="172" y2="176" class="zero"/>
+<text x="105.6" y="194" text-anchor="middle" class="axis-label">10/16</text><rect x="158.01600000000002" y="93.93" width="29.568" height="4.069999999999993" fill="var(--up)"><title>2026-10-19：+11 張</title></rect>
+<line x1="172.8" x2="172.8" y1="172" y2="176" class="zero"/>
+<text x="172.8" y="194" text-anchor="middle" class="axis-label">10/19</text><rect x="225.216" y="70.25" width="29.568" height="27.75" fill="var(--up)"><title>2026-10-20：+75 張</title></rect>
+<line x1="240" x2="240" y1="172" y2="176" class="zero"/>
+<text x="240" y="194" text-anchor="middle" class="axis-label">10/20</text><rect x="292.41600000000005" y="97.26" width="29.568" height="0.7399999999999949" fill="var(--up)"><title>2026-10-21：+2 張</title></rect>
+<line x1="307.20000000000005" x2="307.20000000000005" y1="172" y2="176" class="zero"/>
+<text x="307.20000000000005" y="194" text-anchor="middle" class="axis-label">10/21</text><rect x="359.61600000000004" y="98" width="29.568" height="5.920000000000002" fill="var(--down)"><title>2026-10-22：-16 張</title></rect>
+<line x1="374.40000000000003" x2="374.40000000000003" y1="172" y2="176" class="zero"/>
+<text x="374.40000000000003" y="194" text-anchor="middle" class="axis-label">10/22</text>
+<line x1="72" x2="408" y1="42.5" y2="42.5" class="threshold"><title>門檻 +150 張</title></line><line x1="72" x2="408" y1="153.5" y2="153.5" class="threshold"><title>門檻 -150 張</title></line>
+</svg>
+<p class="sub">虛線：雙向門檻 150 張</p>
+<p class="card-note">備註：來源：分析師；口碑分點，5/7~6/27 均價 371 買超 2000 張。近 45 日 P90 150</p>
+<div class="verify"><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2360&amp;BHID=9600&amp;b=9600" target="_blank" rel="noopener">分點進出明細 ↗</a><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco.djhtm?a=2360" target="_blank" rel="noopener">個股主力進出 ↗</a></div>
+</article>
+<article class="watch-card">
+<h2><a href="https://tw.stock.yahoo.com/quote/6290.TWO" target="_blank" rel="noopener">良維 6290</a> × 永豐金-桃園</h2>
+<p class="sub">最近觸發 2026-10-16：<span class="pos" style="font-weight:700">+64</span> 張</p>
+<p class="meta"><span class="chip">等級：A</span> 門檻 50 張 · 雙向</p>
+<svg class="bars" viewBox="0 0 420 212" width="100%" role="img" aria-label="良維 永豐金-桃園 近五日買賣超（張）">
+<title>2026-10-16：+64 張；2026-10-19：0 張；2026-10-20：+16 張；2026-10-21：+1 張；2026-10-22：-9 張</title>
+<text x="8" y="14" class="axis-label">張</text>
+<line x1="72" x2="408" y1="172" y2="172" class="grid"/><text x="64" y="176" text-anchor="end" class="axis-label">-70</text><line x1="72" x2="408" y1="135" y2="135" class="grid"/><text x="64" y="139" text-anchor="end" class="axis-label">-35</text><line x1="72" x2="408" y1="98" y2="98" class="zero"/><text x="64" y="102" text-anchor="end" class="axis-label">0</text><line x1="72" x2="408" y1="61" y2="61" class="grid"/><text x="64" y="65" text-anchor="end" class="axis-label">+35</text><line x1="72" x2="408" y1="24" y2="24" class="grid"/><text x="64" y="28" text-anchor="end" class="axis-label">+70</text>
+<line x1="72" x2="72" y1="24" y2="172" class="zero"/>
+<rect x="90.81599999999999" y="30.342857142857127" width="29.568" height="67.65714285714287" fill="var(--up)"><title>2026-10-16：+64 張</title></rect>
+<line x1="105.6" x2="105.6" y1="172" y2="176" class="zero"/>
+<text x="105.6" y="194" text-anchor="middle" class="axis-label">10/16</text><rect x="158.01600000000002" y="98" width="29.568" height="0" fill="var(--up)"><title>2026-10-19：0 張</title></rect>
+<line x1="172.8" x2="172.8" y1="172" y2="176" class="zero"/>
+<text x="172.8" y="194" text-anchor="middle" class="axis-label">10/19</text><rect x="225.216" y="81.08571428571427" width="29.568" height="16.914285714285725" fill="var(--up)"><title>2026-10-20：+16 張</title></rect>
+<line x1="240" x2="240" y1="172" y2="176" class="zero"/>
+<text x="240" y="194" text-anchor="middle" class="axis-label">10/20</text><rect x="292.41600000000005" y="96.94285714285715" width="29.568" height="1.0571428571428498" fill="var(--up)"><title>2026-10-21：+1 張</title></rect>
+<line x1="307.20000000000005" x2="307.20000000000005" y1="172" y2="176" class="zero"/>
+<text x="307.20000000000005" y="194" text-anchor="middle" class="axis-label">10/21</text><rect x="359.61600000000004" y="98" width="29.568" height="9.51428571428572" fill="var(--down)"><title>2026-10-22：-9 張</title></rect>
+<line x1="374.40000000000003" x2="374.40000000000003" y1="172" y2="176" class="zero"/>
+<text x="374.40000000000003" y="194" text-anchor="middle" class="axis-label">10/22</text>
+<line x1="72" x2="408" y1="45.14285714285715" y2="45.14285714285715" class="threshold"><title>門檻 +50 張</title></line><line x1="72" x2="408" y1="150.85714285714286" y2="150.85714285714286" class="threshold"><title>門檻 -50 張</title></line>
+</svg>
+<p class="sub">虛線：雙向門檻 50 張</p>
+<p class="card-note">備註：程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多23-03~25-10 86%、多25-11~26-02 21%）；目前無未平倉部位；近 45 日 P90 27 張</p>
+<div class="verify"><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=6290&amp;BHID=9A00&amp;b=0039004100390078" target="_blank" rel="noopener">分點進出明細 ↗</a><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco.djhtm?a=6290" target="_blank" rel="noopener">個股主力進出 ↗</a></div>
+</article></section>
+<details class="others"><summary>其餘 145 組（近 5 日未達門檻）</summary>
 <div class="tablebox"><table>
 <tr><th>股票</th><th>分點</th><th>等級</th><th>今日</th><th>門檻</th><th>最近觸發</th><th>近 5 日</th><th>備註</th></tr>
-<tr class="hit">
-<td>🚨 <a href="https://tw.stock.yahoo.com/quote/2301.TW" target="_blank" rel="noopener">光寶科</a> <span class="muted">2301</span></td>
-<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2301&BHID=9100&b=0039003100380057" target="_blank" rel="noopener">群益金鼎-忠孝</a></td>
-<td><span class="muted">—</span></td>
-<td><span class="neg" style="font-weight:700">-104</span></td>
-<td class="muted">100（雙向）</td>
-<td class="muted">10-22 <span class="neg">-104</span></td>
-<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+2</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+2</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-104</span></span></td>
-<td class="note">來源：許多多分析師；庫藏股執行分點，且過往績效佳。近 45 日 P90 104、最大 392 張</td>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/1319.TW" target="_blank" rel="noopener">東陽</a> <span class="muted">1319</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=1319&amp;BHID=9200&amp;b=0039003200300046" target="_blank" rel="noopener">凱基-站前</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-6</span></td>
+<td class="muted">150（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-2</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-1</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-3</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+3</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-6</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：3 次獲利波段（多22-10~23-09 31%、多24-01~24-03 37%、空25-06~25-10 23%）；目前空單 450 張、+27%；近 45 日 P90 13 張</td>
 </tr>
-<tr class="hit">
-<td>🚨 <a href="https://tw.stock.yahoo.com/quote/2303.TW" target="_blank" rel="noopener">聯電</a> <span class="muted">2303</span></td>
-<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2303&BHID=1030&b=1038" target="_blank" rel="noopener">土銀-和平</a></td>
-<td><span class="chip">B</span></td>
-<td><span class="pos" style="font-weight:700">+601</span></td>
-<td class="muted">300（雙向）</td>
-<td class="muted">10-22 <span class="pos">+601</span></td>
-<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+5</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-1</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+15</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+2</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+601</span></span></td>
-<td class="note">來源：許多多分析師；平淡行情也賺的常勝軍，82 左右低檔佈局、5/4 單日大賣約 3000 張出清。近 45 日 P90 29 張、最大 601 張</td>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/1326.TW" target="_blank" rel="noopener">台化</a> <span class="muted">1326</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=1326&amp;BHID=9800&amp;b=003900380039004e" target="_blank" rel="noopener">元大-內湖</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+17</span></td>
+<td class="muted">150（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+5</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-29</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+7</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+6</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+17</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（空23-03~25-05 84%、多25-08~26-06 42%）；目前無未平倉部位；近 45 日 P90 56 張</td>
 </tr>
-<tr class="hit">
-<td>🚨 <a href="https://tw.stock.yahoo.com/quote/6269.TW" target="_blank" rel="noopener">台郡</a> <span class="muted">6269</span></td>
-<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=6269&BHID=9300&b=9312" target="_blank" rel="noopener">華南永昌-民權</a></td>
-<td><span class="muted">—</span></td>
-<td><span class="neg" style="font-weight:700">-197</span></td>
-<td class="muted">80（雙向）</td>
-<td class="muted">10-22 <span class="neg">-197</span></td>
-<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-24</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-89</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-17</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-2</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-197</span></span></td>
-<td class="note">反查：許多多稱口碑分點，5/1~8/10 累計買超 462 張、10/19 賣超 89、10/22 賣超 197（三條線索皆吻合）。他說已清倉，追蹤下一波。門檻取 89 張訊號</td>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/1326.TW" target="_blank" rel="noopener">台化</a> <span class="muted">1326</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=1326&amp;BHID=5260&amp;b=003500320036004b" target="_blank" rel="noopener">美好-富順</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+20</span></td>
+<td class="muted">150（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+9</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+24</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+1</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-7</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+20</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（空22-06~23-08 28%、多25-07~26-04 58%）；目前空單 378 張、-6%；近 45 日 P90 38 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/1519.TW" target="_blank" rel="noopener">華城</a> <span class="muted">1519</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=1519&amp;BHID=5260&amp;b=5266" target="_blank" rel="noopener">美好-中壢</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-2</span></td>
+<td class="muted">20（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+1</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-2</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-11~23-01 25%、多23-03~23-04 29%）；目前無未平倉部位；近 45 日 P90 4 張</td>
 </tr>
 <tr class="">
 <td><a href="https://tw.stock.yahoo.com/quote/1717.TW" target="_blank" rel="noopener">長興</a> <span class="muted">1717</span></td>
-<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=1717&BHID=5850&b=0035003800350051" target="_blank" rel="noopener">統一-三多</a></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=1717&amp;BHID=5850&amp;b=0035003800350051" target="_blank" rel="noopener">統一-三多</a></td>
 <td><span class="muted">—</span></td>
 <td><span class="neg">-7</span></td>
 <td class="muted">50（雙向）</td>
 <td class="muted">—</td>
 <td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+1</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+1</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-7</span></span></td>
-<td class="note">來源：許多多分析師 YouTube；D 級口碑分點，2026/1 仍有庫存約 2.9 萬張</td>
+<td class="note">來源：分析師 YouTube；D 級口碑分點，2026/1 仍有庫存約 2.9 萬張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/1905.TW" target="_blank" rel="noopener">華紙</a> <span class="muted">1905</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=1905&amp;BHID=9600&amp;b=0039003600310043" target="_blank" rel="noopener">富邦-南京</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="muted">e01 未更新</span></td>
+<td class="muted">800（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+5</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-4</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-1</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-12~23-06 68%、空24-08~25-12 47%）；目前空單 55 張、+10%；近 45 日 P90 7 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/1909.TW" target="_blank" rel="noopener">榮成</a> <span class="muted">1909</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=1909&amp;BHID=9B00&amp;b=0039004200320045" target="_blank" rel="noopener">台新-城中</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="muted">e01 未更新</span></td>
+<td class="muted">1000（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（空23-07~24-09 24%、空24-09~26-07 35%）；目前空單 201 張、-0%；近 45 日 P90 130 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2027.TW" target="_blank" rel="noopener">大成鋼</a> <span class="muted">2027</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2027&amp;BHID=9A00&amp;b=0039004100390068" target="_blank" rel="noopener">永豐金-台南</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-20</span></td>
+<td class="muted">350（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-263</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-32</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-6</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+9</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-20</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多23-08~25-02 26%、空25-03~25-11 25%）；目前空單 2363 張、-3%；近 45 日 P90 340 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2027.TW" target="_blank" rel="noopener">大成鋼</a> <span class="muted">2027</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2027&amp;BHID=5850&amp;b=5855" target="_blank" rel="noopener">統一-台南</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-4</span></td>
+<td class="muted">200（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-58</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+7</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-10</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-4</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-07~22-12 25%、多24-08~25-02 42%）；目前多單 200 張、+37%；近 45 日 P90 56 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2059.TW" target="_blank" rel="noopener">川湖</a> <span class="muted">2059</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2059&amp;BHID=9600&amp;b=9667" target="_blank" rel="noopener">富邦-台南</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="">0</span></td>
+<td class="muted">20（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-1</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：4 次獲利波段（多24-09~24-12 35%、多25-01~25-02 29%、多25-03~25-07 21%、多25-11~26-06 46%）；目前無未平倉部位；近 45 日 P90 13 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2059.TW" target="_blank" rel="noopener">川湖</a> <span class="muted">2059</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2059&amp;BHID=9300&amp;b=9315" target="_blank" rel="noopener">華南永昌-大甲</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="muted">e01 未更新</span></td>
+<td class="muted">20（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多23-10~24-07 34%、多24-08~26-05 69%）；目前無未平倉部位；近 45 日 P90 15 張</td>
 </tr>
 <tr class="">
 <td><a href="https://tw.stock.yahoo.com/quote/2108.TW" target="_blank" rel="noopener">南帝</a> <span class="muted">2108</span></td>
-<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2108&BHID=9B00&b=0039004200320037" target="_blank" rel="noopener">台新-林園</a></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2108&amp;BHID=9B00&amp;b=0039004200320037" target="_blank" rel="noopener">台新-林園</a></td>
 <td><span class="muted">—</span></td>
 <td><span class="pos">+1</span></td>
 <td class="muted">未設（雙向）</td>
@@ -144,114 +588,1334 @@ showCurrent();
 <td class="note">從「籌碼」頁搬來：地緣，買賣都強。MoneyDJ 查不到元富-林園代號，待確認；門檻未設所以先不啟用</td>
 </tr>
 <tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2312.TW" target="_blank" rel="noopener">金寶</a> <span class="muted">2312</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2312&amp;BHID=7000&amp;b=0037003000300067" target="_blank" rel="noopener">兆豐-南門</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+2</span></td>
+<td class="muted">350（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-144</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+1</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-80</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+2</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多23-01~24-11 36%、多25-12~26-01 32%）；目前多單 185 張、+3%；近 45 日 P90 110 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2317.TW" target="_blank" rel="noopener">鴻海</a> <span class="muted">2317</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2317&amp;BHID=9100&amp;b=0039003100380048" target="_blank" rel="noopener">群益金鼎-中山</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="">0</span></td>
+<td class="muted">50（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-4</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+8</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-3</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-20</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（空24-11~25-07 23%、多25-11~26-06 30%）；目前空單 1260 張、+10%；近 45 日 P90 27 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2327.TW" target="_blank" rel="noopener">國巨</a> <span class="muted">2327</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2327&amp;BHID=5850&amp;b=0035003800350063" target="_blank" rel="noopener">統一-仁愛</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-16</span></td>
+<td class="muted">50（雙向）</td>
+<td class="muted">10-05 <span class="neg">-129</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-11</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+8</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-16</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-07~22-11 41%、空24-03~25-05 29%）；目前空單 152 張、-5%；近 45 日 P90 50 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2329.TW" target="_blank" rel="noopener">華泰</a> <span class="muted">2329</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2329&amp;BHID=9800&amp;b=9858" target="_blank" rel="noopener">元大-龍潭</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="muted">e01 未更新</span></td>
+<td class="muted">250（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-2</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-4</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-3</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多23-06~24-06 58%、多24-10~26-06 38%）；目前多單 38 張、-5%；近 45 日 P90 13 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2332.TW" target="_blank" rel="noopener">友訊</a> <span class="muted">2332</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2332&amp;BHID=9300&amp;b=9349" target="_blank" rel="noopener">華南永昌-板橋</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+1</span></td>
+<td class="muted">500（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-10</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+1</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-3</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-2</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+1</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多23-10~24-12 20%、多25-05~26-07 39%）；目前空單 1024 張、+11%；近 45 日 P90 149 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2332.TW" target="_blank" rel="noopener">友訊</a> <span class="muted">2332</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2332&amp;BHID=9100&amp;b=9134" target="_blank" rel="noopener">群益金鼎-開元</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="muted">e01 未更新</span></td>
+<td class="muted">500（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-6</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+2</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-4</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-1</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-10~23-03 23%、多25-05~26-07 42%）；目前無未平倉部位；近 45 日 P90 36 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2337.TW" target="_blank" rel="noopener">旺宏</a> <span class="muted">2337</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2337&amp;BHID=9300&amp;b=9331" target="_blank" rel="noopener">華南永昌-鳳山</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+21</span></td>
+<td class="muted">150（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-1</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+13</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-15</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-6</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+21</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（空23-01~25-09 54%、多25-09~26-05 529%）；目前多單 691 張、-33%；近 45 日 P90 44 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2338.TW" target="_blank" rel="noopener">光罩</a> <span class="muted">2338</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2338&amp;BHID=8840&amp;b=8847" target="_blank" rel="noopener">玉山-台南</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="">0</span></td>
+<td class="muted">250（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-8</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+5</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（空22-10~25-08 66%、多25-08~25-10 23%）；目前空單 291 張、-19%；近 45 日 P90 9 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2338.TW" target="_blank" rel="noopener">光罩</a> <span class="muted">2338</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2338&amp;BHID=9600&amp;b=9661" target="_blank" rel="noopener">富邦-新店</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-23</span></td>
+<td class="muted">250（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+1</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-7</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-2</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+2</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-23</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（空22-07~24-09 22%、空24-10~25-06 92%）；目前空單 116 張、+17%；近 45 日 P90 14 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2352.TW" target="_blank" rel="noopener">佳世達</a> <span class="muted">2352</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2352&amp;BHID=7000&amp;b=7003" target="_blank" rel="noopener">兆豐-台中</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-5</span></td>
+<td class="muted">350（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-3</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+3</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+10</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-28</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-5</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-11~23-06 43%、空23-07~25-04 74%）；目前空單 807 張、+2%；近 45 日 P90 12 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2352.TW" target="_blank" rel="noopener">佳世達</a> <span class="muted">2352</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2352&amp;BHID=8560&amp;b=8564" target="_blank" rel="noopener">新光-台南</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-15</span></td>
+<td class="muted">350（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+2</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-2</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-3</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+9</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-15</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-08~23-06 58%、空23-07~26-06 45%）；目前多單 195 張、-5%；近 45 日 P90 12 張</td>
+</tr>
+<tr class="">
 <td><a href="https://tw.stock.yahoo.com/quote/2360.TW" target="_blank" rel="noopener">致茂</a> <span class="muted">2360</span></td>
-<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2360&BHID=1360&b=1360" target="_blank" rel="noopener">港商麥格理</a></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2360&amp;BHID=1360&amp;b=1360" target="_blank" rel="noopener">港商麥格理</a></td>
 <td><span class="muted">—</span></td>
 <td><span class="pos">+24</span></td>
 <td class="muted">250（雙向）</td>
 <td class="muted">10-14 <span class="neg">-293</span></td>
 <td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-240</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-58</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+162</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-80</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+24</span></span></td>
-<td class="note">來源：許多多分析師；口碑分點，兩波價差 18%/15%，6/20 單日買超 723 張。近 45 日 P90 240</td>
+<td class="note">來源：分析師；口碑分點，兩波價差 18%/15%，6/20 單日買超 723 張。近 45 日 P90 240</td>
 </tr>
 <tr class="">
-<td><a href="https://tw.stock.yahoo.com/quote/2360.TW" target="_blank" rel="noopener">致茂</a> <span class="muted">2360</span></td>
-<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2360&BHID=9600&b=9600" target="_blank" rel="noopener">富邦證券</a></td>
-<td><span class="muted">—</span></td>
-<td><span class="neg">-16</span></td>
+<td><a href="https://tw.stock.yahoo.com/quote/2367.TW" target="_blank" rel="noopener">燿華</a> <span class="muted">2367</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2367&amp;BHID=7000&amp;b=0037003000300055" target="_blank" rel="noopener">兆豐-桃鶯</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-5</span></td>
+<td class="muted">250（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+1</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+9</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+5</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-5</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多23-06~24-03 28%、空26-04~26-10 38%）；目前無未平倉部位；近 45 日 P90 15 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2368.TW" target="_blank" rel="noopener">金像電</a> <span class="muted">2368</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2368&amp;BHID=9200&amp;b=0039003200300046" target="_blank" rel="noopener">凱基-站前</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-3</span></td>
+<td class="muted">70（雙向）</td>
+<td class="muted">10-08 <span class="pos">+81</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-10</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+10</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+4</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-6</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-3</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：3 次獲利波段（多23-06~23-12 62%、多25-03~26-05 130%、空26-06~26-08 23%）；目前無未平倉部位；近 45 日 P90 66 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2371.TW" target="_blank" rel="noopener">大同</a> <span class="muted">2371</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2371&amp;BHID=5850&amp;b=0035003800350063" target="_blank" rel="noopener">統一-仁愛</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="muted">e01 未更新</span></td>
+<td class="muted">400（雙向）</td>
+<td class="muted">10-01 <span class="neg">-417</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多23-05~23-06 22%、多23-07~24-04 23%）；目前無未平倉部位；近 45 日 P90 33 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2383.TW" target="_blank" rel="noopener">台光電</a> <span class="muted">2383</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2383&amp;BHID=7000&amp;b=0037003000300061" target="_blank" rel="noopener">兆豐-忠孝</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="">0</span></td>
+<td class="muted">10（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+1</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-08~23-08 32%、多25-11~26-03 34%）；目前多單 21 張、+24%；近 45 日 P90 4 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2388.TW" target="_blank" rel="noopener">威盛</a> <span class="muted">2388</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2388&amp;BHID=1110&amp;b=0031003100310047" target="_blank" rel="noopener">台灣企銀-埔墘</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="muted">e01 未更新</span></td>
+<td class="muted">200（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+1</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多23-05~23-07 26%、多23-10~23-11 21%）；目前空單 985 張、+66%；近 45 日 P90 11 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2388.TW" target="_blank" rel="noopener">威盛</a> <span class="muted">2388</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2388&amp;BHID=9200&amp;b=9258" target="_blank" rel="noopener">凱基-羅東</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="muted">e01 未更新</span></td>
+<td class="muted">200（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-1</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多23-03~23-07 24%、空24-11~26-05 44%）；目前無未平倉部位；近 45 日 P90 20 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2388.TW" target="_blank" rel="noopener">威盛</a> <span class="muted">2388</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2388&amp;BHID=9800&amp;b=0039003800300043" target="_blank" rel="noopener">元大-斗六</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="muted">e01 未更新</span></td>
+<td class="muted">200（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+1</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（空24-07~25-08 38%、多25-09~26-04 28%）；目前多單 350 張、-8%；近 45 日 P90 16 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2392.TW" target="_blank" rel="noopener">正崴</a> <span class="muted">2392</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2392&amp;BHID=9200&amp;b=9227" target="_blank" rel="noopener">凱基-城中</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-1</span></td>
+<td class="muted">300（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-1</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-12~24-06 74%、空24-07~26-08 43%）；目前空單 1178 張、+4%；近 45 日 P90 29 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2392.TW" target="_blank" rel="noopener">正崴</a> <span class="muted">2392</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2392&amp;BHID=7000&amp;b=0037003000300057" target="_blank" rel="noopener">兆豐-城中</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-12</span></td>
+<td class="muted">300（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+25</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+1</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-12</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多24-01~24-05 49%、空25-01~26-09 23%）；目前多單 70 張、-4%；近 45 日 P90 30 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2404.TW" target="_blank" rel="noopener">漢唐</a> <span class="muted">2404</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2404&amp;BHID=9B00&amp;b=0039004200320030" target="_blank" rel="noopener">台新-台北</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="">0</span></td>
+<td class="muted">10（雙向）</td>
+<td class="muted">10-07 <span class="neg">-10</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+2</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多23-04~24-07 37%、多25-03~25-07 21%）；目前空單 2094 張、-13%；近 45 日 P90 9 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2404.TW" target="_blank" rel="noopener">漢唐</a> <span class="muted">2404</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2404&amp;BHID=1020&amp;b=1025" target="_blank" rel="noopener">合庫-基隆</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="">0</span></td>
+<td class="muted">10（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-08~25-07 86%、空25-07~25-11 20%）；目前無未平倉部位；近 45 日 P90 2 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2404.TW" target="_blank" rel="noopener">漢唐</a> <span class="muted">2404</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2404&amp;BHID=9600&amp;b=0039003600390043" target="_blank" rel="noopener">富邦-北港</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-1</span></td>
+<td class="muted">20（雙向）</td>
+<td class="muted">10-15 <span class="pos">+45</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-2</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+16</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-1</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多24-08~25-02 30%、多25-03~25-06 26%）；目前多單 13 張、-1%；近 45 日 P90 16 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2404.TW" target="_blank" rel="noopener">漢唐</a> <span class="muted">2404</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2404&amp;BHID=6160&amp;b=6167" target="_blank" rel="noopener">中國信託-松江</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="">0</span></td>
+<td class="muted">10（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+3</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多23-08~24-05 54%、多24-08~25-02 26%）；目前多單 47 張、-12%；近 45 日 P90 9 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2404.TW" target="_blank" rel="noopener">漢唐</a> <span class="muted">2404</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2404&amp;BHID=9100&amp;b=0039003100380047" target="_blank" rel="noopener">群益金鼎-新莊</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="">0</span></td>
+<td class="muted">10（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-08~24-07 41%、多24-09~24-12 29%）；目前空單 40 張、-42%；近 45 日 P90 2 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2408.TW" target="_blank" rel="noopener">南亞科</a> <span class="muted">2408</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2408&amp;BHID=7000&amp;b=0037003000300062" target="_blank" rel="noopener">兆豐-中壢</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-1</span></td>
+<td class="muted">30（雙向）</td>
+<td class="muted">10-13 <span class="neg">-375</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-1</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+3</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+2</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+2</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-1</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多25-10~26-06 87%、多26-06~26-06 29%）；目前空單 1860 張、-0%；近 45 日 P90 14 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2408.TW" target="_blank" rel="noopener">南亞科</a> <span class="muted">2408</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2408&amp;BHID=7000&amp;b=0037003000300063" target="_blank" rel="noopener">兆豐-民生</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="">0</span></td>
 <td class="muted">150（雙向）</td>
-<td class="muted">10-16 <span class="neg">-150</span></td>
-<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-150</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+11</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+75</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+2</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-16</span></span></td>
-<td class="note">來源：許多多分析師；口碑分點，5/7~6/27 均價 371 買超 2000 張。近 45 日 P90 150</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-4</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-2</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+8</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-4</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多25-09~25-11 94%、多25-12~26-03 21%）；目前多單 174 張、-19%；近 45 日 P90 146 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2408.TW" target="_blank" rel="noopener">南亞科</a> <span class="muted">2408</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2408&amp;BHID=9100&amp;b=0039003100300044" target="_blank" rel="noopener">群益金鼎-市府</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+12</span></td>
+<td class="muted">40（雙向）</td>
+<td class="muted">10-13 <span class="pos">+40</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+1</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+8</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+1</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+4</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+12</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-06~23-06 21%、多24-08~25-09 33%）；目前無未平倉部位；近 45 日 P90 33 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2439.TW" target="_blank" rel="noopener">美律</a> <span class="muted">2439</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2439&amp;BHID=5380&amp;b=0035003300380045" target="_blank" rel="noopener">第一金-自由</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="muted">e01 未更新</span></td>
+<td class="muted">150（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+1</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+1</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-10~23-11 20%、空25-08~26-06 27%）；目前無未平倉部位；近 45 日 P90 8 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2454.TW" target="_blank" rel="noopener">聯發科</a> <span class="muted">2454</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2454&amp;BHID=9B00&amp;b=0039004200320035" target="_blank" rel="noopener">台新-五權西</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+1</span></td>
+<td class="muted">70（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-53</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+3</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+2</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+2</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+1</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-09~22-11 21%、多26-04~26-08 46%）；目前空單 928 張、+3%；近 45 日 P90 61 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2455.TW" target="_blank" rel="noopener">全新</a> <span class="muted">2455</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2455&amp;BHID=9A00&amp;b=0039004100390037" target="_blank" rel="noopener">永豐金-新竹</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="">0</span></td>
+<td class="muted">30（雙向）</td>
+<td class="muted">09-22 <span class="pos">+35</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+1</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多25-03~25-09 25%、多25-09~26-06 40%）；目前空單 88 張、-33%；近 45 日 P90 26 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2458.TW" target="_blank" rel="noopener">義隆</a> <span class="muted">2458</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2458&amp;BHID=9600&amp;b=9647" target="_blank" rel="noopener">富邦-新竹</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+2</span></td>
+<td class="muted">80（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-2</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+11</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-1</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+2</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-11~23-11 55%、空24-09~25-04 21%）；目前多單 54 張、-4%；近 45 日 P90 12 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2485.TW" target="_blank" rel="noopener">兆赫</a> <span class="muted">2485</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2485&amp;BHID=9300&amp;b=9366" target="_blank" rel="noopener">華南永昌-豐原</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+2</span></td>
+<td class="muted">300（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+4</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+2</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（空24-04~25-03 33%、多25-09~26-05 447%）；目前空單 98 張、+5%；近 45 日 P90 9 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2486.TW" target="_blank" rel="noopener">一詮</a> <span class="muted">2486</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2486&amp;BHID=7000&amp;b=0037003000300053" target="_blank" rel="noopener">兆豐-大同</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+4</span></td>
+<td class="muted">200（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-15</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-3</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-6</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+4</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：3 次獲利波段（空22-06~22-12 22%、多22-12~23-09 44%、多25-10~26-01 22%）；目前多單 351 張、-17%；近 45 日 P90 153 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2489.TW" target="_blank" rel="noopener">瑞軒</a> <span class="muted">2489</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2489&amp;BHID=9800&amp;b=9898" target="_blank" rel="noopener">元大-新莊</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+30</span></td>
+<td class="muted">300（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+10</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+76</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-80</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+30</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多23-04~24-09 45%、多24-10~26-02 74%）；目前無未平倉部位；近 45 日 P90 60 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2489.TW" target="_blank" rel="noopener">瑞軒</a> <span class="muted">2489</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2489&amp;BHID=9A00&amp;b=003900410039004c" target="_blank" rel="noopener">永豐金-台中</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+15</span></td>
+<td class="muted">300（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-4</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-1</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-8</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-4</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+15</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（空24-06~25-10 36%、多25-10~26-01 41%）；目前無未平倉部位；近 45 日 P90 21 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2492.TW" target="_blank" rel="noopener">華新科</a> <span class="muted">2492</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2492&amp;BHID=9800&amp;b=0039003800320043" target="_blank" rel="noopener">元大-六合</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+14</span></td>
+<td class="muted">30（雙向）</td>
+<td class="muted">10-01 <span class="neg">-36</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-2</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+3</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+1</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-4</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+14</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（空23-07~25-07 22%、多26-01~26-06 326%）；目前無未平倉部位；近 45 日 P90 21 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2492.TW" target="_blank" rel="noopener">華新科</a> <span class="muted">2492</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2492&amp;BHID=7000&amp;b=003700300030004c" target="_blank" rel="noopener">兆豐-天母</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+26</span></td>
+<td class="muted">30（雙向）</td>
+<td class="muted">09-21 <span class="pos">+30</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+2</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+4</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+1</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-3</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+26</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多24-07~26-02 26%、多26-04~26-05 41%）；目前無未平倉部位；近 45 日 P90 18 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2603.TW" target="_blank" rel="noopener">長榮</a> <span class="muted">2603</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2603&amp;BHID=9A00&amp;b=0039004100390055" target="_blank" rel="noopener">永豐金-中正</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-17</span></td>
+<td class="muted">150（雙向）</td>
+<td class="muted">10-12 <span class="neg">-201</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-16</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+3</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+18</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-17</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-07~23-05 38%、多23-07~26-04 52%）；目前多單 4192 張、+36%；近 45 日 P90 132 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2606.TW" target="_blank" rel="noopener">裕民</a> <span class="muted">2606</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2606&amp;BHID=5850&amp;b=0035003800350048" target="_blank" rel="noopener">統一-桃園</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="muted">e01 未更新</span></td>
+<td class="muted">150（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+2</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-09~23-02 32%、多23-11~26-06 30%）；目前無未平倉部位；近 45 日 P90 14 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2887.TW" target="_blank" rel="noopener">台新新光金</a> <span class="muted">2887</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2887&amp;BHID=7000&amp;b=003700300030004d" target="_blank" rel="noopener">兆豐-桃園</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-1</span></td>
+<td class="muted">250（雙向）</td>
+<td class="muted">10-13 <span class="neg">-671</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+34</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-1</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+15</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-47</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-1</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-10~23-12 34%、多25-12~26-07 62%）；目前多單 704 張、+2%；近 45 日 P90 50 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2887.TW" target="_blank" rel="noopener">台新新光金</a> <span class="muted">2887</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2887&amp;BHID=8880&amp;b=8882" target="_blank" rel="noopener">國泰-台中</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-61</span></td>
+<td class="muted">250（雙向）</td>
+<td class="muted">09-22 <span class="pos">+276</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-93</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+15</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+98</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-69</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-61</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-09~23-06 21%、多23-10~26-02 24%）；目前多單 346 張、+19%；近 45 日 P90 244 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2891.TW" target="_blank" rel="noopener">中信金</a> <span class="muted">2891</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2891&amp;BHID=9800&amp;b=0039003800390055" target="_blank" rel="noopener">元大-大甲</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-2</span></td>
+<td class="muted">150（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-44</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+2</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-3</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-9</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-2</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-09~25-07 93%、多25-07~26-07 66%）；目前多單 1124 張、+17%；近 45 日 P90 38 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2891.TW" target="_blank" rel="noopener">中信金</a> <span class="muted">2891</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2891&amp;BHID=9B00&amp;b=0039004200320069" target="_blank" rel="noopener">台新-中港</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-75</span></td>
+<td class="muted">150（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-4</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+1</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-2</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-75</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多23-09~25-09 29%、多25-09~26-05 29%）；目前空單 5555 張、-6%；近 45 日 P90 21 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/2891.TW" target="_blank" rel="noopener">中信金</a> <span class="muted">2891</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=2891&amp;BHID=9100&amp;b=0039003100380067" target="_blank" rel="noopener">群益金鼎-大甲</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-4</span></td>
+<td class="muted">150（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-15</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-2</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-3</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-6</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-4</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-09~24-03 27%、多25-07~26-05 30%）；目前空單 3237 張、-13%；近 45 日 P90 25 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/3006.TW" target="_blank" rel="noopener">晶豪科</a> <span class="muted">3006</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3006&amp;BHID=9200&amp;b=9272" target="_blank" rel="noopener">凱基-竹科</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="">0</span></td>
+<td class="muted">90（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+1</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+14</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+2</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-7</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：3 次獲利波段（空23-02~25-06 40%、多25-06~26-01 112%、多26-02~26-08 32%）；目前空單 1869 張、+9%；近 45 日 P90 81 張</td>
 </tr>
 <tr class="">
 <td><a href="https://tw.stock.yahoo.com/quote/3008.TW" target="_blank" rel="noopener">大立光</a> <span class="muted">3008</span></td>
-<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3008&BHID=9600&b=9600" target="_blank" rel="noopener">富邦證券</a></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3008&amp;BHID=9600&amp;b=9600" target="_blank" rel="noopener">富邦證券</a></td>
 <td><span class="muted">—</span></td>
 <td><span class="pos">+36</span></td>
 <td class="muted">100（雙向）</td>
 <td class="muted">10-05 <span class="pos">+174</span></td>
 <td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+1</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+31</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-9</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-88</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+36</span></span></td>
-<td class="note">來源：許多多分析師；口碑分點，2600 附近波段淨賣超約 1600 張。總公司平常就有進出：近 45 日中位 36 張、P90 102 張</td>
+<td class="note">來源：分析師；口碑分點，2600 附近波段淨賣超約 1600 張。總公司平常就有進出：近 45 日中位 36 張、P90 102 張</td>
 </tr>
 <tr class="">
 <td><a href="https://tw.stock.yahoo.com/quote/3008.TW" target="_blank" rel="noopener">大立光</a> <span class="muted">3008</span></td>
-<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3008&BHID=9B00&b=0039004200300030" target="_blank" rel="noopener">台新</a></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3008&amp;BHID=9B00&amp;b=0039004200300030" target="_blank" rel="noopener">台新</a></td>
 <td><span class="muted">—</span></td>
 <td><span class="neg">-4</span></td>
 <td class="muted">50（買超）</td>
 <td class="muted">10-12 <span class="pos">+55</span></td>
 <td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-29</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-13</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+13</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+3</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-4</span></span></td>
-<td class="note">來源：許多多分析師；公司派庫藏股御用分點，12/19~12/23 買進 226 張（日均約 75）。近 45 日 P90 48 張</td>
+<td class="note">來源：分析師；公司派庫藏股御用分點，12/19~12/23 買進 226 張（日均約 75）。近 45 日 P90 48 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/3017.TW" target="_blank" rel="noopener">奇鋐</a> <span class="muted">3017</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3017&amp;BHID=9600&amp;b=0039003600310043" target="_blank" rel="noopener">富邦-南京</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+1</span></td>
+<td class="muted">10（雙向）</td>
+<td class="muted">09-18 <span class="neg">-14</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-2</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-2</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-1</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+1</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-07~22-08 27%、多23-03~25-07 352%）；目前多單 57 張、+268%；近 45 日 P90 10 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/3017.TW" target="_blank" rel="noopener">奇鋐</a> <span class="muted">3017</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3017&amp;BHID=7790&amp;b=0037003700390075" target="_blank" rel="noopener">國票-長城</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="">0</span></td>
+<td class="muted">20（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多25-01~25-05 21%、多25-08~26-02 33%）；目前多單 32 張、+4%；近 45 日 P90 11 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/3034.TW" target="_blank" rel="noopener">聯詠</a> <span class="muted">3034</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3034&amp;BHID=9800&amp;b=0039003800390064" target="_blank" rel="noopener">元大-北屯</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="">0</span></td>
+<td class="muted">20（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+2</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-6</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-07~23-07 68%、多23-07~24-07 52%）；目前無未平倉部位；近 45 日 P90 5 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/3034.TW" target="_blank" rel="noopener">聯詠</a> <span class="muted">3034</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3034&amp;BHID=9800&amp;b=0039003800390047" target="_blank" rel="noopener">元大-大同</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="muted">e01 未更新</span></td>
+<td class="muted">20（雙向）</td>
+<td class="muted">09-18 <span class="neg">-128</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-2</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-1</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-2</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-12~23-02 22%、空24-03~25-09 28%）；目前空單 128 張、-6%；近 45 日 P90 15 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/3035.TW" target="_blank" rel="noopener">智原</a> <span class="muted">3035</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3035&amp;BHID=9800&amp;b=003900380039006d" target="_blank" rel="noopener">元大-信義</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="">0</span></td>
+<td class="muted">60（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+2</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（空23-08~25-09 53%、多25-11~26-05 21%）；目前無未平倉部位；近 45 日 P90 12 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/3036.TW" target="_blank" rel="noopener">文曄</a> <span class="muted">3036</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3036&amp;BHID=8840&amp;b=8849" target="_blank" rel="noopener">玉山-景美</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="">0</span></td>
+<td class="muted">50（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+22</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+15</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-4</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-1</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多26-04~26-05 32%、空26-05~26-07 45%）；目前無未平倉部位；近 45 日 P90 20 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/3044.TW" target="_blank" rel="noopener">健鼎</a> <span class="muted">3044</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3044&amp;BHID=9300&amp;b=9352" target="_blank" rel="noopener">華南永昌-桃園</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+40</span></td>
+<td class="muted">50（雙向）</td>
+<td class="muted">10-06 <span class="neg">-72</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-5</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+15</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-15</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+40</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多24-04~25-08 40%、多25-09~26-06 51%）；目前空單 107 張、+0%；近 45 日 P90 45 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/3081.TWO" target="_blank" rel="noopener">聯亞</a> <span class="muted">3081</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3081&amp;BHID=9600&amp;b=9627" target="_blank" rel="noopener">富邦-內湖</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+4</span></td>
+<td class="muted">10（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+7</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+2</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-1</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+4</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多24-08~25-03 70%、多25-12~26-01 49%）；目前無未平倉部位；近 45 日 P90 6 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/3081.TWO" target="_blank" rel="noopener">聯亞</a> <span class="muted">3081</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3081&amp;BHID=5380&amp;b=0035003300380050" target="_blank" rel="noopener">第一金-路竹</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+3</span></td>
+<td class="muted">10（雙向）</td>
+<td class="muted">10-02 <span class="neg">-10</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+4</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-1</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+3</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多23-12~24-03 48%、多25-08~26-01 51%）；目前無未平倉部位；近 45 日 P90 6 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/3105.TWO" target="_blank" rel="noopener">穩懋</a> <span class="muted">3105</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3105&amp;BHID=9600&amp;b=003900360031004e" target="_blank" rel="noopener">富邦-青埔</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+5</span></td>
+<td class="muted">30（雙向）</td>
+<td class="muted">10-02 <span class="neg">-35</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+4</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-1</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+2</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+1</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+5</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（空22-06~22-09 37%、多25-05~25-11 41%）；目前無未平倉部位；近 45 日 P90 22 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/3293.TWO" target="_blank" rel="noopener">鈊象</a> <span class="muted">3293</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3293&amp;BHID=9B00&amp;b=0039004200320033" target="_blank" rel="noopener">台新-三重</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="muted">e01 未更新</span></td>
+<td class="muted">20（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（空22-06~22-09 37%、多22-11~24-01 55%）；目前無未平倉部位；近 45 日 P90 4 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/3374.TWO" target="_blank" rel="noopener">精材</a> <span class="muted">3374</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3374&amp;BHID=9600&amp;b=0039003600310046" target="_blank" rel="noopener">富邦-公益</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-1</span></td>
+<td class="muted">30（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+7</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+2</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+1</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-6</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-1</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多23-07~24-06 28%、空24-09~25-11 52%）；目前無未平倉部位；近 45 日 P90 10 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/3374.TWO" target="_blank" rel="noopener">精材</a> <span class="muted">3374</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3374&amp;BHID=9B00&amp;b=0039004200320047" target="_blank" rel="noopener">台新-新竹</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+2</span></td>
+<td class="muted">30（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-4</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-1</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+1</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-1</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+2</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多23-04~23-06 20%、多24-05~24-06 40%）；目前無未平倉部位；近 45 日 P90 12 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/3376.TW" target="_blank" rel="noopener">新日興</a> <span class="muted">3376</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3376&amp;BHID=9B00&amp;b=0039004200320062" target="_blank" rel="noopener">台新-板橋</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+2</span></td>
+<td class="muted">60（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-1</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+1</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-7</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+2</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-06~24-02 77%、空25-01~25-04 24%）；目前空單 395 張、+26%；近 45 日 P90 22 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/3376.TW" target="_blank" rel="noopener">新日興</a> <span class="muted">3376</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3376&amp;BHID=5380&amp;b=0035003300380057" target="_blank" rel="noopener">第一金-華江</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="">0</span></td>
+<td class="muted">60（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+6</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-1</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-18</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-19</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-09~24-01 47%、多24-01~25-03 90%）；目前空單 117 張、+27%；近 45 日 P90 18 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/3376.TW" target="_blank" rel="noopener">新日興</a> <span class="muted">3376</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3376&amp;BHID=9100&amp;b=0039003100380057" target="_blank" rel="noopener">群益金鼎-忠孝</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="muted">e01 未更新</span></td>
+<td class="muted">60（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多23-07~23-11 47%、多24-01~24-03 31%）；目前空單 302 張、+17%；近 45 日 P90 21 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/3380.TW" target="_blank" rel="noopener">明泰</a> <span class="muted">3380</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3380&amp;BHID=7790&amp;b=0037003700390044" target="_blank" rel="noopener">國票-台南</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+2</span></td>
+<td class="muted">350（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+5</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-14</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+2</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-09~23-08 22%、空25-02~25-08 31%）；目前無未平倉部位；近 45 日 P90 30 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/3406.TW" target="_blank" rel="noopener">玉晶光</a> <span class="muted">3406</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3406&amp;BHID=9100&amp;b=0039003100380043" target="_blank" rel="noopener">群益金鼎-古亭</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="">0</span></td>
+<td class="muted">20（雙向）</td>
+<td class="muted">10-01 <span class="neg">-22</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+3</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-1</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-1</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-4</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多23-11~24-06 48%、多25-07~26-06 48%）；目前空單 24 張、-20%；近 45 日 P90 20 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/3529.TWO" target="_blank" rel="noopener">力旺</a> <span class="muted">3529</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3529&amp;BHID=9800&amp;b=0039003800390050" target="_blank" rel="noopener">元大-敦南</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+6</span></td>
+<td class="muted">20（雙向）</td>
+<td class="muted">09-22 <span class="neg">-33</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+1</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+2</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+6</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多25-11~26-04 54%、空26-04~26-08 72%）；目前空單 88 張、+21%；近 45 日 P90 18 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/3529.TWO" target="_blank" rel="noopener">力旺</a> <span class="muted">3529</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3529&amp;BHID=9600&amp;b=0039003600310046" target="_blank" rel="noopener">富邦-公益</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="">0</span></td>
+<td class="muted">10（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-11~23-03 31%、空24-02~26-01 38%）；目前無未平倉部位；近 45 日 P90 4 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/3532.TW" target="_blank" rel="noopener">台勝科</a> <span class="muted">3532</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3532&amp;BHID=9200&amp;b=0039003200300041" target="_blank" rel="noopener">凱基-板橋</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+1</span></td>
+<td class="muted">30（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+1</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+4</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+2</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-5</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+1</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多25-07~26-06 31%、多26-06~26-07 28%）；目前無未平倉部位；近 45 日 P90 18 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/3532.TW" target="_blank" rel="noopener">台勝科</a> <span class="muted">3532</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3532&amp;BHID=9800&amp;b=9898" target="_blank" rel="noopener">元大-新莊</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="">0</span></td>
+<td class="muted">30（雙向）</td>
+<td class="muted">10-13 <span class="neg">-118</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+1</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-9</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-1</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（空23-06~25-09 29%、多25-12~26-10 363%）；目前無未平倉部位；近 45 日 P90 10 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/3533.TW" target="_blank" rel="noopener">嘉澤</a> <span class="muted">3533</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3533&amp;BHID=9800&amp;b=0039003800390050" target="_blank" rel="noopener">元大-敦南</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="">0</span></td>
+<td class="muted">10（雙向）</td>
+<td class="muted">10-12 <span class="neg">-50</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+3</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+9</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+1</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多23-06~23-12 20%、多24-01~26-03 34%）；目前多單 69 張、-8%；近 45 日 P90 10 張</td>
 </tr>
 <tr class="">
 <td><a href="https://tw.stock.yahoo.com/quote/3563.TW" target="_blank" rel="noopener">牧德</a> <span class="muted">3563</span></td>
-<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3563&BHID=7000&b=7005" target="_blank" rel="noopener">兆豐-台中港</a></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3563&amp;BHID=7000&amp;b=7005" target="_blank" rel="noopener">兆豐-台中港</a></td>
 <td><span class="muted">—</span></td>
 <td><span class="muted">e01 未更新</span></td>
 <td class="muted">未設（買超）</td>
 <td class="muted">—</td>
-<td class="recent"><span class="day" title="2026-10-15">10-15 <span class="">0</span></span><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
 <td class="note">從「贏家分點 / 資料來源」頁的 CMoney 範例搬來（agent=7005）；門檻未設所以先不啟用</td>
 </tr>
 <tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/3661.TW" target="_blank" rel="noopener">世芯-KY</a> <span class="muted">3661</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3661&amp;BHID=7790&amp;b=0037003700390075" target="_blank" rel="noopener">國票-長城</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="">0</span></td>
+<td class="muted">10（雙向）</td>
+<td class="muted">10-13 <span class="neg">-18</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多23-01~25-01 43%、多25-12~26-07 38%）；目前無未平倉部位；近 45 日 P90 10 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/3665.TW" target="_blank" rel="noopener">貿聯-KY</a> <span class="muted">3665</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3665&amp;BHID=9300&amp;b=9334" target="_blank" rel="noopener">華南永昌-世貿</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+1</span></td>
+<td class="muted">10（雙向）</td>
+<td class="muted">09-18 <span class="neg">-11</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+2</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-2</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+1</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多24-04~24-11 142%、多25-11~26-03 23%）；目前多單 17 張、-28%；近 45 日 P90 5 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/3680.TWO" target="_blank" rel="noopener">家登</a> <span class="muted">3680</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3680&amp;BHID=9A00&amp;b=003900410039004c" target="_blank" rel="noopener">永豐金-台中</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-1</span></td>
+<td class="muted">20（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+1</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+2</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+1</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-1</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-06~23-05 44%、多24-01~24-07 22%）；目前多單 101 張、+34%；近 45 日 P90 5 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/3691.TWO" target="_blank" rel="noopener">碩禾</a> <span class="muted">3691</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3691&amp;BHID=9800&amp;b=0039003800320043" target="_blank" rel="noopener">元大-六合</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="">0</span></td>
+<td class="muted">100（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多23-06~24-04 35%、多24-11~26-05 64%）；目前多單 11 張、+10%；近 45 日 P90 30 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/3691.TWO" target="_blank" rel="noopener">碩禾</a> <span class="muted">3691</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3691&amp;BHID=9A00&amp;b=0039004100390058" target="_blank" rel="noopener">永豐金-竹科</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-1</span></td>
+<td class="muted">100（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-1</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（空23-02~23-11 23%、多24-01~24-04 22%）；目前空單 291 張、-22%；近 45 日 P90 6 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/3691.TWO" target="_blank" rel="noopener">碩禾</a> <span class="muted">3691</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3691&amp;BHID=9200&amp;b=003900320030004e" target="_blank" rel="noopener">凱基-湖口</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="muted">e01 未更新</span></td>
+<td class="muted">100（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（空22-09~23-12 46%、多26-04~26-05 27%）；目前空單 129 張、+4%；近 45 日 P90 39 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/3714.TW" target="_blank" rel="noopener">富采</a> <span class="muted">3714</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=3714&amp;BHID=9200&amp;b=9235" target="_blank" rel="noopener">凱基-永華</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="muted">e01 未更新</span></td>
+<td class="muted">200（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-1</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（空23-02~25-08 22%、多25-10~26-04 44%）；目前空單 545 張、+10%；近 45 日 P90 11 張</td>
+</tr>
+<tr class="">
 <td><a href="https://tw.stock.yahoo.com/quote/4938.TW" target="_blank" rel="noopener">和碩</a> <span class="muted">4938</span></td>
-<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=4938&BHID=9B00&b=0039004200310037" target="_blank" rel="noopener">台新-營業部</a></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=4938&amp;BHID=9B00&amp;b=0039004200310037" target="_blank" rel="noopener">台新-營業部</a></td>
 <td><span class="muted">—</span></td>
 <td><span class="muted">e01 未更新</span></td>
 <td class="muted">150（雙向）</td>
 <td class="muted">—</td>
-<td class="recent"></td>
-<td class="note">反查：許多多稱追蹤 4 年的神祕分點，2025/12/23 買超 1.5 億（e01：買超 2147 張吻合）。門檻按約 1000 萬換算</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">反查：分析師稱追蹤 4 年的神祕分點，2025/12/23 買超 1.5 億（e01：買超 2147 張吻合）。門檻按約 1000 萬換算</td>
 </tr>
 <tr class="">
-<td><a href="https://tw.stock.yahoo.com/quote/5347.TWO" target="_blank" rel="noopener">世界</a> <span class="muted">5347</span></td>
-<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=5347&BHID=9A00&b=0039004100300030" target="_blank" rel="noopener">永豐金證券</a></td>
-<td><span class="chip">B</span></td>
-<td><span class="pos">+3</span></td>
-<td class="muted">400（雙向）</td>
-<td class="muted">10-16 <span class="pos">+1,317</span></td>
-<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+1,317</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+20</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-7</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-9</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+3</span></span></td>
-<td class="note">反查：許多多稱 B 級口碑分點，2026/1/8 單日賣超 7412 張（e01 完全吻合），2021/8 底部大買。近 45 日 P90 389</td>
+<td><a href="https://tw.stock.yahoo.com/quote/4958.TW" target="_blank" rel="noopener">臻鼎-KY</a> <span class="muted">4958</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=4958&amp;BHID=9B00&amp;b=0039004200320041" target="_blank" rel="noopener">台新-緯城</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="">0</span></td>
+<td class="muted">70（雙向）</td>
+<td class="muted">10-02 <span class="neg">-208</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-57</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+19</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+3</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多24-02~24-09 25%、多24-09~25-08 30%）；目前多單 160 張、+9%；近 45 日 P90 64 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/5269.TW" target="_blank" rel="noopener">祥碩</a> <span class="muted">5269</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=5269&amp;BHID=5850&amp;b=5852" target="_blank" rel="noopener">統一-敦南</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="">0</span></td>
+<td class="muted">10（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-2</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（空25-03~25-04 23%、空25-05~26-05 29%）；目前空單 30 張、-1%；近 45 日 P90 7 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/5274.TWO" target="_blank" rel="noopener">信驊</a> <span class="muted">5274</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=5274&amp;BHID=9B00&amp;b=0039004200320030" target="_blank" rel="noopener">台新-台北</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="">0</span></td>
+<td class="muted">10（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+2</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+3</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：3 次獲利波段（多23-07~24-07 33%、多25-03~25-06 44%、多26-01~26-06 39%）；目前無未平倉部位；近 45 日 P90 8 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/5388.TW" target="_blank" rel="noopener">中磊</a> <span class="muted">5388</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=5388&amp;BHID=9600&amp;b=9676" target="_blank" rel="noopener">富邦-仁愛</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="">0</span></td>
+<td class="muted">150（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-1</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-11</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-4</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-11~23-08 26%、空25-05~26-04 21%）；目前無未平倉部位；近 45 日 P90 15 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/5388.TW" target="_blank" rel="noopener">中磊</a> <span class="muted">5388</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=5388&amp;BHID=9600&amp;b=9666" target="_blank" rel="noopener">富邦-南屯</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-1</span></td>
+<td class="muted">150（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-2</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+2</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-3</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-1</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-1</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-10~24-06 40%、空25-05~26-09 24%）；目前無未平倉部位；近 45 日 P90 11 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/6116.TW" target="_blank" rel="noopener">彩晶</a> <span class="muted">6116</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=6116&amp;BHID=9A00&amp;b=0039004100390067" target="_blank" rel="noopener">永豐金-內湖</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-1</span></td>
+<td class="muted">700（雙向）</td>
+<td class="muted">10-01 <span class="pos">+873</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-6</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+4</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-4</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-1</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（空24-07~25-07 32%、多25-12~26-07 139%）；目前多單 338 張、-4%；近 45 日 P90 346 張</td>
 </tr>
 <tr class="">
 <td><a href="https://tw.stock.yahoo.com/quote/6139.TW" target="_blank" rel="noopener">亞翔</a> <span class="muted">6139</span></td>
-<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=6139&BHID=5380&b=0035003300380046" target="_blank" rel="noopener">第一金-大稻埕</a></td>
-<td><span class="muted">—</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=6139&amp;BHID=5380&amp;b=0035003300380046" target="_blank" rel="noopener">第一金-大稻埕</a></td>
+<td><span class="chip">A</span></td>
 <td><span class="">0</span></td>
 <td class="muted">50（雙向）</td>
 <td class="muted">10-15 <span class="pos">+110</span></td>
 <td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+1</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+1</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
-<td class="note">來源：許多多分析師；他稱 2025 年最強分點，三波 37%/25%/27%。近 45 日 P90 50、最大 110 張</td>
+<td class="note">來源：分析師；他稱 2025 年最強分點，三波 37%/25%/27%。近 45 日 P90 50、最大 110 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/6139.TW" target="_blank" rel="noopener">亞翔</a> <span class="muted">6139</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=6139&amp;BHID=7000&amp;b=0037003000300042" target="_blank" rel="noopener">兆豐-板橋</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+3</span></td>
+<td class="muted">20（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-2</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-2</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+2</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-2</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+3</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：3 次獲利波段（多23-05~23-09 44%、空24-04~25-05 38%、多25-10~26-07 26%）；目前無未平倉部位；近 45 日 P90 3 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/6139.TW" target="_blank" rel="noopener">亞翔</a> <span class="muted">6139</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=6139&amp;BHID=8840&amp;b=003800380034004a" target="_blank" rel="noopener">玉山-大里</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="">0</span></td>
+<td class="muted">20（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+3</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+1</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+1</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-1</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多24-12~25-03 20%、多25-07~25-12 29%）；目前無未平倉部位；近 45 日 P90 11 張</td>
 </tr>
 <tr class="">
 <td><a href="https://tw.stock.yahoo.com/quote/6173.TWO" target="_blank" rel="noopener">信昌電</a> <span class="muted">6173</span></td>
-<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=6173&BHID=6160&b=6160" target="_blank" rel="noopener">中國信託</a></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=6173&amp;BHID=6160&amp;b=6160" target="_blank" rel="noopener">中國信託</a></td>
 <td><span class="muted">—</span></td>
 <td><span class="neg">-14</span></td>
 <td class="muted">400（雙向）</td>
 <td class="muted">—</td>
-<td class="recent"><span class="day" title="2026-10-06">10-06 <span class="pos">+10</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+7</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-200</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-14</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-14</span></span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+7</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-200</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-14</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-14</span></span></td>
 <td class="note">總公司而非分點；單日買超或賣超超過 400 張即留意</td>
 </tr>
 <tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/6173.TWO" target="_blank" rel="noopener">信昌電</a> <span class="muted">6173</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=6173&amp;BHID=9600&amp;b=0039003600320050" target="_blank" rel="noopener">富邦-頭份</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-3</span></td>
+<td class="muted">40（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+11</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-3</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-11</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-3</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多24-11~25-10 55%、多25-12~26-04 28%）；目前無未平倉部位；近 45 日 P90 12 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/6223.TWO" target="_blank" rel="noopener">旺矽</a> <span class="muted">6223</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=6223&amp;BHID=7790&amp;b=003700370039005a" target="_blank" rel="noopener">國票-安和</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="">0</span></td>
+<td class="muted">10（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-1</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+1</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：4 次獲利波段（多22-10~22-12 43%、多23-09~25-06 51%、多25-08~25-11 46%、多26-04~26-06 35%）；目前空單 8 張、+14%；近 45 日 P90 5 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/6269.TW" target="_blank" rel="noopener">台郡</a> <span class="muted">6269</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=6269&amp;BHID=7000&amp;b=7006" target="_blank" rel="noopener">兆豐-台南</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+11</span></td>
+<td class="muted">150（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-30</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+33</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-38</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+14</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+11</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-07~22-08 20%、空22-11~26-05 36%）；目前多單 478 張、+39%；近 45 日 P90 30 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/6269.TW" target="_blank" rel="noopener">台郡</a> <span class="muted">6269</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=6269&amp;BHID=9B00&amp;b=0039004200310033" target="_blank" rel="noopener">台新-三民</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-5</span></td>
+<td class="muted">150（雙向）</td>
+<td class="muted">10-15 <span class="neg">-229</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-2</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+3</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-25</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+53</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-5</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（空23-04~25-04 30%、多25-11~26-06 31%）；目前無未平倉部位；近 45 日 P90 24 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/6271.TW" target="_blank" rel="noopener">同欣電</a> <span class="muted">6271</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=6271&amp;BHID=8840&amp;b=8842" target="_blank" rel="noopener">玉山-新莊</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+2</span></td>
+<td class="muted">50（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+7</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+2</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-1</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-1</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+2</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-10~23-01 24%、空23-01~24-05 45%）；目前多單 54 張、+16%；近 45 日 P90 21 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/6274.TWO" target="_blank" rel="noopener">台燿</a> <span class="muted">6274</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=6274&amp;BHID=5850&amp;b=0035003800350063" target="_blank" rel="noopener">統一-仁愛</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-1</span></td>
+<td class="muted">40（雙向）</td>
+<td class="muted">10-06 <span class="neg">-59</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+3</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-7</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-7</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-1</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多25-12~26-07 64%、多26-07~26-10 37%）；目前無未平倉部位；近 45 日 P90 39 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/6290.TWO" target="_blank" rel="noopener">良維</a> <span class="muted">6290</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=6290&amp;BHID=9200&amp;b=9239" target="_blank" rel="noopener">凱基-市政</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="">0</span></td>
+<td class="muted">50（雙向）</td>
+<td class="muted">10-15 <span class="neg">-68</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+1</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-11~23-02 25%、多23-07~24-04 31%）；目前多單 247 張、+59%；近 45 日 P90 18 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/6290.TWO" target="_blank" rel="noopener">良維</a> <span class="muted">6290</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=6290&amp;BHID=9800&amp;b=003900380030004b" target="_blank" rel="noopener">元大-竹科</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="">0</span></td>
+<td class="muted">50（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-1</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多24-05~25-11 49%、多26-01~26-03 34%）；目前空單 223 張、-11%；近 45 日 P90 25 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/6505.TW" target="_blank" rel="noopener">台塑化</a> <span class="muted">6505</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=6505&amp;BHID=9600&amp;b=0039003600310043" target="_blank" rel="noopener">富邦-南京</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-39</span></td>
+<td class="muted">150（雙向）</td>
+<td class="muted">09-22 <span class="neg">-165</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-8</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+28</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+3</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+49</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-39</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（空22-10~25-11 20%、多26-06~26-09 33%）；目前空單 511 張、-20%；近 45 日 P90 128 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/6505.TW" target="_blank" rel="noopener">台塑化</a> <span class="muted">6505</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=6505&amp;BHID=6160&amp;b=6164" target="_blank" rel="noopener">中國信託-文心</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+8</span></td>
+<td class="muted">100（雙向）</td>
+<td class="muted">10-14 <span class="neg">-939</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-32</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+36</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+72</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+8</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（空22-07~24-08 38%、多25-02~25-11 34%）；目前空單 987 張、+9%；近 45 日 P90 75 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/6510.TWO" target="_blank" rel="noopener">精測</a> <span class="muted">6510</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=6510&amp;BHID=9B00&amp;b=0039004200320030" target="_blank" rel="noopener">台新-台北</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="">0</span></td>
+<td class="muted">70（雙向）</td>
+<td class="muted">10-01 <span class="neg">-126</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-1</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多25-05~25-10 59%、多25-12~26-02 51%）；目前空單 348 張、-1%；近 45 日 P90 67 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/6510.TWO" target="_blank" rel="noopener">精測</a> <span class="muted">6510</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=6510&amp;BHID=6460&amp;b=6461" target="_blank" rel="noopener">大昌-樹林</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="muted">e01 未更新</span></td>
+<td class="muted">10（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-07~23-09 37%、多24-04~24-11 38%）；目前無未平倉部位；近 45 日 P90 1 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/6526.TW" target="_blank" rel="noopener">達發</a> <span class="muted">6526</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=6526&amp;BHID=9800&amp;b=9897" target="_blank" rel="noopener">元大-土城</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-2</span></td>
+<td class="muted">20（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+2</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-2</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-2</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多23-10~25-06 26%、多25-09~26-07 20%）；目前無未平倉部位；近 45 日 P90 16 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/6526.TW" target="_blank" rel="noopener">達發</a> <span class="muted">6526</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=6526&amp;BHID=9800&amp;b=9874" target="_blank" rel="noopener">元大-雙和</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-6</span></td>
+<td class="muted">20（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+2</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-6</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+3</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-6</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（空25-03~25-10 21%、多25-12~26-06 56%）；目前空單 9 張、-23%；近 45 日 P90 7 張</td>
+</tr>
+<tr class="">
 <td><a href="https://tw.stock.yahoo.com/quote/6547.TWO" target="_blank" rel="noopener">高端疫苗</a> <span class="muted">6547</span></td>
-<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=6547&BHID=9200&b=9217" target="_blank" rel="noopener">凱基-松山</a></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=6547&amp;BHID=9200&amp;b=9217" target="_blank" rel="noopener">凱基-松山</a></td>
 <td><span class="muted">—</span></td>
 <td><span class="">0</span></td>
 <td class="muted">200（雙向）</td>
 <td class="muted">—</td>
 <td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+1</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+1</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+2</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-1</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
-<td class="note">來源：許多多分析師；2021/6 五日價差 30%、賺過 1.7 億。近 45 日最大僅 7 張，門檻按約 1000 萬金額換算</td>
+<td class="note">來源：分析師；2021/6 五日價差 30%、賺過 1.7 億。近 45 日最大僅 7 張，門檻按約 1000 萬金額換算</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/6669.TW" target="_blank" rel="noopener">緯穎</a> <span class="muted">6669</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=6669&amp;BHID=7790&amp;b=0037003700390075" target="_blank" rel="noopener">國票-長城</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-3</span></td>
+<td class="muted">10（雙向）</td>
+<td class="muted">09-22 <span class="pos">+11</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+1</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-5</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+3</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-3</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多24-01~25-01 28%、多25-01~25-06 27%）；目前無未平倉部位；近 45 日 P90 7 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/6669.TW" target="_blank" rel="noopener">緯穎</a> <span class="muted">6669</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=6669&amp;BHID=9200&amp;b=9276" target="_blank" rel="noopener">凱基-苗栗</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="">0</span></td>
+<td class="muted">10（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+1</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多23-09~23-11 23%、多23-11~24-01 21%）；目前空單 42 張、-2%；近 45 日 P90 3 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/6770.TW" target="_blank" rel="noopener">力積電</a> <span class="muted">6770</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=6770&amp;BHID=9600&amp;b=0039003600310050" target="_blank" rel="noopener">富邦-和美</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-19</span></td>
+<td class="muted">200（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-47</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+103</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+49</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+22</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-19</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（空24-01~24-10 37%、多24-11~26-04 219%）；目前空單 941 張、-12%；近 45 日 P90 152 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/8039.TW" target="_blank" rel="noopener">台虹</a> <span class="muted">8039</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=8039&amp;BHID=9B00&amp;b=0039004200320037" target="_blank" rel="noopener">台新-林園</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+2</span></td>
+<td class="muted">40（雙向）</td>
+<td class="muted">09-17 <span class="pos">+88</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-13</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+3</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+1</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+12</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+2</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（空23-05~25-06 22%、多25-08~25-09 22%）；目前多單 915 張、+87%；近 45 日 P90 21 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/8069.TWO" target="_blank" rel="noopener">元太</a> <span class="muted">8069</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=8069&amp;BHID=7790&amp;b=003700370039005a" target="_blank" rel="noopener">國票-安和</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="">0</span></td>
+<td class="muted">200（雙向）</td>
+<td class="muted">10-06 <span class="pos">+264</span></td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-49</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-10</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-150</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（空25-03~25-07 29%、空25-07~26-02 31%）；目前多單 432 張、+5%；近 45 日 P90 163 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/8086.TWO" target="_blank" rel="noopener">宏捷科</a> <span class="muted">8086</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=8086&amp;BHID=9100&amp;b=9183" target="_blank" rel="noopener">群益金鼎-高雄</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+7</span></td>
+<td class="muted">90（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+2</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+3</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+4</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+7</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-09~24-04 33%、空24-04~24-08 20%）；目前空單 58 張、-11%；近 45 日 P90 7 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/8112.TW" target="_blank" rel="noopener">至上</a> <span class="muted">8112</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=8112&amp;BHID=7790&amp;b=0037003700390075" target="_blank" rel="noopener">國票-長城</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-32</span></td>
+<td class="muted">150（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+5</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-3</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-1</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-32</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多24-03~24-04 22%、多25-04~26-01 78%）；目前空單 594 張、+5%；近 45 日 P90 13 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/8112.TW" target="_blank" rel="noopener">至上</a> <span class="muted">8112</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=8112&amp;BHID=9100&amp;b=003900310038004a" target="_blank" rel="noopener">群益金鼎-永和</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+19</span></td>
+<td class="muted">150（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+1</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+23</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-31</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-1</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+19</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-06~24-07 87%、多25-01~25-12 21%）；目前多單 226 張、-9%；近 45 日 P90 33 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/8150.TW" target="_blank" rel="noopener">南茂</a> <span class="muted">8150</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=8150&amp;BHID=5380&amp;b=5385" target="_blank" rel="noopener">第一金-桃園</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+15</span></td>
+<td class="muted">150（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-5</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-2</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+7</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+10</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+15</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多23-07~24-03 34%、多24-07~25-11 30%）；目前無未平倉部位；近 45 日 P90 53 張</td>
 </tr>
 <tr class="">
 <td><a href="https://tw.stock.yahoo.com/quote/8358.TWO" target="_blank" rel="noopener">金居</a> <span class="muted">8358</span></td>
-<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=8358&BHID=8880&b=8888" target="_blank" rel="noopener">國泰-敦南</a></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=8358&amp;BHID=8880&amp;b=8888" target="_blank" rel="noopener">國泰-敦南</a></td>
 <td><span class="muted">—</span></td>
 <td><span class="pos">+159</span></td>
 <td class="muted">350（雙向）</td>
 <td class="muted">10-05 <span class="neg">-647</span></td>
 <td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+97</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+10</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+122</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+78</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+159</span></span></td>
-<td class="note">反查（中等信心）：許多多 8/22 稱唯一進貨分點、之後連 4 天賣超；國泰敦南 7/1~8/21 買超居前，8/25~8/28 連 4 天賣超。但 8/21 曾賣 268 張，未完全吻合。近 45 日 P90 357</td>
+<td class="note">反查（中等信心）：分析師 8/22 稱唯一進貨分點、之後連 4 天賣超；國泰敦南 7/1~8/21 買超居前，8/25~8/28 連 4 天賣超。但 8/21 曾賣 268 張，未完全吻合。近 45 日 P90 357</td>
 </tr>
-</table></div>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/8932.TWO" target="_blank" rel="noopener">智通</a> <span class="muted">8932</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=8932&amp;BHID=9B00&amp;b=0039004200320035" target="_blank" rel="noopener">台新-五權西</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="muted">e01 未更新</span></td>
+<td class="muted">150（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+5</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+6</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+34</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-35</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多23-05~23-11 21%、多25-02~25-09 33%）；目前空單 2506 張、+15%；近 45 日 P90 100 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/8932.TWO" target="_blank" rel="noopener">智通</a> <span class="muted">8932</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=8932&amp;BHID=9600&amp;b=0039003600310046" target="_blank" rel="noopener">富邦-公益</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+1</span></td>
+<td class="muted">150（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-5</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-1</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-1</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+1</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多25-05~25-06 26%、空26-02~26-05 100%）；目前多單 1434 張、-15%；近 45 日 P90 132 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/8932.TWO" target="_blank" rel="noopener">智通</a> <span class="muted">8932</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=8932&amp;BHID=8560&amp;b=8561" target="_blank" rel="noopener">新光-台中</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="pos">+4</span></td>
+<td class="muted">150（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-8</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-11</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-3</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-7</span></span><span class="day" title="2026-10-22">10-22 <span class="pos">+4</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-10~22-11 20%、多22-12~23-05 20%）；目前空單 473 張、+56%；近 45 日 P90 9 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/8932.TWO" target="_blank" rel="noopener">智通</a> <span class="muted">8932</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=8932&amp;BHID=9B00&amp;b=0039004200310035" target="_blank" rel="noopener">台新-松江</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-8</span></td>
+<td class="muted">150（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+4</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-8</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-06~22-09 24%、多23-11~25-08 46%）；目前空單 154 張、+129%；近 45 日 P90 47 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/8932.TWO" target="_blank" rel="noopener">智通</a> <span class="muted">8932</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=8932&amp;BHID=9A00&amp;b=0039004100390057" target="_blank" rel="noopener">永豐金-市政</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-2</span></td>
+<td class="muted">150（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+2</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-2</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-1</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-1</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-2</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多23-03~23-08 63%、空25-12~26-05 94%）；目前無未平倉部位；近 45 日 P90 34 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/8932.TWO" target="_blank" rel="noopener">智通</a> <span class="muted">8932</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=8932&amp;BHID=9B00&amp;b=003900420032007a" target="_blank" rel="noopener">台新-文心</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="muted">e01 未更新</span></td>
+<td class="muted">150（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+2</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多23-07~25-09 155%、空25-12~26-07 45%）；目前多單 622 張、-5%；近 45 日 P90 129 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/8932.TWO" target="_blank" rel="noopener">智通</a> <span class="muted">8932</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=8932&amp;BHID=9800&amp;b=0039003800300077" target="_blank" rel="noopener">元大-西屯</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="muted">e01 未更新</span></td>
+<td class="muted">150（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-5</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多23-04~23-07 38%、多24-02~24-06 28%）；目前多單 307 張、+5%；近 45 日 P90 19 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/8932.TWO" target="_blank" rel="noopener">智通</a> <span class="muted">8932</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=8932&amp;BHID=9800&amp;b=9854" target="_blank" rel="noopener">元大-文心興安</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-1</span></td>
+<td class="muted">150（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-13</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-1</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-10~22-11 21%、多23-06~24-01 35%）；目前空單 51 張、+7%；近 45 日 P90 8 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/8932.TWO" target="_blank" rel="noopener">智通</a> <span class="muted">8932</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=8932&amp;BHID=9600&amp;b=9634" target="_blank" rel="noopener">富邦-羅東</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="muted">e01 未更新</span></td>
+<td class="muted">150（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-12</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+1</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多23-02~23-06 46%、空23-07~24-09 21%）；目前空單 48 張、+14%；近 45 日 P90 8 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/8932.TWO" target="_blank" rel="noopener">智通</a> <span class="muted">8932</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=8932&amp;BHID=9600&amp;b=003900360035004b" target="_blank" rel="noopener">富邦-台中</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="muted">e01 未更新</span></td>
+<td class="muted">150（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-1</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-1</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多23-10~23-12 45%、多24-04~25-08 36%）；目前空單 86 張、-4%；近 45 日 P90 11 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/9904.TW" target="_blank" rel="noopener">寶成</a> <span class="muted">9904</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=9904&amp;BHID=5850&amp;b=5855" target="_blank" rel="noopener">統一-台南</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="muted">e01 未更新</span></td>
+<td class="muted">550（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-2</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-59</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多23-07~24-04 22%、空24-05~26-07 53%）；目前多單 5667 張、+9%；近 45 日 P90 510 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/9945.TW" target="_blank" rel="noopener">潤泰新</a> <span class="muted">9945</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=9945&amp;BHID=9600&amp;b=9676" target="_blank" rel="noopener">富邦-仁愛</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-7</span></td>
+<td class="muted">350（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+1</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-40</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+44</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-3</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-7</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（空22-06~23-05 43%、空25-04~26-04 20%）；目前多單 1179 張、+20%；近 45 日 P90 44 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/9945.TW" target="_blank" rel="noopener">潤泰新</a> <span class="muted">9945</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=9945&amp;BHID=9B00&amp;b=0039004200320062" target="_blank" rel="noopener">台新-板橋</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-6</span></td>
+<td class="muted">350（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="neg">-2</span></span><span class="day" title="2026-10-20">10-20 <span class="neg">-25</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-49</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-6</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（空22-11~23-11 24%、空24-05~25-05 44%）；目前空單 902 張、-15%；近 45 日 P90 30 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/9945.TW" target="_blank" rel="noopener">潤泰新</a> <span class="muted">9945</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=9945&amp;BHID=9200&amp;b=9211" target="_blank" rel="noopener">凱基-台南</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-21</span></td>
+<td class="muted">350（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="neg">-4</span></span><span class="day" title="2026-10-19">10-19 <span class="">0</span></span><span class="day" title="2026-10-20">10-20 <span class="">0</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+24</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-21</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（空22-06~23-01 39%、空24-08~26-04 37%）；目前空單 683 張、-17%；近 45 日 P90 30 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/9945.TW" target="_blank" rel="noopener">潤泰新</a> <span class="muted">9945</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=9945&amp;BHID=9600&amp;b=9647" target="_blank" rel="noopener">富邦-新竹</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-1</span></td>
+<td class="muted">350（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+4</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+106</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+7</span></span><span class="day" title="2026-10-21">10-21 <span class="pos">+14</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-1</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（空22-06~24-06 36%、空24-07~25-11 42%）；目前多單 475 張、+5%；近 45 日 P90 96 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/9958.TW" target="_blank" rel="noopener">世紀鋼</a> <span class="muted">9958</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=9958&amp;BHID=5380&amp;b=0035003300380044" target="_blank" rel="noopener">第一金-忠孝</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="neg">-3</span></td>
+<td class="muted">150（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="">0</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+6</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+5</span></span><span class="day" title="2026-10-21">10-21 <span class="">0</span></span><span class="day" title="2026-10-22">10-22 <span class="neg">-3</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：3 次獲利波段（多22-10~22-12 20%、多22-12~24-06 65%、空24-06~24-09 35%）；目前無未平倉部位；近 45 日 P90 25 張</td>
+</tr>
+<tr class="">
+<td><a href="https://tw.stock.yahoo.com/quote/9958.TW" target="_blank" rel="noopener">世紀鋼</a> <span class="muted">9958</span></td>
+<td><a href="https://fubon-ebrokerdj.fbs.com.tw/z/zc/zco/zco0/zco0.djhtm?a=9958&amp;BHID=9300&amp;b=9352" target="_blank" rel="noopener">華南永昌-桃園</a></td>
+<td><span class="chip">A</span></td>
+<td><span class="muted">e01 未更新</span></td>
+<td class="muted">150（雙向）</td>
+<td class="muted">—</td>
+<td class="recent"><span class="day" title="2026-10-16">10-16 <span class="pos">+11</span></span><span class="day" title="2026-10-19">10-19 <span class="pos">+5</span></span><span class="day" title="2026-10-20">10-20 <span class="pos">+1</span></span><span class="day" title="2026-10-21">10-21 <span class="neg">-5</span></span><span class="day" title="2026-10-22">10-22 <span class="">0</span></span></td>
+<td class="note">程式掃描 2022-06 起，20% 門檻：2 次獲利波段（多22-10~23-12 33%、空24-05~26-09 83%）；目前無未平倉部位；近 45 日 P90 19 張</td>
+</tr>
+</table></div></details>
 </div></body></html>
