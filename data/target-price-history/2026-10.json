@@ -2462,6 +2462,136 @@
    "epsHigh": 2.75,
    "epsLow": 2.19,
    "target": 40
+  },
+  "6637550": {
+   "id": 6637550,
+   "date": "2026-10-26",
+   "publishedAt": "2026-10-26T08:10:19+08:00",
+   "url": "https://news.cnyes.com/news/id/6637550",
+   "analysts": 6,
+   "name": "順德",
+   "code": "2351",
+   "kind": "target",
+   "targetPrev": 290,
+   "direction": "up",
+   "target": 300,
+   "targetHigh": 410,
+   "targetLow": 226
+  },
+  "6637551": {
+   "id": 6637551,
+   "date": "2026-10-26",
+   "publishedAt": "2026-10-26T08:10:49+08:00",
+   "url": "https://news.cnyes.com/news/id/6637551",
+   "analysts": 9,
+   "name": "國泰金",
+   "code": "2882",
+   "kind": "eps",
+   "epsYear": 2026,
+   "epsPrev": 8.95,
+   "direction": "up",
+   "eps": 9.02,
+   "epsHigh": 10.12,
+   "epsLow": 8.53,
+   "target": 127.1
+  },
+  "6637552": {
+   "id": 6637552,
+   "date": "2026-10-26",
+   "publishedAt": "2026-10-26T08:10:50+08:00",
+   "url": "https://news.cnyes.com/news/id/6637552",
+   "analysts": 13,
+   "name": "川湖",
+   "code": "2059",
+   "kind": "eps",
+   "epsYear": 2026,
+   "epsPrev": 345.71,
+   "direction": "up",
+   "eps": 352.18,
+   "epsHigh": 393.72,
+   "epsLow": 239.4,
+   "target": 15000
+  },
+  "6637805": {
+   "id": 6637805,
+   "date": "2026-10-26",
+   "publishedAt": "2026-10-26T20:10:27+08:00",
+   "url": "https://news.cnyes.com/news/id/6637805",
+   "analysts": 7,
+   "name": "信邦",
+   "code": "3023",
+   "kind": "target",
+   "targetPrev": 390,
+   "direction": "down",
+   "target": 375,
+   "targetHigh": 410,
+   "targetLow": 330
+  },
+  "6638062": {
+   "id": 6638062,
+   "date": "2026-10-27",
+   "publishedAt": "2026-10-27T08:10:29+08:00",
+   "url": "https://news.cnyes.com/news/id/6638062",
+   "analysts": 18,
+   "name": "日月光投控",
+   "code": "3711",
+   "kind": "eps",
+   "epsYear": 2026,
+   "epsPrev": 19.05,
+   "direction": "up",
+   "eps": 19.17,
+   "epsHigh": 21.96,
+   "epsLow": 17.95,
+   "target": 755
+  },
+  "6638161": {
+   "id": 6638161,
+   "date": "2026-10-27",
+   "publishedAt": "2026-10-27T10:10:32+08:00",
+   "url": "https://news.cnyes.com/news/id/6638161",
+   "analysts": 14,
+   "name": "國巨",
+   "code": "2327",
+   "kind": "eps",
+   "epsYear": 2026,
+   "epsPrev": 19.83,
+   "direction": "up",
+   "eps": 20.01,
+   "epsHigh": 20.7,
+   "epsLow": 18.22,
+   "target": 1000
+  },
+  "6638253": {
+   "id": 6638253,
+   "date": "2026-10-27",
+   "publishedAt": "2026-10-27T12:10:23+08:00",
+   "url": "https://news.cnyes.com/news/id/6638253",
+   "analysts": 6,
+   "name": "頎邦",
+   "code": "6147",
+   "kind": "target",
+   "targetPrev": 280,
+   "direction": "up",
+   "target": 290,
+   "targetHigh": 365,
+   "targetLow": 230
+  },
+  "6638254": {
+   "id": 6638254,
+   "date": "2026-10-27",
+   "publishedAt": "2026-10-27T12:10:32+08:00",
+   "url": "https://news.cnyes.com/news/id/6638254",
+   "analysts": 9,
+   "name": "頎邦",
+   "code": "6147",
+   "kind": "eps",
+   "epsYear": 2026,
+   "epsPrev": 5.72,
+   "direction": "up",
+   "eps": 5.77,
+   "epsHigh": 6.27,
+   "epsLow": 5.05,
+   "target": 290
   }
  },
  "headlines": {
@@ -2527,6 +2657,13 @@
    "title": "松川上市後首度籌資擬發15億元CB 法人維持強力買進、目標價500元",
    "source": "鉅亨網",
    "url": "https://news.cnyes.com/news/id/6635112"
+  },
+  "6638259": {
+   "id": 6638259,
+   "date": "2026-10-27",
+   "title": "〈焦點股〉美系外資調高緯穎目標價 價量齊揚漲逾半根停板",
+   "source": "鉅亨網",
+   "url": "https://news.cnyes.com/news/id/6638259"
   },
   "g:p4x52u": {
    "id": "g:p4x52u",
@@ -11284,6 +11421,965 @@
    "title": "里昂：瑞聲科技(2018.HK)為果鏈重點標的，看好AI新業務發展，給予54.4港元目標價",
    "source": "TradingView",
    "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBQeUZNZXQzX3Nvb2ZOekVwcE9NZllRVy04cS1Cb2w0UTl6SEp4ajlnaDNLRG1PaS1hMklJUFpmUlJVR2hZSlpxQmp3WFZxX0RsVzBpZE5ENE95UlRTYWFyRFVEa254dm9oUXc?oc=5"
+  },
+  "g:18cxcse": {
+   "id": "g:18cxcse",
+   "date": "2026-10-27",
+   "title": "外資目標價直衝1775元！「這載板廠」今卻開高翻黑跌2.3% 投信連挺8天再加碼2111張",
+   "source": "Yahoo股市",
+   "url": "https://news.google.com/rss/articles/CBMivwNBVV95cUxNQmc0U1BvMGIxMW1SUWppdDk5YlI5NXlQMExjT2dXQllTdDQ0bVFKVjhZLVVObVlxSTE5YzJNV1dMaElWdlFnd3BUdzRXNi1pR0VlZ2VDSzMteC1QRGNFZ1dKSWhyaG45U1F3UzZldGZXbmFRZ3JsLWRaV01CV0pkYWJfYktjOGFoejdrVHc0YktSWWd6OUtvTE80eWZoMUNCd0dnX3hPVXlPMEtlbEQ1WGtuTnZVVzhyVU0tSTFJYjR2Q1huZGh0THZESHJKcm5VUHVIdUNwbzk5LUtWWUNvWkVsZGFhX1RvZmFvZXdsWE5TZDA3d2JkS3NIeU9FOUMwQXA5ZEY2bEpMeTQzZS1yQ0VreGlERVZhU3hNbURidFdnd2pXWnktakd4MjVncFdQTlpJejBEOUswWVZlSFhUZVJjVnBNbUxwbDc1T09PU0tIUTZQbHNQd2w4TUhxT3BDMzZkNW8tam1Fc0NSZ2xtOUNKcnVaeTk5cE9xS3QtNktWSHBxOVYzTUFXWXB3OVQzTVZuSTVqU2JGOFJkZWh3dDR0ZW9GdjYwbG1kQXpydVU1SXowVktIOFNSUkMzY00?oc=5"
+  },
+  "g:1yyg743": {
+   "id": "g:1yyg743",
+   "date": "2026-10-27",
+   "title": "〈焦點股〉美系外資調高緯穎目標價 價量齊揚漲逾半根停板",
+   "source": "鉅亨網",
+   "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5KR0VxdndUeTFrTXNiU3Aza2twOF9wLUdwQm5pNm9XZnM0akJCcnVtRGp0eWJkTThVb1VrUm91VzliYW1GaG9ldWxyeU54R0k?oc=5"
+  },
+  "g:rey10l": {
+   "id": "g:rey10l",
+   "date": "2026-10-27",
+   "title": "寧德時代遭兩外資下調目標價，大摩降H股評級- 新聞",
+   "source": "MoneyDJ",
+   "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOenpZS0MtOGRHRURheEVRbnFSNmJQb25GNldDNzM0MVNGSDMwUlk1VGVoVDl6SVVCQlJRcFhKcjBNUW41eW9Kb3RadEtWVFJBanIydkJ6RjY5RmxOb3NyRU9jZDFqTXVfdFdjT2pWMzl5ZDJHaW9JeEw4ZkpUTGYzYTNXWUpyMTlnQk55S1RoNVYxdw?oc=5"
+  },
+  "g:7tkgy0": {
+   "id": "g:7tkgy0",
+   "date": "2026-10-27",
+   "title": "6669 緯穎- 〈焦點股〉美系外資調高緯穎目標價價量齊揚漲逾半根停板- 股市爆料同學會",
+   "source": "CMoney",
+   "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE0zVXRZOW1jVjl0aFlnZjBRTmNld2VXbUV3NjhEd3FaX3R2V2c1NS1UMWs5NUw0SmppR1NOTU1CVkNYU3l3YWNfQ2VPZ20tWG9aeXE2MzdIbVI?oc=5"
+  },
+  "g:ogsiwy": {
+   "id": "g:ogsiwy",
+   "date": "2026-10-27",
+   "title": "國巨最高衝上530元！外資仍力挺「目標價破千元」重申買進",
+   "source": "TVBS",
+   "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5GY3NueHl6S2d5eWRpNWFfV2lpMk1WUTdMQTNSOG1pTVVrTWxYV1R1b1l2Y0FoSEJqdVNMZ2hFX3hkb3prYmlGOWUxMkw5Z0k?oc=5"
+  },
+  "g:11dlegv": {
+   "id": "g:11dlegv",
+   "date": "2026-10-27",
+   "title": "《通網股》智邦股價重挫別怕？外資點名兩大利多、目標價3500元",
+   "source": "旺得富理財網",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5rRmVRYm1nWFQwLUlyekpoYXRqQmdUdzFjMG5pX2J4ak02RU1Ca0hHTWFVeFBES1FTUlV5Mno1Y0NFOHFlbW1zUE0tWndvTktEWUNQc3F5UEYzQzBJRnVoZmNaWkV3Q2RyWGc?oc=5"
+  },
+  "g:18ccs54": {
+   "id": "g:18ccs54",
+   "date": "2026-10-27",
+   "title": "AI需求、漲價效應齊發！「被動元件龍頭廠」目標價喊到1050元 Q3 EPS上看5.6元、Q4拼季增",
+   "source": "FTNN 新聞網",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5yTHZ6eGRZZkhaSXNmWGkyX3RVcHFpZUg5c3JzbW80NTFNSFFGQTlvbmN5WG9CeDg4SFR2ekdMS01LeTlWMmU1UV9YMA?oc=5"
+  },
+  "g:1x122yk": {
+   "id": "g:1x122yk",
+   "date": "2026-10-27",
+   "title": "台股翻黑「緯穎還漲5％」！美系外資目標價曝光，看好AI伺服器4大成長動能 | 下班經濟學 | 財經",
+   "source": "風傳媒",
+   "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBBdDZBRU96RUtjY2FpTGN6OVRrbzNBci1YWTNLU2d6dzlFNnZxblU0SkxhV1lWYUxYVGQzMzZLcV8ta2I4bnp5cVI3RW0zQQ?oc=5"
+  },
+  "g:1pjtnwh": {
+   "id": "g:1pjtnwh",
+   "date": "2026-10-27",
+   "title": "6669 緯穎- 緯穎最新「除權後」外資目標價- 股市爆料同學會",
+   "source": "CMoney",
+   "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5EWGNXcnQ2WHNROFo5cVR4RUlpLUtlT3U4dHc5TFpLWXE4ZDFmaU9rOUx0ZWctVFlKcUJkQm9KcExHZHM0dkNBNzBheUNMWlFCNHVGWERudlM?oc=5"
+  },
+  "g:1dw9mgx": {
+   "id": "g:1dw9mgx",
+   "date": "2026-10-26",
+   "title": "EPS衝刺22.6元、目標價喊到277.5元！「這檔老AI」逆勢台股外資、自營商瘋搶國家隊卻下殺15.91億元",
+   "source": "Yahoo股市",
+   "url": "https://news.google.com/rss/articles/CBMigAJBVV95cUxNVGdseXV0WWZFdUEyeGZ4SnpmVkFpalJhZ0JYMkFmU2gxVGpyMGhVd29TMEdKNE1oLTdnZ0hFWGNwS3RReU5IMGdnU2lHT1c4NUVrR05MZVNrem8wUVlSM3M2a1JNZGwtckV5clU5dkYxZ1FpVER6aC1MZVNGNWlVQXpzbTZNdW9wS29RSloxSVNiWXlFa2FSOGZ0WXhlM3lGZnJtLUlaV1VyeU9MaTkwYjczbVBNbzVkSDJDZ2NRUVBVazJMazhqS0QzdDc2N3ZlaU9rTlBRc09LYmhCQ19pSGpveGYzVjNEMVQ2Vk4zVWhQT3l4ZndMUXlnTGdoaXFH?oc=5"
+  },
+  "g:1k2jsrm": {
+   "id": "g:1k2jsrm",
+   "date": "2026-10-27",
+   "title": "LEAP業務迎成長期！「這檔封測龍頭」前三季營收衝6088億、年增30% 外資看旺Q4調升843元目標價",
+   "source": "FTNN 新聞網",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFBCcUN5X3FQNlhPWUxEd3ptbXJzUjIxTWVaeWJlWFRHZUp3MjZzT2NCMGRFdHJLdG9WZUsyMUVMTlR2Wk5BeFVaOTBsZw?oc=5"
+  },
+  "g:1wzcuy9": {
+   "id": "g:1wzcuy9",
+   "date": "2026-10-27",
+   "title": "PCB他們最香！CCL報價漲10倍、毛利率看70％ 臻鼎、金居、台光電、聯茂...高盛喊買「這4檔」 最新目標價出爐了- 上市櫃",
+   "source": "旺得富理財網",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBQaXlwOFdGV1ctYkNOdlZ0QkIwa1Z1UE9SMVB0Z29TNWJhUDdPZU9sRFBNSEN0bGxMOVZ3SHJqbFRQRmNvMnJ3WWhUeHNnZmZtQ3I5OEhHbHRLVlAxRk9jZ0tLOFRCMDV3elE?oc=5"
+  },
+  "g:krm8y6": {
+   "id": "g:krm8y6",
+   "date": "2026-10-27",
+   "title": "寧德時代遭兩外資下調目標價，大摩降H股評級- 股市爆料同學會",
+   "source": "CMoney",
+   "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5veTRYazFYelI1X2ZIY2xhc1lWUkd4SW9fOHpoblpMUGsyaUJwcVYtd3BSaGctV1Jqa3prSUR5dk9NYXV6NTVtSjlzVFV5clBWOGZhMnBxTVM?oc=5"
+  },
+  "g:1uq0yfx": {
+   "id": "g:1uq0yfx",
+   "date": "2026-10-27",
+   "title": "目標價370元！「電子零組件廠」半導體需求旺、營運動能直達2027年瞄準機器人、無人機中長線藍海",
+   "source": "FTNN 新聞網",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE85VEgwQVpKQjh1VDBNc0hGcGRoTFB6M2VJRHgzampCZ1ZXX1VWTVhLVnpEUnJfbTJleHZmM2pVS1RocEpzYlprS1NURQ?oc=5"
+  },
+  "g:26nbof": {
+   "id": "g:26nbof",
+   "date": "2026-10-27",
+   "title": "訂單奔2029年！外資點名「這IC大廠」卡位TPU v10大單 目標價至6800元",
+   "source": "Yahoo新聞",
+   "url": "https://news.google.com/rss/articles/CBMinAJBVV95cUxPS3ZVUUtRT3lJUzJEQTdGX1pId2xtTDltMVN6ZXZraU5ScEYxc1U2UEcxXzNYcWE3bVRDblJ6Q2tXWFBwOFMzSDd6UkFtbGQ5T1EyQ0tuYjZwQTJuVVpVY0FSWmVxZ1YwWUR2NXVTYmp3UEVGQUl5aDRuSDI1RldEQUVVcVFGVE9ENFd5VVRCNVNFRkRZQkJfSnVObGxCb210N1lCdi00Uy1XS01Cb3dXaVZwdUJYUUVOZll4dUVZSVlKZFdWVkY0bXNXTTRLWU9VeGQ1MklqeDNIMWxwNlMyeVpCVEtMd3pzam5oZUFDUkVPY21Ea2dEVVMwSjRqaDNORExiZlUtWTlvTlQ5WWNDRE1NQmdHMFBRcmF5QQ?oc=5"
+  },
+  "g:ax6tuq": {
+   "id": "g:ax6tuq",
+   "date": "2026-10-27",
+   "title": "目標價狂喊1775元！輝達出手包產能這「載板大廠」創法人最高 大摩預言ABF漲價逾25％",
+   "source": "FTNN 新聞網",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFBzeEJiM2VlNmlaREotU2I5M01PekprZlREX0FqTjc1UVU4d3pGR1NXSWZ2SzlVaHl3c1FTb1FrQ01RNlo2eG5NUlltUQ?oc=5"
+  },
+  "g:4qcbpg": {
+   "id": "g:4qcbpg",
+   "date": "2026-10-27",
+   "title": "9月淨利350億！「這檔塑膠」澄清M9謠言翻紅開高 全年EPS拚15元獲外資上喊440元目標價",
+   "source": "FTNN 新聞網",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFBkbVp5NTlLRW9jX2FmMTRnUl91TzlKd3ZzR3JVR3c5aWQ3dVU5cDhMLV9oSmtrY1JYcW12ZTZiRGFCN3o0S1B1TF9RNA?oc=5"
+  },
+  "g:s3guty": {
+   "id": "g:s3guty",
+   "date": "2026-10-27",
+   "title": "封測產能吃緊全面暴漲！「這大廠」Q4毛利率有望衝23% 目標價上看843元",
+   "source": "三立新聞",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5MT052ZDVaMDlIZy1EMlhuZnhnc3JMQk5lazl2SUp3aWdIdFJHRXY4MHlFVG1XLTFVZExteTkyZzlYYklzM1NkenNzRQ?oc=5"
+  },
+  "g:fma3bj": {
+   "id": "g:fma3bj",
+   "date": "2026-10-26",
+   "title": "2330 台積電 - 外資調高Lumentum目標價至1200，今天股價大漲9% - 股市爆料同學會",
+   "source": "CMoney",
+   "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFB3MV9DZHZJU1hCU2lxaGh2MGRXT1Vfbk9GR00yeTJORk1qdkxLSFRQTjNSMDFVX2gxejFnb1RSRnVKT3F0eWliZ2FLZGdyUkpYcUlxQXRjc3o?oc=5"
+  },
+  "g:a2v08q": {
+   "id": "g:a2v08q",
+   "date": "2026-10-27",
+   "title": "這IC大廠訂單奔2029年　目標價至6800元",
+   "source": "鏡週刊Mirror Media",
+   "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE42UHMtREJ5eS1fYmZXcG1uaHZNaE8tT1VRVGIyX1ZOTlMzR05PSDdjLXI2b2V4aXY5TWx1TEpWT29sRmE1Xy1vX0Q0MmFDWGNRazZOX0d3R1VrUUpu0gFiQVVfeXFMT3ljY0V0SHZYeVlTN3lmbTdHWmtoZFRINnlPUFhXV0Q4a0tweXlXRXlCWFRWSTJBcWFyenIxbjA3ejhqd0dGT09KWWgwcWlPQzJGcHphby1jaVNzc19FdXpycFE?oc=5"
+  },
+  "g:twbqhg": {
+   "id": "g:twbqhg",
+   "date": "2026-10-25",
+   "title": "緯穎(6669)目標價調升至3200元，外資看法為何？",
+   "source": "CMoney",
+   "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBBZER4VmJYUEN6NHEzMDMyeVRFSDN2NnhaNk9KVl9xRS1PXzdCLVhUUkpRRTBHMWFhSWc2a1VhWW45VWxuTHc3TVhUbEIybWRWVGxYTVVLc1l1Q2J4RV9ycTlmOFpaaU0wNldGVGdHc0tzODVDREFuZHkwdw?oc=5"
+  },
+  "g:91npoy": {
+   "id": "g:91npoy",
+   "date": "2026-10-24",
+   "title": "載板三雄誰最強？杜金龍點名ABF「這檔首選」獲利大調高！外資目標價曝光還有這檔短多快閃操作！",
+   "source": "優分析UAnalyze",
+   "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9tLVlxdzA3MG5Kd0d0M1VQWnhDV3VpV1hMZmd1VXVqZl9pNHB0ZTV4QkNpWUJJMm52YnVCRkRKbjVFNUV0Y21QbGxtMlVJVEZ4aFR4UlJ3?oc=5"
+  },
+  "g:1gutkbw": {
+   "id": "g:1gutkbw",
+   "date": "2026-10-25",
+   "title": "台積電目標價喊5000元！投信豪撒184億掃貨 「記憶體這檔」入列00935、00881狂搶2萬張封王",
+   "source": "FTNN 新聞網",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFBBN0tkckg4SnI2a21SdVlCRmRUVjBBRXVKY24xTnlxMG1lcnB1MlFSS1RDdE5rVGFNNWlVcVZkZjY0RWROX1VjaV9yaw?oc=5"
+  },
+  "g:18os549": {
+   "id": "g:18os549",
+   "date": "2026-10-27",
+   "title": "南亞科、華邦電、旺宏…檔檔半根漲停起跳，它外資連3天力挺！記憶體股真的回神？最新目標價出爐",
+   "source": "今周刊",
+   "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNQ0duejYtcEVHblF6SkdqbVJDSlBrWWVhSWMyWHhGeUc4RVFwYUVKMTk1eXBJelEzOUFuWHU5Q0s0cGtWcE80UUdibGtISVh2LVl4dzFkNldJSi1SNGFRdm9VNkx1X2RmV2RCU0RBU185ZzZnMVRZdGJPd1ZiS25nLQ?oc=5"
+  },
+  "g:npfezt": {
+   "id": "g:npfezt",
+   "date": "2026-10-26",
+   "title": "黃仁勳狂加持！聯發科「1萬元」目標價看得到？揭背後最大考驗- 財經",
+   "source": "中時新聞網",
+   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBOb2llVWhZSDVacDRwZVI2Z1hGekloN2RFdTZxQnJseGVfdmhaUjhmYU5Ja1dRWTY1QjJ4LThyaHZmREdOYTF3LWppNmxUdW93eGtZeGotczd0bWhzRHc5WEQ2QmlOOXltRTdNRkJR?oc=5"
+  },
+  "g:4bqazh": {
+   "id": "g:4bqazh",
+   "date": "2026-10-25",
+   "title": "外資券商提供目標價報告，背後真正的商業動機是什麼？",
+   "source": "UDN",
+   "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNWFdFTk13aFdXNUVhSmJzNWxlRkd1UTdXSFNrSHcwdlZFLVdoSERwRjZRRDVyZmp3eVpIMlBSVXFNTU9vSjFHNVpTMWhjYUxBSFpZNzhoTU8xdVY1ekhyVlNlSFVJdDRxeFIzeEdTdXpKSGVmNXI3NUZtcEp5WUhVLXVCUFdueHBnRDBfTXdnWjgxeDhqTXRjdVVn?oc=5"
+  },
+  "g:9jyij4": {
+   "id": "g:9jyij4",
+   "date": "2026-10-27",
+   "title": "鉅亨速報- Factset 最新調查：Caris Life Sciences, Inc.CAI-US的目標價調升至35元，幅度約6.06%",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5ZeV9SREU0UDF0X1A0TmQ5MDlSSjF4VzhCSXhIUXBCNk9mMll4aTlQeHpLYUNDNHhzZUlneHgtVGZVVkFJQ1NMNFdxYjhETmJ5UkdKNEQ0QXJCMmV0SndxelRUN1Y?oc=5"
+  },
+  "g:bdzyfc": {
+   "id": "g:bdzyfc",
+   "date": "2026-10-27",
+   "title": "國巨還有救？ 大摩重申買進 最新目標價出爐",
+   "source": "東森電視",
+   "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE81aWJTZ2VzU0N6MHE1dnFwXzhEaTlQVi1yalI1NXFRTTA5enk3UkRNUkxQdmZpeXNNMW5OOW9hdng5RUZFTkhrYk9tYjRPVmVuaUMxWXp3?oc=5"
+  },
+  "g:14r0gz1": {
+   "id": "g:14r0gz1",
+   "date": "2026-10-27",
+   "title": "Factset 最新調查：Paycom軟體PAYC-US的目標價調升至257元，幅度約3.84%｜新聞快訊｜豐雲學堂",
+   "source": "永豐金證券",
+   "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9keEJaWUFEc2pHMlo4ckFCUlNwRm9qZFBaVWtFX3R2eGRLd0RLUVRBNHdteFpfdWM2SGEzcS14TGg5Y1hZeDNHTFdNd0tVVjRFcG9ydzVrOWtNdmNoREFLQm04V1NGRnRRdDRCWEFCRExmU0EwU1E?oc=5"
+  },
+  "g:1sfrrk4": {
+   "id": "g:1sfrrk4",
+   "date": "2026-10-25",
+   "title": "EPS衝刺24.6元！「這轉型光通廠」目標價大調升上420元 800G、1.6T將在2027年迎來爆發",
+   "source": "Yahoo股市",
+   "url": "https://news.google.com/rss/articles/CBMivgJBVV95cUxQem1lUC1RdTVVMDNZdHdBNE1EUHZvaFRmSGtDUWh4dXk0d1NVaEIxdXpUU0Y5UXlJWXNRS2d5ZzFjd3Z3NElEMWRiR1RUenVUVWtJM1dGdkRYS1BZd3ZrTmp2OTdpblg4c3ZKWG9WUFBoQUY2Yml4MkpLdlVCYkpXRzRtU3VXS2lvTnI1cUtqWDBVLWZlOUxSTFZLRXFVNHdlMG5CRGJZc0JXai00Rlo2R1FsdGdvYThhS1VCQTUyd1BGbTNzRi1SVlp4QW5KWXJRY2ZidlpZQUR4eFYtcE1Sb3pJdXNzNTZTZ3VOVTJWQWhTbVA2QWhIRnFKek5YOGFEOVJjZTVnTnlMa0lab01lLU1UX3d1Q0NybThrS1RWRFljSWhpUy1rSER4WkdxaGJhYW44LWF3OThCWU4xSnc?oc=5"
+  },
+  "g:1nill3n": {
+   "id": "g:1nill3n",
+   "date": "2026-10-27",
+   "title": "記憶體大廠股價噴8%！明年EPS上看128元，最新目標價曝光：後面還有肉 | 下班經濟學 | 財經",
+   "source": "風傳媒",
+   "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE1XcGJZWU04bWxJNDhtMTBiU0NGTVNPWmI2QlBiV1J6emIxb3NmVE1feFEwRXZaUjN5dkNwMm5oejYxRXh3bWU1SGpNQXdLUQ?oc=5"
+  },
+  "g:6clmsv": {
+   "id": "g:6clmsv",
+   "date": "2026-10-26",
+   "title": "Factset 最新調查：頎邦(6147-TW)目標價調升至290元，幅度約3.57%｜新聞快訊｜豐雲學堂",
+   "source": "永豐金證券",
+   "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBMWkRyQTUyZVYzRzdUTjBNeXZCMm9EbkdBSVpCWHRDQzk4bnNjZ3RTcXNJcUJ4Sk9FRlpQUndZMG8wcUtwb1NuRXRJUF81QWFHa0NFVDFYeFNzTWFnZlB1dENMRDgxN3ZZUTFqc2l1Nm45U29UTlE?oc=5"
+  },
+  "g:160xrkh": {
+   "id": "g:160xrkh",
+   "date": "2026-10-27",
+   "title": "鉅亨速報- Factset 最新調查：如瑞迪博士ADR(RDY-US)EPS預估上修至0.45元，預估目標價為14.02元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9zTTZzbW9QaFZIV245cG9UVXhUTXQzenlRYVNDVElFOXB1ZUVfRVR0cFB3VER6NG5XeGg4RzMyTDNuZEN6dGNHYlZyYzl0N0J6Q25NSE9GR0JJWXAwWTJESUNJTDA?oc=5"
+  },
+  "g:1dckswu": {
+   "id": "g:1dckswu",
+   "date": "2026-10-27",
+   "title": "鉅亨速報 - Factset 最新調查：頎邦(6147-TW)目標價調升至290元，幅度約3.57%",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1ISW8wUDFkOG13MjB4MmxCTWZFMlRXR1c2ZjcyLTE1a1FHNTVHVDVkVVkzaW0xQ1NrQU4wRjlVVVVQYWRjVktrX2tGNlpoRFg2Q1duM3Z5U2plSHhiZEZua0FMcUU?oc=5"
+  },
+  "g:1ao28c3": {
+   "id": "g:1ao28c3",
+   "date": "2026-10-27",
+   "title": "鉅亨速報 - Factset 最新調查：頎邦(6147-TW)EPS預估上修至5.77元，預估目標價為290元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1HeEhmTGRGSktJbnZoVjgtNG1tbUdUMjYyTFI4cU1OWm1uc0Nzbkg5NV9YaGgyN1dQbk1fdHpVWnlEZmptbld3aWd0TENTSHE0UWktMFJMSjZOdVZKakxNRmZKSEw?oc=5"
+  },
+  "g:ts1e8b": {
+   "id": "g:ts1e8b",
+   "date": "2026-10-27",
+   "title": "鉅亨速報 - Factset 最新調查：前線公司FRO-US的目標價調升至49.71元，幅度約3.41%",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5WUC1WZWJxRmRWaE5xZHNOOXRHRTdobHpEMFp3LTRVZUdxclk4SEdfNlZnUjkwTUE4cVRha2xmcVBBY3VqNFI0OWFCNTl2NEo3Z2taYzRpYnJIbklqMVctdGNXQmw?oc=5"
+  },
+  "g:19et0qz": {
+   "id": "g:19et0qz",
+   "date": "2026-10-27",
+   "title": "韓國LG生活健康目標價獲上調至35萬韓元，Sangsangin證券調升評等至「買進」",
+   "source": "BigGo 財經",
+   "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE8taFlOSml0SHZYSE1nSDI5MXpoR2RyeW5ueXJHNVZIbXpIZ1VWNXY0M2htSnhaMUlhOXBEZTBNRldicHJEcVZPaHNWWVVBY2ZpREliWHpvZFVDY2pmbjhwYzkzcE9VektPWFA5UHZiXzlxUHZ6M04yMDR3?oc=5"
+  },
+  "g:ja088g": {
+   "id": "g:ja088g",
+   "date": "2026-10-27",
+   "title": "這「機電工程大廠」目標價升至365元！海外掛牌＋訂單滿到明年 2檔法人看旺",
+   "source": "FTNN 新聞網",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFBJNVlJMzNxeDkxUGlHOHlXZWVjeDAxbkpOWThaXzBYSTd5OHByd2w5YlNFaTU2ZDUzV3JucXRsYklUM0l6V1QyWnBrOA?oc=5"
+  },
+  "g:x4ogoq": {
+   "id": "g:x4ogoq",
+   "date": "2026-10-26",
+   "title": "Factset 最新調查：Cencora Inc.COR-US的目標價調升至381.5元，幅度約4.52%｜新聞快訊｜豐雲學堂",
+   "source": "永豐金證券",
+   "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9jdGZYZ0VEZGZoSXRUUFdwdEZ3MF81eW5TWjltUlFVRXpaNjVOSmFZa3Y2ZkxfaVpjYmJjdlpJam1GeDZBVm5jNjlBTzk3Q2o4dmZrSWdiN0owaXFEUFV6TXdmQndFYWZheVdCRWN1bkJES2xCRlE?oc=5"
+  },
+  "g:17808yd": {
+   "id": "g:17808yd",
+   "date": "2026-10-27",
+   "title": "鉅亨速報 - Factset 最新調查：Host旅館及度假村HST-US的目標價調升至26.5元，幅度約3.92%",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFA4b0xSUkhUVXFyOTNMck9QSGZ3Vm9PTk1jeHN0TlhYN1N6eHBpX0I5UXFIZFFJenQ1QUlmdGRDNGp6eWpxdTlwY3B1cF9BZG9Yak94djhGZXR4QXVBZzFvNldKaEM?oc=5"
+  },
+  "g:vz7p6t": {
+   "id": "g:vz7p6t",
+   "date": "2026-10-26",
+   "title": "Factset 最新調查：直覺INTU-US的目標價調升至400元，幅度約3.9%｜新聞快訊｜豐雲學堂",
+   "source": "永豐金證券",
+   "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBfeDlpcGVWWTRqcHg5OElLSUd4U29GMnc0Mi0wUDNTM01EZTVvcUI3SHdSOVdpYnU1UFRqcXJsRVJ6ZTVkam1rV054WVRlZnlXaGZ1Z1F3UmhXaE9mU0hyME5NOTNJcFpBb0NkRUplSXQ1ODhXTFE?oc=5"
+  },
+  "g:v2p7ji": {
+   "id": "g:v2p7ji",
+   "date": "2026-10-27",
+   "title": "鉅亨速報- Factset 最新調查：PBF Energy Inc - Class A(PBF-US)EPS預估下修至23.96元，預估目標價為89.00元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5ubVdoNU9Ibm9NR0QxblEwbmptQmFJWjlEVUxFdmJkT0JVbGc5SVEtNjBtZVZZNG1RcFBpcXV2WFFtX0EtN3p5MkFBUS1fMmpsSjh4YmdrQlRuSFdkYXZ6MlI4d2Q?oc=5"
+  },
+  "g:adbamw": {
+   "id": "g:adbamw",
+   "date": "2026-10-25",
+   "title": "Factset 最新調查：順德(2351-TW)目標價調升至300元，幅度約3.45%｜新聞快訊｜豐雲學堂",
+   "source": "永豐金證券",
+   "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBTVUUzRUhxVktkc0JWd2RWVkNKbU5ITzhMUUlYNkE4d3kwUm5MVXNiUlE3RGtpcmdkTEFjQWI2cjZKM2M2VTdLMm1OMERMdER2cUswQWprNS1ES0JuTGF3Vnk0S2FIM1BYZjF6MFQwR2xobjc0RFE?oc=5"
+  },
+  "g:12jqne7": {
+   "id": "g:12jqne7",
+   "date": "2026-10-26",
+   "title": "高盛喊買緯穎！目標價升至4000元 看好AI伺服器需求爆發",
+   "source": "自由財經",
+   "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9ld1VGZE9iV0w4czRvY2wtVGlUUVR0WHBURkY4S00zMUNRaU82eDE1N3N5ODB4TEF0ckJPVWZKNHY4Z243ZnplWXd2c002Tm84RWU4YmFrWlcwaEt4ZkxN0gFkQVVfeXFMTW1SaTlzOE9MSDBOajR4QjZiNFhBQ1JXdUdzU1Fubm5NTnJDYzdCNFQ2dkpVdHp0V01zcS05U1MzZ1g5eFZ6MnFaRFJ6MHhod0dHcDZYQk1hOGozTnV1SFV5cmkyOA?oc=5"
+  },
+  "g:206yyk": {
+   "id": "g:206yyk",
+   "date": "2026-10-26",
+   "title": "Factset 最新調查：印孚瑟斯INFY-US的目標價調升至12.46元，幅度約3.85%｜新聞快訊｜豐雲學堂",
+   "source": "永豐金證券",
+   "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE05aDFzSHlNM2VBVFRrUkVneHBGZWR1cUJyY1N4TWZVb2JDYk1NQ01wb2VOQmJmTnJtWFk4T1JQV2VycTR4WmFCSjJ4cjFyb2xiVVFVN1ZCS09kYWxVLVpuWUEwVlZld1F6YUJfSFFsS1FhZXFHQUE?oc=5"
+  },
+  "g:1ugow9b": {
+   "id": "g:1ugow9b",
+   "date": "2026-10-26",
+   "title": "Factset 最新調查：如瑞迪博士ADRRDY-US的目標價調升至13.48元，幅度約4.23%｜新聞快訊｜豐雲學堂",
+   "source": "永豐金證券",
+   "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE0yZEFVd043VzFNdEFXWWI3bExTU3k3elc1YXhLZnU5c2xxTUs3dDVPdkJkcHNXY2tNcXhXT3RlZkJyQUQwYndUQXFLSHl4T1pBRmc1Wmd0OE5Ja2ZTRGR4dkRQMWNDSWN0WnVISnEzemxybVU4d3c?oc=5"
+  },
+  "g:1so0uk9": {
+   "id": "g:1so0uk9",
+   "date": "2026-10-26",
+   "title": "Factset 最新調查：洛克希德馬丁LMT-US的目標價調升至654元，幅度約3.89%｜新聞快訊｜豐雲學堂",
+   "source": "永豐金證券",
+   "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE95ZEpfN1VrWjdueTVBd1lNUXZwb0xDdVFRcS02LS11ekR0Yk5BNl9TOEM5RTEtRnNfajczem9henJGSkUwNm8yMHRpSl8yQ1dsYVBJTXlMZEJSekpkeTROSG9jN1FUQlJYbm42RkR3UEpnV1o2N0E?oc=5"
+  },
+  "g:1z0ph09": {
+   "id": "g:1z0ph09",
+   "date": "2026-10-27",
+   "title": "產品組合優化！「這大廠」上半年EPS飆4.93元 目標價上看420元",
+   "source": "三立新聞",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5QYWdOVUNTZW50ZmpOclhackg3Sl8yU05yQmlJcTZmdEdJSVVLdE9ZOUVFQUNLZnN4VkZOaUl3SVVnZElINXllLVhCOA?oc=5"
+  },
+  "g:24mqkh": {
+   "id": "g:24mqkh",
+   "date": "2026-10-26",
+   "title": "摩根大通大幅調升優必選投資評等，目標價上調至三倍",
+   "source": "BigGo 財經",
+   "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1WU0QzOTA2UVlrWUF4ZkVWaGRiTjFfblRkTjJrS2RaWmx1NGtFQVR4NHBRN1FNWTBOaEQ0T2FicHdvYkl5aW1CUWoxblVaRkthdHU5bkYzQ0FVLVE3MmptSDJYaE02WHU3ZThESTg5aG5ENEhodGZYeUdB?oc=5"
+  },
+  "g:1aiou7g": {
+   "id": "g:1aiou7g",
+   "date": "2026-10-26",
+   "title": "Factset 最新調查：第一國民銀行控股FCNCA-US的目標價調升至2475元，幅度約7.61%｜新聞快訊｜豐雲學堂",
+   "source": "永豐金證券",
+   "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBrWEw5azk4d2V1eFM4UHV4YWZTVk9JUEdENHZnV0F1SVBtOTAxSlVWRlBOeTZxbktzY0w0NHIwdUcxSXBVRmdZVWttNlpUQ0NGdno1aTM5cHMxSkdxcXU2VDlrY0xBbXNfQ0RxUnQwalg4QW16QkE?oc=5"
+  },
+  "g:pv2eal": {
+   "id": "g:pv2eal",
+   "date": "2026-10-26",
+   "title": "鉅亨速報 - Factset 最新調查：順德(2351-TW)目標價調升至300元，幅度約3.45%",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5YQzJxOUJoNW5WVnQ1b0RhOUJxNHhqN0V0VWkxbHlSZEVJRTgwOWs5ZEFVSGhxaHlWTjhGN3RYY3dOajdiSUpjbVFXTWhMSFJOajk5c0ZOX19PcFNETlRHSUFydDQ?oc=5"
+  },
+  "g:jhskgw": {
+   "id": "g:jhskgw",
+   "date": "2026-10-26",
+   "title": "鉅亨速報 - Factset 最新調查：直覺INTU-US的目標價調升至400元，幅度約3.9%",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFAwOGJVZjBrNVJmdWg4RmlCSnpyQ2llZnVFenNhRGtGS0thV21BblFtMHdpVHdManplbjlkLUZhYmtmcUpvQWhQc1F0d2IyMWU5RklJN2V3clJTVFJFX01faUtVNG4?oc=5"
+  },
+  "g:134mkpw": {
+   "id": "g:134mkpw",
+   "date": "2026-10-26",
+   "title": "【即時新聞】羅斯百貨(ROST)獲瑞銀調升至買進，看好新CEO帶動營運爆發，目標價上看315美元！",
+   "source": "CMoney投資網誌",
+   "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQTnd5VERxQ2lYZ2l3SVoxNVA1aFh1RWFjWG14U1lxV1Y1M0dyNXdHSFJyQUxtUFFoYzJjaWt3Q09fQzkzOHVUUFlmX0plZXA0bTg0VExmYmlJdUtsR2dQM2ktcERjYkYweHdGX3BEWVQ5b1NDb3NxNEd4cEJKRVdidjZCeTJKMUcwb2Q2cHBJb2c?oc=5"
+  },
+  "g:yf2x9o": {
+   "id": "g:yf2x9o",
+   "date": "2026-10-26",
+   "title": "鉅亨速報 - Factset 最新調查：洛克希德馬丁LMT-US的目標價調升至654元，幅度約3.89%",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBLVEt5VlV1U1JOY0xPbEt0blNSejVHQlpVa1ZnVWZTS056RlRra09HYnJ3bmFRTlNhOTJhTnpoRW9IM3gxajRJQ3VNczZvSUdfY3Y2UnVOTjMwSzJtSThBRWsxUW0?oc=5"
+  },
+  "g:4lc1ll": {
+   "id": "g:4lc1ll",
+   "date": "2026-10-26",
+   "title": "目標價1950元！「散熱大廠」EPS挑戰攻99元對AWS ASIC出貨增加＋液冷營收占比續增毛利率攻3成",
+   "source": "FTNN 新聞網",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE1KRGR5blVlRHA5ZllLVTVkVWRxRWtnVlJ6R3BxLXpfSzdRRGg5a3RKZnk4dGRaZFMxdS1INmZUYVV3cHpYa0trUUxYZw?oc=5"
+  },
+  "g:ucqh7t": {
+   "id": "g:ucqh7t",
+   "date": "2026-10-26",
+   "title": "鉅亨速報 - Factset 最新調查：印孚瑟斯INFY-US的目標價調升至12.46元，幅度約3.85%",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBueUNEN3JlYW9rMllldG05NGI2OXAxWXFONk8yUFdXZ2VMSEhvb2lZRUh4bFpGSndqN19JZFp6UTU3LUpQbDBfQnpZS0xCYmF4SndlZVpuWUVSOTNZTWlBLWdLY1c?oc=5"
+  },
+  "g:15o3pgh": {
+   "id": "g:15o3pgh",
+   "date": "2026-10-26",
+   "title": "鉅亨速報- Factset 最新調查：第一國民銀行控股(FCNCA-US)EPS預估上修至205.03元，預估目標價為2,475.00元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE40Qm9KQXIydnFYYS1KV2tlUEpYNW9PT0ZJeFM3clctbnVCSjdNRElaUTYyZm41UTJpNTNGbzJ0NjVfTnlqck1uZ0J5alVxRUlhLTQ2RHpFTE0ydVFrWmJYbU4ySDc?oc=5"
+  },
+  "g:1berc00": {
+   "id": "g:1berc00",
+   "date": "2026-10-27",
+   "title": "SpaceX合併預期持續升溫，特斯拉獲華爾街分析師調升評級與目標價，TSLA股價飆漲超5%創近三個月新高！後市怎麼看？",
+   "source": "TOP1markets",
+   "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPazhDX09UREN6dmlpTWZ2UlNOSFJMYUVYVlZYdEhaSmI5QjRaejMxa1dCUTNQQkVzOVAtd0wtMGtUNnJxT0JCVVFUeGNBNnMxdUtSQVNuMlBUeWNmbk1ueUM2VUl0c0IwTFRjUzRhckNycTZOV0FrUjd0a196ZXJ6QUFEMnpLeTNGVlIxSV9EblI2QWRENzQwZg?oc=5"
+  },
+  "g:1lg63ln": {
+   "id": "g:1lg63ln",
+   "date": "2026-10-26",
+   "title": "鉅亨速報- Factset 最新調查：Life Time Group Holdings IncLTH-US的目標價調降至53元，幅度約3.64%",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFAtYi1ya0phR3NMQTRra3NYUHQ0TGc0OUNia3A4dzJvV3V5bzFGN2RHTEdva24wVHVoTzNKY0ZHY0VXZHNBdlNJSmR4Mk5DN2J0bVRZUXJjMHJWRTNoSE5xeUVIRno?oc=5"
+  },
+  "g:g5zn81": {
+   "id": "g:g5zn81",
+   "date": "2026-10-26",
+   "title": "鉅亨速報- Factset 最新調查：哈莫尼黃金(HMY-US)EPS預估下修至2.94元，預估目標價為21.38元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE44MmpMUnRVSkhENXp5Z2VxLVVTVTVwcmJtV3o4MGRnLV84X0U1WXgtd3NJZHFJWU1Lc2ZvQzlSSDNVQlMyYWR2bVVic251N250MHhFcWhZY3ZacndQeGVoUjRrZFE?oc=5"
+  },
+  "g:du1yl1": {
+   "id": "g:du1yl1",
+   "date": "2026-10-26",
+   "title": "EPS估增2547%！「玻纖布大廠」M6至M8高階材料大單洽談中 目標價上修至350元",
+   "source": "FTNN 新聞網",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5Jb0oyLTIxT2EyZ1ZBUk81YmdzcVhNcUtwSm41azRPcnZQT1ROYmJYclVHN3RwVFFtRzBFaU5CUmFMZzNLTGtBbHZ2Yw?oc=5"
+  },
+  "g:nplq6z": {
+   "id": "g:nplq6z",
+   "date": "2026-10-27",
+   "title": "討論牆| 鉅亨速報- Factset 最新調查：Cencora Inc.COR-US的目標價調升至381.5元，幅度約4.52%",
+   "source": "LINE TODAY",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBNTW1LN3JZS3I4M0JZa2R3dmFaNnVjMkpVRnhfYllDRXFjWFJNLUlxSzVjcUZ4T0Zac2Q0MDdjM195V2ZOWlk1MkFjejRNOUJNLXJheFItbVRlSnBHc0c1dVYwa3U?oc=5"
+  },
+  "g:axfcwc": {
+   "id": "g:axfcwc",
+   "date": "2026-10-26",
+   "title": "【即時新聞】特斯拉(TSLA)獲巴克萊升評買進！目標價上看450美元，看好SpaceX潛在合併效應",
+   "source": "CMoney投資網誌",
+   "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOTG1URl8zRVY4VE8zeGx0Nmt1ckdYcDlFT1d0cF9XRTdSUWZPdEdISmNUUEwtNElXWk91MUNmd1JieGtVdjV0cVRVS3VsQXJKbk9SRHhxU25xWlRJamNCTm96T1ZqRFBSQUpWblNLa0JWcDZ3aTNBS0VCbE1qVXVvZTRFNUpLaERiMzRuaXlIS18?oc=5"
+  },
+  "g:e1zn1a": {
+   "id": "g:e1zn1a",
+   "date": "2026-10-26",
+   "title": "鉅亨速報 - Factset 最新調查：如瑞迪博士 ADRRDY-US的目標價調升至13.48元，幅度約4.23%",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE52R2pjaENyNmh3R2RwMzA0SjZUQ09pV2tnUFFFVmZyVlZJbXBPcGF5ZUpiZU11LXlMb2NROXlxaWhYRkVLV01HOFdmSDNUd1dFdEVnazVZZmJyMFhpaWZ1d3A0Y0Z6UQ?oc=5"
+  },
+  "g:1k7afwx": {
+   "id": "g:1k7afwx",
+   "date": "2026-10-26",
+   "title": "鉅亨速報- Factset 最新調查：第一國民銀行控股FCNCA-US的目標價調升至2475元，幅度約7.61%",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9iTUdfVmNReXJTOHp3RHpDLWUxdUZOODBCeTNLNkdFeVJZWW8tWkgxWFZENlR1eUo5cF9PdzQtRnAxNi1BdkVCUW5ralUtbGE1NjZyVjh6anpWZjN0aXp1RE82eUN3UQ?oc=5"
+  },
+  "g:1b9om6r": {
+   "id": "g:1b9om6r",
+   "date": "2026-10-27",
+   "title": "討論牆 | 鉅亨速報 - Factset 最新調查：印孚瑟斯INFY-US的目標價調升至12.46元，幅度約3.85%",
+   "source": "LINE TODAY",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1sdGJUU0t1enU5SWgxVU16QnpqZzhFalYwcTk4SW83N1loMHFSajFMcWkxaHBVMHMtbGU4cEh1aDFwRTBBZGFYM1FzWVMtaE1SMXd3ODJGVTV5ZFpHdWZ4aDh0Zlc?oc=5"
+  },
+  "g:4i9thc": {
+   "id": "g:4i9thc",
+   "date": "2026-10-24",
+   "title": "蘋果折疊iPhone傳追加30%訂單！「這檔」目標價上修至280元、最高喊300元 搶搭新機商機",
+   "source": "FTNN 新聞網",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFB1ajRlN1p5aDhMZnVEQlc1LTFPMVM4dTlKTl9hR2NXanZabnpmSF8xMm1wU2tOTEdPQWNkdU5GVEVTN3c5WUdwV1BvRQ?oc=5"
+  },
+  "g:1toa0sm": {
+   "id": "g:1toa0sm",
+   "date": "2026-10-26",
+   "title": "討論牆| 鉅亨速報- Factset 最新調查：如瑞迪博士ADRRDY-US的目標價調升至13.48元，幅度約4.23%",
+   "source": "LINE TODAY",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE42SGdSa3JtMy10VVJPZFI0RGtKTmdSQndkcWZlaldVSWlZb0k1MlMzRmVNTVhxamNlRi1TdDlWcGVMcUpiUEN6a2pKLTlZQXN5bkJfYlU5ZENWYUNnTVRQUUJ3a1E?oc=5"
+  },
+  "g:nhidny": {
+   "id": "g:nhidny",
+   "date": "2026-10-26",
+   "title": "討論牆 | 鉅亨速報 - Factset 最新調查：直覺INTU-US的目標價調升至400元，幅度約3.9%",
+   "source": "LINE TODAY",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1OT0twNHZkTmdfNXQ3QTliSXJiZGR5Ym5uVkdmTV9rd1NKVHp4a3lqMUlHRFFmbmFPQTkzU1Z5cDg5RUNKQ2pETW13RngzRm44OFRheHM3SU9KWl9HTkJmWjBrM3c?oc=5"
+  },
+  "g:se7zto": {
+   "id": "g:se7zto",
+   "date": "2026-10-26",
+   "title": "討論牆| 鉅亨速報- Factset 最新調查：Ares Management Corp - Class AARES-US的目標價調升至193元，幅度約3.76%",
+   "source": "LINE TODAY",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5LWTA4aXBva0JlTFF6WmFDbnE5RWQ5eFBKc0FiUGdYaVo2WnRGNWhRQVBrNjlEaGlVN0dfUkp6X1k0TTViVVlFdGZhWDV2RHNjbDVnZFMtMXZhbmtSSDZGVU5fcWc?oc=5"
+  },
+  "g:1pjsaom": {
+   "id": "g:1pjsaom",
+   "date": "2026-10-25",
+   "title": "討論牆 | 鉅亨速報 - Factset 最新調查：萊德系統R-US的目標價調升至298元，幅度約3.83%",
+   "source": "LINE TODAY",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1GZURjMVZiUVpXU3JqUGszc0RLQXFWRkFfdlB5Z2hjUVlGVkRqbnhsM2F1S1QwRnItY2dBR01tdHpSMFl5QkpGLWExdHY4NWRGNWFzeWNTaVF2UFFBb3pCMkZleE4?oc=5"
+  },
+  "g:gyq18y": {
+   "id": "g:gyq18y",
+   "date": "2026-10-23",
+   "title": "討論牆 | 鉅亨速報 - Factset 最新調查：美捷控股MEDP-US的目標價調升至674元，幅度約8.71%",
+   "source": "LINE TODAY",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE82V1piSl9wTjlfZ1IwQjNDRFZUa0pQWDhqaUtyYWc4TTZLaUNpNUNSeGxrMWFzNFdXcVpDcWtpQ2xQdGVfQnRFYWR1M2RRN2JmcWlPWk1wTXNERERORE50SlF5Szc?oc=5"
+  },
+  "g:kqxbx8": {
+   "id": "g:kqxbx8",
+   "date": "2026-10-24",
+   "title": "討論牆 | 鉅亨速報 - Factset 最新調查：寶潔PG-US的目標價調升至176元，幅度約4.14%",
+   "source": "LINE TODAY",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1vd3k1NmU5enRNTHlIZG9LVUNIS1p3Q2ZXd1d4QjI0ZTVmQUpPbk12X1lqelJsOENkS2d1ejNWUUoxMWk0V3QtUWlRNnJuSU5FVWRhcC1IRXVPbkVaS0R2aVFNd00?oc=5"
+  },
+  "g:7fb96s": {
+   "id": "g:7fb96s",
+   "date": "2026-10-24",
+   "title": "討論牆| 鉅亨速報- Factset 最新調查：洛克希德馬丁LMT-US的目標價調升至629.5元，幅度約4.92%",
+   "source": "LINE TODAY",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE0zdXdiQk1hQm51LTl5S1B0VGRxdF9rWW9HOFZRSjdtUmhKNWc3V2lwR2RqUXJxSWtpRE02UXUtWTBBMmlQc1B1NTJJMW1mMkVMRTBXU0UwVTVCNjZOWXdRTzJqRTE?oc=5"
+  },
+  "g:1k0ernx": {
+   "id": "g:1k0ernx",
+   "date": "2026-10-27",
+   "title": "鉅亨速報 - Factset 最新調查：偉創力FLEX-US的目標價調降至150元，幅度約6.25%",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5oYXp0VzBYd01GVTJSYktUMUdPQWFYTkVCcDVNSGdQQXZJVVpLdVJDUmlWTlNwQ1VWdjFZbXJPb3U0M2xBWjRrU0tvNVRCXzhhaWRJVG80ckZkd2UxYUxaN0hMS0Y?oc=5"
+  },
+  "g:1xdh0d5": {
+   "id": "g:1xdh0d5",
+   "date": "2026-10-26",
+   "title": "Factset 最新調查：信邦(3023-TW)目標價調降至375元，幅度約3.85%｜新聞快訊｜豐雲學堂",
+   "source": "永豐金證券",
+   "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE8yZzQtcFJQbTFQdllSdDR3NDBkYzRXM0t6T3VXRnp2LTVYMTNfcE5yMWNlYnVmYUNjNXB3dU04WWk1dmhqZHpYemZhQnk5ZldrSnpabG5aTWNwXzI0Z1VKMTY1QkJ6aC1jTlN3QWVJZzJzb0hsVGc?oc=5"
+  },
+  "g:1evhqv9": {
+   "id": "g:1evhqv9",
+   "date": "2026-10-27",
+   "title": "鉅亨速報 - Factset 最新調查：安可AMKR-US的目標價調降至70元，幅度約6.67%",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9LZ0tEVzVPbU52RkdiZldsQnVvMTZ1bFJHVWhCSEc0cnotbWhDQXlwbnJmeXVxQ1RONXpVdWJCdXJ4V0otVmRaN2dvcC03M1pzcVNOaWtOdFZBSGtDczlQTU1adlo?oc=5"
+  },
+  "g:19rcmlt": {
+   "id": "g:19rcmlt",
+   "date": "2026-10-26",
+   "title": "Factset 最新調查：Celestica, Inc.CLS-US的目標價調降至455元，幅度約4.21%｜新聞快訊｜豐雲學堂",
+   "source": "永豐金證券",
+   "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBsZjFlSWk2dlAteFRRaEUxWlE3azFXSVRabG1oVlZ2YzgtRXRoUjZSVFFCVzV3d0p4eWhXTDZxY2psOGNkSEhNWkNUWU42d3J6WnhUSmFqVXZmMXpuMVZNUTJfUGVfSzVTYU8zYnlqVmFaLVFlOGc?oc=5"
+  },
+  "g:1r7w5c4": {
+   "id": "g:1r7w5c4",
+   "date": "2026-10-27",
+   "title": "鉅亨速報 - Factset 最新調查：惠好(WY-US)EPS預估下修至0.27元，預估目標價為25.00元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9NWkR2RUh2UGx3SFRGd1BkaGhyWmlXWVNsaEZ4WW9XLXJIX1BDUEx0QXQ1YzB4T1h6eVFXR1JvZlkwcUJhZDVBYkZVZGtQN3hUdzJ0ZXdaX2IxbUN2aTlEeWh6b18?oc=5"
+  },
+  "g:y5kbzj": {
+   "id": "g:y5kbzj",
+   "date": "2026-10-26",
+   "title": "Factset 最新調查：環球人壽GL-US的目標價調降至183.5元，幅度約3.67%｜新聞快訊｜豐雲學堂",
+   "source": "永豐金證券",
+   "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9STHBXWWc3ZTExTlp3cDhUbzFkbVkxRkltNUF0OEpSUUUydXhHcFhnS1FnMk1FTHhfTkVaNGZEUGt2WHBBRG5pQWFJVmZXYnlvOXZyYVVNbFdWNGJYQzNubTFKd25MXzl6Z2NWbFRhcmt2dVNHZkE?oc=5"
+  },
+  "g:1dtqu1c": {
+   "id": "g:1dtqu1c",
+   "date": "2026-10-27",
+   "title": "鉅亨速報 - Factset 最新調查：Paycom軟體PAYC-US的目標價調升至257元，幅度約3.84%",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1oVUlrSUd3RGlkUDlBWXctN0FZLVJwV1d0R0tfVFN6aFJoSlBZQXVqRDNGWnFndEF5UENJeFNIbFZYeUhQR1ZYVlJvb2JNTTRrOXF4bkNuNHhwVWlqQXp2NDE2c2M?oc=5"
+  },
+  "g:10d5q7t": {
+   "id": "g:10d5q7t",
+   "date": "2026-10-26",
+   "title": "Factset 最新調查：艾利科技ALGN-US的目標價調降至188元，幅度約5.53%｜新聞快訊｜豐雲學堂",
+   "source": "永豐金證券",
+   "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBGYzRkZTg4b1duVlFjSHhXcld6T3pHcFBDYzI2elNEd19La3RESnh6NUltNlBHOG5wQWlVai1pd0hKVUNIeVdUNGJRc0RiMkI0czlBZUhibkZzSlBrS3g4YzRhVnZoSks4Q3kzYk81akdQdmFtdGc?oc=5"
+  },
+  "g:1dw8tel": {
+   "id": "g:1dw8tel",
+   "date": "2026-10-27",
+   "title": "鉅亨速報- Factset 最新調查：藍博士半導體(RMBS-US)EPS預估上修至3.13元，預估目標價為145.00元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1ITUVZVFhhZzR6akxWV2tjenV0dDhQMW1GS1J0SEl5cnhxS083QjZGTHVBNVNwbXc2d0ZXMWREcTN4QWxrVV9sbng0dWVZQmRnNWtqX2dtM2lLSEtob2pxbjJ1Um0?oc=5"
+  },
+  "g:uiyp65": {
+   "id": "g:uiyp65",
+   "date": "2026-10-26",
+   "title": "Factset 最新調查：超捷國際MCHP-US的目標價調降至108元，幅度約3.57%｜新聞快訊｜豐雲學堂",
+   "source": "永豐金證券",
+   "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5NQnFtdkhlZ2R4UXZ6Rms2cVZXYUxBM0pzOG1KS0dwZFd2Y2wzUDlGZkFFYV9PMVJfbGVfcGkwNTQ4M1lNQTctWjZESmpGekNWdnFfMm5fNlV0NlVzWGswTWNFbFllS1Rjb2V4MG1RY0E3LTY3RkE?oc=5"
+  },
+  "g:f6os0h": {
+   "id": "g:f6os0h",
+   "date": "2026-10-26",
+   "title": "Factset 最新調查：智利化工礦業SQM-US的目標價調降至84.5元，幅度約5.06%｜新聞快訊｜豐雲學堂",
+   "source": "永豐金證券",
+   "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBLbTB0VFk0UmFqN0tJQ2xuZExFbjZ4NEh3dF9aVUUzYzVTRVdsR214NHZqaVdQNmNJRC1kODh5dmpyMlZDZFhKSkplTzVNTl9PVHBBbkdhQWFfMGJsQTZweXl4VkItVE5UclZ5bXBxclBLUE4xZ3c?oc=5"
+  },
+  "g:x3710k": {
+   "id": "g:x3710k",
+   "date": "2026-10-27",
+   "title": "鉅亨速報 - Factset 最新調查：智利化工礦業SQM-US的目標價調降至84.5元，幅度約5.06%",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9IR1BMNXZSd0dmcGdqREVYb2JaVmE5VXFTNXdlUmxseFdoZHFHdHFqS3JnaDRpRlNvaWlMYVF2TlJVeDMyRFc1WDgtUmx3RjgwQmlmTjREV0F3VXlFZ3ZEZXZCbXQ?oc=5"
+  },
+  "g:1m5gj3u": {
+   "id": "g:1m5gj3u",
+   "date": "2026-10-26",
+   "title": "Factset 最新調查：Life Time Group Holdings IncLTH-US的目標價調降至53元，幅度約3.64%｜新聞快訊｜豐雲學堂",
+   "source": "永豐金證券",
+   "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBUTFJjMUpuZXdJZFFybV82eEZPaFJ3MThqekJwSjlfaXNFTVNVNEtQZy0yaC1uVXlOUnBQaDh2MDFnRmRfcE1DZFd4XzhuMkRzSFdmSHNUaFhrWk1VcTJkMjhTWm9wT3Brdkxsa00tblJscWF0bVE?oc=5"
+  },
+  "g:11xuyv8": {
+   "id": "g:11xuyv8",
+   "date": "2026-10-26",
+   "title": "Factset 最新調查：Comfort Systems USA, Inc.FIX-US的目標價調降至1944.5元，幅度約9.49%｜新聞快訊｜豐雲學堂",
+   "source": "永豐金證券",
+   "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9SRUtQNWg2U0ZIZDc0blJlYXgyRGhSXzBRdlFSTnpnOWdoX1hXNkoyaWdKRU1jNW1DcktXM0QyZXdCcFoyaUpIenNUV25OYVRlQ2ltVWJ5QWloVTZIbVU3LTZvUVB6bENZOWNMSEdKNW9yb092Zmc?oc=5"
+  },
+  "g:1uj96aw": {
+   "id": "g:1uj96aw",
+   "date": "2026-10-26",
+   "title": "Factset 最新調查：Fair Isaac公司FICO-US的目標價調降至900元，幅度約15.33%｜新聞快訊｜豐雲學堂",
+   "source": "永豐金證券",
+   "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE53MDc4aUZVNUFrTDh1Y0d0anNwaXo3VGFoZGZUUGwtSWNKMDJ3ZFhnQURnS01VWXlRU2t0MkU3cV9LVDZja204QTlkc3F3SVVsaWZqdTlVem01ZHB4aWIxLUQzcG93d2QxSnBMelUtLXpGV3FGYUE?oc=5"
+  },
+  "g:pmcbbe": {
+   "id": "g:pmcbbe",
+   "date": "2026-10-26",
+   "title": "Factset 最新調查：NRG能源公司NRG-US的目標價調降至173元，幅度約3.35%｜新聞快訊｜豐雲學堂",
+   "source": "永豐金證券",
+   "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBWUWdIdk1jb1F1UERvM0gxS1N2dE9oZTdNb2V4OE9vTWlFMGktd2kxVjd2U2ZKbWltN1hyVUpqa3E2OGM0Qi1KdjVwU1Nfd3JjT3JqTkJKZ0tESWNZVUFDeF8xcjBhMDBtbGRLT3hpaWhIeWs1anc?oc=5"
+  },
+  "g:6u91wh": {
+   "id": "g:6u91wh",
+   "date": "2026-10-26",
+   "title": "鉅亨速報- Factset 最新調查：Comfort Systems USA, Inc.FIX-US的目標價調降至1944.5元，幅度約9.49%",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5jRk9CakpPZTJMSjhDYkYtZVV3T0ctRDRLMnVtdVJvUUZkZ0xlclk0SVQ4dmx3UkF0WTdoM3h4cHRLbTNZUlptUVE1VjctZ3hFNnZMZC1lbzN1Y054Z0RYQ0NaM1g?oc=5"
+  },
+  "g:jg9olh": {
+   "id": "g:jg9olh",
+   "date": "2026-10-26",
+   "title": "鉅亨速報 - Factset 最新調查：Paycom軟體PAYC-US的目標價調升至240元，幅度約3.23%",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFB6NXhabDREbnA0VVZOV2NER2JXd0FiRlViRkpsSjFfSjYyWG53MENhQWxfYkJiWWNxRjFSMmhOSm5mN3pMamV6bjJfYWw2bW10Vk9Wd3NDMVRXU0RadGg3elhudDE?oc=5"
+  },
+  "g:vq46kt": {
+   "id": "g:vq46kt",
+   "date": "2026-10-26",
+   "title": "鉅亨速報- Factset 最新調查：Westlake Corporation(WLK-US)EPS預估下修至1.8元，預估目標價為75.50元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5oOEQ3bXQ1MElGUGc5N05rdnFpUzdXX3ZUd2d0eU5DdDI4Q0wzNHNySTY3azRRM0dDdy1XeUlINk5TQ2c0MDJ3TmxDNUhheERqNHlPVjIzN21LRFpwUUdYMWlObHI?oc=5"
+  },
+  "g:1h92sfo": {
+   "id": "g:1h92sfo",
+   "date": "2026-10-27",
+   "title": "東元明年EPS達3.6元　法人喊買目標價88元",
+   "source": "鏡週刊Mirror Media",
+   "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1vVllYV2gyV09OQ05odnpmaldwUDJxeVZsQy0wZVBpcEJHTTEtdW02NEFkajY1aXJrLWFKdDI0NDByZFFtVHRHS29IUDZHcUF3UWFmSVpCNHR2RVQw0gFiQVVfeXFMTXhMLU5YcnhsZEtRRlFtdDJZekhEV3g2VTkyQzZqZk9NQ052Rl8yTDM3T3A5NUhDYTU4Z25JdExCQ0NOelNsSkViWkg4OWktTzVxcUk4T190dnIwZUpjREJYQVE?oc=5"
+  },
+  "g:1di277l": {
+   "id": "g:1di277l",
+   "date": "2026-10-26",
+   "title": "大摩：欣興與輝達的協議有助降低潛在產能過剩風險 重申目標價1,775元",
+   "source": "經濟日報",
+   "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBDalA0eUZ3Y1VlUm5jdWduU3dkZ0hnc2RIUUR1TzNXNVRZMDQwU0xtWFlJaUFOWDl0R01YeGozYTJpcGktT3A5V2U1aC1heHBiVzVTTTJwaVVuQdIBX0FVX3lxTE0yWFNNQ2RtMWE1MkgwWlFkaUtqNFlnd0xld19Fd3VMZFhOOUZpb0pVUDJpOFByaS1EX0t2eEx6OHZ1RmFtMWZseXUxWnFFdmtTT3VWVVZoUm1oZ2I4dS1R?oc=5"
+  },
+  "g:fpb54f": {
+   "id": "g:fpb54f",
+   "date": "2026-10-26",
+   "title": "AI股太熱 高盛砍韓股目標價25%",
+   "source": "世界新聞網",
+   "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBZWnZYU3JVRGdKbTNORTM4REd1LWNIWkpmS0k0TmMxeVRfUVJIZGZTbk05OUg4R2t4NFNYcnB1LXFicHlzUWF1dzJNNUs1ZXN6YS0yVlJ2TVpWZ0piSFpCREJ5bVg5TknSAWdBVV95cUxQWVp2WFNyVURnSm0zTkUzOERHdS1jSFpKZktJNE5jMXlUX1FSSGRmU25NOTlIOEdreDRTWHJwdS1xYnB5c1FhdXcyTTVLNWVzemEtMlZSdk1aVmdKYkhaQkRCeW1YOU5J?oc=5"
+  },
+  "g:rhvpfm": {
+   "id": "g:rhvpfm",
+   "date": "2026-10-27",
+   "title": "討論牆 | 鉅亨速報 - Factset 最新調查：超捷國際MCHP-US的目標價調降至108元，幅度約3.57%",
+   "source": "LINE TODAY",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE8tTERTODFTamV1LUgwUms3NjRCRnl4NkkwMTJLUTR2R1lHbTBYczBpX1NtWDhWV0tSUDN5cFN1YU5NaFFkb2dDbG5JRzdVQzNxLXNSc1BYaThLaUFjRmp3ekpwNjE?oc=5"
+  },
+  "g:1cp4n6r": {
+   "id": "g:1cp4n6r",
+   "date": "2026-10-27",
+   "title": "討論牆| 鉅亨速報- Factset 最新調查：NRG能源公司NRG-US的目標價調降至173元，幅度約3.35%",
+   "source": "LINE TODAY",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE02Z2cwekdqalYtUnlXeEdsUW0zUmxWcFNTT2JyWTQ4NktHTnZGRDhGRkx1bmZYZlUtdFVEVTE0aXh4d1FtT2V2Wkhwb185bEJIY3J3NllwbWZzck0xYmFWZVNLWEU?oc=5"
+  },
+  "g:gjy4me": {
+   "id": "g:gjy4me",
+   "date": "2026-10-27",
+   "title": "討論牆 | 鉅亨速報 - Factset 最新調查：艾利科技ALGN-US的目標價調降至188元，幅度約5.53%",
+   "source": "LINE TODAY",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5Ud1Rzb05vdV9tT3Z0bTNPNHFsNlotRmpWbWJ1cFpZb1lNWS1VRUdtT0tBSXBhZlEtV2lCZVJrSUJ5QnNnV2Y2VDNsLUVNWmRsRnRuanhwYnRBZW56QVozdmZQLVI?oc=5"
+  },
+  "g:hmpefn": {
+   "id": "g:hmpefn",
+   "date": "2026-10-26",
+   "title": "討論牆| 鉅亨速報- Factset 最新調查：Life Time Group Holdings IncLTH-US的目標價調降至53元，幅度約3.64%",
+   "source": "LINE TODAY",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBFZ2F6dFYzcGNSZl9haU53dTI5bnBnMDdiSk5nTFJKSUNvMVRmb0hFenZxd0o1SlA1V1FFaFdRNDZTaHdVMlM2MFQzN2JmbFhiVFVZMXhOdmFZaXllUXlBdndWZEY?oc=5"
+  },
+  "g:1lm2w9u": {
+   "id": "g:1lm2w9u",
+   "date": "2026-10-25",
+   "title": "股價自2025腰斬！宜鼎回測千元關 法人砍目標價卻喊「買進」",
+   "source": "TVBS新聞網",
+   "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5weUhTMHdCcVBKQXR4WTg5YTFKaURkRHIzNmVvMXNOYm5STW5SRFdFakRqa2VUVWQ0VXRjdXkwc0NXTGJzNWFkU2o5R0swU1E?oc=5"
+  },
+  "g:1hvfqpj": {
+   "id": "g:1hvfqpj",
+   "date": "2026-10-27",
+   "title": "台積電失守2400元！投顧喊「評價偏低」目標價維持3500元",
+   "source": "FTNN 新聞網",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE40dHBiMXZSb2U5YVJtR2NLM1g5N1RKVUYyVkdGbmZDbFBFNExDbTc4VFNYSGotVDJqX1ZyOXBOZGJ5M3I4NGRsc2lCRQ?oc=5"
+  },
+  "g:1k3st0m": {
+   "id": "g:1k3st0m",
+   "date": "2026-10-27",
+   "title": "537元→414元！南亞科10月慘崩3成跌夠沒？長鑫存儲衝擊多大？龍頭投顧全說了：最新目標價、EPS一次看- 上市櫃",
+   "source": "旺得富理財網",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1wUndDOFF6ZTVqak9Yalh5WEY5MG1ITWIyV1hvRTVMdFlBMWtrbUR1WlpUbGtHV0JpZl9rWXpoaWk4NlhldzIwWEkwdjZGSElnZEdueG5ycm4xdnoxYlNTaU5NV25YZFlDTWc?oc=5"
+  },
+  "g:gabeh7": {
+   "id": "g:gabeh7",
+   "date": "2026-10-26",
+   "title": "AI 需求、記憶體缺貨也沒用！300元目標價到不了 旺宏自高點回檔近5成...跌完了嗎？",
+   "source": "經濟日報",
+   "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1mYXRWbjB5M2pHcFdCWXVzQURRZjRqbzFwVUZnTnFRMkpmQlVjV3dmX1NLamhKdEYxeGhKMGQyVV91MDJudEZJRjMxX1hKMlFKd1lCUklySVJkUdIBX0FVX3lxTE1iTkZJNXctTlNReVdtZ1ROTFVxVEtuLUlfczBURUNiZzRTaFdQX045RG1DUWcyQ1BYZXdRdE90aEg2eGNrX3BTQzVoUEdpUXlvY2ZLcnNpZFgxSmZVWFlN?oc=5"
+  },
+  "g:4o7afm": {
+   "id": "g:4o7afm",
+   "date": "2026-10-27",
+   "title": "目標價236元！「石英元件廠」EPS挑戰攻8.44元 1.6T光模組帶動高頻元件需求、AI營收占比上看23%",
+   "source": "FTNN 新聞網",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5qVzNQcW52d3BoSUNhTWp0TWM2SnhQNkZUVjdQZEh5M0t4aFk1a1dFa0Y1XzBQaDczMDJuaUh2VzlNUnBXaktJMjd3cw?oc=5"
+  },
+  "g:1yzhsg9": {
+   "id": "g:1yzhsg9",
+   "date": "2026-10-26",
+   "title": "台玻明年EPS拚4.4元　法人喊目標價81元！",
+   "source": "鏡週刊Mirror Media",
+   "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5MRmFkQ1M0YVZvODdRb3ZUeDlCMTZ3QU9UcWdZM1BWUjhCV2ZJRUN0cFlvUUF6X1FGSnFTNTNSTV81RE96empJaVpBWG4zdlFhOHRfNFRRc0ZzbTA30gFiQVVfeXFMUFZVVzE2NXktTjVVRVhxMS0wS1dLSFVaVkVLU1puZW9zRGNLV2hDckFDczd0Q0FCVTk4YnEtWTMxb0VRaVpZVkhMdE1JVEdzNW9SMFZJRV9fRHlaNV9BbU8wMHc?oc=5"
+  },
+  "g:bvlpoo": {
+   "id": "g:bvlpoo",
+   "date": "2026-10-27",
+   "title": "1表看》台積電、聯電、世界、漢磊...晶圓代工「6選3」不只目標價！力積電官股看法曝光- 上市櫃",
+   "source": "旺得富理財網",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1vcE02Q2d1VjdZUnp5RWtBZF81TkRSVmxVQVhlWGFVTWFWMVpQUllnRmdpZ2FIYjlPYVNUV2M1NXpqNTZJUjJ6SkI3b1NpNjBHQzYweS1GTnI1MnRjUmZPeERaTXF0LVZ1UFE?oc=5"
+  },
+  "g:1petqyl": {
+   "id": "g:1petqyl",
+   "date": "2026-10-25",
+   "title": "灰熊狙擊遊戲股王鈊象 內資送暖喊目標價上看千元",
+   "source": "自由財經",
+   "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBqdGRjeFlJVXZtOEFnQmluNnpKUktWeDRhV1F2eC1EVy1VNmhaZVNkSTFBdFhRbDJRaWY5Qk5HZnp2eTdsY2U4NWZhVnU2S3IzUWJYRVV2X0dla2xaWUNB0gFkQVVfeXFMUHVPekhFMzlpQXVWWlpQUmxpTXh6d3dVWFNPSkR1d09zdHByR0kwczdhVk9qb2FZbVpmMnl1cEp2ZTNfWUtQNHhqOGxpTTNOVXd6SmtzZThTVGJmNGkzZlQ2VEd2RA?oc=5"
+  },
+  "g:1jiqag8": {
+   "id": "g:1jiqag8",
+   "date": "2026-10-26",
+   "title": "目標價1表看》欣興、景碩、南電...ABF載板3王誰最香？老牌投顧給答案官股法人也說了- 上市櫃",
+   "source": "旺得富理財網",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9zNGxza1RPNWU3ZHB4RlVKTmM5LS05ZjdyUVdjWlBZMDctajc4bFFmbEhpQ3JPeTJyNTNiTzZVSVJacTdOUjZzLVJOVHBXQmx4MWFnZ3VHZ2Z6amdIbXE4QmoyTERSOF9adHc?oc=5"
+  },
+  "g:i9090o": {
+   "id": "g:i9090o",
+   "date": "2026-10-27",
+   "title": "晶圓代工股誰最有戲？台積電、聯電、世界目標價曝光 力積電明年報價喊漲2成",
+   "source": "FTNN 新聞網",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5hWGlRWXBCOVhsUGltbkxLV2FIYnJQeVNCNWRmVDk1X3p1VF8xck1WTUN2WDk2dmo2U09OSlYzNE1qSEdpTkdoWVBTVQ?oc=5"
+  },
+  "g:1vchzja": {
+   "id": "g:1vchzja",
+   "date": "2026-10-26",
+   "title": "日歐訂單爆發　目標價470元",
+   "source": "鏡週刊Mirror Media",
+   "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9SUGVlb1FHc1VSc0NDdzZUbmxaa3llakktTWE2QjBHWHBka0tYMzlUUU9QdHB2RFdzSEZ4dFNFUUlxZFNrWmVHeGdVTHp0X2t5LUdITjhEdFI3NHFrbFJGQmh30gFiQVVfeXFMT1JQZWVvUUdzVVJzQ0N3NlRubFpreWVqSS1NYTZCMEdYcGRrS1gzOVRRT1B0cHZEV3NIRnh0U0VRSXFkU2taZUd4Z1VMenRfa3ktR0hOOER0Ujc0cWtsUkZCaHc?oc=5"
+  },
+  "g:uid1p3": {
+   "id": "g:uid1p3",
+   "date": "2026-10-25",
+   "title": "在手案量衝破800億！這檔「營建黑馬」EPS估3.95元、殖利率逼近5％ 大咖投顧調高目標價39→43元 - 上市櫃",
+   "source": "旺得富理財網",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1wY1FwSWFBejJkV1BLcWRCVmVJSElnUk1uMHFvbDBkdjRLRmVJWUpveW5CSGVpaFVheHFyTUJncnFOam1ZTy1BVU1lMHpNU2Jqelp3aXpZTTN3NHNEV3NObmpQTThoazQzUnc?oc=5"
+  },
+  "g:13mh2c": {
+   "id": "g:13mh2c",
+   "date": "2026-10-27",
+   "title": "EPS挑戰80元！「量測儀器大廠」CPO貢獻明年拚成長數倍 目標價2700元",
+   "source": "FTNN 新聞網",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE4xdWR6VVJTSHFnbkd6WDN1NVB0UzNDYmlva0pYWUt1czFXdUhNRWU3VkFwYnkyUUhxdGdUSzIwT3Z0U1RXV3EzWklHSQ?oc=5"
+  },
+  "g:9lovhe": {
+   "id": "g:9lovhe",
+   "date": "2026-10-24",
+   "title": "小編下班聊點錢》晶片漲價25％ 半導體噴到2028！法人必收6檔：台積電、日月光、聯發科、鴻勁…目標價EPS一表看- 上市櫃",
+   "source": "旺得富理財網",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1RUWFVZHhmcldFeXF1LUFVU1c4OTB2cXg0Z2ZnVjRUaFN0RXlPdVktQnV1VGhPSVdHUVgwR2VsdGFtYl9raFVObV9NVHhYdjVMM29jTGwtc05LM2dTeUc1UGNzQ3E3all0VWc?oc=5"
+  },
+  "g:eyeuhm": {
+   "id": "g:eyeuhm",
+   "date": "2026-10-25",
+   "title": "目標價劍指千元！「遊戲股王」慘遭中概股狙擊手慘狙內資送暖 EPS上看50.85元",
+   "source": "FTNN 新聞網",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFBtTGlKZG80OG9PX2dKeUVGTWEtWF9Yc1F5ejhfSWNkekNkMnY5SGVHNnRZaWI3ajl0TXhNVGxTclJKSnBNR2ZjcU9Kaw?oc=5"
+  },
+  "g:1qb9luu": {
+   "id": "g:1qb9luu",
+   "date": "2026-10-25",
+   "title": "豪宅入帳、3大建案接力！「營建巨頭」手握802億案量 目標價喊上43元",
+   "source": "FTNN 新聞網",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE1Cclk3Y2l5WnFBc0pDRXlIVThNVEMweW93WEh2eVh5ZGNiYWtVVnRXamxWV053dU44WE9ZLV94NmJRT0kzenByVm1Vaw?oc=5"
+  },
+  "g:qj87s5": {
+   "id": "g:qj87s5",
+   "date": "2026-10-27",
+   "title": "轉型加速！「這檔面板」光通訊、半導體雙布局爆17萬張稱冠力積電記憶體題材獲法人看好喊買、目標價85元受矚",
+   "source": "FTNN 新聞網",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFAwX09rNGdoOXB0QUhPV0ZyZUpxNXBjRU44MU9RNlB4UnlZeE9RM1M1T0x0MHd2RWJFWk5Hc1g4OWFuRUo2WjVfR3FJOA?oc=5"
+  },
+  "g:mqjw22": {
+   "id": "g:mqjw22",
+   "date": "2026-10-26",
+   "title": "T-glass擴產追不上需求！「這大廠」明年EPS拚4.4元 法人喊目標價81元",
+   "source": "三立新聞",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE90Z2N3RTlBS3lMVUxXV0otdmxjSFlTSG4xblZxXzZGVFBtYnltYVVmOTl2b2Vsa0NvOFNzM21yb0t2VGNDRmdheWxhWQ?oc=5"
+  },
+  "g:18tfwc8": {
+   "id": "g:18tfwc8",
+   "date": "2026-10-24",
+   "title": "台積電3奈米擴產加速　法人目標價3650元",
+   "source": "鏡週刊Mirror Media",
+   "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1zcVVRNDl3eWRsR0pZR0V1QjU3eVBiSUxVbE5DZ2RKVGd6RGtxREtISHhHMUpZaU1pMVNCSWdRN3FZcV9yQlVKYzEzalE1NTlhS0I4Vk9VX0NQTzRz0gFiQVVfeXFMTkpmM2l2dGtXeGh0MlNITU1iQTdkRDNlRWZzNi1wNG5TdUdWMHJXTHZqUmRrZWlobE1jaWJjUnlwcC02OUVtMjVqSzV5OXR6alRFcHN0ckJjQ3ZzSVdkc2xId1E?oc=5"
+  },
+  "g:1i8fiyp": {
+   "id": "g:1i8fiyp",
+   "date": "2026-10-27",
+   "title": "法人喊買、目標價上看85元也沒用！力積電遭長老狠砍近5億淪賣超王「這檔記憶體」Q3法說倒數持收購題材也入榜",
+   "source": "FTNN 新聞網",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE9pU2czcnE5VDdrbGZSb1BoNFUwUEFkRVkyS0pCdjlmQ3NTcFBRVkpwUXRURmJWMC1adkxIZ3pyZEtvOERXcUNLdTd6Zw?oc=5"
+  },
+  "g:48y32f": {
+   "id": "g:48y32f",
+   "date": "2026-10-27",
+   "title": "南亞科目標價看570元！本土法人估Q4報價再漲兩成　明年EPS拚128元",
+   "source": "ETtoday財經雲",
+   "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9ZMGFIVlMxSjlzdlZsQ0JSeVhLbHRIQ0ZrcFlzejZmZnNSa25hQXZIM1hRNV80Z3F1RUZTSExZMUZJX20tSWRMYUVEVXBxLVY3QWfSAVBBVV95cUxNSXlZMlotRk1Yek1CQlNiVEhaZHc5ZTVLNjkxRjRiX3dBaXg3RXNlb2VLSGJEdnY4a2lUNVZjTXFGLWhaQk9QdURCdlNQTWpWUA?oc=5"
+  },
+  "g:ighoej": {
+   "id": "g:ighoej",
+   "date": "2026-10-27",
+   "title": "產用率維持90%高檔！「晶圓代工廠」獲法人目標價146元 投信卻連砍4刀帶走34.93億元",
+   "source": "FTNN 新聞網",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFBBRlUzcG5pS25lMWlxRlg1aTlscGFCTldMS2F4UHFjRGRLRWlRRVZVUEpfWm1BckduZDFYcnIwWDhKUGN6SFlPWHcwZw?oc=5"
+  },
+  "g:180tjww": {
+   "id": "g:180tjww",
+   "date": "2026-10-27",
+   "title": "輝達Rubin規格敲定！ 高盛看好PCB大贏家 「這檔目標價」一口氣喊破萬",
+   "source": "東森電視",
+   "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE91TXhsRnNMdDJCaWMtQ0dBTWc5YW1hQ0Q2NlZuZ1dGcjU2ZTJ4Q3NQREt5QkdOZEJRU1dhQl8xSlFlbm1VZlAtaWM1Rlc2U1pkWTE1ZE53dEtOdw?oc=5"
+  },
+  "g:ay53n6": {
+   "id": "g:ay53n6",
+   "date": "2026-10-27",
+   "title": "「這記憶體代工廠」目標價喊85元！台股崩破季線「2檔逆勢飆」 鴻勁漲近3％、法人全喊買",
+   "source": "FTNN 新聞網",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE1jYjQzZ3B6czV6LVduQjVscDZRYjdyWlR3UXBXZkVoTGwwUG0zZGl0TzhKdlY0eXZNTERVOXh1NkhSU3VHMFN6UlBtTQ?oc=5"
+  },
+  "g:11u7kd2": {
+   "id": "g:11u7kd2",
+   "date": "2026-10-27",
+   "title": "AI電力需求強到不行！「這大廠」明年EPS達3.6元 法人喊買目標價88元",
+   "source": "三立新聞",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5weDVGbmY0ZWpyNFUxV2hhczU0YlNyelRVUHRRaW9TSmltMXRhMlppQ0syX1RvdUJUWmJIXzBBdFhMUTNRX3NjSl81NA?oc=5"
+  },
+  "g:1riy9bk": {
+   "id": "g:1riy9bk",
+   "date": "2026-10-27",
+   "title": "台玻高階玻纖布搭AI熱潮轉機爆發 法人喊買目標價81元",
+   "source": "TVBS新聞網",
+   "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFAzd05EeTlaSDlJX1ZZeEU3UUNxb0xBSDFQeG9McXZPUmZ4M3phQjZSVGl3ZXNJY2lXbTAyZV8zckxobUJxWEpxR1Y1Zjlza2c?oc=5"
+  },
+  "g:1ndb9qn": {
+   "id": "g:1ndb9qn",
+   "date": "2026-10-27",
+   "title": "這大廠Q4毛利率有望衝23%　目標價至843元",
+   "source": "鏡週刊Mirror Media",
+   "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFB2MHhJcXBGQmtETC01QklXbEVwOXk3d1hmLTByay1saE8ycUdZSUlUU1R4UzZTQ09pVWVzTmNaRnZLMjRrWmJkdklpeWVmNTFVMTNzVHh4ajFZZHJPOFVoRkFR0gFiQVVfeXFMUHYweElxcEZCa0RMLTVCSVdsRXA5eTd3WGYtMHJrLWxoTzJxR1lJSVRTVHhTNlNDT2lVZXNOY1pGdksyNGtaYmR2SWl5ZWY1MVUxM3NUeHhqMVlkck84VWhGQVE?oc=5"
+  },
+  "g:kyum6i": {
+   "id": "g:kyum6i",
+   "date": "2026-10-26",
+   "title": "日歐訂單爆發！「這大廠」明年EPS上看31.37元 目標價470元",
+   "source": "三立新聞",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5kQzRRa0FNY0R2X0hPXzNneFBEcUYyOWdhOExFTVluOEtnMGQ0THlmUUtvVW53cmNpVGxiUDl5LTB0LTl3MXAwWjdndw?oc=5"
+  },
+  "g:6g17d4": {
+   "id": "g:6g17d4",
+   "date": "2026-10-26",
+   "title": "輝達長約綁到2028！「這ABF載板大廠」明年EPS上看22元　目標價至1000元",
+   "source": "三立新聞",
+   "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE43U1V4cUtoZGtIa1hGdE9fVGZQQ2VsUlVfQnVaSElFWE44WVZCWmY0UVFrN2l5NWUtOWl2VV9pRjNlTlRJSnp6atIBTEFVX3lxTE5Qemo0R1cwX0drZGNRUFh0cmFneVNaOV9hTTFOdTJuVkQ2SGFoVGpLSkVMTHZWNVI2WVVFZHhkcnhxaDFDMjE0N29wQ0c?oc=5"
+  },
+  "g:fe0h63": {
+   "id": "g:fe0h63",
+   "date": "2026-10-26",
+   "title": "目標價1200元！「這檔」月營收年增64.67%連創6月新高 明年ABF產能估增30%獲法人看旺",
+   "source": "FTNN 新聞網",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5STmRGeS1YUEZiWkd0TF9pelpOWkw2Sll1REJkY2ktRDluUUdramFxTWJIRTlMSEpaSFJSRXBJcVpJWDZLRjlXU0tSRQ?oc=5"
+  },
+  "g:1tj0mvr": {
+   "id": "g:1tj0mvr",
+   "date": "2026-10-25",
+   "title": "單季EPS衝99.44元！「這大廠」手握兩大料源關鍵 目標價上看1600元",
+   "source": "三立新聞",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE9RSUhpNGN0SUpSM0U2aDQydkwwNmtpZ0hObFFROHRGaHBmNDEtUmQxYmF1ZXZVQkFBOUlVX2FQeThCWUhzejZueXVPcw?oc=5"
+  },
+  "g:z9crqw": {
+   "id": "g:z9crqw",
+   "date": "2026-10-25",
+   "title": "台玻高階玻纖布藏成長密碼！法人喊買、目標價8字頭- 證券",
+   "source": "工商時報",
+   "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9zZ1U1Z0JUTHQzRVVVbmNXQmZJcTYwTmpNdTYxLUxqaUJEeVp2UVNDblZPZlRPdjdzd1ZlcTVPa1dwMkJRZDBfeVRpX1RsekUwNVRBQm5PcWtrQ3ZxblVZ?oc=5"
+  },
+  "g:11s7ga2": {
+   "id": "g:11s7ga2",
+   "date": "2026-10-26",
+   "title": "T-glass擴產追不上需求！「這大廠」明年EPS拚4.4元　法人喊目標價81元",
+   "source": "三立新聞",
+   "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE9lUzFhQ2htd0g3YTJSY0Zhd1lqVTVqQ1Fya3pieHRKT20wZk9pTTkwOHVMVmtjdktVVlFnMG9Fcl9vU3ZuUGZDMdIBTEFVX3lxTFBSTkFrWGtyQlA3ZDFpMXlHMWJmZXZIWmxJcjNBd0Y4UUNmWnpTY3Y2Ry1sWGVhckFrY2tBTGw4SXRFcDZwZEx3V3kwYnY?oc=5"
+  },
+  "g:phw28y": {
+   "id": "g:phw28y",
+   "date": "2026-10-27",
+   "title": "港股券商評級齊發 凱萊英目標價151.2港幣、安踏上看93.58港幣",
+   "source": "BigGo 財經",
+   "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE5OXy1xQmZvODdGS1JoRVZ6eWNlUDZEbEExYnJsbndKSjFWbkxmMkFsaF93bHZwQXYwTTFBQ2FSY3hCeTNxYU9pS3RxYzlzQnJtX2prUkI3OFJJZEF2UlRFSFFBQzdKa2dCZG1wRmtmNnQwNkR6Y0FxbUJ3?oc=5"
+  },
+  "g:16r4mwf": {
+   "id": "g:16r4mwf",
+   "date": "2026-10-27",
+   "title": "韓國三養食品股價重挫9%，韓華投資證券仍維持目標價180萬韓元",
+   "source": "BigGo 財經",
+   "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE5oaWdoRFdwVmRZWXdnMkVNZmFIVEt1Qml2U2t0a0Vzc1paUXdOQjh6X0EtRXg1cXgwYkdZMFB0VFM2ZFNoX0M4cWxIdDNQNTFraXdmZE1xMUZ0QWRDOUhXSTZodVFUbVpwQ1BfcGh4VXBRcDlhRnBUbTRB?oc=5"
+  },
+  "g:1u6id0v": {
+   "id": "g:1u6id0v",
+   "date": "2026-10-25",
+   "title": "滙豐下調濠賭股目標價 料第四季貴賓廳收入跌28%",
+   "source": "澳門力報",
+   "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBFbDJIRnRxMmFCalV5UVJobGJkcFhmUVRQY3Byc1EyNzlPbUhfQ3ZxT1lCWndubnZueUxsTGFVdzBETzQ3dmgtdnFBMGhtVHFGMmlJ?oc=5"
+  },
+  "g:19xxavt": {
+   "id": "g:19xxavt",
+   "date": "2026-10-27",
+   "title": "《大行》高盛降中信証券(06030.HK)目標價至31.27元 投資收益拖累盈利",
+   "source": "Yahoo 財經",
+   "url": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxPMXV0YU5aeGtFdGw4N0lSTnpBa0VEYjhjWFpyaEFNM3lhVVZkQkdYTjFTaW5YQlJXNTBBTTVVMjliRDJHLUtJUEs5T0xYaG5ET21nYnpudC14MTVVbzNTRzllUVduV2xYOGhFZDRkOFdEZDlsT21iV2NYOWxac2ktcFBXTVJhNlRGQWswMGFQdjBSOTVlbWZCam1EYlAtSEFIVUhJMVdSdnBfZEtnWm14ZUk5ekVWZDNHYllsZEx1dG9Sa09ieTJEUnhJYjFZb2JhOHVicGFrVnhKaHZPREhXWFlUVGlZUkNGQk5kbjNYeFBZalI3ZjlWQld0TWE5NWNUSkloNnNjMC1XT0E?oc=5"
   }
  }
 }

@@ -1,0 +1,189 @@
+{
+ "tradingDate": "2026-10-27",
+ "regime": {
+  "close": 46096.23046875,
+  "ema50": 46776.29,
+  "ok": false
+ },
+ "universe": {
+  "listed": 248,
+  "liquid": 192,
+  "minFutVolume": 50,
+  "priced": 191
+ },
+ "signals": [],
+ "watch": [
+  {
+   "code": "6526",
+   "name": "達發",
+   "market": "twse",
+   "close": 742,
+   "futVol": 525,
+   "margin": "16.20%",
+   "adr": 5.2,
+   "mom": 36,
+   "pullback": 7.9,
+   "near": [
+    {
+     "name": "AVWAP",
+     "price": 740.57,
+     "dist": 0.2
+    }
+   ]
+  },
+  {
+   "code": "1301",
+   "name": "台塑",
+   "market": "twse",
+   "close": 74.4,
+   "futVol": 5012,
+   "margin": "16.20%",
+   "adr": 5.4,
+   "mom": 47,
+   "pullback": 16.3,
+   "near": [
+    {
+     "name": "EMA21",
+     "price": 74.18,
+     "dist": 0.3
+    }
+   ]
+  },
+  {
+   "code": "6269",
+   "name": "台郡",
+   "market": "twse",
+   "close": 78.4,
+   "futVol": 1985,
+   "margin": "16.20%",
+   "adr": 4.9,
+   "mom": 44,
+   "pullback": 11.2,
+   "near": [
+    {
+     "name": "EMA9",
+     "price": 78.01,
+     "dist": 0.5
+    },
+    {
+     "name": "AVWAP",
+     "price": 78.07,
+     "dist": 0.4
+    }
+   ]
+  },
+  {
+   "code": "3374",
+   "name": "精材",
+   "market": "tpex",
+   "close": 463.5,
+   "futVol": 2104,
+   "margin": "20.25%",
+   "adr": 6.5,
+   "mom": 155,
+   "pullback": 7.1,
+   "near": [
+    {
+     "name": "EMA9",
+     "price": 460.58,
+     "dist": 0.6
+    },
+    {
+     "name": "EMA21",
+     "price": 457.96,
+     "dist": 1.2
+    }
+   ]
+  },
+  {
+   "code": "2492",
+   "name": "華新科",
+   "market": "twse",
+   "close": 372.5,
+   "futVol": 7612,
+   "margin": "21.60%",
+   "adr": 7.3,
+   "mom": 188,
+   "pullback": 12.6,
+   "near": [
+    {
+     "name": "EMA21",
+     "price": 369.46,
+     "dist": 0.8
+    }
+   ]
+  },
+  {
+   "code": "1326",
+   "name": "台化",
+   "market": "twse",
+   "close": 74.4,
+   "futVol": 2230,
+   "margin": "20.25%",
+   "adr": 5.2,
+   "mom": 52,
+   "pullback": 13,
+   "near": [
+    {
+     "name": "EMA21",
+     "price": 73.77,
+     "dist": 0.9
+    }
+   ]
+  },
+  {
+   "code": "6505",
+   "name": "台塑化",
+   "market": "twse",
+   "close": 106,
+   "futVol": 2192,
+   "margin": "16.20%",
+   "adr": 7.2,
+   "mom": 110,
+   "pullback": 13.5,
+   "near": [
+    {
+     "name": "EMA21",
+     "price": 104.46,
+     "dist": 1.5
+    }
+   ]
+  },
+  {
+   "code": "6213",
+   "name": "聯茂",
+   "market": "twse",
+   "close": 746,
+   "futVol": 2596,
+   "margin": "21.60%",
+   "adr": 6.7,
+   "mom": 174,
+   "pullback": 12.9,
+   "near": [
+    {
+     "name": "EMA21",
+     "price": 730.69,
+     "dist": 2.1
+    }
+   ]
+  },
+  {
+   "code": "1303",
+   "name": "南亞",
+   "market": "twse",
+   "close": 297.5,
+   "futVol": 12522,
+   "margin": "20.25%",
+   "adr": 6.7,
+   "mom": 251,
+   "pullback": 14.8,
+   "near": [
+    {
+     "name": "EMA21",
+     "price": 290.02,
+     "dist": 2.6
+    }
+   ]
+  }
+ ]
+}
