@@ -53,6 +53,8 @@ fi
 [ -f "$PROJECT_DIR/data/investor-conf.html" ] && cp "$PROJECT_DIR/data/investor-conf.html" "$SITE_DIR/investor-conf.html"
 # 贏家分點子頁（scripts/fetch-broker-watch.ts 產出，每日更新）
 [ -f "$PROJECT_DIR/data/broker-watch.html" ] && cp "$PROJECT_DIR/data/broker-watch.html" "$SITE_DIR/broker-watch.html"
+# 因子驗證子頁：scripts/build-factor-lab.ts 從 research/factor-lab/ 重產，不是每日更新
+node --import tsx "$SCRIPT_DIR/build-factor-lab.ts" "$SITE_DIR/factor-lab.html" || echo "[publish] build-factor-lab failed — factor-lab.html skipped." >&2
 # 私人子頁（交易檢討）：內容用 .env.local 的 SITE_PASSWORD 加密後才放進網站；
 # 沒設密碼就只放說明頁。原始資料檔不進版控。
 if ! node --import tsx "$SCRIPT_DIR/build-private-pages.ts" "$SITE_DIR"; then
@@ -90,7 +92,8 @@ HISTORY_PATHS=(
   data/margin-history.json
   data/sector-flows-history.json
 )
-COMMIT_PATHS=(data/site)
+# research/factor-lab 是手寫的追蹤內容（不是重產的資料），改了也要跟網站一起 commit。
+COMMIT_PATHS=(data/site research/factor-lab)
 for p in "${HISTORY_PATHS[@]}"; do [ -e "$p" ] && COMMIT_PATHS+=("$p"); done
 
 git add -- "${COMMIT_PATHS[@]}"

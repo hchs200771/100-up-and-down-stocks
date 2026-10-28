@@ -37,6 +37,7 @@ export const SUBPAGES: { file: string; label: string }[] = [
   { file: "investor-conf.html", label: "🎤 法說會" },
   // 私人頁：內容加密（scripts/build-private-pages.ts），要密碼才看得到
   { file: "review.html", label: "🔒 交易檢討" },
+  { file: "factor-lab.html", label: "🧪 因子驗證" },
 ];
 
 /** 太長的標籤在分頁列上用短名。只影響顯示，內部 label 不變。 */
@@ -91,7 +92,7 @@ export const NAV_GROUPS: { title: string; items: NavItem[] }[] = [
       { file: "cb-pledge.html" },
     ],
   },
-  { title: "策略", items: [{ tab: "🎯 操作建議" }, { file: "review.html" }] },
+  { title: "策略", items: [{ tab: "🎯 操作建議" }, { file: "review.html" }, { file: "factor-lab.html" }] },
 ];
 
 function groupsWithLeftovers(): typeof NAV_GROUPS {
