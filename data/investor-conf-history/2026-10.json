@@ -9810,7 +9810,7 @@
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 114 百萬元，YoY +18%，MoM +2%，累計 YoY +27%",
-   "move": null
+   "move": "2026-10-28 跌幅前 100（-3.0120481927710845%）"
   },
   "analysis": {
    "headline": "下半年獲利看增，金融科技挑戰首度獲利",
@@ -10286,7 +10286,7 @@
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 34,423 百萬元，YoY +55%，MoM +12%，累計 YoY +27%，YoY 55%，連7月YoY成長，MoM連3月正成長，同期歷史新高，比前三月加速 14pp",
-   "move": null
+   "move": "2026-10-28 漲幅前 100（+7.226890756302522%）"
   },
   "analysis": {
    "headline": "電子材料獲利率躍升，第四季高階材料開始出貨",
@@ -10534,7 +10534,7 @@
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 1,418 百萬元，YoY +4%，MoM +20%，累計 YoY -37%",
-   "move": null
+   "move": "2026-10-28 漲幅前 100（+9.921671018276761%）"
   },
   "analysis": {
    "headline": "量產帶動營收回升，NRE與營益季減",
@@ -10783,7 +10783,7 @@
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 67 百萬元，YoY +24%，MoM +25%，累計 YoY +9%",
-   "move": "2026-10-27 跌幅前 100（-4.503311258278146%）"
+   "move": "2026-10-28 漲幅前 100（+9.98613037447989%）"
   },
   "analysis": {
    "headline": "功率半導體已有客戶認證與訂單，放量未明",
@@ -10871,7 +10871,7 @@
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 8,507 百萬元，YoY +27%，MoM -1%，累計 YoY +30%，YoY 27%，連12月YoY成長，同期歷史新高，比前三月加速 2pp",
-   "move": null
+   "move": "2026-10-28 漲幅前 100（+7.072691552062868%）"
   },
   "analysis": {
    "headline": "漲價與高稼動率支撐第四季營收、毛利率續升",
@@ -11232,7 +11232,7 @@
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 1,776 百萬元，YoY +47%，MoM -1%，累計 YoY +35%，YoY 47%，連12月YoY成長，同期歷史新高，比前三月加速 2pp",
-   "move": null
+   "move": "2026-10-28 跌幅前 100（-4.233870967741935%）"
   },
   "analysis": {
    "headline": "第三季毛利率升至45.4%，未交代成長延續性",
@@ -11310,7 +11310,7 @@
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 1,537 百萬元，YoY +139%，MoM +21%，累計 YoY +38%，YoY 139%，連6月YoY成長，MoM連4月正成長，5年新高，比前三月加速 7pp",
-   "move": "2026-10-27 漲幅前 100（+6.182380216383308%）"
+   "move": "2026-10-28 跌幅前 100（-2.4745269286754%）"
   },
   "analysis": {
    "headline": "2027年Helios進入量產，AI儲存出貨加速",
@@ -11618,5 +11618,730 @@
   "firstSeen": "2026-10-27T23:17:37+08:00",
   "state": "done",
   "pendingNote": ""
+ },
+ "2303-2026-10-28": {
+  "key": "2303-2026-10-28",
+  "code": "2303",
+  "name": "聯電",
+  "market": "sii",
+  "date": "2026-10-28",
+  "time": "17:00",
+  "place": "線上法說會",
+  "summary": "本公司2026年第三季財務暨營運報告。",
+  "fileZh": "230320261028M001.pdf",
+  "fileEn": "230320261028E001.pdf",
+  "videoUrl": "https://www.umc.com/zh-TW/Download/quarterly_results/QuarterlyResultsDetail/2026/2026Q3",
+  "note": "無",
+  "deck": {
+   "file": "230320261028M001.pdf",
+   "pages": 14,
+   "chars": 5770,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "影音在公司網頁，未轉",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-09 月營收 25,350 百萬元，YoY +27%，MoM +1%，累計 YoY +16%，YoY 27%，連11月YoY成長，MoM連7月正成長，5年新高，比前三月加速 3pp",
+   "move": null
+  },
+  "analysis": {
+   "headline": "聯電稼動率升至92%，第四季產能續增",
+   "score": 3,
+   "verdict": "一般",
+   "reason": "營運數據改善偏利多，但主要為財報回顧，未提供足以改變未來獲利預期的新訂單或財測。",
+   "keyNumbers": [
+    {
+     "label": "第三季營收",
+     "value": "742.39億元，季增8.0%"
+    },
+    {
+     "label": "第三季毛利率",
+     "value": "34.0%，第二季32.5%"
+    },
+    {
+     "label": "第三季EPS",
+     "value": "1.32元，第二季3.39元"
+    },
+    {
+     "label": "第三季產能利用率",
+     "value": "92%，上季85%、去年同期78%"
+    },
+    {
+     "label": "第四季規劃產能",
+     "value": "133.7萬片約當12吋，第三季132.5萬片"
+    },
+    {
+     "label": "全年資本支出計畫",
+     "value": "20億美元，90%用於12吋"
+    }
+   ],
+   "guidance": "第四季產能規劃增至133.7萬片約當12吋，12i廠增至20.4萬片；全年資本支出20億美元。未提供下一季營收、毛利率或稼動率展望。",
+   "drivers": [
+    "第三季出貨及稼動率同步提升，營業利益季增24.7%，本業獲利改善。",
+    "12i廠第四季產能續增，提供後續出貨成長空間，但未揭露新增產能的訂單支撐。"
+   ],
+   "risks": [
+    "第三季業外收支由302.36億元降至12.68億元，歸母淨利季減61.1%；簡報未說明業外變動原因。",
+    "缺乏訂單能見度、售價展望及毛利率改善持續性的說明，無法確認高稼動率能否延續。"
+   ],
+   "qaHighlights": [],
+   "tone": "無法判斷",
+   "evidence": "僅簡報"
+  },
+  "analyzedAt": "2026-10-28T22:42:03+08:00",
+  "model": "gpt-6.1-sol",
+  "analyzedEvidence": 1,
+  "firstSeen": "2026-10-28T22:41:03+08:00",
+  "state": "done",
+  "pendingNote": ""
+ },
+ "3081-2026-10-28": {
+  "key": "3081-2026-10-28",
+  "code": "3081",
+  "name": "聯亞",
+  "market": "otc",
+  "date": "2026-10-28",
+  "time": "14:00",
+  "place": "線上會議",
+  "summary": "本公司受邀參加元大證券所舉辦之線上法人說明會，說明本公司2026年第3季營運概況。\n法說會網址: https://yuanta-cbd.webex.com/yuanta-cbd/j.php?MTID=m6d159a3783dc3527d0b05d3199b649bc，會議號： 2512 021 2535，密碼： 3081，本會議將以中文進行。",
+  "fileZh": "308120261028M001.pdf",
+  "fileEn": "308120261028E001.pdf",
+  "videoUrl": null,
+  "note": "無",
+  "deck": {
+   "file": "308120261028M001.pdf",
+   "pages": 6,
+   "chars": 1672,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "無影片",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-09 月營收 540 百萬元，YoY +190%，MoM +4%，累計 YoY +136%，YoY 190%，連12月YoY成長，MoM連14月正成長，5年新高，比前三月加速 28pp",
+   "move": null
+  },
+  "analysis": {
+   "headline": "聯亞第三季毛利率升至59%，未交代後續成長展望",
+   "score": 3,
+   "verdict": "一般",
+   "reason": "財報大幅成長屬利多，但簡報僅回顧業績，未解釋毛利率提升原因與持續性，也未提供足以改變未來獲利預期的新資訊。",
+   "keyNumbers": [
+    {
+     "label": "第三季營收",
+     "value": "15.62億元，季增28%、年增183%"
+    },
+    {
+     "label": "第三季毛利率",
+     "value": "59%，上季57%、去年同期44%"
+    },
+    {
+     "label": "第三季營業利益",
+     "value": "7.71億元，季增35%、年增644%"
+    },
+    {
+     "label": "第三季淨利",
+     "value": "6.21億元，季增33%、年增528%"
+    },
+    {
+     "label": "第三季EPS",
+     "value": "6.12元，去年同期0.98元"
+    },
+    {
+     "label": "前三季EPS",
+     "value": "13.88元，去年同期2.36元"
+    }
+   ],
+   "guidance": "未提供明確展望",
+   "drivers": [
+    "營收擴張伴隨毛利率、營業利益率持續提升；未揭露產品、客戶或訂單面的具體成長來源。"
+   ],
+   "risks": [
+    "未說明毛利率提升的原因及持續性，無法據此推估後續獲利。",
+    "負債比由去年底16%升至43%，新增應付公司債28.31億元；未交代資金用途及效益時程。"
+   ],
+   "qaHighlights": [],
+   "tone": "無法判斷",
+   "evidence": "僅簡報"
+  },
+  "analyzedAt": "2026-10-28T22:42:00+08:00",
+  "model": "gpt-6.1-sol",
+  "analyzedEvidence": 1,
+  "firstSeen": "2026-10-28T22:41:03+08:00",
+  "state": "done",
+  "pendingNote": ""
+ },
+ "3105-2026-10-28": {
+  "key": "3105-2026-10-28",
+  "code": "3105",
+  "name": "穩懋",
+  "market": "otc",
+  "date": "2026-10-28",
+  "time": "14:00",
+  "place": "網路直播",
+  "summary": "本公司將舉辦2026年第三季線上法人說明會，說明本公司營運狀況。\n14:00於網路直播，請連結至以下網址https://www.zucast.com/webcast/63B76BX6\n建議參與者於法說會前安裝或升級所需播放軟體，或至 http://www.zucast.com/help尋求技術支援。",
+  "fileZh": "310520261028M001.pdf",
+  "fileEn": "310520261028E001.pdf",
+  "videoUrl": "https://www.winfoundry.com/zh-TW/Invest/invest_quarter_reports?page=1&amp;year=2026&amp;isOpen=False",
+  "note": "無",
+  "deck": {
+   "file": "310520261028M001.pdf",
+   "pages": 14,
+   "chars": 3706,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "影音在公司網頁，未轉",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-09 月營收 2,030 百萬元，YoY +30%，MoM +5%，累計 YoY +33%，YoY 30%，連12月YoY成長，MoM連8月正成長，同期歷史新高",
+   "move": "2026-10-28 漲幅前 100（+9.979633401221996%）"
+  },
+  "analysis": {
+   "headline": "穩懋第四季營收續增，毛利率估維持近四成",
+   "score": 4,
+   "verdict": "值得留意",
+   "reason": "屬利多：第四季毛利率指引支持第三季獲利率改善延續，搭配稼動率與產品組合解釋，足以影響獲利預期，但未提供新訂單或全年財測。",
+   "keyNumbers": [
+    {
+     "label": "第三季營收",
+     "value": "58.59億元，季增11%、年增31%"
+    },
+    {
+     "label": "第三季合併毛利率",
+     "value": "37.4%，季增9.2個百分點、年增10.5個百分點"
+    },
+    {
+     "label": "第三季EPS",
+     "value": "4.55元，第二季2.30元"
+    },
+    {
+     "label": "第三季約當產能利用率",
+     "value": "75%，第二季65%"
+    },
+    {
+     "label": "第四季營收展望",
+     "value": "季增低個位數百分比"
+    },
+    {
+     "label": "第四季合併毛利率展望",
+     "value": "約高三成區間（high-thirties）"
+    }
+   ],
+   "guidance": "第四季合併營收預計季增低個位數百分比，合併毛利率約高三成區間；未提供全年財測。",
+   "drivers": [
+    "產能利用率上升及產品組合優化，推升第三季毛利率，公司預期第四季仍維持高檔。",
+    "基礎建設產品營收占比由第二季30–35%升至第三季35–40%。"
+   ],
+   "risks": [
+    "第四季營收僅預期小幅季增，成長速度較第三季放緩。",
+    "第三季獲利亦受惠權益法收益大增，該部分延續性未說明。",
+    "未揭露新訂單、客戶放量時程或產品組合改善的長期持續性。"
+   ],
+   "qaHighlights": [],
+   "tone": "轉佳",
+   "evidence": "僅簡報"
+  },
+  "analyzedAt": "2026-10-28T22:42:28+08:00",
+  "model": "gpt-6.1-sol",
+  "analyzedEvidence": 1,
+  "firstSeen": "2026-10-28T22:41:03+08:00",
+  "state": "done",
+  "pendingNote": ""
+ },
+ "3317-2026-10-28": {
+  "key": "3317-2026-10-28",
+  "code": "3317",
+  "name": "尼克森",
+  "market": "otc",
+  "date": "2026-10-28",
+  "time": "14:30",
+  "place": "華南永昌證券(台北市民生東路4段54號4樓)",
+  "summary": "本公司受邀參加華南永昌證券舉辦之法人說明會，說明本公司經營成果。",
+  "fileZh": "331720261027M001.pdf",
+  "fileEn": "331720261027E001.pdf",
+  "videoUrl": "https://www.youtube.com/watch?v=ABnzXYAZstE",
+  "note": "無",
+  "deck": {
+   "file": "331720261027M001.pdf",
+   "pages": 17,
+   "chars": 1541,
+   "imageHeavy": true
+  },
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-09 月營收 176 百萬元，YoY -27%，MoM +6%，累計 YoY -0%",
+   "move": null
+  },
+  "analysis": {
+   "headline": "聚焦第二季財務回顧，未揭露新展望",
+   "score": 2,
+   "verdict": "可略過",
+   "reason": "未見足以改變獲利預期的新資訊；市場脈絡中九月營收年減屬利空，但簡報缺乏原因與後續展望，且圖片數據無法判讀。",
+   "keyNumbers": [],
+   "guidance": "未提供明確展望",
+   "drivers": [],
+   "risks": [
+    "九月營收年減27%，需求與出貨後續走勢待釐清。",
+    "公司指出製程、長備料週期、產能限制及HUB預測備料會影響庫存、資金與存貨損益，未量化影響。",
+    "美元計價與收付款天數差涉及匯兌風險，未揭露可辨識的避險成效數據。"
+   ],
+   "qaHighlights": [],
+   "tone": "無法判斷",
+   "evidence": "簡報多為圖片"
+  },
+  "analyzedAt": "2026-10-28T22:41:57+08:00",
+  "model": "gpt-6.1-sol",
+  "analyzedEvidence": 1,
+  "firstSeen": "2026-10-28T22:41:03+08:00",
+  "state": "partial",
+  "pendingNote": "影音轉文字中"
+ },
+ "3718-2026-10-28": {
+  "key": "3718-2026-10-28",
+  "code": "3718",
+  "name": "中光電投控",
+  "market": "otc",
+  "date": "2026-10-28",
+  "time": "14:30",
+  "place": "線上法人說明會",
+  "summary": "說明本公司115年第三季財務及營運報告",
+  "fileZh": "371820261028M001.pdf",
+  "fileEn": "371820261028E001.pdf",
+  "videoUrl": "https://www.coreintelligence.com.tw/ir/seminar",
+  "note": "無",
+  "deck": {
+   "file": "371820261028M001.pdf",
+   "pages": 14,
+   "chars": 4922,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "影音在公司網頁，未轉",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-09 月營收 3,384 百萬元，YoY —，MoM -1%",
+   "move": null
+  },
+  "analysis": null,
+  "firstSeen": "2026-10-28T22:41:03+08:00",
+  "state": "pending",
+  "pendingNote": "尚未判讀"
+ },
+ "4565-2026-10-28": {
+  "key": "4565-2026-10-28",
+  "code": "4565",
+  "name": "宏偉",
+  "market": "rotc",
+  "date": "2026-10-28",
+  "time": "14:30",
+  "place": "台北君悅酒店3樓凱悅廳1區（臺北市信義區松壽路2號）",
+  "summary": "本次上櫃前業績發表會將由公司經營團隊說明產業發展、財務業務狀況、未來風險暨財團法人中華民國證券櫃檯買賣中心上櫃審議委員要求本公司於公開說明書補充揭露事項。",
+  "fileZh": "456520261027M001.pdf",
+  "fileEn": "456520261027E001.pdf",
+  "videoUrl": null,
+  "note": "",
+  "deck": null,
+  "transcript": null,
+  "videoStatus": "無影片",
+  "context": {
+   "revenue": null,
+   "move": null
+  },
+  "analysis": null,
+  "firstSeen": "2026-10-28T22:41:03+08:00",
+  "state": "pending",
+  "pendingNote": "尚未判讀"
+ },
+ "4966-2026-10-28": {
+  "key": "4966-2026-10-28",
+  "code": "4966",
+  "name": "譜瑞-KY",
+  "market": "otc",
+  "date": "2026-10-28",
+  "time": "14:00",
+  "place": "線上法說會",
+  "summary": "譜瑞科技股份有限公司(股票代號: 4966) 西元2026年第三季線上法人\n說明會將於西元2026年10月28日下午2點(台北時間)舉行，有關會議大綱如下:\n-公佈公司西元2026年第三季營運成果與西元2026年第四季營運展望\n-問與答\n有意參加者可透過網路連結參加線上法人說明會。欲提問之分析師或媒體請撥打下列\n電話號碼參加會議。\n電話法人說明會撥打號碼:\n台灣: 02-3396-1191\n香港: 2112-1444 (免費電話)\n美國: 1-800-811-0860 (免費電話)\n英國: 0800-068-8186 (免費電話)\n日本: 00-531-440-156 (免費電話)\n新加坡: 800-492-2072 (免費電話)\n國際線: +886-2-3396-1191\n電話接通後，請按密碼: 1106028#\n網路直播: https://www.zucast.com/webcast/77fsGQuB\n本公司西元2026年第三季營運成果新聞稿，您可以於法人說明會前約20分鐘至公開\n資訊觀測站下載。\n關於譜瑞科技股份有限公司\n譜瑞科技股份有限公司為一專供多種普及顯示器以及個人電腦、消費性電子產品與\n顯示面板所使用之高速訊號傳輸介面標準之混和訊號IC晶片之領導供應商。譜瑞公司\n成立於西元2005年為一無自有晶圓廠之半導體公司，並於西元2011年股票在台灣櫃檯\n買賣中心正式掛牌交易(股票代號: 4966)。譜瑞公司的IC晶片產品組合可支援顯示產\n品，儲存設備以及介面應用所使用之HDMI, DisplayPort, SATA, 與 USB 等傳輸\n介面規範之IC晶片成長需求。\n除了成為科技的創新者，譜瑞公司亦為產業標準制定組織之領導者與積極參與者。\nParade Technologies, Inc. 為譜瑞公司100%擁有之美國子公司，目前為視訊電子\n標準協會會員(簡稱VESA)，並為視訊電子標準協會推動DisplayPort數位式視訊\n介面標準之主要貢獻者。\n譜瑞公司憑藉其與市場首屈一指之系統製造領導廠商之緊密合作關係，以研發能提供\n獨特系統性能之IC晶片。許多譜瑞公司的裝置整合智財技術能提供優越的系統訊號整\n合、先進的系統整合以及提升耗電效率。在譜瑞公司”比標準更好”的設計理念下，\n幾乎所有世界領導的個人電腦製造商與顯示器供應商均有採用譜瑞公司的IC晶片於其\n產品中。\n投資人關係:\n張祐銘 先生\nir@paradetech.com\n+886.2.2627.9109",
+  "fileZh": "496620261028M001.pdf",
+  "fileEn": "496620261028E001.pdf",
+  "videoUrl": "https://www.zucast.com/webcast/77fsGQuB",
+  "note": "無",
+  "deck": {
+   "file": "496620261028M001.pdf",
+   "pages": 7,
+   "chars": 6246,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "影音在公司網頁，未轉",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": null,
+   "move": null
+  },
+  "analysis": {
+   "headline": "第四季營收指引季減約兩成至近三成",
+   "score": 4,
+   "verdict": "值得留意",
+   "reason": "利空：第四季營收指引較第三季下滑約19.7%～27.4%，提供具體的獲利下行訊號，但未解釋衰退原因與持續性。",
+   "keyNumbers": [
+    {
+     "label": "第三季營收",
+     "value": "1.3083億美元"
+    },
+    {
+     "label": "第三季營收年增率",
+     "value": "-10.48%"
+    },
+    {
+     "label": "第三季基本EPS",
+     "value": "新台幣7.69元"
+    },
+    {
+     "label": "第四季營收指引",
+     "value": "9,500萬～1.05億美元"
+    },
+    {
+     "label": "第四季毛利率指引",
+     "value": "41%～45%"
+    },
+    {
+     "label": "第四季營業費用指引",
+     "value": "3,300萬～3,600萬美元"
+    }
+   ],
+   "guidance": "第四季營收9,500萬～1.05億美元、毛利率41%～45%、營業費用3,300萬～3,600萬美元；營收指引中值較第三季下滑約23.6%。",
+   "drivers": [
+    "USB4晶片已導入宏碁專業螢幕及綠聯擴充基座，但未揭露營收貢獻。",
+    "與FIT合作的線性訊號重驅器切入AI高速銅纜，支援224Gbps及112Gbps；未提供訂單金額或放量時程。"
+   ],
+   "risks": [
+    "第四季營收明顯季減，費用指引仍接近第三季水準，獲利承壓。",
+    "存貨高於去年同期，前三季營業現金流減少，須留意庫存去化。",
+    "新產品消息已於9月至10月公告，不能視為本場新增的獲利催化資訊。"
+   ],
+   "qaHighlights": [],
+   "tone": "無法判斷",
+   "evidence": "僅簡報"
+  },
+  "analyzedAt": "2026-10-28T22:42:23+08:00",
+  "model": "gpt-6.1-sol",
+  "analyzedEvidence": 1,
+  "firstSeen": "2026-10-28T22:41:03+08:00",
+  "state": "done",
+  "pendingNote": ""
+ },
+ "5203-2026-10-28": {
+  "key": "5203-2026-10-28",
+  "code": "5203",
+  "name": "訊連",
+  "market": "sii",
+  "date": "2026-10-28",
+  "time": "14:30",
+  "place": "線上法說會",
+  "summary": "訊連科技(5203)宣佈將於10月28日\n舉行線上法人說明會，屆時將於會中報告115年第三季度經營成果，敬邀各界蒞臨參加，\n詳細活動流程如下：\n時間 活動流程\n2:30PM ~ 3:15PM 說明會簡報\n3:15PM ~ 3:30PM Q & A\n本次法人說明會將使用整合線上簡報、螢幕分享、支援強大直播及預錄功能的「U簡報」\n進行同步直播。投資人可透過電腦、平板及手機參與「U簡報」，PC使用者可使用Chrome\n瀏覽器開啟下列連結參與本場直播；手機或平板使用者請先下載並安裝「U」App\n即可加入該直播。\n線上直播網址: https://u.cyberlink.com/web/register/1527764306504975981",
+  "fileZh": "520320261028M001.pdf",
+  "fileEn": "520320261028E001.pdf",
+  "videoUrl": "https://www.youtube.com/watch?v=bkryGbsUhYE",
+  "note": "無",
+  "deck": {
+   "file": "520320261028M001.pdf",
+   "pages": 21,
+   "chars": 5007,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-09 月營收 179 百萬元，YoY -16%，MoM +7%，累計 YoY -9%",
+   "move": null
+  },
+  "analysis": null,
+  "firstSeen": "2026-10-28T22:41:03+08:00",
+  "state": "pending",
+  "pendingNote": "尚未判讀；影音轉文字中"
+ },
+ "5469-2026-10-28": {
+  "key": "5469-2026-10-28",
+  "code": "5469",
+  "name": "瀚宇博",
+  "market": "sii",
+  "date": "2026-10-28",
+  "time": "14:30",
+  "place": "宏遠證券總公司(台北市大安區信義路四段236號7樓)",
+  "summary": "因颱風因素，本公司原定於115年10月23日舉辦之法人說明會延至 115年10月28日舉辦。",
+  "fileZh": "546920261028M001.pdf",
+  "fileEn": "546920261028E001.pdf",
+  "videoUrl": "https://tw.hannstarboard.com/corporate-briefing/",
+  "note": "本次法人說明會將與精成科技(股)公司聯合召開",
+  "deck": {
+   "file": "546920261028M001.pdf",
+   "pages": 27,
+   "chars": 7548,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "影音在公司網頁，未轉",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-09 月營收 7,125 百萬元，YoY +36%，MoM +9%，累計 YoY +26%，YoY 36%，連12月YoY成長，5年新高，比前三月加速 14pp",
+   "move": null
+  },
+  "analysis": null,
+  "firstSeen": "2026-10-28T22:41:03+08:00",
+  "state": "pending",
+  "pendingNote": "尚未判讀"
+ },
+ "6020-2026-10-28": {
+  "key": "6020-2026-10-28",
+  "code": "6020",
+  "name": "大展證",
+  "market": "otc",
+  "date": "2026-10-28",
+  "time": "14:00",
+  "place": "台北市承德路一段17號13樓會議室",
+  "summary": "115年第三季法人說明會",
+  "fileZh": "602020261028M001.pdf",
+  "fileEn": "602020261028E001.pdf",
+  "videoUrl": "https://youtu.be/8OoiM5iXA5g",
+  "note": "無",
+  "deck": {
+   "file": "602020261028M001.pdf",
+   "pages": 19,
+   "chars": 3460,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-09 月營收 44 百萬元，YoY +37%，MoM -25%，累計 YoY +400%",
+   "move": null
+  },
+  "analysis": null,
+  "firstSeen": "2026-10-28T22:41:03+08:00",
+  "state": "pending",
+  "pendingNote": "尚未判讀；影音轉文字中"
+ },
+ "6191-2026-10-28": {
+  "key": "6191-2026-10-28",
+  "code": "6191",
+  "name": "精成科",
+  "market": "sii",
+  "date": "2026-10-28",
+  "time": "14:30",
+  "place": "宏遠證券總公司(台北市大安區信義路四段236號7樓)",
+  "summary": "本公司原定於115年10月23日舉辦之法人說明會因受颱風影響延至115年10月28日",
+  "fileZh": "619120261028M001.pdf",
+  "fileEn": "619120261028E001.pdf",
+  "videoUrl": "http://irconference.twse.com.tw/6191_19_20261028_ch.mp4",
+  "note": "本次法人說明會將與瀚宇博德(股)公司聯合召開",
+  "deck": {
+   "file": "619120261028M001.pdf",
+   "pages": 27,
+   "chars": 7548,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-09 月營收 4,246 百萬元，YoY +36%，MoM +12%，累計 YoY +28%，YoY 36%，連4月YoY成長，5年新高，比前三月加速 20pp",
+   "move": null
+  },
+  "analysis": null,
+  "firstSeen": "2026-10-28T22:41:03+08:00",
+  "state": "pending",
+  "pendingNote": "尚未判讀；影音轉文字中"
+ },
+ "6510-2026-10-28": {
+  "key": "6510-2026-10-28",
+  "code": "6510",
+  "name": "精測",
+  "market": "otc",
+  "date": "2026-10-28",
+  "time": "14:30",
+  "place": "線上法說會",
+  "summary": "中華精測科技股份有限公司(代號:6510)擬於2026年10月28日舉行第三季線上法說會，報告本公司營運成果。欲參加者可透過網路連接下列網址參加線上法說會。\nhttps://www.zucast.com/webcast/lEl6ff3h",
+  "fileZh": "651020261027M001.pdf",
+  "fileEn": "651020261027E001.pdf",
+  "videoUrl": "https://youtu.be/Uq7dZFLT3Xs",
+  "note": "無",
+  "deck": {
+   "file": "651020261027M001.pdf",
+   "pages": 21,
+   "chars": 5218,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-09 月營收 652 百萬元，YoY +56%，MoM +2%，累計 YoY +36%，YoY 56%，連9月YoY成長，MoM連7月正成長，5年新高，比前三月加速 8pp",
+   "move": "2026-10-28 漲幅前 100（+9.965635738831615%）"
+  },
+  "analysis": null,
+  "firstSeen": "2026-10-28T22:41:03+08:00",
+  "state": "pending",
+  "pendingNote": "尚未判讀；影音轉文字中"
+ },
+ "6548-2026-10-28": {
+  "key": "6548-2026-10-28",
+  "code": "6548",
+  "name": "長科*",
+  "market": "otc",
+  "date": "2026-10-28",
+  "time": "14:30",
+  "place": "線上法&#12040;說明會-Webex",
+  "summary": "本公司受邀參加凱基證券所舉辦之法&#12040;說明會，就本公司財務及業務相關資訊做說明。",
+  "fileZh": "654820261028M001.pdf",
+  "fileEn": "654820261028E001.pdf",
+  "videoUrl": "http://irconference.twse.com.tw/6548_53_20261028_ch.mp4",
+  "note": "活動報名，請洽凱基證券 鄭小姐 02-2181-8167 janice.cheng@kgi.com",
+  "deck": {
+   "file": "654820261028M001.pdf",
+   "pages": 18,
+   "chars": 2478,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-09 月營收 1,713 百萬元，YoY +43%，MoM +4%，累計 YoY +30%，YoY 43%，連12月YoY成長，MoM連7月正成長，5年新高，比前三月加速 4pp",
+   "move": "2026-10-28 漲幅前 100（+7.005494505494505%）"
+  },
+  "analysis": null,
+  "firstSeen": "2026-10-28T22:41:03+08:00",
+  "state": "pending",
+  "pendingNote": "尚未判讀；影音轉文字中"
+ },
+ "7769-2026-10-28": {
+  "key": "7769-2026-10-28",
+  "code": "7769",
+  "name": "鴻勁",
+  "market": "sii",
+  "date": "2026-10-28",
+  "time": "14:30",
+  "place": "線上法說會",
+  "summary": "本公司受國泰證券股份有限公司邀請參加線上法人說明會，說明本公司營運及業務狀況。",
+  "fileZh": "776920261028M001.pdf",
+  "fileEn": "776920261028E001.pdf",
+  "videoUrl": "http://irconference.twse.com.tw/7769_26_20261028_ch.mp4",
+  "note": "無。",
+  "deck": {
+   "file": "776920261028M001.pdf",
+   "pages": 17,
+   "chars": 4270,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-09 月營收 5,729 百萬元，YoY +100%，MoM +10%，累計 YoY +94%，YoY 100%，連12月YoY成長，24月營收新高，比前三月加速 1pp",
+   "move": null
+  },
+  "analysis": null,
+  "firstSeen": "2026-10-28T22:41:03+08:00",
+  "state": "pending",
+  "pendingNote": "尚未判讀；影音轉文字中"
+ },
+ "7965-2026-10-28": {
+  "key": "7965-2026-10-28",
+  "code": "7965",
+  "name": "昆桐",
+  "market": "rotc",
+  "date": "2026-10-28",
+  "time": "14:30",
+  "place": "台北君悅酒店 君寓一\n(台北市信義區西村里松壽路2號1樓)",
+  "summary": "本公司受台新綜合證券股份有限公司邀請參加興櫃前法人說明會，說明公司營運概況及未來展望",
+  "fileZh": "796520261028M001.pdf",
+  "fileEn": "796520261028E001.pdf",
+  "videoUrl": null,
+  "note": "",
+  "deck": {
+   "file": "796520261028M001.pdf",
+   "pages": 29,
+   "chars": 4830,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "無影片",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": null,
+   "move": null
+  },
+  "analysis": null,
+  "firstSeen": "2026-10-28T22:41:03+08:00",
+  "state": "pending",
+  "pendingNote": "尚未判讀"
+ },
+ "5235-2026-10-27": {
+  "key": "5235-2026-10-27",
+  "code": "5235",
+  "name": "金運",
+  "market": "rotc",
+  "date": "2026-10-27",
+  "time": "14:30",
+  "place": "台北君悅酒店3樓凱悅二廳(台北市信義區松壽路2號)",
+  "summary": "本公司受邀參加永豐金證券舉辦之興櫃前法人說明會，說明\n公司營運概況及未來展望。",
+  "fileZh": "523520261027M002.pdf",
+  "fileEn": "523520261027E002.pdf",
+  "videoUrl": null,
+  "note": "",
+  "deck": {
+   "file": "523520261027M002.pdf",
+   "pages": 33,
+   "chars": 0,
+   "imageHeavy": true
+  },
+  "transcript": null,
+  "videoStatus": "無影片",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": null,
+   "move": null
+  },
+  "analysis": null,
+  "firstSeen": "2026-10-28T22:41:03+08:00",
+  "state": "pending",
+  "pendingNote": "尚未判讀"
+ },
+ "7963-2026-10-22": {
+  "key": "7963-2026-10-22",
+  "code": "7963",
+  "name": "安達康",
+  "market": "rotc",
+  "date": "2026-10-22",
+  "time": "14:30",
+  "place": "富邦人壽國際會議中心 C廳\n(台北市松山區敦化南路一段108號B2)",
+  "summary": "本公司受邀參加富邦證券舉辦之興櫃前法人說明會，說明本公司營運概況與未來展望。",
+  "fileZh": "796320261022M001.pdf",
+  "fileEn": "796320261022E001.pdf",
+  "videoUrl": null,
+  "note": "",
+  "deck": {
+   "file": "796320261022M001.pdf",
+   "pages": 34,
+   "chars": 4984,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "無影片",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": null,
+   "move": null
+  },
+  "analysis": null,
+  "firstSeen": "2026-10-28T22:41:03+08:00",
+  "state": "pending",
+  "pendingNote": "尚未判讀"
  }
 }

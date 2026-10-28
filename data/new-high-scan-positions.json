@@ -14,10 +14,10 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 92.9,
-  "lastDate": "2026-10-27",
-  "ret": -1.03,
-  "held": 3
+  "lastClose": 93.6,
+  "lastDate": "2026-10-28",
+  "ret": -0.28,
+  "held": 4
  },
  {
   "code": "6491",
@@ -34,10 +34,10 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 424.5,
-  "lastDate": "2026-10-27",
-  "ret": -2.11,
-  "held": 3
+  "lastClose": 430.5,
+  "lastDate": "2026-10-28",
+  "ret": -0.72,
+  "held": 4
  },
  {
   "code": "5880",
@@ -54,10 +54,10 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 28.8,
-  "lastDate": "2026-10-27",
-  "ret": -0.6,
-  "held": 0
+  "lastClose": 28.45,
+  "lastDate": "2026-10-28",
+  "ret": -1.82,
+  "held": 1
  },
  {
   "code": "6214",
@@ -69,15 +69,25 @@
   "risk": 1.33,
   "gap": 6,
   "ma20": {
-   "status": "open"
+   "status": "closed",
+   "exitDate": "2026-10-28",
+   "exit": 200.3,
+   "reason": "stop",
+   "ret": -1.93,
+   "held": 1
   },
   "d60": {
-   "status": "open"
+   "status": "closed",
+   "exitDate": "2026-10-28",
+   "exit": 200.3,
+   "reason": "stop",
+   "ret": -1.93,
+   "held": 1
   },
-  "lastClose": 203,
-  "lastDate": "2026-10-27",
-  "ret": -0.6,
-  "held": 0
+  "lastClose": 200.5,
+  "lastDate": "2026-10-28",
+  "ret": -1.83,
+  "held": 1
  },
  {
   "code": "5876",
@@ -89,15 +99,25 @@
   "risk": 1.53,
   "gap": 6,
   "ma20": {
-   "status": "open"
+   "status": "closed",
+   "exitDate": "2026-10-28",
+   "exit": 54.55,
+   "reason": "stop",
+   "ret": -2.13,
+   "held": 1
   },
   "d60": {
-   "status": "open"
+   "status": "closed",
+   "exitDate": "2026-10-28",
+   "exit": 54.55,
+   "reason": "stop",
+   "ret": -2.13,
+   "held": 1
   },
-  "lastClose": 55.4,
-  "lastDate": "2026-10-27",
-  "ret": -0.6,
-  "held": 0
+  "lastClose": 53.8,
+  "lastDate": "2026-10-28",
+  "ret": -3.49,
+  "held": 1
  },
  {
   "code": "3045",
@@ -109,15 +129,25 @@
   "risk": 1.58,
   "gap": 2,
   "ma20": {
-   "status": "open"
+   "status": "closed",
+   "exitDate": "2026-10-28",
+   "exit": 132.37,
+   "reason": "stop",
+   "ret": -2.18,
+   "held": 1
   },
   "d60": {
-   "status": "open"
+   "status": "closed",
+   "exitDate": "2026-10-28",
+   "exit": 132.37,
+   "reason": "stop",
+   "ret": -2.18,
+   "held": 1
   },
-  "lastClose": 134.5,
-  "lastDate": "2026-10-27",
-  "ret": -0.6,
-  "held": 0
+  "lastClose": 132.5,
+  "lastDate": "2026-10-28",
+  "ret": -2.09,
+  "held": 1
  },
  {
   "code": "2892",
@@ -134,10 +164,10 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 43.15,
-  "lastDate": "2026-10-27",
-  "ret": -0.6,
-  "held": 0
+  "lastClose": 42.8,
+  "lastDate": "2026-10-28",
+  "ret": -1.41,
+  "held": 1
  },
  {
   "code": "2801",
@@ -154,10 +184,10 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 30.2,
-  "lastDate": "2026-10-27",
-  "ret": -0.6,
-  "held": 0
+  "lastClose": 29.95,
+  "lastDate": "2026-10-28",
+  "ret": -1.43,
+  "held": 1
  },
  {
   "code": "3034",
@@ -174,10 +204,10 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 599,
-  "lastDate": "2026-10-27",
-  "ret": -0.6,
-  "held": 0
+  "lastClose": 598,
+  "lastDate": "2026-10-28",
+  "ret": -0.77,
+  "held": 1
  },
  {
   "code": "6245",
@@ -194,8 +224,28 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 98.3,
-  "lastDate": "2026-10-27",
+  "lastClose": 101.5,
+  "lastDate": "2026-10-28",
+  "ret": 2.66,
+  "held": 1
+ },
+ {
+  "code": "6199",
+  "name": "天品",
+  "market": "tpex",
+  "date": "2026-10-28",
+  "entry": 156,
+  "stop": 154.35,
+  "risk": 1.06,
+  "gap": 9,
+  "ma20": {
+   "status": "open"
+  },
+  "d60": {
+   "status": "open"
+  },
+  "lastClose": 156,
+  "lastDate": "2026-10-28",
   "ret": -0.6,
   "held": 0
  }

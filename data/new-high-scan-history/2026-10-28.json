@@ -1,0 +1,43 @@
+{
+ "tradingDate": "2026-10-28",
+ "universe": {
+  "candidates": 173,
+  "priced": 172
+ },
+ "signals": [
+  {
+   "code": "6199",
+   "name": "天品",
+   "market": "tpex",
+   "close": 156,
+   "chg": 1.96,
+   "prevHigh": 153.5,
+   "prevHighDate": "2026-10-14",
+   "gap": 9,
+   "stop": 154.35,
+   "risk": 1.06,
+   "ma20": 141.47,
+   "money20": 948,
+   "limitUp": false,
+   "dup": false
+  }
+ ],
+ "others": [
+  {
+   "code": "6870",
+   "name": "騰雲",
+   "market": "tpex",
+   "close": 391.5,
+   "chg": 9.97,
+   "prevHigh": 358,
+   "prevHighDate": "2026-10-22",
+   "gap": 3,
+   "stop": 355.14,
+   "risk": 9.29,
+   "ma20": 324.6,
+   "money20": 42,
+   "limitUp": true,
+   "dup": false
+  }
+ ]
+}

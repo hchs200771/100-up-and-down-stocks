@@ -1,0 +1,147 @@
+{
+ "tradingDate": "2026-10-28",
+ "regime": {
+  "close": 47035.578125,
+  "ema50": 46786.45,
+  "ok": true
+ },
+ "universe": {
+  "listed": 248,
+  "liquid": 192,
+  "minFutVolume": 50,
+  "priced": 191
+ },
+ "signals": [
+  {
+   "code": "2492",
+   "name": "華新科",
+   "market": "twse",
+   "close": 398,
+   "futVol": 7466,
+   "margin": "21.60%",
+   "adr": 7.3,
+   "stop": 380.09,
+   "risk": 4.5,
+   "riskPerContract": 35820,
+   "mom": 208,
+   "supports": [
+    "EMA9"
+   ],
+   "dup": false
+  },
+  {
+   "code": "2615",
+   "name": "萬海",
+   "market": "twse",
+   "close": 118.5,
+   "futVol": 1343,
+   "margin": "16.20%",
+   "adr": 3.9,
+   "stop": 115.92,
+   "risk": 2.18,
+   "riskPerContract": 5160,
+   "mom": 66,
+   "supports": [
+    "EMA9",
+    "EMA21"
+   ],
+   "dup": false
+  },
+  {
+   "code": "4958",
+   "name": "臻鼎-KY",
+   "market": "twse",
+   "close": 550,
+   "futVol": 4354,
+   "margin": "20.25%",
+   "adr": 5.4,
+   "stop": 523.37,
+   "risk": 4.84,
+   "riskPerContract": 53260,
+   "mom": 59,
+   "supports": [
+    "EMA21"
+   ],
+   "dup": false
+  }
+ ],
+ "watch": [
+  {
+   "code": "6278",
+   "name": "台表科",
+   "market": "twse",
+   "close": 285.5,
+   "futVol": 1753,
+   "margin": "16.20%",
+   "adr": 6.4,
+   "mom": 103,
+   "pullback": 9.8,
+   "near": [
+    {
+     "name": "EMA9",
+     "price": 285.08,
+     "dist": 0.1
+    }
+   ]
+  },
+  {
+   "code": "6213",
+   "name": "聯茂",
+   "market": "twse",
+   "close": 778,
+   "futVol": 2590,
+   "margin": "21.60%",
+   "adr": 7.1,
+   "mom": 184,
+   "pullback": 9.1,
+   "near": [
+    {
+     "name": "EMA9",
+     "price": 773.03,
+     "dist": 0.6
+    }
+   ]
+  },
+  {
+   "code": "1326",
+   "name": "台化",
+   "market": "twse",
+   "close": 75.5,
+   "futVol": 2161,
+   "margin": "20.25%",
+   "adr": 5.1,
+   "mom": 55,
+   "pullback": 11.7,
+   "near": [
+    {
+     "name": "EMA9",
+     "price": 75.01,
+     "dist": 0.7
+    },
+    {
+     "name": "EMA21",
+     "price": 73.93,
+     "dist": 2.1
+    }
+   ]
+  },
+  {
+   "code": "1301",
+   "name": "台塑",
+   "market": "twse",
+   "close": 75.4,
+   "futVol": 4869,
+   "margin": "16.20%",
+   "adr": 5.3,
+   "mom": 52,
+   "pullback": 15.2,
+   "near": [
+    {
+     "name": "EMA21",
+     "price": 74.29,
+     "dist": 1.5
+    }
+   ]
+  }
+ ]
+}

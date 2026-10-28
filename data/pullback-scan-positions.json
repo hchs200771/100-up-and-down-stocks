@@ -219,5 +219,47 @@
   "exitDate": "2026-10-22",
   "exit": 47.31,
   "exitReason": "stop"
+ },
+ {
+  "code": "2492",
+  "name": "華新科",
+  "market": "twse",
+  "date": "2026-10-28",
+  "entry": 398,
+  "stop": 380.09,
+  "risk": 4.5,
+  "status": "open",
+  "lastClose": 398,
+  "lastDate": "2026-10-28",
+  "r": 0,
+  "held": 0
+ },
+ {
+  "code": "2615",
+  "name": "萬海",
+  "market": "twse",
+  "date": "2026-10-28",
+  "entry": 118.5,
+  "stop": 115.92,
+  "risk": 2.18,
+  "status": "open",
+  "lastClose": 118.5,
+  "lastDate": "2026-10-28",
+  "r": 0,
+  "held": 0
+ },
+ {
+  "code": "4958",
+  "name": "臻鼎-KY",
+  "market": "twse",
+  "date": "2026-10-28",
+  "entry": 550,
+  "stop": 523.37,
+  "risk": 4.84,
+  "status": "open",
+  "lastClose": 550,
+  "lastDate": "2026-10-28",
+  "r": 0,
+  "held": 0
  }
 ]
