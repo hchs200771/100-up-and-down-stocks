@@ -1,0 +1,43 @@
+{
+ "tradingDate": "2026-10-29",
+ "universe": {
+  "candidates": 131,
+  "priced": 130
+ },
+ "signals": [
+  {
+   "code": "6925",
+   "name": "意藍",
+   "market": "tpex",
+   "close": 127,
+   "chg": 3.67,
+   "prevHigh": 123,
+   "prevHighDate": "2026-10-22",
+   "gap": 4,
+   "stop": 118.88,
+   "risk": 6.39,
+   "ma20": 88.75,
+   "money20": 154,
+   "limitUp": false,
+   "dup": false
+  }
+ ],
+ "others": [
+  {
+   "code": "2465",
+   "name": "麗臺",
+   "market": "twse",
+   "close": 113,
+   "chg": 9.71,
+   "prevHigh": 107.5,
+   "prevHighDate": "2026-09-03",
+   "gap": 36,
+   "stop": 103.9,
+   "risk": 8.05,
+   "ma20": 90.87,
+   "money20": 293,
+   "limitUp": true,
+   "dup": false
+  }
+ ]
+}

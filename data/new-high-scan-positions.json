@@ -14,10 +14,10 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 93.6,
-  "lastDate": "2026-10-28",
-  "ret": -0.28,
-  "held": 4
+  "lastClose": 92.3,
+  "lastDate": "2026-10-29",
+  "ret": -1.67,
+  "held": 5
  },
  {
   "code": "6491",
@@ -34,10 +34,10 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 430.5,
-  "lastDate": "2026-10-28",
-  "ret": -0.72,
-  "held": 4
+  "lastClose": 422.5,
+  "lastDate": "2026-10-29",
+  "ret": -2.57,
+  "held": 5
  },
  {
   "code": "5880",
@@ -49,15 +49,25 @@
   "risk": 1.32,
   "gap": 6,
   "ma20": {
-   "status": "open"
+   "status": "closed",
+   "exitDate": "2026-10-29",
+   "exit": 28.25,
+   "reason": "stop",
+   "ret": -2.51,
+   "held": 2
   },
   "d60": {
-   "status": "open"
+   "status": "closed",
+   "exitDate": "2026-10-29",
+   "exit": 28.25,
+   "reason": "stop",
+   "ret": -2.51,
+   "held": 2
   },
-  "lastClose": 28.45,
-  "lastDate": "2026-10-28",
-  "ret": -1.82,
-  "held": 1
+  "lastClose": 28.9,
+  "lastDate": "2026-10-29",
+  "ret": -0.25,
+  "held": 2
  },
  {
   "code": "6214",
@@ -164,10 +174,10 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 42.8,
-  "lastDate": "2026-10-28",
-  "ret": -1.41,
-  "held": 1
+  "lastClose": 44.45,
+  "lastDate": "2026-10-29",
+  "ret": 2.41,
+  "held": 2
  },
  {
   "code": "2801",
@@ -184,10 +194,10 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 29.95,
-  "lastDate": "2026-10-28",
-  "ret": -1.43,
-  "held": 1
+  "lastClose": 30.5,
+  "lastDate": "2026-10-29",
+  "ret": 0.39,
+  "held": 2
  },
  {
   "code": "3034",
@@ -204,10 +214,10 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 598,
-  "lastDate": "2026-10-28",
-  "ret": -0.77,
-  "held": 1
+  "lastClose": 596,
+  "lastDate": "2026-10-29",
+  "ret": -1.1,
+  "held": 2
  },
  {
   "code": "6245",
@@ -224,10 +234,10 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 101.5,
-  "lastDate": "2026-10-28",
-  "ret": 2.66,
-  "held": 1
+  "lastClose": 97.1,
+  "lastDate": "2026-10-29",
+  "ret": -1.82,
+  "held": 2
  },
  {
   "code": "6199",
@@ -244,8 +254,28 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 156,
-  "lastDate": "2026-10-28",
+  "lastClose": 158.5,
+  "lastDate": "2026-10-29",
+  "ret": 1,
+  "held": 1
+ },
+ {
+  "code": "6925",
+  "name": "意藍",
+  "market": "tpex",
+  "date": "2026-10-29",
+  "entry": 127,
+  "stop": 118.88,
+  "risk": 6.39,
+  "gap": 4,
+  "ma20": {
+   "status": "open"
+  },
+  "d60": {
+   "status": "open"
+  },
+  "lastClose": 127,
+  "lastDate": "2026-10-29",
   "ret": -0.6,
   "held": 0
  }
