@@ -67,8 +67,10 @@
     "台灣內銷占銷售量98.8%，對國內需求依賴高。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "鋼鐵",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-09T15:18:52+08:00",
   "model": "gpt-6.1-sol",
@@ -157,7 +159,9 @@
     "大川研明年重點為二次配工程倍數成長；耗材代理最快第四季至明年貢獻營收。"
    ],
    "tone": "轉佳",
-   "evidence": "簡報+影音"
+   "evidence": "簡報+影音",
+   "industry": "潔淨管件",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-12T21:56:40+08:00",
   "model": "gpt-6.1-sol",
@@ -236,8 +240,10 @@
     "公司與同業新船陸續交付，新增運力的消化及收益仍待觀察。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "貨櫃航運",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-09T15:18:55+08:00",
   "model": "gpt-6.1-sol",
@@ -316,8 +322,10 @@
     "紅海安全、能源供應、油價與極端天候增加營運不確定性。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "簡報多為圖片"
+   "tone": "轉差",
+   "evidence": "簡報多為圖片",
+   "industry": "物流",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-09T15:18:56+08:00",
   "model": "gpt-6.1-sol",
@@ -391,8 +399,10 @@
     "鏡頭出貨比重圖表數字未抽出，無法判讀產品結構變化。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉差",
+   "evidence": "僅簡報",
+   "industry": "光學鏡頭",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-09T15:19:18+08:00",
   "model": "gpt-6.1-sol",
@@ -461,8 +471,10 @@
     "中國透明PI生產線已逐步放量，多家面板廠及終端客戶仍在測試認證。",
     "半導體材料目前以台灣先進封裝產業為主要推廣市場。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報多為圖片"
+   "tone": "持平",
+   "evidence": "簡報多為圖片",
+   "industry": "電子材料",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-14T00:35:39+08:00",
   "model": "gpt-6.1-sol",
@@ -549,8 +561,10 @@
     "國聯主要車廠客戶為比亞迪與零跑，兩者有直接供貨；其他品牌主要透過Tier 1。",
     "低軌衛星產品用於地面設備，已開始出貨，未供應SpaceX；相關客戶尚未正式商用化，未揭露訂單金額與放量時程。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "轉差",
+   "evidence": "簡報+影音",
+   "industry": "連接器",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-14T01:11:45+08:00",
   "model": "gpt-6.1-sol",
@@ -636,8 +650,10 @@
     "擴產問答提到明年度第一季新增產能，並有後續擴產規劃；產品名稱、規模與後續日期辨識不清。",
     "報價問答未提供具體調價幅度或時間。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "轉佳",
+   "evidence": "簡報+影音",
+   "industry": "被動元件",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-14T00:39:56+08:00",
   "model": "gpt-6.1-sol",
@@ -725,7 +741,9 @@
     "AI相關營收占比預估今年下半年至少10%，明年有機會向10～20%提升，未提供精確占比財測。"
    ],
    "tone": "轉佳",
-   "evidence": "簡報+影音"
+   "evidence": "簡報+影音",
+   "industry": "化合物半導體",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-14T01:21:56+08:00",
   "model": "gpt-6.1-sol",
@@ -812,8 +830,10 @@
     "今年或明年啟動的新客戶案不代表明年立即貢獻；既有合格電芯產品約需18個月，新電芯案更久。",
     "2027年無人機營收結構估AI算力模組、GCS、整機製造約為1：3：3。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "轉佳",
+   "evidence": "簡報+影音",
+   "industry": "電池模組",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-14T01:49:01+08:00",
   "model": "gpt-6.1-sol",
@@ -898,8 +918,10 @@
     "管理層解釋：第二季營業費用增加主要來自處分廠房收益衍生的報酬提撥，排除此因素後費用無重大異常。",
     "半導體相關產品仍在尋題及初期方案開發，擬延伸精密加工、模具等核心能力，未提出確定產品或商業化時程。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "轉佳",
+   "evidence": "簡報+影音",
+   "industry": "顯示器",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-14T01:45:23+08:00",
   "model": "gpt-6.1-sol",
@@ -951,8 +973,10 @@
     "19頁簡報均未抽出可讀文字，且無影音逐字稿，無法評估毛利率、訂單與成長持續性。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "簡報多為圖片"
+   "tone": "轉佳",
+   "evidence": "簡報多為圖片",
+   "industry": "石英元件",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-09T15:20:25+08:00",
   "model": "gpt-6.1-sol",
@@ -1032,8 +1056,10 @@
     "未揭露新客戶、訂單金額或商業放量時程；部分市場與客戶圖表文字未完整抽出。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉差",
+   "evidence": "僅簡報",
+   "industry": "光學元件",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-09T15:20:16+08:00",
   "model": "gpt-6.1-sol",
@@ -1111,8 +1137,10 @@
     "多頁文字抽取失真，未來展望頁內容無法辨讀，資訊可能不完整。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "廠務工程",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-09T15:22:24+08:00",
   "model": "gpt-6.1-sol",
@@ -1191,7 +1219,9 @@
    ],
    "qaHighlights": [],
    "tone": "轉佳",
-   "evidence": "簡報多為圖片"
+   "evidence": "簡報多為圖片",
+   "industry": "包裝材料",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-09T15:20:51+08:00",
   "model": "gpt-6.1-sol",
@@ -1270,8 +1300,10 @@
     "新竹廠受影響產線尚未明確說明恢復時程。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "聚酯紡織",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-09T15:21:17+08:00",
   "model": "gpt-6.1-sol",
@@ -1349,8 +1381,10 @@
     "未揭露自研產品占比、維運續約率，難驗證獲利結構改善能否延續。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉差",
+   "evidence": "僅簡報",
+   "industry": "資訊服務",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-09T15:20:44+08:00",
   "model": "gpt-6.1-sol",
@@ -1393,7 +1427,9 @@
    ],
    "qaHighlights": [],
    "tone": "無法判斷",
-   "evidence": "僅摘要"
+   "evidence": "僅摘要",
+   "industry": "半導體封測",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-09T15:20:28+08:00",
   "model": "gpt-6.1-sol",
@@ -1471,8 +1507,10 @@
     "新廠僅展示現況，未提供產能、投產時程或獲利貢獻。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉差",
+   "evidence": "僅簡報",
+   "industry": "光學膜",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-09T15:20:54+08:00",
   "model": "gpt-6.1-sol",
@@ -1551,8 +1589,10 @@
     "上半年淨利大增包含業外由虧轉盈，不能直接外推為本業獲利增速。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "半導體封測",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-09T15:21:15+08:00",
   "model": "gpt-6.1-sol",
@@ -1630,8 +1670,10 @@
     "施工缺工可能限制服務擴張；海外布局缺乏具體時程。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "居家修繕",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-09T15:21:53+08:00",
   "model": "gpt-6.1-sol",
@@ -1678,8 +1720,10 @@
     "簡報未抽出可讀文字且無逐字稿，無法確認營收成長原因、獲利變化與持續性。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "簡報多為圖片"
+   "tone": "持平",
+   "evidence": "簡報多為圖片",
+   "industry": "資源回收",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-12T02:04:35+08:00",
   "model": "gpt-6.1-sol",
@@ -1722,7 +1766,9 @@
    ],
    "qaHighlights": [],
    "tone": "無法判斷",
-   "evidence": "僅摘要"
+   "evidence": "僅摘要",
+   "industry": "不織布",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-09T15:21:14+08:00",
   "model": "gpt-6.1-sol",
@@ -1799,8 +1845,10 @@
     "第二季業外收益包含投資及匯兌評價損益，持續性未交代。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "電源設備",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-09T15:21:39+08:00",
   "model": "gpt-6.1-sol",
@@ -1848,8 +1896,10 @@
     "缺少月營收資料，無法交叉驗證近期營運動能。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "簡報多為圖片"
+   "tone": "持平",
+   "evidence": "簡報多為圖片",
+   "industry": "未明",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-12T02:08:04+08:00",
   "model": "gpt-6.1-sol",
@@ -1927,8 +1977,10 @@
     "SSD出貨規模、放量速度及毛利貢獻未揭露；新廠亦未提供產能與訂單支撐數字。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "半導體封測",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-09T15:21:56+08:00",
   "model": "gpt-6.1-sol",
@@ -2005,8 +2057,10 @@
     "Edge AI未提供客戶、訂單金額、營收貢獻或放量時程。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "工業電腦",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-09T15:22:00+08:00",
   "model": "gpt-6.1-sol",
@@ -2084,8 +2138,10 @@
     "老舊管線持續汰換，仍有安全維護與工程支出需求。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "天然氣",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-09T15:22:21+08:00",
   "model": "gpt-6.1-sol",
@@ -2164,8 +2220,10 @@
     "主要財務與市場預估圖表數字未完整抽出，無法確認毛利率及產品結構改善幅度。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉差",
+   "evidence": "僅簡報",
+   "industry": "汽車零組件",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-12T02:06:09+08:00",
   "model": "gpt-6.1-sol",
@@ -2243,8 +2301,10 @@
     "缺少10月更新與影音，無法確認原有出貨展望的達成情況。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "電子代工",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-12T02:08:20+08:00",
   "model": "gpt-6.1-sol",
@@ -2323,8 +2383,10 @@
     "總銷金額不等於公司可認列營收或獲利，未揭露分配比例與認列時點。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "營建",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-12T02:07:36+08:00",
   "model": "gpt-6.1-sol",
@@ -2402,8 +2464,10 @@
     "住宅市場受信用管制壓抑；提供的9月營收年減12%，工程能見度仍需轉化為實際認列與獲利。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "營建",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-12T02:08:10+08:00",
   "model": "gpt-6.1-sol",
@@ -2480,8 +2544,10 @@
     "簡報多為圖片且無逐字稿，無法確認管理層補充與問答內容。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "簡報多為圖片"
+   "tone": "轉佳",
+   "evidence": "簡報多為圖片",
+   "industry": "AI 伺服器",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-12T02:09:56+08:00",
   "model": "gpt-6.1-sol",
@@ -2559,8 +2625,10 @@
     "研發時程頁未抽出具體內容，無法確認新題材何時貢獻營收。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉差",
+   "evidence": "僅簡報",
+   "industry": "工業電腦",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-12T02:08:53+08:00",
   "model": "gpt-6.1-sol",
@@ -2617,8 +2685,10 @@
     "簡報多為圖片且無逐字稿，關鍵財務圖表資訊不足。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "簡報多為圖片"
+   "tone": "持平",
+   "evidence": "簡報多為圖片",
+   "industry": "資訊服務",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-12T02:10:58+08:00",
   "model": "gpt-6.1-sol",
@@ -2697,8 +2767,10 @@
     "新廠投資約23億元，預計2029年才投產，短期貢獻有限。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "安防設備",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-12T02:09:44+08:00",
   "model": "gpt-6.1-sol",
@@ -2776,8 +2848,10 @@
     "泰國擴產未揭露資本支出、稼動率及獲利貢獻，效益仍待驗證。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "簡報多為圖片"
+   "tone": "轉差",
+   "evidence": "簡報多為圖片",
+   "industry": "食品",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-12T02:10:36+08:00",
   "model": "gpt-6.1-sol",
@@ -2856,8 +2930,10 @@
     "擴產支出大，長約價格、訂單金額與未來毛利率均未量化。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "記憶體",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-12T21:53:35+08:00",
   "model": "gpt-6.1-sol",
@@ -2935,8 +3011,10 @@
     "股票處分利益與評價收益貢獻大，後續獲利受股市、匯率及避險成本影響。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "金控",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-12T02:05:22+08:00",
   "model": "gpt-6.1-sol",
@@ -3020,8 +3098,10 @@
     "未來一至三年除12吋N型與半絕緣型，也投入高壓直流供電所需P型基板研發。",
     "與客戶共同制定規格、缺陷檢測標準並試產；非中供應鏈優勢仍須靠品質與穩定供應維持。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "轉佳",
+   "evidence": "簡報+影音",
+   "industry": "半導體材料",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-14T00:28:14+08:00",
   "model": "gpt-6.1-sol",
@@ -3102,8 +3182,10 @@
     "管理層口頭說明上半年銀行存款增加約4.5億元、存貨減少約1.1億元。",
     "DC店型已超過80間，但未揭露單店營收、投資回收期或獲利貢獻。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報多為圖片"
+   "tone": "轉差",
+   "evidence": "簡報多為圖片",
+   "industry": "家電通路",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-12T21:54:54+08:00",
   "model": "gpt-6.1-sol",
@@ -3183,8 +3265,10 @@
     "多年雙位數成長及租賃毛利展望缺乏年度拆分、成本與投資金額。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "汽車百貨",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-12T21:54:23+08:00",
   "model": "gpt-6.1-sol",
@@ -3263,8 +3347,10 @@
     "10月法說仍使用第三季展望，缺少最新訂單與第四季營運指引。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "塑化與電子材料",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-14T00:24:06+08:00",
   "model": "gpt-6.1-sol",
@@ -3342,8 +3428,10 @@
     "新客戶、Exigo併購及無人載具均未揭露訂單金額或獲利貢獻；無人載具仍在廠區認證階段。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "健身器材",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-14T00:24:52+08:00",
   "model": "gpt-6.1-sol",
@@ -3421,8 +3509,10 @@
     "近期月營收加速成長，簡報未解釋其來源及能否延續。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "化工",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-14T00:24:01+08:00",
   "model": "gpt-6.1-sol",
@@ -3501,8 +3591,10 @@
     "第30頁營業利益與歸母淨利標示疑似對調，應以第33頁損益表核對。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "離岸風電",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-14T00:24:34+08:00",
   "model": "gpt-6.1-sol",
@@ -3580,8 +3672,10 @@
     "未揭露AI訂單規模、毛利率及AFM獲利貢獻；長期目標仍有執行不確定性。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "電子零組件",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-14T00:24:10+08:00",
   "model": "gpt-6.1-sol",
@@ -3664,8 +3758,10 @@
     "9月行動服務營收年增約3.2%；美國子公司9月有專案交付貢獻。",
     "預計年底分享AI相關營收成果，本次未揭露金額。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "持平",
+   "evidence": "簡報+影音",
+   "industry": "電信",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-14T00:35:42+08:00",
   "model": "gpt-6.1-sol",
@@ -3735,8 +3831,10 @@
     "公司看好CAE模擬與量測服務，認為TAF認證有助市場開發，但未提供訂單或成長目標。",
     "擬將二次開發與客製服務標準化、商品化；內部導入AI改善效率，後續希望延伸至智能客服。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "持平",
+   "evidence": "簡報+影音",
+   "industry": "軟體服務",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-14T00:26:59+08:00",
   "model": "gpt-6.1-sol",
@@ -3814,8 +3912,10 @@
     "約旦關稅優勢依據2025年資料，政策變動可能影響接單競爭力。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "成衣",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-14T00:24:41+08:00",
   "model": "gpt-6.1-sol",
@@ -3858,7 +3958,9 @@
    ],
    "qaHighlights": [],
    "tone": "無法判斷",
-   "evidence": "僅摘要"
+   "evidence": "僅摘要",
+   "industry": "特用化學",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-17T15:55:42+08:00",
   "model": "gpt-6.1-sol",
@@ -3936,8 +4038,10 @@
     "成倍成長目標為維持原展望，產能預訂未揭露金額或承諾條件，不能直接視為新增確定營收。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "PCB",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-14T00:25:54+08:00",
   "model": "gpt-6.1-sol",
@@ -4019,8 +4123,10 @@
     "對毛利率延續性僅稱希望維持；未量化今年、明年成長幅度，下半年合約負債則取決於銷售狀況。",
     "AW700採1加3模組化鏡頭配置，讓客戶依駕駛隱私及專案需求選配。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "持平",
+   "evidence": "簡報+影音",
+   "industry": "物聯網",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-14T00:28:00+08:00",
   "model": "gpt-6.1-sol",
@@ -4099,8 +4205,10 @@
     "最新9月營收年增及累計年增均僅3%，尚未呈現明顯成長加速。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉差",
+   "evidence": "僅簡報",
+   "industry": "半導體設備",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-14T00:25:01+08:00",
   "model": "gpt-6.1-sol",
@@ -4178,8 +4286,10 @@
     "15億元可轉債若全數轉換，股本稀釋率5.57%；未量化未來毛利率或新增訂單認列時程。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "廠務工程",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-14T00:26:08+08:00",
   "model": "gpt-6.1-sol",
@@ -4249,8 +4359,10 @@
     "產業市場規模引用口徑不一致，不宜直接推估公司成長。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "簡報多為圖片"
+   "tone": "持平",
+   "evidence": "簡報多為圖片",
+   "industry": "半導體材料",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-14T00:25:14+08:00",
   "model": "gpt-6.1-sol",
@@ -4329,8 +4441,10 @@
     "日本商業化尚未量化，獲利貢獻與規模擴張仍待確認。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉差",
+   "evidence": "僅簡報",
+   "industry": "儲能",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-14T00:25:23+08:00",
   "model": "gpt-6.1-sol",
@@ -4408,8 +4522,10 @@
     "10月出貨及2027年擴產計畫缺乏本次進度確認，不能視為新增催化資訊。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "半導體設備",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-14T00:25:42+08:00",
   "model": "gpt-6.1-sol",
@@ -4479,8 +4595,10 @@
     "未提供現金水位、研發支出或授權條件，無法評估資金續航與獲利貢獻。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "新藥研發",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-14T00:26:32+08:00",
   "model": "gpt-6.1-sol",
@@ -4558,8 +4676,10 @@
     "簡報為8月版本，10月法說未提供新船抵台或長約啟動進度更新。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "海事工程",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-14T00:26:07+08:00",
   "model": "gpt-6.1-sol",
@@ -4638,8 +4758,10 @@
     "簡報的5台訂單與6台合作設備口徑不同；治療患者數與人次亦有不一致。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "生技醫療",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-14T00:26:40+08:00",
   "model": "gpt-6.1-sol",
@@ -4713,8 +4835,10 @@
     "市場規模與同業銷售數據不能直接視為公司可取得的收入。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "動物用藥",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-14T00:26:19+08:00",
   "model": "gpt-6.1-sol",
@@ -4789,8 +4913,10 @@
     "部分頁面標題、試驗藥名及隨機分組標示不一致，細部臨床資訊需核對。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "新藥研發",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-14T00:26:51+08:00",
   "model": "gpt-6.1-sol",
@@ -4834,7 +4960,9 @@
    ],
    "qaHighlights": [],
    "tone": "無法判斷",
-   "evidence": "僅摘要"
+   "evidence": "僅摘要",
+   "industry": "食品",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-17T15:55:29+08:00",
   "model": "gpt-6.1-sol",
@@ -4912,8 +5040,10 @@
     "AM北美營收占比71%，區域集中度高；中國OEM前8月非合併營收年減8.36%。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉差",
+   "evidence": "僅簡報",
+   "industry": "汽車零組件",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-14T23:26:44+08:00",
   "model": "gpt-6.1-sol",
@@ -4958,7 +5088,9 @@
    ],
    "qaHighlights": [],
    "tone": "無法判斷",
-   "evidence": "僅摘要"
+   "evidence": "僅摘要",
+   "industry": "光電",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-17T15:55:40+08:00",
   "model": "gpt-6.1-sol",
@@ -5044,8 +5176,10 @@
     "明年優先提高房價；平均住房率大致控制在85%以內，以兼顧人力與費用。",
     "6月開幕的捷絲旅中山館，開幕約四個月平均住房率約八成、平均房價近3,000元。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "轉佳",
+   "evidence": "簡報+影音",
+   "industry": "觀光飯店",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-14T23:31:20+08:00",
   "model": "gpt-6.1-sol",
@@ -5129,8 +5263,10 @@
     "口頭補充：2026至2028年著重擴大規模與市占，2029至2032年推動品牌升級，未提供財務目標。",
     "口頭補充：全球航空公司代理超過70家；現場無提問，未取得額外訂單或獲利展望。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "轉差",
+   "evidence": "簡報+影音",
+   "industry": "旅行社",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-14T23:30:48+08:00",
   "model": "gpt-6.1-sol",
@@ -5216,8 +5352,10 @@
     "2026年採用IFRS17，並追溯調整2025年度財報。",
     "逐字稿未記錄實質問答，沒有進一步追問獲利持續性。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "轉佳",
+   "evidence": "簡報+影音",
+   "industry": "產險",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-14T23:31:14+08:00",
   "model": "gpt-6.1-sol",
@@ -5295,8 +5433,10 @@
     "新材料與清洗產線仍在認證，鍍膜、翻新等業務尚在開發或待開發。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "半導體設備",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-14T23:27:37+08:00",
   "model": "gpt-6.1-sol",
@@ -5375,8 +5515,10 @@
     "未說明第二季毛利率改善的具體原因及持續性；產業交期與漲價數據不能直接視為公司訂單或售價。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "電子材料",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-14T23:27:41+08:00",
   "model": "gpt-6.1-sol",
@@ -5455,8 +5597,10 @@
     "簡報日期早於本場法說，缺乏10月最新進度及問答佐證。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "連接線材",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-14T23:27:42+08:00",
   "model": "gpt-6.1-sol",
@@ -5526,8 +5670,10 @@
     "ROE提升部分來自股東權益調整，需區分營運改善與資本結構效果。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "工業電腦",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-14T23:28:37+08:00",
   "model": "gpt-6.1-sol",
@@ -5604,8 +5750,10 @@
     "FOPLP利用率預估屬應用端展望，不能直接視為迅得營收成長率。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "自動化設備",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-14T23:28:33+08:00",
   "model": "gpt-6.1-sol",
@@ -5683,8 +5831,10 @@
     "未說明AI產品帶動毛利率提升的幅度與持續性。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "導線架",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-14T23:29:10+08:00",
   "model": "gpt-6.1-sol",
@@ -5763,8 +5913,10 @@
     "客戶擴廠時程屬需求背景，不能直接視為公司已取得訂單。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "半導體設備",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-14T23:28:58+08:00",
   "model": "gpt-6.1-sol",
@@ -5834,8 +5986,10 @@
     "AI與擴產效益未量化，無法估算對成本及獲利的實際貢獻。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "生技代工",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-14T23:29:33+08:00",
   "model": "gpt-6.1-sol",
@@ -5914,8 +6068,10 @@
     "近期月營收高成長已公開，不能單獨視為本場新增資訊。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "資源回收",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-14T23:29:12+08:00",
   "model": "gpt-6.1-sol",
@@ -6002,8 +6158,10 @@
     "財務長透露上半年匯兌利益約500萬元，將透過換匯降低美元曝險，必要時使用遠期外匯。",
     "高雄夢時代摩天輪案已於6月完工、7月啟用；客戶洽談廣告屬業主營運，未說明星亞是否分潤。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "持平",
+   "evidence": "簡報+影音",
+   "industry": "LED顯示器",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-15T00:07:29+08:00",
   "model": "gpt-6.1-sol",
@@ -6082,8 +6240,10 @@
     "未提供財務及資金續航資料，無法評估研發投入對損益與募資需求的影響。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "新藥研發",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-14T23:30:04+08:00",
   "model": "gpt-6.1-sol",
@@ -6171,7 +6331,9 @@
     "RISE仍在協同開發，管理層提及可能還需一、二十年，未提供近期放量時程。"
    ],
    "tone": "轉佳",
-   "evidence": "簡報+影音"
+   "evidence": "簡報+影音",
+   "industry": "航太零組件",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-15T00:04:11+08:00",
   "model": "gpt-6.1-sol",
@@ -6216,8 +6378,10 @@
     "逐字稿公司名稱與業務描述辨識混亂，無法可靠歸納營運內容；此為資料品質限制，不能據此認定營運惡化。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅影音"
+   "tone": "持平",
+   "evidence": "僅影音",
+   "industry": "未明",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-15T00:10:26+08:00",
   "model": "gpt-6.1-sol",
@@ -6302,8 +6466,10 @@
     "網布客戶中，歐系品牌占55%、美系15%、日系近10%；美系占比上升。",
     "口頭補充預計2027年於印尼建置新生產配置，簡報未列明此時程。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "轉差",
+   "evidence": "簡報+影音",
+   "industry": "紡織輔料",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-15T00:11:38+08:00",
   "model": "gpt-6.1-sol",
@@ -6389,8 +6555,10 @@
     "問答揭露第三季合併毛利率29.5%、前三季30.3%；第三季射出勾毛利率44%，經編緹花僅17.2%。",
     "問答揭露前三季集團資本支出22.69億元，其中百和體系3.31億元、百和興業19.38億元。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "持平",
+   "evidence": "簡報+影音",
+   "industry": "紡織輔料",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-15T00:26:07+08:00",
   "model": "gpt-6.1-sol",
@@ -6468,8 +6636,10 @@
     "12吋長晶成果尚未附商業化時程，AI、光子及AR題材的營收貢獻未量化。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "半導體材料",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-14T23:30:44+08:00",
   "model": "gpt-6.1-sol",
@@ -6513,7 +6683,9 @@
    ],
    "qaHighlights": [],
    "tone": "無法判斷",
-   "evidence": "僅摘要"
+   "evidence": "僅摘要",
+   "industry": "工具機",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-20T21:50:49+08:00",
   "model": "gpt-6.1-sol",
@@ -6590,8 +6762,10 @@
     "缺少本次會議逐字稿，無法確認是否另有新展望或口頭補充。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "電子代工",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-17T15:54:40+08:00",
   "model": "gpt-6.1-sol",
@@ -6668,8 +6842,10 @@
     "未提供前次全年展望，無法判斷44%成長預估是否上修。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "晶圓代工",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-17T15:54:43+08:00",
   "model": "gpt-6.1-sol",
@@ -6750,8 +6926,10 @@
     "散熱事業成長基期小，未揭露訂單金額及集團獲利貢獻；無人機業務仍在洽談。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "電子零組件",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-20T21:51:06+08:00",
   "model": "gpt-6.1-sol",
@@ -6830,8 +7008,10 @@
     "公司提醒地緣衝突、通膨與科技股估值風險，未量化對自身獲利的影響。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "金控",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-17T15:55:04+08:00",
   "model": "gpt-6.1-sol",
@@ -6908,8 +7088,10 @@
     "乾眼症產品仍處臨床開發階段，台灣商業供應須取得市場許可。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "電子通路",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-20T21:51:13+08:00",
   "model": "gpt-6.1-sol",
@@ -6995,8 +7177,10 @@
     "EPC今年洽談案件較大、定案較慢，目前主要是小案，尚無大案進來。",
     "部分第一島鏈國家已重複採購，並依軍方任務需求協助飛機與地面站設計，但未提供訂單規模。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "持平",
+   "evidence": "簡報+影音",
+   "industry": "電子代工",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-20T21:54:40+08:00",
   "model": "gpt-6.1-sol",
@@ -7074,8 +7258,10 @@
     "現增尚待核准，將增加股數；未揭露現金可支應研發的期間。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "新藥研發",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-17T15:56:03+08:00",
   "model": "gpt-6.1-sol",
@@ -7143,8 +7329,10 @@
     "逐字稿辨識錯誤較多，工業產品占比、EPS及部分周轉指標無法可靠判讀。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅影音"
+   "tone": "轉差",
+   "evidence": "僅影音",
+   "industry": "背光模組",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-17T15:54:57+08:00",
   "model": "gpt-6.1-sol",
@@ -7222,8 +7410,10 @@
     "泰國投資未提供產能利用率、損益兩平時點；高毛利產品占比及改善幅度亦未量化。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "精密加工",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-17T15:54:45+08:00",
   "model": "gpt-6.1-sol",
@@ -7310,7 +7500,9 @@
     "口頭補充：機器人相關業務目前尚未形成顯著獲利，部分運動控制技術仍在測試。"
    ],
    "tone": "持平",
-   "evidence": "簡報多為圖片"
+   "evidence": "簡報多為圖片",
+   "industry": "工業電腦",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-17T15:57:36+08:00",
   "model": "gpt-6.1-sol",
@@ -7399,7 +7591,9 @@
     "泡泡龍二期預估費用約3,000萬元，口頭預計2027年第三季收案完成、第四季解盲。"
    ],
    "tone": "轉佳",
-   "evidence": "簡報多為圖片"
+   "evidence": "簡報多為圖片",
+   "industry": "新藥研發",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-17T15:58:34+08:00",
   "model": "gpt-6.1-sol",
@@ -7478,8 +7672,10 @@
     "以第二季財報為主，缺乏第三季獲利與最新付費轉換率，難確認成長延續程度。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "金融科技",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-17T15:54:58+08:00",
   "model": "gpt-6.1-sol",
@@ -7557,8 +7753,10 @@
     "半導體設備市場成長預估屬產業資訊，不能視為公司營收指引。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉差",
+   "evidence": "僅簡報",
+   "industry": "半導體設備",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-17T15:56:00+08:00",
   "model": "gpt-6.1-sol",
@@ -7635,8 +7833,10 @@
     "上半年營業現金流為負，自由現金流缺口擴大。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "AI 伺服器",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-20T21:48:37+08:00",
   "model": "gpt-6.1-sol",
@@ -7719,8 +7919,10 @@
     "口頭補充：台灣負責研發與客戶服務，東莞為主要生產基地，泰國第二生產基地可依客戶需求配置。",
     "現場無投資人提問，未進一步說明轉型進度與獲利改善條件。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "轉差",
+   "evidence": "簡報+影音",
+   "industry": "機構件",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-20T21:49:38+08:00",
   "model": "gpt-6.1-sol",
@@ -7797,8 +7999,10 @@
     "應用示意不代表特定客戶或量產專案，缺乏可驗證的新訂單資訊。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "電動傳動",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-20T21:50:01+08:00",
   "model": "gpt-6.1-sol",
@@ -7877,8 +8081,10 @@
     "9月營收仍年減34%，轉型業務尚缺可驗證的短期獲利貢獻。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉差",
+   "evidence": "僅簡報",
+   "industry": "機構件",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-20T21:49:36+08:00",
   "model": "gpt-6.1-sol",
@@ -7966,7 +8172,9 @@
     "併購仍在評估，無具體進度；樂天銀行處置亦無確定方案。"
    ],
    "tone": "轉差",
-   "evidence": "簡報+影音"
+   "evidence": "簡報+影音",
+   "industry": "金融",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-20T21:52:05+08:00",
   "model": "gpt-6.1-sol",
@@ -8053,8 +8261,10 @@
     "CPU、主機板及顯卡主要在海外當地採購，CPU備貨維持兩個月內。",
     "計畫整合零組件與系統行銷資源，未承諾未來費用率水準。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "持平",
+   "evidence": "簡報+影音",
+   "industry": "電腦周邊",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-20T22:02:12+08:00",
   "model": "gpt-6.1-sol",
@@ -8138,8 +8348,10 @@
     "被問及後續營運及轉盈機會時，管理層指出上半年主要受到物料成本問題影響。",
     "業務單位正與客戶協商下半年及明年的價格調整，並坦言調價處理不當可能產生反效果；未承諾轉盈時間。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "轉差",
+   "evidence": "簡報+影音",
+   "industry": "顯示模組",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-20T21:52:58+08:00",
   "model": "gpt-6.1-sol",
@@ -8217,8 +8429,10 @@
     "9月營收月減27%；單月回落是否延續，簡報未提供說明。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉差",
+   "evidence": "僅簡報",
+   "industry": "半導體測試",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-20T21:51:30+08:00",
   "model": "gpt-6.1-sol",
@@ -8297,8 +8511,10 @@
     "開放標籤延伸試驗缺乏同期安慰劑對照，近五成成功率的解讀受限；授權與取證時程均有條件。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉差",
+   "evidence": "僅簡報",
+   "industry": "新藥研發",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-20T21:51:30+08:00",
   "model": "gpt-6.1-sol",
@@ -8345,8 +8561,10 @@
     "現有資料無法評估財務表現、成長動能及未來獲利變化。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "簡報多為圖片"
+   "tone": "持平",
+   "evidence": "簡報多為圖片",
+   "industry": "未明",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-20T21:53:51+08:00",
   "model": "gpt-6.1-sol",
@@ -8425,8 +8643,10 @@
     "機器人等應用僅為情境示意，未揭露特定客戶或量產專案。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "電動傳動",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-20T21:51:41+08:00",
   "model": "gpt-6.1-sol",
@@ -8511,8 +8731,10 @@
     "口頭補充：各通路要求不同產品，自有工廠支援多品項及快速調整，是公司強調的競爭優勢。",
     "口頭補充：產品競爭主要靠品牌、配方體驗及執行力，管理層坦言多項產品概念並無專利保護；本段逐字稿未含正式問答。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "轉差",
+   "evidence": "簡報+影音",
+   "industry": "美妝日化",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-21T23:18:14+08:00",
   "model": "gpt-6.1-sol",
@@ -8597,8 +8819,10 @@
     "管理層口頭補充：馬稠後後期已有95家廠商購地進駐，其中7家取得工廠登記並投入生產。",
     "管理層補充10月19日園區聯外道路通車，有助物流與通勤；問答時段無實質提問。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "持平",
+   "evidence": "簡報+影音",
+   "industry": "營建",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-21T23:13:16+08:00",
   "model": "gpt-6.1-sol",
@@ -8683,8 +8907,10 @@
     "現場無投資人提問；管理層口頭補充，過往代工下滑與客戶臨床用料已備足有關，客戶目前處於送審階段，後續需求仍待取得藥證。",
     "管理層表示轉型不會在一年內完成，將逐步增加CDMO、醫藥中間體及非藥品業務。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "持平",
+   "evidence": "簡報+影音",
+   "industry": "原料藥",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-21T23:14:51+08:00",
   "model": "gpt-6.1-sol",
@@ -8770,8 +8996,10 @@
     "痛寶相關授權金須達成里程碑後再公告，本次未提供金額或入帳時間。",
     "資源將主要投入兩項藥品商業化，並規劃引進癌症輔助治療產品，但未揭露品項與時程。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報多為圖片"
+   "tone": "轉差",
+   "evidence": "簡報多為圖片",
+   "industry": "新藥研發",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-21T23:22:13+08:00",
   "model": "gpt-6.1-sol",
@@ -8853,8 +9081,10 @@
     "手術機器人合作已收到樣品單，預計3至6個月出貨供驗證，醫材驗證時間可能較長。",
     "口頭補充母公司安克營收成長，合併營收下降主要來自聲博受中國價格競爭影響。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "持平",
+   "evidence": "簡報+影音",
+   "industry": "醫療器材",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-21T23:20:24+08:00",
   "model": "gpt-6.1-sol",
@@ -8936,8 +9166,10 @@
     "2027年本業維持營收的策略，是以較高單價產品及市占提升抵銷市場需求壓力。",
     "伺服器及車用明年預計導入更多品牌，尚無具體訂單規模。"
    ],
-   "tone": "無法判斷",
-   "evidence": "僅影音"
+   "tone": "轉差",
+   "evidence": "僅影音",
+   "industry": "電源管理晶片",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-21T23:21:58+08:00",
   "model": "gpt-6.1-sol",
@@ -9015,8 +9247,10 @@
     "第三季部分成長來自上半年受缺料影響的訂單恢復出貨，具有遞延出貨因素。",
     "越南設廠目前以提前布局為主；中國廠維持既有規模，沒有縮減計畫。"
    ],
-   "tone": "無法判斷",
-   "evidence": "僅影音"
+   "tone": "持平",
+   "evidence": "僅影音",
+   "industry": "機構件",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-21T23:40:25+08:00",
   "model": "gpt-6.1-sol",
@@ -9103,8 +9337,10 @@
     "屏東品川持股49%，目前因賣場改為飯店進行變更設計。",
     "艾美巨蛋口頭預計2027年1月完成交屋，目前仍有3戶待售。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "轉佳",
+   "evidence": "簡報+影音",
+   "industry": "觀光休閒",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-21T23:33:06+08:00",
   "model": "gpt-6.1-sol",
@@ -9184,8 +9420,10 @@
     "前三季其他營業收益及費損淨額達172.11億元，累計獲利不可直接外推。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "晶圓代工",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-21T23:13:35+08:00",
   "model": "gpt-6.1-sol",
@@ -9271,8 +9509,10 @@
     "航太及低軌衛星持續開發與送樣，但不是2027年主要重點，也不會針對這些應用專門擴產。",
     "已具備MEMS車規接案能力，海外生產需求可由泰國據點承接，未揭露新增客戶或訂單。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "持平",
+   "evidence": "簡報+影音",
+   "industry": "光電元件",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-21T23:58:03+08:00",
   "model": "gpt-6.1-sol",
@@ -9341,8 +9581,10 @@
     "財務圖表抽文缺少年份與數列對應，無法可靠判讀營收、毛利率及EPS趨勢。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "簡報多為圖片"
+   "tone": "持平",
+   "evidence": "簡報多為圖片",
+   "industry": "航太零組件",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-21T23:14:20+08:00",
   "model": "gpt-6.1-sol",
@@ -9430,7 +9672,9 @@
     "生產線直接人員約50至60人，透過自動化與垂直整合支撐製造效率。"
    ],
    "tone": "轉差",
-   "evidence": "簡報+影音"
+   "evidence": "簡報+影音",
+   "industry": "車用電子",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-24T21:08:46+08:00",
   "model": "gpt-6.1-sol",
@@ -9516,8 +9760,10 @@
     "食品業務目前先移除沙拉油，其他產品業務量被描述為穩定，但未提供沙拉油恢復時程。",
     "合約資產、負債下降主要反映工程完工與收款；金融資產減少亦包含資金贖回轉為現金。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "轉差",
+   "evidence": "簡報+影音",
+   "industry": "營建",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-24T20:48:38+08:00",
   "model": "gpt-6.1-sol",
@@ -9604,8 +9850,10 @@
     "前三季整體毛利率自結約24%，須以11月5日董事會通過版本為準；自購料毛利率約5%。",
     "自購材料價格漲跌原則上轉嫁客戶，主要影響庫存金額與現金流。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "轉佳",
+   "evidence": "簡報+影音",
+   "industry": "航太零組件",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-24T20:56:36+08:00",
   "model": "gpt-6.1-sol",
@@ -9691,8 +9939,10 @@
     "物價調整款依工地按月或每三個月計價，隨工程款逐步認列。",
     "台中電廠一期預計農曆年前完工，二期約五年完工；高科技廠房已有小案承攬。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "轉差",
+   "evidence": "簡報+影音",
+   "industry": "營建",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-24T21:10:58+08:00",
   "model": "gpt-6.1-sol",
@@ -9777,7 +10027,9 @@
     "目前優先補足製作團隊，暫無特別新增業務領域，主要擴張方向為中國硬體統籌市場。"
    ],
    "tone": "轉差",
-   "evidence": "簡報+影音"
+   "evidence": "簡報+影音",
+   "industry": "展演工程",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-24T21:34:19+08:00",
   "model": "gpt-6.1-sol",
@@ -9855,8 +10107,10 @@
     "企業合作及免費試用的實際收入轉換仍待驗證。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "資訊服務",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-24T20:41:30+08:00",
   "model": "gpt-6.1-sol",
@@ -9934,8 +10188,10 @@
     "簡報大量文字亂碼、圖表資訊缺漏，無影音可補足關鍵細節。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "簡報多為圖片"
+   "tone": "持平",
+   "evidence": "簡報多為圖片",
+   "industry": "廠務工程",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-24T20:46:29+08:00",
   "model": "gpt-6.1-sol",
@@ -10013,8 +10269,10 @@
     "越南擴產未提供產能、資本支出或獲利貢獻時程。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "連接器線束",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-24T20:43:45+08:00",
   "model": "gpt-6.1-sol",
@@ -10093,8 +10351,10 @@
     "匯率與上市櫃會計政策調整可能影響獲利；第三季數字尚屬自結。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "感測元件",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-24T20:44:29+08:00",
   "model": "gpt-6.1-sol",
@@ -10173,7 +10433,9 @@
    ],
    "qaHighlights": [],
    "tone": "轉佳",
-   "evidence": "僅簡報"
+   "evidence": "僅簡報",
+   "industry": "功率半導體",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-24T20:45:21+08:00",
   "model": "gpt-6.1-sol",
@@ -10252,8 +10514,10 @@
     "儲能年底上線未揭露持有模式、認列方式及獲利貢獻。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "再生能源",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-24T20:47:20+08:00",
   "model": "gpt-6.1-sol",
@@ -10334,7 +10598,9 @@
    ],
    "qaHighlights": [],
    "tone": "轉佳",
-   "evidence": "僅簡報"
+   "evidence": "僅簡報",
+   "industry": "電子材料",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-27T23:18:27+08:00",
   "model": "gpt-6.1-sol",
@@ -10422,7 +10688,9 @@
     "科技園區首期至少保留一半出租，其餘可出售；尚未確定定價，無法估算獲利貢獻。"
    ],
    "tone": "轉佳",
-   "evidence": "簡報+影音"
+   "evidence": "簡報+影音",
+   "industry": "紡織",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-27T23:20:29+08:00",
   "model": "gpt-6.1-sol",
@@ -10500,8 +10768,10 @@
     "ROM營收年減39%；資本支出大增但未交代擴產用途與投產時程。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "記憶體",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-27T23:18:45+08:00",
   "model": "gpt-6.1-sol",
@@ -10579,8 +10849,10 @@
     "存貨由15.08億元增至20.32億元，存貨週轉天數由71天升至77天。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉差",
+   "evidence": "僅簡報",
+   "industry": "IC設計服務",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-27T23:18:22+08:00",
   "model": "gpt-6.1-sol",
@@ -10667,8 +10939,10 @@
     "台灣將透過婦產科連鎖體系轉介病人加速收案，目標2027年底完成。",
     "美國臨床PI建議將抗生素使用量納入次要終點，作為核准及保險給付論述的一環。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "持平",
+   "evidence": "簡報+影音",
+   "industry": "生技醫療",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-27T23:21:16+08:00",
   "model": "gpt-6.1-sol",
@@ -10746,8 +11020,10 @@
     "台灣桃園、新竹、苗栗及台南均有AIDC專案逐步進入設計階段。",
     "研發主管補充2.5MW CDU正在準備出貨，3.5MW產品及冷板、歧管預計2027年進入驗證階段。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報多為圖片"
+   "tone": "持平",
+   "evidence": "簡報多為圖片",
+   "industry": "自動化設備",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-28T00:03:20+08:00",
   "model": "gpt-6.1-sol",
@@ -10834,8 +11110,10 @@
     "明年LED資源將偏重美國、印度，原因是對中國需求復甦較保守。",
     "LED產品目前以SMD及Display為主，分別約占四成、兩成五。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "持平",
+   "evidence": "簡報+影音",
+   "industry": "功率半導體",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-27T23:22:28+08:00",
   "model": "gpt-6.1-sol",
@@ -10922,7 +11200,9 @@
     "未確認與台積電合作，僅表示期待與晶圓廠建立策略聯盟；目前亦未準備提供EMIB服務。"
    ],
    "tone": "轉佳",
-   "evidence": "簡報+影音"
+   "evidence": "簡報+影音",
+   "industry": "半導體封測",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-27T23:55:41+08:00",
   "model": "gpt-6.1-sol",
@@ -10996,8 +11276,10 @@
     "公司擬透過ELSFP直接切入1.6T以上應用；全面支援800G以上可插拔模組的多種標準，需要大量資源。",
     "管理層認為NPO可能降低雷射元件規格門檻、增加供應商參與，但取代可插拔產品的程度仍取決於技術與量產可行性。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "持平",
+   "evidence": "簡報+影音",
+   "industry": "光通訊",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-28T00:25:42+08:00",
   "model": "gpt-6.1-sol",
@@ -11076,8 +11358,10 @@
     "量產時程可能受審批、工期及客戶需求影響，未揭露訂單、產能或獲利貢獻。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉差",
+   "evidence": "僅簡報",
+   "industry": "特用化學",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-27T23:19:13+08:00",
   "model": "gpt-6.1-sol",
@@ -11155,8 +11439,10 @@
     "原料、能源與人力成本偏高，可能壓抑利潤。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "鋼鐵",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-27T23:19:32+08:00",
   "model": "gpt-6.1-sol",
@@ -11199,7 +11485,9 @@
    ],
    "qaHighlights": [],
    "tone": "無法判斷",
-   "evidence": "僅摘要"
+   "evidence": "僅摘要",
+   "industry": "航太零組件",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-27T23:19:02+08:00",
   "model": "gpt-6.1-sol",
@@ -11276,8 +11564,10 @@
     "應用別圖表未抽出數字，無法確認成長來源。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "半導體封測",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-27T23:19:48+08:00",
   "model": "gpt-6.1-sol",
@@ -11355,8 +11645,10 @@
     "抽出財表部分年增率及合計數字不一致，需核對原始簡報。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "簡報多為圖片"
+   "tone": "轉佳",
+   "evidence": "簡報多為圖片",
+   "industry": "AI伺服器",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-27T23:19:57+08:00",
   "model": "gpt-6.1-sol",
@@ -11401,7 +11693,9 @@
    ],
    "qaHighlights": [],
    "tone": "無法判斷",
-   "evidence": "僅摘要"
+   "evidence": "僅摘要",
+   "industry": "PCB",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-27T23:19:27+08:00",
   "model": "gpt-6.1-sol",
@@ -11446,7 +11740,9 @@
    ],
    "qaHighlights": [],
    "tone": "無法判斷",
-   "evidence": "僅摘要"
+   "evidence": "僅摘要",
+   "industry": "PCB",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-27T23:19:36+08:00",
   "model": "gpt-6.1-sol",
@@ -11523,8 +11819,10 @@
     "缺乏需求、訂單能見度與產品組合變化說明，難判斷高成長能否延續。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "簡報多為圖片"
+   "tone": "轉佳",
+   "evidence": "簡報多為圖片",
+   "industry": "AIoT",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-27T23:19:59+08:00",
   "model": "gpt-6.1-sol",
@@ -11609,8 +11907,10 @@
     "燃料化、肥料化預計2027下半年投產，管理層預期同期出現營收及利潤貢獻，但未明確承諾穩定獲利時間。",
     "口頭補充土壤地下水市場正處重新調查階段，預期2027下半年才恢復成長。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "持平",
+   "evidence": "簡報+影音",
+   "industry": "環保工程",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-28T00:29:17+08:00",
   "model": "gpt-6.1-sol",
@@ -11686,8 +11986,10 @@
     "缺乏訂單能見度、售價展望及毛利率改善持續性的說明，無法確認高稼動率能否延續。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "晶圓代工",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-28T22:42:03+08:00",
   "model": "gpt-6.1-sol",
@@ -11762,8 +12064,10 @@
     "負債比由去年底16%升至43%，新增應付公司債28.31億元；未交代資金用途及效益時程。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "光通訊",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-28T22:42:00+08:00",
   "model": "gpt-6.1-sol",
@@ -11841,7 +12145,9 @@
    ],
    "qaHighlights": [],
    "tone": "轉佳",
-   "evidence": "僅簡報"
+   "evidence": "僅簡報",
+   "industry": "化合物半導體",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-28T22:42:28+08:00",
   "model": "gpt-6.1-sol",
@@ -11928,8 +12234,10 @@
     "Monitor成長主要來自產品補齊及市占提升，並非終端市場全面復甦。",
     "公司以Swap調節美元曝險，目標平滑損益，但無法完全避險。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報多為圖片"
+   "tone": "轉差",
+   "evidence": "簡報多為圖片",
+   "industry": "電源管理IC",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-28T23:12:41+08:00",
   "model": "gpt-6.1-sol",
@@ -12008,8 +12316,10 @@
     "第三季本業仍虧損，車載投影成長尚缺營收規模與毛利貢獻資訊。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉差",
+   "evidence": "僅簡報",
+   "industry": "投影與顯示",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-28T22:52:32+08:00",
   "model": "gpt-6.1-sol",
@@ -12087,8 +12397,10 @@
     "未揭露在手訂單金額、交付能見度，亦未說明毛利率提升的原因與持續性。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "電梯",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-28T23:12:16+08:00",
   "model": "gpt-6.1-sol",
@@ -12165,8 +12477,10 @@
     "新產品消息已於9月至10月公告，不能視為本場新增的獲利催化資訊。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉差",
+   "evidence": "僅簡報",
+   "industry": "高速傳輸IC",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-28T22:42:23+08:00",
   "model": "gpt-6.1-sol",
@@ -12254,7 +12568,9 @@
     "第四季預計推出PC產品MCP功能，但管理層認為尚無明確營收效益；營業費用亦未設定量化降幅。"
    ],
    "tone": "轉差",
-   "evidence": "簡報+影音"
+   "evidence": "簡報+影音",
+   "industry": "軟體服務",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-28T23:22:48+08:00",
   "model": "gpt-6.1-sol",
@@ -12333,8 +12649,10 @@
     "聯合法說包含精成科及其子公司，個別擴產效益不能全數視為瀚宇博德本業貢獻。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "PCB",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-28T22:52:24+08:00",
   "model": "gpt-6.1-sol",
@@ -12419,7 +12737,9 @@
     "經紀策略不以削價競爭為主，強調透過投資研究服務客戶；現場未有實質問答。"
    ],
    "tone": "轉差",
-   "evidence": "簡報+影音"
+   "evidence": "簡報+影音",
+   "industry": "證券",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-28T23:22:10+08:00",
   "model": "gpt-6.1-sol",
@@ -12505,8 +12825,10 @@
     "馬來西亞上半年折舊年增5,600萬元，規劃承接新加坡部分代工；稱第三季後可見成效，但未提供實績。",
     "去年EMS消費產品受關稅前提前出貨墊高基期，今年另受材料供應及成本影響出貨。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "轉差",
+   "evidence": "簡報+影音",
+   "industry": "PCB",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-28T23:32:59+08:00",
   "model": "gpt-6.1-sol",
@@ -12593,7 +12915,9 @@
     "記憶體探針卡已完成，預計今年送驗，仍待客戶提供機台驗證時段。"
    ],
    "tone": "持平",
-   "evidence": "簡報+影音"
+   "evidence": "簡報+影音",
+   "industry": "半導體測試介面",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-28T23:22:20+08:00",
   "model": "gpt-6.1-sol",
@@ -12680,8 +13004,10 @@
     "預估明年C7025銅材可能短缺約30%；公司已協調供應商並提高備料，認為自身受影響相對小。",
     "特殊表面處理產品營收占比達雙位數，出貨穩定；不能直接視為HVDC營收占比的精確揭露。"
    ],
-   "tone": "持平",
-   "evidence": "簡報+影音"
+   "tone": "轉佳",
+   "evidence": "簡報+影音",
+   "industry": "導線架",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-28T23:22:44+08:00",
   "model": "gpt-6.1-sol",
@@ -12769,7 +13095,9 @@
     "針對競爭者在封測廠驗證，公司稱自身已有量產裝機基礎，且驗證分散於終端客戶與不同封測廠；此為管理層說法，未提供市占數據佐證。"
    ],
    "tone": "轉佳",
-   "evidence": "簡報+影音"
+   "evidence": "簡報+影音",
+   "industry": "半導體測試設備",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-28T23:32:21+08:00",
   "model": "gpt-6.1-sol",
@@ -12846,8 +13174,10 @@
     "前三季毛利率45%，較2025全年46%略低，未解釋變動原因。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "精密零組件",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-28T23:02:02+08:00",
   "model": "gpt-6.1-sol",
@@ -12894,8 +13224,10 @@
     "簡報33頁均未抽出實質內容，且無影音逐字稿，無法評估營運與獲利前景。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "簡報多為圖片"
+   "tone": "持平",
+   "evidence": "簡報多為圖片",
+   "industry": "未提供",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-28T23:11:52+08:00",
   "model": "gpt-6.1-sol",
@@ -12973,8 +13305,10 @@
     "公司估算的資料中心市場需求並非已取得訂單。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "電力設備",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-28T23:02:27+08:00",
   "model": "gpt-6.1-sol",
@@ -13053,8 +13387,10 @@
     "簡報標示Q2的財務數字未明確區分單季或上半年累計，解讀須留意。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "紡織成衣",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-29T23:10:41+08:00",
   "model": "gpt-6.1-sol",
@@ -13134,8 +13470,10 @@
     "財務期間有歧異：簡報標示2026 Q2，口述稱2026年上半年，須釐清。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "簡報多為圖片"
+   "tone": "轉差",
+   "evidence": "簡報多為圖片",
+   "industry": "電源供應器",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-29T23:15:54+08:00",
   "model": "gpt-6.1-sol",
@@ -13212,8 +13550,10 @@
     "活動名稱為第三季業績電話會議，但擇要訊息及簡報僅涵蓋第二季／上半年，資料期別不一致。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "傳動元件",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-29T23:08:04+08:00",
   "model": "gpt-6.1-sol",
@@ -13291,8 +13631,10 @@
     "未揭露訂單、產能或新產品放量時程，無法確認成長延續性。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "電源供應器",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-29T23:08:15+08:00",
   "model": "gpt-6.1-sol",
@@ -13370,8 +13712,10 @@
     "前三季淨利成長包含稅務效益，不能全數視為本業改善。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "被動元件",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-29T23:08:15+08:00",
   "model": "gpt-6.1-sol",
@@ -13448,8 +13792,10 @@
     "存貨較去年底增加74%，應收帳款週轉天數由87天升至93天，須追蹤資金占用與回收。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "半導體設備",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-29T23:08:37+08:00",
   "model": "gpt-6.1-sol",
@@ -13526,8 +13872,10 @@
     "毛利率仍低於去年同期，營業現金流入同步減少。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉差",
+   "evidence": "僅簡報",
+   "industry": "網通晶片",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-29T23:08:35+08:00",
   "model": "gpt-6.1-sol",
@@ -13605,8 +13953,10 @@
     "載板材料未揭露客戶、出貨金額及明確放量季度。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "PCB",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-29T23:08:51+08:00",
   "model": "gpt-6.1-sol",
@@ -13694,7 +14044,9 @@
     "管理層短期看不到DRAM、PCB缺料緩解，正與客戶討論調價。"
    ],
    "tone": "轉差",
-   "evidence": "簡報多為圖片"
+   "evidence": "簡報多為圖片",
+   "industry": "面板",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-29T23:19:17+08:00",
   "model": "gpt-6.1-sol",
@@ -13772,8 +14124,10 @@
     "本次論壇使用檔名日期為8月21日的簡報，未補充第三季營運或後續接單展望。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉差",
+   "evidence": "僅簡報",
+   "industry": "半導體設備",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-29T23:09:04+08:00",
   "model": "gpt-6.1-sol",
@@ -13848,8 +14202,10 @@
     "10月論壇使用8月簡報，缺乏第三季營運更新、液冷營收占比與未來展望。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "散熱",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-29T23:08:56+08:00",
   "model": "gpt-6.1-sol",
@@ -13926,8 +14282,10 @@
     "展望相關頁面文字抽取有限，可能遺漏圖像資訊。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "簡報多為圖片"
+   "tone": "轉佳",
+   "evidence": "簡報多為圖片",
+   "industry": "被動元件",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-29T23:09:22+08:00",
   "model": "gpt-6.1-sol",
@@ -14001,8 +14359,10 @@
     "缺乏近期毛利率、EPS及產品組合展望，難驗證題材對獲利的影響。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "矽智財",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-29T23:09:53+08:00",
   "model": "gpt-6.1-sol",
@@ -14072,8 +14432,10 @@
     "未說明產品組合變化對未來毛利率的影響及持續性。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "半導體材料",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-29T23:09:26+08:00",
   "model": "gpt-6.1-sol",
@@ -14150,8 +14512,10 @@
     "缺少訂單、客戶與產能利用率說明，難判斷封測高成長能延續多久。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "半導體封測",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-29T23:09:28+08:00",
   "model": "gpt-6.1-sol",
@@ -14237,7 +14601,9 @@
     "內部自動化涵蓋CNC柔性生產線與磨床建線；另與數家成衣大廠合作研發製程整合設備，未揭露客戶名稱及商業化時程。"
    ],
    "tone": "持平",
-   "evidence": "簡報+影音"
+   "evidence": "簡報+影音",
+   "industry": "縫紉設備",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-29T23:18:20+08:00",
   "model": "gpt-6.1-sol",
@@ -14310,8 +14676,10 @@
     "去年第二季有一次性匯損，淨利年增幅受低基期放大。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅簡報",
+   "industry": "伺服器晶片",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-29T23:09:49+08:00",
   "model": "gpt-6.1-sol",
@@ -14388,8 +14756,10 @@
     "簡報多頁無可讀文字，可能遺漏圖表資訊，無影音可補足。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "簡報多為圖片"
+   "tone": "轉佳",
+   "evidence": "簡報多為圖片",
+   "industry": "功率半導體",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-29T23:10:20+08:00",
   "model": "gpt-6.1-sol",
@@ -14472,8 +14842,10 @@
    "qaHighlights": [
     "問答補充：電源供應器客戶於2025年第四季取得認證，後續高毛利機種出貨是上半年毛利改善主因；未交代後續拉貨規模與延續時間。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "轉差",
+   "evidence": "簡報+影音",
+   "industry": "電源供應器",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-29T23:25:35+08:00",
   "model": "gpt-6.1-sol",
@@ -14560,8 +14932,10 @@
     "MetaEye未揭露單價或出貨量，管理層明言2027年對集團營收仍不具顯著性。",
     "私募已與數組對象洽談，要求帶來新客戶或新技術等策略價值，尚無確定結果。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "持平",
+   "evidence": "簡報+影音",
+   "industry": "光學元件",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-29T23:20:44+08:00",
   "model": "gpt-6.1-sol",
@@ -14639,8 +15013,10 @@
     "缺乏下一季需求、訂單能見度與新品營收貢獻指引。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "微控制器",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-29T23:11:10+08:00",
   "model": "gpt-6.1-sol",
@@ -14690,8 +15066,10 @@
     "無法確認營收高成長的來源、毛利率表現及持續性。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "簡報多為圖片"
+   "tone": "轉佳",
+   "evidence": "簡報多為圖片",
+   "industry": "PCB",
+   "direction": "中性"
   },
   "analyzedAt": "2026-10-29T23:10:14+08:00",
   "model": "gpt-6.1-sol",
@@ -14777,8 +15155,10 @@
     "管理層補充希望將會員經營經驗標準化、系統化，與其他醫療團隊深化合作；未揭露已簽約對象或時程。",
     "上游合作考慮國內外產品與醫材業者，但未提出具體投資或合作案件。"
    ],
-   "tone": "無法判斷",
-   "evidence": "簡報+影音"
+   "tone": "轉佳",
+   "evidence": "簡報+影音",
+   "industry": "醫美",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-30T00:08:45+08:00",
   "model": "gpt-6.1-sol",
@@ -14857,8 +15237,10 @@
     "新料源及新業務仍有許可審查進度風險，完售也未揭露對應數量與售價。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "持平",
+   "evidence": "僅簡報",
+   "industry": "資源回收",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-29T23:11:23+08:00",
   "model": "gpt-6.1-sol",
@@ -14936,8 +15318,10 @@
     "毛利率改善的原因與持續性未具體說明；2025年毛利率曾由28%降至27%。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "簡報多為圖片"
+   "tone": "轉佳",
+   "evidence": "簡報多為圖片",
+   "industry": "高分子材料",
+   "direction": "利多"
   },
   "analyzedAt": "2026-10-29T23:11:43+08:00",
   "model": "gpt-6.1-sol",
@@ -15014,8 +15398,10 @@
     "航太產能與資格多為歷史進度，無法據此推估實際出貨或產能利用率。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "僅簡報"
+   "tone": "轉差",
+   "evidence": "僅簡報",
+   "industry": "碳纖維複材",
+   "direction": "利空"
   },
   "analyzedAt": "2026-10-29T23:11:24+08:00",
   "model": "gpt-6.1-sol",
