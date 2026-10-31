@@ -9,15 +9,25 @@
   "risk": 3.53,
   "gap": 2,
   "ma20": {
-   "status": "open"
+   "status": "closed",
+   "exitDate": "2026-10-30",
+   "exit": 90.01,
+   "reason": "stop",
+   "ret": -4.13,
+   "held": 6
   },
   "d60": {
-   "status": "open"
+   "status": "closed",
+   "exitDate": "2026-10-30",
+   "exit": 90.01,
+   "reason": "stop",
+   "ret": -4.13,
+   "held": 6
   },
-  "lastClose": 92.3,
-  "lastDate": "2026-10-29",
-  "ret": -1.67,
-  "held": 5
+  "lastClose": 90,
+  "lastDate": "2026-10-30",
+  "ret": -4.14,
+  "held": 6
  },
  {
   "code": "6491",
@@ -34,10 +44,10 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 422.5,
-  "lastDate": "2026-10-29",
-  "ret": -2.57,
-  "held": 5
+  "lastClose": 419,
+  "lastDate": "2026-10-30",
+  "ret": -3.38,
+  "held": 6
  },
  {
   "code": "5880",
@@ -174,10 +184,10 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 44.45,
-  "lastDate": "2026-10-29",
-  "ret": 2.41,
-  "held": 2
+  "lastClose": 44.6,
+  "lastDate": "2026-10-30",
+  "ret": 2.76,
+  "held": 3
  },
  {
   "code": "2801",
@@ -194,10 +204,10 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 30.5,
-  "lastDate": "2026-10-29",
-  "ret": 0.39,
-  "held": 2
+  "lastClose": 30.7,
+  "lastDate": "2026-10-30",
+  "ret": 1.06,
+  "held": 3
  },
  {
   "code": "3034",
@@ -209,15 +219,25 @@
   "risk": 3.1,
   "gap": 3,
   "ma20": {
-   "status": "open"
+   "status": "closed",
+   "exitDate": "2026-10-30",
+   "exit": 577,
+   "reason": "stop",
+   "ret": -4.27,
+   "held": 3
   },
   "d60": {
-   "status": "open"
+   "status": "closed",
+   "exitDate": "2026-10-30",
+   "exit": 577,
+   "reason": "stop",
+   "ret": -4.27,
+   "held": 3
   },
-  "lastClose": 596,
-  "lastDate": "2026-10-29",
-  "ret": -1.1,
-  "held": 2
+  "lastClose": 575,
+  "lastDate": "2026-10-30",
+  "ret": -4.61,
+  "held": 3
  },
  {
   "code": "6245",
@@ -229,15 +249,25 @@
   "risk": 6.6,
   "gap": 3,
   "ma20": {
-   "status": "open"
+   "status": "closed",
+   "exitDate": "2026-10-30",
+   "exit": 91.81,
+   "reason": "stop",
+   "ret": -7.2,
+   "held": 3
   },
   "d60": {
-   "status": "open"
+   "status": "closed",
+   "exitDate": "2026-10-30",
+   "exit": 91.81,
+   "reason": "stop",
+   "ret": -7.2,
+   "held": 3
   },
-  "lastClose": 97.1,
-  "lastDate": "2026-10-29",
-  "ret": -1.82,
-  "held": 2
+  "lastClose": 92.5,
+  "lastDate": "2026-10-30",
+  "ret": -6.5,
+  "held": 3
  },
  {
   "code": "6199",
@@ -254,10 +284,10 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 158.5,
-  "lastDate": "2026-10-29",
-  "ret": 1,
-  "held": 1
+  "lastClose": 160.5,
+  "lastDate": "2026-10-30",
+  "ret": 2.28,
+  "held": 2
  },
  {
   "code": "6925",
@@ -269,13 +299,63 @@
   "risk": 6.39,
   "gap": 4,
   "ma20": {
+   "status": "closed",
+   "exitDate": "2026-10-30",
+   "exit": 118.88,
+   "reason": "stop",
+   "ret": -6.99,
+   "held": 1
+  },
+  "d60": {
+   "status": "closed",
+   "exitDate": "2026-10-30",
+   "exit": 118.88,
+   "reason": "stop",
+   "ret": -6.99,
+   "held": 1
+  },
+  "lastClose": 126,
+  "lastDate": "2026-10-30",
+  "ret": -1.39,
+  "held": 1
+ },
+ {
+  "code": "2412",
+  "name": "中華電",
+  "market": "twse",
+  "date": "2026-10-30",
+  "entry": 160,
+  "stop": 157.84,
+  "risk": 1.35,
+  "gap": 3,
+  "ma20": {
    "status": "open"
   },
   "d60": {
    "status": "open"
   },
-  "lastClose": 127,
-  "lastDate": "2026-10-29",
+  "lastClose": 160,
+  "lastDate": "2026-10-30",
+  "ret": -0.6,
+  "held": 0
+ },
+ {
+  "code": "2603",
+  "name": "長榮",
+  "market": "twse",
+  "date": "2026-10-30",
+  "entry": 271.5,
+  "stop": 258.74,
+  "risk": 4.7,
+  "gap": 9,
+  "ma20": {
+   "status": "open"
+  },
+  "d60": {
+   "status": "open"
+  },
+  "lastClose": 271.5,
+  "lastDate": "2026-10-30",
   "ret": -0.6,
   "held": 0
  }

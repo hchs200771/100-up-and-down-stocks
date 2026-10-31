@@ -1,0 +1,53 @@
+{
+ "tradingDate": "2026-10-30",
+ "regime": {
+  "close": 45211.828125,
+  "ema50": 46708.97,
+  "ok": false
+ },
+ "universe": {
+  "listed": 250,
+  "liquid": 189,
+  "minFutVolume": 50,
+  "priced": 189
+ },
+ "signals": [],
+ "watch": [
+  {
+   "code": "1303",
+   "name": "南亞",
+   "market": "twse",
+   "close": 296,
+   "futVol": 12319,
+   "margin": "20.25%",
+   "adr": 6.4,
+   "mom": 232,
+   "pullback": 7.6,
+   "near": [
+    {
+     "name": "EMA21",
+     "price": 294.56,
+     "dist": 0.5
+    }
+   ]
+  },
+  {
+   "code": "2492",
+   "name": "華新科",
+   "market": "twse",
+   "close": 381,
+   "futVol": 7716,
+   "margin": "21.60%",
+   "adr": 7.5,
+   "mom": 170,
+   "pullback": 9.9,
+   "near": [
+    {
+     "name": "EMA21",
+     "price": 377.08,
+     "dist": 1
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,58 @@
+{
+ "tradingDate": "2026-10-30",
+ "universe": {
+  "candidates": 129,
+  "priced": 127
+ },
+ "signals": [
+  {
+   "code": "2412",
+   "name": "中華電",
+   "market": "twse",
+   "close": 160,
+   "chg": 1.27,
+   "prevHigh": 159.5,
+   "prevHighDate": "2026-10-27",
+   "gap": 3,
+   "stop": 157.84,
+   "risk": 1.35,
+   "ma20": 151.72,
+   "money20": 1624,
+   "limitUp": false,
+   "dup": false
+  },
+  {
+   "code": "2801",
+   "name": "彰銀",
+   "market": "twse",
+   "close": 30.7,
+   "chg": 0.66,
+   "prevHigh": 30.5,
+   "prevHighDate": "2026-10-28",
+   "gap": 2,
+   "stop": 29.92,
+   "risk": 2.54,
+   "ma20": 28.92,
+   "money20": 515,
+   "limitUp": false,
+   "dup": true
+  },
+  {
+   "code": "2603",
+   "name": "長榮",
+   "market": "twse",
+   "close": 271.5,
+   "chg": 4.02,
+   "prevHigh": 270.5,
+   "prevHighDate": "2026-10-16",
+   "gap": 9,
+   "stop": 258.74,
+   "risk": 4.7,
+   "ma20": 253.75,
+   "money20": 3509,
+   "limitUp": false,
+   "dup": false
+  }
+ ],
+ "others": []
+}
