@@ -70,8 +70,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "AI 伺服器",
-   "direction": "利多"
+   "industry": "AI伺服器與電腦硬體",
+   "direction": "利多",
+   "subIndustry": "AI 伺服器"
   },
   "analyzedAt": "2026-10-12T02:46:31+08:00",
   "model": "gpt-6.1-sol",
@@ -175,8 +176,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "水泥",
-   "direction": "利多"
+   "industry": "營建與資產",
+   "direction": "利多",
+   "subIndustry": "水泥"
   },
   "analyzedAt": "2026-10-12T02:10:20+08:00",
   "model": "gpt-6.1-sol",
@@ -285,8 +287,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "簡報多為圖片",
-   "industry": "醫療器材",
-   "direction": "中性"
+   "industry": "醫材與醫療服務",
+   "direction": "中性",
+   "subIndustry": "醫療器材"
   },
   "analyzedAt": "2026-10-12T02:12:41+08:00",
   "model": "gpt-6.1-sol",
@@ -365,8 +368,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "簡報多為圖片",
-   "industry": "鋼鐵",
-   "direction": "利空"
+   "industry": "鋼鐵與金屬",
+   "direction": "利空",
+   "subIndustry": "鋼鐵"
   },
   "analyzedAt": "2026-10-12T02:11:28+08:00",
   "model": "gpt-6.1-sol",
@@ -446,8 +450,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "電子代工",
-   "direction": "利空"
+   "industry": "AI伺服器與電腦硬體",
+   "direction": "利空",
+   "subIndustry": "電子代工"
   },
   "analyzedAt": "2026-10-12T02:27:14+08:00",
   "model": "gpt-6.1-sol",
@@ -491,8 +496,9 @@
    "qaHighlights": [],
    "tone": "無法判斷",
    "evidence": "僅摘要",
-   "industry": "旅遊",
-   "direction": "中性"
+   "industry": "觀光餐飲與零售",
+   "direction": "中性",
+   "subIndustry": "旅遊"
   },
   "analyzedAt": "2026-10-12T02:10:53+08:00",
   "model": "gpt-6.1-sol",
@@ -571,8 +577,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "餐飲",
-   "direction": "利多"
+   "industry": "觀光餐飲與零售",
+   "direction": "利多",
+   "subIndustry": "餐飲"
   },
   "analyzedAt": "2026-10-12T02:11:29+08:00",
   "model": "gpt-6.1-sol",
@@ -653,8 +660,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "金控",
-   "direction": "中性"
+   "industry": "金融",
+   "direction": "中性",
+   "subIndustry": "金控"
   },
   "analyzedAt": "2026-10-12T02:11:46+08:00",
   "model": "gpt-6.1-sol",
@@ -733,8 +741,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "電源供應器",
-   "direction": "利空"
+   "industry": "電源與散熱",
+   "direction": "利空",
+   "subIndustry": "電源供應器"
   },
   "analyzedAt": "2026-10-12T02:11:58+08:00",
   "model": "gpt-6.1-sol",
@@ -815,8 +824,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "簡報多為圖片",
-   "industry": "檢測設備",
-   "direction": "利多"
+   "industry": "半導體設備",
+   "direction": "利多",
+   "subIndustry": "檢測設備"
   },
   "analyzedAt": "2026-10-12T02:12:22+08:00",
   "model": "gpt-6.1-sol",
@@ -895,8 +905,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "閥門",
-   "direction": "利空"
+   "industry": "機械與自動化",
+   "direction": "利空",
+   "subIndustry": "閥門"
   },
   "analyzedAt": "2026-10-12T02:12:50+08:00",
   "model": "gpt-6.1-sol",
@@ -977,8 +988,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "簡報多為圖片",
-   "industry": "化工材料",
-   "direction": "中性"
+   "industry": "塑化與化工",
+   "direction": "中性",
+   "subIndustry": "化工材料"
   },
   "analyzedAt": "2026-10-12T02:13:05+08:00",
   "model": "gpt-6.1-sol",
@@ -1050,8 +1062,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "簡報多為圖片",
-   "industry": "文創娛樂",
-   "direction": "中性"
+   "industry": "觀光餐飲與零售",
+   "direction": "中性",
+   "subIndustry": "文創娛樂"
   },
   "analyzedAt": "2026-10-12T02:13:42+08:00",
   "model": "gpt-6.1-sol",
@@ -1127,8 +1140,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "事務機器",
-   "direction": "利空"
+   "industry": "AI伺服器與電腦硬體",
+   "direction": "利空",
+   "subIndustry": "事務機器"
   },
   "analyzedAt": "2026-10-12T02:13:15+08:00",
   "model": "gpt-6.1-sol",
@@ -1208,8 +1222,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "文教",
-   "direction": "中性"
+   "industry": "其他傳產",
+   "direction": "中性",
+   "subIndustry": "文教"
   },
   "analyzedAt": "2026-10-12T02:13:19+08:00",
   "model": "gpt-6.1-sol",
@@ -1289,8 +1304,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "營建",
-   "direction": "利多"
+   "industry": "營建與資產",
+   "direction": "利多",
+   "subIndustry": "營建"
   },
   "analyzedAt": "2026-10-12T02:22:15+08:00",
   "model": "gpt-6.1-sol",
@@ -1363,8 +1379,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "簡報多為圖片",
-   "industry": "製藥",
-   "direction": "利多"
+   "industry": "生技新藥",
+   "direction": "利多",
+   "subIndustry": "製藥"
   },
   "analyzedAt": "2026-10-12T02:14:19+08:00",
   "model": "gpt-6.1-sol",
@@ -1445,8 +1462,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "資訊服務",
-   "direction": "中性"
+   "industry": "軟體與資訊服務",
+   "direction": "中性",
+   "subIndustry": "資訊服務"
   },
   "analyzedAt": "2026-10-12T02:24:37+08:00",
   "model": "gpt-6.1-sol",
@@ -1526,8 +1544,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "生技投資",
-   "direction": "利多"
+   "industry": "生技新藥",
+   "direction": "利多",
+   "subIndustry": "生技投資"
   },
   "analyzedAt": "2026-10-12T02:14:32+08:00",
   "model": "gpt-6.1-sol",
@@ -1607,8 +1626,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "水處理",
-   "direction": "利空"
+   "industry": "其他傳產",
+   "direction": "利空",
+   "subIndustry": "水處理"
   },
   "analyzedAt": "2026-10-12T02:23:51+08:00",
   "model": "gpt-6.1-sol",
@@ -1688,8 +1708,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "簡報多為圖片",
-   "industry": "連接器",
-   "direction": "利多"
+   "industry": "被動元件與連接器",
+   "direction": "利多",
+   "subIndustry": "連接器"
   },
   "analyzedAt": "2026-10-12T02:22:47+08:00",
   "model": "gpt-6.1-sol",
@@ -1734,8 +1755,9 @@
    "qaHighlights": [],
    "tone": "無法判斷",
    "evidence": "僅摘要",
-   "industry": "建材",
-   "direction": "利空"
+   "industry": "營建與資產",
+   "direction": "利空",
+   "subIndustry": "建材"
   },
   "analyzedAt": "2026-10-12T02:22:03+08:00",
   "model": "gpt-6.1-sol",
@@ -1815,8 +1837,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "保健食品",
-   "direction": "利多"
+   "industry": "食品",
+   "direction": "利多",
+   "subIndustry": "保健食品"
   },
   "analyzedAt": "2026-10-12T02:23:37+08:00",
   "model": "gpt-6.1-sol",
@@ -1896,8 +1919,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "成衣",
-   "direction": "中性"
+   "industry": "紡織與製鞋",
+   "direction": "中性",
+   "subIndustry": "成衣"
   },
   "analyzedAt": "2026-10-12T02:23:06+08:00",
   "model": "gpt-6.1-sol",
@@ -1969,8 +1993,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "汽車零組件",
-   "direction": "利多"
+   "industry": "汽車與零組件",
+   "direction": "利多",
+   "subIndustry": "汽車零組件"
   },
   "analyzedAt": "2026-10-12T02:25:22+08:00",
   "model": "gpt-6.1-sol",
@@ -2052,8 +2077,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "簡報多為圖片",
-   "industry": "汽車零組件",
-   "direction": "中性"
+   "industry": "汽車與零組件",
+   "direction": "中性",
+   "subIndustry": "汽車零組件"
   },
   "analyzedAt": "2026-10-12T02:26:05+08:00",
   "model": "gpt-6.1-sol",
@@ -2122,8 +2148,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "連接器",
-   "direction": "中性"
+   "industry": "被動元件與連接器",
+   "direction": "中性",
+   "subIndustry": "連接器"
   },
   "analyzedAt": "2026-10-12T02:28:13+08:00",
   "model": "gpt-6.1-sol",
@@ -2204,8 +2231,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "車用照明",
-   "direction": "利多"
+   "industry": "汽車與零組件",
+   "direction": "利多",
+   "subIndustry": "車用照明"
   },
   "analyzedAt": "2026-10-12T02:26:41+08:00",
   "model": "gpt-6.1-sol",
@@ -2367,8 +2395,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "特殊鋼",
-   "direction": "利多"
+   "industry": "鋼鐵與金屬",
+   "direction": "利多",
+   "subIndustry": "特殊鋼"
   },
   "analyzedAt": "2026-10-12T02:28:26+08:00",
   "model": "gpt-6.1-sol",
@@ -2449,8 +2478,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "汽車零組件",
-   "direction": "中性"
+   "industry": "汽車與零組件",
+   "direction": "中性",
+   "subIndustry": "汽車零組件"
   },
   "analyzedAt": "2026-10-12T02:29:00+08:00",
   "model": "gpt-6.1-sol",
@@ -2500,8 +2530,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "簡報多為圖片",
-   "industry": "殯葬服務",
-   "direction": "中性"
+   "industry": "其他傳產",
+   "direction": "中性",
+   "subIndustry": "殯葬服務"
   },
   "analyzedAt": "2026-10-12T02:29:37+08:00",
   "model": "gpt-6.1-sol",
@@ -2581,8 +2612,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "塑膠機械",
-   "direction": "利空"
+   "industry": "機械與自動化",
+   "direction": "利空",
+   "subIndustry": "塑膠機械"
   },
   "analyzedAt": "2026-10-12T02:31:24+08:00",
   "model": "gpt-6.1-sol",
@@ -2663,8 +2695,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "新藥研發",
-   "direction": "利多"
+   "industry": "生技新藥",
+   "direction": "利多",
+   "subIndustry": "新藥研發"
   },
   "analyzedAt": "2026-10-12T02:29:35+08:00",
   "model": "gpt-6.1-sol",
@@ -2744,8 +2777,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "環保工程",
-   "direction": "利多"
+   "industry": "其他傳產",
+   "direction": "利多",
+   "subIndustry": "環保工程"
   },
   "analyzedAt": "2026-10-12T02:32:09+08:00",
   "model": "gpt-6.1-sol",
@@ -2792,8 +2826,9 @@
    "qaHighlights": [],
    "tone": "無法判斷",
    "evidence": "僅摘要",
-   "industry": "影像感測",
-   "direction": "中性"
+   "industry": "IC設計",
+   "direction": "中性",
+   "subIndustry": "影像感測"
   },
   "analyzedAt": "2026-10-12T02:29:17+08:00",
   "model": "gpt-6.1-sol",
@@ -2873,8 +2908,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "廢棄物處理",
-   "direction": "中性"
+   "industry": "其他傳產",
+   "direction": "中性",
+   "subIndustry": "廢棄物處理"
   },
   "analyzedAt": "2026-10-12T02:31:14+08:00",
   "model": "gpt-6.1-sol",
@@ -2954,8 +2990,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "廚衛家居",
-   "direction": "利多"
+   "industry": "其他傳產",
+   "direction": "利多",
+   "subIndustry": "廚衛家居"
   },
   "analyzedAt": "2026-10-12T02:32:13+08:00",
   "model": "gpt-6.1-sol",
@@ -3036,8 +3073,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "資源回收",
-   "direction": "中性"
+   "industry": "其他傳產",
+   "direction": "中性",
+   "subIndustry": "資源回收"
   },
   "analyzedAt": "2026-10-12T02:33:24+08:00",
   "model": "gpt-6.1-sol",
@@ -3118,8 +3156,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "電子材料",
-   "direction": "利多"
+   "industry": "半導體材料與化學",
+   "direction": "利多",
+   "subIndustry": "電子材料"
   },
   "analyzedAt": "2026-10-12T02:32:00+08:00",
   "model": "gpt-6.1-sol",
@@ -3199,8 +3238,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "營建",
-   "direction": "中性"
+   "industry": "營建與資產",
+   "direction": "中性",
+   "subIndustry": "營建"
   },
   "analyzedAt": "2026-10-12T02:31:51+08:00",
   "model": "gpt-6.1-sol",
@@ -3274,8 +3314,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "成衣",
-   "direction": "中性"
+   "industry": "紡織與製鞋",
+   "direction": "中性",
+   "subIndustry": "成衣"
   },
   "analyzedAt": "2026-10-12T02:33:12+08:00",
   "model": "gpt-6.1-sol",
@@ -3351,8 +3392,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "鋼鐵",
-   "direction": "利多"
+   "industry": "鋼鐵與金屬",
+   "direction": "利多",
+   "subIndustry": "鋼鐵"
   },
   "analyzedAt": "2026-10-12T02:32:38+08:00",
   "model": "gpt-6.1-sol",
@@ -3433,8 +3475,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "鋼鐵",
-   "direction": "利多"
+   "industry": "鋼鐵與金屬",
+   "direction": "利多",
+   "subIndustry": "鋼鐵"
   },
   "analyzedAt": "2026-10-12T02:32:50+08:00",
   "model": "gpt-6.1-sol",
@@ -3513,8 +3556,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "電子代工",
-   "direction": "中性"
+   "industry": "AI伺服器與電腦硬體",
+   "direction": "中性",
+   "subIndustry": "電子代工"
   },
   "analyzedAt": "2026-10-12T02:32:42+08:00",
   "model": "gpt-6.1-sol",
@@ -3595,8 +3639,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "金控",
-   "direction": "利多"
+   "industry": "金融",
+   "direction": "利多",
+   "subIndustry": "金控"
   },
   "analyzedAt": "2026-10-12T02:33:46+08:00",
   "model": "gpt-6.1-sol",
@@ -3677,8 +3722,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "儲能",
-   "direction": "利多"
+   "industry": "綠能與儲能",
+   "direction": "利多",
+   "subIndustry": "儲能"
   },
   "analyzedAt": "2026-10-12T02:33:38+08:00",
   "model": "gpt-6.1-sol",
@@ -3758,8 +3804,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "益生菌",
-   "direction": "中性"
+   "industry": "食品",
+   "direction": "中性",
+   "subIndustry": "益生菌"
   },
   "analyzedAt": "2026-10-12T02:34:44+08:00",
   "model": "gpt-6.1-sol",
@@ -3919,8 +3966,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "簡報多為圖片",
-   "industry": "網路平台",
-   "direction": "中性"
+   "industry": "軟體與資訊服務",
+   "direction": "中性",
+   "subIndustry": "網路平台"
   },
   "analyzedAt": "2026-10-12T02:34:18+08:00",
   "model": "gpt-6.1-sol",
@@ -3991,8 +4039,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "簡報多為圖片",
-   "industry": "營建",
-   "direction": "利空"
+   "industry": "營建與資產",
+   "direction": "利空",
+   "subIndustry": "營建"
   },
   "analyzedAt": "2026-10-12T02:39:30+08:00",
   "model": "gpt-6.1-sol",
@@ -4070,8 +4119,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "簡報多為圖片",
-   "industry": "散裝航運",
-   "direction": "中性"
+   "industry": "航運與物流",
+   "direction": "中性",
+   "subIndustry": "散裝航運"
   },
   "analyzedAt": "2026-10-12T02:34:22+08:00",
   "model": "gpt-6.1-sol",
@@ -4151,8 +4201,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "網通設備",
-   "direction": "利空"
+   "industry": "網通",
+   "direction": "利空",
+   "subIndustry": "網通設備"
   },
   "analyzedAt": "2026-10-12T02:34:56+08:00",
   "model": "gpt-6.1-sol",
@@ -4230,8 +4281,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "光電顯示",
-   "direction": "利空"
+   "industry": "面板與顯示",
+   "direction": "利空",
+   "subIndustry": "光電顯示"
   },
   "analyzedAt": "2026-10-12T02:34:36+08:00",
   "model": "gpt-6.1-sol",
@@ -4312,8 +4364,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "特用化學",
-   "direction": "中性"
+   "industry": "塑化與化工",
+   "direction": "中性",
+   "subIndustry": "特用化學"
   },
   "analyzedAt": "2026-10-12T02:35:34+08:00",
   "model": "gpt-6.1-sol",
@@ -4393,8 +4446,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "廠務工程",
-   "direction": "中性"
+   "industry": "半導體設備",
+   "direction": "中性",
+   "subIndustry": "廠務工程"
   },
   "analyzedAt": "2026-10-12T02:35:27+08:00",
   "model": "gpt-6.1-sol",
@@ -4474,8 +4528,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "環保處理",
-   "direction": "利空"
+   "industry": "其他傳產",
+   "direction": "利空",
+   "subIndustry": "環保處理"
   },
   "analyzedAt": "2026-10-12T02:35:36+08:00",
   "model": "gpt-6.1-sol",
@@ -4556,8 +4611,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "簡報多為圖片",
-   "industry": "天然氣",
-   "direction": "中性"
+   "industry": "其他傳產",
+   "direction": "中性",
+   "subIndustry": "天然氣"
   },
   "analyzedAt": "2026-10-12T02:36:55+08:00",
   "model": "gpt-6.1-sol",
@@ -4638,8 +4694,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "簡報多為圖片",
-   "industry": "石化",
-   "direction": "利空"
+   "industry": "塑化與化工",
+   "direction": "利空",
+   "subIndustry": "石化"
   },
   "analyzedAt": "2026-10-12T02:36:32+08:00",
   "model": "gpt-6.1-sol",
@@ -4719,8 +4776,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "紡織",
-   "direction": "利多"
+   "industry": "紡織與製鞋",
+   "direction": "利多",
+   "subIndustry": "紡織"
   },
   "analyzedAt": "2026-10-12T02:39:19+08:00",
   "model": "gpt-6.1-sol",
@@ -4799,8 +4857,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "紡織",
-   "direction": "中性"
+   "industry": "紡織與製鞋",
+   "direction": "中性",
+   "subIndustry": "紡織"
   },
   "analyzedAt": "2026-10-12T02:37:05+08:00",
   "model": "gpt-6.1-sol",
@@ -4878,8 +4937,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "汽車零組件",
-   "direction": "利空"
+   "industry": "汽車與零組件",
+   "direction": "利空",
+   "subIndustry": "汽車零組件"
   },
   "analyzedAt": "2026-10-12T02:38:05+08:00",
   "model": "gpt-6.1-sol",
@@ -4960,8 +5020,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "鋼鐵",
-   "direction": "利多"
+   "industry": "鋼鐵與金屬",
+   "direction": "利多",
+   "subIndustry": "鋼鐵"
   },
   "analyzedAt": "2026-10-12T02:38:26+08:00",
   "model": "gpt-6.1-sol",
@@ -5041,8 +5102,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "電子代工",
-   "direction": "利多"
+   "industry": "AI伺服器與電腦硬體",
+   "direction": "利多",
+   "subIndustry": "電子代工"
   },
   "analyzedAt": "2026-10-12T02:38:04+08:00",
   "model": "gpt-6.1-sol",
@@ -5122,8 +5184,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "網通設備",
-   "direction": "利多"
+   "industry": "網通",
+   "direction": "利多",
+   "subIndustry": "網通設備"
   },
   "analyzedAt": "2026-10-12T02:38:55+08:00",
   "model": "gpt-6.1-sol",
@@ -5173,8 +5236,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "簡報多為圖片",
-   "industry": "面板",
-   "direction": "中性"
+   "industry": "面板與顯示",
+   "direction": "中性",
+   "subIndustry": "面板"
   },
   "analyzedAt": "2026-10-12T02:38:43+08:00",
   "model": "gpt-6.1-sol",
@@ -5232,8 +5296,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "簡報多為圖片",
-   "industry": "被動元件",
-   "direction": "中性"
+   "industry": "被動元件與連接器",
+   "direction": "中性",
+   "subIndustry": "被動元件"
   },
   "analyzedAt": "2026-10-12T02:39:34+08:00",
   "model": "gpt-6.1-sol",
@@ -5277,8 +5342,9 @@
    "qaHighlights": [],
    "tone": "無法判斷",
    "evidence": "僅摘要",
-   "industry": "營建",
-   "direction": "利空"
+   "industry": "營建與資產",
+   "direction": "利空",
+   "subIndustry": "營建"
   },
   "analyzedAt": "2026-10-12T02:38:45+08:00",
   "model": "gpt-6.1-sol",
@@ -5359,8 +5425,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "餐飲",
-   "direction": "利多"
+   "industry": "觀光餐飲與零售",
+   "direction": "利多",
+   "subIndustry": "餐飲"
   },
   "analyzedAt": "2026-10-12T02:40:36+08:00",
   "model": "gpt-6.1-sol",
@@ -5439,8 +5506,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "工業電腦",
-   "direction": "中性"
+   "industry": "AI伺服器與電腦硬體",
+   "direction": "中性",
+   "subIndustry": "工業電腦"
   },
   "analyzedAt": "2026-10-12T02:40:34+08:00",
   "model": "gpt-6.1-sol",
@@ -5518,8 +5586,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "簡報多為圖片",
-   "industry": "遊戲",
-   "direction": "利多"
+   "industry": "軟體與資訊服務",
+   "direction": "利多",
+   "subIndustry": "遊戲"
   },
   "analyzedAt": "2026-10-12T02:40:03+08:00",
   "model": "gpt-6.1-sol",
@@ -5597,8 +5666,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "散熱",
-   "direction": "中性"
+   "industry": "電源與散熱",
+   "direction": "中性",
+   "subIndustry": "散熱"
   },
   "analyzedAt": "2026-10-12T02:40:04+08:00",
   "model": "gpt-6.1-sol",
@@ -5680,8 +5750,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "特用化學",
-   "direction": "中性"
+   "industry": "塑化與化工",
+   "direction": "中性",
+   "subIndustry": "特用化學"
   },
   "analyzedAt": "2026-10-12T02:43:14+08:00",
   "model": "gpt-6.1-sol",
@@ -5760,8 +5831,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "IC設計服務",
-   "direction": "中性"
+   "industry": "IC設計",
+   "direction": "中性",
+   "subIndustry": "IC設計服務"
   },
   "analyzedAt": "2026-10-12T02:40:59+08:00",
   "model": "gpt-6.1-sol",
@@ -5841,8 +5913,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "矽智財",
-   "direction": "中性"
+   "industry": "IC設計",
+   "direction": "中性",
+   "subIndustry": "矽智財"
   },
   "analyzedAt": "2026-10-12T02:42:17+08:00",
   "model": "gpt-6.1-sol",
@@ -5924,8 +5997,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "生技製藥",
-   "direction": "利空"
+   "industry": "生技新藥",
+   "direction": "利空",
+   "subIndustry": "生技製藥"
   },
   "analyzedAt": "2026-10-12T02:41:14+08:00",
   "model": "gpt-6.1-sol",
@@ -6003,8 +6077,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "簡報多為圖片",
-   "industry": "膠帶與特化",
-   "direction": "利多"
+   "industry": "塑化與化工",
+   "direction": "利多",
+   "subIndustry": "膠帶與特化"
   },
   "analyzedAt": "2026-10-12T02:42:08+08:00",
   "model": "gpt-6.1-sol",
@@ -6085,8 +6160,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "汽車零組件",
-   "direction": "利多"
+   "industry": "汽車與零組件",
+   "direction": "利多",
+   "subIndustry": "汽車零組件"
   },
   "analyzedAt": "2026-10-12T02:44:44+08:00",
   "model": "gpt-6.1-sol",
@@ -6166,8 +6242,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "營建",
-   "direction": "中性"
+   "industry": "營建與資產",
+   "direction": "中性",
+   "subIndustry": "營建"
   },
   "analyzedAt": "2026-10-12T02:42:36+08:00",
   "model": "gpt-6.1-sol",
@@ -6247,8 +6324,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "營造",
-   "direction": "利多"
+   "industry": "營建與資產",
+   "direction": "利多",
+   "subIndustry": "營造"
   },
   "analyzedAt": "2026-10-12T02:43:18+08:00",
   "model": "gpt-6.1-sol",
@@ -6326,8 +6404,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "驅動IC",
-   "direction": "中性"
+   "industry": "IC設計",
+   "direction": "中性",
+   "subIndustry": "驅動IC"
   },
   "analyzedAt": "2026-10-12T02:42:49+08:00",
   "model": "gpt-6.1-sol",
@@ -6407,8 +6486,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "生技製藥",
-   "direction": "利多"
+   "industry": "生技新藥",
+   "direction": "利多",
+   "subIndustry": "生技製藥"
   },
   "analyzedAt": "2026-10-12T02:43:49+08:00",
   "model": "gpt-6.1-sol",
@@ -6488,8 +6568,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "簡報多為圖片",
-   "industry": "工業軟體",
-   "direction": "中性"
+   "industry": "軟體與資訊服務",
+   "direction": "中性",
+   "subIndustry": "工業軟體"
   },
   "analyzedAt": "2026-10-12T02:47:43+08:00",
   "model": "gpt-6.1-sol",
@@ -6570,8 +6651,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "工業電腦",
-   "direction": "中性"
+   "industry": "AI伺服器與電腦硬體",
+   "direction": "中性",
+   "subIndustry": "工業電腦"
   },
   "analyzedAt": "2026-10-12T02:44:18+08:00",
   "model": "gpt-6.1-sol",
@@ -6621,8 +6703,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "簡報多為圖片",
-   "industry": "資訊服務",
-   "direction": "中性"
+   "industry": "軟體與資訊服務",
+   "direction": "中性",
+   "subIndustry": "資訊服務"
   },
   "analyzedAt": "2026-10-12T02:44:30+08:00",
   "model": "gpt-6.1-sol",
@@ -6702,8 +6785,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "電子零組件",
-   "direction": "中性"
+   "industry": "被動元件與連接器",
+   "direction": "中性",
+   "subIndustry": "電子零組件"
   },
   "analyzedAt": "2026-10-12T02:44:48+08:00",
   "model": "gpt-6.1-sol",
@@ -6783,8 +6867,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "建材",
-   "direction": "利空"
+   "industry": "營建與資產",
+   "direction": "利空",
+   "subIndustry": "建材"
   },
   "analyzedAt": "2026-10-12T02:45:27+08:00",
   "model": "gpt-6.1-sol",
@@ -6864,8 +6949,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "營建",
-   "direction": "中性"
+   "industry": "營建與資產",
+   "direction": "中性",
+   "subIndustry": "營建"
   },
   "analyzedAt": "2026-10-12T02:45:41+08:00",
   "model": "gpt-6.1-sol",
@@ -6945,8 +7031,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "成衣",
-   "direction": "中性"
+   "industry": "紡織與製鞋",
+   "direction": "中性",
+   "subIndustry": "成衣"
   },
   "analyzedAt": "2026-10-12T02:44:56+08:00",
   "model": "gpt-6.1-sol",
@@ -7026,8 +7113,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "自動化零組件",
-   "direction": "利多"
+   "industry": "機械與自動化",
+   "direction": "利多",
+   "subIndustry": "自動化零組件"
   },
   "analyzedAt": "2026-10-12T02:47:05+08:00",
   "model": "gpt-6.1-sol",
@@ -7188,8 +7276,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "化學材料",
-   "direction": "利多"
+   "industry": "塑化與化工",
+   "direction": "利多",
+   "subIndustry": "化學材料"
   },
   "analyzedAt": "2026-10-12T02:46:32+08:00",
   "model": "gpt-6.1-sol",
@@ -7268,8 +7357,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "簡報多為圖片",
-   "industry": "鋼鐵",
-   "direction": "利多"
+   "industry": "鋼鐵與金屬",
+   "direction": "利多",
+   "subIndustry": "鋼鐵"
   },
   "analyzedAt": "2026-10-12T02:48:37+08:00",
   "model": "gpt-6.1-sol",
@@ -7348,8 +7438,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "電源設備",
-   "direction": "利多"
+   "industry": "電源與散熱",
+   "direction": "利多",
+   "subIndustry": "電源設備"
   },
   "analyzedAt": "2026-10-12T02:46:26+08:00",
   "model": "gpt-6.1-sol",
@@ -7428,8 +7519,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "被動元件",
-   "direction": "利多"
+   "industry": "被動元件與連接器",
+   "direction": "利多",
+   "subIndustry": "被動元件"
   },
   "analyzedAt": "2026-10-12T02:48:11+08:00",
   "model": "gpt-6.1-sol",
@@ -7510,8 +7602,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "機構件",
-   "direction": "利空"
+   "industry": "AI伺服器與電腦硬體",
+   "direction": "利空",
+   "subIndustry": "機構件"
   },
   "analyzedAt": "2026-10-12T02:47:45+08:00",
   "model": "gpt-6.1-sol",
@@ -7578,8 +7671,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "簡報多為圖片",
-   "industry": "支付設備",
-   "direction": "利空"
+   "industry": "AI伺服器與電腦硬體",
+   "direction": "利空",
+   "subIndustry": "支付設備"
   },
   "analyzedAt": "2026-10-12T02:48:22+08:00",
   "model": "gpt-6.1-sol",
@@ -7660,8 +7754,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "貨櫃航運",
-   "direction": "利空"
+   "industry": "航運與物流",
+   "direction": "利空",
+   "subIndustry": "貨櫃航運"
   },
   "analyzedAt": "2026-10-12T02:55:03+08:00",
   "model": "gpt-6.1-sol",
@@ -7741,8 +7836,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "簡報多為圖片",
-   "industry": "餐飲",
-   "direction": "利多"
+   "industry": "觀光餐飲與零售",
+   "direction": "利多",
+   "subIndustry": "餐飲"
   },
   "analyzedAt": "2026-10-12T02:49:29+08:00",
   "model": "gpt-6.1-sol",
@@ -7823,8 +7919,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "觀光餐飲",
-   "direction": "利多"
+   "industry": "觀光餐飲與零售",
+   "direction": "利多",
+   "subIndustry": "觀光餐飲"
   },
   "analyzedAt": "2026-10-12T02:50:53+08:00",
   "model": "gpt-6.1-sol",
@@ -7985,8 +8082,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "半導體材料",
-   "direction": "利多"
+   "industry": "半導體材料與化學",
+   "direction": "利多",
+   "subIndustry": "半導體材料"
   },
   "analyzedAt": "2026-10-12T02:50:14+08:00",
   "model": "gpt-6.1-sol",
@@ -8065,8 +8163,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "散熱",
-   "direction": "利多"
+   "industry": "電源與散熱",
+   "direction": "利多",
+   "subIndustry": "散熱"
   },
   "analyzedAt": "2026-10-12T02:49:37+08:00",
   "model": "gpt-6.1-sol",
@@ -8144,8 +8243,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "LED",
-   "direction": "中性"
+   "industry": "面板與顯示",
+   "direction": "中性",
+   "subIndustry": "LED"
   },
   "analyzedAt": "2026-10-12T02:50:23+08:00",
   "model": "gpt-6.1-sol",
@@ -8227,8 +8327,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "電子通路",
-   "direction": "中性"
+   "industry": "手機與消費電子",
+   "direction": "中性",
+   "subIndustry": "電子通路"
   },
   "analyzedAt": "2026-10-12T02:50:29+08:00",
   "model": "gpt-6.1-sol",
@@ -8354,8 +8455,9 @@
    "qaHighlights": [],
    "tone": "無法判斷",
    "evidence": "僅摘要",
-   "industry": "化工",
-   "direction": "中性"
+   "industry": "塑化與化工",
+   "direction": "中性",
+   "subIndustry": "化工"
   },
   "analyzedAt": "2026-10-12T02:50:28+08:00",
   "model": "gpt-6.1-sol",
@@ -8435,8 +8537,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "期貨",
-   "direction": "中性"
+   "industry": "金融",
+   "direction": "中性",
+   "subIndustry": "期貨"
   },
   "analyzedAt": "2026-10-12T02:52:46+08:00",
   "model": "gpt-6.1-sol",
@@ -8515,8 +8618,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "營建",
-   "direction": "中性"
+   "industry": "營建與資產",
+   "direction": "中性",
+   "subIndustry": "營建"
   },
   "analyzedAt": "2026-10-12T02:52:00+08:00",
   "model": "gpt-6.1-sol",
@@ -8596,8 +8700,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "半導體測試介面",
-   "direction": "利多"
+   "industry": "半導體封測",
+   "direction": "利多",
+   "subIndustry": "半導體測試介面"
   },
   "analyzedAt": "2026-10-12T02:51:35+08:00",
   "model": "gpt-6.1-sol",
@@ -8676,8 +8781,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "半導體測試介面",
-   "direction": "中性"
+   "industry": "半導體封測",
+   "direction": "中性",
+   "subIndustry": "半導體測試介面"
   },
   "analyzedAt": "2026-10-12T02:51:42+08:00",
   "model": "gpt-6.1-sol",
@@ -8757,8 +8863,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "感測晶片",
-   "direction": "利空"
+   "industry": "IC設計",
+   "direction": "利空",
+   "subIndustry": "感測晶片"
   },
   "analyzedAt": "2026-10-12T02:52:21+08:00",
   "model": "gpt-6.1-sol",
@@ -8810,8 +8917,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "簡報多為圖片",
-   "industry": "機構件",
-   "direction": "中性"
+   "industry": "AI伺服器與電腦硬體",
+   "direction": "中性",
+   "subIndustry": "機構件"
   },
   "analyzedAt": "2026-10-12T02:52:01+08:00",
   "model": "gpt-6.1-sol",
@@ -8878,8 +8986,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "簡報多為圖片",
-   "industry": "生技製藥",
-   "direction": "中性"
+   "industry": "生技新藥",
+   "direction": "中性",
+   "subIndustry": "生技製藥"
   },
   "analyzedAt": "2026-10-12T02:53:00+08:00",
   "model": "gpt-6.1-sol",
@@ -8923,8 +9032,9 @@
    "qaHighlights": [],
    "tone": "無法判斷",
    "evidence": "僅摘要",
-   "industry": "電子零組件",
-   "direction": "中性"
+   "industry": "被動元件與連接器",
+   "direction": "中性",
+   "subIndustry": "電子零組件"
   },
   "analyzedAt": "2026-10-12T02:52:18+08:00",
   "model": "gpt-6.1-sol",
@@ -9086,8 +9196,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "驅動晶片",
-   "direction": "利多"
+   "industry": "IC設計",
+   "direction": "利多",
+   "subIndustry": "驅動晶片"
   },
   "analyzedAt": "2026-10-12T02:53:05+08:00",
   "model": "gpt-6.1-sol",
@@ -9167,8 +9278,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "物流",
-   "direction": "利空"
+   "industry": "航運與物流",
+   "direction": "利空",
+   "subIndustry": "物流"
   },
   "analyzedAt": "2026-10-12T02:53:50+08:00",
   "model": "gpt-6.1-sol",
@@ -9250,8 +9362,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "窗飾",
-   "direction": "中性"
+   "industry": "其他傳產",
+   "direction": "中性",
+   "subIndustry": "窗飾"
   },
   "analyzedAt": "2026-10-12T02:55:47+08:00",
   "model": "gpt-6.1-sol",
@@ -9330,8 +9443,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "天然氣",
-   "direction": "利空"
+   "industry": "其他傳產",
+   "direction": "利空",
+   "subIndustry": "天然氣"
   },
   "analyzedAt": "2026-10-12T02:54:29+08:00",
   "model": "gpt-6.1-sol",
@@ -9427,8 +9541,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "簡報多為圖片",
-   "industry": "餐飲",
-   "direction": "中性"
+   "industry": "觀光餐飲與零售",
+   "direction": "中性",
+   "subIndustry": "餐飲"
   },
   "analyzedAt": "2026-10-12T02:56:07+08:00",
   "model": "gpt-6.1-sol",
@@ -9507,8 +9622,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "營建",
-   "direction": "利空"
+   "industry": "營建與資產",
+   "direction": "利空",
+   "subIndustry": "營建"
   },
   "analyzedAt": "2026-10-12T02:55:27+08:00",
   "model": "gpt-6.1-sol",
@@ -9586,8 +9702,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "紡織",
-   "direction": "中性"
+   "industry": "紡織與製鞋",
+   "direction": "中性",
+   "subIndustry": "紡織"
   },
   "analyzedAt": "2026-10-12T02:56:11+08:00",
   "model": "gpt-6.1-sol",
@@ -9667,8 +9784,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "縫紉機",
-   "direction": "中性"
+   "industry": "機械與自動化",
+   "direction": "中性",
+   "subIndustry": "縫紉機"
   },
   "analyzedAt": "2026-10-12T02:56:40+08:00",
   "model": "gpt-6.1-sol",
@@ -9749,8 +9867,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "半導體材料",
-   "direction": "利多"
+   "industry": "半導體材料與化學",
+   "direction": "利多",
+   "subIndustry": "半導體材料"
   },
   "analyzedAt": "2026-10-12T02:59:54+08:00",
   "model": "gpt-6.1-sol",
@@ -9830,8 +9949,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "被動元件",
-   "direction": "利多"
+   "industry": "被動元件與連接器",
+   "direction": "利多",
+   "subIndustry": "被動元件"
   },
   "analyzedAt": "2026-10-12T02:56:14+08:00",
   "model": "gpt-6.1-sol",
@@ -9911,8 +10031,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "測試設備",
-   "direction": "利多"
+   "industry": "半導體設備",
+   "direction": "利多",
+   "subIndustry": "測試設備"
   },
   "analyzedAt": "2026-10-12T02:57:47+08:00",
   "model": "gpt-6.1-sol",
@@ -9990,8 +10111,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "AI 伺服器",
-   "direction": "中性"
+   "industry": "AI伺服器與電腦硬體",
+   "direction": "中性",
+   "subIndustry": "AI 伺服器"
   },
   "analyzedAt": "2026-10-12T02:56:46+08:00",
   "model": "gpt-6.1-sol",
@@ -10071,8 +10193,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "記憶體",
-   "direction": "利多"
+   "industry": "晶圓製造與記憶體",
+   "direction": "利多",
+   "subIndustry": "記憶體"
   },
   "analyzedAt": "2026-10-12T02:57:06+08:00",
   "model": "gpt-6.1-sol",
@@ -10152,8 +10275,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "PCB",
-   "direction": "利多"
+   "industry": "PCB與載板",
+   "direction": "利多",
+   "subIndustry": "PCB"
   },
   "analyzedAt": "2026-10-12T02:57:43+08:00",
   "model": "gpt-6.1-sol",
@@ -10234,8 +10358,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "營建",
-   "direction": "利空"
+   "industry": "營建與資產",
+   "direction": "利空",
+   "subIndustry": "營建"
   },
   "analyzedAt": "2026-10-12T02:58:27+08:00",
   "model": "gpt-6.1-sol",
@@ -10314,8 +10439,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "金控",
-   "direction": "中性"
+   "industry": "金融",
+   "direction": "中性",
+   "subIndustry": "金控"
   },
   "analyzedAt": "2026-10-12T02:58:15+08:00",
   "model": "gpt-6.1-sol",
@@ -10393,8 +10519,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "光學鏡頭",
-   "direction": "中性"
+   "industry": "光學與光通訊",
+   "direction": "中性",
+   "subIndustry": "光學鏡頭"
   },
   "analyzedAt": "2026-10-12T02:58:04+08:00",
   "model": "gpt-6.1-sol",
@@ -10466,8 +10593,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "製藥",
-   "direction": "利空"
+   "industry": "生技新藥",
+   "direction": "利空",
+   "subIndustry": "製藥"
   },
   "analyzedAt": "2026-10-12T02:59:01+08:00",
   "model": "gpt-6.1-sol",
@@ -10546,8 +10674,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "觸控面板",
-   "direction": "利多"
+   "industry": "面板與顯示",
+   "direction": "利多",
+   "subIndustry": "觸控面板"
   },
   "analyzedAt": "2026-10-12T02:58:47+08:00",
   "model": "gpt-6.1-sol",
@@ -10705,8 +10834,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "IC 設計",
-   "direction": "中性"
+   "industry": "IC設計",
+   "direction": "中性",
+   "subIndustry": "IC 設計"
   },
   "analyzedAt": "2026-10-12T02:58:55+08:00",
   "model": "gpt-6.1-sol",
@@ -10784,8 +10914,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "IC 設計",
-   "direction": "中性"
+   "industry": "IC設計",
+   "direction": "中性",
+   "subIndustry": "IC 設計"
   },
   "analyzedAt": "2026-10-12T02:59:15+08:00",
   "model": "gpt-6.1-sol",
@@ -10866,8 +10997,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "RFID",
-   "direction": "中性"
+   "industry": "網通",
+   "direction": "中性",
+   "subIndustry": "RFID"
   },
   "analyzedAt": "2026-10-12T03:00:29+08:00",
   "model": "gpt-6.1-sol",
@@ -10913,8 +11045,9 @@
    "qaHighlights": [],
    "tone": "無法判斷",
    "evidence": "僅摘要",
-   "industry": "電子零組件通路",
-   "direction": "中性"
+   "industry": "手機與消費電子",
+   "direction": "中性",
+   "subIndustry": "電子零組件通路"
   },
   "analyzedAt": "2026-10-12T02:59:10+08:00",
   "model": "gpt-6.1-sol",
@@ -10993,8 +11126,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "膠帶",
-   "direction": "中性"
+   "industry": "塑化與化工",
+   "direction": "中性",
+   "subIndustry": "膠帶"
   },
   "analyzedAt": "2026-10-12T02:59:48+08:00",
   "model": "gpt-6.1-sol",
@@ -11075,8 +11209,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "筆電",
-   "direction": "利空"
+   "industry": "AI伺服器與電腦硬體",
+   "direction": "利空",
+   "subIndustry": "筆電"
   },
   "analyzedAt": "2026-10-12T03:02:15+08:00",
   "model": "gpt-6.1-sol",
@@ -11157,8 +11292,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "散裝航運",
-   "direction": "利多"
+   "industry": "航運與物流",
+   "direction": "利多",
+   "subIndustry": "散裝航運"
   },
   "analyzedAt": "2026-10-12T03:00:20+08:00",
   "model": "gpt-6.1-sol",
@@ -11211,8 +11347,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "簡報多為圖片",
-   "industry": "金控",
-   "direction": "中性"
+   "industry": "金融",
+   "direction": "中性",
+   "subIndustry": "金控"
   },
   "analyzedAt": "2026-10-12T03:00:51+08:00",
   "model": "gpt-6.1-sol",
@@ -11286,8 +11423,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "簡報多為圖片",
-   "industry": "車用零組件",
-   "direction": "利空"
+   "industry": "汽車與零組件",
+   "direction": "利空",
+   "subIndustry": "車用零組件"
   },
   "analyzedAt": "2026-10-12T03:01:42+08:00",
   "model": "gpt-6.1-sol",
@@ -11367,8 +11505,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "廠務工程",
-   "direction": "利多"
+   "industry": "半導體設備",
+   "direction": "利多",
+   "subIndustry": "廠務工程"
   },
   "analyzedAt": "2026-10-12T03:01:04+08:00",
   "model": "gpt-6.1-sol",
@@ -11448,8 +11587,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "電信軟體",
-   "direction": "中性"
+   "industry": "軟體與資訊服務",
+   "direction": "中性",
+   "subIndustry": "電信軟體"
   },
   "analyzedAt": "2026-10-12T03:01:42+08:00",
   "model": "gpt-6.1-sol",
@@ -11531,8 +11671,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "通訊設備",
-   "direction": "利多"
+   "industry": "網通",
+   "direction": "利多",
+   "subIndustry": "通訊設備"
   },
   "analyzedAt": "2026-10-12T03:02:05+08:00",
   "model": "gpt-6.1-sol",
@@ -11611,8 +11752,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "天然氣",
-   "direction": "中性"
+   "industry": "其他傳產",
+   "direction": "中性",
+   "subIndustry": "天然氣"
   },
   "analyzedAt": "2026-10-12T03:02:58+08:00",
   "model": "gpt-6.1-sol",
@@ -11691,8 +11833,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "家飾",
-   "direction": "中性"
+   "industry": "其他傳產",
+   "direction": "中性",
+   "subIndustry": "家飾"
   },
   "analyzedAt": "2026-10-12T03:02:51+08:00",
   "model": "gpt-6.1-sol",
@@ -11773,8 +11916,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "石化",
-   "direction": "利空"
+   "industry": "塑化與化工",
+   "direction": "利空",
+   "subIndustry": "石化"
   },
   "analyzedAt": "2026-10-12T03:03:27+08:00",
   "model": "gpt-6.1-sol",
@@ -11850,8 +11994,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "機能紡織",
-   "direction": "利多"
+   "industry": "紡織與製鞋",
+   "direction": "利多",
+   "subIndustry": "機能紡織"
   },
   "analyzedAt": "2026-10-12T03:03:30+08:00",
   "model": "gpt-6.1-sol",
@@ -11933,8 +12078,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "保健食品",
-   "direction": "利空"
+   "industry": "食品",
+   "direction": "利空",
+   "subIndustry": "保健食品"
   },
   "analyzedAt": "2026-10-12T03:04:25+08:00",
   "model": "gpt-6.1-sol",
@@ -12014,8 +12160,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "汽車零組件",
-   "direction": "利空"
+   "industry": "汽車與零組件",
+   "direction": "利空",
+   "subIndustry": "汽車零組件"
   },
   "analyzedAt": "2026-10-12T03:04:52+08:00",
   "model": "gpt-6.1-sol",
@@ -12095,8 +12242,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "電子材料與設備",
-   "direction": "利多"
+   "industry": "半導體材料與化學",
+   "direction": "利多",
+   "subIndustry": "電子材料與設備"
   },
   "analyzedAt": "2026-10-12T03:04:28+08:00",
   "model": "gpt-6.1-sol",
@@ -12176,8 +12324,9 @@
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報",
-   "industry": "零售通路",
-   "direction": "利多"
+   "industry": "觀光餐飲與零售",
+   "direction": "利多",
+   "subIndustry": "零售通路"
   },
   "analyzedAt": "2026-10-12T03:04:06+08:00",
   "model": "gpt-6.1-sol",
@@ -12256,8 +12405,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "生技服務",
-   "direction": "中性"
+   "industry": "醫材與醫療服務",
+   "direction": "中性",
+   "subIndustry": "生技服務"
   },
   "analyzedAt": "2026-10-12T03:04:33+08:00",
   "model": "gpt-6.1-sol",
@@ -12337,8 +12487,9 @@
    "qaHighlights": [],
    "tone": "轉佳",
    "evidence": "僅簡報",
-   "industry": "電子材料",
-   "direction": "利多"
+   "industry": "半導體材料與化學",
+   "direction": "利多",
+   "subIndustry": "電子材料"
   },
   "analyzedAt": "2026-10-12T08:11:51+08:00",
   "model": "gpt-6.1-sol",
@@ -12384,8 +12535,9 @@
    "qaHighlights": [],
    "tone": "無法判斷",
    "evidence": "僅摘要",
-   "industry": "連接器",
-   "direction": "中性"
+   "industry": "被動元件與連接器",
+   "direction": "中性",
+   "subIndustry": "連接器"
   },
   "analyzedAt": "2026-10-12T08:08:12+08:00",
   "model": "gpt-6.1-sol",
@@ -12429,8 +12581,9 @@
    "qaHighlights": [],
    "tone": "無法判斷",
    "evidence": "僅摘要",
-   "industry": "新藥研發",
-   "direction": "中性"
+   "industry": "生技新藥",
+   "direction": "中性",
+   "subIndustry": "新藥研發"
   },
   "analyzedAt": "2026-10-12T08:08:08+08:00",
   "model": "gpt-6.1-sol",
@@ -12474,8 +12627,9 @@
    "qaHighlights": [],
    "tone": "無法判斷",
    "evidence": "僅摘要",
-   "industry": "預拌混凝土",
-   "direction": "中性"
+   "industry": "營建與資產",
+   "direction": "中性",
+   "subIndustry": "預拌混凝土"
   },
   "analyzedAt": "2026-10-12T03:04:43+08:00",
   "model": "gpt-6.1-sol",
@@ -12521,8 +12675,9 @@
    "qaHighlights": [],
    "tone": "無法判斷",
    "evidence": "僅摘要",
-   "industry": "資訊服務",
-   "direction": "中性"
+   "industry": "軟體與資訊服務",
+   "direction": "中性",
+   "subIndustry": "資訊服務"
   },
   "analyzedAt": "2026-10-12T08:07:59+08:00",
   "model": "gpt-6.1-sol",
@@ -12567,8 +12722,9 @@
    "qaHighlights": [],
    "tone": "無法判斷",
    "evidence": "僅摘要",
-   "industry": "資訊服務",
-   "direction": "中性"
+   "industry": "軟體與資訊服務",
+   "direction": "中性",
+   "subIndustry": "資訊服務"
   },
   "analyzedAt": "2026-10-12T08:07:55+08:00",
   "model": "gpt-6.1-sol",
@@ -12612,8 +12768,9 @@
    "qaHighlights": [],
    "tone": "無法判斷",
    "evidence": "僅摘要",
-   "industry": "AI 伺服器",
-   "direction": "中性"
+   "industry": "AI伺服器與電腦硬體",
+   "direction": "中性",
+   "subIndustry": "AI 伺服器"
   },
   "analyzedAt": "2026-10-12T08:08:20+08:00",
   "model": "gpt-6.1-sol",
@@ -12659,8 +12816,9 @@
    "qaHighlights": [],
    "tone": "無法判斷",
    "evidence": "僅摘要",
-   "industry": "未明產業",
-   "direction": "中性"
+   "industry": "其他傳產",
+   "direction": "中性",
+   "subIndustry": "未明產業"
   },
   "analyzedAt": "2026-10-12T08:08:26+08:00",
   "model": "gpt-6.1-sol",
@@ -12706,8 +12864,9 @@
    "qaHighlights": [],
    "tone": "無法判斷",
    "evidence": "僅摘要",
-   "industry": "光電檢測",
-   "direction": "中性"
+   "industry": "半導體設備",
+   "direction": "中性",
+   "subIndustry": "光電檢測"
   },
   "analyzedAt": "2026-10-12T08:08:35+08:00",
   "model": "gpt-6.1-sol",
@@ -12751,8 +12910,9 @@
    "qaHighlights": [],
    "tone": "無法判斷",
    "evidence": "僅摘要",
-   "industry": "未明產業",
-   "direction": "中性"
+   "industry": "其他傳產",
+   "direction": "中性",
+   "subIndustry": "未明產業"
   },
   "analyzedAt": "2026-10-12T08:08:41+08:00",
   "model": "gpt-6.1-sol",
@@ -12844,8 +13004,9 @@
    "qaHighlights": [],
    "tone": "無法判斷",
    "evidence": "僅摘要",
-   "industry": "製鞋",
-   "direction": "中性"
+   "industry": "紡織與製鞋",
+   "direction": "中性",
+   "subIndustry": "製鞋"
   },
   "analyzedAt": "2026-10-12T08:08:53+08:00",
   "model": "gpt-6.1-sol",
@@ -12890,8 +13051,9 @@
    "qaHighlights": [],
    "tone": "無法判斷",
    "evidence": "僅摘要",
-   "industry": "保全服務",
-   "direction": "中性"
+   "industry": "其他傳產",
+   "direction": "中性",
+   "subIndustry": "保全服務"
   },
   "analyzedAt": "2026-10-12T08:09:00+08:00",
   "model": "gpt-6.1-sol",
@@ -12937,8 +13099,9 @@
    "qaHighlights": [],
    "tone": "無法判斷",
    "evidence": "僅摘要",
-   "industry": "食品飼料",
-   "direction": "中性"
+   "industry": "食品",
+   "direction": "中性",
+   "subIndustry": "食品飼料"
   },
   "analyzedAt": "2026-10-12T08:09:05+08:00",
   "model": "gpt-6.1-sol",
@@ -12982,8 +13145,9 @@
    "qaHighlights": [],
    "tone": "無法判斷",
    "evidence": "僅摘要",
-   "industry": "石化",
-   "direction": "中性"
+   "industry": "塑化與化工",
+   "direction": "中性",
+   "subIndustry": "石化"
   },
   "analyzedAt": "2026-10-12T08:09:21+08:00",
   "model": "gpt-6.1-sol",
@@ -13027,8 +13191,9 @@
    "qaHighlights": [],
    "tone": "無法判斷",
    "evidence": "僅摘要",
-   "industry": "合成皮革",
-   "direction": "中性"
+   "industry": "塑化與化工",
+   "direction": "中性",
+   "subIndustry": "合成皮革"
   },
   "analyzedAt": "2026-10-12T08:09:36+08:00",
   "model": "gpt-6.1-sol",
@@ -13072,8 +13237,9 @@
    "qaHighlights": [],
    "tone": "無法判斷",
    "evidence": "僅摘要",
-   "industry": "汽車零組件",
-   "direction": "中性"
+   "industry": "汽車與零組件",
+   "direction": "中性",
+   "subIndustry": "汽車零組件"
   },
   "analyzedAt": "2026-10-12T08:09:41+08:00",
   "model": "gpt-6.1-sol",
@@ -13153,8 +13319,9 @@
    "qaHighlights": [],
    "tone": "轉差",
    "evidence": "僅簡報",
-   "industry": "成衣",
-   "direction": "中性"
+   "industry": "紡織與製鞋",
+   "direction": "中性",
+   "subIndustry": "成衣"
   },
   "analyzedAt": "2026-10-12T08:09:23+08:00",
   "model": "gpt-6.1-sol",
@@ -13200,8 +13367,9 @@
    "qaHighlights": [],
    "tone": "無法判斷",
    "evidence": "僅摘要",
-   "industry": "半導體材料",
-   "direction": "利多"
+   "industry": "半導體材料與化學",
+   "direction": "利多",
+   "subIndustry": "半導體材料"
   },
   "analyzedAt": "2026-10-12T08:09:51+08:00",
   "model": "gpt-6.1-sol",
