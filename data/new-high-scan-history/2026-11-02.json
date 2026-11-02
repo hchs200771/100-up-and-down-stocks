@@ -1,0 +1,75 @@
+{
+ "tradingDate": "2026-11-02",
+ "universe": {
+  "candidates": 124,
+  "priced": 123
+ },
+ "signals": [
+  {
+   "code": "2254",
+   "name": "巨鎧精密-創",
+   "market": "twse",
+   "close": 106.5,
+   "chg": 2.9,
+   "prevHigh": 106,
+   "prevHighDate": "2026-10-07",
+   "gap": 16,
+   "stop": 103.4,
+   "risk": 2.91,
+   "ma20": 96.85,
+   "money20": 315,
+   "limitUp": false,
+   "dup": false
+  }
+ ],
+ "others": [
+  {
+   "code": "5013",
+   "name": "強新",
+   "market": "tpex",
+   "close": 60.6,
+   "chg": 9.98,
+   "prevHigh": 58.6,
+   "prevHighDate": "2026-10-22",
+   "gap": 6,
+   "stop": 56.14,
+   "risk": 7.36,
+   "ma20": 49.1,
+   "money20": 79,
+   "limitUp": true,
+   "dup": false
+  },
+  {
+   "code": "2468",
+   "name": "華經",
+   "market": "twse",
+   "close": 58.5,
+   "chg": 9.96,
+   "prevHigh": 58.3,
+   "prevHighDate": "2026-10-28",
+   "gap": 3,
+   "stop": 52.65,
+   "risk": 10,
+   "ma20": 48.87,
+   "money20": 627,
+   "limitUp": true,
+   "dup": false
+  },
+  {
+   "code": "6870",
+   "name": "騰雲",
+   "market": "tpex",
+   "close": 423.5,
+   "chg": 10,
+   "prevHigh": 397.5,
+   "prevHighDate": "2026-10-29",
+   "gap": 2,
+   "stop": 382.62,
+   "risk": 9.65,
+   "ma20": 336.45,
+   "money20": 57,
+   "limitUp": true,
+   "dup": false
+  }
+ ]
+}

@@ -228,11 +228,14 @@
   "entry": 398,
   "stop": 380.09,
   "risk": 4.5,
-  "status": "open",
+  "status": "closed",
   "lastClose": 381,
   "lastDate": "2026-10-30",
-  "r": -0.95,
-  "held": 2
+  "r": -1.84,
+  "held": 3,
+  "exitDate": "2026-11-02",
+  "exit": 365,
+  "exitReason": "stop"
  },
  {
   "code": "2615",

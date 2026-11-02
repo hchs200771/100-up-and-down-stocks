@@ -1,0 +1,17 @@
+{
+  "month": "2026-10",
+  "coverage": 14,
+  "partial": true,
+  "combinedJanFeb": false,
+  "universe": 6,
+  "illiquid": 5,
+  "counts": {
+    "名單": 0,
+    "有期貨": 0,
+    "連3月": 0,
+    "MoM連3月": 0,
+    "毛利率年減": 0,
+    "今日新到": 0
+  },
+  "entries": []
+}

@@ -44,10 +44,10 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 419,
-  "lastDate": "2026-10-30",
-  "ret": -3.38,
-  "held": 6
+  "lastClose": 425,
+  "lastDate": "2026-11-02",
+  "ret": -1.99,
+  "held": 7
  },
  {
   "code": "5880",
@@ -184,10 +184,10 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 44.6,
-  "lastDate": "2026-10-30",
-  "ret": 2.76,
-  "held": 3
+  "lastClose": 43.65,
+  "lastDate": "2026-11-02",
+  "ret": 0.56,
+  "held": 4
  },
  {
   "code": "2801",
@@ -204,10 +204,10 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 30.7,
-  "lastDate": "2026-10-30",
-  "ret": 1.06,
-  "held": 3
+  "lastClose": 30.85,
+  "lastDate": "2026-11-02",
+  "ret": 1.55,
+  "held": 4
  },
  {
   "code": "3034",
@@ -284,10 +284,10 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 160.5,
-  "lastDate": "2026-10-30",
-  "ret": 2.28,
-  "held": 2
+  "lastClose": 162.5,
+  "lastDate": "2026-11-02",
+  "ret": 3.57,
+  "held": 3
  },
  {
   "code": "6925",
@@ -329,15 +329,25 @@
   "risk": 1.35,
   "gap": 3,
   "ma20": {
-   "status": "open"
+   "status": "closed",
+   "exitDate": "2026-11-02",
+   "exit": 157.84,
+   "reason": "stop",
+   "ret": -1.95,
+   "held": 1
   },
   "d60": {
-   "status": "open"
+   "status": "closed",
+   "exitDate": "2026-11-02",
+   "exit": 157.84,
+   "reason": "stop",
+   "ret": -1.95,
+   "held": 1
   },
-  "lastClose": 160,
-  "lastDate": "2026-10-30",
-  "ret": -0.6,
-  "held": 0
+  "lastClose": 159.5,
+  "lastDate": "2026-11-02",
+  "ret": -0.91,
+  "held": 1
  },
  {
   "code": "2603",
@@ -354,8 +364,28 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 271.5,
-  "lastDate": "2026-10-30",
+  "lastClose": 274.5,
+  "lastDate": "2026-11-02",
+  "ret": 0.5,
+  "held": 1
+ },
+ {
+  "code": "2254",
+  "name": "巨鎧精密-創",
+  "market": "twse",
+  "date": "2026-11-02",
+  "entry": 106.5,
+  "stop": 103.4,
+  "risk": 2.91,
+  "gap": 16,
+  "ma20": {
+   "status": "open"
+  },
+  "d60": {
+   "status": "open"
+  },
+  "lastClose": 106.5,
+  "lastDate": "2026-11-02",
   "ret": -0.6,
   "held": 0
  }
