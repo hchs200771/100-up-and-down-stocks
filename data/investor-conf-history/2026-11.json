@@ -12,6 +12,33 @@
   "fileEn": "122720261102E001.pdf",
   "videoUrl": "http://irconference.twse.com.tw/1227_10_20261102_ch.mp4",
   "note": "無",
+  "external": {
+   "summary": "會後報導聚焦葵花油成本改善與星馬市場布局；中央社明確指出第三、四季毛利仍承壓，成本待2027年第二季後改善，與輸入的headline及guidance一致。優分析報導的前九月營收218.77億元、上半年毛利率23.3%及EPS 0.80元亦與keyNumbers一致；目前取得的報導未提供可核實的法人預期比較、目標價調整或會後股價反應，無法判定是否優於預期。",
+   "vsExpectation": "無資料",
+   "reactions": [
+    "中央社（經濟日報刊載）：強調原料採購與海運時間差，使第三、四季葵花油成本維持高檔，改善時點落在2027年第二季後。",
+    "時報資訊（富聯網刊載）：以原料壓力緩解及進軍星馬為報導主軸，關注葵花籽增產與新品、通路拓展。",
+    "優分析：指出上半年毛利率下滑，但營運效率、費用控管及投資與匯兌收益支撐淨利成長，獲利改善尚非來自原料成本下降。"
+   ],
+   "sources": [
+    {
+     "title": "佳格：中國葵花油成本明年改善　台灣拓展商用油｜中央社／經濟日報",
+     "url": "https://money.udn.com/money/story/5612/9852564?from=udnamp-referralnews_ch1001artbottom",
+     "date": "2026-11-02"
+    },
+    {
+     "title": "《食品股》佳格原料壓力有解！進軍新馬打造健康生態系｜時報資訊／富聯網",
+     "url": "https://www.moneylink.com.tw/RealtimeNews/NewsContent.aspx?PU=1002&SN=6346452001",
+     "date": "2026-11-02"
+    },
+    {
+     "title": "佳格中國市場原料成本壓力可望緩解 Q4進軍星馬健康營養市場｜優分析",
+     "url": "https://uanalyze.com.tw/index.php/articles/9085358171",
+     "date": "2026-11-02"
+    }
+   ],
+   "searchedAt": "2026-11-02T22:47:03+08:00"
+  },
   "deck": {
    "file": "122720261102M001.pdf",
    "pages": 26,
@@ -104,6 +131,32 @@
   "fileEn": "300620261102E001.pdf",
   "videoUrl": "https://www.youtube.com/watch?v=4sMd7jERGG4",
   "note": "無",
+  "external": {
+   "summary": "會後報導聚焦「第四季量穩價升、毛利率有撐」，與輸入的漲價推升獲利及高檔延續展望一致；豐雲學堂所列第三季營收、毛利率、淨利與EPS亦與輸入相符。報導同時提醒成本上升及產能取得限制，未見明確矛盾，但不能據此推定獲利將持續大幅成長。尚未找到可核實的會後法人預期比較或目標價調整，亦無足以歸因於本次法說的股價反應資料。",
+   "vsExpectation": "無資料",
+   "reactions": [
+    "經濟日報：第四季出貨量與第三季相近、售價較高，公司認為維持毛利率應無大問題，並看2027年DDR2、DDR3價格可維持。[報導](https://udn.com/news/story/7252/9852248?from=udn-catebreaknews_ch2)",
+    "台視財經轉載MoneyDJ：報價續揚支撐第四季毛利率，但成本同步上升，消費性需求仍須觀察成本轉嫁情況。[報導](https://ttv.com.tw/finance/view/default.asp?from=588&i=11202602173879472B1BF40D4F028CA8100A7EAC782DB009)"
+   ],
+   "sources": [
+    {
+     "title": "經濟日報｜晶豪科法說會／第4季量穩價升 張明鑒：2027年DDR2、DDR3價格可維持",
+     "url": "https://udn.com/news/story/7252/9852248?from=udn-catebreaknews_ch2",
+     "date": "2026-11-02"
+    },
+    {
+     "title": "台視財經／MoneyDJ｜報價續揚，晶豪科看Q4毛利率有撐",
+     "url": "https://ttv.com.tw/finance/view/default.asp?from=588&i=11202602173879472B1BF40D4F028CA8100A7EAC782DB009",
+     "date": "2026-11-02"
+    },
+    {
+     "title": "豐雲學堂｜晶豪科法說：第三季EPS 36.79元、毛利率升至77.44%，第四季量穩價升",
+     "url": "https://www.sinotrade.com.tw/richclub/calendar/晶豪科法說-第三季EPS-36-79元-毛利率升至77-44--第四季量穩價升-2027年DDR2-DDR3價格可維持-股市話題-69afda28ccbe9f6372f63722",
+     "date": "2026-11-02"
+    }
+   ],
+   "searchedAt": "2026-11-02T22:47:32+08:00"
+  },
   "deck": {
    "file": "300620261102M001.pdf",
    "pages": 12,
@@ -186,6 +239,33 @@
   "fileEn": "496720261102E001.pdf",
   "videoUrl": "http://irconference.twse.com.tw/4967_13_20261102_ch.mp4",
   "note": "報名連結：https://reurl.cc/OQ8OG9",
+  "external": {
+   "summary": "法說後媒體報導聚焦記憶體缺貨延續、長單支撐及企業／工控轉型，呈現正向營運展望；目前取得內容主要為公司說法，尚不足代表法人共識。經濟日報所載新廠2027年第二季投產、產能增約50%、B2B占比64.6%及第三季毛利率49.27%，均與輸入一致，未見明確矛盾。未取得可核實的法說後目標價調整、市場預期比較或股價反應，因此無法判定是否優於預期。",
+   "vsExpectation": "無資料",
+   "reactions": [
+    "經濟日報：報導重點為B2B占比提升與自動化新廠擴產，公司對第四季及2027年營運維持樂觀，與headline及guidance一致。",
+    "MoneyDJ：公司表示已接獲半年至一年半長單，聚焦伺服器、網通與AI應用，並對後續毛利率抱持信心；屬定性展望，並非獲利財測或分析師預估。",
+    "知新聞：法人關注中國業者擴產帶來的供給影響；公司回應高階產品量產仍需時間，短期難以填補缺口，顯示供給變化是法說關注議題。"
+   ],
+   "sources": [
+    {
+     "title": "十銓新廠明年第2季投產　產能估增五成｜經濟日報",
+     "url": "https://money.udn.com/money/story/5710/9852488?from=edn_search_tag_result",
+     "date": "2026-11-02"
+    },
+    {
+     "title": "十銓估缺貨至明年Q2最險峻，對毛利率有信心｜MoneyDJ",
+     "url": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=afa1f139-5f6f-446a-82ea-d87c21914ebc",
+     "date": "2026-11-02"
+    },
+    {
+     "title": "十銓法說揭記憶體恐現「有價無貨」　嚴峻缺貨潮估延燒至明年Q2末｜知新聞",
+     "url": "https://www.knews.com.tw/news/083713071783CF44D66215B49811C91F",
+     "date": "2026-11-02"
+    }
+   ],
+   "searchedAt": "2026-11-02T22:47:57+08:00"
+  },
   "deck": {
    "file": "496720261102M001.pdf",
    "pages": 24,
@@ -193,7 +273,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "失敗：下載超過總時間上限",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 4,081 百萬元，YoY +110%，MoM +16%，累計 YoY +90%，YoY 110%，連11月YoY成長，同期歷史新高",
@@ -255,6 +335,6 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-02T21:01:20+08:00",
   "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "pendingNote": "影音：失敗：下載超過總時間上限"
  }
 }
