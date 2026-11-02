@@ -195,7 +195,8 @@ function tradingDate(): string {
 }
 
 async function fetchBig5(url: string): Promise<string> {
-  const response = await fetch(url, { headers: UA });
+  // 逾時就丟錯，讓 fetchE01 換下一個站；11/2 曾卡在一條連線 40 分鐘擋住整份報告
+  const response = await fetch(url, { headers: UA, signal: AbortSignal.timeout(20_000) });
   if (!response.ok) throw new Error(`HTTP ${response.status} ${url}`);
   return new TextDecoder("big5").decode(await response.arrayBuffer());
 }
