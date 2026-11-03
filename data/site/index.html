@@ -86,7 +86,36 @@ function showCurrent(){var on=nav.querySelector('.gnav-sub.on .gnav-subitem.on')
 if(row.scrollWidth>row.clientWidth)row.scrollLeft=on.offsetLeft-row.offsetLeft-(row.clientWidth-on.offsetWidth)/2;}
 showCurrent();
 })();</script></nav>
-    <div class="tabpanel" data-label="🏠 總覽"><div style="margin-bottom:20px;"><section class="market-regime" aria-label="台股與國際多空燈號" style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:10px;padding:12px 14px;margin-bottom:12px;color:#334155;min-width:0;">
+    <div class="tabpanel" data-label="🏠 總覽"><div style="margin-bottom:20px;"><div id="daily-audio" hidden style="border:1px solid currentColor; border-radius:10px; padding:12px 14px; margin-bottom:12px;">
+    <div id="daily-audio-title" style="font-weight:bold; margin-bottom:8px;"></div>
+    <audio id="daily-audio-player" controls preload="none" style="width:100%;"></audio>
+    <a id="daily-audio-feed" href="podcast.xml" style="color:inherit;">Podcast 訂閱</a>
+  </div><script>
+  (function () {
+    var box = document.getElementById('daily-audio');
+    var player = document.getElementById('daily-audio-player');
+    var title = document.getElementById('daily-audio-title');
+    var date = "2026-11-03";
+    function load() {
+      fetch('audio-latest.json', {cache:'no-store'}).then(function(r) { if (!r.ok) throw new Error('audio'); return r.json(); }).then(function(a) {
+        if (a.date < date) {
+          title.textContent = '語音版製作中'; player.hidden = true;
+          document.getElementById('daily-audio-feed').hidden = true; box.hidden = false; return;
+        }
+        if (a.date !== date || !a.url || !Number.isFinite(a.durationSec)) { box.hidden = true; return; }
+        var url = new URL(a.url);
+        if (url.protocol !== 'https:') throw new Error('audio URL');
+        title.textContent = '🎧 今日語音版（約 ' + Math.round(a.durationSec / 60) + ' 分鐘）';
+        if (player.getAttribute('src') !== a.url) player.src = a.url;
+        player.hidden = false; document.getElementById('daily-audio-feed').hidden = false; box.hidden = false;
+        player.onplay = function() {
+          if ('mediaSession' in navigator && typeof MediaMetadata !== 'undefined') navigator.mediaSession.metadata = new MediaMetadata({title:date + ' 台股盤後語音版', artist:'台股盤後報告'});
+        };
+      }).catch(function() { box.hidden = true; });
+    }
+    load(); setInterval(load, 60000);
+  })();
+  </script><section class="market-regime" aria-label="台股與國際多空燈號" style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:10px;padding:12px 14px;margin-bottom:12px;color:#334155;min-width:0;">
     <h3 style="margin:0 0 8px;font-size:16px;">台股與國際多空燈號</h3>
     <div style="font-size:20px;font-weight:800;color:#dc2626;"><span aria-hidden="true" style="display:inline-block;width:20px;height:20px;border-radius:50%;background:#dc2626;vertical-align:middle;"></span> 紅燈 · 不宜做多 · 11.11 / 100</div>
     <p style="font-size:13px;line-height:1.7;margin:6px 0;">紅燈不宜做多；注意：部分美股指數位於月線下。</p>
