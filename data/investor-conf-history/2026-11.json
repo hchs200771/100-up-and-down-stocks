@@ -164,7 +164,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "失敗：fetch failed",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 7,461 百萬元，YoY +470%，MoM -6%，累計 YoY +344%",
@@ -224,7 +224,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-02T21:01:20+08:00",
   "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "pendingNote": "影音：失敗：fetch failed"
  },
  "4967-2026-11-02": {
   "key": "4967-2026-11-02",
@@ -273,7 +273,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "失敗：fetch failed",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 4,081 百萬元，YoY +110%，MoM +16%，累計 YoY +90%",
@@ -335,7 +335,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-02T21:01:20+08:00",
   "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "pendingNote": "影音：失敗：fetch failed"
  },
  "2308-2026-11-03": {
   "key": "2308-2026-11-03",
@@ -431,6 +431,22 @@
   "fileEn": "234420261103E001.pdf",
   "videoUrl": "https://wms.gridow.com/ir/winbond/winbond_26Q3.html",
   "note": "無",
+  "external": {
+   "summary": "法說後報導聚焦記憶體供給緊俏、報價續升與16奈米成長，與輸入的headline及guidance一致；MoneyDJ所載第三季營收823.31億元、毛利率70.6%、EPS 7.58元亦與keyNumbers相符。報導另提731億元擴產案，屬新增投資計畫，不能直接視為與2026年395億元資本支出預算矛盾。目前取得的證據主要轉述公司展望，未找到可核實的法說後法人預期比較、目標價調整或股價反應，因此無法判定是否優於市場預期。",
+   "vsExpectation": "無資料",
+   "reactions": [
+    "MoneyDJ：報導第四季CMS合約價仍有上漲空間、高容量NOR價格上行可望延續至2027年，並引述公司稱業界普遍認為2027年供需更緊。[報導連結](https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=08a198d5-0020-45db-831e-614e416365b1)",
+    "MoneyDJ：16奈米預期2027年顯著貢獻營收、下半年占比進一步提高，CUBE預計2027年量產；亦提醒通膨、利率對消費及傳統電子需求的影響。[報導連結](https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=08a198d5-0020-45db-831e-614e416365b1)"
+   ],
+   "sources": [
+    {
+     "title": "MoneyDJ：華邦電看明後年供需維持緊張，砸731億元續擴產",
+     "url": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=08a198d5-0020-45db-831e-614e416365b1",
+     "date": "2026-11-03"
+    }
+   ],
+   "searchedAt": "2026-11-04T00:39:48+08:00"
+  },
   "deck": {
    "file": "234420261103M001.pdf",
    "pages": 33,
@@ -597,6 +613,33 @@
   "fileEn": "370420261103E001.pdf",
   "videoUrl": "https://www.zucast.com/webcast/HJ8vCmmP",
   "note": "無",
+  "external": {
+   "summary": "會後媒體聚焦 Wi-Fi 8、50G PON 與國防業務的2027年成長動能，與輸入 headline 一致；自由財經另報導第四季營收有機會季增，補充了 guidance 未列出的定性展望，並非量化財測。鉅亨網報導第三季營收年增20.8%、季減11.4%、毛利率25.5%、EPS 1.15元，與 keyNumbers 一致，但也強調記憶體漲價造成大型電信商拉貨放緩。未查得可核實的會後法人預期比較、目標價調整或可歸因於本場法說的股價反應，因此無法判定優於或低於預期。",
+   "vsExpectation": "無資料",
+   "reactions": [
+    "鉅亨網：將 Wi-Fi 8、50G PON 明年接力出貨及無人機通訊模組小量出貨，列為長線成長動能。",
+    "自由財經：報導第四季國防標案營收入帳，營收有機會季增，並以新產品、新客戶帶動2027年營收獲利成長為主軸。",
+    "鉅亨網：指出記憶體成本飆升使大型電信商重新評估資本支出、放緩拉貨，第三季獲利季年雙減，呈現短期營運壓力。"
+   ],
+   "sources": [
+    {
+     "title": "〈合勤控法說〉無人機通訊模組已小量出貨 Wi-Fi 8、50G PON明年接棒",
+     "url": "https://hk.finance.yahoo.com/news/%E5%90%88%E5%8B%A4%E6%8E%A7%E6%B3%95%E8%AA%AA-%E7%84%A1%E4%BA%BA%E6%A9%9F%E9%80%9A%E8%A8%8A%E6%A8%A1%E7%B5%84%E5%B7%B2%E5%B0%8F%E9%87%8F%E5%87%BA%E8%B2%A8-wi-fi-8-080910854.html",
+     "date": "2026-11-03"
+    },
+    {
+     "title": "新產品、新客戶加入 合勤控看2027年營收獲利成長",
+     "url": "https://ec.ltn.com.tw/article/breakingnews/5628163",
+     "date": "2026-11-03"
+    },
+    {
+     "title": "〈合勤控法說〉Q3賺4.7億元季年雙減EPS 1.15元 記憶體飆漲致大客戶拉貨放緩",
+     "url": "https://gfe-desktop.cnyes.com/news/id/6645037",
+     "date": "2026-11-03"
+    }
+   ],
+   "searchedAt": "2026-11-04T00:40:18+08:00"
+  },
   "deck": {
    "file": "370420261103M001.pdf",
    "pages": 16,
@@ -679,6 +722,27 @@
   "fileEn": "499120261103E001.pdf",
   "videoUrl": "http://irconference.twse.com.tw/4991_77_20261103_ch.mp4",
   "note": "簡報資料將於會議開始前30分鐘置於公開資訊觀測站及本公司網頁，請自行下載簡報資料。",
+  "external": {
+   "summary": "法說後報導引述法人維持今、明年穩定成長看法，聚焦AOC出貨回升及200G PD於2027年第二季放量，與輸入headline及成長方向一致。[優分析](https://uanalyze.com.tw/articles/1226958302) 未取得足以交叉核實全部指引數字與100mW CW雷射時程的新聞證據，也未找到可確認與本場法說相關的目標價調整、股價反應或市場預期比較，因此預期差列為無資料。",
+   "vsExpectation": "無資料",
+   "reactions": [
+    "鉅亨網：報導AOC營收占比由61%升至71%，出貨回升帶動獲利改善，將第四季與明年成長動能列為法說重點。",
+    "優分析：引述法人看好第四季與明年營運續增，200G PD導入第二家基板來源，預計2027年第二季顯著放量；與輸入時程一致。"
+   ],
+   "sources": [
+    {
+     "title": "〈環宇法說〉環宇-KY前3季EPS達3.91元 Q4、明年成長動能續強",
+     "url": "https://m.cnyes.com/news/id/6645573",
+     "date": "2026-11-03"
+    },
+    {
+     "title": "〈環宇法說〉環宇-KY前3季EPS達3.91元 Q4、明年成長動能續強｜優分析",
+     "url": "https://uanalyze.com.tw/articles/1226958302",
+     "date": "2026-11-03"
+    }
+   ],
+   "searchedAt": "2026-11-04T00:40:50+08:00"
+  },
   "deck": {
    "file": "499120261103M001.pdf",
    "pages": 13,
@@ -770,6 +834,28 @@
   "fileEn": "648820261103E001.pdf",
   "videoUrl": "https://www.sas-globalwafers.com/category/activity-message/",
   "note": "請線上註冊取得會議ID及密碼，註冊後，與會者將會收到會議連結及會議密碼。",
+  "external": {
+   "summary": "會後媒體聚焦12吋SOI供不應求、擴產與美光長約合作，與輸入的headline及guidance一致；TVBS報導第三季營收148.71億元、毛利率20%、EPS 3.13元，也與keyNumbers相符。自由時報另報導公司預期第四季優於第三季、2027年供給更吃緊，補充了質化展望，但未提供量化財測。未查得可確認與本場法說相關的法人預期比較、目標價調整或會後股價反應，因此無法判定是否優於市場預期。",
+   "vsExpectation": "無資料",
+   "reactions": [
+    "TVBS：報導12吋SOI需求超過既有擴產規劃，公司評估再擴產並以長約提高需求能見度，呼應輸入主軸。[來源](https://tech.tvbs.com.tw/money/4045369)",
+    "TVBS：第三季獲利季減60.2%，背景為第二季認列德國世創評價利益；營收另受義大利廠火災影響，提供EPS下滑的解讀脈絡。[來源](https://tech.tvbs.com.tw/money/4045369)",
+    "自由時報：報導需求由先進製程擴及成熟製程，公司正洽談新長約及價格，預期第四季營運優於第三季；屬公司展望，並非分析師上修預估。[來源](https://stock.ltn.com.tw/article/ds8mxxlgzsqe)"
+   ],
+   "sources": [
+    {
+     "title": "環球晶法說／前三季每股賺15元！發5億美元可轉債　美光認購｜TVBS TECH",
+     "url": "https://tech.tvbs.com.tw/money/4045369",
+     "date": "2026-11-03"
+    },
+    {
+     "title": "環球晶看旺明年 徐秀蘭：供給將比今年更吃緊｜自由時報",
+     "url": "https://stock.ltn.com.tw/article/ds8mxxlgzsqe",
+     "date": "2026-11-03"
+    }
+   ],
+   "searchedAt": "2026-11-04T00:41:18+08:00"
+  },
   "deck": {
    "file": "648820261103M001.pdf",
    "pages": 21,
@@ -853,6 +939,33 @@
   "fileEn": "652620261030E001.pdf",
   "videoUrl": "http://irconference.twse.com.tw/6526_37_20261103_ch.mp4",
   "note": "同步收看網址將於會前更新，報名請洽達發科技投資人關係ir@airoha.com",
+  "external": {
+   "summary": "會後媒體報導聚焦AI光通訊成長與第四季營收年增加速，與輸入的headline、guidance及第三季營收、EPS數字一致，但主要仍是公司展望的轉述。MoneyDJ另釐清50.95%為前三季累計毛利率，全年目標則為力守50%，兩者並不矛盾。截至目前未查得可核實且與本場法說相關的法人預期比較、目標價調整或會後股價反應，無法判定是否優於市場預期。",
+   "vsExpectation": "無資料",
+   "reactions": [
+    "聯合報：將AI資料中心需求與100G晶片於2027年上半年放量列為成長重點，並報導200G產品目標於2027年底前投片。[報導](https://udn.com/news/amp/story/7252/9855006)",
+    "自由時報：報導第四季營收年增幅將更強勁，光通訊業務明年有望延續數倍成長，與輸入展望方向一致。[報導](https://stock.ltn.com.tw/article/5de3xdwr0yx0)",
+    "MoneyDJ／台視財經：指出前三季累計毛利率50.95%，全年力守50%；第四季漲價效益逐步顯現，但仍有供應鏈成本壓力。[報導](https://ttv.com.tw/finance/view/default.asp?from=588&i=112026031613FC3BAA939D85452994068F2EA8BE8C159F87)"
+   ],
+   "sources": [
+    {
+     "title": "AI光通訊需求強勁 達發100G晶片明年放量、200G拚2027年底投片",
+     "url": "https://udn.com/news/amp/story/7252/9855006",
+     "date": "2026-11-03"
+    },
+    {
+     "title": "達發：Q4營收再衝高！光通訊業務明年可再數倍成長",
+     "url": "https://stock.ltn.com.tw/article/5de3xdwr0yx0",
+     "date": "2026-11-03"
+    },
+    {
+     "title": "達發Q4漲價效益浮現，全年毛利率力守5成",
+     "url": "https://ttv.com.tw/finance/view/default.asp?from=588&i=112026031613FC3BAA939D85452994068F2EA8BE8C159F87",
+     "date": "2026-11-03"
+    }
+   ],
+   "searchedAt": "2026-11-04T00:41:46+08:00"
+  },
   "deck": {
    "file": "652620261030M001.pdf",
    "pages": 15,
@@ -943,75 +1056,91 @@
   "fileEn": "656120261103E001.pdf",
   "videoUrl": "http://irconference.twse.com.tw/6561_46_20261103_ch.mp4",
   "note": "無",
+  "external": {
+   "summary": "截至2026年11月4日，未找到可核實且明確針對本場法說會的會後新聞、法人／分析師評論、目標價調整或市場反應，市場解讀無資料。搜尋取得的法說摘要與輸入所述LY2明年進駐逾九成、第四季營運拚全年高及維持營收年增6%～8%方向一致，但缺乏可靠市場預期比較，無法判定優於或低於預期。",
+   "vsExpectation": "無資料",
+   "reactions": [],
+   "sources": [],
+   "searchedAt": "2026-11-04T00:42:12+08:00"
+  },
   "deck": {
    "file": "656120261103M001.pdf",
    "pages": 41,
    "chars": 6327,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 0,
+   "chars": 17970
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 358 百萬元，YoY +11%，MoM -0%，累計 YoY +3%",
    "move": null
   },
   "analysis": {
-   "industry": "網通",
-   "subIndustry": "IDC資料中心與雲端互連服務",
+   "industry": "軟體與資訊服務",
+   "subIndustry": "IDC資料中心與雲端網路服務",
    "direction": "利多",
-   "headline": "虎尾AI機房租用意向突破五成，2028年商轉",
+   "headline": "LY2明年進駐逾九成，第四季營收獲利拚全年高",
    "score": 4,
    "verdict": "值得留意",
-   "reason": "利多：虎尾機房揭露逾五成租用意向、具體容量與商轉時程，增加長期成長能見度，但尚非正式訂單且未量化獲利貢獻。",
+   "reason": "利多：提出LY2進駐率與經常性月營收的具體展望，支撐2027年成長，但未上修今年目標或量化明年獲利增幅。",
    "keyNumbers": [
     {
-     "label": "2026年前三季營收",
-     "value": "31.03億元"
+     "label": "LY2預估進駐率",
+     "value": "2026年底逾80%；2027年逾90%、趨近滿載"
     },
     {
-     "label": "2026年前三季毛利率",
-     "value": "49.6%"
+     "label": "2026年營收成長目標",
+     "value": "年增6%～8%，維持原目標"
     },
     {
-     "label": "2026年前三季EPS",
-     "value": "11.87元"
+     "label": "毛利率目標",
+     "value": "2026全年及2027年均維持50%以上"
     },
     {
-     "label": "2026年前三季EBITDA率",
-     "value": "51.2%"
+     "label": "排除一次性建置收入的月營收展望",
+     "value": "3.6億元以上，逐月逐季成長"
     },
     {
-     "label": "虎尾AI資料中心電力容量",
-     "value": "16 MW"
+     "label": "虎尾AIDC租用意向",
+     "value": "逾50%，尚非正式訂單"
     },
     {
-     "label": "虎尾客戶租用意向",
-     "value": "突破五成"
+     "label": "虎尾AIDC投資額",
+     "value": "逾33億元"
     }
    ],
-   "guidance": "未提供下一季或全年明確財測；虎尾AI資料中心預計2028年下半年商用，公司介紹頁進一步標示2028年第四季。",
+   "guidance": "預估2026年第四季為全年營收、獲利最佳季度，全年營收與獲利創新高；維持營收年增6%～8%、毛利率50%以上目標，未明確重申獲利雙位數成長。2027年營收、獲利續創高，毛利率維持50%以上；虎尾AIDC預計2028年第四季商轉。",
    "drivers": [
-    "虎尾租用意向客群涵蓋國際雲端服務商、大型製造業與金融業者。",
-    "LY2提供液冷及氣冷機房，承接企業AI部署需求。",
-    "推出AI Agent VM、AI Token、AI Node服務，拓展在地化算力應用。"
+    "LY2進駐率提升，增加穩定月租收入，並帶動網路及雲端服務交叉銷售。",
+    "Google Cloud CSI海纜服務與跨雲連結需求，拓展IDC以外收入。",
+    "第三季推出AI Agent VM、AI Token及AI Node，開拓企業在地算力需求。",
+    "虎尾AIDC承接中南部算力及異地備援需求。"
    ],
    "risks": [
-    "租用意向書不等於正式合約，未揭露租金、合約金額及實際進駐時程。",
-    "虎尾商轉仍遠，缺乏近期營收與獲利貢獻指引。",
-    "前三季毛利率49.6%低於2025全年52.6%，簡報未說明差異原因；兩者期間不同。",
-    "AI新服務未揭露收入規模或放量時程。"
+    "近期月營收環比停滯，後續仍須驗證進駐率提升能否轉為收入成長。",
+    "客戶GPU交貨、世代轉換及機房改裝，可能延後營收認列。",
+    "虎尾租用意向尚非正式合約，建置與招商進度仍有不確定性。",
+    "虎尾初期仍有毛利率稀釋風險；公司僅預期影響小於LY2，未量化。"
    ],
-   "qaHighlights": [],
+   "qaHighlights": [
+    "管理層稱LY2進駐持續逐月逐季提升，否認近期月營收持平代表招商放緩。",
+    "近滿載時LY2每年IDC收入可逾10億元，屬先前分享的估算；口頭以營收推算回本，不能直接視為現金回收期或投資報酬率。",
+    "客戶GPU升級可收取客製化一次性建置費，再收穩定月租；已研究800V HVDC等新規格。",
+    "虎尾獲利時點的逐字稿年份明顯錯亂，無法可靠確認損益兩平年份。"
+   ],
    "tone": "持平",
-   "evidence": "僅簡報"
+   "evidence": "簡報+影音"
   },
-  "analyzedAt": "2026-11-03T23:37:11+08:00",
+  "analyzedAt": "2026-11-04T00:39:15+08:00",
   "model": "gpt-6.1-sol",
-  "analyzedEvidence": 1,
+  "analyzedEvidence": 3,
   "firstSeen": "2026-11-03T23:34:27+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "6805-2026-11-03": {
   "key": "6805-2026-11-03",
@@ -1026,43 +1155,104 @@
   "fileEn": "680520261103E001.pdf",
   "videoUrl": "https://youtu.be/hCzAFPbc-DM",
   "note": "無",
+  "external": {
+   "summary": "法說後報導聚焦伺服器產品比重提升、毛利率創高，以及液冷快接頭與ASIC專案的成長動能，與輸入的headline及正向guidance一致。中央社報導的第三季營收45.02億元、毛利率38.03%及前三季EPS 43.88元，均與keyNumbers相符；財訊快報亦確認第三季伺服器營收占比81.3%。未查得可核實的本場法說後法人預期比較、目標價調整或股價反應，故無法判定是否優於市場預期。",
+   "vsExpectation": "無資料",
+   "reactions": [
+    "中央社：將第三季獲利創高歸因於產品組合優化與自動化，並指出輝達新平台及液冷滲透率提升支撐第四季正向展望。",
+    "財訊快報：聚焦第三季伺服器營收占比升至81.3%，認為水冷快接頭、伺服器滑軌需求與摺疊手機新機帶來成長動能。"
+   ],
+   "sources": [
+    {
+     "title": "富世達第3季每股賺18.11元創新高　第4季維持正向",
+     "url": "https://tw.stock.yahoo.com/news/%E5%AF%8C%E4%B8%96%E9%81%94%E7%AC%AC3%E5%AD%A3%E6%AF%8F%E8%82%A1%E8%B3%BA18-11%E5%85%83%E5%89%B5%E6%96%B0%E9%AB%98-%E7%AC%AC4%E5%AD%A3%E7%B6%AD%E6%8C%81%E6%AD%A3%E5%90%91-094307937.html",
+     "date": "2026-11-03"
+    },
+    {
+     "title": "個股：富世達Q3伺服器業務佔比衝破八成，獲利激增，前三季大賺逾四個股本",
+     "url": "https://www.moneylink.com.tw/RealtimeNews/NewsContent.aspx?PU=1002&SN=2437896002",
+     "date": "2026-11-03"
+    }
+   ],
+   "searchedAt": "2026-11-04T00:42:38+08:00"
+  },
   "deck": {
    "file": "680520261103M001.pdf",
    "pages": 8,
    "chars": 375,
    "imageHeavy": true
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 30,
+   "chars": 7139
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 1,613 百萬元，YoY +32%，MoM +6%，累計 YoY +47%",
    "move": null
   },
   "analysis": {
-   "industry": "手機與消費電子",
-   "subIndustry": "樞紐",
-   "direction": "中性",
-   "headline": "財務圖表數字未擷取，未見新展望",
-   "score": 2,
-   "verdict": "可略過",
-   "reason": "可讀內容未揭露新展望或量化資訊，無法確認新增利多或利空，暫不足以改變獲利預期。",
-   "keyNumbers": [],
-   "guidance": "未提供明確展望",
-   "drivers": [],
-   "risks": [
-    "財務及產品組合圖表數字未能擷取，且無逐字稿，無法評估獲利與產品結構變化。"
+   "industry": "電源與散熱",
+   "subIndustry": "液冷快接頭、伺服器滑軌與摺疊機轉軸",
+   "direction": "利多",
+   "headline": "快接頭產能增五成，伺服器推升毛利率",
+   "score": 4,
+   "verdict": "值得留意",
+   "reason": "屬利多，伺服器占比提升與自動化解釋毛利率明顯躍升，公司並預期續改善、揭露快接頭擴產，但未量化明年營收及訂單。",
+   "keyNumbers": [
+    {
+     "label": "第三季營收",
+     "value": "45.02億元，季增約20%、年增26.25%"
+    },
+    {
+     "label": "第三季毛利率",
+     "value": "38.03%，季增3.98、年增10.37個百分點"
+    },
+    {
+     "label": "第三季伺服器營收占比",
+     "value": "81.3%"
+    },
+    {
+     "label": "前三季伺服器營收年增率",
+     "value": "183.97%"
+    },
+    {
+     "label": "前三季EPS",
+     "value": "43.88元"
+    },
+    {
+     "label": "快接頭產能",
+     "value": "由3kk增至4.5kk，增加50%；未說明時間單位"
+    }
    ],
-   "qaHighlights": [],
-   "tone": "無法判斷",
+   "guidance": "第四季及明年維持正向看法，預期伺服器業務高度成長；更多ASIC專案明年量產，產品組合、自動化與製程改善可望續推升毛利率，未提供量化財測。",
+   "drivers": [
+    "GPU新平台與多個ASIC專案放量，液冷滲透率及每櫃快接頭用量增加。",
+    "伺服器毛利率高於轉軸，提高營收占比有助整體獲利。",
+    "非AVC客戶持續增加，滑軌隨專案認證完成逐步貢獻。"
+   ],
+   "risks": [
+    "手機營收受新舊機交替、記憶體缺貨與漲價影響，部分出貨延後。",
+    "新增產能稼動率仍待訂單爬升，滑軌及部分ASIC專案須通過認證。",
+    "未揭露明年訂單金額、產品成長率或資本支出預算。",
+    "逐字稿部分平台名稱及單位辨識不清，細部時程須審慎解讀。"
+   ],
+   "qaHighlights": [
+    "快接頭新增產能已開出，滑軌產能維持350k套，後續擴產依專案認證進度安排。",
+    "AWS Trainium 3快接頭已依客戶時程出貨；明年ASIC占比預期逐步提高。",
+    "新一代高流量盲插接頭樣品已完成，進入交叉驗證；ZQD仍在開發，口頭提及預計12月開始量產準備。",
+    "液冷滑軌對承重、緩衝與平行度要求提高，有助產品價值提升。"
+   ],
+   "tone": "轉佳",
    "evidence": "簡報多為圖片"
   },
-  "analyzedAt": "2026-11-03T23:36:56+08:00",
+  "analyzedAt": "2026-11-04T00:35:18+08:00",
   "model": "gpt-6.1-sol",
-  "analyzedEvidence": 1,
+  "analyzedEvidence": 3,
   "firstSeen": "2026-11-03T23:34:27+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "6945-2026-11-03": {
   "key": "6945-2026-11-03",
@@ -1077,6 +1267,13 @@
   "fileEn": "694520261103E002.pdf",
   "videoUrl": "https://www.apbioinc.com/investor7-3-0-0.htm",
   "note": "新藥開發時程長、投入經費高，此等可能使投資面臨風險，投資人應審慎判斷謹慎投資。",
+  "external": {
+   "summary": "截至2026年11月4日，未搜尋到可確認與11月3日圓祥生技法說相關的會後新聞、法人／分析師評論、目標價調整或市場反應，市場解讀無資料。缺乏合格的會後來源，無法核對輸入的標題、營運展望與關鍵數字是否獲市場認同或出現矛盾，也無可靠市場預期可供比較。",
+   "vsExpectation": "無資料",
+   "reactions": [],
+   "sources": [],
+   "searchedAt": "2026-11-04T00:42:58+08:00"
+  },
   "deck": {
    "file": "694520261103M002.pdf",
    "pages": 41,
@@ -1249,7 +1446,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "失敗：fetch failed",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 2,162 百萬元，YoY -3%，MoM -7%，累計 YoY +9%",
@@ -1283,7 +1480,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-03T23:34:27+08:00",
   "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "pendingNote": "影音：失敗：fetch failed"
  },
  "8261-2026-11-03": {
   "key": "8261-2026-11-03",
@@ -1305,7 +1502,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "失敗：fetch failed",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 266 百萬元，YoY -2%，MoM -7%，累計 YoY +6%",
@@ -1365,7 +1562,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-03T23:34:27+08:00",
   "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "pendingNote": "影音：失敗：fetch failed"
  },
  "8443-2026-11-03": {
   "key": "8443-2026-11-03",
