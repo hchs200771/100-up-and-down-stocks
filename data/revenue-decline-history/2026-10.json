@@ -1,17 +1,40 @@
 {
   "month": "2026-10",
-  "coverage": 14,
+  "coverage": 55,
   "partial": true,
   "combinedJanFeb": false,
-  "universe": 6,
-  "illiquid": 5,
+  "universe": 26,
+  "illiquid": 22,
   "counts": {
-    "名單": 0,
-    "有期貨": 0,
-    "連3月": 0,
-    "MoM連3月": 0,
-    "毛利率年減": 0,
-    "今日新到": 0
+    "名單": 1,
+    "有期貨": 1,
+    "連3月": 1,
+    "MoM連3月": 1,
+    "毛利率年減": 1,
+    "今日新到": 1
   },
-  "entries": []
+  "entries": [
+    {
+      "code": "2458",
+      "name": "義隆",
+      "market": "twse",
+      "industry": "半導體業",
+      "rev": 461336,
+      "yoy": -0.5372507638327453,
+      "yoy3m": -0.4535249472650694,
+      "declineStreak": 3,
+      "momDeclineStreak": 4,
+      "r60": -0.2317460317460317,
+      "marginQuarter": "2026Q2",
+      "marginYoy": -0.00628851271309655,
+      "turnover": 183685758,
+      "close": 121,
+      "futures": {
+        "level": "級距1",
+        "margin": "13.50%"
+      },
+      "firstSeen": "2026-11-03",
+      "fresh": true
+    }
+  ]
 }

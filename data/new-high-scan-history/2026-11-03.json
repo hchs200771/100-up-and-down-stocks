@@ -1,0 +1,26 @@
+{
+ "tradingDate": "2026-11-03",
+ "universe": {
+  "candidates": 101,
+  "priced": 100
+ },
+ "signals": [
+  {
+   "code": "2465",
+   "name": "麗臺",
+   "market": "twse",
+   "close": 114,
+   "chg": 1.79,
+   "prevHigh": 113,
+   "prevHighDate": "2026-10-29",
+   "gap": 3,
+   "stop": 105.89,
+   "risk": 7.11,
+   "ma20": 93.4,
+   "money20": 541,
+   "limitUp": false,
+   "dup": false
+  }
+ ],
+ "others": []
+}
