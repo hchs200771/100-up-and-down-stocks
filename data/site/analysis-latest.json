@@ -1410,5 +1410,85 @@
         "flowDays4w": null
       }
     ]
+  },
+  "kol": {
+    "date": "2026-11-03",
+    "overview": "股癌與駿哥整理的報告多指向 AI 資料中心、記憶體及光互連需求仍強，但資本支出現金流、估值與供應時程有分歧。臺股今日重挫，南亞科、華星光、旺矽等相關股都在跌幅前 20，題材未能抵銷賣壓；相較近期歷史，主流看法仍看 AI 長線需求，未見明顯轉向。",
+    "items": [
+      {
+        "source": "股癌 Telegram",
+        "platform": "telegram",
+        "title": "15 則新貼文（10/28–11/3）",
+        "url": "https://t.me/Gooaye",
+        "publishedAt": "2026-11-03",
+        "basis": "posts",
+        "insight": "他認為 Marvell 收購 Lumentum 後可補足 InP 雷射，從 DSP、光引擎擴大到整合供應，成為博通的垂直整合對手。Sandisk 指出 AI 資料中心與 KV cache 拉動 NAND，若 SLC 需求成形會排擠 TLC／QLC 供給。MPS 則稱 DDR5 PMIC、光通訊及 1.6T 帶動成長，但 800V GaN 要到 2027 年底至 2028 年左右才可能貢獻。",
+        "tickers": [
+          "MRVL Marvell",
+          "LITE Lumentum",
+          "AVGO 博通",
+          "SNDK SanDisk",
+          "記憶體族群"
+        ],
+        "stance": "偏多",
+        "opportunity": {
+          "verdict": "觀察",
+          "comment": "AI 儲存與光互連有明確需求論點，但 GaN 時程較遠、SLC 滲透仍待驗證；臺股榜中南亞科跌 9.97%、華星光跌 9.98%，短線賣壓顯著，單日榜單不足以判定長線利多已反映。"
+        }
+      },
+      {
+        "source": "駿哥（X）",
+        "platform": "x",
+        "title": "21 則新貼文（11/2–11/3）",
+        "url": "https://x.com/QQ_Timmy",
+        "publishedAt": "2026-11-03",
+        "basis": "posts",
+        "insight": "高盛維持長鑫儲存買進，認為 DDR5／LPDDR6 帶動營收續增；高盛也看好中際旭創 1.6T 放量，預期帶動 2027 年成長。高盛上修 2030 年資料中心容量預測，野村認為雲端獲利強、自由現金流落後投資週期；另一份 CSP 摘要則預期 2028 年起資本支出成長放緩。TheElec 指 ISU Petasys 規劃擴建 AI 伺服器高多層板產能；TrendForce 指 Marvell 收購 Lumentum 有助光電整合、挑戰博通。",
+        "tickers": [
+          "688825 長鑫存儲",
+          "300308 中際旭創",
+          "MRVL Marvell",
+          "LITE Lumentum",
+          "AVGO 博通",
+          "記憶體族群",
+          "資料中心族群",
+          "3017 奇鋐"
+        ],
+        "stance": "偏多",
+        "opportunity": {
+          "verdict": "觀察",
+          "comment": "AI 資料中心、1.6T 與記憶體需求有報告資料支援，但 CSP 資本支出增速預期放緩，擴產及併購也有執行風險。臺股相關的南亞科、華星光、旺矽今日均在跌幅前 20；榜單不足以判斷後續反轉時點或利多是否已反映。"
+        }
+      },
+      {
+        "source": "財經M平方",
+        "platform": "youtube",
+        "title": "資金正流向債市停泊？1 分鐘解析當前市場在觀望什麼！",
+        "url": "https://www.youtube.com/watch?v=5lWMMsxxl2c",
+        "publishedAt": "2026-11-03",
+        "basis": "transcript",
+        "insight": "他認為資金迴流債市不代表全面避險，因資金偏好短天期公債與投資等級債，高收益債仍遭賣出；這反映市場進入檢視期，投資人等待企業成果或資料時，先停泊於有收益且信用品質較佳的資產。",
+        "stance": "中性"
+      },
+      {
+        "source": "財經M平方",
+        "platform": "youtube",
+        "title": "10 月股、匯、債亂成一團｜After Meeting EP. 220",
+        "url": "https://www.youtube.com/watch?v=0lbKWBPNXrI",
+        "publishedAt": "2026-11-01",
+        "basis": "transcript",
+        "insight": "他們認為 AI 基礎建設需求仍支撐長線，但巨頭財報好壞不一，市場開始檢視資本支出何時轉成營收與現金流。節目指出，Amazon 雲端成長及訂單強，但高資本支出、AI 利潤率較低及自由現金流轉負引發疑慮；Intel 伺服器業務改善，PC 需求及代工虧損仍拖累復甦。",
+        "tickers": [
+          "AMZN 亞馬遜",
+          "INTC 英特爾",
+          "AI 資料中心族群"
+        ],
+        "stance": "中性",
+        "opportunity": {
+          "verdict": "觀察",
+          "comment": "節目強調需求需轉成營收、現金流與獲利才具投資支撐；近期財報是催化，但未提供臺股明確受惠者，今日榜單亦不足以評估相關美股反映程度，須留意資本支出回收與估值風險。"
+        }
+      }
+    ]
   }
 }
