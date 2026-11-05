@@ -1,0 +1,35 @@
+{
+ "tradingDate": "2026-11-05",
+ "regime": {
+  "close": 41574.71875,
+  "ema50": 46180.57,
+  "ok": false
+ },
+ "universe": {
+  "listed": 250,
+  "liquid": 193,
+  "minFutVolume": 50,
+  "priced": 192
+ },
+ "signals": [],
+ "watch": [
+  {
+   "code": "2603",
+   "name": "長榮",
+   "market": "twse",
+   "close": 259,
+   "futVol": 2148,
+   "margin": "13.50%",
+   "adr": 3.2,
+   "mom": 34,
+   "pullback": 5.6,
+   "near": [
+    {
+     "name": "EMA21",
+     "price": 258.87,
+     "dist": 0
+    }
+   ]
+  }
+ ]
+}

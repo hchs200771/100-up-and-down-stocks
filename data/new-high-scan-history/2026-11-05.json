@@ -1,0 +1,58 @@
+{
+ "tradingDate": "2026-11-05",
+ "universe": {
+  "candidates": 84,
+  "priced": 82
+ },
+ "signals": [],
+ "others": [
+  {
+   "code": "2618",
+   "name": "長榮航",
+   "market": "twse",
+   "close": 45.1,
+   "chg": 3.09,
+   "prevHigh": 44.6,
+   "prevHighDate": "2026-08-07",
+   "gap": 60,
+   "stop": 44.61,
+   "risk": 1.09,
+   "ma20": 42.85,
+   "money20": 759,
+   "limitUp": false,
+   "dup": false
+  },
+  {
+   "code": "2471",
+   "name": "資通",
+   "market": "twse",
+   "close": 54.6,
+   "chg": 4,
+   "prevHigh": 54,
+   "prevHighDate": "2026-09-15",
+   "gap": 33,
+   "stop": 52.55,
+   "risk": 3.75,
+   "ma20": 50.86,
+   "money20": 41,
+   "limitUp": false,
+   "dup": false
+  },
+  {
+   "code": "6708",
+   "name": "天擎",
+   "market": "tpex",
+   "close": 75.7,
+   "chg": 9.24,
+   "prevHigh": 75.4,
+   "prevHighDate": "2026-10-06",
+   "gap": 20,
+   "stop": 71.23,
+   "risk": 5.9,
+   "ma20": 64.25,
+   "money20": 43,
+   "limitUp": false,
+   "dup": false
+  }
+ ]
+}

@@ -15848,7 +15848,7 @@
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 20 百萬元，YoY +109%，MoM +8%，累計 YoY +16%",
-   "move": "2026-11-03 漲幅前 100（+0.631578947368421%）"
+   "move": null
   },
   "analysis": {
    "industry": "營建與資產",
@@ -16805,7 +16805,7 @@
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 2,764 百萬元，YoY +5%，MoM +9%，累計 YoY +1%",
-   "move": "2026-11-03 跌幅前 100（-9.663865546218489%）"
+   "move": "2026-11-05 跌幅前 100（-9.953917050691246%）"
   },
   "analysis": {
    "industry": "IC設計",
@@ -17087,7 +17087,7 @@
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 6,126 百萬元，YoY +115%，MoM +4%，累計 YoY +99%",
-   "move": "2026-11-03 跌幅前 100（-9.917355371900827%）"
+   "move": null
   },
   "analysis": {
    "industry": "PCB與載板",
@@ -17231,7 +17231,7 @@
   "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
-   "revenue": "2026-09 月營收 1,627 百萬元，YoY +8%，MoM +2%，累計 YoY +6%",
+   "revenue": "2026-10 月營收 1,604 百萬元，YoY +10%，MoM -1%，累計 YoY +7%",
    "move": null
   },
   "analysis": {
