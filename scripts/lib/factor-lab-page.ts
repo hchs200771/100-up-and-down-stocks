@@ -54,7 +54,7 @@ export function renderFactorLabPage(input: FactorExperiment[], svgs: Map<string,
     .map((e) => `<li><span class="d">${esc(e.date)}</span>${pill(e.verdict)}${tag(e.category)}<a href="#${esc(e.id)}">${esc(e.title)}</a></li>`)
     .join("");
 
-  const section = (e: FactorExperiment, i: number) => {
+  const section = (e: FactorExperiment) => {
     const findings = e.findings ?? [], caveats = e.caveats ?? [], nextIdeas = e.nextIdeas ?? [];
     const stats = (e.stats ?? [])
       .map((s) => {
@@ -82,7 +82,7 @@ ${e.source.doc ? `<p><b>文件</b>：<a href="${esc(DOC_BASE + e.source.doc.repl
 <p class="q"><b>問題</b>：${md(e.question)}</p>
 <p class="sum">${md(e.summary)}</p>`;
     const hasBody = stats || findings.length || charts || caveats.length || nextIdeas.length;
-    const rest = i === 0 || !hasBody ? body : `<details class="more"><summary>展開細節（數字、圖表、限制）</summary>${body}</details>`;
+    const rest = !hasBody ? body : `<details class="more"><summary>展開細節（數字、圖表、限制）</summary>${body}</details>`;
     return `<section id="${esc(e.id)}">${head}${rest}</section>`;
   };
 
