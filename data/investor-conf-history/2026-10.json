@@ -16031,11 +16031,8 @@
    "chars": 3765,
    "imageHeavy": false
   },
-  "transcript": {
-   "minutes": 67,
-   "chars": 14967
-  },
-  "videoStatus": "ok",
+  "transcript": null,
+  "videoStatus": "超過執行時間，下次轉",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 18,848 百萬元，YoY +22%，MoM -4%，累計 YoY +26%",
@@ -16101,8 +16098,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-11-01T00:45:17+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "影音：超過執行時間，下次轉"
  },
  "2317-2026-10-30": {
   "key": "2317-2026-10-30",
@@ -16231,11 +16228,8 @@
    "chars": 4051,
    "imageHeavy": false
   },
-  "transcript": {
-   "minutes": 33,
-   "chars": 6752
-  },
-  "videoStatus": "ok",
+  "transcript": null,
+  "videoStatus": "超過執行時間，下次轉",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 5,193 百萬元，YoY +4%，MoM +26%，累計 YoY +7%",
@@ -16300,8 +16294,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-11-01T00:45:17+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "影音：超過執行時間，下次轉"
  },
  "2454-2026-10-30": {
   "key": "2454-2026-10-30",
@@ -16682,11 +16676,8 @@
    "chars": 8369,
    "imageHeavy": false
   },
-  "transcript": {
-   "minutes": 45,
-   "chars": 12631
-  },
-  "videoStatus": "ok",
+  "transcript": null,
+  "videoStatus": "超過執行時間，下次轉",
   "deckStatus": "ok",
   "context": {
    "revenue": null,
@@ -16751,8 +16742,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-11-01T00:45:17+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "影音：超過執行時間，下次轉"
  },
  "4919-2026-10-30": {
   "key": "4919-2026-10-30",
@@ -16991,11 +16982,8 @@
    "chars": 4120,
    "imageHeavy": false
   },
-  "transcript": {
-   "minutes": 33,
-   "chars": 6246
-  },
-  "videoStatus": "ok",
+  "transcript": null,
+  "videoStatus": "超過執行時間，下次轉",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-09 月營收 1,188 百萬元，YoY +22%，MoM +1%，累計 YoY +8%",
@@ -17060,8 +17048,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-11-01T00:45:17+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "影音：超過執行時間，下次轉"
  },
  "6274-2026-10-30": {
   "key": "6274-2026-10-30",
@@ -17224,11 +17212,8 @@
    "chars": 894,
    "imageHeavy": true
   },
-  "transcript": {
-   "minutes": 17,
-   "chars": 4079
-  },
-  "videoStatus": "ok",
+  "transcript": null,
+  "videoStatus": "超過執行時間，下次轉",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,604 百萬元，YoY +10%，MoM -1%，累計 YoY +7%",
@@ -17293,7 +17278,7 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-11-01T00:45:17+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "影音：超過執行時間，下次轉"
  }
 }
