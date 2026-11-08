@@ -1,0 +1,26 @@
+{
+ "tradingDate": "2026-11-06",
+ "universe": {
+  "candidates": 71,
+  "priced": 70
+ },
+ "signals": [
+  {
+   "code": "2254",
+   "name": "巨鎧精密-創",
+   "market": "twse",
+   "close": 110,
+   "chg": 0.92,
+   "prevHigh": 109,
+   "prevHighDate": "2026-11-03",
+   "gap": 3,
+   "stop": 107.39,
+   "risk": 2.37,
+   "ma20": 99.4,
+   "money20": 319,
+   "limitUp": false,
+   "dup": true
+  }
+ ],
+ "others": []
+}

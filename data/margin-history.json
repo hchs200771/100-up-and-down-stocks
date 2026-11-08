@@ -32,7 +32,7 @@
   {
     "date": "2026-06-25",
     "marginAmount": 6110,
-    "maintenance": 194.0
+    "maintenance": 194
   },
   {
     "date": "2026-06-26",
@@ -52,7 +52,7 @@
   {
     "date": "2026-07-01",
     "marginAmount": 6095,
-    "maintenance": 191.0
+    "maintenance": 191
   },
   {
     "date": "2026-07-02",
@@ -107,12 +107,12 @@
   {
     "date": "2026-07-17",
     "marginAmount": 5879.6,
-    "maintenance": 163.0
+    "maintenance": 163
   },
   {
     "date": "2026-07-20",
     "marginAmount": 5690.4,
-    "maintenance": 159.0
+    "maintenance": 159
   },
   {
     "date": "2026-07-21",
@@ -157,7 +157,7 @@
   {
     "date": "2026-07-31",
     "marginAmount": 5074.6,
-    "maintenance": 159.0
+    "maintenance": 159
   },
   {
     "date": "2026-08-03",
@@ -167,7 +167,7 @@
   {
     "date": "2026-08-04",
     "marginAmount": 5211.3,
-    "maintenance": 172.0
+    "maintenance": 172
   },
   {
     "date": "2026-08-05",
@@ -187,7 +187,7 @@
   {
     "date": "2026-08-10",
     "marginAmount": 5453,
-    "maintenance": 181.0
+    "maintenance": 181
   },
   {
     "date": "2026-08-11",
@@ -277,7 +277,7 @@
   {
     "date": "2026-09-03",
     "marginAmount": 5787.4,
-    "maintenance": 178.0
+    "maintenance": 178
   },
   {
     "date": "2026-09-04",
@@ -327,7 +327,7 @@
   {
     "date": "2026-09-17",
     "marginAmount": 5894,
-    "maintenance": 176.0
+    "maintenance": 176
   },
   {
     "date": "2026-09-18",
@@ -372,7 +372,7 @@
   {
     "date": "2026-10-02",
     "marginAmount": 6351,
-    "maintenance": 189.0
+    "maintenance": 189
   },
   {
     "date": "2026-10-05",
@@ -387,7 +387,7 @@
   {
     "date": "2026-10-07",
     "marginAmount": 6400,
-    "maintenance": 191.0
+    "maintenance": 191
   },
   {
     "date": "2026-10-08",
@@ -422,7 +422,7 @@
   {
     "date": "2026-10-19",
     "marginAmount": 6406.2,
-    "maintenance": 173.0
+    "maintenance": 173
   },
   {
     "date": "2026-10-20",
@@ -462,7 +462,7 @@
   {
     "date": "2026-11-02",
     "marginAmount": 6227,
-    "maintenance": 163.0
+    "maintenance": 163
   },
   {
     "date": "2026-11-03",
@@ -478,5 +478,10 @@
     "date": "2026-11-05",
     "marginAmount": 5764.1,
     "maintenance": 146.4
+  },
+  {
+    "date": "2026-11-06",
+    "marginAmount": 5340.5,
+    "maintenance": 142.4
   }
 ]
