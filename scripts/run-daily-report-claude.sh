@@ -836,6 +836,8 @@ if stage_enabled send; then
   # 避免把還沒比對過的報告直接送進信箱與 GitHub Pages。
   # 這裡不能只靠外面 unset GAS_WEBHOOK_URL：上面的 .env.local 是 set -a source，會蓋回來。
   # 2026-09-14 起使用者要求不再寄信，一律只產 HTML 給 publish 用。
+  timed breadth-history run_tsx scripts/build-breadth-history.ts \
+    || log "[warn] build-breadth-history.ts failed; continuing"
   if ! timed send-report run_tsx scripts/send-report.ts data/analysis-latest.json --no-email; then
     log "send-report.ts --no-email exited non-zero"
     notify "每日股市報告 ❌" "報告產出成功，但 HTML 預覽失敗。Log: $LOG_FILE"

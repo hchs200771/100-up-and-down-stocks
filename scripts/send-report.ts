@@ -458,12 +458,32 @@ function renderCategoryBlock(
   </div>`;
 }
 
+interface CreditHistoryPoint { date: string; hyOas: number }
+interface BreadthHistoryPoint { date: string; pctAboveMa60: number }
+interface SentimentHistory { credit?: CreditHistoryPoint[]; breadth?: BreadthHistoryPoint[] }
+
+// Optional histories are all-or-nothing: malformed JSON or rows omit the series safely.
+function loadSentimentHistory(): SentimentHistory {
+  function load<T>(file: string, field: string): T[] | undefined {
+    try {
+      const rows = JSON.parse(readFileSync(resolve(process.cwd(), file), "utf8"));
+      if (!Array.isArray(rows) || !rows.every(p => p && /^\d{4}-\d{2}-\d{2}$/.test(p.date) && typeof p[field] === "number" && Number.isFinite(p[field]))) return undefined;
+      return rows;
+    } catch { return undefined; }
+  }
+  return {
+    credit: load<CreditHistoryPoint>("data/credit-spread-history.json", "hyOas"),
+    breadth: load<BreadthHistoryPoint>("data/breadth-history.json", "pctAboveMa60"),
+  };
+}
+
 /**
  * 市場總覽的主圖：微臺散戶淨多空（長條）＋ 加權指數（線）＋ 融資餘額（線）。
  *
  * **雙軌渲染**，兩者都要維護：
  * - 伺服器端先畫一張靜態 SVG（三條資料都畫上去），信件端看到的就是它，沒有 JS 也完整。
  * - 網頁端 JS 接手後，打開「顯示哪些資料」的 checkbox 與滑鼠 hover 的十字線＋數值框，
+ *   新增信用利差（反轉）與站上 MA60 比例只在網頁提供，預設關閉，靜態 SVG 不變。
  *   並在勾選改變時整張重畫（Y 軸會跟著只剩下的序列重新縮放）。
  *
  * 為什麼 checkbox 預設 `display:none` 由 JS 打開：信件沒有 JS，一排點不動的核取方塊
@@ -472,7 +492,7 @@ function renderCategoryBlock(
  * 融資餘額只有上市，且是**自己抓的另一條序列**（data/margin-history.json），
  * 日期軸不一定跟微臺完全對齊；對不上的日子畫成斷點而不是內插，不要自作聰明補值。
  */
-export function renderRetailTrend(history: MarketHistoryEntry[], marginHistory?: MarginHistoryEntry[]): string {
+export function renderRetailTrend(history: MarketHistoryEntry[], marginHistory?: MarginHistoryEntry[], sentiment?: SentimentHistory): string {
   const points = history
     .filter((h) => h.retailNetLots !== null && h.retailNetLots !== undefined)
     .slice(-40);
@@ -511,6 +531,17 @@ export function renderRetailTrend(history: MarketHistoryEntry[], marginHistory?:
   const marginByDate = new Map((marginHistory ?? []).map((m) => [m.date, m]));
   const marginSeries = points.map((p) => marginByDate.get(p.date)?.marginAmount ?? null);
   const maintSeries = points.map((p) => marginByDate.get(p.date)?.maintenance ?? null);
+  const breadthByDate = new Map((sentiment?.breadth ?? []).map(p => [p.date, p.pctAboveMa60]));
+  const credit = [...(sentiment?.credit ?? [])].sort((a, b) => a.date.localeCompare(b.date));
+  // Same-date US closes occur after TW closes: use the latest strictly earlier US date.
+  const creditSeries = points.map(p => {
+    let latest: number | null = null;
+    for (const row of credit) { if (row.date >= p.date) break; latest = row.hyOas; }
+    return latest;
+  });
+  const breadthSeries = points.map(p => breadthByDate.get(p.date) ?? null);
+  const hasCredit = creditSeries.some(v => v !== null);
+  const hasBreadth = breadthSeries.some(v => v !== null);
   const hasMargin = marginSeries.filter((v) => v !== null).length >= 2;
 
   // ---- 幾何 ----
@@ -603,6 +634,8 @@ export function renderRetailTrend(history: MarketHistoryEntry[], marginHistory?:
     r: lotsValues,
     p: points.map((p) => (p.retailNetPct ?? null)),
     t: taiexVals,
+    c: hasCredit ? creditSeries : null,
+    b: hasBreadth ? breadthSeries : null,
     m: hasMargin ? marginSeries : null,
     n: hasMargin ? maintSeries : null,
     g: { w: svgW, h: svgH, l: padL, rr: padR, t: padT, b: padB, zero: zeroY, min: lotsMin, span: lotsSpan, bw: barW },
@@ -622,6 +655,8 @@ export function renderRetailTrend(history: MarketHistoryEntry[], marginHistory?:
       ${cb("t", "加權指數", "#4f46e5", true)}
       ${hasMargin ? cb("m", "融資餘額", "#ea580c", false) : ""}
       ${hasMargin ? cb("n", "融資維持率", "#0891b2", false) : ""}
+      ${hasCredit ? cb("c", "美國高收益債利差（反轉）", "#7c3aed", false) : ""}
+      ${hasBreadth ? cb("b", "站上60日線比例", "#0f766e", false) : ""}
     </div>
     <div style="margin-top:8px; overflow-x:auto; position:relative;" class="rt-wrap">
       <svg xmlns="http://www.w3.org/2000/svg" width="${svgW}" height="${svgH}" viewBox="0 0 ${svgW} ${svgH}" style="max-width:100%; overflow:visible;" class="rt-svg">
@@ -638,6 +673,22 @@ export function renderRetailTrend(history: MarketHistoryEntry[], marginHistory?:
     <div style="font-size:11px; color:#94a3b8; margin-top:6px;" class="rt-hint">
       融資餘額與維持率僅含<strong>上市</strong>；維持率是用「Σ個股融資餘額張數×收盤價 ÷ 融資金額」自算的，與券商公布值會有零點幾個百分點差異，看趨勢與 166%／130% 兩條線即可。
     </div>
+    <details style="font-size:11px; color:#64748b; margin-top:6px; line-height:1.7;">
+      <summary style="cursor:pointer;">為什麼信用利差、市場寬度會跟指數一起動？</summary>
+      <strong>美國高收益債利差（反轉畫）</strong>
+      <ul>
+        <li>利差＝垃圾債殖利率減公債殖利率，是債券投資人借錢給體質較差企業要求的風險補償。景氣轉弱、違約疑慮升高、或資金撤出風險資產時，債市會立刻要求更高補償，利差就擴大；股票對同一批公司的求償順位比債券更後面，風險偏好一降一起被賣，所以兩者同步反向。圖上把座標反轉，線往下＝利差擴大＝風險升溫。</li>
+        <li>回測（HY 利差 2023/11 起，長期用 Moody's Baa−10Y 2016 起）：週變動相關 S&amp;P500 −0.72、加權 −0.56。台股較弱，因為台股主要跟半導體景氣、外資與匯率走，美國信用只是其中一條傳導。</li>
+        <li>但它不太能「預測」：利差 20 日內急擴 20% 以上之後，加權接下來 60 日的最大回撤平均 −11.9%（平常 −8.2%），可是之後平均報酬並不差——急擴通常伴隨恐慌賣壓，政策與市場修復後就反彈。所以當風險溫度計用：擴大時降槓桿、別急著加碼，不是放空訊號。</li>
+      </ul>
+      <strong>站上60日線比例（市場寬度）</strong>
+      <ul>
+        <li>指數看的是「權值股漲多少」，寬度看的是「多少股票在漲」。大部分時間兩者同向（週變動相關 +0.67）。</li>
+        <li>加權被台積電等權值股主導，所以寬度高低本身對指數後勢幾乎沒有預測力；「指數創高、寬度沒跟上」的背離在 2019–2026 也沒有統計意義。</li>
+        <li>唯一有效的是極端值：比例跌破 20%，代表賣壓已擴散到幾乎所有股票，之後 20 日加權平均 +7.6%（平常 +1.8%）、上漲機率九成，60 日平均 +12.6%。樣本來自 8 段急跌（2020/3 疫情、2021/5、2022 升息兩段、2024/8、2025/1、2025/4 關稅），所以把它當「別在恐慌低點砍倉」的提醒，不是保證。</li>
+        <li>寬度用上市櫃普通股還原除權息後的收盤價計算。</li>
+      </ul>
+    </details>
     <script type="application/json" class="rt-data">${JSON.stringify(payload).replace(/</g, "\\u003c")}</script>
     <script>
     (function(){
@@ -646,10 +697,10 @@ export function renderRetailTrend(history: MarketHistoryEntry[], marginHistory?:
       var D=JSON.parse(raw.textContent), G=D.g;
       var svg=root.querySelector('.rt-svg'), wrap=root.querySelector('.rt-wrap'), tip=root.querySelector('.rt-tip');
       var ctrl=root.querySelector('.rt-ctrl'); if(ctrl) ctrl.style.display='block';
-      var on={r:true,t:true,m:false,n:false};
+      var on={r:true,t:true,m:false,n:false,c:false,b:false};
       var innerW=G.w-G.l-G.rr, innerH=G.h-G.t-G.b;
-      var COL={r:'#dc2626',t:'#4f46e5',m:'#ea580c',n:'#0891b2'};
-      var NAME={r:'散戶淨多空',t:'加權指數',m:'融資餘額',n:'融資維持率'};
+      var COL={r:'#dc2626',t:'#4f46e5',m:'#ea580c',n:'#0891b2',c:'#7c3aed',b:'#0f766e'};
+      var NAME={r:'散戶淨多空',t:'加權指數',m:'融資餘額',n:'融資維持率',c:'HY利差（反轉）',b:'站上60日線比例'};
       function x(i){return D.d.length===1?G.l+innerW/2:G.l+(i/(D.d.length-1))*innerW}
       function fmtWan(v){return (v/10000).toFixed(1)+'萬'}
       function seg(vals,color,lo,hi){
@@ -680,27 +731,37 @@ export function renderRetailTrend(history: MarketHistoryEntry[], marginHistory?:
         }
         root.querySelector('.rt-bars').innerHTML=bars;
         // 右軸折線：一次只給一條完整刻度，多條時只畫線避免刻度打架
-        var lines=[], keys=['t','m','n'], drawn=[];
+        var lines=[], keys=['t','m','n','c','b'], drawn=[];
         keys.forEach(function(k){
           var vals=D[k]; if(!on[k]||!vals) return;
           var r=range(vals); if(!r) return;
+          if(k==='b') r=[0,100];
+          if(k==='c') r=[r[1],r[0]];
           drawn.push({k:k,lo:r[0],hi:r[1]});
           lines.push(seg(vals,COL[k],r[0],r[1]));
+          if(k==='b'){
+            var refY=G.t+innerH*0.8;
+            lines.push('<line x1="'+G.l+'" x2="'+(G.w-G.rr)+'" y1="'+refY+'" y2="'+refY+'" stroke="'+COL.b+'" stroke-dasharray="4,3"/><text x="'+(G.l+4)+'" y="'+(refY-4)+'" font-size="9" fill="'+COL.b+'">20% 超賣</text>');
+          }
         });
         var ticks='';
         if(drawn.length===1){
           var d0=drawn[0], yy=function(v){return G.t+innerH-((v-d0.lo)/(d0.hi-d0.lo))*innerH};
           [d0.lo,(d0.lo+d0.hi)/2,d0.hi].forEach(function(v){
-            ticks+='<text x="'+(G.w-G.rr+6)+'" y="'+yy(v).toFixed(1)+'" text-anchor="start" dominant-baseline="middle" font-size="9" fill="'+COL[d0.k]+'">'+(d0.k==='n'?v.toFixed(0)+'%':Math.round(v).toLocaleString())+'</text>';
+            ticks+='<text x="'+(G.w-G.rr+6)+'" y="'+yy(v).toFixed(1)+'" text-anchor="start" dominant-baseline="middle" font-size="9" fill="'+COL[d0.k]+'">'+(d0.k==='n'||d0.k==='b'?v.toFixed(0)+'%':d0.k==='c'?Math.round(v)+'bps':Math.round(v).toLocaleString())+'</text>';
           });
         }
         root.querySelector('.rt-taiex').innerHTML=lines.join('')+ticks;
         root.querySelector('.rt-margin').innerHTML='';
         // 圖例
-        var lg='', lx=G.l, ly=G.h-16;
+        var lg='', lx=G.l, ly=G.h-16, legendX=G.l;
+        var legendRows=on.c||on.b?2:1;
+        svg.setAttribute('height',G.h+(legendRows-1)*16);
+        svg.setAttribute('viewBox','0 0 '+G.w+' '+(G.h+(legendRows-1)*16));
         if(on.r){ lg+='<rect x="'+lx+'" y="'+(ly-8)+'" width="10" height="8" fill="#dc2626" fill-opacity="0.7"/><text x="'+(lx+13)+'" y="'+ly+'" font-size="9" fill="#64748b">散戶淨多空（萬口）</text>'; lx+=122; }
         keys.forEach(function(k){
           if(!on[k]||!D[k]) return;
+          if(lx+NAME[k].length*9+30>G.w-8){lx=legendX;ly+=16;}
           lg+='<line x1="'+lx+'" y1="'+(ly-4)+'" x2="'+(lx+16)+'" y2="'+(ly-4)+'" stroke="'+COL[k]+'" stroke-width="1.8"/><text x="'+(lx+19)+'" y="'+ly+'" font-size="9" fill="'+COL[k]+'">'+NAME[k]+'</text>';
           lx+=NAME[k].length*9+30;
         });
@@ -722,6 +783,8 @@ export function renderRetailTrend(history: MarketHistoryEntry[], marginHistory?:
         if(on.t&&D.t[i]!==null) h+='<div><span style="color:#818cf8">—</span> 加權 '+D.t[i].toLocaleString()+'</div>';
         if(on.m&&D.m&&D.m[i]!==null) h+='<div><span style="color:#fb923c">—</span> 融資 '+D.m[i].toLocaleString()+' 億</div>';
         if(on.n&&D.n&&D.n[i]!==null) h+='<div><span style="color:#22d3ee">—</span> 維持率 '+D.n[i].toFixed(1)+'%</div>';
+        if(on.c&&D.c&&D.c[i]!==null) h+='<div><span style="color:#c4b5fd">—</span> HY利差 '+Math.round(D.c[i])+' bps</div>';
+        if(on.b&&D.b&&D.b[i]!==null) h+='<div><span style="color:#5eead4">—</span> 站上60MA '+D.b[i].toFixed(1)+'%</div>';
         tip.innerHTML=h; tip.style.display='block';
         var box=svg.getBoundingClientRect(), wb=wrap.getBoundingClientRect();
         var px=box.left-wb.left+x(i)/G.w*box.width;
@@ -787,7 +850,7 @@ function renderForeignOptions(o: MarginOptionsReport["options"] | null | undefin
   </div>`;
 }
 
-function renderMarketDashboard(market: MarketBlock | null | undefined, retailHistory?: MarketHistoryEntry[], marginHistory?: MarginHistoryEntry[], mo?: MarginOptionsReport | null): string {
+function renderMarketDashboard(market: MarketBlock | null | undefined, retailHistory?: MarketHistoryEntry[], marginHistory?: MarginHistoryEntry[], mo?: MarginOptionsReport | null, sentiment?: SentimentHistory): string {
   if (!market) return "";
 
   const rows: string[] = [];
@@ -851,7 +914,7 @@ function renderMarketDashboard(market: MarketBlock | null | undefined, retailHis
 
   if (rows.length === 0) return "";
 
-  const trendHtml = retailHistory ? renderRetailTrend(retailHistory, marginHistory) : "";
+  const trendHtml = retailHistory ? renderRetailTrend(retailHistory, marginHistory, sentiment) : "";
   const optionsHtml = renderForeignOptions(mo?.options);
 
   return `<div style="background-color: #f8fafc; border: 1px solid #e2e8f0; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
@@ -2427,7 +2490,7 @@ function sortGroupsByMemberCount(groups: CategoryGroup[]): CategoryGroup[] {
     .map(({ group }) => group);
 }
 
-function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName: Map<string, string>, market?: MarketBlock | null, retailHistory?: MarketHistoryEntry[], contrib?: IndexContribution | null, tdcc?: DivergenceReport | null, marginHistory?: MarginHistoryEntry[], mo?: MarginOptionsReport | null, picks?: PicksReport | null): string {
+function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName: Map<string, string>, market?: MarketBlock | null, retailHistory?: MarketHistoryEntry[], contrib?: IndexContribution | null, tdcc?: DivergenceReport | null, marginHistory?: MarginHistoryEntry[], mo?: MarginOptionsReport | null, picks?: PicksReport | null, sentiment?: SentimentHistory): string {
   const sortedGainers = sortGroupsByMemberCount(a.gainers);
   const gainersHtml = sortedGainers.map((g) => renderCategoryBlock(g, stockMap, codeByName, "gainer")).join("");
   const losersHtml = sortGroupsByMemberCount(a.losers)
@@ -2444,7 +2507,7 @@ function renderHtml(a: Analysis, stockMap: Record<string, StockMeta>, codeByName
       <p style="line-height: 1.7; margin-bottom: 0; color: #7c2d12;">${escHtml(a.playbook).replace(/\n/g, "<br>")}</p>
     </div>`
     : "";
-  const marketDashboardHtml = renderMarketDashboard(market, retailHistory, marginHistory, mo);
+  const marketDashboardHtml = renderMarketDashboard(market, retailHistory, marginHistory, mo, sentiment);
   const intlHtml = renderIntl(a.intl);
   const kolHtml = renderKol(a.kol);
   const rrgHtml = renderRrg(a.rrg);
@@ -2719,7 +2782,7 @@ async function main() {
     }
   }
 
-  const html = renderHtml(analysis, stockMap, codeByName, marketBlock, retailHistory, contrib, tdcc, marginHistory, marginOptions, picks);
+  const html = renderHtml(analysis, stockMap, codeByName, marketBlock, retailHistory, contrib, tdcc, marginHistory, marginOptions, picks, loadSentimentHistory());
   const htmlOutPath = resolve(process.cwd(), "data/report-latest.html");
   writeFileSync(htmlOutPath, html, "utf-8");
   console.log(`Wrote HTML preview to ${htmlOutPath}（${(html.length / 1024).toFixed(0)}KB）`);

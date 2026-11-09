@@ -83,3 +83,126 @@ export async function closesOn(date: string, root = process.cwd()): Promise<Reco
 
 /** 收到幾檔以上才算「這天有開盤」 */
 export const isTradingDay = (closes: Record<string, number>) => Object.keys(closes).length > 500;
+
+/** Official TWSE ex-rights/dividend references; MI_INDEX marks these days as X. */
+export function parseTwt49u(payload: any): { date: string; code: string; reference: number }[] {
+  if (!payload?.data?.length) return [];
+  const fields: string[] = payload.fields ?? [];
+  const index = (name: string) => {
+    const i = fields.findIndex(f => String(f).trim() === name);
+    if (i < 0) throw new Error(`Missing TWT49U field: ${name}`);
+    return i;
+  };
+  const dateIndex = index("資料日期"), codeIndex = index("股票代號"), refIndex = index("除權息參考價");
+  const out: { date: string; code: string; reference: number }[] = [];
+  for (const row of payload.data) {
+    const match = String(row[dateIndex] ?? "").trim().match(/^(\d{2,3})年(\d{1,2})月(\d{1,2})日$/);
+    const code = String(row[codeIndex] ?? "").trim();
+    const reference = num(row[refIndex]);
+    if (!match || !/^\d{4}$/.test(code) || reference <= 0) continue;
+    const year = Number(match[1]) + 1911, month = Number(match[2]), day = Number(match[3]);
+    const date = `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+    const parsed = new Date(Date.UTC(year, month - 1, day));
+    if (parsed.toISOString().slice(0, 10) !== date) continue;
+    out.push({ date, code, reference });
+  }
+  return out;
+}
+
+/** One YYYYMMDD range request covers all TWSE ex-rights/dividend events. */
+export async function exRightRefs(startYmd: string, endYmd: string) {
+  const url = `https://www.twse.com.tw/rwd/zh/exRight/TWT49U?startDate=${startYmd}&endDate=${endYmd}&response=json`;
+  return parseTwt49u(JSON.parse(await fetchText(url)));
+}
+
+/** Official TPEx ex-rights/dividend references; dailyQuotes marks changes as 除權/除息. */
+export function parseTpexExDaily(payload: any): { date: string; code: string; reference: number }[] {
+  const out: { date: string; code: string; reference: number }[] = [];
+  for (const table of payload?.tables ?? []) {
+    if (!table?.data?.length) continue;
+    const fields: string[] = table.fields ?? [];
+    const index = (name: string) => {
+      const i = fields.findIndex(f => String(f).trim() === name);
+      if (i < 0) throw new Error(`Missing TPEx exDailyQ field: ${name}`);
+      return i;
+    };
+    const dateIndex = index("除權息日期"), codeIndex = index("代號"), refIndex = index("除權息參考價");
+    for (const row of table.data) {
+      const match = String(row[dateIndex] ?? "").trim().match(/^(\d{2,3})\/(\d{1,2})\/(\d{1,2})$/);
+      const code = String(row[codeIndex] ?? "").trim();
+      const reference = num(row[refIndex]);
+      if (!match || !/^\d{4}$/.test(code) || reference <= 0) continue;
+      const year = Number(match[1]) + 1911, month = Number(match[2]), day = Number(match[3]);
+      const date = `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+      const parsed = new Date(Date.UTC(year, month - 1, day));
+      if (parsed.toISOString().slice(0, 10) !== date) continue;
+      out.push({ date, code, reference });
+    }
+  }
+  return out;
+}
+
+/** One YYYYMMDD range request covers all TPEx ex-rights/dividend events. */
+export async function tpexExRightRefs(startYmd: string, endYmd: string) {
+  const slashed = (ymd: string) => encodeURIComponent(`${ymd.slice(0, 4)}/${ymd.slice(4, 6)}/${ymd.slice(6, 8)}`);
+  const url = `https://www.tpex.org.tw/www/zh-tw/bulletin/exDailyQ?startDate=${slashed(startYmd)}&endDate=${slashed(endYmd)}&response=json`;
+  return parseTpexExDaily(JSON.parse(await fetchText(url)));
+}
+
+/** Parse 平盤參考價 without I/O; field names take precedence over endpoint column order. */
+export function parseRefPrices(payload: any, market: "twse" | "tpex"): Record<string, number> {
+  const table = market === "twse"
+    ? (payload.tables ?? []).find((t: any) => t?.fields?.[0] === "證券代號")
+    : payload.tables?.[0] ?? payload;
+  if (!table?.data?.length) return {};
+  const fields: string[] = table.fields ?? [];
+  const index = (names: string[], fallback: number) => {
+    if (!fields.length) return fallback;
+    const i = fields.findIndex(f => names.includes(String(f).trim()));
+    if (i < 0) throw new Error(`Missing ${market} field: ${names.join("/")}`);
+    return i;
+  };
+  const codeIndex = index(["證券代號", "代號"], 0);
+  const closeIndex = index(["收盤價", "收盤"], market === "twse" ? 8 : 2);
+  const changeIndex = index(["漲跌價差", "漲跌"], market === "twse" ? 10 : 3);
+  const signIndex = market === "twse" ? index(["漲跌(+/-)"], 9) : -1;
+  const plain = (v: unknown) => String(v ?? "").replace(/<[^>]*>/g, "").replace(/,/g, "").trim();
+  const numeric = (s: string) => /^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(s);
+  const out: Record<string, number> = {};
+  for (const row of table.data) {
+    const code = plain(row[codeIndex]);
+    const close = plain(row[closeIndex]), change = plain(row[changeIndex]);
+    if (!/^\d{4}$/.test(code) || !numeric(close) || Number(close) <= 0 || !numeric(change)) continue;
+    let signedChange = Number(change);
+    if (market === "twse") {
+      const sign = plain(row[signIndex]);
+      if (/[XＸ]/i.test(sign) || !["+", "-", ""].includes(sign)) continue;
+      if (!sign && signedChange !== 0) continue;
+      signedChange = (sign === "-" ? -1 : 1) * Math.abs(signedChange);
+    }
+    const ref = Number((Number(close) - signedChange).toFixed(8));
+    if (Number.isFinite(ref) && ref > 0) out[code] = ref;
+  }
+  return out;
+}
+
+/** YYYYMMDD reference prices; incomplete market responses are never cached or returned. */
+export async function refPricesOn(date: string, root = process.cwd()): Promise<Record<string, number>> {
+  mkdirSync(resolve(root, CACHE_DIR), { recursive: true });
+  const cache = resolve(root, CACHE_DIR, `ref-${date}.json`);
+  if (existsSync(cache)) return JSON.parse(readFileSync(cache, "utf-8"));
+  const slashed = `${date.slice(0, 4)}/${date.slice(4, 6)}/${date.slice(6, 8)}`;
+  const [tw, tp] = await Promise.all([
+    fetchText(`https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=${date}&type=ALLBUT0999&response=json`),
+    fetchText(`https://www.tpex.org.tw/www/zh-tw/afterTrading/dailyQuotes?date=${encodeURIComponent(slashed)}&response=json`),
+  ]);
+  const twRefs = parseRefPrices(JSON.parse(tw), "twse");
+  const tpRefs = parseRefPrices(JSON.parse(tp), "tpex");
+  const twN = Object.keys(twRefs).length, tpN = Object.keys(tpRefs).length;
+  const past = date < new Date(Date.now() + 8 * 3600_000).toISOString().slice(0, 10).replace(/-/g, "");
+  if ((twN > 0) !== (tpN > 0)) throw new Error(`Incomplete reference prices ${date}: TWSE=${twN}, TPEx=${tpN}`);
+  const out = { ...twRefs, ...tpRefs };
+  if ((twN > 0 && tpN > 0) || (twN === 0 && tpN === 0 && past)) writeFileSync(cache, JSON.stringify(out));
+  await new Promise((r) => setTimeout(r, 400));
+  return out;
+}

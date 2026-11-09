@@ -18,6 +18,7 @@ data/kol/
 data/tmp/
 data/logs/
 data/price-history/
+data/price-ref/
 data/theme-radar/
 data/theme-radar.html
 data/analysis-history/

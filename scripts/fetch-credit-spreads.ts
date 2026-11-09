@@ -112,7 +112,13 @@ async function main() {
   const results = await Promise.all(
     SERIES.map(async (s) => {
       try {
-        return build(s, await fetchSeries(s.id));
+        const points = await fetchSeries(s.id);
+        if (s.key === "hyOas" && points.length) {
+          const historyPath = resolve(process.cwd(), "data/credit-spread-history.json");
+          mkdirSync(dirname(historyPath), { recursive: true });
+          writeFileSync(historyPath, JSON.stringify(points.slice(-300).map(p => ({ date: p.date, hyOas: toBps(p.value) })), null, 2) + "\n", "utf-8");
+        }
+        return build(s, points);
       } catch (e) {
         console.warn(`[warn] credit spread fetch failed: ${s.id} (${s.name}) — ${(e as Error).message}`);
         return null;

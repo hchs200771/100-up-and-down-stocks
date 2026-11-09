@@ -690,6 +690,8 @@ if stage_enabled send; then
   timed picks-tracking run_tsx scripts/backtest-stock-picks.ts --quiet \
     || log "[warn] backtest-stock-picks.ts failed; 前 5 名追蹤略過"
   log "進度 5/5：開始產生 HTML（Codex 流程不寄信）"
+  timed breadth-history run_tsx scripts/build-breadth-history.ts \
+    || log "[warn] build-breadth-history.ts failed; continuing"
   if ! timed send-report run_tsx scripts/send-report.ts data/analysis-latest.json --no-email; then
     log "send-report.ts --no-email exited non-zero"
     notify "每日股市報告 ❌" "報告分析成功，但 HTML 產出失敗。Log: $LOG_FILE"
