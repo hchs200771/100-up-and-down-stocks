@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="650" viewBox="0 0 1080 650">
+<rect width="1080" height="650" fill="#101827"/>
+<g font-family="sans-serif" fill="#e5e7eb">
+<text x="30" y="38" font-size="23">N60 ≥2倍：20日外資累計配對超額</text>
+<text x="30" y="67" font-size="14">20交易日區塊 bootstrap 95% CI；n&lt;8 樣本不足；不含股息與成本</text>
+<line x1="525" x2="525" y1="90" y2="590" stroke="#718096"/>
+<text x="25" y="115" font-size="15">金額 賣 P1</text>
+<line x1="421.3" x2="529.4" y1="110" y2="110" stroke="#fbbf24" stroke-width="3"/>
+<circle cx="476.0" cy="110" r="5" fill="#fbbf24"/>
+<text x="815" y="115" font-size="14">-672.00億 n=2 樣本不足</text>
+<text x="25" y="155" font-size="15">金額 賣 P2</text>
+<text x="820" y="155">n=0 樣本不足</text>
+<text x="25" y="195" font-size="15">金額 賣 ALL</text>
+<line x1="420.1" x2="524.1" y1="190" y2="190" stroke="#fbbf24" stroke-width="3"/>
+<circle cx="472.4" cy="190" r="5" fill="#fbbf24"/>
+<text x="815" y="195" font-size="14">-720.88億 n=2 樣本不足</text>
+<text x="25" y="235" font-size="15">金額 買 P1</text>
+<line x1="618.8" x2="659.9" y1="230" y2="230" stroke="#fbbf24" stroke-width="3"/>
+<circle cx="639.9" cy="230" r="5" fill="#fbbf24"/>
+<text x="815" y="235" font-size="14">+1575.38億 n=1 樣本不足</text>
+<text x="25" y="275" font-size="15">金額 買 P2</text>
+<text x="820" y="275">n=0 樣本不足</text>
+<text x="25" y="315" font-size="15">金額 買 ALL</text>
+<line x1="655.6" x2="743.2" y1="310" y2="310" stroke="#fbbf24" stroke-width="3"/>
+<circle cx="693.8" cy="310" r="5" fill="#fbbf24"/>
+<text x="815" y="315" font-size="14">+2315.53億 n=1 樣本不足</text>
+<text x="25" y="355" font-size="15">標準化 賣 P1</text>
+<line x1="486.4" x2="533.8" y1="350" y2="350" stroke="#fbbf24" stroke-width="3"/>
+<circle cx="511.0" cy="350" r="5" fill="#fbbf24"/>
+<text x="815" y="355" font-size="14">-191.56億 n=1 樣本不足</text>
+<text x="25" y="395" font-size="15">標準化 賣 P2</text>
+<text x="820" y="395">n=0 樣本不足</text>
+<text x="25" y="435" font-size="15">標準化 賣 ALL</text>
+<line x1="475.1" x2="534.7" y1="430" y2="430" stroke="#fbbf24" stroke-width="3"/>
+<circle cx="503.3" cy="430" r="5" fill="#fbbf24"/>
+<text x="815" y="435" font-size="14">-297.92億 n=1 樣本不足</text>
+<text x="25" y="475" font-size="15">標準化 買 P1</text>
+<line x1="533.7" x2="654.0" y1="470" y2="470" stroke="#fbbf24" stroke-width="3"/>
+<circle cx="593.1" cy="470" r="5" fill="#fbbf24"/>
+<text x="815" y="475" font-size="14">+933.96億 n=2 樣本不足</text>
+<text x="25" y="515" font-size="15">標準化 買 P2</text>
+<line x1="643.5" x2="757.1" y1="510" y2="510" stroke="#fbbf24" stroke-width="3"/>
+<circle cx="703.0" cy="510" r="5" fill="#fbbf24"/>
+<text x="815" y="515" font-size="14">+2441.96億 n=1 樣本不足</text>
+<text x="25" y="555" font-size="15">標準化 買 ALL</text>
+<line x1="547.8" x2="709.8" y1="550" y2="550" stroke="#fbbf24" stroke-width="3"/>
+<circle cx="636.8" cy="550" r="5" fill="#fbbf24"/>
+<text x="815" y="555" font-size="14">+1534.07億 n=3 樣本不足</text>
+<text x="30" y="625" font-size="14">各組分開冷卻；配對控制事件前20日報酬五分位。零線右側代表高於配對基準，單位 億。</text></g></svg>
