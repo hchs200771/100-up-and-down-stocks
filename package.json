@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "lint": "tsc --noEmit",
+    "audio:status": "node --import tsx scripts/audio-status.ts",
     "test": "node --import tsx --test tests/*.test.ts",
     "factors:audit": "node --import tsx scripts/audit-factor-evidence.ts",
     "backtest:picks:fetch": "node --import tsx scripts/fetch-pick-backtest-inputs.ts",
