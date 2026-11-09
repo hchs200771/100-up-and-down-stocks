@@ -7768,8 +7768,11 @@
    "chars": 1857,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 63,
+   "chars": 15056
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": null,
@@ -7826,8 +7829,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-09T21:00:56+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "6799-2026-11-09": {
   "key": "6799-2026-11-09",
