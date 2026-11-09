@@ -1,0 +1,42 @@
+{
+ "tradingDate": "2026-11-09",
+ "universe": {
+  "candidates": 70,
+  "priced": 69
+ },
+ "signals": [],
+ "others": [
+  {
+   "code": "3287",
+   "name": "廣寰科",
+   "market": "tpex",
+   "close": 80.6,
+   "chg": 9.96,
+   "prevHigh": 78.6,
+   "prevHighDate": "2026-11-05",
+   "gap": 2,
+   "stop": 80.52,
+   "risk": 0.1,
+   "ma20": 63.31,
+   "money20": 174,
+   "limitUp": true,
+   "dup": false
+  },
+  {
+   "code": "5202",
+   "name": "力新",
+   "market": "tpex",
+   "close": 20.1,
+   "chg": 9.84,
+   "prevHigh": 19.5,
+   "prevHighDate": "2026-11-05",
+   "gap": 2,
+   "stop": 19.18,
+   "risk": 4.58,
+   "ma20": 15.38,
+   "money20": 60,
+   "limitUp": true,
+   "dup": false
+  }
+ ]
+}

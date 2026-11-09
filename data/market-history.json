@@ -1441,5 +1441,20 @@
     "down": 1951,
     "limitUp": 17,
     "limitDown": 57
+  },
+  {
+    "date": "2026-11-09",
+    "retailNetPct": null,
+    "retailNetLots": null,
+    "twseDayTradePct": 24.84,
+    "tpexDayTradePct": 22.18,
+    "taiexClose": 41661.7,
+    "taiexChange": 1960.06,
+    "tpexClose": 321.97,
+    "tpexChange": 17.95,
+    "up": 1756,
+    "down": 407,
+    "limitUp": 200,
+    "limitDown": 4
   }
 ]
