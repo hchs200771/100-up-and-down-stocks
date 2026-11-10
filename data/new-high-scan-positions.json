@@ -314,10 +314,10 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 165,
-  "lastDate": "2026-11-09",
-  "ret": 5.17,
-  "held": 8
+  "lastClose": 167.5,
+  "lastDate": "2026-11-10",
+  "ret": 6.77,
+  "held": 9
  },
  {
   "code": "6925",
@@ -454,9 +454,9 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 124,
-  "lastDate": "2026-11-09",
-  "ret": 8.17,
-  "held": 4
+  "lastClose": 136,
+  "lastDate": "2026-11-10",
+  "ret": 18.7,
+  "held": 5
  }
 ]
