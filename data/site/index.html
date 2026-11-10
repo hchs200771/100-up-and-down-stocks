@@ -591,17 +591,30 @@ showCurrent();
         }
         root.querySelector('.rt-bars').innerHTML=bars;
         // 右軸折線：一次只給一條完整刻度，多條時只畫線避免刻度打架
-        var lines=[], keys=['t','m','n','b'], drawn=[];
+        var lines=[], keys=['t','m','n','b'], drawn=[], placed=[];
         keys.forEach(function(k){
           var vals=D[k]; if(!on[k]||!vals) return;
           var r=range(vals); if(!r) return;
           if(k==='b') r=[0,100];
           drawn.push({k:k,lo:r[0],hi:r[1]});
           lines.push(seg(vals,COL[k],r[0],r[1],k==='t'?2.6:1.8));
-          if(k==='t') D.e.forEach(function(p){
-            var xx=x(p.i), yy=G.t+innerH-((p.v-r[0])/(r[1]-r[0]))*innerH;
+          // 每條勾選的折線都標出區間高低點，顏色跟線一致
+          var hi=-1, lo=-1;
+          for(var j=0;j<vals.length;j++){ if(vals[j]===null) continue; if(hi<0||vals[j]>vals[hi]) hi=j; if(lo<0||vals[j]<vals[lo]) lo=j; }
+          var fmtV=function(v){return k==='n'||k==='b'?v.toFixed(1)+'%':k==='m'?Math.round(v).toLocaleString()+'億':Math.round(v).toLocaleString()};
+          [{i:hi,label:'高'},{i:lo,label:'低'}].forEach(function(p){
+            if(p.i<0) return;
+            var v=vals[p.i], xx=x(p.i), yy=G.t+innerH-((v-r[0])/(r[1]-r[0]))*innerH;
             var anchor=xx<100?'start':xx>G.w-100?'end':'middle';
-            lines.push('<circle cx="'+xx.toFixed(1)+'" cy="'+yy.toFixed(1)+'" r="3" fill="'+COL.t+'"/><text x="'+xx.toFixed(1)+'" y="'+(yy+(p.label==='高'?-8:13)).toFixed(1)+'" text-anchor="'+anchor+'" fill="'+COL.t+'" font-size="9">'+p.label+' '+Math.round(p.v).toLocaleString()+'（'+D.d[p.i].replace('-','/')+'）</text>');
+            var txt=p.label+' '+fmtV(v)+'（'+D.d[p.i].replace('-','/')+'）', tw=txt.length*7;
+            var x1=anchor==='start'?xx:anchor==='end'?xx-tw:xx-tw/2, ty=yy+(p.label==='高'?-8:13), dy=p.label==='高'?-11:11;
+            // 多條線同一天創高低時標籤會疊在一起：重疊就往外錯開一行
+            for(var guard=0;guard<6&&placed.some(function(q){return Math.abs(q.y-ty)<10&&x1<q.x2&&x1+tw>q.x1});guard++){
+              ty+=dy;
+              if(ty>G.t+innerH+2){ ty=yy-8; dy=-11; }  // 往下會撞到月份刻度，改從點上方往上疊
+            }
+            placed.push({x1:x1,x2:x1+tw,y:ty});
+            lines.push('<circle cx="'+xx.toFixed(1)+'" cy="'+yy.toFixed(1)+'" r="3" fill="'+COL[k]+'"/><text x="'+xx.toFixed(1)+'" y="'+ty.toFixed(1)+'" text-anchor="'+anchor+'" fill="'+COL[k]+'" font-size="9">'+txt+'</text>');
           });
           if(k==='b'){
             var refY=G.t+innerH*0.8;
@@ -669,16 +682,25 @@ showCurrent();
     </script>
   </div>
   <div class="credit-sp500" style="background:#f8fafc; border:1px solid #e2e8f0; padding:12px 15px; border-radius:8px; margin-top:10px;">
-    <div style="font-size:12px; font-weight:bold; color:#334155;">美國信用利差 vs 標普 500（近60個美國交易日）</div>
+    <div style="font-size:12px; font-weight:bold; color:#334155;">美國信用利差 vs 標普 500（近80個美國交易日）</div>
     <div style="font-size:12px; margin:6px 0;">最新（2026-11-06）：標普 500 7,353.73（2026-11-05）；HY 利差 342 bps；1 個月變化 <span style="color:#dc2626">+27 bps</span></div>
     <div style="overflow-x:auto;"><svg xmlns="http://www.w3.org/2000/svg" width="560" height="210" viewBox="0 0 560 210" style="max-width:100%;">
       <text x="58" y="12" font-size="9" fill="#2563eb">標普 500 收盤（左軸）</text>
       <text x="506" y="12" text-anchor="end" font-size="9" fill="#d97706">HY OAS bps（右軸）</text>
-      <path class="credit-sp500" d="M58.0,52.5 L65.6,67.1 L73.2,62.6 L80.8,81.0 L88.4,71.9 L96.0,77.8 L103.6,71.1 L111.2,71.5 L118.7,56.3 L126.3,61.6 L133.9,68.6 L141.5,83.6 L149.1,74.0 L156.7,51.7 L164.3,59.7  M179.5,72.1 L187.1,82.3 L194.7,94.5 L202.3,76.6 L209.9,86.8 L217.5,96.2 L225.1,105.5 L232.6,81.9 L240.2,78.4 L247.8,47.1 L255.4,47.1 L263.0,63.2 L270.6,63.7 L278.2,52.9 L285.8,69.3 L293.4,72.8 L301.0,78.1 L308.6,74.0 L316.2,58.6 L323.8,44.5 L331.4,32.2 L338.9,36.9 L346.5,46.9 L354.1,34.2 L361.7,35.4 L369.3,35.9 L376.9,59.6 L384.5,52.7 L392.1,75.9 L399.7,67.4 L407.3,61.4 L414.9,49.1 L422.5,74.9 L430.1,85.8 L437.7,71.2 L445.3,58.6 L452.8,52.8 L460.4,59.2 L468.0,97.7 L475.6,108.3 L483.2,100.8 L490.8,67.9 L498.4,159.8 " fill="none" stroke="#2563eb" stroke-width="1.8" stroke-linejoin="round"/><text x="52" y="170.0" text-anchor="end" dominant-baseline="middle" font-size="9" fill="#2563eb">7,317</text><text x="52" y="96.0" text-anchor="end" dominant-baseline="middle" font-size="9" fill="#2563eb">7,586</text><text x="52" y="22.0" text-anchor="end" dominant-baseline="middle" font-size="9" fill="#2563eb">7,856</text><path class="credit-hyOas" d="M58.0,145.3 L65.6,138.0 L73.2,140.9 L80.8,138.0 L88.4,145.3 L96.0,146.7 L103.6,145.3 L111.2,149.6 L118.7,155.4 L126.3,159.8 L133.9,155.4 L141.5,152.5 L149.1,151.1 L156.7,152.5 L164.3,148.2 L171.9,148.2 L179.5,149.6 L187.1,143.8 L194.7,145.3 L202.3,152.5 L209.9,143.8 L217.5,136.6 L225.1,145.3 L232.6,145.3 L240.2,148.2 L247.8,151.1 L255.4,148.2 L263.0,140.9 L270.6,130.8 L278.2,111.9 L285.8,98.9 L293.4,90.2 L301.0,84.4 L308.6,67.0 L316.2,87.3 L323.8,84.4 L331.4,97.4 L338.9,88.8 L346.5,80.1 L354.1,85.9 L361.7,85.9 L369.3,78.6 L376.9,65.6 L384.5,68.5 L392.1,56.9 L399.7,59.8 L407.3,54.0 L414.9,62.7 L422.5,43.8 L430.1,46.7 L437.7,58.3 L445.3,75.7 L452.8,81.5 L460.4,64.1 L468.0,38.0 L475.6,39.5 L483.2,43.8 L490.8,55.4 L498.4,32.2 L506.0,40.9" fill="none" stroke="#d97706" stroke-width="1.8" stroke-linejoin="round"/><text x="512" y="170.0" text-anchor="start" dominant-baseline="middle" font-size="9" fill="#d97706">253</text><text x="512" y="96.0" text-anchor="start" dominant-baseline="middle" font-size="9" fill="#d97706">304</text><text x="512" y="22.0" text-anchor="start" dominant-baseline="middle" font-size="9" fill="#d97706">355</text><text x="58.0" y="185" text-anchor="middle" font-size="9" fill="#64748b">08-17</text><text x="278.2" y="185" text-anchor="middle" font-size="9" fill="#64748b">09-25</text><text x="506.0" y="185" text-anchor="middle" font-size="9" fill="#64748b">11-06</text>
+      <path class="credit-sp500" d="M58.0,127.5 L63.7,110.8 L69.3,113.4 L75.0,136.4 L80.7,135.5 L86.4,135.2 L92.0,131.2 L97.7,159.8 L103.4,129.0 L109.0,115.7 L114.7,87.6 L120.4,53.1 L126.1,56.4 L131.7,59.9 L137.4,47.8 L143.1,48.9 L148.7,55.2 L154.4,50.1 L160.1,37.3 L165.7,40.6 L171.4,51.0 L177.1,64.5 L182.8,60.4 L188.4,77.3 L194.1,68.9 L199.8,74.3 L205.4,68.2 L211.1,68.6 L216.8,54.5 L222.5,59.4 L228.1,65.9 L233.8,79.8 L239.5,70.9 L245.1,50.3 L250.8,57.7  M262.2,69.1 L267.8,78.5 L273.5,89.9 L279.2,73.3 L284.8,82.7 L290.5,91.4 L296.2,100.0 L301.8,78.2 L307.5,74.9 L313.2,46.0 L318.9,46.0 L324.5,60.9 L330.2,61.3 L335.9,51.4 L341.5,66.5 L347.2,69.8 L352.9,74.7 L358.6,70.9 L364.2,56.6 L369.9,43.6 L375.6,32.2 L381.2,36.6 L386.9,45.8 L392.6,34.1 L398.3,35.2 L403.9,35.6 L409.6,57.6 L415.3,51.2 L420.9,72.7 L426.6,64.7 L432.3,59.2 L437.9,47.9 L443.6,71.7 L449.3,81.8 L455.0,68.3 L460.6,56.7 L466.3,51.2 L472.0,57.2 L477.6,92.8 L483.3,102.6 L489.0,95.6 L494.7,65.3 L500.3,150.3 " fill="none" stroke="#2563eb" stroke-width="1.8" stroke-linejoin="round"/><text x="52" y="170.0" text-anchor="end" dominant-baseline="middle" font-size="9" fill="#2563eb">7,276</text><text x="52" y="96.0" text-anchor="end" dominant-baseline="middle" font-size="9" fill="#2563eb">7,568</text><text x="52" y="22.0" text-anchor="end" dominant-baseline="middle" font-size="9" fill="#2563eb">7,859</text><path class="credit-hyOas" d="M58.0,146.7 L63.7,146.7 L69.3,148.2 L75.0,135.1 L80.7,132.2 L86.4,129.3 L92.0,125.0 L97.7,120.6 L103.4,125.0 L109.0,123.5 L114.7,133.7 L120.4,140.9 L126.1,138.0 L131.7,143.8 L137.4,145.3 L143.1,145.3 L148.7,142.4 L154.4,143.8 L160.1,143.8 L165.7,149.6 L171.4,145.3 L177.1,138.0 L182.8,140.9 L188.4,138.0 L194.1,145.3 L199.8,146.7 L205.4,145.3 L211.1,149.6 L216.8,155.4 L222.5,159.8 L228.1,155.4 L233.8,152.5 L239.5,151.1 L245.1,152.5 L250.8,148.2 L256.5,148.2 L262.2,149.6 L267.8,143.8 L273.5,145.3 L279.2,152.5 L284.8,143.8 L290.5,136.6 L296.2,145.3 L301.8,145.3 L307.5,148.2 L313.2,151.1 L318.9,148.2 L324.5,140.9 L330.2,130.8 L335.9,111.9 L341.5,98.9 L347.2,90.2 L352.9,84.4 L358.6,67.0 L364.2,87.3 L369.9,84.4 L375.6,97.4 L381.2,88.8 L386.9,80.1 L392.6,85.9 L398.3,85.9 L403.9,78.6 L409.6,65.6 L415.3,68.5 L420.9,56.9 L426.6,59.8 L432.3,54.0 L437.9,62.7 L443.6,43.8 L449.3,46.7 L455.0,58.3 L460.6,75.7 L466.3,81.5 L472.0,64.1 L477.6,38.0 L483.3,39.5 L489.0,43.8 L494.7,55.4 L500.3,32.2 L506.0,40.9" fill="none" stroke="#d97706" stroke-width="1.8" stroke-linejoin="round"/><text x="512" y="170.0" text-anchor="start" dominant-baseline="middle" font-size="9" fill="#d97706">253</text><text x="512" y="96.0" text-anchor="start" dominant-baseline="middle" font-size="9" fill="#d97706">304</text><text x="512" y="22.0" text-anchor="start" dominant-baseline="middle" font-size="9" fill="#d97706">355</text><text x="58.0" y="185" text-anchor="middle" font-size="9" fill="#64748b">07-20</text><text x="279.2" y="185" text-anchor="middle" font-size="9" fill="#64748b">09-11</text><text x="506.0" y="185" text-anchor="middle" font-size="9" fill="#64748b">11-06</text>
       <line x1="58" x2="74" y1="201" y2="201" stroke="#2563eb"/><text x="78" y="204" font-size="9" fill="#2563eb">標普 500</text>
       <line x1="240" x2="256" y1="201" y2="201" stroke="#d97706"/><text x="260" y="204" font-size="9" fill="#d97706">HY 利差（未反轉）</text>
     </svg></div>
     <div style="font-size:11px; color:#64748b; margin-top:6px;">高收益債利差與標普週報酬同步反向（相關 −0.72），是風險溫度計，不是領先指標。</div>
+    <details style="font-size:11px; color:#64748b; margin-top:6px; line-height:1.7;">
+      <summary style="cursor:pointer;">為什麼要看這張圖：搭配市場寬度判斷恐慌的性質</summary>
+      <ul>
+        <li><strong>利差是「錢有沒有真的在逃」的溫度計。</strong>高收益債利差＝垃圾債比美債多要的利息；資金怕違約時會拋售垃圾債，利差就擴大。它跟股市同步反向（美股週相關 −0.72、台股 −0.56），但用它預測之後 5～60 日的報酬，相關幾乎是 0，所以不能拿來猜明天。</li>
+        <li><strong>市場寬度（站上 60 日線比例）只有極端值有用。</strong>跌破 20% 時，賣壓已擴散到幾乎所有股票，之後 20 日加權平均 +7.6%（平常 +1.8%）；30～80% 之間的水位，以及從上往下跌破 70／60／50／40／30%，都沒有顯著的後續差異，所以不要把寬度當減碼線。</li>
+        <li><strong>兩個一起看：</strong>寬度跌到 20% 以下時，看這張圖判斷恐慌從哪裡來。利差沒有明顯擴大，代表賣壓主要在股市內部（籌碼、題材退潮），比較接近 20% 極端值那種「恐慌後反彈」的樣態；利差同時快速擴大，代表信用市場也在避險，BAA 利差快速擴大後台股 60 日平均最大回撤 −11.9%（平常 −8.2%），底部可能拖得更久，宜分批、不要一次接滿。</li>
+        <li>注意：「寬度＜20%」加上「利差擴大」的組合只有少數幾段事件，沒辦法單獨回測，上面是解讀框架，不是經過驗證的進出場規則。</li>
+      </ul>
+    </details>
   </div>
   <div style="background:#ffffff; border:1px solid #e2e8f0; padding:12px 15px; border-radius:8px; margin-top:10px;">
     <div style="font-size:12px; font-weight:bold; color:#334155; margin-bottom:2px;">外資臺指選擇權未平倉（2026-11-09，括號為對 2026-11-06 的增減）</div>
