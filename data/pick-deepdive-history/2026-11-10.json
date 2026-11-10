@@ -1,6 +1,6 @@
 {
   "date": "2026-11-10",
-  "generatedAt": "2026-11-10T15:51:10.148Z",
+  "generatedAt": "2026-11-10T15:52:55.882Z",
   "items": [
     {
       "pick": {
@@ -70,8 +70,101 @@
         },
         "side": "short"
       },
-      "status": "pending",
-      "analysis": null,
+      "status": "complete",
+      "analysis": {
+        "catalysts": [
+          {
+            "date": "2026-11-10",
+            "event": "公司公布10月合併營收221.56億元、年增22.36%，創歷年同期新高；其中貨運收入82.2億元、年增48.05%，客運收入120.01億元、年增9.2%。公司表示年底購物季備貨推升貨運，預期第四季貨運旺季仍可維持成長，並將彈性調整運力。這是新聞報導轉述的營運資料與公司展望，不代表已確認的獲利幅度。",
+            "sourceType": "新聞",
+            "source": "經濟日報",
+            "url": "https://money.udn.com/money/story/5710/9869464?from=edn_next_story"
+          },
+          {
+            "date": "2026-11-10",
+            "event": "股價收22.80元，當日漲4.83%，高於前收21.75元；當日成交量約100.28百萬股。這些是價格與成交量事實，不能單獨證明營收消息已完整反映。",
+            "sourceType": "新聞",
+            "source": "Investing.com",
+            "url": "https://hk.investing.com/equities/china-air-line-historical-data"
+          },
+          {
+            "date": "2026-11-05",
+            "event": "媒體報導布蘭特原油期貨下跌、華航受惠於燃油成本預期改善及外資買超而上漲；報導同時提到年底旅遊與貨運旺季。油價及股價描述為媒體報導，不等於公司對未來燃油成本或獲利的保證。",
+            "sourceType": "新聞",
+            "source": "元大證券轉載時報資訊",
+            "url": "https://www.yuanta.com.tw/eYuanta/Securities/News/GetAPItem?Type=StockTodayNews&id=202611050100342"
+          },
+          {
+            "date": "2026-08-20",
+            "event": "YouTube 頻道發布華航2026上半年法說解讀，摘要指出營收成長但燃油成本可能壓縮獲利；影片自述為個人研究，並非真實法人報告。僅取得標題與摘要，未觀看影片或取得逐字稿。",
+            "sourceType": "YouTube",
+            "source": "法說解碼｜法人級深度研報Flipingtheworld",
+            "url": "https://www.youtube.com/watch?v=94bW44EZwcQ"
+          }
+        ],
+        "shortTerm": "偏多但不宜把選股池訊號當已驗證結論。10月營收同期新高及貨運年增48.05%提供需求動能，若年底備貨與旅遊旺季延續，營收可望支撐市場預期；這是根據公司展望的推論，獲利仍受燃油成本與運價影響。[經濟日報](https://money.udn.com/money/story/5710/9869464?from=edn_next_story) 另一方面，股價截至交易日已收22.80元、當日漲4.83%，且11月5日曾因油價下跌預期上漲；短線可能已先反映部分利多，追高風險升高。[Investing.com](https://hk.investing.com/equities/china-air-line-historical-data) [元大證券轉載時報資訊](https://www.yuanta.com.tw/eYuanta/Securities/News/GetAPItem?Type=StockTodayNews&id=202611050100342)",
+        "longTerm": "未來1–4季的多空取決於需求能否轉成獲利，而非單看營收。10月貨運與客運均成長，公司稱第四季貨運旺季仍有望延續；若運價、載客率及新增運能的收益足以抵銷燃油、維修與人事成本，營收成長可能推升獲利，這是推論。[經濟日報](https://money.udn.com/money/story/5710/9869464?from=edn_next_story) 反向風險是油價回升、貨運旺季不如預期或高營收未能改善利潤率；已取得的YouTube摘要亦提出燃油成本可能壓縮獲利，但其屬個人研究而非法人報告，且未觀看影片。[YouTube](https://www.youtube.com/watch?v=94bW44EZwcQ)",
+        "expectedRange": {
+          "band": "資料不足，無法估算",
+          "basis": "能查得近期收盤價與漲跌資料，但目前可取得的搜尋結果未提供截至2026-11-10至少20筆連續每日報酬，可重現地計算標準差σ×√20；也未核實該期間除權息調整方式。故不以短期區間或其他股票波動替代統計預期。",
+          "urls": [
+            "https://hk.investing.com/equities/china-air-line-historical-data"
+          ]
+        },
+        "pricedIn": [
+          "可觀察事實：11月5日華航收21.65元、單日上漲5.61%，媒體當時將油價下跌與外資買超列為背景；11月10日收22.80元、當日再漲4.83%。推論：油價利多與短線動能已有部分反映，但無法量化其反映程度。[11月5日行情](https://hk.investing.com/equities/china-air-line-historical-data) [油價與盤勢報導](https://www.yuanta.com.tw/eYuanta/Securities/News/GetAPItem?Type=StockTodayNews&id=202611050100342)"
+        ],
+        "notPricedIn": [
+          "10月營收同期新高於11月10日公布，當日股價仍上漲；這只能證明公布與當日行情同時可觀察，不能證明市場尚未反映。公布前股價也已走強，故10月營收消息的未反映幅度無法判定。[營收報導](https://money.udn.com/money/story/5710/9869464?from=edn_next_story) [歷史價格](https://hk.investing.com/equities/china-air-line-historical-data)"
+        ],
+        "horizonFit": {
+          "kind": "短線",
+          "reason": "輸入訊號主要是兩週至一月動能及法人買超，近期營收與旺季展望提供短線催化，但長期獲利、成本與估值尚不足以確認。"
+        },
+        "positioning": "偏多觀察，不追當日急漲；輸入資料所列回測均線或整理後再轉強可作為觀察條件，但這些數字來自選股池而非本次獨立核實。須留意營收成長不必然等於獲利改善。非個人化投資建議。",
+        "invalidation": [
+          "截至2026-11-10可核實的行情顯示當日收22.80元、前一交易日收21.75元；若後續收盤跌回21.75元以下，短線突破延續假設轉弱。此價位依據為前一交易日收盤，不是公司基本面支撐位。[Investing.com](https://hk.investing.com/equities/china-air-line-historical-data)",
+          "至下一次月營收公告時，若公司公布的客貨運營收不再維持年增，或公司不再確認第四季貨運旺季成長，則本次需求動能假設需重估；目前未查得下一次公告日期，不臆造日期。[經濟日報](https://money.udn.com/money/story/5710/9869464?from=edn_next_story)"
+        ],
+        "sentiment": "搜尋樣本中可見偏多的旺季與油價利多敘事，另有YouTube摘要提醒燃油成本壓利潤；PTT僅找到較早的討論，Threads及Mobile01未找到可核實的近期股票討論，整體樣本有限，不能推定全市場情緒或判定過熱。",
+        "sourceCoverage": [
+          {
+            "sourceType": "公告",
+            "status": "找到",
+            "note": "以「華航2610 2026年10月營收公告」及公司新聞稿頁查詢；找到10月營收報導及公司新聞稿列表，但本次未取得可直接核對的MOPS該筆原始公告頁。公司IR頁：https://www.china-airlines.com/us/zh/about-china-airlines/media/news.html"
+          },
+          {
+            "sourceType": "新聞",
+            "status": "找到",
+            "note": "以「2610 華航 2026-11-10 新聞」查詢，找到經濟日報10月營收報導及11月5日油價／航空股報導；當中部分內容是媒體對市場因素的解讀。https://money.udn.com/money/story/5710/9869464?from=edn_next_story"
+          },
+          {
+            "sourceType": "YouTube",
+            "status": "找到",
+            "note": "以「華航 2610 YouTube 2026」查詢，找到2026-08-20法說解讀；僅取得標題與摘要，未觀看影片、未取得逐字稿；該頻道說明其內容為個人研究。https://www.youtube.com/watch?v=94bW44EZwcQ"
+          },
+          {
+            "sourceType": "Threads",
+            "status": "查無結果",
+            "note": "以「site:threads.net 華航 2610」及「華航 股價 Threads 2026 11月」查詢；搜尋結果未找到可核實的相關近期貼文，搜尋引擎索引不足不代表平台沒有討論。"
+          },
+          {
+            "sourceType": "PTT",
+            "status": "找到",
+            "note": "以「site:ptt.cc/bbs/Stock 華航 2610 2026」查詢，找到2026年8月標的文及9月法人買賣排行；不是11月10日當日討論，僅為有限樣本。https://www.ptt.cc/bbs/Stock/M.1786900065.A.C56.html"
+          },
+          {
+            "sourceType": "Dcard",
+            "status": "找到",
+            "note": "以「site:dcard.tw 華航 2610 2026」查詢，找到2026年9月徵才資訊轉貼，屬人力招募而非投資情緒或股價討論；不足以判斷散戶方向。https://www.dcard.tw/%40emily_cpy/post/262229796"
+          },
+          {
+            "sourceType": "Mobile01",
+            "status": "查無結果",
+            "note": "以「site:mobile01.com 華航 2610 2026」及「華航 Mobile01 2026 2610」查詢；未找到可核實的近期相關結果。此為搜尋索引限制，不代表平台沒有討論。"
+          }
+        ]
+      },
       "error": ""
     },
     {
@@ -142,8 +235,119 @@
         },
         "side": "short"
       },
-      "status": "pending",
-      "analysis": null,
+      "status": "complete",
+      "analysis": {
+        "catalysts": [
+          {
+            "date": "2026-11-10",
+            "event": "公司公告董事會通過2026年第3季合併財務報告：2026年前三季營收1,943.80億元、歸母淨利189.15億元、EPS 3.50元。這是公告事實；對未來盈利持續性的判斷仍需後續季度驗證。",
+            "sourceType": "公告",
+            "source": "公開資訊觀測站公告（Yahoo股市轉載）",
+            "url": "https://tw.finance.yahoo.com/quote/2618/announcement"
+          },
+          {
+            "date": "2026-11-10",
+            "event": "公司公告2026年10月合併營收231.82億元、年增22.63%；經濟日報報導客運營收年增13.27%、貨運年增46.17%，並引述公司展望第四季需求增強。營收數字為公司公告／新聞報導；第四季需求展望屬公司說法。",
+            "sourceType": "新聞",
+            "source": "經濟日報",
+            "url": "https://money.udn.com/money/story/5710/9869850?from=ednamp-referralnews_ch1001artbottom"
+          },
+          {
+            "date": "2026-11-10",
+            "event": "公司公告承租4架A321neo客機，使用權資產約1.75億美元。此為機隊擴充安排，對新增運能、成本與獲利的淨效果尚待觀察。",
+            "sourceType": "公告",
+            "source": "公開資訊觀測站公告（Yahoo股市轉載）",
+            "url": "https://tw.finance.yahoo.com/quote/2618/announcement"
+          },
+          {
+            "date": "2026-08-05",
+            "event": "公司公告預定2026-12-01開闢桃園－德里直飛航線，每週5班並已開放訂位；新增航點能否轉化為載客率與收益仍屬待驗證推論。",
+            "sourceType": "公告",
+            "source": "長榮航空",
+            "url": "https://www.evaair.com/zh-tw/about-eva-air/news/news-releases/2026-08-05-direct-flights-from-taipei-to-delhi.html"
+          },
+          {
+            "date": "2026-11-10",
+            "event": "收盤46.15元、單日上漲5.13%；三大法人合計買超18,593張，其中外資買超18,036張。屬行情與籌碼觀察，不能單獨證明後續方向。",
+            "sourceType": "新聞",
+            "source": "Investing.com、Blave（列示TWSE資料）",
+            "url": "https://hk.investing.com/equities/eva-airways-historical-data"
+          },
+          {
+            "date": "2026-07-08",
+            "event": "YouTube搜尋結果列出長榮航投資分析影片，摘要談及航線、營收與風險；僅取得標題及摘要，未觀看影片或取得逐字稿，且已超出近30日催化窗口。",
+            "sourceType": "YouTube",
+            "source": "脈動簡語",
+            "url": "https://www.youtube.com/watch?v=BES3DysAvFo"
+          }
+        ],
+        "shortTerm": "1–4週：偏多但不宜追價。可觀察10月營收年增22.63%、第四季需求展望及11月10日法人買超是否延續；營收／需求可能支撐市場對旺季的預期（推論）。但當日已上漲5.13%，股價在近期區間高位，短線回檔與利多消化風險上升。12月1日德里首航是已公告安排，但距離營運貢獻實現尚有時間，短線股價反應不確定。來源：https://money.udn.com/money/story/5710/9869850?from=ednamp-referralnews_ch1001artbottom；https://hk.investing.com/equities/eva-airways-historical-data；https://www.evaair.com/zh-tw/about-eva-air/news/news-releases/2026-08-05-direct-flights-from-taipei-to-delhi.html",
+        "longTerm": "1–4季：偏正向但需追蹤獲利品質。前三季EPS 3.50元、10月客貨運營收均年增，若第四季旺季需求延續，可能支持營收與獲利（推論）。德里航線及4架A321neo擴充可增加航網／運能，但新航線培養、機隊租賃成本、油價、匯率及票價競爭都可能抵銷效益；營收成長不能直接等同每股盈餘成長。來源：https://tw.finance.yahoo.com/quote/2618/announcement；https://money.udn.com/money/story/5710/9869850?from=ednamp-referralnews_ch1001artbottom；https://www.evaair.com/zh-tw/about-eva-air/news/news-releases/2026-08-05-direct-flights-from-taipei-to-delhi.html",
+        "expectedRange": {
+          "band": "資料不足，無法估算",
+          "basis": "未取得可核實且完整的至少20個近期每日收盤／調整收盤觀測值，故無法按每日報酬標準差σ×√20估算約20交易日歷史波動尺度。已查到的Investing.com頁面僅在搜尋摘要顯示部分日期，不能據此計算完整樣本；也未建立除權息調整序列。此處不以輸入的漲幅或同業波動替代統計估算。",
+          "urls": [
+            "https://hk.investing.com/equities/eva-airways-historical-data",
+            "https://finance.yahoo.com/quote/2618.TW/history/"
+          ]
+        },
+        "pricedIn": [
+          "可觀察事實：截至2026-11-10收盤46.15元，當日上漲5.13%；近幾個交易日股價有大幅波動，且近月已累計上行（來源頁列示近期歷史價格）。因此部分短線樂觀情緒可能已反映於價格，屬推論，無法量化反映程度。https://hk.investing.com/equities/eva-airways-historical-data",
+          "可觀察事實：10月營收與第三季財報於2026-11-10公布；股價同日收高。由於公告與盤後營收新聞的時間先後、消息逐項反應程度無法由現有資料拆解，是否已完整反映無法判定。https://tw.finance.yahoo.com/quote/2618/announcement"
+        ],
+        "notPricedIn": [
+          "德里航線已公告將於2026-12-01啟航，但搜尋資料無法證明市場尚未反映此安排；實際訂位、載客率與收益仍待營運資料驗證。https://www.evaair.com/zh-tw/about-eva-air/news/news-releases/2026-08-05-direct-flights-from-taipei-to-delhi.html",
+          "4架A321neo租賃公告於2026-11-10發布，新增運能的實際效益及租賃成本對獲利的淨影響待後續財報驗證；市場是否已反映無法判定。https://tw.finance.yahoo.com/quote/2618/announcement"
+        ],
+        "horizonFit": {
+          "kind": "兩者",
+          "reason": "短期有營收、法人動能但當日急漲使追價風險提高；中期有旺季及已公告新航線，仍須用後續獲利與航線表現驗證。"
+        },
+        "positioning": "整體偏多、短線採觀察或等回測，不追當日急漲；若進入觀察名單，需確認營收動能、法人買盤與趨勢支撐延續。長線可追蹤第四季獲利及德里航線營運數據。選股池訊號不是已驗證結論；輸入所稱外資連買3日與外部資料顯示的連續買超日數不一致，應以官方交易資料再核對。非個人化投資建議。",
+        "invalidation": [
+          "若收盤跌破輸入資料所列MA20 43.25元，代表該選股池原有趨勢條件失效；此價位來自輸入資料，未獨立核實，應以交易所歷史行情重算後使用。",
+          "截至2026-12-01核對德里航線是否按公司公告開航；若未開航或公司公告延期，原新航線催化假設失效。依據：https://www.evaair.com/zh-tw/about-eva-air/news/news-releases/2026-08-05-direct-flights-from-taipei-to-delhi.html",
+          "下一次季度財報核對客運、貨運收入成長是否轉化為獲利；若獲利相較前三季趨勢明顯轉弱，旺季營收帶動獲利的推論需撤回。財報公告來源：https://tw.finance.yahoo.com/quote/2618/announcement"
+        ],
+        "sentiment": "可搜尋到的近期公開討論樣本偏少，未見足以代表整體散戶方向的資料；YouTube可取得結果主要較早且僅有標題／摘要，未觀看或取得逐字稿。方向與熱度無法判定，不能以搜尋排序推估整體民意。",
+        "sourceCoverage": [
+          {
+            "sourceType": "公告",
+            "status": "找到",
+            "note": "查詢「2618 長榮航 2026/11/10 公告」及公司公告頁；找到第三季財報、10月營收、A321neo租賃等當日公告。來源頁為Yahoo股市轉載公開資訊觀測站公告，未直接取得MOPS原始單筆網址：https://tw.finance.yahoo.com/quote/2618/announcement"
+          },
+          {
+            "sourceType": "新聞",
+            "status": "找到",
+            "note": "查詢「長榮航 2026 10月營收 11月10日」；找到經濟日報2026-11-10報導營收與第四季需求展望：https://money.udn.com/money/story/5710/9869850?from=ednamp-referralnews_ch1001artbottom"
+          },
+          {
+            "sourceType": "YouTube",
+            "status": "找到",
+            "note": "查詢「長榮航 2618 YouTube 2026 十一月」；搜尋可取得較早影片標題及摘要，未觀看影片或取得逐字稿，未找到足以核實的近30日影片：https://www.youtube.com/watch?v=BES3DysAvFo"
+          },
+          {
+            "sourceType": "Threads",
+            "status": "查無結果",
+            "note": "查詢「site:threads.net 長榮航 股票 2618 2026」及相近字詞未取得可核實的相關貼文；搜尋引擎索引不完整，不能據此推論平台沒有討論。"
+          },
+          {
+            "sourceType": "PTT",
+            "status": "找到",
+            "note": "查詢「site:ptt.cc 長榮航 2618 2026」；找到2026-09營收及旅展等貼文，未找到截止日前近30日且可代表方向的明確個股討論。搜尋結果樣本有限：https://www.ptt.cc/bbs/Stock/M.1789035774.A.8CB.html"
+          },
+          {
+            "sourceType": "Dcard",
+            "status": "找到",
+            "note": "查詢「site:dcard.tw/f/stock/p 長榮航 2618 2026 十月 OR 十一月」；找到2026-11-09盤前貼文提及長榮航族群反彈，但非深入個股分析，樣本有限：https://www.dcard.tw/f/stock/p/262423166"
+          },
+          {
+            "sourceType": "Mobile01",
+            "status": "查無結果",
+            "note": "查詢「site:mobile01.com/topicdetail 長榮航 2618 2026」未找到近30日明確討論；可見結果多為其他公司或較舊內容，不能推論平台沒有討論。"
+          }
+        ]
+      },
       "error": ""
     },
     {
@@ -229,8 +433,104 @@
         },
         "side": "short"
       },
-      "status": "pending",
-      "analysis": null,
+      "status": "complete",
+      "analysis": {
+        "catalysts": [
+          {
+            "date": "2026-11-10",
+            "event": "台玻公布2026年10月合併營收55.66億元，年增56.49%、月增12.04%；1至10月累計年增22.62%。公司公告數據由媒體轉述。營收加速可能改善市場對營運動能的預期（推論），但單月營收不等於獲利或現金流。",
+            "sourceType": "新聞",
+            "source": "鉅亨網",
+            "url": "https://news.cnyes.com/news/id/6655811"
+          },
+          {
+            "date": "2026-11-02",
+            "event": "媒體報導董事會通過桃園、鹿港窯爐增建及台嘉蚌埠玻纖冷修擴充案，報導所述投資額約新台幣16.3億元及人民幣11.5億元；此為媒體轉述公司決議，非本研究直接取得的公告全文。擴產可能增加後續供給能力，惟投入成本、時程與需求消化是風險。",
+            "sourceType": "新聞",
+            "source": "SASUGOD Report（轉述台玻）",
+            "url": "https://report.sasugod.com/tw/1802"
+          },
+          {
+            "date": "2026-11-03",
+            "event": "YouTube提及彙整頁記錄當日5個頻道提及台玻，標示多空偏多；僅能確認彙整頁的標題／分類摘要，未觀看原影片、未取得逐字稿，不能視為頻道已驗證的營運資訊。",
+            "sourceType": "YouTube",
+            "source": "投資看完了（頻道提及彙整）",
+            "url": "https://invest.calwhat.com/stock/1802"
+          },
+          {
+            "date": "2026-11-10",
+            "event": "台玻當日收盤69.8元，嗨投資頁面同時列示開65.5、高69.8、低65.4；這與輸入所稱「今日漲停」一致，但行情資料並非公司公告。連續急漲提高追價及波動風險。",
+            "sourceType": "新聞",
+            "source": "HiStock",
+            "url": "https://histock.tw/stock/tcharti.aspx?m=m&no=1802"
+          }
+        ],
+        "shortTerm": "未來1–4週，10月營收年增56.49%、月增12.04%是可查證的營運催化；若市場相信玻纖相關需求能延續，可能支撐情緒與營收預期（推論）。但截至11月10日股價收69.8元並達當日高點，且彙整新聞稱近5日三大法人合計賣超，和輸入所列外資連買及大額買超數字存在口徑或期間不一致，應先核對原始逐日資料，不能直接把單一籌碼訊號視為確認。短線漲停後追價、當沖比輸入所列37%及消息兌現後賣壓均為風險。來源：https://news.cnyes.com/news/id/6655811、https://histock.tw/stock/tcharti.aspx?m=m&no=1802",
+        "longTerm": "未來1–4季，11月2日媒體轉述的窯爐增建與蚌埠冷修擴充，若按期完成且新增產能被需求吸收，可能改善供貨能力（推論）；但尚缺本研究可核實的公司公告全文、明確投產時程、產能數及收益貢獻，亦不能把玻璃基板題材直接等同台玻已取得訂單或量產。營收成長能否轉化為利潤需以後續財報驗證；擴產資本支出、玻纖需求循環與高階產品良率是主要風險。來源：https://report.sasugod.com/tw/1802、https://news.cnyes.com/news/id/6655811",
+        "expectedRange": {
+          "band": "資料不足，無法估算",
+          "basis": "雖找到Yahoo財經歷史行情頁，但搜尋結果僅提供零散日期，未取得截至2026-11-10至少20個交易日的完整日收盤價序列，無法計算該股每日報酬標準差σ×√20。亦未能確認該期間除權息／分割調整資料；不以輸入所列短期漲幅或高低價替代統計區間。",
+          "urls": [
+            "https://hk.finance.yahoo.com/quote/1802.TW/history/"
+          ]
+        },
+        "pricedIn": [
+          "可觀察事實：截至2026-11-10報導稱台玻收69.8元並漲停，營收公告亦於當日發布；價格上漲與營收消息同日出現。這只能支持市場當日有強烈買盤，不能判定營收利多已完全反映。https://news.cnyes.com/news/id/6655811、https://histock.tw/stock/tcharti.aspx?m=m&no=1802",
+          "可觀察事實：2026-11-03 YouTube提及彙整呈偏多；是否已反映於股價及其代表性無法判定。https://invest.calwhat.com/stock/1802"
+        ],
+        "notPricedIn": [
+          "擴產效益是否尚未反映無法判定：找到的是媒體對11月2日董事會決議的摘要，缺公告全文、工程時程與市場一致預期，不能斷言市場尚未定價。https://report.sasugod.com/tw/1802",
+          "玻璃基板概念能否帶來台玻實際營收或獲利，缺截至交易日可核實的公司訂單、量產或財務貢獻證據；不判定為尚未反映。https://udn.com/news/amp/story/7253/9517961"
+        ],
+        "horizonFit": {
+          "kind": "兩者",
+          "reason": "營收加速提供短期催化、擴產可能提供中期供給選擇權，但漲停追價風險與欠缺可核實的量產收益時程，使兩種期限都需等待驗證。"
+        },
+        "positioning": "中立偏多、以觀察為主；營收數據偏強，但當日漲停且交易熱度高，輸入籌碼訊號與新聞所列近5日法人賣超有矛盾，待原始資料及價格整理確認後再評估，不追價。非個人化投資建議。",
+        "invalidation": [
+          "若後續收盤跌破輸入資料所列MA20 64.7元，代表原選股計畫設定的趨勢條件失守；該均線數字來自輸入 pick，未另以完整行情序列驗證。",
+          "截至下一次月營收公告時，若公司公告的月營收未能延續年增，則「營收加速持續」假設失效；實際公告日未在可查來源中確認，應以公司公告日為檢核期限。",
+          "若公司後續公告未見11月2日報導所述擴產案進度，或公告內容與媒體摘要不符，則不再以該擴產案作為中期催化；目前未找到可核實的預定完工／投產日期。"
+        ],
+        "sentiment": "YouTube彙整頁截至11月3日記錄5個頻道提及且分類偏多，但未觀看原片；PTT、Dcard有近期相關討論，樣本有限且不能代表整體市場民意，未見足以判定散戶單邊過熱的可靠樣本。",
+        "sourceCoverage": [
+          {
+            "sourceType": "公告",
+            "status": "找到",
+            "note": "精準搜尋1802台玻與公告後可找到MOPS入口及搜尋索引；10月營收及11月2日擴產資訊主要取得媒體／資料彙整轉述，未取得MOPS公告原文全文。MOPS搜尋頁顯示可查歷史重大訊息，但搜尋結果不足以核實公告細節。"
+          },
+          {
+            "sourceType": "新聞",
+            "status": "找到",
+            "note": "查詢「台玻 1802 2026 11月 新聞」找到鉅亨網11月10日營收報導及其他市場報導；已採用日期在交易日當日或之前的內容。"
+          },
+          {
+            "sourceType": "YouTube",
+            "status": "找到",
+            "note": "查詢「1802 台玻 YouTube 2026 11月」找到頻道提及彙整頁，最近記錄為11月3日；未觀看原影片、未取得逐字稿，只引用摘要分類。"
+          },
+          {
+            "sourceType": "Threads",
+            "status": "查無結果",
+            "note": "以site:threads.net及「台玻」「1802」「2026」查詢，搜尋結果未找到可核實的交易日前相關貼文；僅代表本次搜尋無結果，不表示平台沒有討論。"
+          },
+          {
+            "sourceType": "PTT",
+            "status": "找到",
+            "note": "搜尋結果找到11月2日相關新聞貼文及其他討論；貼文內容含作者整理與留言，不視為公司揭露或市場代表性樣本。"
+          },
+          {
+            "sourceType": "Dcard",
+            "status": "找到",
+            "note": "搜尋結果找到近期台玻與族群討論；未據此推論整體散戶情緒。"
+          },
+          {
+            "sourceType": "Mobile01",
+            "status": "查無結果",
+            "note": "以site:mobile01.com及「台玻」「1802」查詢僅找到多年以前的公司代號整理文，沒有截至交易日可用的近期個股討論；搜尋無結果不代表平台沒有討論。"
+          }
+        ]
+      },
       "error": ""
     },
     {
@@ -293,8 +593,132 @@
         },
         "side": "short"
       },
-      "status": "pending",
-      "analysis": null,
+      "status": "complete",
+      "analysis": {
+        "catalysts": [
+          {
+            "date": "2026-11-09",
+            "event": "公司公告受邀參加凱基證券線上法人說明會，安排於11月11日舉行；截至交易日尚未舉行，內容與營運指引未能預知。",
+            "sourceType": "公告",
+            "source": "天擎／公開資訊彙整",
+            "url": "https://guliu.tw/s/6708"
+          },
+          {
+            "date": "2026-11-06",
+            "event": "公告2026年10月合併營收3,407.5萬元，年增67.81%；1至10月累計營收2.61238億元，年增8.73%。屬已公告營運數據，單月高成長不等於全年獲利同步成長。",
+            "sourceType": "公告",
+            "source": "中央社財經／Yahoo股市",
+            "url": "https://tw.stock.yahoo.com/quote/6708/news"
+          },
+          {
+            "date": "2026-11-05",
+            "event": "董事會通過2026年第3季合併財報；截至1至9月累計營收2.27163億元、歸屬母公司淨利998.3萬元、EPS 0.35元。",
+            "sourceType": "公告",
+            "source": "中央社財經／Yahoo股市",
+            "url": "https://tw.stock.yahoo.com/quote/6708/news"
+          },
+          {
+            "date": "2026-10-05",
+            "event": "公司公告近期多次達公布注意交易資訊標準，並揭露截至當時的財務業務資訊；這顯示股價波動與交易異常需留意，不是公司對後續股價的預測。",
+            "sourceType": "公告",
+            "source": "中央社財經／Yahoo股市",
+            "url": "https://tw.stock.yahoo.com/quote/6708/news"
+          },
+          {
+            "date": "2026-11-10",
+            "event": "鉅亨報導股價觸及82.5元漲停；報導稱近5日股價上漲9.81%，同期櫃買指數下跌12.8%，並列出法人買超。屬媒體市場資料，不是公司揭露。",
+            "sourceType": "新聞",
+            "source": "鉅亨網",
+            "url": "https://gfe-desktop.cnyes.com/news/id/6655336?exp=b"
+          },
+          {
+            "date": "2026-10-06",
+            "event": "PTT貼文列天擎為注意股，提及漲幅、週轉率及量放大；為引用交易所／櫃買中心名單的討論，非公司揭露。",
+            "sourceType": "社群",
+            "source": "PTT Stock板",
+            "url": "https://www.ptt.cc/bbs/Stock/M.1791285227.A.A07.html"
+          },
+          {
+            "date": "",
+            "event": "搜尋到較早的天擎討論頁，非本次近30日證據；日期不明，不能據此判定交易日附近的社群情緒。",
+            "sourceType": "社群",
+            "source": "Mobile01",
+            "url": "https://www.mobile01.com/topicdetail.php?f=291&t=5999290"
+          },
+          {
+            "date": "",
+            "event": "搜尋到較早的天擎相關Dcard貼文，非本次近30日證據；不能用作本交易日基本面或市場情緒證據。",
+            "sourceType": "社群",
+            "source": "Dcard股票板",
+            "url": "https://www.dcard.tw/f/stock/p/257592164"
+          }
+        ],
+        "shortTerm": "短線（1–4週）：偏多動能已明確反映在交易價格上，輸入資料記載收盤82.5元漲停、兩週漲44.2%；外資買超與漲停可延續追價動能，但漲停後流動性與回撤風險升高。11月11日線上法說為已公告的近端事件，可能透過營運說明影響預期；截至11月10日法說尚未舉行，不能預設利多內容。10月營收年增67.81%是支持因素，但累計年增為8.73%，單月成長能否延續仍待後續公告驗證。[營收公告](https://tw.stock.yahoo.com/quote/6708/news)；[漲停與市場資料](https://gfe-desktop.cnyes.com/news/id/6655336?exp=b)；[法說安排](https://guliu.tw/s/6708)",
+        "longTerm": "長線（1–4季）：目前可核實的基本面是2026年前三季EPS 0.35元、累計淨利998.3萬元，以及10月營收年增但年初至今累計僅增8.73%。若後續營收成長持續並轉為獲利改善，推論上可支持基本面評價；反之，單月營收增長或法說題材若未轉化為持續營收與獲利，近期漲幅及估值可能承壓。搜尋結果未找到可核實的低軌衛星／微波通訊新訂單或營收揭露，選股訊號中的族群題材不能當作已確認催化。[第三季財報公告摘要](https://tw.stock.yahoo.com/quote/6708/news)；[10月營收公告摘要](https://tw.stock.yahoo.com/quote/6708/news)",
+        "expectedRange": {
+          "band": "資料不足，無法估算",
+          "basis": "需要至少20個截至2026-11-10的近期每日收盤價，才能計算每日報酬標準差σ及σ×√20；本次可取得的來源未提供可直接核算的完整日收盤序列，輸入僅有兩週／一月累積報酬、均線與高低指標，無法替代日報酬標準差。亦未核對期間是否有除權息或分割調整。不得以同業波動或區間漲跌冒充統計預期。",
+          "urls": [
+            "https://gfe-desktop.cnyes.com/news/id/6655336?exp=b",
+            "https://goodinfo.tw/tw/StockDetail.asp?INITIALIZED=T&STOCK_ID=6708"
+          ]
+        },
+        "pricedIn": [
+          "可觀察事實：輸入資料記載截至2026-11-10股價82.5元漲停、兩週上漲44.2%、一月上漲19.2%；鉅亨亦報導當日觸及漲停。推論：短線動能與部分營收／題材預期可能已反映於急漲，幅度無法僅憑現有資料量化。[鉅亨漲停報導](https://gfe-desktop.cnyes.com/news/id/6655336?exp=b)",
+          "可觀察事實：截至交易日已公告10月營收年增67.81%、前三季EPS 0.35元；同時前三季累計營收年增8.73%。哪些成長預期已反映無法由公告本身判斷；市場估值與一致預期缺少足夠、可核對的歷史截點資料，無法判定定價程度。[公告摘要](https://tw.stock.yahoo.com/quote/6708/news)"
+        ],
+        "notPricedIn": [
+          "11月11日法說截至2026-11-10尚未舉行，會中若有新指引可能帶來資訊變化；但不能宣稱未反映，因股價已於近期大幅上漲，無法確認市場預期及定價程度。[法說安排](https://guliu.tw/s/6708)",
+          "低軌衛星／微波通訊題材是否有訂單、出貨或營收貢獻，未找到截至交易日可核實的公司公告；因此無法判定該題材已反映或未反映。"
+        ],
+        "horizonFit": {
+          "kind": "短線",
+          "reason": "近端有已公告法說安排與強勢動能，但漲停及急漲令追價風險偏高，且中長期題材缺少可核實營收落地證據。"
+        },
+        "positioning": "中立偏多、以觀察為主；選股池訊號顯示動能與外資買超偏正面，但82.5元漲停且兩週漲幅很大，不宜把訊號當成已驗證結論或追高依據。待法說內容及後續營收／獲利驗證再評估，非個人化投資建議。",
+        "invalidation": [
+          "若按輸入交易計畫觀察，收盤跌破MA20 65.6元或跌破進場價8%停損條件即代表原動能策略失效；該均線與策略數值來自輸入pick，未由獨立歷史價格序列核驗。",
+          "截至2026-11-11已公告的線上法說若未如期舉行，或會後未提供可核實的營運進展，則近端催化假設失效；應以公司公告／法說資料核對。"
+        ],
+        "sentiment": "近期搜尋樣本有限：PTT找到10月注意股清單，Mobile01與Dcard僅找到較早貼文；未取得可確認為近30日的YouTube內容或Threads討論，故無法判定近期散戶整體熱度與方向，也不以搜尋排序代表市場民意。",
+        "sourceCoverage": [
+          {
+            "sourceType": "公告",
+            "status": "找到",
+            "note": "以「6708 天擎」搜尋到10月營收、第三季財報及11月11日法說安排摘要；透過Yahoo／公開資訊彙整頁取得，未直接開啟MOPS原始公告全文。"
+          },
+          {
+            "sourceType": "新聞",
+            "status": "找到",
+            "note": "以「6708 天擎 2026 新聞／漲停」查到鉅亨當日漲停報導及Yahoo個股新聞摘要；媒體資料與公司公告已在內容中區分。"
+          },
+          {
+            "sourceType": "YouTube",
+            "status": "查無結果",
+            "note": "以「天擎 6708 2026」及YouTube網域查詢未取得可核實的近期影片或逐字稿；不能據此推論沒有相關影片。"
+          },
+          {
+            "sourceType": "Threads",
+            "status": "查無結果",
+            "note": "以Threads網域加「天擎 6708」查詢未取得可核實貼文；搜尋結果範圍有限，不代表平台沒有討論。"
+          },
+          {
+            "sourceType": "PTT",
+            "status": "找到",
+            "note": "以PTT網域加「天擎 6708」找到2026-10-06注意股清單及較早討論；未找到可確認為近30日且深入公司催化的貼文。"
+          },
+          {
+            "sourceType": "Dcard",
+            "status": "找到",
+            "note": "找到天擎舊貼文，但不屬近30日；未取得交易日前近期討論樣本，不能據此判定當前情緒。"
+          },
+          {
+            "sourceType": "Mobile01",
+            "status": "找到",
+            "note": "以Mobile01網域加「天擎 6708」找到較早討論頁，非近30日樣本；搜尋不到近期貼文不代表沒有討論。"
+          }
+        ]
+      },
       "error": ""
     },
     {
@@ -375,8 +799,118 @@
         },
         "side": "long"
       },
-      "status": "pending",
-      "analysis": null,
+      "status": "complete",
+      "analysis": {
+        "catalysts": [
+          {
+            "date": "2026-11-02",
+            "event": "公司公告董事會通過桃園、鹿港廠窯爐增建及子公司台嘉蚌埠冷修擴充案，公告投資金額約新台幣16.3億元及人民幣11.5億元，資金來源為自有資金及銀行借款。這是已公告投資計畫，不代表新增產能已投產或完成客戶驗證。",
+            "sourceType": "公告",
+            "source": "台玻／公開資訊觀測站公告（Yahoo股市轉載）",
+            "url": "https://tw.stock.yahoo.com/quote/1802/announcement"
+          },
+          {
+            "date": "2026-11-02",
+            "event": "董事會通過2026年前三季合併財報；公告列前三季歸屬母公司淨利約45.65億元、EPS 1.57元。這與輸入訊號所述營運改善相符，但單季獲利延續性仍待後續財報確認。",
+            "sourceType": "公告",
+            "source": "台玻／公開資訊觀測站公告（Yahoo股市轉載）",
+            "url": "https://tw.stock.yahoo.com/quote/1802/announcement"
+          },
+          {
+            "date": "2026-11-10",
+            "event": "公司公布10月合併營收約55.66億元，年增56.49%、月增12.04%；前十月累計年增22.62%。營收數據支持營運動能改善，但營收成長不等同獲利或現金流同步改善。",
+            "sourceType": "公告",
+            "source": "台玻／MoneyDJ轉載",
+            "url": "https://m.moneydj.com/f1a.aspx?a=ABFC83DB-5E00-460F-9EBB-5ACF86EA26CC"
+          },
+          {
+            "date": "2026-11-10",
+            "event": "媒體報導台玻收在69.8元漲停，連兩個交易日觸及漲停；報導並提及10月營收及玻纖布題材。這是市場價格與媒體整理，不是公司對股價或需求的承諾。",
+            "sourceType": "新聞",
+            "source": "聯合新聞網／經濟日報",
+            "url": "https://udn.com/news/story/7252/9869501"
+          },
+          {
+            "date": "2026-11-10",
+            "event": "媒體稱台玻11月9日外資買超18,575張，並報導11月2日董事會擴產計畫；同篇提醒新增產能仍須設備交付及客戶驗證。外資買超與後續需求看法屬媒體整理及分析，不能視為公司揭露。",
+            "sourceType": "新聞",
+            "source": "優分析",
+            "url": "https://anuenews.cnyes.com/news/id/6655377"
+          },
+          {
+            "date": "2026-11-03",
+            "event": "媒體轉述群益投顧給予買進評等、目標價81元，並列出2027、2028年EPS預估。此為券商預測而非公司指引；來源為媒體轉述，未取得原始研究報告全文。",
+            "sourceType": "研究報告",
+            "source": "群益投顧（工商時報轉述）",
+            "url": "https://www.ctee.com.tw/news/20261103700739-430201"
+          }
+        ],
+        "shortTerm": "1–4週：偏多催化是10月營收年增56.49%及董事會擴產計畫，若玻纖布需求、出貨及產品組合延續，可能支撐營運預期；但這是推論，擴產尚需設備交付與客戶驗證。[營收資料](https://m.moneydj.com/f1a.aspx?a=ABFC83DB-5E00-460F-9EBB-5ACF86EA26CC) [擴產與驗證風險](https://anuenews.cnyes.com/news/id/6655377)。股價已連兩日觸及漲停且單日當沖比37%為輸入資料所述，短線追價與高波動風險突出；若買盤退潮，回檔可能快於基本面資訊更新。[漲停報導](https://udn.com/news/story/7252/9869501)",
+        "longTerm": "1–4季：若高階玻纖布需求能轉為實際出貨與較佳產品組合，且擴產按期完成並通過客戶驗證，可能提升營收及獲利；這是基於需求與公司投資計畫的推論，公告沒有承諾投產日期或獲利幅度。[公司擴產公告](https://tw.stock.yahoo.com/quote/1802/announcement) [產能驗證限制](https://anuenews.cnyes.com/news/id/6655377)。風險包括設備交期、驗證進度、資本支出融資成本，以及營收成長未能轉化為獲利。下一個可查核的營運更新是11月營收，法定公告期限為12月10日前；此期限是一般申報期限，不代表公司已公告特定發布日。",
+        "expectedRange": {
+          "band": "資料不足，無法估算",
+          "basis": "未取得截至2026-11-10至少20個交易日、可逐日核對的台玻調整後收盤價序列，故無法計算每日報酬標準差σ及σ×√20。搜尋結果只確認歷史行情頁面涵蓋2026-10-12至2026-11-10，但未提供足以重算的完整觀察值；不以輸入的r10、r20或同業波動替代統計估算。",
+          "urls": [
+            "https://cn.investing.com/equities/twn-glass-ind-historical-data",
+            "https://hk.finance.yahoo.com/quote/1802.TW/history/"
+          ]
+        },
+        "pricedIn": [
+          "可觀察事實：截至輸入交易日，台玻收盤69.8元並漲停，媒體報導連續兩個交易日觸及漲停；「市場已反映部分短線題材」是推論，無法由此判定反映程度。[聯合新聞網](https://udn.com/news/story/7252/9869501)",
+          "可觀察事實：輸入資料列今日外資與法人顯著買超，媒體亦報導11月9日外資買超18,575張；這些單日籌碼不證明後續買盤持續，也不能單獨判定利多已完全反映。[優分析](https://anuenews.cnyes.com/news/id/6655377)"
+        ],
+        "notPricedIn": [
+          "無法判定擴產、玻纖布需求及營收成長有多少尚未反映。公司已公告投資計畫且股價已連續觸及漲停，但未取得可核實的當日估值、完整歷史價格反應或原始研究報告，不能宣稱利多尚未反映。[公司公告轉載](https://tw.stock.yahoo.com/quote/1802/announcement) [漲停報導](https://udn.com/news/story/7252/9869501)"
+        ],
+        "horizonFit": {
+          "kind": "兩者",
+          "reason": "營收改善及擴產計畫提供短中期催化，但連續漲停、當沖偏高與新增產能尚待交付驗證，使短線追價風險高，長線論點也須等待獲利延續證據。"
+        },
+        "positioning": "中立偏多、以觀察為主；營收與前三季獲利公告提供基本面支持，但股價已連續漲停，且當沖比偏高，追價的風險報酬不佳。若評估介入，宜等待價格整理並追蹤後續營收及擴產驗證，不提供個人化倉位。非個人化投資建議。",
+        "invalidation": [
+          "價格條件：輸入計畫列MA60為60.9元，並提出跌破後兩日無法站回先減碼；這是使用者提供的技術參考值，未獨立驗證其計算基準。若採用，需以後續收盤價檢查，不應視為公司基本面失效的證明。",
+          "事件條件：至2026-12-10前可查核台玻是否公告2026年11月營收；若未能按期查得公告，先視為資料缺口而非營運失效。若公告顯示營收動能明顯轉弱，需重新檢視成長假設。申報期限依一般月營收期限，非公司承諾發布日。",
+          "事件條件：後續公司公告或財報若顯示擴產取消、主要計畫延宕，或新增產品需求／客戶驗證未能形成可確認出貨，將削弱擴產成長論點；截至交易日未查得公司公告具體完工或驗證期限。"
+        ],
+        "sentiment": "搜尋到的YouTube相關內容非近30日，未取得可代表交易日附近頻道情緒的影片；PTT、Dcard有台玻相關內容，樣本有限且部分偏多，不能推論整體散戶民意或判定全市場過熱。",
+        "sourceCoverage": [
+          {
+            "sourceType": "公告",
+            "status": "找到",
+            "note": "以「台玻 1802 2026-11-10」及董事會公告查詢；找到11月2日擴產與第三季財報公告轉載，以及11月10日營收數據。公告頁為公開資訊觀測站內容的轉載／索引，部分頁面未直接提供原始MOPS單筆網址。"
+          },
+          {
+            "sourceType": "新聞",
+            "status": "找到",
+            "note": "以公司代號、名稱及交易日搜尋；找到11月10日漲停、營收與法人買賣報導。媒體分析與公司公告事實已分開標示。"
+          },
+          {
+            "sourceType": "YouTube",
+            "status": "查無結果",
+            "note": "以「台玻 1802 2026 11月 YouTube」搜尋，未找到近30日且可核實的新影片；搜尋可見較早影片，未觀看，也未取得逐字稿，因此不作為近期情緒依據。"
+          },
+          {
+            "sourceType": "Threads",
+            "status": "查無結果",
+            "note": "以「台玻 1802 site:threads.net 2026 11」搜尋，未取得可核實的相關貼文；搜尋索引有限，不能據此推論平台沒有討論。"
+          },
+          {
+            "sourceType": "PTT",
+            "status": "找到",
+            "note": "以「1802 台玻 site:ptt.cc 2026」搜尋，找到台股板相關貼文；貼文為使用者內容，涉及的產能與訂單說法不視為公司揭露或已驗證事實。"
+          },
+          {
+            "sourceType": "Dcard",
+            "status": "找到",
+            "note": "以「台玻 1802 site:dcard.tw 2026」搜尋，找到11月10日台股板貼文提及台玻漲停；樣本有限，不能代表整體散戶情緒。"
+          },
+          {
+            "sourceType": "Mobile01",
+            "status": "查無結果",
+            "note": "以「台玻 1802 site:mobile01.com 2026」搜尋，未取得可核實的相關討論；搜尋索引有限，不能據此推論平台沒有討論。"
+          }
+        ]
+      },
       "error": ""
     }
   ]
