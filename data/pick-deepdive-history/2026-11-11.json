@@ -1,6 +1,6 @@
 {
   "date": "2026-11-11",
-  "generatedAt": "2026-11-11T16:43:53.656Z",
+  "generatedAt": "2026-11-11T16:45:23.473Z",
   "items": [
     {
       "pick": {
@@ -67,8 +67,104 @@
         },
         "side": "short"
       },
-      "status": "pending",
-      "analysis": null,
+      "status": "complete",
+      "analysis": {
+        "catalysts": [
+          {
+            "date": "2026-11-10",
+            "event": "公司公告10月營收221.56億元、年增22.36%；新聞報導貨運營收年增近五成。營收數字屬公告事實，需求與貨運走勢的解讀屬媒體轉述。",
+            "sourceType": "新聞",
+            "source": "Yahoo股市／中華航空新聞",
+            "url": "https://tw.stock.yahoo.com/news/%E8%8F%AF%E8%88%AA10%E6%9C%88%E7%87%9F%E6%94%B6221%E5%84%84%E5%85%83%E5%89%B5%E5%90%8C%E6%9C%9F%E6%96%B0%E9%AB%98-%E5%89%8D10%E6%9C%88%E7%AA%81%E7%A0%B42000%E5%84%84%E5%85%83-%E8%B2%A8%E9%81%8B%E5%B9%B4%E5%A2%9E%E8%BF%915%E6%88%90-081727918.html"
+          },
+          {
+            "date": "2026-11-06",
+            "event": "華航公布2026年第三季財報，媒體報導單季EPS 0.72元、前三季EPS 1.80元；此為已公布財報的媒體整理。",
+            "sourceType": "新聞",
+            "source": "Yahoo股市個股新聞／公告索引",
+            "url": "https://tw.stock.yahoo.com/quote/2610.TW/news"
+          },
+          {
+            "date": "2026-11-11",
+            "event": "MoneyDJ報導華航前三季獲利及EPS創同期新高，並轉述公司看好第四季客貨運需求；冬季旅遊、年終備貨及AI相關貨源為公司展望，尚非已實現營收或獲利。",
+            "sourceType": "新聞",
+            "source": "MoneyDJ新聞（Yahoo股市轉載索引）",
+            "url": "https://tw.finance.yahoo.com/quote/2610.TW/news"
+          },
+          {
+            "date": "2026-08-20",
+            "event": "YouTube影片介紹華航第二季法說，摘要提及需求成長與燃油成本壓力；僅取得標題及摘要，未觀看影片或取得逐字稿，內容屬作者整理。",
+            "sourceType": "YouTube",
+            "source": "法說解碼｜法人級深度研報Flipingtheworld",
+            "url": "https://www.youtube.com/watch?v=94bW44EZwcQ"
+          }
+        ],
+        "shortTerm": "偏多因素是10月營收創同期新高，以及公司對第四季客貨運需求的正向展望，若冬季旅遊與年終貨運需求轉成營收，可能支撐近期動能；這是推論，需求展望不等於獲利保證。[10月營收報導](https://tw.stock.yahoo.com/news/%E8%8F%AF%E8%88%AA10%E6%9C%88%E7%87%9F%E6%94%B6221%E5%84%84%E5%85%83%E5%89%B5%E5%90%8C%E6%9C%9F%E6%96%B0%E9%AB%98-%E5%89%8D10%E6%9C%88%E7%AA%81%E7%A0%B42000%E5%84%84%E5%85%83-%E8%B2%A8%E9%81%8B%E5%B9%B4%E5%A2%9E%E8%BF%915%E6%88%90-081727918.html)；[第四季展望報導索引](https://tw.finance.yahoo.com/quote/2610.TW/news)。但輸入訊號顯示兩週漲16%、股價收在20日區間高點，11月9至11日連漲且成交量放大，追價回撤風險上升；外資及法人買超數字來自輸入資料，未在本次獨立核實。",
+        "longTerm": "未來1至4季的正向推論取決於客運旺季及AI伺服器、半導體設備等貨運需求能否延續；前三季EPS 1.80元及第三季EPS 0.72元提供已公布的獲利基礎，但單季獲利仍受燃油成本與匯率等因素影響，需以後續財報驗證。[第三季財報新聞索引](https://tw.stock.yahoo.com/quote/2610.TW/news)；[法說影片摘要](https://www.youtube.com/watch?v=94bW44EZwcQ)。",
+        "expectedRange": {
+          "band": "資料不足，無法估算",
+          "basis": "未取得足以核算截至2026-11-11至少20筆連續每日收盤報酬的完整序列，因此不計算σ×√20。已查到的歷史價格頁面顯示近期收盤價，但搜尋摘錄並非完整且可核對的20筆序列；未自行補值。價格資料來源頁面未在摘錄中交代除權息調整方式，故亦無法確認是否為調整後價格。",
+          "urls": [
+            "https://markets.ft.markitdigital.com/data/equities/tearsheet/historical?s=2610%3ATAI",
+            "https://www.investing.com/equities/china-air-line-historical-data"
+          ]
+        },
+        "pricedIn": [
+          "可觀察事實：股價截至11月11日收23.50元，11月9、10、11日分別上漲2.59%、4.83%、3.07%；11月10日公告10月營收後，11月11日續漲。這表明近期價格已有強勢表現，但不能單憑此判定營收利多已完全反映。[歷史行情](https://markets.ft.markitdigital.com/data/equities/tearsheet/historical?s=2610%3ATAI)；[10月營收新聞](https://tw.stock.yahoo.com/news/%E8%8F%AF%E8%88%AA10%E6%9C%88%E7%87%9F%E6%94%B6221%E5%84%84%E5%85%83%E5%89%B5%E5%90%8C%E6%9C%9F%E6%96%B0%E9%AB%98-%E5%89%8D10%E6%9C%88%E7%AA%81%E7%A0%B42000%E5%84%84%E5%85%83-%E8%B2%A8%E9%81%8B%E5%B9%B4%E5%A2%9E%E8%BF%915%E6%88%90-081727918.html)",
+          "輸入資料稱近兩週漲16%、一月漲15.2%且法人買超顯著；本次沒有取得可獨立核對的法人買賣超原始資料，無法判斷籌碼因素已反映程度。"
+        ],
+        "notPricedIn": [
+          "第四季客貨運需求為公司展望而非已實現結果；在後續月營收與財報出爐前，是否已反映在股價無法判定。[展望報導索引](https://tw.finance.yahoo.com/quote/2610.TW/news)",
+          "截至交易日的市場共識、估值分位及最新外資持股變化未取得可核實資料，無法判斷相關預期尚未反映。"
+        ],
+        "horizonFit": {
+          "kind": "兩者",
+          "reason": "短線有營收與動能支撐但近期漲幅及量能擴大提高波動風險；長線則需觀察需求能否轉化為獲利並抵禦燃油成本。"
+        },
+        "positioning": "短線偏多但不宜追高，宜觀察整理或回測時動能是否維持；長線中性偏多，等待後續營收及獲利驗證。選股池訊號不是已驗證結論；非個人化投資建議。",
+        "invalidation": [
+          "若收盤跌破輸入資料所列MA20 20.92元，視為原選股計畫的趨勢失效條件；該均線數值來自輸入資料，本次未獨立核實。",
+          "若公司其後公布的月營收或財報顯示客貨運成長未能延續，或需求增長未轉化為獲利，則第四季需求支撐假設失效；以公司公告為查驗依據。"
+        ],
+        "sentiment": "搜尋到的近期內容偏營運正向，但YouTube僅有摘要且近期社群樣本零散，無法代表整體散戶情緒；現有樣本不足以判定過熱。",
+        "sourceCoverage": [
+          {
+            "sourceType": "公告",
+            "status": "找到",
+            "note": "查詢華航投資人資訊、2610第三季財報及10月營收；找到公司投資人關係頁與新聞公告索引，但搜尋結果未取得可直接核驗的MOPS原始公告全文。公司IR：https://www.china-airlines.com/uk/zh/about-china-airlines/investor-relations?tab=InvestorConferenceTab"
+          },
+          {
+            "sourceType": "新聞",
+            "status": "找到",
+            "note": "查詢「華航 2610 2026年11月營收／前三季EPS／第四季展望」；找到Yahoo股市轉載及營收報導，內容屬媒體轉述，已在催化項目區分。"
+          },
+          {
+            "sourceType": "YouTube",
+            "status": "找到",
+            "note": "查詢「華航 2610 YouTube 2026」；找到2026-08-20影片標題與摘要，未觀看影片、未取得逐字稿，且距交易日超過30日。"
+          },
+          {
+            "sourceType": "Threads",
+            "status": "查無結果",
+            "note": "查詢「華航 2610 site:threads.net 2026」未找到可核實且截至交易日的相關貼文；搜尋結果有限，不代表平台沒有討論。"
+          },
+          {
+            "sourceType": "PTT",
+            "status": "找到",
+            "note": "查詢「華航 2610 site:ptt.cc 2026」找到航空及旅遊相關貼文，部分貼文不是股票討論；搜尋排序及有限樣本不代表整體情緒。"
+          },
+          {
+            "sourceType": "Dcard",
+            "status": "查無結果",
+            "note": "查詢「華航 2610 site:dcard.tw 2026」僅找到較早的招募相關內容，未找到足以代表截至交易日近期股票討論的資料。"
+          },
+          {
+            "sourceType": "Mobile01",
+            "status": "查無結果",
+            "note": "查詢「華航 2610 site:mobile01.com 2026」找到的相關頁面較舊，未找到截至交易日近期且可用於判斷股價情緒的討論；不代表平台沒有討論。"
+          }
+        ]
+      },
       "error": ""
     },
     {
@@ -136,8 +232,118 @@
         },
         "side": "short"
       },
-      "status": "pending",
-      "analysis": null,
+      "status": "complete",
+      "analysis": {
+        "catalysts": [
+          {
+            "date": "2026-11-10",
+            "event": "公司公告董事會通過承租4架A321neo客機相關事項；公告可確認租機安排，對運能與成本的影響屬推論，需視交機及營運表現驗證。",
+            "sourceType": "公告",
+            "source": "長榮航／公開資訊觀測站公告（Yahoo公告索引）",
+            "url": "https://tw.finance.yahoo.com/quote/2618/announcement"
+          },
+          {
+            "date": "2026-11-10",
+            "event": "長榮航公布2026年10月合併營收231.82億元，年增22.63%，1至10月累計年增19.81%。營收成長是已公布數據；對後續獲利的影響仍受成本等因素左右。",
+            "sourceType": "公告",
+            "source": "長榮航／公開資訊觀測站公告（Yahoo公告索引）",
+            "url": "https://tw.finance.yahoo.com/quote/2618/announcement"
+          },
+          {
+            "date": "2026-11-10",
+            "event": "公司公布第三季合併財報：單季營收660.94億元、歸屬母公司淨利67.99億元、EPS 1.26元；前三季EPS 3.5元。以下數字由媒體轉述，非此連結中的公司原始財報。",
+            "sourceType": "新聞",
+            "source": "MoneyDJ（Yahoo股市轉載）",
+            "url": "https://tw.finance.yahoo.com/quote/2618/news"
+          },
+          {
+            "date": "2026-11-06",
+            "event": "媒體報導長榮航總經理表示，12月1日桃園－德里航線首兩班已客滿。此為公司主管向媒體提供的訂位情況，不能單憑首兩班推定整條航線的獲利。",
+            "sourceType": "新聞",
+            "source": "財訊快報（Yahoo股市轉載）",
+            "url": "https://tw.stock.yahoo.com/news/%E9%95%B7%E6%A6%AE%E8%88%AA12-1%E6%96%B0%E9%96%8B%E8%88%AA%E5%8D%B0%E5%BA%A6%E5%BE%B7%E9%87%8C-%E9%A6%96%E5%85%A9%E7%8F%AD%E5%B7%B2%E5%AE%A2%E6%BB%BF-063008753.html"
+          },
+          {
+            "date": "2026-08-05",
+            "event": "公司公告桃園－德里航線預計12月1日開航、每週5班並開放訂位；新航線能否增益營收及獲利仍是推論。",
+            "sourceType": "公告",
+            "source": "長榮航空",
+            "url": "https://www.evaair.com/sc-cn/about-eva-air/news/news-releases/2026-08-05-direct-flights-from-taipei-to-delhi.html"
+          },
+          {
+            "date": "2026-11-11",
+            "event": "股價收47.60元、當日上漲3.14%；歷史行情資料顯示11月10日漲5.13%，11月6日跌3.33%。這表示短線已大幅走高且波動顯著，不能單獨證明催化已完全反映。",
+            "sourceType": "新聞",
+            "source": "Investing.com 長榮航歷史行情",
+            "url": "https://cn.investing.com/equities/eva-airways-historical-data"
+          }
+        ],
+        "shortTerm": "偏多因素：10月營收年增22.63%，且德里線首兩班據報客滿；若營收趨勢與訂位延續，可能支持短線預期。偏空風險：股價截至11月11日連續兩日大漲、兩週漲幅為輸入資料所述12.3%，追價回撤風險升高；第三季單季EPS 1.26元並不能直接推導下一季獲利。以上方向判斷屬推論，需留意高油價、匯率、運能成本及法人買盤反轉。來源：https://tw.finance.yahoo.com/quote/2618/announcement；https://tw.stock.yahoo.com/news/%E9%95%B7%E6%A6%AE%E8%88%AA12-1%E6%96%B0%E9%96%8B%E8%88%AA%E5%8D%B0%E5%BA%A6%E5%BE%B7%E9%87%8C-%E9%A6%96%E5%85%A9%E7%8F%AD%E5%B7%B2%E5%AE%A2%E6%BB%BF-063008753.html；https://cn.investing.com/equities/eva-airways-historical-data",
+        "longTerm": "未來1至4季可追蹤德里線自2026年12月1日啟航後的載客與轉運表現，以及A321neo租機安排對區域運能、租賃與營運成本的實際影響；若客貨運需求延續且新增運能有效利用，可能支撐營收，但這是推論，不能由首兩班客滿或單月營收直接確立。若燃油、匯率或景氣變化侵蝕利潤，營收成長未必轉為獲利成長。來源：https://www.evaair.com/sc-cn/about-eva-air/news/news-releases/2026-08-05-direct-flights-from-taipei-to-delhi.html；https://tw.finance.yahoo.com/quote/2618/announcement",
+        "expectedRange": {
+          "band": "資料不足，無法估算",
+          "basis": "優先方法需至少20個近期每日報酬，以標準差σ乘√20估算約±1σ歷史尺度。可查來源提供部分每日行情及頁面概述的歷史資料筆數，但本次可取得內容不足以核算至少20筆每日報酬的標準差；也未核實期間除權息／分割調整序列，因此不以輸入的近月漲幅或區間高低冒充統計區間。",
+          "urls": [
+            "https://cn.investing.com/equities/eva-airways-historical-data",
+            "https://anytime18.com/stock/2618/"
+          ]
+        },
+        "pricedIn": [
+          "可觀察事實：輸入資料記錄截至2026-11-11兩週漲12.3%、一月漲13.3%；歷史行情亦顯示11月10日漲5.13%、11月11日漲3.14%。推論：強勢動能及部分近期消息可能已被市場交易，但無法判定反映程度。來源：https://cn.investing.com/equities/eva-airways-historical-data",
+          "可觀察事實：10月營收於11月10日公告，年增22.63%；11月11日股價上漲3.14%。單一交易日無法分離營收消息對股價的影響，故不能確認其已反映。來源：https://tw.finance.yahoo.com/quote/2618/announcement；https://cn.investing.com/equities/eva-airways-historical-data"
+        ],
+        "notPricedIn": [
+          "德里線首兩班客滿為11月6日媒體報導的訂位資訊，並非全航線實際營收或獲利；截至交易日無法判定市場是否已充分反映其後續表現。來源：https://tw.stock.yahoo.com/news/%E9%95%B7%E6%A6%AE%E8%88%AA12-1%E6%96%B0%E9%96%8B%E8%88%AA%E5%8D%B0%E5%BA%A6%E5%BE%B7%E9%87%8C-%E9%A6%96%E5%85%A9%E7%8F%AD%E5%B7%B2%E5%AE%A2%E6%BB%BF-063008753.html",
+          "四架A321neo租賃的實際交付、利用率與成本效果尚待後續資料驗證；沒有足夠證據宣稱市場尚未反映。來源：https://tw.finance.yahoo.com/quote/2618/announcement"
+        ],
+        "horizonFit": {
+          "kind": "兩者",
+          "reason": "營收與法人動能可供短線觀察，德里線啟航及新增運能效果則須跨季驗證，但近期漲幅已提高追價風險。"
+        },
+        "positioning": "中性偏多、以觀察或等待回測後小額試單為主；輸入資料所列MA10為44.24元、MA20為43.53元，可作為觀察參考，股價已連續走高且社群樣本不足，避免把選股池訊號視為已驗證結論。非個人化投資建議。",
+        "invalidation": [
+          "以輸入 pick 所列數值為據：若收盤跌破MA20 43.53元，短線動能論點失效；此為資料所附策略條件，非獨立驗證的支撐價。",
+          "截至交易日公司已公告德里線預計2026年12月1日開航；若未按公告日期啟航，應重新評估該航線催化。來源：https://www.evaair.com/sc-cn/about-eva-air/news/news-releases/2026-08-05-direct-flights-from-taipei-to-delhi.html"
+        ],
+        "sentiment": "近期可搜尋到的YouTube內容偏舊，社群檢索樣本有限，無法判斷整體散戶熱度或方向；搜尋排序不代表市場民意。",
+        "sourceCoverage": [
+          {
+            "sourceType": "公告",
+            "status": "找到",
+            "note": "以「長榮航 2618 2026-11-11 公告」及公司代號名稱搜尋；找到Yahoo公告索引所列11月10日營收、租機及第三季財報訊息，亦找到長榮官方德里航線公告。MOPS頁面未直接取得，以索引及公司IR頁為可核實來源。"
+          },
+          {
+            "sourceType": "新聞",
+            "status": "找到",
+            "note": "以「長榮航 2618 2026-11-11 新聞」及相關事件查詢；找到11月10至11日營收、財報及德里線訂位報導。媒體轉述已與公司公告區分。"
+          },
+          {
+            "sourceType": "YouTube",
+            "status": "找到",
+            "note": "查詢「長榮航 2618 2026 11 YouTube」；搜尋結果有長榮航相關影片，但未找到可確認在交易日前近期發布且可用的深度內容。僅檢視搜尋標題／摘要，未觀看影片或取得逐字稿。"
+          },
+          {
+            "sourceType": "Threads",
+            "status": "查無結果",
+            "note": "查詢「長榮航 2618 site:threads.net」及合併社群查詢；搜尋未回傳可核實的相關貼文。搜尋引擎未命中不代表平台沒有討論。"
+          },
+          {
+            "sourceType": "PTT",
+            "status": "查無結果",
+            "note": "查詢「長榮航 2618 site:ptt.cc」及合併社群查詢；未找到可核實且符合交易日前範圍的貼文。搜尋未命中不代表沒有討論。"
+          },
+          {
+            "sourceType": "Dcard",
+            "status": "查無結果",
+            "note": "查詢「長榮航 2618 site:dcard.tw」及合併社群查詢；未找到可核實的相關內容。搜尋未命中不代表沒有討論。"
+          },
+          {
+            "sourceType": "Mobile01",
+            "status": "查無結果",
+            "note": "查詢「長榮航 2618 site:mobile01.com」及合併社群查詢；未找到可核實的相關內容。搜尋未命中不代表沒有討論。"
+          }
+        ]
+      },
       "error": ""
     },
     {
@@ -205,8 +411,110 @@
         },
         "side": "short"
       },
-      "status": "pending",
-      "analysis": null,
+      "status": "complete",
+      "analysis": {
+        "catalysts": [
+          {
+            "date": "2026-11-05",
+            "event": "公司公告：2026年前三季營收98.02億元、歸屬母公司淨損16.06億元、EPS -6.06元；第三季營收41.02億元、營業毛利3.28億元、營業淨損1.03億元、淨損1.59億元、EPS -0.60元。第三季毛利轉正且虧損較前季收斂是改善訊號，但仍未轉盈。",
+            "sourceType": "公告",
+            "source": "泰鼎國際",
+            "url": "https://www.apex-intl.com.tw/news/info/303"
+          },
+          {
+            "date": "2026-11-05",
+            "event": "公司投資人頁列示2026年10月合併營收約17.02億元、年增87.00%，2026年累計營收約115.04億元、年增16.83%。營收成長不等同獲利已改善。",
+            "sourceType": "公告",
+            "source": "泰鼎國際",
+            "url": "https://www.apex-intl.com.tw/investor/overview"
+          },
+          {
+            "date": "2026-11-11",
+            "event": "媒體報導PCB類股受同業第三季亮眼財報帶動，泰鼎-KY放量逾3萬張並漲停至59.5元；報導稱波段漲幅32.6%。這是媒體對市場行情的描述，並非公司宣布新訂單或低軌衛星業務。",
+            "sourceType": "新聞",
+            "source": "非凡新聞",
+            "url": "https://news.ustv.com.tw/newsdetail/20261111A001014"
+          },
+          {
+            "date": "2026-11-11",
+            "event": "歷史行情頁顯示當日收盤59.50元、漲停，成交量31,590張；11/10收54.10元，11/6收44.85元。行情來源為聚財網，非交易所原始資料。",
+            "sourceType": "新聞",
+            "source": "聚財網",
+            "url": "https://stock.wearn.com/cdata.asp?kind=4927"
+          },
+          {
+            "date": "2026-04-28",
+            "event": "搜尋結果找到一支標題提及泰鼎-KY漲停與風險的影片；僅可見標題、發布日期與摘要資訊，未觀看影片且未取得逐字稿，日期早於本研究優先的近30日區間。",
+            "sourceType": "YouTube",
+            "source": "QA拆股票真相",
+            "url": "https://www.youtube.com/watch?v=77fObf5o0pw"
+          }
+        ],
+        "shortTerm": "短線（1–4週）偏高波動。11/11在PCB類股受同業財報激勵下放量漲停，且11/6至11/11快速上漲，可能延續動能；但這是族群資金擴散的推論，公司自身第三季仍虧損，且漲停後追價的回檔風險高。公司已公告第三季毛利轉正、單季EPS虧損收斂，可提供基本面改善敘事，但需後續營收與獲利確認。來源：https://news.ustv.com.tw/newsdetail/20261111A001014、https://www.apex-intl.com.tw/news/info/303",
+        "longTerm": "長線（1–4季）中性偏審慎。第三季營收增至41.02億元且單季毛利轉正，若後續產品組合、產能利用率及成本控制持續改善，可能帶動損益收斂，這是依公司公告數字所作推論；然而前三季仍虧損16.06億元、EPS -6.06元，營業淨損仍達1.03億元，現有資料不足以確認轉盈時程。選股理由提及低軌衛星／HDI擴散，但本次查得公司公告未證實相關訂單或營收貢獻，不能當作已確認催化。來源：https://www.apex-intl.com.tw/news/info/303、https://www.apex-intl.com.tw/investor/overview",
+        "expectedRange": {
+          "band": "資料不足，無法估算",
+          "basis": "未取得足以核驗的至少20個近期每日收盤價或每日報酬完整樣本，故無法按日報酬標準差σ×√20估算約20交易日歷史尺度。輸入pick僅提供兩週與一月累積報酬及均線指標，不能替代每日報酬樣本；已找到的歷史行情頁僅呈現部分交易日，且當中有日期缺漏。本次未核驗期間內除權息或分割調整狀況，因此亦不能聲稱為調整後統計區間。",
+          "urls": [
+            "https://stock.wearn.com/cdata.asp?kind=4927",
+            "https://www.twse.com.tw/zh/trading/historical/mi-index.html"
+          ]
+        },
+        "pricedIn": [
+          "可觀察事實：輸入pick列示近兩週+5.7%、近一月+2.8%、外資連買3日及今日漲停；新聞行情報導11/11收59.5元、單日+9.98%，且11/6至11/11上漲明顯。近期買盤與短線強勢已反映在價格的推論有依據，但無法由此判定市場已充分反映第三季改善。來源：https://news.ustv.com.tw/newsdetail/20261111A001014、https://stock.wearn.com/cdata.asp?kind=4927",
+          "可觀察事實：公司11/5已公布第三季毛利轉正、單季EPS -0.60元及前三季EPS -6.06元；公告公開後股價其後於11/6至11/11顯著上漲。基本面改善敘事可能已有部分反映是推論，惟同期PCB族群行情也可能是重要因素，無法拆分各因素貢獻。來源：https://www.apex-intl.com.tw/news/info/303、https://news.ustv.com.tw/newsdetail/20261111A001014"
+        ],
+        "notPricedIn": [
+          "目前查無公司已公告低軌衛星或HDI高階板的具體新增訂單、量產時程或營收占比；因此無法判定這類題材是否尚未反映，選股訊號中的族群敘述不能視為公司揭露。公司公告來源：https://www.apex-intl.com.tw/investor/overview"
+        ],
+        "horizonFit": {
+          "kind": "短線",
+          "reason": "近期量價與族群動能明顯，但公司仍虧損且長期轉盈證據不足，較符合短線觀察而非長線確認。"
+        },
+        "positioning": "中立偏審慎、以觀察為主；11/11已漲停且短期快速上漲，避免追價，等待整理及公司後續營運數據驗證毛利改善。非個人化投資建議。",
+        "invalidation": [
+          "若以輸入pick的計畫作觀察條件，收盤跌破MA20 53.4元可視為該選股計畫失效參考；此價位為輸入資料所列均線，並非本研究獨立計算或保證支撐。",
+          "截至本次截點，公司未查得已公告的下一次財報或法說日期，故不編造日期；後續可檢查下一次公司公告是否顯示單季毛利仍為正、營業淨損與EPS虧損是否持續收斂。若公司公布資料未延續改善，則轉型改善假設失效。公告來源：https://www.apex-intl.com.tw/news/info/303"
+        ],
+        "sentiment": "近期可檢索的YouTube結果有限且影片僅有標題未觀看／無逐字稿；指定社群搜尋結果多為過往內容，未取得足夠的近30日個股貼文樣本，無法判定社群整體熱度與方向，也不以搜尋排序推斷市場民意。",
+        "sourceCoverage": [
+          {
+            "sourceType": "公告",
+            "status": "找到",
+            "note": "精準查詢「4927 泰鼎-KY」並補查公司IR；找到11/5第三季董事會決議與10月營收資訊。搜尋與查閱公司IR頁面，未取得MOPS單頁原文連結；以公司IR原文為準。"
+          },
+          {
+            "sourceType": "新聞",
+            "status": "找到",
+            "note": "查詢「4927 泰鼎-KY 2026 11月 新聞」及第三季財報；找到11/11非凡新聞報導PCB族群行情、11/5公司公告的新聞轉述。"
+          },
+          {
+            "sourceType": "YouTube",
+            "status": "找到",
+            "note": "查詢「site:youtube.com 泰鼎-KY 4927 2026」找到一支2026-04-28影片，超出近30日；僅取得標題等搜尋摘要，未觀看影片、未取得逐字稿。"
+          },
+          {
+            "sourceType": "Threads",
+            "status": "查無結果",
+            "note": "查詢「site:threads.net 泰鼎-KY 4927」未取得可核實的相關貼文；搜尋引擎索引有限，不能據此推論平台沒有討論。"
+          },
+          {
+            "sourceType": "PTT",
+            "status": "找到",
+            "note": "查詢「site:ptt.cc 泰鼎-KY 4927」找到Stock板搜尋頁及舊貼文，未取得近30日相關個股討論；搜尋索引與頁面抓取有限，不能據此推論沒有討論。"
+          },
+          {
+            "sourceType": "Dcard",
+            "status": "找到",
+            "note": "查詢「site:dcard.tw 泰鼎-KY 4927」找到過往選股與提及個股的貼文，未找到可確認在截點前近30日內的相關討論；不能據此推論沒有討論。"
+          },
+          {
+            "sourceType": "Mobile01",
+            "status": "找到",
+            "note": "查詢「site:mobile01.com 泰鼎-KY 4927」找到舊討論串，年份久遠，未找到近30日相關內容；搜尋索引有限，不能據此推論沒有討論。"
+          }
+        ]
+      },
       "error": ""
     },
     {
@@ -279,8 +587,97 @@
         },
         "side": "short"
       },
-      "status": "pending",
-      "analysis": null,
+      "status": "complete",
+      "analysis": {
+        "catalysts": [
+          {
+            "date": "2026-11-06",
+            "event": "公司公布2026年10月營收37.87億元，年增121.47%、月增17.37%；1至10月累計營收249.85億元、年增58.89%。這是營收公告事實，成長能否轉化為獲利仍待財報確認。",
+            "sourceType": "公告",
+            "source": "定穎投控",
+            "url": "https://www.dynaholding.com/investment/"
+          },
+          {
+            "date": "2026-11-09",
+            "event": "媒體報導法說會說法：公司預期第4季營收季增，20層以上AI伺服器板最快12月出貨並於年底認列；30層及40層以上產品預計2027年第1季末出貨。屬公司展望的媒體轉述，實際時程與營收貢獻仍有執行風險。",
+            "sourceType": "新聞",
+            "source": "經濟日報／聯合新聞網",
+            "url": "https://udn.com/news/story/7240/9867127"
+          },
+          {
+            "date": "",
+            "event": "搜尋結果顯示該影片談及PCB產業與定穎營收及產品升級；僅取得影片標題或摘要，未觀看影片或取得逐字稿，不能據此確認細節。",
+            "sourceType": "YouTube",
+            "source": "價值股雷達",
+            "url": "https://www.youtube.com/watch?v=ui8bFZRCow4"
+          }
+        ],
+        "shortTerm": "偏多因素是10月營收年增121.47%，以及法說會媒體報導第4季營收季增展望與AI伺服器板年底出貨計畫；若營收與出貨如期，可能支撐短線預期。但輸入資料顯示11月11日收盤漲停130.5元，而前兩週與一個月報酬仍為負，顯示急漲與前期弱勢並存；追價風險高，且營收成長不等於獲利改善。法說時程為公司展望的媒體轉述，非已實現結果。來源：https://www.dynaholding.com/investment/；https://udn.com/news/story/7240/9867127",
+        "longTerm": "若高階AI伺服器板、網通產品及泰國廠產能按公司展望逐步放量，產品組合改善可能推升營收與毛利；這是基於法說會報導及公司投資人資訊的推論，尚須以後續營收、毛利率及財報驗證。風險包括新產品驗證或出貨延後、營收增長未能改善獲利，以及資本支出與產能爬坡壓力。來源：https://udn.com/news/story/7240/9867127；https://www.dynaholding.com/investment/",
+        "expectedRange": {
+          "band": "資料不足，無法估算",
+          "basis": "輸入資料提供兩週及一個月累積報酬與均線、區間高點，未提供至少20個近期每日收盤價或每日報酬序列；無法計算標準差σ×√20。也未取得足以核實並重建截至2026-11-11每日還原價格的資料，因此不以高低價區間冒充統計預期。",
+          "urls": [
+            "https://www.cnyes.com/twstock/3715/"
+          ]
+        },
+        "pricedIn": [
+          "可觀察事實：輸入資料記錄2026-11-11收盤130.5元、當日漲停，且前20日高點為140.5元；此價格行為表示短線買盤強，但不能單憑漲停判定營收或AI出貨預期已充分反映。價格資料以輸入 pick 為準，未取得相應原始行情序列網址，無法獨立核驗。",
+          "可觀察事實：10月營收於2026-11-06公告；11月11日收盤漲停。推論：營收公告後的漲幅可能已反映部分營收利多，但公告後各日報酬資料不足，反映程度無法判定。來源：https://www.dynaholding.com/investment/"
+        ],
+        "notPricedIn": [
+          "AI伺服器板年底認列及2027年高階板出貨仍是公司展望的媒體轉述，尚非已實現業績；是否未反映於股價無法判定。來源：https://udn.com/news/story/7240/9867127",
+          "輸入資料稱外資連3日買超及法人合計顯著買超，但缺少可核對的原始法人每日資料連結，不能獨立確認其持續性，也不能據此斷定尚未反映。"
+        ],
+        "horizonFit": {
+          "kind": "兩者",
+          "reason": "營收動能與已公布的高階板出貨展望涵蓋短中期催化，但漲停、先前區間報酬偏弱及獲利轉化尚待驗證，適合觀察而非追價。"
+        },
+        "positioning": "中立偏多，採觀察或等待回測及後續營收、出貨驗證；單日漲停與營收成長尚不足以支持追高，選股池訊號不構成已驗證結論。非個人化投資建議。",
+        "invalidation": [
+          "截至2026-11-11，輸入交易計畫以MA20 124.6元作為觀察條件：若收盤跌破該價，原計畫的進場條件失效；此為輸入資料所列技術位，尚未獨立核驗。",
+          "截至2026-11-11，公司的法說展望稱20層以上AI伺服器板最快2026年12月出貨、年底認列；若截至2026-12-31仍無公司公告或後續營收資料支持出貨及認列，該短線催化未獲驗證。來源：https://udn.com/news/story/7240/9867127",
+          "輸入資料的退場計畫包括法人連3日賣超；由於未取得相應原始法人資料來源，將其列為待查條件，不視為已發生。"
+        ],
+        "sentiment": "搜尋到的近期YouTube結果偏向整理AI／PCB題材，但僅有摘要、未觀看或取得逐字稿；PTT與Dcard搜尋結果有限且未能確認形成近期單一方向，Threads及Mobile01未找到可核實的相關結果。樣本有限，無法判定整體散戶熱度或稱為過熱。",
+        "sourceCoverage": [
+          {
+            "sourceType": "公告",
+            "status": "找到",
+            "note": "查詢「3715 定穎投控 2026 10月營收 121%」及公司投資人關係頁；找到公司月營收表與法說會資料索引。頁面未提供本次查詢期間內的完整重大訊息清單。https://www.dynaholding.com/investment/"
+          },
+          {
+            "sourceType": "新聞",
+            "status": "找到",
+            "note": "查詢「3715 定穎投控 2026 新聞」；找到2026-11-06營收報導及2026-11-09法說會報導。https://udn.com/news/story/7240/9867127"
+          },
+          {
+            "sourceType": "YouTube",
+            "status": "找到",
+            "note": "查詢「定穎投控 3715 2026 11」；找到相關影片搜尋摘要。僅取得標題或摘要，未觀看影片或取得逐字稿。https://www.youtube.com/watch?v=ui8bFZRCow4"
+          },
+          {
+            "sourceType": "Threads",
+            "status": "查無結果",
+            "note": "查詢「定穎投控 3715」及 site:threads.net；未找到可核實且與該公司直接相關的近期貼文。搜尋結果不足不代表沒有討論或風險。"
+          },
+          {
+            "sourceType": "PTT",
+            "status": "找到",
+            "note": "查詢「定穎投控 3715」及 site:ptt.cc；找到PTT Stock看板搜尋頁與相關文章索引，但搜尋結果中部分文章日期或時效不清，未作為近期催化證據。https://www.ptt.cc/bbs/Stock/search?q=3715"
+          },
+          {
+            "sourceType": "Dcard",
+            "status": "找到",
+            "note": "查詢「定穎投控 3715」及 site:dcard.tw；找到一篇提及定穎的盤勢貼文，但內容偏大盤／族群敘述，不能代表整體情緒。https://www.dcard.tw/f/stock/p/262434874"
+          },
+          {
+            "sourceType": "Mobile01",
+            "status": "查無結果",
+            "note": "查詢「定穎投控 3715」及 site:mobile01.com；未找到可核實的相關討論。搜尋結果不足不代表沒有討論或風險。"
+          }
+        ]
+      },
       "error": ""
     },
     {
@@ -348,8 +745,111 @@
         },
         "side": "long"
       },
-      "status": "pending",
-      "analysis": null,
+      "status": "complete",
+      "analysis": {
+        "catalysts": [
+          {
+            "date": "2026-11-06",
+            "event": "公司公布2026年10月合併營收37.87億元、年增121.47%；這是營收公告事實，營收成長是否轉為獲利仍待後續財報確認。",
+            "sourceType": "公告",
+            "source": "定穎投控／MoneyDJ新聞",
+            "url": "https://m.moneydj.com/f1a.aspx?a=CCC09461-06E1-4A59-BB2F-B89E1C7B46C2"
+          },
+          {
+            "date": "2026-11-09",
+            "event": "公司法說會表示第4季營收預期季增，受產品組合優化與價格調整帶動；管理層稱20層以上AI伺服器板已量產、預計12月出貨並於年底認列，30層及40層以上產品預計2027年第1季末出貨。此為公司展望，並非已實現營收。",
+            "sourceType": "新聞",
+            "source": "經濟日報",
+            "url": "https://money.udn.com/money/amp/story/5612/9867127"
+          },
+          {
+            "date": "2026-11-10",
+            "event": "新聞轉述公司表示泰國廠稼動率約七成，預期2027年第1季完成目標產品組合轉換後滿載並損益兩平；AI產品出貨及獲利改善仍有執行與需求風險。",
+            "sourceType": "新聞",
+            "source": "MoneyDJ理財網",
+            "url": "https://5850web.moneydj.com/z/zf/zufzVIP_1656D4AA-74E6-4BBD-B30D-D709AF8FDA7D_E_.djhtm"
+          },
+          {
+            "date": "2026-11-11",
+            "event": "交易資料顯示收盤130.5元、上漲9.66%並收漲停；這是價格事實，不足以單獨證明基本面已改善或買盤可延續。",
+            "sourceType": "新聞",
+            "source": "鉅亨網",
+            "url": "https://www.cnyes.com/twstock/3715/"
+          },
+          {
+            "date": "2026-11-11",
+            "event": "Dcard盤後貼文提及定穎投控與其他PCB股漲停，並以大盤反彈及族群走勢評論；屬作者觀察，不是公司揭露或獨立驗證的個股催化。",
+            "sourceType": "社群",
+            "source": "Dcard 股票板",
+            "url": "https://www.dcard.tw/f/stock/p/262434874"
+          }
+        ],
+        "shortTerm": "1–4週：偏多催化是10月營收年增及公司預期第4季營收續增，另有20層以上AI伺服器板預計12月出貨；若出貨與營收認列如期，可能帶動短期營運預期（推論）。但股價已連續急漲並於11月11日漲停，短線追價與獲利了結風險偏高；公司展望尚未成為實績。[營收公告](https://m.moneydj.com/f1a.aspx?a=CCC09461-06E1-4A59-BB2F-B89E1C7B46C2)；[法說會報導](https://money.udn.com/money/amp/story/5612/9867127)",
+        "longTerm": "1–4季：若高階AI伺服器板於2026年底出貨、2027年高階產品放量，且泰國廠按公司預期改善稼動率，營收與毛利組合可能改善（推論）。反面風險包括產品導入或客戶拉貨延遲、泰國廠未達滿載與損平、原物料成本和匯兌利息負擔；截至截點的新聞顯示第三季毛利率改善但業外匯損仍壓抑獲利，營運成長不等於淨利已同步轉強。[法說會報導](https://money.udn.com/money/amp/story/5612/9867127)；[泰國廠展望](https://5850web.moneydj.com/z/zf/zufzVIP_1656D4AA-7A-4A6F-8DAB-D709AF8FDA7D_E_.djhtm)",
+        "expectedRange": {
+          "band": "資料不足，無法估算",
+          "basis": "輸入提供10/20報酬、均線及區間高低等摘要，但缺少至少20筆可核對的逐日收盤／調整後收盤序列，無法按每日報酬標準差σ×√20估算。可查到的歷史行情頁面在搜尋摘錄中僅呈現部分交易日，樣本不足；未以同業波動或區間高低替代統計預期。",
+          "urls": [
+            "https://cn.investing.com/equities/dynamic-historical-data"
+          ]
+        },
+        "pricedIn": [
+          "可觀察事實：截至2026-11-11，股價當日漲停至130.5元，前兩個交易日亦分別上漲約9.93%及9.68%；短線已有顯著上漲反應。漲幅是否已充分反映AI出貨展望屬推論，無法確定。[歷史行情](https://cn.investing.com/equities/dynamic-historical-data)",
+          "輸入資料稱外資連買三日、三大法人合計買超；這是選股資料所列籌碼訊號，仍需逐日官方資料核對，且法人買超不等於持續買進。漲停與買超是否已反映營收改善，無法定量判斷。"
+        ],
+        "notPricedIn": [
+          "公司預期20層以上AI伺服器板於年底開始認列，30層及40層以上產品於2027年第1季末出貨；尚屬公司時程展望，實際出貨與營收貢獻尚待驗證，因此市場反映程度無法判定。[經濟日報](https://money.udn.com/money/amp/story/5612/9867127)",
+          "公司對泰國廠2027年第1季滿載與損益兩平的展望尚待結果驗證；無法判斷市場目前已反映多少。[MoneyDJ](https://5850web.money.com.tw/z/zf/zufzVIP_1656D4AA-74E6-4BBD-B30D-D709AF8FDA7D_E_.djhtm)"
+        ],
+        "horizonFit": {
+          "kind": "兩者",
+          "reason": "短線有營收成長與年底AI板出貨預期，長線有2027年高階產品及泰國廠改善展望，但兩者都仍需實際獲利與出貨驗證。"
+        },
+        "positioning": "中立偏多、以觀察或等待回測為主；營收、法說展望偏正面，但漲停追價風險與獲利尚未充分驗證，不宜只依選股訊號追高。非個人化投資建議。",
+        "invalidation": [
+          "價格參考輸入資料的20日高點140.5元及MA60 123.0元：若後續無法站穩20日高點，突破動能論點減弱；若收盤跌破123.0元且兩個交易日未能站回，短線技術偏多論點失效。這些是輸入資料所列技術觀察位，不是基本面價值判斷。",
+          "期限至2027年第1季末：核對公司所述30層及40層以上AI伺服器板出貨安排；若公司公告或法說確認未能如期出貨，長線AI高階板催化論點需重評。[公司時程轉述](https://money.udn.com/money/amp/story/5612/9867127)",
+          "期限至2027年第1季：核對公司所述泰國廠滿載與損益兩平展望；若公司後續揭露未達成或時程延後，泰國廠獲利改善論點需重評。[泰國廠展望](https://5850web.money.com.tw/z/zf/zufzVIP_1656D4AA-74E6-4BBD-B30D-D709AF8FDA7D_E_.djhtm)"
+        ],
+        "sentiment": "可取得的近期YouTube搜尋結果未見截點前足以核實的最新個股影片；Dcard少量貼文偏向描述PCB族群反彈，樣本有限，不能代表整體散戶情緒，也不足以判定過熱。",
+        "sourceCoverage": [
+          {
+            "sourceType": "公告",
+            "status": "找到",
+            "note": "查詢「3715 定穎投控」及公司2026年11月法說／營收；找到營收公告的新聞轉載與法說內容報導，未取得可直接核對的MOPS原始公告頁，故公司公告細節僅採可查到的原文連結。"
+          },
+          {
+            "sourceType": "新聞",
+            "status": "找到",
+            "note": "查詢「定穎投控 2026 11月 營收 PCB」及法說會；找到2026-11-06營收報導、11-09法說報導與11-10泰國廠展望。"
+          },
+          {
+            "sourceType": "YouTube",
+            "status": "找到",
+            "note": "查詢「定穎投控 3715 YouTube 2026」；搜尋到較早影片，未找到可核實且在截點前發布的近期影片；僅有標題／摘要資訊，未觀看或取得逐字稿，不能作為近期催化證據。"
+          },
+          {
+            "sourceType": "Threads",
+            "status": "查無結果",
+            "note": "以「3715 定穎投控」及「定穎投控 3715」搭配Threads網域搜尋，未取得可核實的截點前相關貼文；不代表平台沒有討論。"
+          },
+          {
+            "sourceType": "PTT",
+            "status": "找到",
+            "note": "查詢PTT Stock板「3715 定穎投控」；搜尋頁有歷史文章，但未確認取得符合截點且可核實的近期個股討論原文，故不據此判斷情緒或催化。"
+          },
+          {
+            "sourceType": "Dcard",
+            "status": "找到",
+            "note": "搜尋「定穎投控 3715」找到2026-11-11盤後貼文提及該股漲停；屬單篇盤勢整理與作者觀察，樣本有限。"
+          },
+          {
+            "sourceType": "Mobile01",
+            "status": "查無結果",
+            "note": "以「定穎投控 3715」搭配Mobile01網域搜尋，未取得可核實的相關貼文；不代表平台沒有討論。"
+          }
+        ]
+      },
       "error": ""
     }
   ]
