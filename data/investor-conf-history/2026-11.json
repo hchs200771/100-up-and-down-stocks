@@ -1638,8 +1638,11 @@
    "chars": 3484,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 46,
+   "chars": 11222
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 148 百萬元，YoY +42%，MoM -4%，累計 YoY +46%，YoY 42%，連12月YoY成長，同期歷史新高",
@@ -1703,8 +1706,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-11-05T23:33:52+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "2458-2026-11-05": {
   "key": "2458-2026-11-05",
@@ -1725,8 +1728,11 @@
    "chars": 2102,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 9,
+   "chars": 1477
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 461 百萬元，YoY -54%，MoM -23%，累計 YoY -13%",
@@ -1787,8 +1793,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-11-05T23:33:52+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "2838-2026-11-05": {
   "key": "2838-2026-11-05",
@@ -1869,8 +1875,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-05T23:33:52+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "3036-2026-11-05": {
   "key": "3036-2026-11-05",
@@ -1891,8 +1897,11 @@
    "chars": 5307,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 40,
+   "chars": 8920
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 270,093 百萬元，YoY +113%，MoM +25%，累計 YoY +103%，YoY 113%，連12月YoY成長，MoM連4月正成長，5年新高，比前三月加速 29pp",
@@ -1958,8 +1967,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-11-05T23:33:52+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "3105-2026-11-05": {
   "key": "3105-2026-11-05",
@@ -2041,8 +2050,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-05T23:33:52+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "3221-2026-11-05": {
   "key": "3221-2026-11-05",
@@ -2063,8 +2072,11 @@
    "chars": 3480,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 65,
+   "chars": 13700
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 231 百萬元，YoY +26%，MoM -8%，累計 YoY +17%，YoY 26%，連7月YoY成長，同期歷史新高",
@@ -2130,8 +2142,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-11-05T23:33:52+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "3465-2026-11-05": {
   "key": "3465-2026-11-05",
@@ -2152,8 +2164,11 @@
    "chars": 1731,
    "imageHeavy": true
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 30,
+   "chars": 6238
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 182 百萬元，YoY +33%，MoM +6%，累計 YoY +13%，YoY 33%，連3月YoY成長，同期歷史新高，比前三月加速 26pp",
@@ -2218,8 +2233,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-11-05T23:33:52+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "3592-2026-11-05": {
   "key": "3592-2026-11-05",
@@ -2240,8 +2255,11 @@
    "chars": 2949,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 44,
+   "chars": 9755
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,941 百萬元，YoY +13%，MoM -14%，累計 YoY +10%",
@@ -2306,8 +2324,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-11-05T23:33:52+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "4162-2026-11-05": {
   "key": "4162-2026-11-05",
@@ -2328,8 +2346,11 @@
    "chars": 5186,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 30,
+   "chars": 7857
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 23 百萬元，YoY -18%，MoM -90%，累計 YoY +20%",
@@ -2393,8 +2414,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-11-05T23:33:52+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "4904-2026-11-05": {
   "key": "4904-2026-11-05",
@@ -2475,8 +2496,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-05T23:33:52+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "4915-2026-11-05": {
   "key": "4915-2026-11-05",
@@ -2556,8 +2577,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-05T23:33:52+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "5484-2026-11-05": {
   "key": "5484-2026-11-05",
@@ -2578,8 +2599,11 @@
    "chars": 5473,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 27,
+   "chars": 7361
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 50 百萬元，YoY -19%，MoM +33%，累計 YoY +62%",
@@ -2644,8 +2668,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-11-05T23:33:52+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "6219-2026-11-05": {
   "key": "6219-2026-11-05",
@@ -2666,8 +2690,11 @@
    "chars": 2666,
    "imageHeavy": true
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 14,
+   "chars": 3259
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 282 百萬元，YoY +109179%，MoM +9%，累計 YoY +36182%",
@@ -2728,8 +2755,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-11-05T23:33:52+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "6285-2026-11-05": {
   "key": "6285-2026-11-05",
@@ -2750,8 +2777,11 @@
    "chars": 6188,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 42,
+   "chars": 7235
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 16,858 百萬元，YoY +78%，MoM +5%，累計 YoY +45%，YoY 78%，連10月YoY成長，同期歷史新高",
@@ -2815,8 +2845,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-11-05T23:33:52+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "6486-2026-11-05": {
   "key": "6486-2026-11-05",
@@ -2837,8 +2867,11 @@
    "chars": 9466,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 50,
+   "chars": 9377
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 180 百萬元，YoY +77%，MoM +6%，累計 YoY +91%，YoY 77%，同期歷史新高",
@@ -2898,8 +2931,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-11-05T23:33:52+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "7856-2026-11-05": {
   "key": "7856-2026-11-05",
@@ -2967,8 +3000,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-05T23:33:52+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "1563-2026-11-04": {
   "key": "1563-2026-11-04",
@@ -4212,8 +4245,13 @@
    "chars": 1685,
    "imageHeavy": true
   },
-  "transcript": null,
-  "videoStatus": "無影片",
+  "transcript": {
+   "minutes": 0,
+   "chars": 1611,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-1465-2026-11-06"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 29 百萬元，YoY -2%，MoM -1%，累計 YoY +0%",
@@ -4271,8 +4309,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-08T22:25:25+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "1605-2026-11-06": {
   "key": "1605-2026-11-06",
@@ -4353,8 +4391,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-08T22:25:25+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "1721-2026-11-06": {
   "key": "1721-2026-11-06",
@@ -4375,8 +4413,11 @@
    "chars": 1839,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 31,
+   "chars": 6006
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 126 百萬元，YoY +6%，MoM -17%，累計 YoY -9%",
@@ -4441,8 +4482,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-11-08T22:25:25+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "2388-2026-11-06": {
   "key": "2388-2026-11-06",
@@ -4463,8 +4504,11 @@
    "chars": 3392,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 36,
+   "chars": 9744
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 978 百萬元，YoY -23%，MoM +4%，累計 YoY +23%",
@@ -4529,8 +4573,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-11-08T22:25:25+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "2451-2026-11-06": {
   "key": "2451-2026-11-06",
@@ -4551,8 +4595,11 @@
    "chars": 3131,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 29,
+   "chars": 6210
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 5,025 百萬元，YoY +192%，MoM -17%，累計 YoY +344%，YoY 192%，連12月YoY成長，同期歷史新高",
@@ -4615,8 +4662,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-11-08T22:25:25+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "2474-2026-11-06": {
   "key": "2474-2026-11-06",
@@ -4637,8 +4684,11 @@
    "chars": 9893,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 64,
+   "chars": 11917
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,266 百萬元，YoY -13%，MoM +23%，累計 YoY -31%",
@@ -4703,8 +4753,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-11-08T22:25:25+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "3034-2026-11-06": {
   "key": "3034-2026-11-06",
@@ -4725,8 +4775,11 @@
    "chars": 3409,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 52,
+   "chars": 6586
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 10,052 百萬元，YoY +28%，MoM -3%，累計 YoY +8%，YoY 28%，連7月YoY成長，同期歷史新高，比前三月加速 2pp",
@@ -4784,8 +4837,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-11-08T22:25:25+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "3260-2026-11-06": {
   "key": "3260-2026-11-06",
@@ -4806,8 +4859,11 @@
    "chars": 4365,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 23,
+   "chars": 5226
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 17,063 百萬元，YoY +282%，MoM +8%，累計 YoY +223%，YoY 282%，連12月YoY成長，同期歷史新高，比前三月加速 12pp",
@@ -4866,8 +4922,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-11-08T22:25:25+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "3545-2026-11-06": {
   "key": "3545-2026-11-06",
@@ -4888,8 +4944,13 @@
    "chars": 6945,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "transcript": {
+   "minutes": 0,
+   "chars": 2229,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-3545-2026-11-06"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 841 百萬元，YoY -12%，MoM -7%，累計 YoY -13%",
@@ -4951,7 +5012,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-08T22:25:25+08:00",
   "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "3644-2026-11-06": {
   "key": "3644-2026-11-06",
@@ -5034,8 +5095,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-08T22:25:25+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "3645-2026-11-06": {
   "key": "3645-2026-11-06",
@@ -5056,8 +5117,13 @@
    "chars": 4838,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "影音在公司網頁，未轉",
+  "transcript": {
+   "minutes": 0,
+   "chars": 2749,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-3645-2026-11-06"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 153 百萬元，YoY -11%，MoM -5%，累計 YoY -5%",
@@ -5116,8 +5182,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-08T22:25:25+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "3661-2026-11-06": {
   "key": "3661-2026-11-06",
@@ -5196,8 +5262,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-08T22:25:25+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "3675-2026-11-06": {
   "key": "3675-2026-11-06",
@@ -5219,7 +5285,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "videoStatus": "未設定 GROQ_API_KEY",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 319 百萬元，YoY +37%，MoM +1%，累計 YoY +24%，YoY 37%，連10月YoY成長，MoM連10月正成長，5年新高，比前三月加速 4pp",
@@ -5279,7 +5345,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-08T22:25:25+08:00",
   "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "pendingNote": "影音：未設定 GROQ_API_KEY"
  },
  "3684-2026-11-06": {
   "key": "3684-2026-11-06",
@@ -5300,8 +5366,13 @@
    "chars": 2786,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "transcript": {
+   "minutes": 0,
+   "chars": 2458,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-3684-2026-11-06"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 127 百萬元，YoY +26%，MoM +2%，累計 YoY +8%，YoY 26%，連4月YoY成長，MoM連3月正成長，同期歷史新高，比前三月加速 22pp",
@@ -5362,7 +5433,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-08T22:25:25+08:00",
   "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "3714-2026-11-06": {
   "key": "3714-2026-11-06",
@@ -5443,8 +5514,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-08T22:25:25+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "4763-2026-11-06": {
   "key": "4763-2026-11-06",
@@ -5465,8 +5536,13 @@
    "chars": 4062,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "transcript": {
+   "minutes": 0,
+   "chars": 4302,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-4763-2026-11-06"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": null,
@@ -5528,7 +5604,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-08T22:25:25+08:00",
   "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "4972-2026-11-06": {
   "key": "4972-2026-11-06",
@@ -5608,8 +5684,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-08T22:25:25+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "5347-2026-11-06": {
   "key": "5347-2026-11-06",
@@ -5689,8 +5765,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-08T22:25:25+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "6180-2026-11-06": {
   "key": "6180-2026-11-06",
@@ -5711,8 +5787,13 @@
    "chars": 5441,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "transcript": {
+   "minutes": 0,
+   "chars": 3247,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-6180-2026-11-06"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 658 百萬元，YoY +10%，MoM -26%，累計 YoY +1%",
@@ -5773,7 +5854,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-08T22:25:25+08:00",
   "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "6643-2026-11-06": {
   "key": "6643-2026-11-06",
@@ -5795,7 +5876,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "videoStatus": "未設定 GROQ_API_KEY",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 180 百萬元，YoY +28%，MoM +17%，累計 YoY +8%，YoY 28%，連4月YoY成長，同期歷史新高",
@@ -5856,7 +5937,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-08T22:25:25+08:00",
   "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "pendingNote": "影音：未設定 GROQ_API_KEY"
  },
  "6691-2026-11-06": {
   "key": "6691-2026-11-06",
@@ -5937,8 +6018,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-08T22:25:25+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "6719-2026-11-06": {
   "key": "6719-2026-11-06",
@@ -6018,8 +6099,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-08T22:25:25+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "6781-2026-11-06": {
   "key": "6781-2026-11-06",
@@ -6041,7 +6122,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "videoStatus": "未設定 GROQ_API_KEY",
   "deckStatus": "ok",
   "context": {
    "revenue": null,
@@ -6098,7 +6179,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-08T22:25:25+08:00",
   "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "pendingNote": "影音：未設定 GROQ_API_KEY"
  },
  "6967-2026-11-06": {
   "key": "6967-2026-11-06",
@@ -6120,7 +6201,7 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "videoStatus": "未設定 GROQ_API_KEY",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 125 百萬元，YoY -7%，MoM -6%，累計 YoY +18%",
@@ -6179,7 +6260,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-08T22:25:25+08:00",
   "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "pendingNote": "影音：未設定 GROQ_API_KEY"
  },
  "7957-2026-11-06": {
   "key": "7957-2026-11-06",
@@ -6259,8 +6340,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-08T22:25:25+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "8021-2026-11-06": {
   "key": "8021-2026-11-06",
@@ -6277,7 +6358,7 @@
   "note": "報名網址：https://reurl.cc/Vnd52b",
   "deck": null,
   "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "videoStatus": "未設定 GROQ_API_KEY",
   "deckStatus": "尚未上傳",
   "context": {
    "revenue": "2026-10 月營收 847 百萬元，YoY +94%，MoM +2%，累計 YoY +81%，YoY 94%，連12月YoY成長，MoM連8月正成長，5年新高",
@@ -6308,7 +6389,7 @@
   "analyzedEvidence": 0,
   "firstSeen": "2026-11-08T22:25:25+08:00",
   "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "pendingNote": "影音：未設定 GROQ_API_KEY"
  },
  "8081-2026-11-06": {
   "key": "8081-2026-11-06",
@@ -6389,8 +6470,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-08T22:25:25+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "8210-2026-11-06": {
   "key": "8210-2026-11-06",
@@ -6472,8 +6553,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-08T22:25:25+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "8299-2026-11-06": {
   "key": "8299-2026-11-06",
@@ -6495,7 +6576,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "videoStatus": "未設定 GROQ_API_KEY",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 31,530 百萬元，YoY +346%，MoM +3%，累計 YoY +298%，YoY 346%，連12月YoY成長，MoM連11月正成長，5年新高",
@@ -6555,7 +6636,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-08T22:25:25+08:00",
   "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "pendingNote": "影音：未設定 GROQ_API_KEY"
  },
  "1303-2026-11-09": {
   "key": "1303-2026-11-09",
@@ -6637,8 +6718,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-09T21:00:56+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "1337-2026-11-09": {
   "key": "1337-2026-11-09",
@@ -6659,8 +6740,13 @@
    "chars": 4143,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "無影片",
+  "transcript": {
+   "minutes": 0,
+   "chars": 1984,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-1337-2026-11-09"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": null,
@@ -6719,8 +6805,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-09T21:00:56+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "2352-2026-11-09": {
   "key": "2352-2026-11-09",
@@ -6741,8 +6827,13 @@
    "chars": 8176,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "transcript": {
+   "minutes": 0,
+   "chars": 3260,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-2352-2026-11-09"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 19,390 百萬元，YoY +13%，MoM -2%，累計 YoY +4%",
@@ -6803,7 +6894,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-09T21:00:56+08:00",
   "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "2729-2026-11-09": {
   "key": "2729-2026-11-09",
@@ -6824,8 +6915,11 @@
    "chars": 772,
    "imageHeavy": true
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 20,
+   "chars": 4834
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 500 百萬元，YoY -2%，MoM +1%，累計 YoY +5%",
@@ -6888,8 +6982,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-11-09T21:00:56+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "2881-2026-11-09": {
   "key": "2881-2026-11-09",
@@ -6971,8 +7065,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-09T21:00:56+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "2884-2026-11-09": {
   "key": "2884-2026-11-09",
@@ -7054,8 +7148,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-09T21:00:56+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "3703-2026-11-09": {
   "key": "3703-2026-11-09",
@@ -7076,8 +7170,11 @@
    "chars": 4217,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 26,
+   "chars": 5585
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 2,868 百萬元，YoY +50%，MoM -33%，累計 YoY +7%",
@@ -7140,8 +7237,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-11-09T21:00:56+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "3715-2026-11-09": {
   "key": "3715-2026-11-09",
@@ -7162,8 +7259,11 @@
    "chars": 5719,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 61,
+   "chars": 8317
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 3,787 百萬元，YoY +121%，MoM +17%，累計 YoY +59%，YoY 121%，連12月YoY成長，MoM連4月正成長，5年新高，比前三月加速 42pp",
@@ -7228,8 +7328,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-11-09T21:00:56+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "4438-2026-11-09": {
   "key": "4438-2026-11-09",
@@ -7250,8 +7350,11 @@
    "chars": 3442,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 10,
+   "chars": 2460
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,699 百萬元，YoY -15%，MoM -34%，累計 YoY +2%",
@@ -7316,8 +7419,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-11-09T21:00:56+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "4551-2026-11-09": {
   "key": "4551-2026-11-09",
@@ -7397,8 +7500,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-09T21:00:56+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "4939-2026-11-09": {
   "key": "4939-2026-11-09",
@@ -7419,8 +7522,11 @@
    "chars": 4904,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 25,
+   "chars": 5642
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 160 百萬元，YoY +42%，MoM +3%，累計 YoY +20%，YoY 42%，連7月YoY成長，同期歷史新高，比前三月加速 10pp",
@@ -7483,8 +7589,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-11-09T21:00:56+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "4953-2026-11-09": {
   "key": "4953-2026-11-09",
@@ -7564,8 +7670,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-09T21:00:56+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "6121-2026-11-09": {
   "key": "6121-2026-11-09",
@@ -7586,8 +7692,11 @@
    "chars": 5899,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 52,
+   "chars": 11449
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 5,606 百萬元，YoY -29%，MoM -7%，累計 YoY -2%",
@@ -7652,8 +7761,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-11-09T21:00:56+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "6216-2026-11-09": {
   "key": "6216-2026-11-09",
@@ -7674,8 +7783,11 @@
    "chars": 919,
    "imageHeavy": true
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 12,
+   "chars": 1861
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 79 百萬元，YoY +83%，MoM +120%，累計 YoY -21%",
@@ -7725,8 +7837,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-11-09T21:00:56+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "6456-2026-11-09": {
   "key": "6456-2026-11-09",
@@ -7747,8 +7859,11 @@
    "chars": 1857,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 63,
+   "chars": 15056
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": null,
@@ -7806,8 +7921,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-11-09T21:00:56+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "6799-2026-11-09": {
   "key": "6799-2026-11-09",
@@ -7828,8 +7943,11 @@
    "chars": 4404,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 47,
+   "chars": 13124
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 78 百萬元，YoY +2%，MoM -14%，累計 YoY +5%",
@@ -7895,8 +8013,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-11-09T21:00:56+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "6952-2026-11-09": {
   "key": "6952-2026-11-09",
@@ -7977,8 +8095,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-09T21:00:56+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "6961-2026-11-09": {
   "key": "6961-2026-11-09",
@@ -7999,8 +8117,11 @@
    "chars": 4375,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 29,
+   "chars": 7555
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 428 百萬元，YoY +11%，MoM +6%，累計 YoY +8%",
@@ -8059,8 +8180,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 3,
   "firstSeen": "2026-11-09T21:00:56+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "8454-2026-11-09": {
   "key": "8454-2026-11-09",
@@ -8081,8 +8202,13 @@
    "chars": 3388,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "transcript": {
+   "minutes": 0,
+   "chars": 3165,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-8454-2026-11-09"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 8,093 百萬元，YoY +4%，MoM -6%，累計 YoY +4%",
@@ -8142,7 +8268,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-09T21:00:56+08:00",
   "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "7953-2026-11-05": {
   "key": "7953-2026-11-05",
@@ -8223,8 +8349,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-09T21:00:56+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "7971-2026-11-03": {
   "key": "7971-2026-11-03",
@@ -8442,8 +8568,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-10T23:34:24+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "1560-2026-11-10": {
   "key": "1560-2026-11-10",
@@ -8525,8 +8651,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-10T23:34:24+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "1590-2026-11-10": {
   "key": "1590-2026-11-10",
@@ -8605,8 +8731,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-10T23:34:24+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "2049-2026-11-10": {
   "key": "2049-2026-11-10",
@@ -8687,8 +8813,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-10T23:34:24+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "2062-2026-11-10": {
   "key": "2062-2026-11-10",
@@ -8770,8 +8896,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-10T23:34:24+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "2308-2026-11-10": {
   "key": "2308-2026-11-10",
@@ -8851,8 +8977,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-10T23:34:24+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "2327-2026-11-10": {
   "key": "2327-2026-11-10",
@@ -8927,8 +9053,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-10T23:34:24+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "2356-2026-11-10": {
   "key": "2356-2026-11-10",
@@ -9191,8 +9317,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-10T23:34:24+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "2480-2026-11-10": {
   "key": "2480-2026-11-10",
@@ -9301,8 +9427,13 @@
    "chars": 2411,
    "imageHeavy": true
   },
-  "transcript": null,
-  "videoStatus": "影音在公司網頁，未轉",
+  "transcript": {
+   "minutes": 0,
+   "chars": 2211,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-2483-2026-11-10"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 196 百萬元，YoY +41%，MoM +4%，累計 YoY +24%，YoY 41%，連11月YoY成長，同期歷史新高，比前三月加速 8pp",
@@ -9360,8 +9491,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-10T23:34:24+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "2882-2026-11-10": {
   "key": "2882-2026-11-10",
@@ -9442,8 +9573,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-10T23:34:24+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "2885-2026-11-10": {
   "key": "2885-2026-11-10",
@@ -9496,8 +9627,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-10T23:34:24+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "2913-2026-11-10": {
   "key": "2913-2026-11-10",
@@ -9761,8 +9892,13 @@
    "chars": 6111,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "transcript": {
+   "minutes": 0,
+   "chars": 1967,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-3090-2026-11-10"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 2,017 百萬元，YoY +48%，MoM +9%，累計 YoY +32%，YoY 48%，連12月YoY成長，同期歷史新高，比前三月加速 3pp",
@@ -9822,7 +9958,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-10T23:34:24+08:00",
   "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "3416-2026-11-10": {
   "key": "3416-2026-11-10",
@@ -9843,8 +9979,13 @@
    "chars": 4989,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "transcript": {
+   "minutes": 0,
+   "chars": 3474,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-3416-2026-11-10"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 352 百萬元，YoY +17%，MoM -34%，累計 YoY +33%",
@@ -9905,7 +10046,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-10T23:34:24+08:00",
   "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "4772-2026-11-10": {
   "key": "4772-2026-11-10",
@@ -9987,8 +10128,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-10T23:34:24+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "4961-2026-11-10": {
   "key": "4961-2026-11-10",
@@ -10069,8 +10210,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-10T23:34:24+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "5269-2026-11-10": {
   "key": "5269-2026-11-10",
@@ -10091,8 +10232,13 @@
    "chars": 2489,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "transcript": {
+   "minutes": 0,
+   "chars": 4378,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-5269-2026-11-10"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 570 百萬元，YoY -52%，MoM -43%，累計 YoY -15%",
@@ -10151,7 +10297,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-10T23:34:24+08:00",
   "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "5344-2026-11-10": {
   "key": "5344-2026-11-10",
@@ -10226,8 +10372,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-10T23:34:24+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "5483-2026-11-10": {
   "key": "5483-2026-11-10",
@@ -10310,8 +10456,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-10T23:34:24+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "6112-2026-11-10": {
   "key": "6112-2026-11-10",
@@ -10332,8 +10478,13 @@
    "chars": 2723,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "transcript": {
+   "minutes": 0,
+   "chars": 3280,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-6112-2026-11-10"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 2,383 百萬元，YoY +27%，MoM +15%，累計 YoY +18%，YoY 27%，連4月YoY成長，5年新高，比前三月加速 13pp",
@@ -10393,7 +10544,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-10T23:34:24+08:00",
   "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "6237-2026-11-10": {
   "key": "6237-2026-11-10",
@@ -10414,8 +10565,13 @@
    "chars": 4438,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "transcript": {
+   "minutes": 0,
+   "chars": 1561,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-6237-2026-11-10"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 25 百萬元，YoY -57%，MoM +2%，累計 YoY +8%",
@@ -10476,7 +10632,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-10T23:34:24+08:00",
   "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "6274-2026-11-10": {
   "key": "6274-2026-11-10",
@@ -10534,8 +10690,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-10T23:34:24+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "6488-2026-11-10": {
   "key": "6488-2026-11-10",
@@ -10617,8 +10773,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-10T23:34:24+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "6510-2026-11-10": {
   "key": "6510-2026-11-10",
@@ -10698,8 +10854,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-10T23:34:24+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "6531-2026-11-10": {
   "key": "6531-2026-11-10",
@@ -10720,8 +10876,13 @@
    "chars": 8741,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "transcript": {
+   "minutes": 0,
+   "chars": 4990,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-6531-2026-11-10"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,299 百萬元，YoY +156%，MoM +9%，累計 YoY +112%，YoY 156%，連12月YoY成長，5年新高，比前三月加速 27pp",
@@ -10782,7 +10943,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-10T23:34:24+08:00",
   "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "6643-2026-11-10": {
   "key": "6643-2026-11-10",
@@ -10862,8 +11023,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-10T23:34:24+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "6894-2026-11-10": {
   "key": "6894-2026-11-10",
@@ -10884,8 +11045,13 @@
    "chars": 3771,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "transcript": {
+   "minutes": 0,
+   "chars": 3562,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-6894-2026-11-10"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 199 百萬元，YoY +74%，MoM -8%，累計 YoY +69%，YoY 74%，連12月YoY成長，同期歷史新高",
@@ -10945,7 +11111,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-10T23:34:24+08:00",
   "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "6903-2026-11-10": {
   "key": "6903-2026-11-10",
@@ -11027,8 +11193,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-10T23:34:24+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "8210-2026-11-10": {
   "key": "8210-2026-11-10",
@@ -11109,8 +11275,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-10T23:34:24+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "8299-2026-11-10": {
   "key": "8299-2026-11-10",
@@ -11192,8 +11358,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-10T23:34:24+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "2103-2026-11-11": {
   "key": "2103-2026-11-11",
@@ -11274,8 +11440,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-12T00:34:51+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "2347-2026-11-11": {
   "key": "2347-2026-11-11",
@@ -11297,7 +11463,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "未設定 GROQ_API_KEY",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 59,196 百萬元，YoY +60%，MoM -34%，累計 YoY +93%，YoY 60%，連12月YoY成長，同期歷史新高",
@@ -11358,7 +11524,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-12T00:34:51+08:00",
   "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "pendingNote": "影音：未設定 GROQ_API_KEY"
  },
  "2379-2026-11-11": {
   "key": "2379-2026-11-11",
@@ -11436,8 +11602,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-12T00:34:51+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "2382-2026-11-11": {
   "key": "2382-2026-11-11",
@@ -11610,8 +11776,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-12T00:34:51+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "2397-2026-11-11": {
   "key": "2397-2026-11-11",
@@ -11961,8 +12127,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-12T00:34:51+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "2882-2026-11-11": {
   "key": "2882-2026-11-11",
@@ -12042,8 +12208,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-12T00:34:51+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "2884-2026-11-11": {
   "key": "2884-2026-11-11",
@@ -12123,8 +12289,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-12T00:34:51+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "2949-2026-11-11": {
   "key": "2949-2026-11-11",
@@ -12204,8 +12370,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-12T00:34:51+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "3167-2026-11-11": {
   "key": "3167-2026-11-11",
@@ -12226,8 +12392,13 @@
    "chars": 4971,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 0,
+   "chars": 3123,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-3167-2026-11-11"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,371 百萬元，YoY +175%，MoM +5%，累計 YoY +144%，YoY 175%，連12月YoY成長，MoM連8月正成長，5年新高，比前三月加速 16pp",
@@ -12235,59 +12406,64 @@
   },
   "analysis": {
    "industry": "機械與自動化",
-   "subIndustry": "PCB鑽孔成型設備、先進封裝量測與AOI設備",
+   "subIndustry": "PCB鑽孔與量測設備、先進封裝檢測設備",
    "direction": "利多",
-   "headline": "高階機台營收占68%，先進封裝設備驗證放量",
-   "score": 3,
-   "verdict": "一般",
-   "reason": "高階設備與先進封裝放量偏利多，但主要為財報回顧，未明確量化未來訂單、獲利或放量時程。",
+   "headline": "PCB排單至2027年底，半導體接單出貨比逾2",
+   "score": 5,
+   "verdict": "重點關注",
+   "reason": "屬利多：新增全年排單、半導體接單出貨比及CPO量產時程，足以影響獲利預期，但展望主要來自富果整理，仍待公司原始問答確認。",
    "keyNumbers": [
     {
-     "label": "2026Q3營收",
+     "label": "2026Q3營收（簡報）",
      "value": "36.71億元，年增159.50%"
     },
     {
-     "label": "2026Q3毛利率",
+     "label": "2026Q3毛利率（簡報）",
      "value": "50.17%"
     },
     {
-     "label": "2026Q3 EPS",
-     "value": "9.94元，年增309.84%"
+     "label": "2026Q3／前三季EPS（簡報）",
+     "value": "9.94／19.24元"
     },
     {
-     "label": "2026前三季營收",
-     "value": "84.77億元，年增140.20%"
+     "label": "PCB訂單能見度（富果整理）",
+     "value": "至2027年底；前置期5至6個月"
     },
     {
-     "label": "2026前三季EPS",
-     "value": "19.24元"
+     "label": "半導體接單出貨比（富果整理）",
+     "value": "大於2"
     },
     {
-     "label": "2026前三季高階機台營收占比",
-     "value": "68%"
+     "label": "PCB自有月產能（富果整理）",
+     "value": "目前400台，2027年規劃逾500台"
     }
    ],
-   "guidance": "未提供明確展望；揭露先進封裝及CPO設備布局，但未提供下一季或全年財測。",
+   "guidance": "依富果整理，半導體業務預期2026Q4出貨與營收明顯放大；2027年CCD高階機種雙位數成長、TM4成長幅度超過雙位數；CPO合作產線預計2026年建置、2027Q3量產。未提供整體營收或EPS財測。",
    "drivers": [
-    "高階PCB設備占機台營收68%，精密鑽孔、背鑽及量測為主要產品方向。",
-    "CoWoS量測與AOI設備獲一線大廠驗證放量。",
-    "CoPoS／FOPLP設備導入晶圓代工與封測客戶，CPO設備與一線客戶共同開發。"
+    "高階CCD與TM產品組合推升毛利；富果整理指出Q3主要貢獻來自CCD與TM3，並非漲價。",
+    "TM4受惠客戶由打樣轉量產，且部分終端客戶指定採用。",
+    "先進封裝量測與AOI設備放量，CPO整合設備已有具體量產時程。"
    ],
    "risks": [
-    "新產品未揭露訂單金額、營收貢獻與明確放量時程，難估算後續獲利增量。",
-    "未說明第三季50.17%毛利率的形成原因與持續性。",
-    "部分出貨及訂單圖表的年份、數字與狀態對應不清，無法可靠量化未來能見度。"
+    "訂單、擴產及CPO時程主要來自第三方AI摘要，未取得原始逐字稿核實。",
+    "毛利率能否維持取決於高階產品出貨比重，公司未保證續升。",
+    "TM4特殊相機供應交期較長；公司稱已有替代方案。",
+    "標準鑽孔機面臨中國同業競爭，CPO尚待量產驗證。"
    ],
-   "qaHighlights": [],
+   "qaHighlights": [
+    "富果整理問答：Q3僅認列5台TM4，出貨至認列約需3個月，當季毛利提升主要由CCD與TM3帶動。",
+    "富果整理問答：CPO整合設備售價約為一般晶圓檢測設備的3至4倍，但未揭露訂單金額。",
+    "富果整理問答：一般機種委外對毛利影響有限，未來整體毛利仍取決於高階產品占比。"
+   ],
    "tone": "持平",
    "evidence": "僅簡報"
   },
-  "analyzedAt": "2026-11-12T00:37:20+08:00",
+  "analyzedAt": "2026-11-12T01:48:53+08:00",
   "model": "gpt-6.1-sol",
-  "analyzedEvidence": 1,
+  "analyzedEvidence": 3,
   "firstSeen": "2026-11-12T00:34:51+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "3711-2026-11-11": {
   "key": "3711-2026-11-11",
@@ -12367,8 +12543,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-12T00:34:51+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "3715-2026-11-11": {
   "key": "3715-2026-11-11",
@@ -12450,8 +12626,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-12T00:34:51+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "4440-2026-11-11": {
   "key": "4440-2026-11-11",
@@ -12467,17 +12643,69 @@
   "videoUrl": "http://irconference.twse.com.tw/4440_8_20261111_ch.MP4",
   "note": "無",
   "deck": null,
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 0,
+   "chars": 2090,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-4440-2026-11-11"
+  },
+  "videoStatus": "ok",
   "deckStatus": "尚未上傳",
   "context": {
    "revenue": "2026-10 月營收 100 百萬元，YoY -10%，MoM +14%，累計 YoY -4%",
    "move": null
   },
-  "analysis": null,
+  "analysis": {
+   "industry": "紡織與製鞋",
+   "subIndustry": "彈性包覆紗與機能紗線",
+   "direction": "利多",
+   "headline": "彈性包覆紗占比升至76%，獲利結構改善",
+   "score": 3,
+   "verdict": "一般",
+   "reason": "偏利多，產品組合調整可解釋獲利改善，但主要回顧既有財報，新產品與擴產均無量化目標及時程。",
+   "keyNumbers": [
+    {
+     "label": "2026年前三季毛利率",
+     "value": "16.4%"
+    },
+    {
+     "label": "2026年前三季營業淨利率",
+     "value": "12.6%"
+    },
+    {
+     "label": "2026年前三季EPS",
+     "value": "1.54元"
+    },
+    {
+     "label": "2025年全年EPS",
+     "value": "1.14元"
+    },
+    {
+     "label": "彈性包覆紗銷售占比",
+     "value": "2023年46%升至目前76%"
+    }
+   ],
+   "guidance": "富果整理指出，公司將持續聚焦高附加價值紗線並更新設備，預期獲利結構持續優化；未提供下一季或全年量化財測、擴產幅度及投產時程。",
+   "drivers": [
+    "提高彈性包覆紗占比、調整售價並退出低毛利訂單，改善產品組合。",
+    "整合加工製程與設備升級，有助降低成本、提升良率。",
+    "開發環保與機能紗線，但尚無訂單金額及放量時程。"
+   ],
+   "risks": [
+    "10月營收年減10%、累計年減4%，營收需求尚未明確回升。",
+    "缺少毛利率比較基期與未來目標，難確認獲利改善幅度及持續性。",
+    "僅有富果第三方AI摘要，缺少公司簡報及逐字稿可核對；摘要所列EPS年增37%未交代比較基期。"
+   ],
+   "qaHighlights": [],
+   "tone": "持平",
+   "evidence": "僅摘要"
+  },
+  "analyzedAt": "2026-11-12T01:48:45+08:00",
+  "model": "gpt-6.1-sol",
+  "analyzedEvidence": 2,
   "firstSeen": "2026-11-12T00:34:51+08:00",
-  "state": "pending",
-  "pendingNote": "尚未判讀；簡報還沒上傳；影音轉文字中"
+  "state": "partial",
+  "pendingNote": "簡報還沒上傳"
  },
  "4576-2026-11-11": {
   "key": "4576-2026-11-11",
@@ -12499,7 +12727,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "未設定 GROQ_API_KEY",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 410 百萬元，YoY +69%，MoM -4%，累計 YoY +59%，YoY 69%，連12月YoY成長，同期歷史新高",
@@ -12559,7 +12787,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-12T00:34:51+08:00",
   "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "pendingNote": "影音：未設定 GROQ_API_KEY"
  },
  "6155-2026-11-11": {
   "key": "6155-2026-11-11",
@@ -12581,7 +12809,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "未設定 GROQ_API_KEY",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 66 百萬元，YoY +32%，MoM -20%，累計 YoY +26%",
@@ -12641,7 +12869,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-12T00:34:51+08:00",
   "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "pendingNote": "影音：未設定 GROQ_API_KEY"
  },
  "6231-2026-11-11": {
   "key": "6231-2026-11-11",
@@ -12662,8 +12890,13 @@
    "chars": 10207,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 0,
+   "chars": 3167,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-6231-2026-11-11"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 104 百萬元，YoY -2%，MoM -58%，累計 YoY +11%",
@@ -12672,58 +12905,64 @@
   "analysis": {
    "industry": "軟體與資訊服務",
    "subIndustry": "BIOS、OpenBMC與平台安全韌體",
-   "direction": "中性",
-   "headline": "韌體布局延伸AI整櫃，未給放量與獲利指引",
+   "direction": "利多",
+   "headline": "伺服器成長抵銷筆電下滑，機櫃商機未量化",
    "score": 3,
    "verdict": "一般",
-   "reason": "AI整櫃韌體屬潛在利多，但未提供訂單、放量時程或獲利貢獻，尚不足改變獲利預期。",
+   "reason": "偏利多：伺服器成長支撐營收，但AI機櫃尚無新增訂單金額、放量時程或獲利指引，未足以明顯上修預期。",
    "keyNumbers": [
     {
-     "label": "2026年第三季營收",
+     "label": "2026Q3營收",
      "value": "4.865億元，年增14.08%、季增4.68%"
     },
     {
-     "label": "第三季毛利率",
-     "value": "74.59%，第二季77.88%、去年同期73.42%"
+     "label": "2026Q3毛利率",
+     "value": "74.59%，前季77.88%、去年同期73.42%"
     },
     {
-     "label": "第三季營業利益率",
-     "value": "24.77%"
-    },
-    {
-     "label": "第三季EPS",
+     "label": "2026Q3 EPS",
      "value": "1.99元"
     },
     {
-     "label": "前三季EPS",
+     "label": "2026前三季EPS",
      "value": "5.62元"
     },
     {
-     "label": "現代AI機櫃韌體映像數示意",
-     "value": "每櫃250～300個以上，非公司訂單或授權量"
+     "label": "CSP NRE合約期間",
+     "value": "多為2至3年（富果整理）"
+    },
+    {
+     "label": "擬現金增資比例",
+     "value": "不超過10%（富果整理）"
     }
    ],
-   "guidance": "未提供明確展望；僅指出CPU伺服器復甦、x86與Arm設計導入增加，車用與機器人屬長期投資。",
+   "guidance": "未提供下一季或全年量化財測。依富果整理，公司預期伺服器成長抵銷筆電疲弱的趨勢延續；CSP由自研轉外購可能歷時十年，並非近期權利金放量承諾。",
    "drivers": [
-    "BIOS、OpenBMC與TapRUUT產品由主機板延伸至AI機櫃運算、交換器、電源及冷卻管理。",
-    "支援ASPEED AST2700及新一代AI PC平台，拓展韌體導入機會。",
-    "加入Arm Physical AI生態系，布局自駕車與機器人。"
+    "AI機櫃將韌體需求延伸至運算、交換器、電源與液冷管理，擴大可服務範圍。",
+    "支援ASPEED AST2700，並以TapRUUT平台安全產品搭配OpenBMC拓展商機。",
+    "CSP委外開發帶動NRE收入，長期存在轉為權利金的機會。"
    ],
    "risks": [
-    "第三季營收季增，但毛利率季減3.29個百分點，未說明原因及持續性。",
-    "10月營收年減2%、月減58%，後續動能尚待確認。",
-    "AI機櫃應用未揭露客戶訂單、授權單價與放量時程，難估獲利貢獻。"
+    "第三季毛利率季減3.29個百分點；富果整理稱NRE人事成本列入銷貨成本，產品組合會影響毛利率比較。",
+    "薪資與人事費用上升，營收成長未必等幅轉為獲利。",
+    "現增可能稀釋每股盈餘，主要用途為償還辦公室貸款及充實營運資金。",
+    "10月營收年減2%、月減58%；季度結算可能造成波動，仍須觀察後續月份。"
    ],
-   "qaHighlights": [],
+   "qaHighlights": [
+    "富果整理明確涵蓋問答：純NRE專案收費為可衍生權利金專案的2至3倍，公司未揭露兩類占比。",
+    "富果整理：NRE按月依完成工時認列；台灣權利金客戶多月結、美國客戶多季結，有助理解季末營收集中。",
+    "富果整理：AI工具以改善開發及測試效率為主，未提出裁員或量化降本目標，預計2027年Computex展示成果。",
+    "以上為第三方摘要歸納，非逐字稿；[富果整理來源](https://blog.fugle.tw/post/earnings-call-6231-2026-11-11)。"
+   ],
    "tone": "持平",
-   "evidence": "僅簡報"
+   "evidence": "簡報+影音"
   },
-  "analyzedAt": "2026-11-12T00:39:17+08:00",
+  "analyzedAt": "2026-11-12T01:48:58+08:00",
   "model": "gpt-6.1-sol",
-  "analyzedEvidence": 1,
+  "analyzedEvidence": 3,
   "firstSeen": "2026-11-12T00:34:51+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "6409-2026-11-11": {
   "key": "6409-2026-11-11",
@@ -12804,8 +13043,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-12T00:34:51+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "6414-2026-11-11": {
   "key": "6414-2026-11-11",
@@ -12886,8 +13125,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-12T00:34:51+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "6446-2026-11-11": {
   "key": "6446-2026-11-11",
@@ -12969,8 +13208,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-12T00:34:51+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "6526-2026-11-11": {
   "key": "6526-2026-11-11",
@@ -13048,8 +13287,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-12T00:34:51+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "6620-2026-11-11": {
   "key": "6620-2026-11-11",
@@ -13121,8 +13360,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-12T00:34:51+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "6708-2026-11-11": {
   "key": "6708-2026-11-11",
@@ -13143,8 +13382,13 @@
    "chars": 1132,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 0,
+   "chars": 2777,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-6708-2026-11-11"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 34 百萬元，YoY +68%，MoM +9%，累計 YoY +9%",
@@ -13152,20 +13396,16 @@
   },
   "analysis": {
    "industry": "IC設計",
-   "subIndustry": "無線車用監控IC、工業電腦eBMC",
+   "subIndustry": "無線車用監控IC、邊緣運算BMC",
    "direction": "利多",
-   "headline": "eBMC逾5家客戶導入，預計2027下半年接單生產",
+   "headline": "eBMC逾5家客戶導入，預計2027下半年接單",
    "score": 4,
    "verdict": "值得留意",
-   "reason": "利多：揭露eBMC逾5家客戶導入及具體驗證、生產時程，提供未來營收線索，但尚無訂單金額與獲利貢獻量化。",
+   "reason": "屬利多，eBMC揭露客戶導入數與量產、接單時程，提供可追蹤的新展望，但尚無訂單金額或獲利貢獻估計。",
    "keyNumbers": [
     {
-     "label": "2026年第三季營收",
+     "label": "2026Q3營收",
      "value": "9,260萬元，年增30.53%"
-    },
-    {
-     "label": "2026年第三季EPS",
-     "value": "0.26元"
     },
     {
      "label": "2026年前三季營收",
@@ -13173,39 +13413,47 @@
     },
     {
      "label": "2026年前三季EPS",
-     "value": "0.35元"
+     "value": "0.35元，去年同期0.05元"
     },
     {
-     "label": "eBMC導入客戶",
-     "value": "逾5家進行或完成design-in"
+     "label": "eBMC客戶導入",
+     "value": "超過5家進行或完成design-in"
     },
     {
-     "label": "eBMC量產版時程",
-     "value": "2026年第四季投片、2027年第一季工程樣品、第二季量產"
+     "label": "第一代eBMC量產規劃",
+     "value": "2027Q1提供量產版工程樣品、2027Q2量產"
+    },
+    {
+     "label": "eBMC 2.0樣品規劃",
+     "value": "2028年下半年完成"
     }
    ],
-   "guidance": "eBMC客戶預計2027年第一季取得樣品後驗證，2027年下半年起陸續接單生產；進階版eBMC 2.0預計2028年下半年完成樣品。未提供下一季或全年營收、獲利財測。",
+   "guidance": "簡報預計eBMC客戶於2027下半年陸續接單生產；富果整理另稱2026Q4營運平穩、2027年既有產品微幅成長，未提供營收或EPS財測。",
    "drivers": [
-    "eBMC已有逾5家知名客戶導入，包含搭配Nvidia Jetson系列的應用。",
-    "無線車用監控拓展多元行業應用，並以雙頻及PA技術滿足長距離需求。",
-    "規劃以PSRAM替換DDR，降低記憶體漲價壓力；eBMC 2.0朝高階AI伺服器應用開發。"
+    "eBMC切入工業電腦與Jetson相關應用，已有客戶導入及明確驗證時程。",
+    "無線監控拓展多元應用，雙頻與PA提升遠距傳輸能力。",
+    "PSRAM替換DDR，有助緩解記憶體漲價壓力。"
    ],
    "risks": [
-    "DDR大幅漲價推高IC售價，已造成客戶需求降低，營收成長不能直接視為出貨量成長。",
-    "design-in尚非確定訂單，後續仍須客戶驗證與終端承認，營收貢獻未量化。",
-    "目前eBMC主攻IPC而非大型資料中心CSP；高階AI伺服器產品仍處早期開發。",
-    "x86周邊晶片開發時程依賴金麗科技CPU進度。"
+    "DDR漲價已推高IC售價並降低部分客戶需求，營收成長不等於出貨量同步成長。",
+    "Design-in尚非確定訂單，eBMC貢獻仍取決於驗證與終端客戶承認。",
+    "首代eBMC主攻IPC，非大型CSP；高階AI伺服器版本仍處早期開發。",
+    "富果整理稱各季營收均成長，與簡報Q1、Q2分別年減16.79%、4.58%不符，以簡報為準；影音欄資料實為富果整理，非逐字稿。"
    ],
-   "qaHighlights": [],
+   "qaHighlights": [
+    "依富果整理問答：x86周邊晶片規格仍在討論，合作案啟動取決於金麗科技64位元CPU量產。",
+    "依富果整理問答：初期以turnkey方案協助導入，後續提供SDK，主打邊緣市場客製化需求。",
+    "依富果整理問答：宮廟業務主要認列一次性建置收入，部分大型客戶另收年度維護費。"
+   ],
    "tone": "持平",
-   "evidence": "僅簡報"
+   "evidence": "簡報+影音"
   },
-  "analyzedAt": "2026-11-12T00:38:49+08:00",
+  "analyzedAt": "2026-11-12T01:49:26+08:00",
   "model": "gpt-6.1-sol",
-  "analyzedEvidence": 1,
+  "analyzedEvidence": 3,
   "firstSeen": "2026-11-12T00:34:51+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "6870-2026-11-11": {
   "key": "6870-2026-11-11",
@@ -13226,8 +13474,13 @@
    "chars": 8527,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 0,
+   "chars": 3068,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-6870-2026-11-11"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 97 百萬元，YoY +36%，MoM -6%，累計 YoY +39%",
@@ -13237,14 +13490,18 @@
    "industry": "軟體與資訊服務",
    "subIndustry": "智慧場域平台與AI訂閱服務",
    "direction": "利多",
-   "headline": "2031年持續性收入占比目標逾八成",
+   "headline": "轉向高毛利訂閱，仍缺近期放量指引",
    "score": 3,
    "verdict": "一般",
-   "reason": "偏利多，揭露訂閱轉型與長期收入結構目標，但缺乏近期訂單金額、放量時程及獲利貢獻，尚不足上修獲利預期。",
+   "reason": "偏利多，但簡報及富果整理主要揭露長期訂閱轉型，未提供近期訂單、收入占比或獲利上修幅度，難以據此調高獲利預期。",
    "keyNumbers": [
     {
      "label": "2026年前10月營收",
      "value": "8.61億元，年增39.2%"
+    },
+    {
+     "label": "2026年10月營收",
+     "value": "9,668萬元，年增35.6%"
     },
     {
      "label": "2026上半年EPS",
@@ -13255,39 +13512,40 @@
      "value": "70%"
     },
     {
-     "label": "L3訂閱與維運合約",
-     "value": "5年以上"
+     "label": "L4 AI Runtime毛利率",
+     "value": "簡報列示80–90%"
     },
     {
-     "label": "L4 AI應用與成果報酬毛利率",
-     "value": "80%～90%"
-    },
-    {
-     "label": "2031年持續性收入占比目標",
-     "value": "80%以上"
+     "label": "2031年持續性收入占比願景",
+     "value": "八成以上"
     }
    ],
-   "guidance": "2026～2031年集團營收目標雙位數成長，2031年持續性收入占比邁向八成以上；未提供下一季或全年明確財測。",
+   "guidance": "簡報提出2026–2031年營收雙位數成長目標及2031年持續性收入占比八成以上願景。富果整理另稱，公司期望70%成為未來毛利率低標；未提供下一季或2027年具體營收、獲利及費用率預測。",
    "drivers": [
-    "TSpace由建置收入延伸至訂閱、維運及AI成果分潤，有利收入持續性與產品組合。",
-    "海外場域複製至東南亞、日本，拓展商辦、酒店與住宅應用。",
-    "布局數位產險Runtime，規劃形成雙重訂閱收入。"
+    "由一次性建置轉向五年以上合約、平台訂閱與成果分潤，高毛利L4收入具改善產品組合潛力。",
+    "海外場域複製至泰國、日本等市場；富果整理稱2026年前三季海外營收金額已超過去年全年。",
+    "數位產險平台可延伸訂閱收入，但尚待業務落地。"
    ],
    "risks": [
-    "未揭露目前持續性收入占比、ARR金額及新增訂單，轉型進度難以驗證。",
-    "L4毛利率為業務層級揭露，缺乏收入占比與放量時程，不能直接推算整體獲利提升。",
-    "數位產險尚無具體商業化時程；市場規模屬公司策略推估，不等同可取得訂單。"
+    "未揭露目前ARR、L4收入占比與放量時程，毛利率改善仍屬方向性期望。",
+    "數位產險執照尚待審批，合作關注尚非確定訂單。",
+    "海外擴張與新業務投入對2027年費用率的影響未量化。",
+    "市場規模為公司策略推估，不能視為公司訂單或營收預測。"
    ],
-   "qaHighlights": [],
+   "qaHighlights": [
+    "據富果問答整理：管理層期望隨L4收入增加，70%可成為毛利率基本低標，未給達成年度。",
+    "據富果問答整理：未具體回答2027年獲利增速能否延續，也未量化新市場及產險投入的費用壓力。",
+    "據富果問答整理：數位產險採自行申照與供應既有業者平台雙軌發展；已有業者關注，但未披露合約。"
+   ],
    "tone": "持平",
-   "evidence": "僅簡報"
+   "evidence": "簡報+影音"
   },
-  "analyzedAt": "2026-11-12T00:39:43+08:00",
+  "analyzedAt": "2026-11-12T01:49:23+08:00",
   "model": "gpt-6.1-sol",
-  "analyzedEvidence": 1,
+  "analyzedEvidence": 3,
   "firstSeen": "2026-11-12T00:34:51+08:00",
-  "state": "partial",
-  "pendingNote": "影音轉文字中"
+  "state": "done",
+  "pendingNote": ""
  },
  "6949-2026-11-11": {
   "key": "6949-2026-11-11",
@@ -13308,8 +13566,13 @@
    "chars": 7152,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "transcript": {
+   "minutes": 0,
+   "chars": 3647,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-6949-2026-11-11"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 2 百萬元，YoY +3%，MoM +15%，累計 YoY +4%",
@@ -13319,58 +13582,62 @@
    "industry": "生技新藥",
    "subIndustry": "CAR-T細胞治療與神經退化疾病新藥",
    "direction": "利多",
-   "headline": "PP021規劃2027年分季啟動兩項二期試驗",
+   "headline": "PP021訂2027年二期時程，PL001推進藥證申請",
    "score": 4,
    "verdict": "值得留意",
-   "reason": "屬研發展望利多，PP021明列兩項二期試驗時程，具追蹤價值，但尚無授權金額或商業化獲利指引。",
+   "reason": "偏利多：簡報提出PP021兩項二期試驗具體時程，富果整理補充PL001準備申請藥證，具商業化進展但尚無收入量化或核准日期；來源為簡報＋富果整理（非逐字稿）。",
    "keyNumbers": [
     {
-     "label": "PL001一期及二期合併分析人數",
-     "value": "25人"
+     "label": "PP021二期試驗規劃",
+     "value": "帕金森氏症2027Q2；阿茲海默症2027Q4"
     },
     {
-     "label": "PL001完全反應率",
-     "value": "40%"
+     "label": "PL001一期＋二期合併分析",
+     "value": "25人；完全反應率40%"
     },
     {
-     "label": "PL001最佳整體反應率",
-     "value": "72%；納入3名缺後續評估者的早期反應則為84%"
+     "label": "PL001最佳總體反應率",
+     "value": "保守認定72%；未將3名缺後續評估者列無反應時84%"
     },
     {
      "label": "PL001無惡化存活期中位數",
      "value": "11.3個月"
     },
     {
-     "label": "2026上半年完成現金增資",
+     "label": "2026上半年現金增資",
      "value": "18.6億元"
     },
     {
-     "label": "CAR-T規劃年產能",
-     "value": "300例"
+     "label": "CAR-T規劃年產能／製程",
+     "value": "300例／7天"
     }
    ],
-   "guidance": "PP021規劃2027年第二季進行帕金森氏症二期人體試驗、第四季進行阿茲海默症二期人體試驗；未提供營收、獲利或PL001上市申請的明確時程。",
+   "guidance": "簡報規劃PP021於2027Q2、Q4分別進入帕金森氏症及阿茲海默症二期試驗，並規劃透過Right-to-Try進入美國；富果整理稱PL001正準備申請台灣藥證，但無確切核准日。未提供營收或獲利財測。",
    "drivers": [
-    "PL001二期期中療效達統計顯著，簡報列出加速／附條件核准方向。",
-    "PP021兩項適應症已有二期試驗季度規劃。",
-    "專利7天CAR-T製程及PL002多鏈平台提供後續開發題材。"
+    "PL001期中分析達療效標準，藥證申請是近期主要里程碑。",
+    "PP021提供明確二期試驗季度，研發進度具後續驗證節點。",
+    "CAR-T短天期製程與在地產能，有助後續商業化及海外合作。"
    ],
    "risks": [
-    "PL001為一期及二期合併小樣本分析，72%與84%反應率採不同認定方式。",
-    "與其他CAR-T試驗屬跨試驗比較，不能據此確認療效優越。",
-    "PP021療效展示主要為動物資料，人體療效與試驗進度仍待驗證。",
-    "尚無具體授權條件、商業化收入或獲利預測，研發里程碑轉化為收益仍不確定。"
+    "藥證核准、海外合作及Right-to-Try收入均未落定，不能視為已取得商業訂單。",
+    "PL001數據僅25人且為一期、二期合併分析；跨試驗比較不能證明優於競品。",
+    "富果整理將84%描述為21名可評估患者，簡報實為25人中21人反應；應以簡報為準。",
+    "富果整理對美國進入時點有2027年初及Q2前兩種說法，簡報未列明季度，收入時點仍不確定。"
    ],
-   "qaHighlights": [],
+   "qaHighlights": [
+    "富果整理問答：PL001台灣藥證無確切核准時程；取得藥證後擬銷售並完成三期試驗。",
+    "富果整理問答：三期擬採跨國多中心設計，預計收案110至120人，尚屬規劃。",
+    "富果整理問答：PP021傾向自主開發，曾有授權提議但未選擇授權；尚無授權收入承諾。"
+   ],
    "tone": "持平",
    "evidence": "僅簡報"
   },
-  "analyzedAt": "2026-11-12T00:39:16+08:00",
+  "analyzedAt": "2026-11-12T01:49:30+08:00",
   "model": "gpt-6.1-sol",
-  "analyzedEvidence": 1,
+  "analyzedEvidence": 3,
   "firstSeen": "2026-11-12T00:34:51+08:00",
-  "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "state": "done",
+  "pendingNote": ""
  },
  "6959-2026-11-11": {
   "key": "6959-2026-11-11",
@@ -13438,8 +13705,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-12T00:34:51+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "6962-2026-11-11": {
   "key": "6962-2026-11-11",
@@ -13461,7 +13728,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "videoStatus": "未設定 GROQ_API_KEY",
   "deckStatus": "ok",
   "context": {
    "revenue": null,
@@ -13522,7 +13789,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-12T00:34:51+08:00",
   "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "pendingNote": "影音：未設定 GROQ_API_KEY"
  },
  "7610-2026-11-11": {
   "key": "7610-2026-11-11",
@@ -13544,7 +13811,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "videoStatus": "未設定 GROQ_API_KEY",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,013 百萬元，YoY +535%，MoM -6%，累計 YoY +579%",
@@ -13604,7 +13871,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-12T00:34:51+08:00",
   "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "pendingNote": "影音：未設定 GROQ_API_KEY"
  },
  "8255-2026-11-11": {
   "key": "8255-2026-11-11",
@@ -13670,8 +13937,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-12T00:34:51+08:00",
-  "state": "done",
-  "pendingNote": ""
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "9940-2026-11-11": {
   "key": "9940-2026-11-11",
@@ -13692,8 +13959,13 @@
    "chars": 7099,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "transcript": {
+   "minutes": 0,
+   "chars": 3332,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-9940-2026-11-11"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 911 百萬元，YoY +12%，MoM -9%，累計 YoY +27%",
@@ -13754,6 +14026,6 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-12T00:34:51+08:00",
   "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "pendingNote": "影音轉文字中"
  }
 }
