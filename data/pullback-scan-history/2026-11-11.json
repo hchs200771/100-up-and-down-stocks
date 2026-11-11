@@ -1,0 +1,12 @@
+{
+ "tradingDate": "2026-11-11",
+ "regime": null,
+ "universe": {
+  "listed": 250,
+  "liquid": 201,
+  "minFutVolume": 50,
+  "priced": 0
+ },
+ "signals": [],
+ "watch": []
+}
