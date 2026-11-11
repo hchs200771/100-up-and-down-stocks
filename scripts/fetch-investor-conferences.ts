@@ -33,6 +33,7 @@ import ffmpegPath from "ffmpeg-static";
 import { extractText } from "unpdf";
 import { twDate, twIso } from "./lib/time";
 import { renderInvestorConfPage } from "./lib/investor-conf-page";
+import { fetchFugleArticle } from "./lib/investor-conf-fugle";
 
 const ROOT = process.cwd();
 const WORK_DIR = resolve(ROOT, "data/cache/investor-conf");
@@ -104,7 +105,7 @@ export interface ConfAnalysis {
 
 export interface ConfResult extends ConfRow {
   deck: { file: string; pages: number; chars: number; imageHeavy: boolean } | null;
-  transcript: { minutes: number; chars: number } | null;
+  transcript: { minutes: number; chars: number; source?: "fugle" | "video"; url?: string } | null; // 舊快取無 source 視為 video
   videoStatus: string; // ok / 無影片 / 非直接影片連結 / 失敗原因
   context: { revenue: string | null; move: string | null };
   analysis: ConfAnalysis | null;
@@ -484,15 +485,23 @@ async function youtubeAudio(player: any, dest: string): Promise<void> {
   throw lastErr;
 }
 
-async function transcribe(row: ConfRow): Promise<{ meta: ConfResult["transcript"]; text: string; status: string }> {
-  if (!row.videoUrl) return { meta: null, text: "", status: "無影片" };
-  if (!canTranscribe(row.videoUrl)) return { meta: null, text: "", status: "影音在公司網頁，未轉" };
+async function transcribe(row: ConfRow, claimVideo = () => true): Promise<{ meta: ConfResult["transcript"]; text: string; status: string }> {
   const cache = resolve(WORK_DIR, "transcripts", `${row.key}.json`);
   if (existsSync(cache)) {
     const saved = JSON.parse(readFileSync(cache, "utf8"));
     return { meta: saved.meta, text: saved.text, status: "ok" };
   }
+  const fugle = await fetchFugleArticle(row.code, row.date);
+  if (fugle) {
+    const meta: NonNullable<ConfResult["transcript"]> = { minutes: 0, chars: fugle.text.replace(/\s+/g, "").length, source: "fugle", url: fugle.url };
+    writeFileSync(cache, JSON.stringify({ meta, text: fugle.text }));
+    log(`  富果整理 ${row.key}：${meta.chars} 字`);
+    return { meta, text: fugle.text, status: "ok" };
+  }
+  if (!row.videoUrl) return { meta: null, text: "", status: "無影片" };
+  if (!canTranscribe(row.videoUrl)) return { meta: null, text: "", status: "影音在公司網頁，未轉" };
   if (NO_VIDEO) return { meta: null, text: "", status: "本次未轉" };
+  if (!claimVideo()) return { meta: null, text: "", status: "本次轉檔數已滿，下次轉" };
   if (!GROQ_KEY && !LOCAL_CMD) return { meta: null, text: "", status: "未設定 GROQ_API_KEY" };
   if (groqExhausted && !LOCAL_CMD) return { meta: null, text: "", status: "Groq 額度已滿，下次轉" };
   const url = row.videoUrl.replace(/^http:\/\/irconference\./, "https://irconference.");
@@ -620,7 +629,7 @@ async function analyze(item: ConfResult, deckText: string, transcript: string): 
     地點: item.place,
     擇要訊息: item.summary,
     簡報: item.deck ? `${item.deck.file}，${item.deck.pages} 頁${item.deck.imageHeavy ? "，多為圖片、文字很少" : ""}` : "無",
-    影音: item.transcript ? `有逐字稿，約 ${item.transcript.minutes} 分鐘` : `無（${item.videoStatus}）`,
+    影音: item.transcript?.source === "fugle" ? `富果法說整理（第三方 AI 摘要，非逐字稿）：${item.transcript.url}` : item.transcript ? `有逐字稿，約 ${item.transcript.minutes} 分鐘` : `無（${item.videoStatus}）`,
     最新月營收: item.context.revenue ?? "無資料（興櫃或尚未公布）",
     當日股價: item.context.move ?? "不在最近交易日漲跌幅前 100",
   };
@@ -631,7 +640,7 @@ async function analyze(item: ConfResult, deckText: string, transcript: string): 
       readFileSync(PROMPT_FILE, "utf8"),
       "## 基本資訊\n```json\n" + JSON.stringify(info, null, 1) + "\n```",
       `## 簡報文字\n<<<DECK\n${deckText ? clip(deckText, DECK_CHARS) : "（無）"}\nDECK>>>`,
-      `## 影音逐字稿\n<<<TRANSCRIPT\n${transcript ? clip(transcript, TRANSCRIPT_CHARS) : "（無）"}\nTRANSCRIPT>>>`,
+      `## ${item.transcript?.source === "fugle" ? `富果法說整理（第三方 AI 摘要，非逐字稿）\n來源：${item.transcript.url}` : "影音逐字稿"}\n<<<TRANSCRIPT\n${transcript ? clip(transcript, TRANSCRIPT_CHARS) : "（無）"}\nTRANSCRIPT>>>`,
     ].join("\n\n"),
   );
   for (let attempt = 1; attempt <= 2; attempt++) {
@@ -682,11 +691,12 @@ function limiter(n: number) {
 }
 
 /** 一場法說會目前的狀態，以及還缺什麼（頁面上「下次更新會補上」的說明） */
-function refreshState(it: ConfResult, waitingDeck: boolean) {
+function refreshState(it: ConfResult, waitingDeck: boolean, retryFugle = true) {
   const missing: string[] = [];
   if (waitingDeck) missing.push("簡報還沒上傳");
   else if (!it.deck && it.deckStatus?.startsWith("下載失敗")) missing.push("簡報下載失敗，下次重試");
   if (canTranscribe(it.videoUrl) && !it.transcript) missing.push(it.videoStatus === "處理中" || !it.videoStatus ? "影音轉文字中" : `影音：${it.videoStatus}`);
+  else if (!it.transcript && retryFugle) missing.push("等待富果整理");
   if (!it.analysis) missing.unshift(it.analysisError ? "判讀失敗，下次重試" : "尚未判讀");
   it.state = !it.analysis ? "pending" : missing.length ? "partial" : "done";
   it.pendingNote = missing.join("；");
@@ -736,6 +746,8 @@ async function main() {
     if (!histories.has(ym)) histories.set(ym, readJson(resolve(HISTORY_DIR, `${ym}.json`), {}));
     return histories.get(ym)!;
   };
+  // 讀入舊月份，讓離開回補窗口的「等待富果整理」也能收尾（含跨月）。
+  for (const file of readdirSync(HISTORY_DIR).filter((f) => /^\d{4}-\d{2}\.json$/.test(f))) history(file.slice(0, 7));
   // 一覽表的月份要補零（month=9 回「查無資料」，09 才有）；歷史仍保留，一覽表撈不到的場次從歷史補回視窗
   const fromList = new Set(list.map((r) => r.key));
   const fromHistory: ConfRow[] = months
@@ -773,6 +785,10 @@ async function main() {
   let finishedAt: string | null = null;
   const flush = () => {
     for (const it of items) history(it.date.slice(0, 7))[it.key] = it;
+    // 離開回補窗口後，不再因等待第三方文章維持 partial。
+    for (const h of histories.values()) {
+      for (const it of Object.values(h)) if (it.date < from && it.pendingNote?.includes("等待富果整理")) refreshState(it, false, false);
+    }
     for (const [ym, h] of histories) writeAtomic(resolve(HISTORY_DIR, `${ym}.json`), JSON.stringify(h, null, 1));
     const sorted = [...items].sort((a, b) => (b.analysis?.score ?? 0) - (a.analysis?.score ?? 0) || b.date.localeCompare(a.date) || a.code.localeCompare(b.code));
     const latest: InvestorConfLatest = { generatedAt: twIso(), date, from, model: MODEL, run: { startedAt, finishedAt, newKeys }, items: sorted, upcoming };
@@ -806,12 +822,9 @@ async function main() {
   await Promise.all(items.map(async (it) => {
     const row = inWindow.find((r) => r.key === it.key)!;
     const recent = row.date >= addDays(date, -1);
-    const wantVideo = canTranscribe(row.videoUrl) && !NO_VIDEO;
-    const cachedTr = existsSync(resolve(WORK_DIR, "transcripts", `${row.key}.json`));
-    const videoAllowed = wantVideo && (cachedTr || videoSlots-- > 0);
-    const trP = videoAllowed && !expired()
-      ? limitVideo(() => (expired() ? Promise.resolve({ meta: null, text: "", status: "超過執行時間，下次轉" }) : transcribe(row)))
-      : Promise.resolve({ meta: null, text: "", status: !row.videoUrl ? "無影片" : !canTranscribe(row.videoUrl) ? "影音在公司網頁，未轉" : NO_VIDEO ? "本次未轉" : "本次轉檔數已滿，下次轉" });
+    const trP = limitVideo(() => expired()
+      ? Promise.resolve({ meta: it.transcript, text: "", status: it.transcript ? "ok" : "超過執行時間，下次轉" })
+      : transcribe(row, () => videoSlots-- > 0));
     let trDone: Awaited<typeof trP> | null = null;
     void trP.then((t) => (trDone = t));
 

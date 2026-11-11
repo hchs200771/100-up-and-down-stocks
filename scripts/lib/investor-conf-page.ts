@@ -16,13 +16,17 @@ const stockLink = (code: string, text: string) => `<a href="${yahooUrl(code)}" t
 const list = (title: string, xs: string[], cls = "") =>
   xs.length ? `<div class="blk ${cls}"><div class="bt">${title}</div><ul>${xs.map((x) => `<li>${esc(x)}</li>`).join("")}</ul></div>` : "";
 
+const safeUrl = (url: string) => /^https?:\/\//i.test(url) ? esc(url) : "";
+
 function card(x: ConfResult, isNew: boolean): string {
   const a = x.analysis;
   const score = a?.score ?? 0;
   const sources = [
     x.deck ? `簡報 ${x.deck.pages} 頁${x.deck.imageHeavy ? "（多為圖片）" : ""}` : x.deckStatus === "尚未上傳" ? "簡報尚未上傳" : "無簡報",
-    x.transcript ? `影音 ${x.transcript.minutes} 分鐘` : x.videoStatus === "無影片" ? "" : `影音：${x.videoStatus}`,
+    x.transcript?.source === "fugle" ? "" : x.transcript ? `影音 ${x.transcript.minutes} 分鐘` : x.videoStatus === "無影片" ? "" : `影音：${x.videoStatus}`,
   ].filter(Boolean);
+  const sourceHtml = sources.map((s) => `<span class="chip">${esc(s)}</span>`).join(" ") +
+    (x.transcript?.source === "fugle" ? ` <span class="chip">${x.transcript.url && safeUrl(x.transcript.url) ? `<a href="${safeUrl(x.transcript.url)}" target="_blank" rel="noopener noreferrer">富果整理</a>` : "富果整理"}</span>` : "");
   const head = `<div class="ch">
 <span class="score s${score}">${a ? score : "–"}</span>
 <div class="who"><div class="nm">${stockLink(x.code, `${x.code} ${x.name}`)}${isNew ? ' <span class="new">新</span>' : ""} <span class="chip">${MARKET[x.market]}</span>${a ? ` <span class="verdict v${score}">${esc(a.verdict)}</span>` : ""}${a && a.tone !== "無法判斷" ? ` <span class="chip tone-${a.tone}">語氣${esc(a.tone)}</span>` : ""}</div>
@@ -30,7 +34,7 @@ function card(x: ConfResult, isNew: boolean): string {
   if (!a) {
     return `<article class="conf" data-s="0" data-m="${x.market}" data-d="${x.date}" data-n="${isNew ? 1 : 0}" data-st="pending">${head}
 <p class="hl none">${esc(x.pendingNote || "尚未判讀")}，下次更新會補上</p>
-<p class="sum">${esc(x.summary)}</p><div class="src">${sources.map((s) => `<span class="chip">${esc(s)}</span>`).join(" ")}</div></article>`;
+<p class="sum">${esc(x.summary)}</p><div class="src">${sourceHtml}</div></article>`;
   }
   const nums = a.keyNumbers.length
     ? `<div class="nums">${a.keyNumbers.map((n) => `<span class="num"><span class="nl">${esc(n.label)}</span><b>${esc(n.value)}</b></span>`).join("")}</div>`
@@ -45,7 +49,7 @@ ${list("成長動能", a.drivers, "up")}${list("風險／警訊", a.risks, "dn")
 <div class="blk"><div class="bt">公告擇要訊息</div><p class="sum">${esc(x.summary)}</p></div>
 ${x.context.revenue || x.context.move ? `<div class="blk"><div class="bt">市場脈絡</div><p class="sum">${[x.context.revenue, x.context.move].filter(Boolean).map((s) => esc(s!)).join("<br>")}</p></div>` : ""}
 </details>
-<div class="src">${sources.map((s) => `<span class="chip">${esc(s)}</span>`).join(" ")}${x.state === "partial" && x.pendingNote ? ` <span class="chip warnc">待補：${esc(x.pendingNote)}，補上後會重新判讀</span>` : ""}</div>
+<div class="src">${sourceHtml}${x.state === "partial" && x.pendingNote ? ` <span class="chip warnc">待補：${esc(x.pendingNote)}，補上後會重新判讀</span>` : ""}</div>
 </article>`;
 }
 
