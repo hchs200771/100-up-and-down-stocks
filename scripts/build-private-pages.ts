@@ -21,6 +21,8 @@ interface TradeReviewItem {
   stop?: string;
   /** 停損狀態：「已觸發」、「距 3.5%」、「未設」等，由寫檔的人依收盤判定 */
   stopStatus?: string;
+  /** 距月線（MA20）%，取自 holdings-tech-check 的 ma20Pct，例如「+3.2%」「−5.8%」；回測顯示月線出場是主要報酬來源 */
+  ma20?: string;
   note: string;
 }
 interface TradeReview {
@@ -56,7 +58,7 @@ function reviewHtml(r: TradeReview | null): string {
       ? `<span class="stop stop-${stopLevel(it)}">停損 ${esc(it.stop ?? "未設")}${it.stopStatus ? `｜${esc(it.stopStatus)}` : ""}</span>`
       : "";
   const card = (it: TradeReviewItem) => {
-    const tags = [it.kind, it.side, it.status].filter(Boolean).map((t) => `<span class="chip">${esc(t!)}</span>`).join("");
+    const tags = [it.kind, it.side, it.status, it.ma20 && `月線 ${it.ma20}`].filter(Boolean).map((t) => `<span class="chip">${esc(t!)}</span>`).join("");
     return `<div class="card stopcard-${stopLevel(it)}"><div class="t">${stopBadge(it)}${esc(it.name)}${tags}</div><div class="body">${para(it.note)}</div></div>`;
   };
   // 停損一覽放最上面：已觸發 → 未設 → 其他，上班時一眼看到哪檔該出場
@@ -64,8 +66,8 @@ function reviewHtml(r: TradeReview | null): string {
   const stops = (r.holdings ?? []).filter((it) => it.stop || it.stopStatus)
     .sort((a, b) => order[stopLevel(a)] - order[stopLevel(b)]);
   const stopTable = stops.length
-    ? `<h2>停損一覽</h2><div class="tablebox"><table class="stops"><tr><th>標的</th><th>停損</th><th>狀態</th></tr>${stops
-      .map((it) => `<tr class="stop-row-${stopLevel(it)}"><td>${esc(it.name)}</td><td><b>${esc(it.stop ?? "未設")}</b></td><td>${esc(it.stopStatus ?? "")}</td></tr>`)
+    ? `<h2>停損一覽</h2><div class="tablebox"><table class="stops"><tr><th>標的</th><th>停損</th><th>狀態</th><th>距月線</th></tr>${stops
+      .map((it) => `<tr class="stop-row-${stopLevel(it)}"><td>${esc(it.name)}</td><td><b>${esc(it.stop ?? "未設")}</b></td><td>${esc(it.stopStatus ?? "")}</td><td>${esc(it.ma20 ?? "")}</td></tr>`)
       .join("")}</table></div>`
     : "";
   const block = (title: string, list?: TradeReviewItem[]) => (list?.length ? `<h2>${title}</h2>${list.map(card).join("")}` : "");
