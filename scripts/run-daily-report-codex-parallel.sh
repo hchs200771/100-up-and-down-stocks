@@ -25,9 +25,14 @@ AUX_DONE_FILE="$TMP_DIR/report-aux-done"
 RESUME_MAX_AGE_MINUTES="${CODEX_REPORT_RESUME_MAX_AGE_MINUTES:-360}"
 CONTROLLER_MODEL="${CODEX_CONTROLLER_MODEL:-gpt-6.1-sol}"
 CONTROLLER_SPLIT="${CODEX_CONTROLLER_SPLIT:-1}"
-FINALIZER_MODEL="${CODEX_FINALIZER_MODEL:-gpt-5.6-sol}"
+FINALIZER_MODEL="${CODEX_FINALIZER_MODEL:-gpt-6.1-sol}"
+CONTROLLER_ENGINE="${CODEX_CONTROLLER_ENGINE:-claude}"   # claude|codex
+FINALIZER_ENGINE="${CODEX_FINALIZER_ENGINE:-claude}"
+CLAUDE_CONTROLLER_MODEL="${CLAUDE_CONTROLLER_MODEL:-claude-opus-5-5}"
+CLAUDE_FINALIZER_MODEL="${CLAUDE_FINALIZER_MODEL:-claude-opus-5-5}"
+CLAUDE_CONTROLLER_EFFORT="${CLAUDE_CONTROLLER_EFFORT:-medium}"   # max 實測 887~904s，會撞 900s 逾時
 # 國際情勢 worker：與族群 research 同級的輕量模型（搜尋＋短文）
-INTL_MODEL="${CODEX_INTL_MODEL:-${CODEX_GROUP_WORKER_MODEL:-gpt-5.6-luna}}"
+INTL_MODEL="${CODEX_INTL_MODEL:-${CODEX_GROUP_WORKER_MODEL:-gpt-6-luna}}"
 INTL_TIMEOUT_SECONDS="${CODEX_INTL_TIMEOUT_SECONDS:-600}"
 # KOL worker：讀逐字稿寫摘要，屬輕量工作，跟國際情勢 worker 用同級模型
 KOL_PROMPT="$PROJECT_DIR/scripts/prompts/kol-brief-worker.md"
@@ -86,6 +91,13 @@ timed() {
 # 整段（最慢的是 RRG 抓 245 檔，實測 ~6m30s）藏在 research 底下，不佔關鍵路徑。
 # 用空白分隔字串而不是陣列：macOS 內建 bash 3.2 對空陣列 + set -u 會炸。
 AUX_PIDS=""
+
+
+kill_tree() {
+  local _c
+  for _c in $(pgrep -P "$1" 2>/dev/null); do kill_tree "$_c"; done
+  kill "$1" 2>/dev/null || true
+}
 
 timing_summary() {
   local total=$(( $(date +%s) - RUN_T0 ))
@@ -194,6 +206,103 @@ run_codex_structured_with_timeout() {
   done
 
   wait "$pid"
+}
+
+run_claude_prompt_with_timeout() {
+  local model_arg="$1"
+  local prompt_file="$2"
+  local timeout_seconds="$3"
+  local pid elapsed out_file rc
+  out_file="$(mktemp "$TMP_DIR/claude-json-XXXXXX")"
+
+  claude -p \
+    --model "$model_arg" \
+    --output-format json \
+    --allowedTools 'Bash(*)' 'Read(*)' 'Write(*)' 'Edit(*)' 'WebSearch(*)' 'WebFetch(*)' \
+    < "$prompt_file" > "$out_file" 2>>"$LOG_FILE" &
+  pid="$!"
+  elapsed=0
+
+  while kill -0 "$pid" 2>/dev/null; do
+    if [ "$elapsed" -ge "$timeout_seconds" ]; then
+      log "claude prompt timed out after ${timeout_seconds}s; killing pid $pid"
+      pkill -TERM -P "$pid" 2>/dev/null || true
+      kill "$pid" 2>/dev/null || true
+      sleep 2
+      pkill -KILL -P "$pid" 2>/dev/null || true
+      kill -9 "$pid" 2>/dev/null || true
+      wait "$pid" 2>/dev/null || true
+      cat "$out_file" >> "$LOG_FILE" 2>/dev/null || true
+      rm -f "$out_file"
+      return 124
+    fi
+    sleep 5
+    elapsed=$((elapsed + 5))
+  done
+
+  wait "$pid"
+  rc=$?
+  cat "$out_file" >> "$LOG_FILE" 2>/dev/null || true
+  rm -f "$out_file"
+  return $rc
+}
+
+run_claude_structured_with_timeout() {
+  local model_arg="$1"
+  local prompt_file="$2"
+  local timeout_seconds="$3"
+  local schema_file="$4"
+  local output_file="$5"
+  local pid elapsed rc raw_file schema_json
+  raw_file="$(mktemp "$TMP_DIR/claude-json-XXXXXX")"
+  schema_json="$(cat "$schema_file")"
+
+  claude -p \
+    --model "$model_arg" \
+    --effort "$CLAUDE_CONTROLLER_EFFORT" \
+    --no-session-persistence \
+    --disable-slash-commands \
+    --system-prompt '你是台股盤後分類器。只讀指定輸入檔，嚴格依使用者 prompt 與 JSON Schema 回傳結果；不要搜尋、寫檔或延伸執行其他工作。' \
+    --output-format json \
+    --json-schema "$schema_json" \
+    --tools Read \
+    --allowedTools Read \
+    < "$prompt_file" > "$raw_file" 2>>"$LOG_FILE" &
+  pid="$!"
+  elapsed=0
+
+  while kill -0 "$pid" 2>/dev/null; do
+    if [ "$elapsed" -ge "$timeout_seconds" ]; then
+      log "claude structured prompt timed out after ${timeout_seconds}s; killing pid $pid"
+      pkill -TERM -P "$pid" 2>/dev/null || true
+      kill "$pid" 2>/dev/null || true
+      sleep 2
+      pkill -KILL -P "$pid" 2>/dev/null || true
+      kill -9 "$pid" 2>/dev/null || true
+      wait "$pid" 2>/dev/null || true
+      cat "$raw_file" >> "$LOG_FILE" 2>/dev/null || true
+      rm -f "$raw_file"
+      return 124
+    fi
+    sleep 5
+    elapsed=$((elapsed + 5))
+  done
+
+  wait "$pid"
+  rc=$?
+  cat "$raw_file" >> "$LOG_FILE" 2>/dev/null || true
+  if [ "$rc" -eq 0 ]; then
+    node -e '
+      const fs = require("fs");
+      const raw = JSON.parse(fs.readFileSync(process.argv[1], "utf8"));
+      let value = raw.structured_output;
+      if (!value && typeof raw.result === "string") value = JSON.parse(raw.result);
+      if (!value) throw new Error("Claude structured output missing");
+      fs.writeFileSync(process.argv[2], `${JSON.stringify(value, null, 2)}\n`);
+    ' "$raw_file" "$output_file" >> "$LOG_FILE" 2>&1 || rc=$?
+  fi
+  rm -f "$raw_file"
+  return $rc
 }
 
 count_json_files() {
@@ -318,7 +427,31 @@ fi
 log "run-daily-report-codex-parallel.sh start"
 resume_from_checkpoint
 log "START_STAGE=$START_STAGE"
-log "CONTROLLER_MODEL=$CONTROLLER_MODEL FINALIZER_MODEL=$FINALIZER_MODEL CODEX_GROUP_WORKER_MODEL=${CODEX_GROUP_WORKER_MODEL:-gpt-5.6-luna} CONTROLLER_SPLIT=$CONTROLLER_SPLIT"
+# Claude CLI 不可用時只退回對應階段，其他 worker 維持 codex。
+if ! command -v claude >/dev/null 2>&1; then
+  if [ "$CONTROLLER_ENGINE" = "claude" ]; then
+    log "[warn] 找不到 claude 指令，controller 改用 codex"
+    CONTROLLER_ENGINE="codex"
+  fi
+  if [ "$FINALIZER_ENGINE" = "claude" ]; then
+    log "[warn] 找不到 claude 指令，finalizer 改用 codex"
+    FINALIZER_ENGINE="codex"
+  fi
+fi
+CONTROLLER_STRUCTURED_RUNNER=run_codex_structured_with_timeout
+CONTROLLER_PROMPT_RUNNER=run_codex_prompt_with_timeout
+FINALIZER_RUNNER=run_codex_prompt_with_timeout
+if [ "$CONTROLLER_ENGINE" = "claude" ]; then
+  CONTROLLER_MODEL="$CLAUDE_CONTROLLER_MODEL"
+  CONTROLLER_STRUCTURED_RUNNER=run_claude_structured_with_timeout
+  CONTROLLER_PROMPT_RUNNER=run_claude_prompt_with_timeout
+  STRUCTURED_CONTROLLER_PROMPT="$PROJECT_DIR/scripts/prompts/group-task-controller-claude.md"
+fi
+if [ "$FINALIZER_ENGINE" = "claude" ]; then
+  FINALIZER_MODEL="$CLAUDE_FINALIZER_MODEL"
+  FINALIZER_RUNNER=run_claude_prompt_with_timeout
+fi
+log "CONTROLLER_ENGINE=$CONTROLLER_ENGINE CONTROLLER_MODEL=$CONTROLLER_MODEL FINALIZER_ENGINE=$FINALIZER_ENGINE FINALIZER_MODEL=$FINALIZER_MODEL CODEX_GROUP_WORKER_MODEL=${CODEX_GROUP_WORKER_MODEL:-gpt-6-luna} CONTROLLER_SPLIT=$CONTROLLER_SPLIT"
 log "CONTROLLER_TIMEOUT_SECONDS=$CONTROLLER_TIMEOUT_SECONDS GROUP_CONCURRENCY=$GROUP_CONCURRENCY"
 
 if ! command -v codex >/dev/null 2>&1; then
@@ -344,6 +477,13 @@ fi
 
 log "進度 1/5：已經抓回上市/上櫃資料，交易日 $(market_trading_date)"
 
+# 法說會判讀：簡報下載慢、影音轉文字有額度，可能跑上一小時，所以完全脫離主流程（不進 AUX_PIDS、
+# 不等它）。只依賴 market-latest.json，所以抓完行情就立刻啟動，不等補漏資料。它每判讀完一場就更新 data/investor-conf.html，publish 當下跑到哪就發佈到哪，剩下的下次補。
+if stage_enabled fetch; then
+  bash "$PROJECT_DIR/scripts/start-investor-conf.sh" | tee -a "$LOG_FILE" \
+    || log "[warn] 法說會判讀背景啟動失敗；法說會子頁沿用上次結果"
+fi
+
 # 漏跑的日子先補：收盤價、融資、市場情緒序列，並列出補不回來的選股池日期。
 # 必須在任何用到均線/報酬的步驟之前，也必須在背景輔助資料之前同步跑完
 # （fetch-margin-options 也會寫 margin-history.json）。已補過的日子有快取，平常幾乎不打 API。
@@ -357,12 +497,6 @@ if stage_enabled fetch; then
   mark_stage_done fetch
 fi
 
-# 法說會判讀：簡報下載慢、影音轉文字有額度，可能跑上一小時，所以完全脫離主流程（不進 AUX_PIDS、
-# 不等它）。它每判讀完一場就更新 data/investor-conf.html，publish 當下跑到哪就發佈到哪，剩下的下次補。
-if stage_enabled fetch; then
-  bash "$PROJECT_DIR/scripts/start-investor-conf.sh" | tee -a "$LOG_FILE" \
-    || log "[warn] 法說會判讀背景啟動失敗；法說會子頁沿用上次結果"
-fi
 
 # 輔助資料：全部只依賴 market-latest.json（或完全獨立的外部來源），彼此之間沒有相依，
 # 所以整批背景平行丟出去，這裡不 wait，直接往下跑分類與 research（見 AUX_PIDS）。
@@ -374,8 +508,14 @@ if stage_enabled fetch || ! aux_done_today; then
   timed index-contribution run_tsx scripts/build-index-contribution.ts \
     || log "[warn] build-index-contribution.ts failed; 指數貢獻分頁略過，不影響其他區塊" &
   AUX_PIDS="$AUX_PIDS $!"
+  timed taiex-trend run_tsx scripts/build-taiex-trend.ts \
+    || log "[warn] build-taiex-trend.ts failed; 大盤趨勢區塊略過，不影響其他區塊" &
+  AUX_PIDS="$AUX_PIDS $!"
   timed margin-options run_tsx scripts/fetch-margin-options.ts \
     || log "[warn] fetch-margin-options.ts failed; 融資與外資選擇權區塊略過，不影響其他區塊" &
+  AUX_PIDS="$AUX_PIDS $!"
+  timed foreign-spot-signal run_tsx scripts/fetch-foreign-spot-signal.ts \
+    || log "[warn] fetch-foreign-spot-signal.ts failed; 外資大買大賣訊號略過，不影響其他區塊" &
   AUX_PIDS="$AUX_PIDS $!"
   timed intl-market run_tsx scripts/fetch-intl-market.ts \
     || log "[warn] fetch-intl-market.ts failed; 國際數字略過，不影響台股報告" &
@@ -384,6 +524,9 @@ if stage_enabled fetch || ! aux_done_today; then
   # 漏跑一天就少一筆基準（fetch-sector-flows.ts）。
   timed sector-flows run_tsx scripts/fetch-sector-flows.ts \
     || log "[warn] fetch-sector-flows.ts failed; 美股板塊熱圖略過，不影響台股報告" &
+  AUX_PIDS="$AUX_PIDS $!"
+  timed tx-intraday run_tsx scripts/fetch-tx-intraday.ts \
+    || log "[warn] 台指期分時收集失敗；不影響報告，30 天內補跑即可" &
   AUX_PIDS="$AUX_PIDS $!"
   timed credit-spreads run_tsx scripts/fetch-credit-spreads.ts \
     || log "[warn] fetch-credit-spreads.ts failed; 信用利差略過，不影響台股報告" &
@@ -419,6 +562,17 @@ if stage_enabled fetch || ! aux_done_today; then
     || log "[warn] screen-cb-pledge.ts failed; 設質+CB 子頁沿用上次結果" &
   AUX_PIDS="$AUX_PIDS $!"
 
+  # 回檔買進掃描：個股期貨標的（期貨日均量 ≥ 50 口）收盤觸發＋紙上部位追蹤。
+  # 約 200 檔 Yahoo 日線＋兩個期交所請求，十幾秒；紙上部位累積在 data/pullback-scan-positions.json。
+  timed pullback-scan run_tsx scripts/build-pullback-scan.ts \
+    || log "[warn] build-pullback-scan.ts failed; 回檔買進子頁沿用上次結果" &
+  AUX_PIDS="$AUX_PIDS $!"
+
+  # 創新高掃描：全上市櫃小拉回再創 250 日新高＋紙上部位追蹤。本地收盤快取初篩後約數百檔 Yahoo 日線。
+  timed new-high-scan run_tsx scripts/build-new-high-scan.ts \
+    || log "[warn] build-new-high-scan.ts failed; 創新高子頁沿用上次結果" &
+  AUX_PIDS="$AUX_PIDS $!"
+
   # 贏家分點：名單在 Notion「分點追蹤名單」（讀不到就用 data/broker-watch-config.json），
   # 資料來自富邦 e01，約 45 日滾動窗，每天累積進 data/broker-watch-history/。
   timed broker-watch run_tsx scripts/fetch-broker-watch.ts \
@@ -444,30 +598,13 @@ if stage_enabled fetch || ! aux_done_today; then
       || log "[warn] build-revenue-momentum.ts failed; 月營收動能沿用上次結果"
     timed revenue-decline run_tsx scripts/build-revenue-decline.ts \
       || log "[warn] build-revenue-decline.ts failed; 營收衰退名單沿用上次結果"
-    timed revenue-industry run_tsx scripts/build-revenue-industry.ts \
-      || log "[warn] build-revenue-industry.ts failed; 營收族群沿用上次結果"
   ) &
   AUX_PIDS="$AUX_PIDS $!"
 
-  # 財經 KOL：抓 Podcast/YouTube 新節目（含字幕）→ worker 整理重點。整段跟主流程無關，
-  # 背景跑、send 前才收；送信前由 attach-kol 併進 analysis。失敗只是沒有 KOL 分頁。
-  (
-    rm -f "$TMP_DIR/kol-items.json" "$TMP_DIR/kol-brief.json"
-    timed kol-fetch run_tsx scripts/fetch-kol-feeds.ts \
-      || log "[warn] fetch-kol-feeds.ts failed; KOL 分頁略過"
-    if [ -f "$TMP_DIR/kol-items.json" ]; then
-      KOL_PROMPT_FILE="$(mktemp "$TMP_DIR/codex-kol-prompt-XXXXXX")"
-      {
-        echo "（執行環境：Codex。下文的「Write 工具」改用 shell 或 apply_patch 寫檔。）"
-        echo
-        cat "$KOL_PROMPT"
-      } > "$KOL_PROMPT_FILE"
-      timed kol-brief run_codex_prompt_with_timeout "$KOL_MODEL" "$KOL_PROMPT_FILE" 600 \
-        || log "[warn] KOL worker 非零退出；KOL 分頁可能略過"
-      rm -f "$KOL_PROMPT_FILE"
-    fi
-  ) &
-  AUX_PIDS="$AUX_PIDS $!"
+  # Fetch/transcription survives this runner; send takes a ready-items snapshot.
+  bash "$PROJECT_DIR/scripts/start-kol.sh" | tee -a "$LOG_FILE" \
+    || log "[warn] KOL fetch launcher failed; using cached progress"
+
 
 fi
 
@@ -498,9 +635,9 @@ if stage_enabled classify; then
     cat "$STRUCTURED_CONTROLLER_PROMPT" > "$LOSER_PROMPT"
     printf '\n\n本次只處理 direction=loser，只使用輸入的 losers；JSON 的 direction 固定為 loser。\n' >> "$LOSER_PROMPT"
 
-    timed controller-gainer run_codex_structured_with_timeout "$CONTROLLER_MODEL" "$GAINER_PROMPT" "$CONTROLLER_TIMEOUT_SECONDS" "$CONTROLLER_SCHEMA" "$GAINER_OUTPUT" &
+    timed controller-gainer "$CONTROLLER_STRUCTURED_RUNNER" "$CONTROLLER_MODEL" "$GAINER_PROMPT" "$CONTROLLER_TIMEOUT_SECONDS" "$CONTROLLER_SCHEMA" "$GAINER_OUTPUT" &
     GAINER_PID="$!"
-    timed controller-loser run_codex_structured_with_timeout "$CONTROLLER_MODEL" "$LOSER_PROMPT" "$CONTROLLER_TIMEOUT_SECONDS" "$CONTROLLER_SCHEMA" "$LOSER_OUTPUT" &
+    timed controller-loser "$CONTROLLER_STRUCTURED_RUNNER" "$CONTROLLER_MODEL" "$LOSER_PROMPT" "$CONTROLLER_TIMEOUT_SECONDS" "$CONTROLLER_SCHEMA" "$LOSER_OUTPUT" &
     LOSER_PID="$!"
 
     wait "$GAINER_PID" || log "gainer controller exited non-zero"
@@ -522,7 +659,7 @@ if stage_enabled classify; then
       fallback_controller_side loser || { log "loser controller 沒有輸出且 fallback 失敗"; exit 1; }
     fi
   else
-    if ! timed controller run_codex_prompt_with_timeout "$CONTROLLER_MODEL" "$CONTROLLER_PROMPT" "$CONTROLLER_TIMEOUT_SECONDS"; then
+    if ! timed controller "$CONTROLLER_PROMPT_RUNNER" "$CONTROLLER_MODEL" "$CONTROLLER_PROMPT" "$CONTROLLER_TIMEOUT_SECONDS"; then
       log "task controller exited non-zero"
     fi
   fi
@@ -608,6 +745,9 @@ if stage_enabled research; then
 fi
 
 if stage_enabled finalize; then
+  # 僅依賴收盤價與除權息參考；finalize 續跑也要先更新，失敗仍可發布。
+  timed breadth-history run_tsx scripts/build-breadth-history.ts \
+    || log "[warn] build-breadth-history.ts failed; continuing"
   if ! restore_task_snapshot; then
     log "Task snapshot missing before finalizer"
     notify "每日股市報告 ❌" "finalizer 前找不到 task snapshot。Log: $LOG_FILE"
@@ -626,7 +766,7 @@ if stage_enabled finalize; then
 
   log "進度 4/5：開始 finalizer 組裝盤後分析"
   FINALIZER_OK=1
-  if ! timed finalizer run_codex_prompt_with_timeout "$FINALIZER_MODEL" "$FINALIZER_PROMPT" "$CONTROLLER_TIMEOUT_SECONDS"; then
+  if ! timed finalizer "$FINALIZER_RUNNER" "$FINALIZER_MODEL" "$FINALIZER_PROMPT" "$CONTROLLER_TIMEOUT_SECONDS"; then
     log "finalizer exited non-zero"
     FINALIZER_OK=0
   fi
@@ -683,15 +823,32 @@ if stage_enabled send; then
     log "進度 4.5/5：輔助資料全部結束"
     market_trading_date > "$AUX_DONE_FILE"
   fi
-  run_tsx scripts/attach-kol.ts || log "[warn] attach-kol.ts failed; 報告將沒有 KOL 分頁"
+  log "KOL：快照目前已完成項目；背景轉錄繼續"
+  rm -f "$TMP_DIR/kol-items.json" "$TMP_DIR/kol-brief.json"
+  run_tsx scripts/snapshot-kol.ts || log "[warn] KOL snapshot failed; using history"
+  if [ -f "$TMP_DIR/kol-items.json" ]; then
+    KOL_PROMPT_FILE="$(mktemp "$TMP_DIR/codex-kol-prompt-XXXXXX")"
+    {
+      echo "（執行環境：Codex。下文的「Write 工具」改用 shell 或 apply_patch 寫檔。）"
+      echo
+      cat "$KOL_PROMPT"
+    } > "$KOL_PROMPT_FILE"
+    timed kol-brief run_codex_prompt_with_timeout "$KOL_MODEL" "$KOL_PROMPT_FILE" 600 \
+      || { rm -f "$TMP_DIR/kol-brief.json"; log "[warn] KOL worker 失敗；沿用最近歷史摘要"; }
+    rm -f "$KOL_PROMPT_FILE"
+  fi
+  run_tsx scripts/attach-kol.ts || log "[warn] attach-kol.ts failed"
 
-  timed stock-picks run_tsx scripts/build-stock-picks.ts || log "[warn] build-stock-picks.ts failed; 終極選股池分頁略過，不影響其他區塊"
+  timed stock-picks run_tsx scripts/build-stock-picks.ts || log "[warn] build-stock-picks.ts failed; 觀察名單分頁略過，不影響其他區塊"
+  # 選股池前 5 檔深挖（新聞／公告／YouTube／社群）：背景跑、不等它，跑完自己重新發佈
+  bash "$PROJECT_DIR/scripts/start-pick-deepdive.sh" --date "$(market_trading_date)" | tee -a "$LOG_FILE" \
+    || log "[warn] pick-deepdive launcher failed"
   # 前 5 名前瞻追蹤（docs/wide-market-scan-conclusion.md）：只更新 data/stock-picks-backtest.json，失敗不影響報告
   timed picks-tracking run_tsx scripts/backtest-stock-picks.ts --quiet \
     || log "[warn] backtest-stock-picks.ts failed; 前 5 名追蹤略過"
   log "進度 5/5：開始產生 HTML（Codex 流程不寄信）"
-  timed breadth-history run_tsx scripts/build-breadth-history.ts \
-    || log "[warn] build-breadth-history.ts failed; continuing"
+  timed strong-tracking run_tsx scripts/build-strong-tracking.ts \
+    || log "[warn] build-strong-tracking.ts failed; 強勢追蹤沿用上次結果"
   if ! timed send-report run_tsx scripts/send-report.ts data/analysis-latest.json --no-email; then
     log "send-report.ts --no-email exited non-zero"
     notify "每日股市報告 ❌" "報告分析成功，但 HTML 產出失敗。Log: $LOG_FILE"
@@ -706,6 +863,8 @@ if stage_enabled publish; then
   if ! timed publish bash "$PROJECT_DIR/scripts/publish-github-pages.sh" > >(tee -a "$LOG_FILE") 2>&1; then
     log "[warn] publish-github-pages.sh 失敗（不中斷整體流程）"
   fi
+  bash "$PROJECT_DIR/scripts/start-audio-brief.sh" --date "$(market_trading_date)" | tee -a "$LOG_FILE" \
+    || log "[warn] 盤後語音背景工作啟動失敗"
   [ "${FINALIZER_OK:-1}" = 1 ] && mark_stage_done publish
 fi
 

@@ -127,6 +127,13 @@ timed() {
 # 用空白分隔字串而不是陣列：macOS 內建 bash 3.2 對空陣列 + set -u 會炸。
 AUX_PIDS=""
 
+
+kill_tree() {
+  local _c
+  for _c in $(pgrep -P "$1" 2>/dev/null); do kill_tree "$_c"; done
+  kill "$1" 2>/dev/null || true
+}
+
 timing_summary() {
   local total=$(( $(date +%s) - RUN_T0 ))
   log "──────── 階段耗時（由慢到快，wall-clock）────────"
@@ -456,8 +463,14 @@ if stage_enabled fetch || ! aux_done_today; then
   timed index-contribution run_tsx scripts/build-index-contribution.ts \
     || log "[warn] build-index-contribution.ts failed; 指數貢獻分頁略過，不影響其他區塊" &
   AUX_PIDS="$AUX_PIDS $!"
+  timed taiex-trend run_tsx scripts/build-taiex-trend.ts \
+    || log "[warn] build-taiex-trend.ts failed; 大盤趨勢區塊略過，不影響其他區塊" &
+  AUX_PIDS="$AUX_PIDS $!"
   timed margin-options run_tsx scripts/fetch-margin-options.ts \
     || log "[warn] fetch-margin-options.ts failed; 融資與外資選擇權區塊略過，不影響其他區塊" &
+  AUX_PIDS="$AUX_PIDS $!"
+  timed foreign-spot-signal run_tsx scripts/fetch-foreign-spot-signal.ts \
+    || log "[warn] fetch-foreign-spot-signal.ts failed; 外資大買大賣訊號略過，不影響其他區塊" &
   AUX_PIDS="$AUX_PIDS $!"
   timed intl-market run_tsx scripts/fetch-intl-market.ts \
     || log "[warn] fetch-intl-market.ts failed; 國際數字略過，不影響台股報告" &
@@ -466,6 +479,9 @@ if stage_enabled fetch || ! aux_done_today; then
   # 漏跑一天就少一筆基準（fetch-sector-flows.ts）。
   timed sector-flows run_tsx scripts/fetch-sector-flows.ts \
     || log "[warn] fetch-sector-flows.ts failed; 美股板塊熱圖略過，不影響台股報告" &
+  AUX_PIDS="$AUX_PIDS $!"
+  timed tx-intraday run_tsx scripts/fetch-tx-intraday.ts \
+    || log "[warn] 台指期分時收集失敗；不影響報告，30 天內補跑即可" &
   AUX_PIDS="$AUX_PIDS $!"
   timed credit-spreads run_tsx scripts/fetch-credit-spreads.ts \
     || log "[warn] fetch-credit-spreads.ts failed; 信用利差略過，不影響台股報告" &
@@ -501,6 +517,17 @@ if stage_enabled fetch || ! aux_done_today; then
     || log "[warn] screen-cb-pledge.ts failed; 設質+CB 子頁沿用上次結果" &
   AUX_PIDS="$AUX_PIDS $!"
 
+  # 回檔買進掃描：個股期貨標的（期貨日均量 ≥ 50 口）收盤觸發＋紙上部位追蹤。
+  # 約 200 檔 Yahoo 日線＋兩個期交所請求，十幾秒；紙上部位累積在 data/pullback-scan-positions.json。
+  timed pullback-scan run_tsx scripts/build-pullback-scan.ts \
+    || log "[warn] build-pullback-scan.ts failed; 回檔買進子頁沿用上次結果" &
+  AUX_PIDS="$AUX_PIDS $!"
+
+  # 創新高掃描：全上市櫃小拉回再創 250 日新高＋紙上部位追蹤。本地收盤快取初篩後約數百檔 Yahoo 日線。
+  timed new-high-scan run_tsx scripts/build-new-high-scan.ts \
+    || log "[warn] build-new-high-scan.ts failed; 創新高子頁沿用上次結果" &
+  AUX_PIDS="$AUX_PIDS $!"
+
   # 贏家分點：名單在 Notion「分點追蹤名單」（讀不到就用 data/broker-watch-config.json），
   # 資料來自富邦 e01，約 45 日滾動窗，每天累積進 data/broker-watch-history/。
   timed broker-watch run_tsx scripts/fetch-broker-watch.ts \
@@ -528,23 +555,13 @@ if stage_enabled fetch || ! aux_done_today; then
       || log "[warn] build-revenue-momentum.ts failed; 月營收動能沿用上次結果"
     timed revenue-decline run_tsx scripts/build-revenue-decline.ts \
       || log "[warn] build-revenue-decline.ts failed; 營收衰退名單沿用上次結果"
-    timed revenue-industry run_tsx scripts/build-revenue-industry.ts \
-      || log "[warn] build-revenue-industry.ts failed; 營收族群沿用上次結果"
   ) &
   AUX_PIDS="$AUX_PIDS $!"
 
-  # 財經 KOL：抓 Podcast/YouTube 新節目（含字幕）→ worker 整理重點。整段跟主流程無關，
-  # 背景跑、send 前才收；送信前由 attach-kol 併進 analysis。失敗只是沒有 KOL 分頁。
-  (
-    rm -f "$TMP_DIR/kol-items.json" "$TMP_DIR/kol-brief.json"
-    timed kol-fetch run_tsx scripts/fetch-kol-feeds.ts \
-      || log "[warn] fetch-kol-feeds.ts failed; KOL 分頁略過"
-    if [ -f "$TMP_DIR/kol-items.json" ]; then
-      timed kol-brief run_claude_prompt_with_timeout "$KOL_PROMPT" 600 "$KOL_MODEL" \
-        || log "[warn] KOL worker 非零退出；KOL 分頁可能略過"
-    fi
-  ) &
-  AUX_PIDS="$AUX_PIDS $!"
+  # Fetch/transcription survives this runner; send takes a ready-items snapshot.
+  bash "$PROJECT_DIR/scripts/start-kol.sh" | tee -a "$LOG_FILE" \
+    || log "[warn] KOL fetch launcher failed; using cached progress"
+
 fi
 
 if [ ! -f "$PROJECT_DIR/data/market-latest.json" ]; then
@@ -744,6 +761,9 @@ if stage_enabled research; then
 fi
 
 if stage_enabled finalize; then
+  # 僅依賴收盤價與除權息參考；finalize 續跑也要先更新，失敗仍可發布。
+  timed breadth-history run_tsx scripts/build-breadth-history.ts \
+    || log "[warn] build-breadth-history.ts failed; continuing"
   if ! restore_task_snapshot; then
     log "Task snapshot missing before finalizer"
     notify "每日股市報告 ❌" "finalizer 前找不到 task snapshot。Log: $LOG_FILE"
@@ -822,11 +842,21 @@ if stage_enabled send; then
     log "進度 4.5/5：輔助資料全部結束"
     market_trading_date > "$AUX_DONE_FILE"
   fi
-  run_tsx scripts/attach-kol.ts || log "[warn] attach-kol.ts failed; 報告將沒有 KOL 分頁"
+  log "KOL：快照目前已完成項目；背景轉錄繼續"
+  rm -f "$TMP_DIR/kol-items.json" "$TMP_DIR/kol-brief.json"
+  run_tsx scripts/snapshot-kol.ts || log "[warn] KOL snapshot failed; using history"
+  if [ -f "$TMP_DIR/kol-items.json" ]; then
+    timed kol-brief run_claude_prompt_with_timeout "$KOL_PROMPT" 600 "$KOL_MODEL" \
+      || { rm -f "$TMP_DIR/kol-brief.json"; log "[warn] KOL worker 失敗；沿用最近歷史摘要"; }
+  fi
+  run_tsx scripts/attach-kol.ts || log "[warn] attach-kol.ts failed"
 
   # 選股池吃 analysis + scorecard + RRG + 設質CB，必須排在它們全部產出之後、送信之前。
   timed stock-picks run_tsx scripts/build-stock-picks.ts \
-    || log "[warn] build-stock-picks.ts failed; 終極選股池分頁略過，不影響其他區塊"
+    || log "[warn] build-stock-picks.ts failed; 觀察名單分頁略過，不影響其他區塊"
+  # 選股池前 5 檔深挖（新聞／公告／YouTube／社群）：背景跑、不等它，跑完自己重新發佈
+  bash "$PROJECT_DIR/scripts/start-pick-deepdive.sh" --date "$(market_trading_date)" | tee -a "$LOG_FILE" \
+    || log "[warn] pick-deepdive launcher failed"
   # 前 5 名前瞻追蹤（docs/wide-market-scan-conclusion.md）：只更新 data/stock-picks-backtest.json，失敗不影響報告
   timed picks-tracking run_tsx scripts/backtest-stock-picks.ts --quiet \
     || log "[warn] backtest-stock-picks.ts failed; 前 5 名追蹤略過"
@@ -836,8 +866,8 @@ if stage_enabled send; then
   # 避免把還沒比對過的報告直接送進信箱與 GitHub Pages。
   # 這裡不能只靠外面 unset GAS_WEBHOOK_URL：上面的 .env.local 是 set -a source，會蓋回來。
   # 2026-09-14 起使用者要求不再寄信，一律只產 HTML 給 publish 用。
-  timed breadth-history run_tsx scripts/build-breadth-history.ts \
-    || log "[warn] build-breadth-history.ts failed; continuing"
+  timed strong-tracking run_tsx scripts/build-strong-tracking.ts \
+    || log "[warn] build-strong-tracking.ts failed; 強勢追蹤沿用上次結果"
   if ! timed send-report run_tsx scripts/send-report.ts data/analysis-latest.json --no-email; then
     log "send-report.ts --no-email exited non-zero"
     notify "每日股市報告 ❌" "報告產出成功，但 HTML 預覽失敗。Log: $LOG_FILE"
@@ -852,6 +882,8 @@ if stage_enabled publish && [ "${REPORT_DRY_RUN:-0}" != "1" ]; then
   if ! timed publish bash "$PROJECT_DIR/scripts/publish-github-pages.sh" > >(tee -a "$LOG_FILE") 2>&1; then
     log "[warn] publish-github-pages.sh 失敗（不中斷整體流程）"
   fi
+  bash "$PROJECT_DIR/scripts/start-audio-brief.sh" --date "$(market_trading_date)" | tee -a "$LOG_FILE" \
+    || log "[warn] 盤後語音背景工作啟動失敗"
   [ "${FINALIZER_OK:-1}" = 1 ] && mark_stage_done publish
 fi
 
