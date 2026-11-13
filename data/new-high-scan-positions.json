@@ -314,10 +314,10 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 167.5,
-  "lastDate": "2026-11-10",
-  "ret": 6.77,
-  "held": 9
+  "lastClose": 169,
+  "lastDate": "2026-11-13",
+  "ret": 7.73,
+  "held": 12
  },
  {
   "code": "6925",
@@ -454,9 +454,69 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 136,
-  "lastDate": "2026-11-10",
-  "ret": 18.7,
-  "held": 5
+  "lastClose": 162,
+  "lastDate": "2026-11-13",
+  "ret": 41.51,
+  "held": 8
+ },
+ {
+  "code": "2880",
+  "name": "華南金",
+  "market": "twse",
+  "date": "2026-11-13",
+  "entry": 51.9,
+  "stop": 49.75,
+  "risk": 4.14,
+  "gap": 13,
+  "ma20": {
+   "status": "open"
+  },
+  "d60": {
+   "status": "open"
+  },
+  "lastClose": 51.9,
+  "lastDate": "2026-11-13",
+  "ret": -0.6,
+  "held": 0
+ },
+ {
+  "code": "2891",
+  "name": "中信金",
+  "market": "twse",
+  "date": "2026-11-13",
+  "entry": 78.7,
+  "stop": 75.22,
+  "risk": 4.42,
+  "gap": 13,
+  "ma20": {
+   "status": "open"
+  },
+  "d60": {
+   "status": "open"
+  },
+  "lastClose": 78.7,
+  "lastDate": "2026-11-13",
+  "ret": -0.6,
+  "held": 0
+ },
+ {
+  "code": "2618",
+  "name": "長榮航",
+  "market": "twse",
+  "date": "2026-11-13",
+  "entry": 47.75,
+  "stop": 45.3,
+  "risk": 5.13,
+  "gap": 2,
+  "ma20": {
+   "status": "open"
+  },
+  "d60": {
+   "status": "open"
+  },
+  "lastClose": 47.75,
+  "lastDate": "2026-11-13",
+  "ret": -0.6,
+  "held": 0
  }
 ]

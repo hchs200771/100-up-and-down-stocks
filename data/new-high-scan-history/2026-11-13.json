@@ -1,0 +1,107 @@
+{
+ "tradingDate": "2026-11-13",
+ "universe": {
+  "candidates": 119,
+  "priced": 119
+ },
+ "signals": [
+  {
+   "code": "2880",
+   "name": "華南金",
+   "market": "twse",
+   "close": 51.9,
+   "chg": 2.77,
+   "prevHigh": 51,
+   "prevHighDate": "2026-10-27",
+   "gap": 13,
+   "stop": 49.75,
+   "risk": 4.14,
+   "ma20": 49.7,
+   "money20": 780,
+   "limitUp": false,
+   "dup": false
+  },
+  {
+   "code": "2891",
+   "name": "中信金",
+   "market": "twse",
+   "close": 78.7,
+   "chg": 4.38,
+   "prevHigh": 76.9,
+   "prevHighDate": "2026-10-27",
+   "gap": 13,
+   "stop": 75.22,
+   "risk": 4.42,
+   "ma20": 74.63,
+   "money20": 3125,
+   "limitUp": false,
+   "dup": false
+  },
+  {
+   "code": "2618",
+   "name": "長榮航",
+   "market": "twse",
+   "close": 47.75,
+   "chg": 1.81,
+   "prevHigh": 47.7,
+   "prevHighDate": "2026-11-11",
+   "gap": 2,
+   "stop": 45.3,
+   "risk": 5.13,
+   "ma20": 43.88,
+   "money20": 1028,
+   "limitUp": false,
+   "dup": false
+  }
+ ],
+ "others": [
+  {
+   "code": "6140",
+   "name": "訊達",
+   "market": "tpex",
+   "close": 31.7,
+   "chg": 9.88,
+   "prevHigh": 31.05,
+   "prevHighDate": "2025-12-04",
+   "gap": 227,
+   "stop": 28.82,
+   "risk": 9.09,
+   "ma20": 23.16,
+   "money20": 38,
+   "limitUp": true,
+   "dup": false
+  },
+  {
+   "code": "6690",
+   "name": "安碁資訊",
+   "market": "tpex",
+   "close": 212,
+   "chg": 9.84,
+   "prevHigh": 207,
+   "prevHighDate": "2026-11-03",
+   "gap": 8,
+   "stop": 198.3,
+   "risk": 6.46,
+   "ma20": 188.55,
+   "money20": 85,
+   "limitUp": true,
+   "dup": false
+  },
+  {
+   "code": "2468",
+   "name": "華經",
+   "market": "twse",
+   "close": 74.2,
+   "chg": 9.93,
+   "prevHigh": 71.2,
+   "prevHighDate": "2026-11-11",
+   "gap": 2,
+   "stop": 68.93,
+   "risk": 7.1,
+   "ma20": 57.83,
+   "money20": 1756,
+   "limitUp": true,
+   "dup": false
+  }
+ ]
+}

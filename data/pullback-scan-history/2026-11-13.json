@@ -1,0 +1,35 @@
+{
+ "tradingDate": "2026-11-13",
+ "regime": {
+  "close": 43675.12109375,
+  "ema50": 45416.66,
+  "ok": false
+ },
+ "universe": {
+  "listed": 250,
+  "liquid": 203,
+  "minFutVolume": 50,
+  "priced": 201
+ },
+ "signals": [],
+ "watch": [
+  {
+   "code": "3691",
+   "name": "碩禾",
+   "market": "tpex",
+   "close": 137,
+   "futVol": 927,
+   "margin": "20.25%",
+   "adr": 9.2,
+   "mom": 35,
+   "pullback": 7.7,
+   "near": [
+    {
+     "name": "AVWAP",
+     "price": 134.07,
+     "dist": 2.2
+    }
+   ]
+  }
+ ]
+}
