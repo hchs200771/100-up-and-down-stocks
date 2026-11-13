@@ -32,6 +32,15 @@ interface TradeReview {
   holdings?: TradeReviewItem[];
 }
 
+/** 置頂的教訓與紀律（data/trade-discipline.json，手動維護、不隨每日檢討覆寫）；同樣不放數量、價格與損益 */
+interface TradeDiscipline {
+  title: string;
+  lessons?: string[];
+  rules?: string[];
+  checks?: { title: string; items: string[] }[];
+  quote?: string;
+}
+
 const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]!);
 const para = (s: string) => esc(s).replace(/\n/g, "<br>");
 const RELOCK = `<button class="relock" onclick="relock()">鎖上</button>`;
@@ -47,9 +56,23 @@ function readJson<T>(rel: string): T | null {
   }
 }
 
-function reviewHtml(r: TradeReview | null): string {
+function disciplineHtml(d: TradeDiscipline | null): string {
+  if (!d) return "";
+  const list = (tag: "ul" | "ol", items?: string[]) =>
+    items?.length ? `<${tag}>${items.map((s) => `<li>${esc(s)}</li>`).join("")}</${tag}>` : "";
+  const box = (title: string, inner: string) =>
+    inner ? `<div class="card"><div class="t">${esc(title)}</div><div class="body">${inner}</div></div>` : "";
+  return `<h2>${esc(d.title)}</h2>
+${box("我犯的錯", list("ul", d.lessons))}
+${box("交易紀律（每天對照）", list("ol", d.rules))}
+${(d.checks ?? []).map((c) => box(c.title, list("ul", c.items))).join("")}
+${d.quote ? `<p class="note">${esc(d.quote)}</p>` : ""}`;
+}
+
+function reviewHtml(r: TradeReview | null, d: TradeDiscipline | null): string {
+  const pinned = disciplineHtml(d);
   if (!r || (!r.trades?.length && !r.holdings?.length && !r.summary)) {
-    return `${RELOCK}<h1>📒 交易檢討</h1><p class="note">目前沒有檢討資料。</p>`;
+    return `${RELOCK}<h1>📒 交易檢討</h1>${pinned}<p class="note">目前沒有檢討資料。</p>`;
   }
   const stopLevel = (it: TradeReviewItem) =>
     it.stopStatus?.includes("觸發") ? "hit" : !it.stop || it.stop === "未設" || it.stopStatus?.includes("未設") ? "none" : "ok";
@@ -73,6 +96,7 @@ function reviewHtml(r: TradeReview | null): string {
   const block = (title: string, list?: TradeReviewItem[]) => (list?.length ? `<h2>${title}</h2>${list.map(card).join("")}` : "");
   return `${RELOCK}<h1>📒 交易檢討</h1>
 <p class="sub">${esc(r.date)}</p>
+${pinned}
 ${stopTable}
 ${r.summary ? `<div class="card"><div class="body">${para(r.summary)}</div></div>` : ""}
 ${block("本期進出場", r.trades)}
@@ -86,7 +110,7 @@ async function main() {
   if (!password) console.warn("build-private-pages: [warn] 沒有 SITE_PASSWORD，私人頁只發布說明、不含內容");
 
   const pages = [
-    { file: "review.html", title: "交易檢討", icon: "📒", contentHtml: reviewHtml(readJson<TradeReview>("data/trade-review-latest.json")) },
+    { file: "review.html", title: "交易檢討", icon: "📒", contentHtml: reviewHtml(readJson<TradeReview>("data/trade-review-latest.json"), readJson<TradeDiscipline>("data/trade-discipline.json")) },
   ];
   for (const p of pages) {
     writeFileSync(resolve(siteDir, p.file), await renderPrivatePage({ ...p, password }), "utf8");

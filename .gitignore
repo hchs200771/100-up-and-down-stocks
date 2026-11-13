@@ -38,6 +38,7 @@ data/position-analysis.json
 data/holding-health-latest.json
 # 私人頁的原始資料：只以加密形式發布（scripts/build-private-pages.ts）
 data/trade-review-latest.json
+data/trade-discipline.json
 data/holdings-chip-latest.json
 data/broker-scan/
 
