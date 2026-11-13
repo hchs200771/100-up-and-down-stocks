@@ -42,7 +42,8 @@ details.howto b{color:var(--fg)}
 .js .collapsible .experiment-head{cursor:pointer}
 .js .experiment-toggle{display:inline-flex}
 .js .collapsible:not(.is-open)>.experiment-body{display:none}
-.js .collapsible.is-open .head-row{position:sticky;top:0;z-index:2;border-bottom:1px solid var(--line)}
+section.collapsible{scroll-margin-top:calc(var(--gnav-h,0px) + 8px)}
+.js .collapsible.is-open .head-row{position:sticky;top:var(--gnav-h,0px);z-index:2;border-bottom:1px solid var(--line)}
 .js .is-open .experiment-toggle svg{transform:rotate(180deg)}
 @media(max-width:480px){section{padding:10px 12px}.head-row{gap:6px}.experiment-toggle{padding:6px;font-size:13px}}
 @media(prefers-reduced-motion:reduce){.experiment-toggle svg{transition:none}}
@@ -778,6 +779,11 @@ showCurrent();
 </div>
 <script>
 (() => {
+  // 網站導覽列也黏在頂端：展開後的標題列要黏在它正下方，不能被蓋住。
+  const gnav = document.querySelector('nav.gnav');
+  const syncNav = () => document.documentElement.style.setProperty('--gnav-h', (gnav && getComputedStyle(gnav).position === 'sticky' ? gnav.offsetHeight : 0) + 'px');
+  syncNav();
+  window.addEventListener('resize', syncNav);
   function setOpen(section, open, scrollOnClose = false) {
     section.classList.toggle('is-open', open);
     const button = section.querySelector('.experiment-toggle');
