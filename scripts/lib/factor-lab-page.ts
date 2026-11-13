@@ -77,19 +77,21 @@ ${e.source.script ? `<p><b>腳本</b>：<code>${esc(e.source.script)}</code></p>
 ${e.source.results ? `<p><b>結果檔</b>：<code>${esc(e.source.results)}</code></p>` : ""}
 ${e.source.doc ? `<p><b>文件</b>：<a href="${esc(DOC_BASE + e.source.doc.replace(/^\/+/, ""))}" target="_blank" rel="noopener"><code>${esc(e.source.doc)}</code></a></p>` : ""}
 </div></details>`;
-    const head = `<h2>${esc(e.title)} ${pill(e.verdict)}${tag(e.category)} <span class="d">${esc(e.date)}</span></h2>
+    const hasBody = Boolean(stats || findings.length || charts || caveats.length || nextIdeas.length);
+    const bodyId = `${e.id}-body`;
+    const toggle = hasBody ? `<button type="button" class="experiment-toggle" aria-expanded="false" aria-controls="${esc(bodyId)}"><span>展開</span><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>` : "";
+    const head = `<div class="experiment-head"><div class="head-row"><h2>${esc(e.title)} ${pill(e.verdict)}${tag(e.category)} <span class="d">${esc(e.date)}</span></h2>${toggle}</div>
 <p class="vnote">${md(e.verdictNote)}</p>
 <p class="q"><b>問題</b>：${md(e.question)}</p>
-<p class="sum">${md(e.summary)}</p>`;
-    const hasBody = stats || findings.length || charts || caveats.length || nextIdeas.length;
-    const rest = !hasBody ? body : `<details class="more"><summary>展開細節（數字、圖表、限制）</summary>${body}</details>`;
-    return `<section id="${esc(e.id)}">${head}${rest}</section>`;
+<p class="sum">${md(e.summary)}</p></div>`;
+    return `<section id="${esc(e.id)}"${hasBody ? ' class="collapsible"' : ""}>${head}<div class="experiment-body" id="${esc(bodyId)}">${body}</div></section>`;
   };
 
   return `<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
+<script>document.documentElement.classList.add("js");</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>因子驗證</title>
 <meta name="robots" content="noindex">
@@ -120,7 +122,19 @@ details.howto summary{cursor:pointer;padding:10px 16px;font-size:14px;font-weigh
 details.howto .body{padding:0 16px 12px;border-top:1px solid var(--line)}
 details.howto p{margin:6px 0}
 details.howto b{color:var(--fg)}
-details.more>summary{cursor:pointer;color:var(--accent);font-weight:600;margin:8px 0}
+.experiment-head{display:contents}
+.head-row{display:flex;align-items:flex-start;gap:10px;background:var(--card);padding:6px 0}
+.head-row h2{flex:1;min-width:0;margin:0}
+.experiment-toggle{display:none;flex:none;align-items:center;gap:5px;min-height:40px;padding:6px 9px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--accent);font:inherit;cursor:pointer}
+.experiment-toggle svg{transition:transform .15s}
+.experiment-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.js .collapsible .experiment-head{cursor:pointer}
+.js .experiment-toggle{display:inline-flex}
+.js .collapsible:not(.is-open)>.experiment-body{display:none}
+.js .collapsible.is-open .head-row{position:sticky;top:0;z-index:2;border-bottom:1px solid var(--line)}
+.js .is-open .experiment-toggle svg{transform:rotate(180deg)}
+@media(max-width:480px){section{padding:10px 12px}.head-row{gap:6px}.experiment-toggle{padding:6px;font-size:13px}}
+@media(prefers-reduced-motion:reduce){.experiment-toggle svg{transition:none}}
 .pill{display:inline-block;border:1px solid currentColor;border-radius:99px;padding:0 8px;font-size:12px;font-weight:700;vertical-align:middle;white-space:nowrap}
 .tag{display:inline-block;background:var(--chip);color:var(--muted);border-radius:99px;padding:0 8px;font-size:11px;font-weight:600;vertical-align:middle;margin-right:6px;white-space:nowrap}
 .v-no{color:var(--v-no)}.v-maybe{color:var(--v-maybe)}.v-yes{color:var(--v-yes)}
@@ -146,7 +160,47 @@ ${renderSubpageNav("factor-lab.html")}
 <p class="sub">有新點子就回測一次，結果記在這裡。不是每日更新。共 ${experiments.length} 個實驗，最新 ${esc(latest)}。</p>
 <ul class="idx">${index}</ul>
 ${experiments.map(section).join("\n")}
-</div></body>
+</div>
+<script>
+(() => {
+  function setOpen(section, open, scrollOnClose = false) {
+    section.classList.toggle('is-open', open);
+    const button = section.querySelector('.experiment-toggle');
+    button.setAttribute('aria-expanded', String(open));
+    button.querySelector('span').textContent = open ? '收合' : '展開';
+    if (!open && scrollOnClose && section.getBoundingClientRect().top < 0) {
+      section.scrollIntoView({block: 'start'});
+    }
+  }
+  document.querySelectorAll('section.collapsible').forEach(section => {
+    section.querySelector('.experiment-head').addEventListener('click', event => {
+      if (event.target.closest('a, input, textarea, select, label, summary')) return;
+      if (event.target.closest('button') && !event.target.closest('.experiment-toggle')) return;
+      if (window.getSelection()?.toString()) return;
+      setOpen(section, !section.classList.contains('is-open'), true);
+    });
+  });
+  function openHash() {
+    let id;
+    try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
+    const section = document.getElementById(id);
+    if (!section?.matches('section.collapsible')) return;
+    setOpen(section, true);
+    section.scrollIntoView({block: 'start'});
+  }
+  document.querySelector('.idx').addEventListener('click', event => {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const section = document.getElementById(link.hash.slice(1));
+    if (section?.matches('section.collapsible')) setOpen(section, true);
+    // Also scroll when clicking the current hash after the card was collapsed.
+    if (link.hash === location.hash) openHash();
+  });
+  window.addEventListener('hashchange', openHash);
+  openHash();
+})();
+</script>
+</body>
 </html>
 `;
 }
