@@ -1,0 +1,1213 @@
+{
+  "generatedAt": "2026-11-18T00:55:19+08:00",
+  "date": "2026-11-17",
+  "basis": {
+    "market": "2026-11-17",
+    "analysis": "2026-11-17",
+    "tdccWeek": "2026-W46",
+    "cbWeek": "2026-W47",
+    "cbAsOf": "115/11/17",
+    "revenueMonth": "2026-10",
+    "themeRadarAsOf": "2026-11-17",
+    "rrgAsOf": "2026-11-16",
+    "priceHistoryDays": 512,
+    "institutionalStrength": {
+      "normalization": "daily-market-net-zscore",
+      "minUniverse": 20,
+      "zThreshold": 2,
+      "foreignMinRatio": 0.2,
+      "trustMinRatio": 0.1,
+      "totalMinRatio": 0.2
+    }
+  },
+  "regimeNotes": [
+    "落後但動能回升：多個落後族群同步出現動能回升 —— 屬跌深後的整體反彈，非個別族群的打底訊號",
+    "中期弱短線強：多數落後族群的短線動能同步翻正 —— 空頭市場中跌得比大盤少就會被算成「改善」，多屬相對抗跌而非真打底"
+  ],
+  "themeRadar": {
+    "signals": [
+      {
+        "id": "AI晶片",
+        "name": "AI晶片",
+        "tickers": [
+          "2330",
+          "2454",
+          "3035",
+          "3443"
+        ],
+        "recentShare": 0.02457002457002457,
+        "baselineShare": 0.011920529801324504,
+        "ratio": 2,
+        "z": 0,
+        "recentMentions": 10,
+        "priorWeekly": 4.5,
+        "status": "升溫",
+        "sampleArticles": [
+          {
+            "id": "09192c946ad63ab0cd58996e2b192ae33dbc391d3991ec70e8911accc27a990f",
+            "source": "ServeTheHome",
+            "publishedAt": "2026-11-17T15:45:19.000Z",
+            "title": "NVIDIA Announces Rubin HPC: Science-Focused Server GPU to Arrive in 2028",
+            "body": "<p>Marking their return to the HPC market, at SC26 NVIDIA has announced the Rubin HPC chip. The science and engineering-focused GPU will have over 50,000 CUDA cores and will be released in 2028</p>\n<p>The post <a href=\"https://www.servethehome.com/nvidia-announces-rubin-hpc-science-focused-server-gpu-to-arrive-in-2028/\">NVIDIA Announces Rubin HPC: Science-Focused Server GPU to Arrive in 2028</a> appeared first on <a href=\"https://www.servethehome.com\">ServeTheHome</a>.</p>",
+            "url": "https://www.servethehome.com/nvidia-announces-rubin-hpc-science-focused-server-gpu-to-arrive-in-2028/"
+          },
+          {
+            "id": "3d1227937bc633daa33fc0293fc875f37a7ac75536aa0a9ac0354cacbed830b2",
+            "source": "Tom's Hardware",
+            "publishedAt": "2026-11-17T14:30:00.000Z",
+            "title": "AMD attacks Nvidia's FP64 emulation at SC26, touts native double-precision on Instinct MI430X — says Ozaki schemes fit less than 10% of HPC workloads and triple memory use and emulated FP64 is a poor fit for many HPC workloads",
+            "body": "AMD is touting the benefits of the native FP64 support provided by its MI430X accelerator at Supercomputing 2026. The company says that Ozaki FP64 emulation only covers the needs of a small portion of HPC workloads, making the MI430X a unique foundation for next-gen supercomputing installations.",
+            "url": "https://www.tomshardware.com/pc-components/gpus/amd-attacks-nvidias-fp64-emulation-at-sc26-touts-native-double-precision-on-instinct-mi430x-says-ozaki-schemes-fit-less-than-10-percent-of-hpc-workloads-and-triple-memory-use-and-emulated-fp64-is-a-poor-fit-for-many-hpc-workloads"
+          }
+        ],
+        "accelerating": true
+      },
+      {
+        "id": "出口管制",
+        "name": "出口管制",
+        "tickers": [
+          "2382",
+          "3231"
+        ],
+        "recentShare": 0.056511056511056514,
+        "baselineShare": 0.0033112582781456954,
+        "ratio": 10.666666666666666,
+        "z": 0,
+        "recentMentions": 23,
+        "priorWeekly": 1.25,
+        "status": "升溫",
+        "sampleArticles": [
+          {
+            "id": "de840cdba8427494eca55f0f920402477cd55f6eb5257f8b8e4792e7a5f5f95a",
+            "source": "Tom's Hardware",
+            "publishedAt": "2026-11-17T14:00:00.000Z",
+            "title": "Nvidia warns customers of new US rule that could expose them to lawsuits for serving Chinese clients",
+            "body": "This warning comes amid Jensen Huang's scandal, a new rule from the U.S. Department of Commerce, and a pending bill in the Senate.",
+            "url": "https://www.tomshardware.com/tech-industry/policy/nvidia-warns-customers-of-new-us-rule-that-could-expose-them-to-lawsuits-for-serving-chinese-clients-commerce-department-releases-interim-regulations-preventing-foreign-actors-from-using-advanced-compute-based-on-american-tech"
+          },
+          {
+            "id": "1ffee87cad8fb21ca1f5e26e130ad31b2fd82286f6438f2eae2dfed5b4a3b608",
+            "source": "Tom's Hardware",
+            "publishedAt": "2026-11-17T13:30:00.000Z",
+            "title": "US government confirms criminal investigation into Singapore company at the heart of Jensen Huang scandal",
+            "body": "The Justice and Commerce Departments have announced an investigation into Megaspeed over concerns that it may have been involved in the illegal export of Nvidia's AI hardware. The company was previously run by the woman officials have accused of being a Chinese spy while having an affair with Jensen Huang while he was Nvidia CEO.",
+            "url": "https://www.tomshardware.com/tech-industry/data-centers/us-government-confirms-criminal-investigation-into-singapore-company-at-the-heart-of-jensen-huang-scandal-megaspeed-identified-over-suspicious-activity-company-placed-on-no-sell-list-by-nvidia"
+          }
+        ],
+        "accelerating": true
+      },
+      {
+        "id": "AI電源",
+        "name": "AI電源",
+        "tickers": [
+          "2308",
+          "2301",
+          "2481",
+          "3231",
+          "6869",
+          "7740"
+        ],
+        "recentShare": 0.029484029484029485,
+        "baselineShare": 0.009271523178807948,
+        "ratio": 2.888888888888889,
+        "z": 0,
+        "recentMentions": 12,
+        "priorWeekly": 3.5,
+        "status": "升溫",
+        "sampleArticles": [
+          {
+            "id": "2c1d45baa2e96408c71d29bd404da149a2065b4c6959d75113a4e781820783ee",
+            "source": "Tom's Hardware",
+            "publishedAt": "2026-11-17T10:30:00.000Z",
+            "title": "403 hyperscale US data centers used staggering 82 terawatts of electricity in a year, more than 80% of Michigan’s entire consumption",
+            "body": "A Harvard-led study in Nature Sustainability estimates 403 US hyperscale data centers used about 82 TWh of electricity in a year.",
+            "url": "https://www.tomshardware.com/tech-industry/data-centers/403-hyperscale-us-data-centers-used-staggering-82-terawatts-of-electricity-in-a-year-more-than-80-percent-of-michigans-entire-consumption-generated-26-million-tons-of-co2-in-a-single-year-gas-and-coal-supplied-54-percent-of-the-power-harvard-led-study-estimates"
+          },
+          {
+            "id": "279a3cf19562e6b57dae5a7526f1d106bd55174ddae9f16aa5b7edee21a2a0a0",
+            "source": "TechNews",
+            "publishedAt": "2026-11-17T09:32:00.000Z",
+            "title": "馴服 AI 吞電怪獸！雲鑠攜緯創導入 WATS 架構開拓 AIDC 商機",
+            "body": "由風馳電能投資成立 YUNOVA（雲鑠）今日宣布正式亮相，定位為 AI 算力與綠能機房整合專家，並宣布攜手緯創 [&#8230;]",
+            "url": "https://finance.technews.tw/2026/11/17/yunova/"
+          }
+        ],
+        "accelerating": true
+      },
+      {
+        "id": "儲能",
+        "name": "儲能",
+        "tickers": [
+          "1504",
+          "7740"
+        ],
+        "recentShare": 0.007371007371007371,
+        "baselineShare": 0.001986754966887417,
+        "ratio": 2.2857142857142856,
+        "z": 0,
+        "recentMentions": 3,
+        "priorWeekly": 0.75,
+        "status": "升溫",
+        "sampleArticles": [
+          {
+            "id": "230e1a002be4b0ac07b9d399707da26aad2dcbb16c0fe86ad53da8eb4d9dd7fc",
+            "source": "TechNews",
+            "publishedAt": "2026-11-16T08:52:38.000Z",
+            "title": "挾 10 億訂單布局自主式微電網！凱智綠能預計 11/20 登錄興櫃",
+            "body": "凱智綠能預計 11 月 20 日正式登錄興櫃，由華南永昌證券主辦，董事長李俊成表示，目前在手訂單達 10 億元 [&#8230;]",
+            "url": "https://finance.technews.tw/2026/11/16/autonomous-microgrid/"
+          },
+          {
+            "id": "8ddc47f05f8df8ffc85c28206691a115d344056e2946b6cda37ea206a6e5c521",
+            "source": "TechNews",
+            "publishedAt": "2026-11-16T03:57:19.000Z",
+            "title": "熙特爾結盟美韓能源大廠，拓展海外大型儲能市場",
+            "body": "隨著全球 AI 資料中心用電需求攀升，帶動大型儲能及電力基礎建設市場成長。熙特爾新能源宣布與美國能源設備大廠  [&#8230;]",
+            "url": "https://technews.tw/2026/11/16/xitel-partners-us-south-korean-energy-giants-expand-overseas-large-scale-energy-storage-market/"
+          }
+        ],
+        "accelerating": true
+      },
+      {
+        "id": "伺服器CPU",
+        "name": "伺服器CPU",
+        "tickers": [
+          "2330"
+        ],
+        "recentShare": 0.019656019656019656,
+        "baselineShare": 0.001986754966887417,
+        "ratio": 5.142857142857143,
+        "z": 0,
+        "recentMentions": 8,
+        "priorWeekly": 0.75,
+        "status": "升溫",
+        "sampleArticles": [
+          {
+            "id": "58ba9a69c52d6c75bd63fc959546f7d95f010a7ca5dcd3b061bbae4e9d2cc8be",
+            "source": "TechNews",
+            "publishedAt": "2026-11-16T06:00:03.000Z",
+            "title": "Supermicro 搭載第六代 AMD EPYC 9006 系列 CPU 的新一代伺服器現已付運，支援雲端、HPC 及代理式 AI 工作負載",
+            "body": "Super Micro Computer 13 日宣佈，旗下 H15 代伺服器產品組合現已開始付運。公司以 D [&#8230;]",
+            "url": "https://technews.tw/2026/11/16/supermicro-h15-amd-based-servers/"
+          },
+          {
+            "id": "8e4b3a0623b76d2537346a94f3145a9929d03e12a310d1f3389ecefd11edf6f8",
+            "source": "Tom's Hardware",
+            "publishedAt": "2026-11-15T13:30:00.000Z",
+            "title": "Intel reclaims overall CPU market share for the first time since 2025",
+            "body": "AMD continues to gain server CPU market share amid skyrocketing shipments of data center processors as sales of client CPUs drop in the third quarter, says Mercury Research.",
+            "url": "https://www.tomshardware.com/pc-components/cpus/intel-reclaims-overall-cpu-market-share-for-the-first-time-since-2025-massive-desktop-gains-offset-amds-record-server-and-mobile-growth"
+          }
+        ],
+        "accelerating": true
+      }
+    ],
+    "warnings": []
+  },
+  "long": [
+    {
+      "rank": 1,
+      "code": "2636",
+      "name": "台驊控股",
+      "close": 71.8,
+      "score": 52,
+      "type": "營運先行·等待確認",
+      "sector": null,
+      "futures": null,
+      "reason": "2026-10 YoY 126%、連7月YoY成長、MoM連8月正成長、同期歷史新高、比前三月加速 43pp；TTM營收 +23.1%、毛利率季變動 1.0pp（價格尚未確認）；外資連 3 日買超",
+      "signals": [
+        {
+          "label": "營運核心·動能",
+          "detail": "2026-10 YoY 126%、連7月YoY成長、MoM連8月正成長、同期歷史新高、比前三月加速 43pp；TTM營收 +23.1%、毛利率季變動 1.0pp（價格尚未確認）",
+          "tone": "pos"
+        },
+        {
+          "label": "外資連買",
+          "detail": "外資連 3 日買超",
+          "tone": "pos"
+        }
+      ],
+      "themeRadar": [],
+      "plan": {
+        "entry": "分批布局：MA20（70.0）附近先建 1/3，站穩 20 日高 71.8 且營運趨勢未轉弱再加碼",
+        "stop": "技術風控：跌破 MA60（70.5）且兩日無法站回先減碼；建倉均價 -12% 仍須退出重評",
+        "exit": "基本面論點失效才清倉：TTM營收轉負、毛利率連兩季惡化、產業需求或競爭假設被證偽；單週籌碼與單月門檻只作預警"
+      },
+      "metrics": {
+        "r10": "+3.9%",
+        "r20": "-0.8%",
+        "ma10": "69.3",
+        "ma20": "70.0",
+        "ma60": "70.5",
+        "high20": "71.8",
+        "dayTrade": "20%",
+        "instNet": "+806 張（外資 +788／投信 0）",
+        "quadrant": "—",
+        "tdcc": "—",
+        "cb": "—",
+        "revenue": "2026-10 核心·動能：YoY 126%、連7月YoY成長、MoM連8月正成長、同期歷史新高、比前三月加速 43pp；TTM +23.1%；毛利率季變動 1.0pp"
+      }
+    },
+    {
+      "rank": 2,
+      "code": "3234",
+      "name": "光環",
+      "close": 118.5,
+      "score": 52,
+      "type": "營運先行·等待確認",
+      "sector": "光通訊/CPO矽光子",
+      "futures": null,
+      "reason": "2026-10 YoY 144%、連7月YoY成長、MoM連5月正成長、5年新高、比前三月加速 28pp；TTM營收 +43.3%、毛利率季變動 10.0pp（價格尚未確認）；族群「光通訊/CPO矽光子」在改善象限；外資連 3 日買超",
+      "signals": [
+        {
+          "label": "營運核心·動能",
+          "detail": "2026-10 YoY 144%、連7月YoY成長、MoM連5月正成長、5年新高、比前三月加速 28pp；TTM營收 +43.3%、毛利率季變動 10.0pp（價格尚未確認）",
+          "tone": "pos"
+        },
+        {
+          "label": "產業趨勢確認",
+          "detail": "族群「光通訊/CPO矽光子」在改善象限",
+          "tone": "pos"
+        },
+        {
+          "label": "外資連買",
+          "detail": "外資連 3 日買超",
+          "tone": "pos"
+        }
+      ],
+      "themeRadar": [],
+      "plan": {
+        "entry": "分批布局：MA20（149.9）附近先建 1/3，站穩 20 日高 196.5 且營運趨勢未轉弱再加碼",
+        "stop": "技術風控：跌破 MA60（169.8）且兩日無法站回先減碼；建倉均價 -12% 仍須退出重評",
+        "exit": "基本面論點失效才清倉：TTM營收轉負、毛利率連兩季惡化、產業需求或競爭假設被證偽；單週籌碼與單月門檻只作預警"
+      },
+      "metrics": {
+        "r10": "-12.9%",
+        "r20": "-32.9%",
+        "ma10": "131.2",
+        "ma20": "149.9",
+        "ma60": "169.8",
+        "high20": "196.5",
+        "dayTrade": "—",
+        "instNet": "+237 張（外資 +237／投信 0）",
+        "quadrant": "光通訊/CPO矽光子（改善）",
+        "tdcc": "—",
+        "cb": "—",
+        "revenue": "2026-10 核心·動能：YoY 144%、連7月YoY成長、MoM連5月正成長、5年新高、比前三月加速 28pp；TTM +43.3%；毛利率季變動 10.0pp"
+      }
+    },
+    {
+      "rank": 3,
+      "code": "3363",
+      "name": "上詮",
+      "close": 312.5,
+      "score": 45,
+      "type": "營運先行·等待確認",
+      "sector": "光通訊/CPO矽光子",
+      "futures": null,
+      "reason": "2026-10 YoY 70%、連4月YoY成長、MoM連7月正成長、5年新高、比前三月加速 52pp；TTM營收 +0.1%、毛利率季變動 10.4pp（價格尚未確認）；族群「光通訊/CPO矽光子」在改善象限；外資連 3 日買超",
+      "signals": [
+        {
+          "label": "營運核心·動能",
+          "detail": "2026-10 YoY 70%、連4月YoY成長、MoM連7月正成長、5年新高、比前三月加速 52pp；TTM營收 +0.1%、毛利率季變動 10.4pp（價格尚未確認）",
+          "tone": "pos"
+        },
+        {
+          "label": "產業趨勢確認",
+          "detail": "族群「光通訊/CPO矽光子」在改善象限",
+          "tone": "pos"
+        },
+        {
+          "label": "外資連買",
+          "detail": "外資連 3 日買超",
+          "tone": "pos"
+        }
+      ],
+      "themeRadar": [],
+      "plan": {
+        "entry": "分批布局：MA20（438.4）附近先建 1/3，站穩 20 日高 549 且營運趨勢未轉弱再加碼",
+        "stop": "技術風控：跌破 MA60（586）且兩日無法站回先減碼；建倉均價 -12% 仍須退出重評",
+        "exit": "基本面論點失效才清倉：TTM營收轉負、毛利率連兩季惡化、產業需求或競爭假設被證偽；單週籌碼與單月門檻只作預警"
+      },
+      "metrics": {
+        "r10": "-24.8%",
+        "r20": "-41.1%",
+        "ma10": "379.1",
+        "ma20": "438.4",
+        "ma60": "586",
+        "high20": "549",
+        "dayTrade": "—",
+        "instNet": "+525 張（外資 +479／投信 0）",
+        "quadrant": "光通訊/CPO矽光子（改善）",
+        "tdcc": "—",
+        "cb": "—",
+        "revenue": "2026-10 核心·動能：YoY 70%、連4月YoY成長、MoM連7月正成長、5年新高、比前三月加速 52pp；TTM +0.1%；毛利率季變動 10.4pp"
+      }
+    },
+    {
+      "rank": 4,
+      "code": "6446",
+      "name": "藥華藥",
+      "close": 1280,
+      "score": 45,
+      "type": "營運先行·等待確認",
+      "sector": "生技新藥/醫材",
+      "futures": null,
+      "reason": "2026-10 YoY 102%、連12月YoY成長、MoM連4月正成長、5年新高、比前三月加速 3pp；TTM營收 +81.6%、毛利率季變動 2.6pp（價格尚未確認）；族群「生技新藥/醫材」在領先象限。注意：當沖過熱",
+      "signals": [
+        {
+          "label": "營運核心·動能",
+          "detail": "2026-10 YoY 102%、連12月YoY成長、MoM連4月正成長、5年新高、比前三月加速 3pp；TTM營收 +81.6%、毛利率季變動 2.6pp（價格尚未確認）",
+          "tone": "pos"
+        },
+        {
+          "label": "產業趨勢確認",
+          "detail": "族群「生技新藥/醫材」在領先象限",
+          "tone": "pos"
+        },
+        {
+          "label": "當沖過熱",
+          "detail": "當沖比 53%，隔日沖主場",
+          "tone": "neg"
+        }
+      ],
+      "themeRadar": [],
+      "plan": {
+        "entry": "分批布局：MA20（1246）附近先建 1/3，站穩 20 日高 1380 且營運趨勢未轉弱再加碼",
+        "stop": "技術風控：跌破 MA60（1270）且兩日無法站回先減碼；建倉均價 -12% 仍須退出重評",
+        "exit": "基本面論點失效才清倉：TTM營收轉負、毛利率連兩季惡化、產業需求或競爭假設被證偽；單週籌碼與單月門檻只作預警"
+      },
+      "metrics": {
+        "r10": "+4.5%",
+        "r20": "+2.8%",
+        "ma10": "1301",
+        "ma20": "1246",
+        "ma60": "1270",
+        "high20": "1380",
+        "dayTrade": "53%",
+        "instNet": "+224 張（外資 +135／投信 +49）",
+        "quadrant": "生技新藥/醫材（領先）",
+        "tdcc": "—",
+        "cb": "—",
+        "revenue": "2026-10 核心·動能：YoY 102%、連12月YoY成長、MoM連4月正成長、5年新高、比前三月加速 3pp；TTM +81.6%；毛利率季變動 2.6pp"
+      }
+    },
+    {
+      "rank": 5,
+      "code": "6223",
+      "name": "旺矽",
+      "close": 3995,
+      "score": 43,
+      "type": "營運先行·等待確認",
+      "sector": "半導體設備/測試介面",
+      "futures": {
+        "level": "級距3",
+        "margin": "20.25%"
+      },
+      "reason": "2026-10 YoY 93%、連12月YoY成長、5年新高、比前三月加速 20pp；TTM營收 +57.0%、毛利率季變動 3.3pp（價格尚未確認）；族群「半導體設備/測試介面」在改善象限",
+      "signals": [
+        {
+          "label": "營運核心",
+          "detail": "2026-10 YoY 93%、連12月YoY成長、5年新高、比前三月加速 20pp；TTM營收 +57.0%、毛利率季變動 3.3pp（價格尚未確認）",
+          "tone": "pos"
+        },
+        {
+          "label": "產業趨勢確認",
+          "detail": "族群「半導體設備/測試介面」在改善象限",
+          "tone": "pos"
+        }
+      ],
+      "themeRadar": [],
+      "plan": {
+        "entry": "分批布局：MA20（4471）附近先建 1/3，站穩 20 日高 5235 且營運趨勢未轉弱再加碼",
+        "stop": "技術風控：跌破 MA60（5125）且兩日無法站回先減碼；建倉均價 -12% 仍須退出重評",
+        "exit": "基本面論點失效才清倉：TTM營收轉負、毛利率連兩季惡化、產業需求或競爭假設被證偽；單週籌碼與單月門檻只作預警"
+      },
+      "metrics": {
+        "r10": "-4.7%",
+        "r20": "-23.2%",
+        "ma10": "4119",
+        "ma20": "4471",
+        "ma60": "5125",
+        "high20": "5235",
+        "dayTrade": "—",
+        "instNet": "+44 張（外資 -118／投信 +146）",
+        "quadrant": "半導體設備/測試介面（改善）",
+        "tdcc": "—",
+        "cb": "事件觀察 59 分（設質 0%，不列正向因子）",
+        "revenue": "2026-10 核心：YoY 93%、連12月YoY成長、5年新高、比前三月加速 20pp；TTM +57.0%；毛利率季變動 3.3pp"
+      }
+    },
+    {
+      "rank": 6,
+      "code": "2603",
+      "name": "長榮",
+      "close": 256.5,
+      "score": 43,
+      "type": "營運先行·等待確認",
+      "sector": "貨櫃航運",
+      "futures": {
+        "level": "級距1",
+        "margin": "13.50%"
+      },
+      "reason": "2026-10 YoY 96%、連7月YoY成長、MoM連8月正成長、同期歷史新高、比前三月加速 44pp；TTM營收 +14.1%、毛利率季變動 15.7pp（價格尚未確認）；投信買超 Z=2.70、佔股本 0.120%。注意：RRG 弱化、當沖偏高",
+      "signals": [
+        {
+          "label": "營運核心·動能",
+          "detail": "2026-10 YoY 96%、連7月YoY成長、MoM連8月正成長、同期歷史新高、比前三月加速 44pp；TTM營收 +14.1%、毛利率季變動 15.7pp（價格尚未確認）",
+          "tone": "pos"
+        },
+        {
+          "label": "RRG 弱化",
+          "detail": "族群「貨櫃航運」中期相對動能轉弱",
+          "tone": "neg"
+        },
+        {
+          "label": "投信顯著買超",
+          "detail": "投信買超 Z=2.70、佔股本 0.120%",
+          "tone": "pos"
+        },
+        {
+          "label": "當沖偏高",
+          "detail": "當沖比 43%",
+          "tone": "neg"
+        }
+      ],
+      "themeRadar": [],
+      "plan": {
+        "entry": "分批布局：MA20（259.6）附近先建 1/3，站穩 20 日高 274.5 且營運趨勢未轉弱再加碼",
+        "stop": "技術風控：跌破 MA60（247.0）且兩日無法站回先減碼；建倉均價 -12% 仍須退出重評",
+        "exit": "基本面論點失效才清倉：TTM營收轉負、毛利率連兩季惡化、產業需求或競爭假設被證偽；單週籌碼與單月門檻只作預警"
+      },
+      "metrics": {
+        "r10": "-3.8%",
+        "r20": "-3.4%",
+        "ma10": "255.4",
+        "ma20": "259.6",
+        "ma60": "247.0",
+        "high20": "274.5",
+        "dayTrade": "43%",
+        "instNet": "+850 張（外資 -2200／投信 +2602）",
+        "quadrant": "貨櫃航運（弱化）",
+        "tdcc": "—",
+        "cb": "—",
+        "revenue": "2026-10 核心·動能：YoY 96%、連7月YoY成長、MoM連8月正成長、同期歷史新高、比前三月加速 44pp；TTM +14.1%；毛利率季變動 15.7pp"
+      }
+    },
+    {
+      "rank": 7,
+      "code": "6182",
+      "name": "合晶",
+      "close": 70.4,
+      "score": 42,
+      "type": "營運先行·等待確認",
+      "sector": "矽晶圓/半導體基板",
+      "futures": {
+        "level": "級距3",
+        "margin": "20.25%"
+      },
+      "reason": "2026-10 YoY 20%、連12月YoY成長、MoM連6月正成長、24月營收新高、比前三月加速 3pp；TTM營收 +13.6%、毛利率季變動 0.2pp（價格尚未確認）；外資連 3 日買超",
+      "signals": [
+        {
+          "label": "營運核心·動能",
+          "detail": "2026-10 YoY 20%、連12月YoY成長、MoM連6月正成長、24月營收新高、比前三月加速 3pp；TTM營收 +13.6%、毛利率季變動 0.2pp（價格尚未確認）",
+          "tone": "pos"
+        },
+        {
+          "label": "外資連買",
+          "detail": "外資連 3 日買超",
+          "tone": "pos"
+        }
+      ],
+      "themeRadar": [],
+      "plan": {
+        "entry": "分批布局：MA20（89.4）附近先建 1/3，站穩 20 日高 111.0 且營運趨勢未轉弱再加碼",
+        "stop": "技術風控：跌破 MA60（106.5）且兩日無法站回先減碼；建倉均價 -12% 仍須退出重評",
+        "exit": "基本面論點失效才清倉：TTM營收轉負、毛利率連兩季惡化、產業需求或競爭假設被證偽；單週籌碼與單月門檻只作預警"
+      },
+      "metrics": {
+        "r10": "-17.5%",
+        "r20": "-36.3%",
+        "ma10": "77.9",
+        "ma20": "89.4",
+        "ma60": "106.5",
+        "high20": "111.0",
+        "dayTrade": "—",
+        "instNet": "+1544 張（外資 +967／投信 0）",
+        "quadrant": "矽晶圓/半導體基板（落後）",
+        "tdcc": "—",
+        "cb": "事件觀察 0 分（設質 1%，不列正向因子）",
+        "revenue": "2026-10 核心·動能：YoY 20%、連12月YoY成長、MoM連6月正成長、24月營收新高、比前三月加速 3pp；TTM +13.6%；毛利率季變動 0.2pp"
+      }
+    },
+    {
+      "rank": 8,
+      "code": "4545",
+      "name": "銘鈺",
+      "close": 36.3,
+      "score": 42,
+      "type": "營運先行·等待確認",
+      "sector": null,
+      "futures": null,
+      "reason": "2026-10 YoY 104%、連3月YoY成長、5年新高、比前三月加速 83pp；TTM營收 +10.1%、毛利率季變動 3.4pp（價格尚未確認）；外資連 3 日買超。注意：流動性低",
+      "signals": [
+        {
+          "label": "營運核心",
+          "detail": "2026-10 YoY 104%、連3月YoY成長、5年新高、比前三月加速 83pp；TTM營收 +10.1%、毛利率季變動 3.4pp（價格尚未確認）",
+          "tone": "pos"
+        },
+        {
+          "label": "外資連買",
+          "detail": "外資連 3 日買超",
+          "tone": "pos"
+        },
+        {
+          "label": "流動性低",
+          "detail": "日成交金額偏低，進出滑價大",
+          "tone": "neg"
+        }
+      ],
+      "themeRadar": [],
+      "plan": {
+        "entry": "分批布局：MA20（36.25）附近先建 1/3，站穩 20 日高 39.25 且營運趨勢未轉弱再加碼",
+        "stop": "技術風控：跌破 MA60（34.89）且兩日無法站回先減碼；建倉均價 -12% 仍須退出重評",
+        "exit": "基本面論點失效才清倉：TTM營收轉負、毛利率連兩季惡化、產業需求或競爭假設被證偽；單週籌碼與單月門檻只作預警"
+      },
+      "metrics": {
+        "r10": "+5.5%",
+        "r20": "-1.1%",
+        "ma10": "35.80",
+        "ma20": "36.25",
+        "ma60": "34.89",
+        "high20": "39.25",
+        "dayTrade": "18%",
+        "instNet": "+135 張（外資 +134／投信 0）",
+        "quadrant": "—",
+        "tdcc": "—",
+        "cb": "—",
+        "revenue": "2026-10 核心：YoY 104%、連3月YoY成長、5年新高、比前三月加速 83pp；TTM +10.1%；毛利率季變動 3.4pp"
+      }
+    },
+    {
+      "rank": 9,
+      "code": "8481",
+      "name": "政伸",
+      "close": 41.1,
+      "score": 39,
+      "type": "營運先行·等待確認",
+      "sector": null,
+      "futures": null,
+      "reason": "2026-10 YoY 28%、連6月YoY成長、同期歷史新高、比前三月加速 20pp；TTM營收 +4.4%、毛利率季變動 4.0pp（價格尚未確認）；外資連 3 日買超。注意：流動性低",
+      "signals": [
+        {
+          "label": "營運核心",
+          "detail": "2026-10 YoY 28%、連6月YoY成長、同期歷史新高、比前三月加速 20pp；TTM營收 +4.4%、毛利率季變動 4.0pp（價格尚未確認）",
+          "tone": "pos"
+        },
+        {
+          "label": "外資連買",
+          "detail": "外資連 3 日買超",
+          "tone": "pos"
+        },
+        {
+          "label": "流動性低",
+          "detail": "日成交金額偏低，進出滑價大",
+          "tone": "neg"
+        }
+      ],
+      "themeRadar": [],
+      "plan": {
+        "entry": "分批布局：MA20（40.39）附近先建 1/3，站穩 20 日高 41.35 且營運趨勢未轉弱再加碼",
+        "stop": "技術風控：跌破 MA60（40.71）且兩日無法站回先減碼；建倉均價 -12% 仍須退出重評",
+        "exit": "基本面論點失效才清倉：TTM營收轉負、毛利率連兩季惡化、產業需求或競爭假設被證偽；單週籌碼與單月門檻只作預警"
+      },
+      "metrics": {
+        "r10": "+0.9%",
+        "r20": "+1.1%",
+        "ma10": "40.49",
+        "ma20": "40.39",
+        "ma60": "40.71",
+        "high20": "41.35",
+        "dayTrade": "12%",
+        "instNet": "+11 張（外資 +9／投信 0）",
+        "quadrant": "—",
+        "tdcc": "—",
+        "cb": "—",
+        "revenue": "2026-10 核心：YoY 28%、連6月YoY成長、同期歷史新高、比前三月加速 20pp；TTM +4.4%；毛利率季變動 4.0pp"
+      }
+    },
+    {
+      "rank": 10,
+      "code": "4173",
+      "name": "久裕",
+      "close": 17.75,
+      "score": 38,
+      "type": "營運先行·等待確認",
+      "sector": null,
+      "futures": null,
+      "reason": "2026-10 YoY 68%、連4月YoY成長、MoM連3月正成長、5年新高、比前三月加速 47pp；TTM營收 +15.7%、毛利率季變動 2.1pp（價格尚未確認）；外資連 3 日買超。注意：流動性低",
+      "signals": [
+        {
+          "label": "營運核心·動能",
+          "detail": "2026-10 YoY 68%、連4月YoY成長、MoM連3月正成長、5年新高、比前三月加速 47pp；TTM營收 +15.7%、毛利率季變動 2.1pp（價格尚未確認）",
+          "tone": "pos"
+        },
+        {
+          "label": "外資連買",
+          "detail": "外資連 3 日買超",
+          "tone": "pos"
+        },
+        {
+          "label": "流動性低",
+          "detail": "日成交金額偏低，進出滑價大",
+          "tone": "neg"
+        }
+      ],
+      "themeRadar": [],
+      "plan": {
+        "entry": "分批布局：MA20（17.80）附近先建 1/3，站穩 20 日高 18.10 且營運趨勢未轉弱再加碼",
+        "stop": "技術風控：跌破 MA60（17.49）且兩日無法站回先減碼；建倉均價 -12% 仍須退出重評",
+        "exit": "基本面論點失效才清倉：TTM營收轉負、毛利率連兩季惡化、產業需求或競爭假設被證偽；單週籌碼與單月門檻只作預警"
+      },
+      "metrics": {
+        "r10": "+0.6%",
+        "r20": "-0.6%",
+        "ma10": "17.88",
+        "ma20": "17.80",
+        "ma60": "17.49",
+        "high20": "18.10",
+        "dayTrade": "—",
+        "instNet": "+1 張（外資 +2／投信 0）",
+        "quadrant": "—",
+        "tdcc": "—",
+        "cb": "—",
+        "revenue": "2026-10 核心·動能：YoY 68%、連4月YoY成長、MoM連3月正成長、5年新高、比前三月加速 47pp；TTM +15.7%；毛利率季變動 2.1pp"
+      }
+    }
+  ],
+  "short": [
+    {
+      "rank": 1,
+      "code": "6150",
+      "name": "撼訊",
+      "close": 80.1,
+      "score": 59,
+      "type": "動能順勢",
+      "sector": null,
+      "futures": null,
+      "reason": "兩週 +20.8%、一月 +9.7%（相對強度前 2%）；200張大戶週增 +4.7%，僅作佐證；2026-10 YoY 26%、MoM連6月正成長、同期歷史新高、比前三月加速 32pp",
+      "signals": [
+        {
+          "label": "動能強",
+          "detail": "兩週 +20.8%、一月 +9.7%（相對強度前 2%）",
+          "tone": "pos"
+        },
+        {
+          "label": "集保觀察",
+          "detail": "200張大戶週增 +4.7%，僅作佐證",
+          "tone": "pos"
+        },
+        {
+          "label": "營收動能",
+          "detail": "2026-10 YoY 26%、MoM連6月正成長、同期歷史新高、比前三月加速 32pp",
+          "tone": "pos"
+        }
+      ],
+      "themeRadar": [],
+      "plan": {
+        "entry": "不追今日價：回測 MA10（73.4）不破，或整理 3-5 日後過 81.6 再進",
+        "stop": "收盤跌破 MA20（70.8）或進場價 -8%，先到先出",
+        "exit": "MA10 移動停利；族群降級、法人連 3 日賣超，或預定催化未兌現即出"
+      },
+      "metrics": {
+        "r10": "+20.8%",
+        "r20": "+9.7%",
+        "ma10": "73.4",
+        "ma20": "70.8",
+        "ma60": "65.7",
+        "high20": "81.6",
+        "dayTrade": "—",
+        "instNet": "-80 張（外資 -88／投信 0）",
+        "quadrant": "—",
+        "tdcc": "同向 200張 週增 +4.7% z=3.0",
+        "cb": "事件觀察 59 分（設質 0%，不列正向因子）",
+        "revenue": "2026-10 動能：YoY 26%、MoM連6月正成長、同期歷史新高、比前三月加速 32pp；TTM -14.3%；毛利率季變動 -3.3pp"
+      }
+    },
+    {
+      "rank": 2,
+      "code": "9933",
+      "name": "中鼎",
+      "close": 56.6,
+      "score": 58,
+      "type": "動能順勢",
+      "sector": null,
+      "futures": null,
+      "reason": "兩週 +22.2%、一月 +31.0%（相對強度前 2%）；外資連 3 日買超；外資買超 Z=17.59、佔股本 2.575%；法人合計買超 Z=20.66、佔股本 2.493%；2026-10 YoY 54%、連3月YoY成長、MoM連3月正成長、比前三月加速 51pp。注意：族群降級、今日漲停",
+      "signals": [
+        {
+          "label": "動能強",
+          "detail": "兩週 +22.2%、一月 +31.0%（相對強度前 2%）",
+          "tone": "pos"
+        },
+        {
+          "label": "外資連買",
+          "detail": "外資連 3 日買超",
+          "tone": "pos"
+        },
+        {
+          "label": "外資顯著買超",
+          "detail": "外資買超 Z=17.59、佔股本 2.575%",
+          "tone": "pos"
+        },
+        {
+          "label": "法人合計顯著買超",
+          "detail": "法人合計買超 Z=20.66、佔股本 2.493%",
+          "tone": "pos"
+        },
+        {
+          "label": "族群降級",
+          "detail": "「營建資產/不動產開發」判斷不碰減碼",
+          "tone": "neg"
+        },
+        {
+          "label": "營收動能",
+          "detail": "2026-10 YoY 54%、連3月YoY成長、MoM連3月正成長、比前三月加速 51pp",
+          "tone": "pos"
+        },
+        {
+          "label": "今日漲停",
+          "detail": "追高風險，等回測再說",
+          "tone": "neg"
+        }
+      ],
+      "themeRadar": [],
+      "plan": {
+        "entry": "不追今日價：回測 MA10（49.26）不破，或整理 3-5 日後過 56.6 再進",
+        "stop": "收盤跌破 MA20（47.29）或進場價 -8%，先到先出",
+        "exit": "MA10 移動停利；族群降級、法人連 3 日賣超，或預定催化未兌現即出"
+      },
+      "metrics": {
+        "r10": "+22.2%",
+        "r20": "+31.0%",
+        "ma10": "49.26",
+        "ma20": "47.29",
+        "ma60": "43.66",
+        "high20": "56.6",
+        "dayTrade": "30%",
+        "instNet": "+23984 張（外資 +24773／投信 -642）",
+        "quadrant": "—",
+        "tdcc": "—",
+        "cb": "事件觀察 59 分（設質 0%，不列正向因子）",
+        "revenue": "2026-10 動能：YoY 54%、連3月YoY成長、MoM連3月正成長、比前三月加速 51pp；TTM -10.0%；毛利率季變動 -0.3pp"
+      }
+    },
+    {
+      "rank": 3,
+      "code": "2636",
+      "name": "台驊控股",
+      "close": 71.8,
+      "score": 58,
+      "type": "回檔觀察",
+      "sector": null,
+      "futures": null,
+      "reason": "兩週 +3.9%、一月 -0.8%（相對強度前 13%）；外資連 3 日買超；2026-10 YoY 126%、連7月YoY成長、MoM連8月正成長、同期歷史新高、比前三月加速 43pp",
+      "signals": [
+        {
+          "label": "動能強",
+          "detail": "兩週 +3.9%、一月 -0.8%（相對強度前 13%）",
+          "tone": "pos"
+        },
+        {
+          "label": "外資連買",
+          "detail": "外資連 3 日買超",
+          "tone": "pos"
+        },
+        {
+          "label": "營收核心·動能",
+          "detail": "2026-10 YoY 126%、連7月YoY成長、MoM連8月正成長、同期歷史新高、比前三月加速 43pp",
+          "tone": "pos"
+        }
+      ],
+      "themeRadar": [],
+      "plan": {
+        "entry": "等站回 MA20（70.0）且量價轉強再進，不預判落底",
+        "stop": "收盤跌破 MA20（70.0）或進場價 -8%，先到先出",
+        "exit": "MA10 移動停利；族群降級、法人連 3 日賣超，或預定催化未兌現即出"
+      },
+      "metrics": {
+        "r10": "+3.9%",
+        "r20": "-0.8%",
+        "ma10": "69.3",
+        "ma20": "70.0",
+        "ma60": "70.5",
+        "high20": "71.8",
+        "dayTrade": "20%",
+        "instNet": "+806 張（外資 +788／投信 0）",
+        "quadrant": "—",
+        "tdcc": "—",
+        "cb": "—",
+        "revenue": "2026-10 核心·動能：YoY 126%、連7月YoY成長、MoM連8月正成長、同期歷史新高、比前三月加速 43pp；TTM +23.1%；毛利率季變動 1.0pp"
+      }
+    },
+    {
+      "rank": 4,
+      "code": "6609",
+      "name": "瀧澤科",
+      "close": 52.3,
+      "score": 55,
+      "type": "回檔觀察",
+      "sector": null,
+      "futures": null,
+      "reason": "兩週 +19.3%、一月 +31.4%（相對強度前 2%）；200張大戶週增 +2.8%，僅作佐證；2026-10 YoY 115%、連5月YoY成長、24月營收新高、比前三月加速 26pp",
+      "signals": [
+        {
+          "label": "動能強",
+          "detail": "兩週 +19.3%、一月 +31.4%（相對強度前 2%）",
+          "tone": "pos"
+        },
+        {
+          "label": "集保觀察",
+          "detail": "200張大戶週增 +2.8%，僅作佐證",
+          "tone": "pos"
+        },
+        {
+          "label": "營收核心",
+          "detail": "2026-10 YoY 115%、連5月YoY成長、24月營收新高、比前三月加速 26pp",
+          "tone": "pos"
+        }
+      ],
+      "themeRadar": [],
+      "plan": {
+        "entry": "等站回 MA20（46.83）且量價轉強再進，不預判落底",
+        "stop": "收盤跌破 MA20（46.83）或進場價 -8%，先到先出",
+        "exit": "MA10 移動停利；族群降級、法人連 3 日賣超，或預定催化未兌現即出"
+      },
+      "metrics": {
+        "r10": "+19.3%",
+        "r20": "+31.4%",
+        "ma10": "50.8",
+        "ma20": "46.83",
+        "ma60": "41.95",
+        "high20": "59.4",
+        "dayTrade": "—",
+        "instNet": "-547 張（外資 -545／投信 0）",
+        "quadrant": "—",
+        "tdcc": "同向 200張 週增 +2.8% z=2.3",
+        "cb": "—",
+        "revenue": "2026-10 核心：YoY 115%、連5月YoY成長、24月營收新高、比前三月加速 26pp；TTM +12.8%；毛利率季變動 5.0pp"
+      }
+    },
+    {
+      "rank": 5,
+      "code": "5209",
+      "name": "新鼎",
+      "close": 218.5,
+      "score": 51,
+      "type": "回檔觀察",
+      "sector": null,
+      "futures": null,
+      "reason": "兩週 +7.1%、一月 +17.5%（相對強度前 8%）；2026-10 YoY 123%、連3月YoY成長、MoM連6月正成長、5年新高、比前三月加速 73pp",
+      "signals": [
+        {
+          "label": "動能強",
+          "detail": "兩週 +7.1%、一月 +17.5%（相對強度前 8%）",
+          "tone": "pos"
+        },
+        {
+          "label": "營收核心·動能",
+          "detail": "2026-10 YoY 123%、連3月YoY成長、MoM連6月正成長、5年新高、比前三月加速 73pp",
+          "tone": "pos"
+        }
+      ],
+      "themeRadar": [],
+      "plan": {
+        "entry": "等站回 MA20（202.6）且量價轉強再進，不預判落底",
+        "stop": "收盤跌破 MA20（202.6）或進場價 -8%，先到先出",
+        "exit": "MA10 移動停利；族群降級、法人連 3 日賣超，或預定催化未兌現即出"
+      },
+      "metrics": {
+        "r10": "+7.1%",
+        "r20": "+17.5%",
+        "ma10": "209.7",
+        "ma20": "202.6",
+        "ma60": "179.4",
+        "high20": "232.5",
+        "dayTrade": "—",
+        "instNet": "+63 張（外資 +58／投信 0）",
+        "quadrant": "—",
+        "tdcc": "—",
+        "cb": "—",
+        "revenue": "2026-10 核心·動能：YoY 123%、連3月YoY成長、MoM連6月正成長、5年新高、比前三月加速 73pp；TTM +14.9%；毛利率季變動 -6.2pp"
+      }
+    },
+    {
+      "rank": 6,
+      "code": "6108",
+      "name": "競國",
+      "close": 41.45,
+      "score": 51,
+      "type": "動能順勢",
+      "sector": null,
+      "futures": null,
+      "reason": "兩週 +42.0%、一月 +34.4%（相對強度前 0%）；600張大戶週增 +3.0%，僅作佐證；2026-10 YoY 87%、連8月YoY成長、5年新高、比前三月加速 39pp。注意：處置股",
+      "signals": [
+        {
+          "label": "動能強",
+          "detail": "兩週 +42.0%、一月 +34.4%（相對強度前 0%）",
+          "tone": "pos"
+        },
+        {
+          "label": "集保觀察",
+          "detail": "600張大戶週增 +3.0%，僅作佐證",
+          "tone": "pos"
+        },
+        {
+          "label": "營收核心",
+          "detail": "2026-10 YoY 87%、連8月YoY成長、5年新高、比前三月加速 39pp",
+          "tone": "pos"
+        },
+        {
+          "label": "處置股",
+          "detail": "交易受處置措施限制，不適合一般進場計畫",
+          "tone": "neg"
+        }
+      ],
+      "themeRadar": [],
+      "plan": {
+        "entry": "不追今日價：回測 MA10（34.35）不破，或整理 3-5 日後過 41.45 再進",
+        "stop": "收盤跌破 MA20（32.95）或進場價 -8%，先到先出",
+        "exit": "MA10 移動停利；族群降級、法人連 3 日賣超，或預定催化未兌現即出"
+      },
+      "metrics": {
+        "r10": "+42.0%",
+        "r20": "+34.4%",
+        "ma10": "34.35",
+        "ma20": "32.95",
+        "ma60": "27.36",
+        "high20": "41.45",
+        "dayTrade": "—",
+        "instNet": "+773 張（外資 +769／投信 0）",
+        "quadrant": "—",
+        "tdcc": "同向 600張 週增 +3.0% z=3.2",
+        "cb": "—",
+        "revenue": "2026-10 核心：YoY 87%、連8月YoY成長、5年新高、比前三月加速 39pp；TTM +28.9%；毛利率季變動 10.6pp"
+      }
+    },
+    {
+      "rank": 7,
+      "code": "6112",
+      "name": "邁達特",
+      "close": 53,
+      "score": 49,
+      "type": "回檔觀察",
+      "sector": null,
+      "futures": null,
+      "reason": "兩週 +12.4%、一月 +7.7%（相對強度前 5%）；外資買超 Z=2.44、佔股本 1.819%；法人合計買超 Z=2.73、佔股本 1.686%；2026-10 YoY 27%、連4月YoY成長、5年新高、比前三月加速 13pp。注意：當沖過熱",
+      "signals": [
+        {
+          "label": "動能強",
+          "detail": "兩週 +12.4%、一月 +7.7%（相對強度前 5%）",
+          "tone": "pos"
+        },
+        {
+          "label": "外資顯著買超",
+          "detail": "外資買超 Z=2.44、佔股本 1.819%",
+          "tone": "pos"
+        },
+        {
+          "label": "法人合計顯著買超",
+          "detail": "法人合計買超 Z=2.73、佔股本 1.686%",
+          "tone": "pos"
+        },
+        {
+          "label": "營收核心",
+          "detail": "2026-10 YoY 27%、連4月YoY成長、5年新高、比前三月加速 13pp",
+          "tone": "pos"
+        },
+        {
+          "label": "當沖過熱",
+          "detail": "當沖比 57%，隔日沖主場",
+          "tone": "neg"
+        }
+      ],
+      "themeRadar": [],
+      "plan": {
+        "entry": "等站回 MA20（51.3）且量價轉強再進，不預判落底",
+        "stop": "收盤跌破 MA20（51.3）或進場價 -8%，先到先出",
+        "exit": "MA10 移動停利；族群降級、法人連 3 日賣超，或預定催化未兌現即出"
+      },
+      "metrics": {
+        "r10": "+12.4%",
+        "r20": "+7.7%",
+        "ma10": "53.9",
+        "ma20": "51.3",
+        "ma60": "48.07",
+        "high20": "58.4",
+        "dayTrade": "57%",
+        "instNet": "+3175 張（外資 +3427／投信 0）",
+        "quadrant": "—",
+        "tdcc": "—",
+        "cb": "—",
+        "revenue": "2026-10 核心：YoY 27%、連4月YoY成長、5年新高、比前三月加速 13pp；TTM +17.0%；毛利率季變動 -2.5pp"
+      }
+    },
+    {
+      "rank": 8,
+      "code": "9904",
+      "name": "寶成",
+      "close": 26.3,
+      "score": 49,
+      "type": "動能順勢",
+      "sector": null,
+      "futures": {
+        "level": "級距1",
+        "margin": "13.50%"
+      },
+      "reason": "兩週 +1.5%、一月 -0.8%（相對強度前 19%）；外資連 3 日買超；外資買超 Z=4.84、佔股本 0.231%。注意：當沖偏高",
+      "signals": [
+        {
+          "label": "動能強",
+          "detail": "兩週 +1.5%、一月 -0.8%（相對強度前 19%）",
+          "tone": "pos"
+        },
+        {
+          "label": "外資連買",
+          "detail": "外資連 3 日買超",
+          "tone": "pos"
+        },
+        {
+          "label": "外資顯著買超",
+          "detail": "外資買超 Z=4.84、佔股本 0.231%",
+          "tone": "pos"
+        },
+        {
+          "label": "當沖偏高",
+          "detail": "當沖比 37%",
+          "tone": "neg"
+        }
+      ],
+      "themeRadar": [],
+      "plan": {
+        "entry": "不追今日價：回測 MA10（25.96）不破，或整理 3-5 日後過 26.80 再進",
+        "stop": "收盤跌破 MA20（25.98）或進場價 -8%，先到先出",
+        "exit": "MA10 移動停利；族群降級、法人連 3 日賣超，或預定催化未兌現即出"
+      },
+      "metrics": {
+        "r10": "+1.5%",
+        "r20": "-0.8%",
+        "ma10": "25.96",
+        "ma20": "25.98",
+        "ma60": "25.24",
+        "high20": "26.80",
+        "dayTrade": "37%",
+        "instNet": "+1123 張（外資 +6819／投信 -6156）",
+        "quadrant": "—",
+        "tdcc": "—",
+        "cb": "—",
+        "revenue": "—"
+      }
+    },
+    {
+      "rank": 9,
+      "code": "8481",
+      "name": "政伸",
+      "close": 41.1,
+      "score": 47,
+      "type": "回檔觀察",
+      "sector": null,
+      "futures": null,
+      "reason": "兩週 +0.9%、一月 +1.1%（相對強度前 20%）；外資連 3 日買超；2026-10 YoY 28%、連6月YoY成長、同期歷史新高、比前三月加速 20pp。注意：流動性低",
+      "signals": [
+        {
+          "label": "動能強",
+          "detail": "兩週 +0.9%、一月 +1.1%（相對強度前 20%）",
+          "tone": "pos"
+        },
+        {
+          "label": "外資連買",
+          "detail": "外資連 3 日買超",
+          "tone": "pos"
+        },
+        {
+          "label": "營收核心",
+          "detail": "2026-10 YoY 28%、連6月YoY成長、同期歷史新高、比前三月加速 20pp",
+          "tone": "pos"
+        },
+        {
+          "label": "流動性低",
+          "detail": "日成交金額偏低，進出滑價大",
+          "tone": "neg"
+        }
+      ],
+      "themeRadar": [],
+      "plan": {
+        "entry": "等站回 MA20（40.39）且量價轉強再進，不預判落底",
+        "stop": "收盤跌破 MA20（40.39）或進場價 -8%，先到先出",
+        "exit": "MA10 移動停利；族群降級、法人連 3 日賣超，或預定催化未兌現即出"
+      },
+      "metrics": {
+        "r10": "+0.9%",
+        "r20": "+1.1%",
+        "ma10": "40.49",
+        "ma20": "40.39",
+        "ma60": "40.71",
+        "high20": "41.35",
+        "dayTrade": "12%",
+        "instNet": "+11 張（外資 +9／投信 0）",
+        "quadrant": "—",
+        "tdcc": "—",
+        "cb": "—",
+        "revenue": "2026-10 核心：YoY 28%、連6月YoY成長、同期歷史新高、比前三月加速 20pp；TTM +4.4%；毛利率季變動 4.0pp"
+      }
+    },
+    {
+      "rank": 10,
+      "code": "2221",
+      "name": "大甲",
+      "close": 149,
+      "score": 47,
+      "type": "回檔觀察",
+      "sector": null,
+      "futures": null,
+      "reason": "兩週 +16.0%、一月 +22.1%（相對強度前 3%）；2026-10 YoY 95%、連7月YoY成長、5年新高、比前三月加速 41pp。注意：注意股",
+      "signals": [
+        {
+          "label": "動能強",
+          "detail": "兩週 +16.0%、一月 +22.1%（相對強度前 3%）",
+          "tone": "pos"
+        },
+        {
+          "label": "營收核心",
+          "detail": "2026-10 YoY 95%、連7月YoY成長、5年新高、比前三月加速 41pp",
+          "tone": "pos"
+        },
+        {
+          "label": "注意股",
+          "detail": "交易異常達公告門檻，波動與籌碼風險較高",
+          "tone": "neg"
+        }
+      ],
+      "themeRadar": [],
+      "plan": {
+        "entry": "等站回 MA20（142.4）且量價轉強再進，不預判落底",
+        "stop": "收盤跌破 MA20（142.4）或進場價 -8%，先到先出",
+        "exit": "MA10 移動停利；族群降級、法人連 3 日賣超，或預定催化未兌現即出"
+      },
+      "metrics": {
+        "r10": "+16.0%",
+        "r20": "+22.1%",
+        "ma10": "148.7",
+        "ma20": "142.4",
+        "ma60": "126.8",
+        "high20": "167.0",
+        "dayTrade": "—",
+        "instNet": "+3 張（外資 +5／投信 0）",
+        "quadrant": "—",
+        "tdcc": "—",
+        "cb": "事件觀察 40 分（設質 0%，不列正向因子）",
+        "revenue": "2026-10 核心：YoY 95%、連7月YoY成長、5年新高、比前三月加速 41pp；TTM +27.6%；毛利率季變動 6.3pp"
+      }
+    }
+  ]
+}

@@ -315,9 +315,9 @@
    "status": "open"
   },
   "lastClose": 169,
-  "lastDate": "2026-11-13",
+  "lastDate": "2026-11-16",
   "ret": 7.73,
-  "held": 12
+  "held": 13
  },
  {
   "code": "6925",
@@ -454,10 +454,10 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 162,
-  "lastDate": "2026-11-13",
-  "ret": 41.51,
-  "held": 8
+  "lastClose": 150,
+  "lastDate": "2026-11-16",
+  "ret": 30.98,
+  "held": 9
  },
  {
   "code": "2880",
@@ -474,10 +474,10 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 51.9,
-  "lastDate": "2026-11-13",
-  "ret": -0.6,
-  "held": 0
+  "lastClose": 50.7,
+  "lastDate": "2026-11-16",
+  "ret": -2.91,
+  "held": 1
  },
  {
   "code": "2891",
@@ -494,10 +494,10 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 78.7,
-  "lastDate": "2026-11-13",
-  "ret": -0.6,
-  "held": 0
+  "lastClose": 76.8,
+  "lastDate": "2026-11-16",
+  "ret": -3.01,
+  "held": 1
  },
  {
   "code": "2618",
@@ -514,9 +514,9 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 47.75,
-  "lastDate": "2026-11-13",
-  "ret": -0.6,
-  "held": 0
+  "lastClose": 47.4,
+  "lastDate": "2026-11-16",
+  "ret": -1.33,
+  "held": 1
  }
 ]
