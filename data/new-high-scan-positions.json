@@ -314,10 +314,10 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 169,
-  "lastDate": "2026-11-16",
-  "ret": 7.73,
-  "held": 13
+  "lastClose": 170,
+  "lastDate": "2026-11-17",
+  "ret": 8.37,
+  "held": 14
  },
  {
   "code": "6925",
@@ -454,10 +454,10 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 150,
-  "lastDate": "2026-11-16",
-  "ret": 30.98,
-  "held": 9
+  "lastClose": 146,
+  "lastDate": "2026-11-17",
+  "ret": 27.47,
+  "held": 10
  },
  {
   "code": "2880",
@@ -469,15 +469,25 @@
   "risk": 4.14,
   "gap": 13,
   "ma20": {
-   "status": "open"
+   "status": "closed",
+   "exitDate": "2026-11-17",
+   "exit": 49.75,
+   "reason": "stop",
+   "ret": -4.74,
+   "held": 2
   },
   "d60": {
-   "status": "open"
+   "status": "closed",
+   "exitDate": "2026-11-17",
+   "exit": 49.75,
+   "reason": "stop",
+   "ret": -4.74,
+   "held": 2
   },
-  "lastClose": 50.7,
-  "lastDate": "2026-11-16",
-  "ret": -2.91,
-  "held": 1
+  "lastClose": 50.8,
+  "lastDate": "2026-11-17",
+  "ret": -2.72,
+  "held": 2
  },
  {
   "code": "2891",
@@ -489,15 +499,25 @@
   "risk": 4.42,
   "gap": 13,
   "ma20": {
-   "status": "open"
+   "status": "closed",
+   "exitDate": "2026-11-17",
+   "exit": 75.22,
+   "reason": "stop",
+   "ret": -5.02,
+   "held": 2
   },
   "d60": {
-   "status": "open"
+   "status": "closed",
+   "exitDate": "2026-11-17",
+   "exit": 75.22,
+   "reason": "stop",
+   "ret": -5.02,
+   "held": 2
   },
-  "lastClose": 76.8,
-  "lastDate": "2026-11-16",
-  "ret": -3.01,
-  "held": 1
+  "lastClose": 77.5,
+  "lastDate": "2026-11-17",
+  "ret": -2.12,
+  "held": 2
  },
  {
   "code": "2618",
@@ -514,9 +534,9 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 47.4,
-  "lastDate": "2026-11-16",
-  "ret": -1.33,
-  "held": 1
+  "lastClose": 48.1,
+  "lastDate": "2026-11-17",
+  "ret": 0.13,
+  "held": 2
  }
 ]
