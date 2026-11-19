@@ -14288,7 +14288,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": null,
@@ -14549,7 +14549,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 2,135 百萬元，YoY -22%，MoM -23%，累計 YoY +59%",
@@ -14721,7 +14721,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,305,320 百萬元，YoY +46%，MoM +13%，累計 YoY +40%，YoY 46%，連12月YoY成長，5年新高",
@@ -14804,7 +14804,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 17,597 百萬元，YoY +55%，MoM +3%，累計 YoY +38%，YoY 55%，連12月YoY成長，MoM連8月正成長，5年新高，比前三月加速 5pp",
@@ -14885,7 +14885,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 79,966 百萬元，YoY +46%，MoM -19%，累計 YoY +43%，YoY 46%，連10月YoY成長，同期歷史新高",
@@ -14965,7 +14965,7 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 67,036 百萬元，YoY +137%，MoM +6%，累計 YoY +71%，YoY 137%，連12月YoY成長，MoM連4月正成長，5年新高，比前三月加速 42pp",
@@ -15025,7 +15025,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "2421-2026-11-13": {
   "key": "2421-2026-11-13",
@@ -15047,7 +15047,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,982 百萬元，YoY +24%，MoM -3%，累計 YoY +21%，YoY 24%，連12月YoY成長，同期歷史新高",
@@ -15129,7 +15129,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 461 百萬元，YoY -54%，MoM -23%，累計 YoY -13%",
@@ -15210,7 +15210,7 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,013 百萬元，YoY +81%，MoM +7%，累計 YoY +84%，YoY 81%，連12月YoY成長，同期歷史新高",
@@ -15442,7 +15442,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 3,523 百萬元，YoY +6%，MoM -11%，累計 YoY +10%",
@@ -15523,7 +15523,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 570 百萬元，YoY +183%，MoM +5%，累計 YoY +142%，YoY 183%，連12月YoY成長，MoM連15月正成長，5年新高，比前三月加速 0pp",
@@ -15604,11 +15604,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 753 百萬元，YoY +31%，MoM +1%，累計 YoY +27%，YoY 31%，連6月YoY成長，同期歷史新高",
-   "move": "2026-11-18 漲幅前 100（+9.830508474576272%）"
+   "move": null
   },
   "analysis": {
    "industry": "半導體設備",
@@ -15676,7 +15676,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 377 百萬元，YoY +9%，MoM +5%，累計 YoY +7%",
@@ -15759,7 +15759,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 822 百萬元，YoY +43%，MoM -4%，累計 YoY +35%，YoY 43%，連12月YoY成長，同期歷史新高",
@@ -15840,7 +15840,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 726 百萬元，YoY +17%，MoM +309%，累計 YoY +21%",
@@ -15923,7 +15923,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 3,196 百萬元，YoY +12%，MoM -5%，累計 YoY +17%",
@@ -15982,7 +15982,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "3665-2026-11-13": {
   "key": "3665-2026-11-13",
@@ -16004,11 +16004,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": null,
-   "move": "2026-11-18 漲幅前 100（+9.929078014184398%）"
+   "move": null
   },
   "analysis": {
    "industry": "被動元件與連接器",
@@ -16184,7 +16184,7 @@
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 310 百萬元，YoY +64%，MoM +2%，累計 YoY +67%，YoY 64%，連12月YoY成長，5年新高",
-   "move": "2026-11-18 漲幅前 100（+5.960264900662252%）"
+   "move": "2026-11-19 跌幅前 100（-10%）"
   },
   "analysis": {
    "industry": "半導體材料與化學",
@@ -16440,7 +16440,7 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 75 百萬元，YoY -13%，MoM +6%，累計 YoY -6%",
@@ -16514,7 +16514,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 683 百萬元，YoY -2%，MoM -27%，累計 YoY +13%",
@@ -16688,7 +16688,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 7,750 百萬元，YoY +455%，MoM -11%，累計 YoY +538%，YoY 455%，連12月YoY成長，同期歷史新高",
@@ -16860,7 +16860,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,915 百萬元，YoY +34%，MoM +6%，累計 YoY +11%，YoY 34%，連8月YoY成長，5年新高，比前三月加速 14pp",
@@ -16931,7 +16931,7 @@
   "summary": "本公司受邀參加黑石財經舉辦「戰略臺灣投資論壇」之法人說明會，說明本公司財務及業務相關資訊。",
   "fileZh": "545720261118M001.pdf",
   "fileEn": "545720261118E001.pdf",
-  "videoUrl": null,
+  "videoUrl": "http://irconference.twse.com.tw/5457_21_20261113_ch.MP4",
   "note": "無",
   "deck": {
    "file": "545720261118M001.pdf",
@@ -16940,11 +16940,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,899 百萬元，YoY -13%，MoM +10%，累計 YoY -10%",
-   "move": "2026-11-18 漲幅前 100（+9.97566909975669%）"
+   "move": null
   },
   "analysis": {
    "industry": "被動元件與連接器",
@@ -17000,7 +17000,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
   "state": "partial",
-  "pendingNote": "等待富果整理"
+  "pendingNote": "影音轉文字中"
  },
  "6103-2026-11-13": {
   "key": "6103-2026-11-13",
@@ -17072,7 +17072,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 749 百萬元，YoY -16%，MoM -1%，累計 YoY -2%",
@@ -17129,7 +17129,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "6146-2026-11-13": {
   "key": "6146-2026-11-13",
@@ -17151,7 +17151,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 412 百萬元，YoY +9%，MoM -1%，累計 YoY +10%",
@@ -17232,7 +17232,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 176 百萬元，YoY -0%，MoM -1%，累計 YoY +0%",
@@ -17289,7 +17289,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "6187-2026-11-13": {
   "key": "6187-2026-11-13",
@@ -17311,11 +17311,11 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 978 百萬元，YoY +218%，MoM -16%，累計 YoY +69%，YoY 218%，連10月YoY成長，同期歷史新高，比前三月加速 123pp",
-   "move": null
+   "move": "2026-11-19 跌幅前 100（-9.987029831387808%）"
   },
   "analysis": {
    "industry": "半導體設備",
@@ -17392,7 +17392,7 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 6,478 百萬元，YoY +127%，MoM +6%，累計 YoY +103%，YoY 127%，連12月YoY成長，MoM連8月正成長，5年新高，比前三月加速 4pp",
@@ -17451,11 +17451,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": null,
-   "move": "2026-11-18 跌幅前 100（-5.915492957746479%）"
+   "move": null
   },
   "analysis": {
    "industry": "IC設計",
@@ -17533,7 +17533,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 2,837 百萬元，YoY +102%，MoM +8%，累計 YoY +86%，YoY 102%，連12月YoY成長，MoM連4月正成長，5年新高，比前三月加速 3pp",
@@ -17612,7 +17612,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,990 百萬元，YoY +16%，MoM -14%，累計 YoY +10%",
@@ -17673,7 +17673,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "6477-2026-11-13": {
   "key": "6477-2026-11-13",
@@ -17695,7 +17695,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 67 百萬元，YoY -26%，MoM +14%，累計 YoY -4%",
@@ -17757,7 +17757,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "6533-2026-11-13": {
   "key": "6533-2026-11-13",
@@ -17779,7 +17779,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 198 百萬元，YoY +32%，MoM +3%，累計 YoY +30%，YoY 32%，同期歷史新高，比前三月加速 36pp",
@@ -17862,11 +17862,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 0 百萬元，YoY -55%，MoM -63%，累計 YoY -17%",
-   "move": "2026-11-18 跌幅前 100（-4.691075514874142%）"
+   "move": null
   },
   "analysis": {
    "industry": "生技新藥",
@@ -17944,7 +17944,7 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 571 百萬元，YoY +280%，MoM +15%，累計 YoY +79%，YoY 280%，連5月YoY成長，同期歷史新高，比前三月加速 156pp",
@@ -17997,11 +17997,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": null,
-   "move": null
+   "move": "2026-11-19 跌幅前 100（-10%）"
   },
   "analysis": {
    "industry": "PCB與載板",
@@ -18059,7 +18059,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "6807-2026-11-13": {
   "key": "6807-2026-11-13",
@@ -18081,7 +18081,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": null,
@@ -18142,7 +18142,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "6855-2026-11-13": {
   "key": "6855-2026-11-13",
@@ -18164,7 +18164,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 51 百萬元，YoY +16%，MoM -8%，累計 YoY +6%",
@@ -18225,7 +18225,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "6890-2026-11-13": {
   "key": "6890-2026-11-13",
@@ -18247,7 +18247,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": null,
@@ -18328,11 +18328,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 115 百萬元，YoY +18%，MoM +1%，累計 YoY +26%",
-   "move": "2026-11-18 跌幅前 100（-8.15450643776824%）"
+   "move": null
   },
   "analysis": {
    "industry": "軟體與資訊服務",
@@ -18411,7 +18411,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 2,498 百萬元，YoY +135%，MoM -0%，累計 YoY +107%，YoY 135%，連12月YoY成長，同期歷史新高",
@@ -18471,7 +18471,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "7777-2026-11-13": {
   "key": "7777-2026-11-13",
@@ -18488,7 +18488,7 @@
   "note": "無。",
   "deck": null,
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "尚未上傳",
   "context": {
    "revenue": "2026-10 月營收 42 百萬元，YoY —，MoM +111%，累計 YoY +7640%",
@@ -18539,7 +18539,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": null,
@@ -18622,7 +18622,7 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 92 百萬元，YoY -31%，MoM -16%，累計 YoY +12%",
@@ -18680,7 +18680,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 410 百萬元，YoY +4%，MoM -7%，累計 YoY +33%",
@@ -18740,7 +18740,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "8996-2026-11-13": {
   "key": "8996-2026-11-13",
@@ -18762,7 +18762,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,516 百萬元，YoY +125%，MoM -6%，累計 YoY +121%，YoY 125%，連12月YoY成長，同期歷史新高，比前三月加速 17pp",
@@ -18994,8 +18994,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
-  "state": "partial",
-  "pendingNote": "等待富果整理"
+  "state": "done",
+  "pendingNote": ""
  },
  "1712-2026-11-12": {
   "key": "1712-2026-11-12",
@@ -19075,8 +19075,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
-  "state": "partial",
-  "pendingNote": "等待富果整理"
+  "state": "done",
+  "pendingNote": ""
  },
  "1720-2026-11-12": {
   "key": "1720-2026-11-12",
@@ -19244,8 +19244,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
-  "state": "partial",
-  "pendingNote": "等待富果整理"
+  "state": "done",
+  "pendingNote": ""
  },
  "2066-2026-11-12": {
   "key": "2066-2026-11-12",
@@ -19473,8 +19473,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
-  "state": "partial",
-  "pendingNote": "等待富果整理"
+  "state": "done",
+  "pendingNote": ""
  },
  "2357-2026-11-12": {
   "key": "2357-2026-11-12",
@@ -19556,8 +19556,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
-  "state": "partial",
-  "pendingNote": "等待富果整理"
+  "state": "done",
+  "pendingNote": ""
  },
  "2368-2026-11-12": {
   "key": "2368-2026-11-12",
@@ -19637,8 +19637,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
-  "state": "partial",
-  "pendingNote": "等待富果整理"
+  "state": "done",
+  "pendingNote": ""
  },
  "2383-2026-11-12": {
   "key": "2383-2026-11-12",
@@ -19719,8 +19719,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
-  "state": "partial",
-  "pendingNote": "等待富果整理"
+  "state": "done",
+  "pendingNote": ""
  },
  "2385-2026-11-12": {
   "key": "2385-2026-11-12",
@@ -19882,8 +19882,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
-  "state": "partial",
-  "pendingNote": "等待富果整理"
+  "state": "done",
+  "pendingNote": ""
  },
  "2419-2026-11-12": {
   "key": "2419-2026-11-12",
@@ -20216,8 +20216,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
-  "state": "partial",
-  "pendingNote": "等待富果整理"
+  "state": "done",
+  "pendingNote": ""
  },
  "3045-2026-11-12": {
   "key": "3045-2026-11-12",
@@ -20299,8 +20299,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
-  "state": "partial",
-  "pendingNote": "等待富果整理"
+  "state": "done",
+  "pendingNote": ""
  },
  "3105-2026-11-12": {
   "key": "3105-2026-11-12",
@@ -20382,8 +20382,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
-  "state": "partial",
-  "pendingNote": "等待富果整理"
+  "state": "done",
+  "pendingNote": ""
  },
  "3122-2026-11-12": {
   "key": "3122-2026-11-12",
@@ -20636,8 +20636,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
-  "state": "partial",
-  "pendingNote": "等待富果整理"
+  "state": "done",
+  "pendingNote": ""
  },
  "3290-2026-11-12": {
   "key": "3290-2026-11-12",
@@ -21153,8 +21153,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
-  "state": "partial",
-  "pendingNote": "等待富果整理"
+  "state": "done",
+  "pendingNote": ""
  },
  "4119-2026-11-12": {
   "key": "4119-2026-11-12",
@@ -21408,8 +21408,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
-  "state": "partial",
-  "pendingNote": "等待富果整理"
+  "state": "done",
+  "pendingNote": ""
  },
  "4538-2026-11-12": {
   "key": "4538-2026-11-12",
@@ -21658,8 +21658,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
-  "state": "partial",
-  "pendingNote": "等待富果整理"
+  "state": "done",
+  "pendingNote": ""
  },
  "4938-2026-11-12": {
   "key": "4938-2026-11-12",
@@ -21915,8 +21915,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
-  "state": "partial",
-  "pendingNote": "等待富果整理"
+  "state": "done",
+  "pendingNote": ""
  },
  "4971-2026-11-12": {
   "key": "4971-2026-11-12",
@@ -22079,8 +22079,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
-  "state": "partial",
-  "pendingNote": "等待富果整理"
+  "state": "done",
+  "pendingNote": ""
  },
  "5536-2026-11-12": {
   "key": "5536-2026-11-12",
@@ -22161,8 +22161,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
-  "state": "partial",
-  "pendingNote": "等待富果整理"
+  "state": "done",
+  "pendingNote": ""
  },
  "5871-2026-11-12": {
   "key": "5871-2026-11-12",
@@ -22243,8 +22243,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
-  "state": "partial",
-  "pendingNote": "等待富果整理"
+  "state": "done",
+  "pendingNote": ""
  },
  "6187-2026-11-12": {
   "key": "6187-2026-11-12",
@@ -22324,8 +22324,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
-  "state": "partial",
-  "pendingNote": "等待富果整理"
+  "state": "done",
+  "pendingNote": ""
  },
  "6259-2026-11-12": {
   "key": "6259-2026-11-12",
@@ -22501,8 +22501,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
-  "state": "partial",
-  "pendingNote": "等待富果整理"
+  "state": "done",
+  "pendingNote": ""
  },
  "6435-2026-11-12": {
   "key": "6435-2026-11-12",
@@ -22831,8 +22831,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
-  "state": "partial",
-  "pendingNote": "等待富果整理"
+  "state": "done",
+  "pendingNote": ""
  },
  "6527-2026-11-12": {
   "key": "6527-2026-11-12",
@@ -22951,8 +22951,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 0,
   "firstSeen": "2026-11-13T21:45:18+08:00",
-  "state": "partial",
-  "pendingNote": "等待富果整理"
+  "state": "done",
+  "pendingNote": ""
  },
  "6856-2026-11-12": {
   "key": "6856-2026-11-12",
@@ -23203,8 +23203,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
-  "state": "partial",
-  "pendingNote": "等待富果整理"
+  "state": "done",
+  "pendingNote": ""
  },
  "7856-2026-11-12": {
   "key": "7856-2026-11-12",
@@ -23285,8 +23285,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
-  "state": "partial",
-  "pendingNote": "等待富果整理"
+  "state": "done",
+  "pendingNote": ""
  },
  "8069-2026-11-12": {
   "key": "8069-2026-11-12",
@@ -23367,8 +23367,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
-  "state": "partial",
-  "pendingNote": "等待富果整理"
+  "state": "done",
+  "pendingNote": ""
  },
  "8155-2026-11-12": {
   "key": "8155-2026-11-12",
@@ -23531,8 +23531,8 @@
   "model": "gpt-6.1-sol",
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
-  "state": "partial",
-  "pendingNote": "等待富果整理"
+  "state": "done",
+  "pendingNote": ""
  },
  "8289-2026-11-12": {
   "key": "8289-2026-11-12",
@@ -23911,7 +23911,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 6,206 百萬元，YoY -1%，MoM -7%，累計 YoY +4%",
@@ -23994,7 +23994,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 25,198 百萬元，YoY +18%，MoM -1%，累計 YoY +16%",
@@ -24074,7 +24074,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,305,320 百萬元，YoY +46%，MoM +13%，累計 YoY +40%，YoY 46%，連12月YoY成長，5年新高",
@@ -24156,7 +24156,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 17,597 百萬元，YoY +55%，MoM +3%，累計 YoY +38%，YoY 55%，連12月YoY成長，MoM連8月正成長，5年新高，比前三月加速 5pp",
@@ -24236,7 +24236,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 586,890 百萬元，YoY +60%，MoM +15%，累計 YoY +43%，YoY 60%，連12月YoY成長，5年新高，比前三月加速 9pp",
@@ -24316,7 +24316,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 8,413 百萬元，YoY +217%，MoM +1%，累計 YoY +161%，YoY 217%，連12月YoY成長，MoM連11月正成長，5年新高，比前三月加速 21pp",
@@ -24398,7 +24398,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,982 百萬元，YoY +24%，MoM -3%，累計 YoY +21%，YoY 24%，連12月YoY成長，同期歷史新高",
@@ -24480,7 +24480,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 439 百萬元，YoY +10%，MoM -12%，累計 YoY +12%",
@@ -24542,7 +24542,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-17T00:57:14+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "2897-2026-11-16": {
   "key": "2897-2026-11-16",
@@ -24564,7 +24564,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 866 百萬元，YoY +22%，MoM -11%，累計 YoY +26%，YoY 22%，連12月YoY成長，同期歷史新高",
@@ -24732,7 +24732,7 @@
   "note": "無",
   "deck": null,
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "尚未上傳",
   "context": {
    "revenue": "2026-10 月營收 546 百萬元，YoY +7%，MoM -10%，累計 YoY +1%",
@@ -24783,11 +24783,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 18,986 百萬元，YoY +68%，MoM +2%，累計 YoY +41%，YoY 68%，連12月YoY成長，MoM連8月正成長，5年新高，比前三月加速 13pp",
-   "move": null
+   "move": "2026-11-19 跌幅前 100（-9.969788519637463%）"
   },
   "analysis": {
    "industry": "PCB與載板",
@@ -24863,7 +24863,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 17,065 百萬元，YoY +9%，MoM -2%，累計 YoY +6%",
@@ -24945,11 +24945,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 2,056 百萬元，YoY +32%，MoM +1%，累計 YoY +33%，YoY 32%，連12月YoY成長，MoM連9月正成長，同期歷史新高，比前三月加速 1pp",
-   "move": null
+   "move": "2026-11-19 跌幅前 100（-10%）"
   },
   "analysis": {
    "industry": "晶圓製造與記憶體",
@@ -25027,11 +25027,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 753 百萬元，YoY +31%，MoM +1%，累計 YoY +27%，YoY 31%，連6月YoY成長，同期歷史新高",
-   "move": "2026-11-18 漲幅前 100（+9.830508474576272%）"
+   "move": null
   },
   "analysis": {
    "industry": "半導體設備",
@@ -25095,11 +25095,11 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 3,372 百萬元，YoY +45%，MoM +17%，累計 YoY +69%，YoY 45%，連12月YoY成長，同期歷史新高",
-   "move": "2026-11-18 漲幅前 100（+5.609492988133765%）"
+   "move": null
   },
   "analysis": {
    "industry": "電源與散熱",
@@ -25175,11 +25175,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 88,615 百萬元，YoY +47%，MoM +1%，累計 YoY +32%，YoY 47%，連12月YoY成長，MoM連8月正成長，5年新高，比前三月加速 2pp",
-   "move": "2026-11-18 漲幅前 100（+5.384615384615385%）"
+   "move": null
   },
   "analysis": {
    "industry": "半導體封測",
@@ -25256,7 +25256,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 446 百萬元，YoY +24%，MoM +3%，累計 YoY +20%，YoY 24%，連6月YoY成長，同期歷史新高",
@@ -25339,7 +25339,7 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 476 百萬元，YoY +11%，MoM -17%，累計 YoY +2%",
@@ -25400,7 +25400,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-17T00:57:14+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "5209-2026-11-16": {
   "key": "5209-2026-11-16",
@@ -25422,7 +25422,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,091 百萬元，YoY +123%，MoM +29%，累計 YoY +14%，YoY 123%，連3月YoY成長，MoM連6月正成長，5年新高，比前三月加速 73pp",
@@ -25503,7 +25503,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 460 百萬元，YoY +14%，MoM -4%，累計 YoY +12%",
@@ -25585,11 +25585,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 2,030 百萬元，YoY +178%，MoM +24%，累計 YoY +88%，YoY 178%，連12月YoY成長，MoM連12月正成長，5年新高，比前三月加速 72pp",
-   "move": null
+   "move": "2026-11-19 跌幅前 100（-10%）"
   },
   "analysis": {
    "industry": "IC設計",
@@ -25667,7 +25667,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 207 百萬元，YoY -18%，MoM -16%，累計 YoY -5%",
@@ -25728,7 +25728,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-17T00:57:14+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "5536-2026-11-16": {
   "key": "5536-2026-11-16",
@@ -25750,7 +25750,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 5,108 百萬元，YoY +60%，MoM -7%，累計 YoY +32%，YoY 60%，連12月YoY成長，同期歷史新高，比前三月加速 30pp",
@@ -26001,11 +26001,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,036 百萬元，YoY +20%，MoM +3%，累計 YoY +13%，YoY 20%，連12月YoY成長，MoM連6月正成長，24月營收新高，比前三月加速 3pp",
-   "move": null
+   "move": "2026-11-19 跌幅前 100（-9.985734664764623%）"
   },
   "analysis": {
    "industry": "半導體材料與化學",
@@ -26084,11 +26084,11 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 978 百萬元，YoY +218%，MoM -16%，累計 YoY +69%，YoY 218%，連10月YoY成長，同期歷史新高，比前三月加速 123pp",
-   "move": null
+   "move": "2026-11-19 跌幅前 100（-9.987029831387808%）"
   },
   "analysis": {
    "industry": "半導體設備",
@@ -26165,11 +26165,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 2,232 百萬元，YoY +93%，MoM +9%，累計 YoY +62%，YoY 93%，連12月YoY成長，5年新高，比前三月加速 20pp",
-   "move": "2026-11-18 漲幅前 100（+9.887359198998748%）"
+   "move": null
   },
   "analysis": {
    "industry": "半導體設備",
@@ -26245,7 +26245,7 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 6,478 百萬元，YoY +127%，MoM +6%，累計 YoY +103%，YoY 127%，連12月YoY成長，MoM連8月正成長，5年新高，比前三月加速 4pp",
@@ -26304,11 +26304,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": null,
-   "move": "2026-11-18 跌幅前 100（-5.915492957746479%）"
+   "move": null
   },
   "analysis": {
    "industry": "IC設計",
@@ -26384,7 +26384,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 2,837 百萬元，YoY +102%，MoM +8%，累計 YoY +86%，YoY 102%，連12月YoY成長，MoM連4月正成長，5年新高，比前三月加速 3pp",
@@ -26467,11 +26467,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 702 百萬元，YoY +73%，MoM +8%，累計 YoY +40%，YoY 73%，連10月YoY成長，MoM連8月正成長，5年新高，比前三月加速 19pp",
-   "move": "2026-11-18 漲幅前 100（+6.7765567765567765%）"
+   "move": null
   },
   "analysis": {
    "industry": "半導體設備",
@@ -26547,11 +26547,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 2,354 百萬元，YoY +56%，MoM +2%，累計 YoY +18%，YoY 56%，連10月YoY成長，5年新高，比前三月加速 33pp",
-   "move": null
+   "move": "2026-11-19 跌幅前 100（-9.955423476968797%）"
   },
   "analysis": {
    "industry": "IC設計",
@@ -26622,7 +26622,7 @@
   "note": "會議簡報等資料將依規定於期限前揭露於公開資訊觀測站。",
   "deck": null,
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "尚未上傳",
   "context": {
    "revenue": "2026-10 月營收 261 百萬元，YoY +13%，MoM -4%，累計 YoY +44%",
@@ -26668,11 +26668,11 @@
   "note": "相關資訊請參考公開資訊觀測站",
   "deck": null,
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "尚未上傳",
   "context": {
    "revenue": "2026-10 月營收 156 百萬元，YoY +8%，MoM +32%，累計 YoY +4%",
-   "move": "2026-11-18 跌幅前 100（-9.899749373433583%）"
+   "move": null
   },
   "analysis": {
    "industry": "軟體與資訊服務",
@@ -26698,7 +26698,7 @@
   "analyzedEvidence": 0,
   "firstSeen": "2026-11-17T00:57:14+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "6730-2026-11-16": {
   "key": "6730-2026-11-16",
@@ -26720,7 +26720,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 41 百萬元，YoY -3%，MoM -6%，累計 YoY +2%",
@@ -26781,7 +26781,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-17T00:57:14+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "6754-2026-11-16": {
   "key": "6754-2026-11-16",
@@ -26803,7 +26803,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 360 百萬元，YoY +33%，MoM +0%，累計 YoY -8%，YoY 33%，MoM連8月正成長，12月營收新高，比前三月加速 34pp",
@@ -26864,7 +26864,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-17T00:57:14+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "6770-2026-11-16": {
   "key": "6770-2026-11-16",
@@ -26886,7 +26886,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 8,028 百萬元，YoY +94%，MoM +5%，累計 YoY +57%，YoY 94%，連12月YoY成長，MoM連8月正成長，5年新高，比前三月加速 14pp",
@@ -26967,7 +26967,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 884 百萬元，YoY +25%，MoM -4%，累計 YoY +2%，YoY 25%，同期歷史新高，比前三月加速 26pp",
@@ -27049,11 +27049,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": null,
-   "move": "2026-11-18 漲幅前 100（+6.941838649155723%）"
+   "move": "2026-11-19 跌幅前 100（-10%）"
   },
   "analysis": {
    "industry": "光學與光通訊",
@@ -27132,11 +27132,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 5,223 百萬元，YoY +79%，MoM -9%，累計 YoY +92%，YoY 79%，連12月YoY成長",
-   "move": null
+   "move": "2026-11-19 跌幅前 100（-9.957924263674615%）"
   },
   "analysis": {
    "industry": "半導體設備",
@@ -27213,7 +27213,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,175 百萬元，YoY +7%，MoM -12%，累計 YoY +23%",
@@ -27274,7 +27274,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-17T00:57:14+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "7856-2026-11-16": {
   "key": "7856-2026-11-16",
@@ -27296,7 +27296,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 506 百萬元，YoY +62%，MoM -2%，累計 YoY +118%，YoY 62%，連12月YoY成長",
@@ -27378,7 +27378,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": null,
@@ -27462,7 +27462,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 550 百萬元，YoY +35%，MoM +7%，累計 YoY +30%，YoY 35%，連12月YoY成長，5年新高，比前三月加速 3pp",
@@ -27544,7 +27544,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 3,166 百萬元，YoY +2%，MoM -2%，累計 YoY +8%",
@@ -27605,7 +27605,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-17T00:57:14+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "8299-2026-11-16": {
   "key": "8299-2026-11-16",
@@ -27627,7 +27627,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 31,530 百萬元，YoY +346%，MoM +3%，累計 YoY +298%，YoY 346%，連12月YoY成長，MoM連11月正成長，5年新高",
@@ -27709,11 +27709,11 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,108 百萬元，YoY +58%，MoM +0%，累計 YoY +50%，YoY 58%，連12月YoY成長，MoM連15月正成長，5年新高",
-   "move": "2026-11-18 跌幅前 100（-4.851330203442879%）"
+   "move": null
   },
   "analysis": {
    "industry": "PCB與載板",
@@ -27738,7 +27738,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-17T00:57:14+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "9933-2026-11-16": {
   "key": "9933-2026-11-16",
@@ -27760,7 +27760,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 9,023 百萬元，YoY +54%，MoM +8%，累計 YoY -7%，YoY 54%，連3月YoY成長，MoM連3月正成長，比前三月加速 51pp",
@@ -27821,7 +27821,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-17T00:57:14+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "9943-2026-11-16": {
   "key": "9943-2026-11-16",
@@ -27838,7 +27838,7 @@
   "note": "無",
   "deck": null,
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "尚未上傳",
   "context": {
    "revenue": "2026-10 月營收 204 百萬元，YoY +3%，MoM +13%，累計 YoY -4%",
@@ -27867,7 +27867,7 @@
   "analyzedEvidence": 0,
   "firstSeen": "2026-11-17T00:57:14+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "7966-2026-11-10": {
   "key": "7966-2026-11-10",
@@ -27962,7 +27962,7 @@
   "summary": "本公司受邀參加台新證券舉辦之線上法說會，報告本公司截至115年第三季度之營運與財務概況。",
   "fileZh": "121620261116M001.pdf",
   "fileEn": "121620261116E001.pdf",
-  "videoUrl": "https://ir.sp88.tw/docs/20261117CN.mp4",
+  "videoUrl": "http://irconference.twse.com.tw/1216_225_20261117_ch.mp4",
   "note": "無。",
   "deck": {
    "file": "121620261116M001.pdf",
@@ -28062,7 +28062,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 927 百萬元，YoY +31%，MoM +2%，累計 YoY +26%，YoY 31%，連12月YoY成長，MoM連5月正成長，5年新高，比前三月加速 2pp",
@@ -28144,7 +28144,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": null,
@@ -28305,7 +28305,7 @@
   "summary": "凱基證券舉辦之法人說明會.說明本公司營運狀況",
   "fileZh": "222820261116M001.pdf",
   "fileEn": "222820261116E001.pdf",
-  "videoUrl": "https://pse.is/9vnyv4",
+  "videoUrl": "http://irconference.twse.com.tw/2228_35_20261117_ch.mp4",
   "note": "無",
   "deck": {
    "file": "222820261116M001.pdf",
@@ -28314,7 +28314,7 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 411 百萬元，YoY -1%，MoM -5%，累計 YoY -2%",
@@ -28344,7 +28344,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-18T00:46:27+08:00",
   "state": "partial",
-  "pendingNote": "等待富果整理"
+  "pendingNote": "影音轉文字中"
  },
  "2301-2026-11-17": {
   "key": "2301-2026-11-17",
@@ -28366,7 +28366,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 20,071 百萬元，YoY +32%，MoM +6%，累計 YoY +27%，YoY 32%，連12月YoY成長，5年新高，比前三月加速 4pp",
@@ -28540,7 +28540,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 11,973 百萬元，YoY +32%，MoM -3%，累計 YoY +17%，YoY 32%，連10月YoY成長，同期歷史新高，比前三月加速 4pp",
@@ -28621,7 +28621,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 353,250 百萬元，YoY +104%，MoM +9%，累計 YoY +100%，YoY 104%，連12月YoY成長，同期歷史新高",
@@ -28701,11 +28701,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 24,473 百萬元，YoY +203%，MoM +14%，累計 YoY +114%，YoY 203%，連12月YoY成長，MoM連8月正成長，5年新高，比前三月加速 60pp",
-   "move": null
+   "move": "2026-11-19 跌幅前 100（-9.956709956709958%）"
   },
   "analysis": {
    "industry": "PCB與載板",
@@ -28783,7 +28783,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 46,476 百萬元，YoY +488%，MoM +3%，累計 YoY +602%，YoY 488%，連12月YoY成長，MoM連13月正成長，5年新高",
@@ -28865,7 +28865,7 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 20,779 百萬元，YoY -1%，MoM -11%，累計 YoY -2%",
@@ -28917,7 +28917,7 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,013 百萬元，YoY +81%，MoM +7%，累計 YoY +84%，YoY 81%，連12月YoY成長，同期歷史新高",
@@ -28976,7 +28976,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,266 百萬元，YoY -13%，MoM +23%，累計 YoY -31%",
@@ -29057,7 +29057,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,368 百萬元，YoY +33%，MoM -10%，累計 YoY +22%，YoY 33%，連12月YoY成長，同期歷史新高，比前三月加速 0pp",
@@ -29138,11 +29138,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 6,847 百萬元，YoY -16%，MoM -20%，累計 YoY +16%",
-   "move": "2026-11-18 跌幅前 100（-9.64630225080386%）"
+   "move": null
   },
   "analysis": {
    "industry": "金融",
@@ -29221,7 +29221,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 32,078 百萬元，YoY +7%，MoM +2%，累計 YoY +6%",
@@ -29303,7 +29303,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 7,929 百萬元，YoY +25%，MoM -12%，累計 YoY +23%，YoY 25%，連11月YoY成長，同期歷史新高",
@@ -29385,7 +29385,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 10,052 百萬元，YoY +28%，MoM -3%，累計 YoY +8%，YoY 28%，連7月YoY成長，同期歷史新高，比前三月加速 2pp",
@@ -29466,11 +29466,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 10,637 百萬元，YoY +70%，MoM -0%，累計 YoY +44%，YoY 70%，連12月YoY成長，同期歷史新高，比前三月加速 12pp",
-   "move": "2026-11-18 漲幅前 100（+9.931506849315069%）"
+   "move": "2026-11-19 跌幅前 100（-9.968847352024921%）"
   },
   "analysis": {
    "industry": "PCB與載板",
@@ -29547,7 +29547,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,013 百萬元，YoY +75%，MoM +14%，累計 YoY +51%，YoY 75%，連11月YoY成長，5年新高，比前三月加速 14pp",
@@ -29635,7 +29635,7 @@
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 160 百萬元，YoY +41%，MoM +0%，累計 YoY +16%，YoY 41%，連7月YoY成長，MoM連8月正成長，同期歷史新高，比前三月加速 5pp",
-   "move": "2026-11-18 漲幅前 100（+7.262569832402235%）"
+   "move": null
   },
   "analysis": {
    "industry": "被動元件與連接器",
@@ -29717,11 +29717,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,371 百萬元，YoY +175%，MoM +5%，累計 YoY +144%，YoY 175%，連12月YoY成長，MoM連8月正成長，5年新高，比前三月加速 16pp",
-   "move": "2026-11-18 跌幅前 100（-6.137724550898203%）"
+   "move": null
   },
   "analysis": {
    "industry": "機械與自動化",
@@ -29799,7 +29799,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 402,615 百萬元，YoY +118%，MoM +6%，累計 YoY +100%，YoY 118%，連12月YoY成長，同期歷史新高，比前三月加速 13pp",
@@ -29880,7 +29880,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 72 百萬元，YoY +51%，MoM -4%，累計 YoY +43%",
@@ -29939,7 +29939,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-18T00:46:27+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "3529-2026-11-17": {
   "key": "3529-2026-11-17",
@@ -29961,7 +29961,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 726 百萬元，YoY +17%，MoM +309%，累計 YoY +21%",
@@ -30035,7 +30035,7 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 606 百萬元，YoY -7%，MoM -2%，累計 YoY -18%",
@@ -30177,7 +30177,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 149,296 百萬元，YoY +79%，MoM -32%，累計 YoY +73%，YoY 79%，連12月YoY成長，同期歷史新高",
@@ -30258,7 +30258,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": null,
@@ -30341,11 +30341,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 297 百萬元，YoY +2%，MoM -22%，累計 YoY +10%",
-   "move": "2026-11-18 漲幅前 100（+4.405286343612335%）"
+   "move": null
   },
   "analysis": {
    "industry": "塑化與化工",
@@ -30424,11 +30424,11 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 373 百萬元，YoY +68%，MoM -5%，累計 YoY +59%，YoY 68%，連11月YoY成長",
-   "move": "2026-11-18 漲幅前 100（+10%）"
+   "move": null
   },
   "analysis": {
    "industry": "綠能與儲能",
@@ -30453,7 +30453,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-18T00:46:27+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "5213-2026-11-17": {
   "key": "5213-2026-11-17",
@@ -30559,11 +30559,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": null,
-   "move": "2026-11-18 漲幅前 100（+9.89010989010989%）"
+   "move": "2026-11-19 跌幅前 100（-10%）"
   },
   "analysis": {
    "industry": "AI伺服器與電腦硬體",
@@ -30619,7 +30619,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-18T00:46:27+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "5474-2026-11-17": {
   "key": "5474-2026-11-17",
@@ -30641,7 +30641,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 131 百萬元，YoY +23%，MoM +3%，累計 YoY -2%，YoY 23%，同期歷史新高，比前三月加速 33pp",
@@ -30693,7 +30693,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-18T00:46:27+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "5904-2026-11-17": {
   "key": "5904-2026-11-17",
@@ -30715,7 +30715,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 2,458 百萬元，YoY +14%，MoM +1%，累計 YoY +14%",
@@ -30775,7 +30775,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-18T00:46:27+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "6143-2026-11-17": {
   "key": "6143-2026-11-17",
@@ -30797,7 +30797,7 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 602 百萬元，YoY -30%，MoM -1%，累計 YoY +2%",
@@ -30858,7 +30858,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-18T00:46:27+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "6189-2026-11-17": {
   "key": "6189-2026-11-17",
@@ -30880,7 +30880,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 2,046 百萬元，YoY -11%，MoM -20%，累計 YoY -0%",
@@ -30963,11 +30963,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 2,232 百萬元，YoY +93%，MoM +9%，累計 YoY +62%，YoY 93%，連12月YoY成長，5年新高，比前三月加速 20pp",
-   "move": "2026-11-18 漲幅前 100（+9.887359198998748%）"
+   "move": null
   },
   "analysis": {
    "industry": "半導體設備",
@@ -31044,11 +31044,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 79 百萬元，YoY +61%，MoM +22%，累計 YoY +66%",
-   "move": null
+   "move": "2026-11-19 跌幅前 100（-9.9601593625498%）"
   },
   "analysis": {
    "industry": "光學與光通訊",
@@ -31103,7 +31103,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-18T00:46:27+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "6472-2026-11-17": {
   "key": "6472-2026-11-17",
@@ -31125,7 +31125,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,990 百萬元，YoY +16%，MoM -14%，累計 YoY +10%",
@@ -31207,11 +31207,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 168 百萬元，YoY +57%，MoM -4%，累計 YoY +9%，YoY 57%，連5月YoY成長，比前三月加速 3pp",
-   "move": "2026-11-18 跌幅前 100（-5.450733752620545%）"
+   "move": "2026-11-19 跌幅前 100（-9.977827050997783%）"
   },
   "analysis": {
    "industry": "綠能與儲能",
@@ -31267,7 +31267,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-18T00:46:27+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "6577-2026-11-17": {
   "key": "6577-2026-11-17",
@@ -31289,7 +31289,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 222 百萬元，YoY +28%，MoM +11%，累計 YoY +8%，YoY 28%，連5月YoY成長，24月營收新高，比前三月加速 14pp",
@@ -31370,11 +31370,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 987 百萬元，YoY +41%，MoM +1%，累計 YoY +29%，YoY 41%，連12月YoY成長，同期歷史新高，比前三月加速 16pp",
-   "move": "2026-11-18 漲幅前 100（+6.390977443609022%）"
+   "move": null
   },
   "analysis": {
    "industry": "AI伺服器與電腦硬體",
@@ -31431,7 +31431,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-18T00:46:27+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "6612-2026-11-17": {
   "key": "6612-2026-11-17",
@@ -31453,7 +31453,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 106 百萬元，YoY +15%，MoM -5%，累計 YoY +21%",
@@ -31512,7 +31512,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-18T00:46:27+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "6669-2026-11-17": {
   "key": "6669-2026-11-17",
@@ -31534,7 +31534,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 165,132 百萬元，YoY +81%，MoM -4%，累計 YoY +54%，YoY 81%，連12月YoY成長，同期歷史新高，比前三月加速 18pp",
@@ -31614,7 +31614,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 904 百萬元，YoY +13%，MoM -7%，累計 YoY +0%",
@@ -31696,7 +31696,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 56 百萬元，YoY +6%，MoM -40%，累計 YoY +14%",
@@ -31756,7 +31756,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-18T00:46:27+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "7717-2026-11-17": {
   "key": "7717-2026-11-17",
@@ -31778,11 +31778,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": null,
-   "move": "2026-11-18 漲幅前 100（+6.941838649155723%）"
+   "move": "2026-11-19 跌幅前 100（-10%）"
   },
   "analysis": {
    "industry": "光學與光通訊",
@@ -31861,7 +31861,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": null,
@@ -31945,7 +31945,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": null,
@@ -32026,7 +32026,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 2,328 百萬元，YoY +55%，MoM +6%，累計 YoY +24%，YoY 55%，連7月YoY成長，同期歷史新高，比前三月加速 14pp",
@@ -32085,7 +32085,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-18T00:46:27+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "8234-2026-11-17": {
   "key": "8234-2026-11-17",
@@ -32107,7 +32107,7 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 646 百萬元，YoY +32%，MoM -11%，累計 YoY +14%，YoY 32%，連5月YoY成長",
@@ -32167,7 +32167,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-18T00:46:27+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "8464-2026-11-17": {
   "key": "8464-2026-11-17",
@@ -32189,7 +32189,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 2,795 百萬元，YoY +8%，MoM +5%，累計 YoY +7%",
@@ -32272,7 +32272,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 416 百萬元，YoY -6%，MoM -21%，累計 YoY +2%",
@@ -32333,7 +32333,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-18T00:46:27+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "9914-2026-11-17": {
   "key": "9914-2026-11-17",
@@ -32355,7 +32355,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,338 百萬元，YoY -20%，MoM -21%，累計 YoY -16%",
@@ -32416,7 +32416,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-18T00:46:27+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "1477-2026-11-18": {
   "key": "1477-2026-11-18",
@@ -32691,7 +32691,7 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "影音在公司網頁，未轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 5,416 百萬元，YoY +12%，MoM -3%，累計 YoY +14%",
@@ -32768,13 +32768,13 @@
   "videoUrl": "http://irconference.twse.com.tw/2027_14_20261118_ch.mp4",
   "note": "無",
   "deck": {
-   "file": "202720261118E001.pdf",
+   "file": "202720261118M001.pdf",
    "pages": 20,
-   "chars": 9362,
+   "chars": 6592,
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "失敗：下載超過總時間上限",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 13,311 百萬元，YoY +45%，MoM +7%，累計 YoY +36%，YoY 45%，連12月YoY成長，5年新高，比前三月加速 0pp",
@@ -32834,7 +32834,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-19T01:00:39+08:00",
   "state": "partial",
-  "pendingNote": "影音：失敗：下載超過總時間上限"
+  "pendingNote": "影音轉文字中"
  },
  "2102-2026-11-18": {
   "key": "2102-2026-11-18",
@@ -33107,11 +33107,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "失敗：60 秒沒有收到資料",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,023 百萬元，YoY -19%，MoM -24%，累計 YoY -13%",
-   "move": null
+   "move": "2026-11-19 漲幅前 100（+2.33160621761658%）"
   },
   "analysis": {
    "industry": "汽車與零組件",
@@ -33168,7 +33168,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-19T01:00:39+08:00",
   "state": "partial",
-  "pendingNote": "影音：失敗：60 秒沒有收到資料"
+  "pendingNote": "影音轉文字中"
  },
  "2301-2026-11-18": {
   "key": "2301-2026-11-18",
@@ -33677,7 +33677,7 @@
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 11,336 百萬元，YoY +88%，MoM +5%，累計 YoY +53%，YoY 88%，連12月YoY成長，5年新高，比前三月加速 6pp",
-   "move": "2026-11-18 漲幅前 100（+4.432624113475177%）"
+   "move": null
   },
   "analysis": {
    "industry": "AI伺服器與電腦硬體",
@@ -33750,9 +33750,9 @@
   "videoUrl": null,
   "note": "無",
   "deck": {
-   "file": "241220261112E001.pdf",
+   "file": "241220261112M001.pdf",
    "pages": 17,
-   "chars": 14469,
+   "chars": 5583,
    "imageHeavy": false
   },
   "transcript": null,
@@ -33760,7 +33760,7 @@
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 23,748 百萬元，YoY +13%，MoM -3%，累計 YoY +11%",
-   "move": null
+   "move": "2026-11-19 漲幅前 100（+0.911854103343465%）"
   },
   "analysis": {
    "industry": "網通",
@@ -33842,7 +33842,7 @@
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 4,426 百萬元，YoY +29%，MoM +9%，累計 YoY +34%，YoY 29%，連12月YoY成長，5年新高",
-   "move": "2026-11-18 漲幅前 100（+9.91501416430595%）"
+   "move": null
   },
   "analysis": {
    "industry": "半導體封測",
@@ -33927,7 +33927,7 @@
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 87 百萬元，YoY +5%，MoM -1%，累計 YoY +7%",
-   "move": "2026-11-18 跌幅前 100（-9.943181818181818%）"
+   "move": null
   },
   "analysis": {
    "industry": "軟體與資訊服務",
@@ -34007,7 +34007,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "失敗：60 秒沒有收到資料",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 22,156 百萬元，YoY +22%，MoM +6%，累計 YoY +20%，YoY 22%，連11月YoY成長，同期歷史新高",
@@ -34068,7 +34068,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-19T01:00:39+08:00",
   "state": "partial",
-  "pendingNote": "影音：失敗：60 秒沒有收到資料"
+  "pendingNote": "影音轉文字中"
  },
  "2762-2026-11-18": {
   "key": "2762-2026-11-18",
@@ -34341,7 +34341,7 @@
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 6,847 百萬元，YoY -16%，MoM -20%，累計 YoY +16%",
-   "move": "2026-11-18 跌幅前 100（-9.64630225080386%）"
+   "move": null
   },
   "analysis": {
    "industry": "金融",
@@ -34419,7 +34419,7 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "失敗：terminated",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 195 百萬元，YoY -5%，MoM +87%，累計 YoY -0%",
@@ -34475,7 +34475,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-19T01:00:39+08:00",
   "state": "partial",
-  "pendingNote": "影音：失敗：terminated"
+  "pendingNote": "影音轉文字中"
  },
  "2941-2026-11-18": {
   "key": "2941-2026-11-18",
@@ -34497,11 +34497,11 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 59 百萬元，YoY -12%，MoM +3%，累計 YoY -6%",
-   "move": null
+   "move": "2026-11-19 跌幅前 100（-10%）"
   },
   "analysis": {
    "industry": "觀光餐飲與零售",
@@ -34527,7 +34527,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-19T01:00:39+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "3017-2026-11-18": {
   "key": "3017-2026-11-18",
@@ -34549,11 +34549,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 22,103 百萬元，YoY +34%，MoM +5%，累計 YoY +66%，YoY 34%，連12月YoY成長，MoM連6月正成長，5年新高",
-   "move": "2026-11-18 漲幅前 100（+9.919028340080972%）"
+   "move": null
   },
   "analysis": {
    "industry": "電源與散熱",
@@ -34630,7 +34630,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,136 百萬元，YoY +8%，MoM +1%，累計 YoY +10%",
@@ -34691,7 +34691,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-19T01:00:39+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "3048-2026-11-18": {
   "key": "3048-2026-11-18",
@@ -34713,7 +34713,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 13,925 百萬元，YoY +28%，MoM -8%，累計 YoY +36%，YoY 28%，連10月YoY成長，同期歷史新高",
@@ -34772,7 +34772,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-19T01:00:39+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "3083-2026-11-18": {
   "key": "3083-2026-11-18",
@@ -34794,7 +34794,7 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 45 百萬元，YoY +6%，MoM +6%，累計 YoY +3%",
@@ -34854,7 +34854,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-19T01:00:39+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "3115-2026-11-18": {
   "key": "3115-2026-11-18",
@@ -34871,16 +34871,16 @@
   "note": "無",
   "deck": null,
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "尚未上傳",
   "context": {
    "revenue": "2026-10 月營收 1 百萬元，YoY +43%，MoM +2%，累計 YoY +89%",
-   "move": "2026-11-18 漲幅前 100（+9.025787965616045%）"
+   "move": null
   },
   "analysis": null,
   "firstSeen": "2026-11-19T01:00:39+08:00",
   "state": "pending",
-  "pendingNote": "尚未判讀；簡報還沒上傳；影音：超過執行時間，下次轉"
+  "pendingNote": "尚未判讀；簡報還沒上傳；影音轉文字中"
  },
  "3217-2026-11-18": {
   "key": "3217-2026-11-18",
@@ -34902,7 +34902,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 258 百萬元，YoY -26%，MoM -23%，累計 YoY -9%",
@@ -34963,7 +34963,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-19T01:00:39+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "3324-2026-11-18": {
   "key": "3324-2026-11-18",
@@ -34980,11 +34980,11 @@
   "note": "會議簡報等資料將依規定於期限前揭露於公開資訊觀測站。",
   "deck": null,
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "尚未上傳",
   "context": {
    "revenue": "2026-10 月營收 3,372 百萬元，YoY +45%，MoM +17%，累計 YoY +69%，YoY 45%，連12月YoY成長，同期歷史新高",
-   "move": "2026-11-18 漲幅前 100（+5.609492988133765%）"
+   "move": null
   },
   "analysis": null,
   "firstSeen": "2026-11-19T01:00:39+08:00",
@@ -35011,7 +35011,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 184 百萬元，YoY +37%，MoM -11%，累計 YoY +25%，YoY 37%，連5月YoY成長，同期歷史新高",
@@ -35070,7 +35070,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-19T01:00:39+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "3402-2026-11-18": {
   "key": "3402-2026-11-18",
@@ -35092,7 +35092,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 665 百萬元，YoY +46%，MoM +2%，累計 YoY +26%，YoY 46%，連12月YoY成長，MoM連8月正成長，5年新高，比前三月加速 10pp",
@@ -35152,7 +35152,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-19T01:00:39+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "3479-2026-11-18": {
   "key": "3479-2026-11-18",
@@ -35174,7 +35174,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 875 百萬元，YoY +12%，MoM -8%，累計 YoY +16%",
@@ -35257,7 +35257,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 18,465 百萬元，YoY +1%，MoM -8%，累計 YoY +10%",
@@ -35340,11 +35340,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 202 百萬元，YoY +83%，MoM -5%，累計 YoY +59%，YoY 83%，連11月YoY成長，同期歷史新高，比前三月加速 8pp",
-   "move": null
+   "move": "2026-11-19 漲幅前 100（+1.5427769985974753%）"
   },
   "analysis": {
    "industry": "軟體與資訊服務",
@@ -35422,11 +35422,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 88,615 百萬元，YoY +47%，MoM +1%，累計 YoY +32%，YoY 47%，連12月YoY成長，MoM連8月正成長，5年新高，比前三月加速 2pp",
-   "move": "2026-11-18 漲幅前 100（+5.384615384615385%）"
+   "move": null
   },
   "analysis": {
    "industry": "半導體封測",
@@ -35503,7 +35503,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 722 百萬元，YoY +1362458%，MoM -60%，累計 YoY +598%",
@@ -35564,7 +35564,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-19T01:00:39+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "4439-2026-11-18": {
   "key": "4439-2026-11-18",
@@ -35586,7 +35586,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": null,
@@ -35667,7 +35667,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 489 百萬元，YoY +79%，MoM -16%，累計 YoY +13%，YoY 79%，比前三月加速 50pp",
@@ -35749,7 +35749,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 164 百萬元，YoY -24%，MoM +6%，累計 YoY -17%",
@@ -35810,7 +35810,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-19T01:00:39+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "4958-2026-11-18": {
   "key": "4958-2026-11-18",
@@ -35832,7 +35832,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": null,
@@ -35916,7 +35916,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": null,
@@ -35998,11 +35998,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 497 百萬元，YoY +79%，MoM +29%，累計 YoY +72%，YoY 79%，連11月YoY成長，5年新高",
-   "move": null
+   "move": "2026-11-19 跌幅前 100（-10%）"
   },
   "analysis": {
    "industry": "PCB與載板",
@@ -36059,7 +36059,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-19T01:00:39+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "5274-2026-11-18": {
   "key": "5274-2026-11-18",
@@ -36081,11 +36081,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 2,030 百萬元，YoY +178%，MoM +24%，累計 YoY +88%，YoY 178%，連12月YoY成長，MoM連12月正成長，5年新高，比前三月加速 72pp",
-   "move": null
+   "move": "2026-11-19 跌幅前 100（-10%）"
   },
   "analysis": {
    "industry": "IC設計",
@@ -36163,7 +36163,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 456 百萬元，YoY +41%，MoM -4%，累計 YoY -21%，YoY 41%，同期歷史新高，比前三月加速 40pp",
@@ -36223,7 +36223,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-19T01:00:39+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "5478-2026-11-18": {
   "key": "5478-2026-11-18",
@@ -36245,7 +36245,7 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 550 百萬元，YoY +4%，MoM -4%，累計 YoY +10%",
@@ -36306,7 +36306,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-19T01:00:39+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "6028-2026-11-18": {
   "key": "6028-2026-11-18",
@@ -36328,7 +36328,7 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 478 百萬元，YoY +33%，MoM -11%，累計 YoY +32%，YoY 33%，連10月YoY成長，同期歷史新高",
@@ -36387,7 +36387,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-19T01:00:39+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "6123-2026-11-18": {
   "key": "6123-2026-11-18",
@@ -36409,7 +36409,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 444 百萬元，YoY +17%，MoM -19%，累計 YoY -3%",
@@ -36468,7 +36468,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-19T01:00:39+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "6124-2026-11-18": {
   "key": "6124-2026-11-18",
@@ -36490,7 +36490,7 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 100 百萬元，YoY -19%，MoM +5%，累計 YoY -6%",
@@ -36532,7 +36532,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-19T01:00:39+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "6153-2026-11-18": {
   "key": "6153-2026-11-18",
@@ -36548,13 +36548,13 @@
   "videoUrl": "http://irconference.twse.com.tw/6153_60_20261118_ch.mp4",
   "note": "無",
   "deck": {
-   "file": "615320261118E001.pdf",
+   "file": "615320261118M001.pdf",
    "pages": 18,
-   "chars": 10843,
+   "chars": 3998,
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 509 百萬元，YoY +21%，MoM -6%，累計 YoY +6%，YoY 21%，連6月YoY成長，比前三月加速 9pp",
@@ -36615,7 +36615,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-19T01:00:39+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "6187-2026-11-18": {
   "key": "6187-2026-11-18",
@@ -36637,11 +36637,11 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 978 百萬元，YoY +218%，MoM -16%，累計 YoY +69%，YoY 218%，連10月YoY成長，同期歷史新高，比前三月加速 123pp",
-   "move": null
+   "move": "2026-11-19 跌幅前 100（-9.987029831387808%）"
   },
   "analysis": {
    "industry": "半導體設備",
@@ -36717,7 +36717,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 30 百萬元，YoY +456%，MoM +136%，累計 YoY -41%",
@@ -36778,7 +36778,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-19T01:00:39+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "6510-2026-11-18": {
   "key": "6510-2026-11-18",
@@ -36800,11 +36800,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 702 百萬元，YoY +73%，MoM +8%，累計 YoY +40%，YoY 73%，連10月YoY成長，MoM連8月正成長，5年新高，比前三月加速 19pp",
-   "move": "2026-11-18 漲幅前 100（+6.7765567765567765%）"
+   "move": null
   },
   "analysis": {
    "industry": "半導體設備",
@@ -36880,7 +36880,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 198 百萬元，YoY +32%，MoM +3%，累計 YoY +30%，YoY 32%，同期歷史新高，比前三月加速 36pp",
@@ -36939,7 +36939,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-19T01:00:39+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "6592-2026-11-18": {
   "key": "6592-2026-11-18",
@@ -36954,10 +36954,15 @@
   "fileEn": "659220261118E001.pdf",
   "videoUrl": "http://irconference.twse.com.tw/6592_30_20261118_ch.mp4",
   "note": "報名請洽https://reurl.cc/6X6Z4O",
-  "deck": null,
+  "deck": {
+   "file": "659220261118M001.pdf",
+   "pages": 19,
+   "chars": 4003,
+   "imageHeavy": false
+  },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
-  "deckStatus": "下載失敗",
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,899 百萬元，YoY -1%，MoM +2%，累計 YoY -4%",
    "move": null
@@ -36981,12 +36986,13 @@
    "tone": "無法判斷",
    "evidence": "僅摘要"
   },
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
   "analyzedAt": "2026-11-19T01:24:39+08:00",
   "model": "gpt-6.1-sol",
-  "analyzedEvidence": 0,
+  "analyzedEvidence": 1,
   "firstSeen": "2026-11-19T01:00:39+08:00",
   "state": "partial",
-  "pendingNote": "簡報下載失敗，下次重試；影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "6677-2026-11-18": {
   "key": "6677-2026-11-18",
@@ -37002,13 +37008,13 @@
   "videoUrl": null,
   "note": "",
   "deck": {
-   "file": "667720261118E001.pdf",
+   "file": "667720261118M001.pdf",
    "pages": 25,
    "chars": 3445,
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": null,
@@ -37092,7 +37098,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 793 百萬元，YoY +52%，MoM +15%，累計 YoY +16%，YoY 52%，連5月YoY成長，同期歷史新高，比前三月加速 23pp",
@@ -37153,7 +37159,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-19T01:00:39+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "6782-2026-11-18": {
   "key": "6782-2026-11-18",
@@ -37175,11 +37181,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 528 百萬元，YoY +60%，MoM +7%，累計 YoY +29%，YoY 60%，連6月YoY成長，MoM連6月正成長，5年新高，比前三月加速 28pp",
-   "move": null
+   "move": "2026-11-19 漲幅前 100（+9.00562851782364%）"
   },
   "analysis": {
    "industry": "醫材與醫療服務",
@@ -37255,11 +37261,11 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,650 百萬元，YoY +26%，MoM +2%，累計 YoY +44%，YoY 26%，連12月YoY成長，MoM連5月正成長，5年新高，比前三月加速 0pp",
-   "move": "2026-11-18 漲幅前 100（+6.024096385542169%）"
+   "move": null
   },
   "analysis": {
    "industry": "手機與消費電子",
@@ -37309,11 +37315,11 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 28 百萬元，YoY -14%，MoM -19%，累計 YoY -1%",
-   "move": "2026-11-18 跌幅前 100（-5.578512396694214%）"
+   "move": null
   },
   "analysis": {
    "industry": "軟體與資訊服務",
@@ -37344,7 +37350,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-19T01:00:39+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "6997-2026-11-18": {
   "key": "6997-2026-11-18",
@@ -37366,7 +37372,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 554 百萬元，YoY +39%，MoM +17%，累計 YoY +30%，YoY 39%，連12月YoY成長，同期歷史新高，比前三月加速 10pp",
@@ -37427,7 +37433,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-19T01:00:39+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "7669-2026-11-18": {
   "key": "7669-2026-11-18",
@@ -37438,18 +37444,18 @@
   "time": "14:30",
   "place": "台北君悅酒店3F凱悅廳一區(台北市信義區松壽路2號)",
   "summary": "本次業績發表會將由本公司經營團隊說明產業發展、財務業務狀況、未來風險、公司治理及企業社會責任及財團法人中華民國證券櫃檯買賣中心有價證券董事會暨上櫃審議委員會要求補充揭露事項。",
-  "fileZh": "766920261118M001.pdf",
-  "fileEn": "766920261118E001.pdf",
+  "fileZh": "766920261118M003.pdf",
+  "fileEn": "766920261118E003.pdf",
   "videoUrl": null,
   "note": "",
   "deck": {
-   "file": "766920261118M001.pdf",
+   "file": "766920261118M003.pdf",
    "pages": 51,
    "chars": 5001,
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": null,
@@ -37531,11 +37537,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": null,
-   "move": "2026-11-18 漲幅前 100（+6.941838649155723%）"
+   "move": "2026-11-19 跌幅前 100（-10%）"
   },
   "analysis": {
    "industry": "光學與光通訊",
@@ -37609,16 +37615,16 @@
   "note": "無。",
   "deck": null,
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "尚未上傳",
   "context": {
    "revenue": "2026-10 月營收 221 百萬元，YoY -2%，MoM -13%，累計 YoY +41%",
-   "move": "2026-11-18 跌幅前 100（-9.983079526226735%）"
+   "move": null
   },
   "analysis": null,
   "firstSeen": "2026-11-19T01:00:39+08:00",
   "state": "pending",
-  "pendingNote": "尚未判讀；簡報還沒上傳；影音：超過執行時間，下次轉"
+  "pendingNote": "尚未判讀；簡報還沒上傳；影音轉文字中"
  },
  "7769-2026-11-18": {
   "key": "7769-2026-11-18",
@@ -37640,11 +37646,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 5,223 百萬元，YoY +79%，MoM -9%，累計 YoY +92%，YoY 79%，連12月YoY成長",
-   "move": null
+   "move": "2026-11-19 跌幅前 100（-9.957924263674615%）"
   },
   "analysis": {
    "industry": "半導體設備",
@@ -37722,7 +37728,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "無影片",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 506 百萬元，YoY +62%，MoM -2%，累計 YoY +118%，YoY 62%，連12月YoY成長",
@@ -37804,7 +37810,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 112 百萬元，YoY -28%，MoM -35%，累計 YoY -19%",
@@ -37887,11 +37893,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 3,049 百萬元，YoY +44%，MoM +10%，累計 YoY +28%，YoY 44%，連11月YoY成長，5年新高，比前三月加速 4pp",
-   "move": null
+   "move": "2026-11-19 漲幅前 100（+1.4423076923076923%）"
   },
   "analysis": {
    "industry": "鋼鐵與金屬",
@@ -37946,7 +37952,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-19T01:00:39+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "8442-2026-11-18": {
   "key": "8442-2026-11-18",
@@ -37968,11 +37974,11 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": null,
-   "move": null
+   "move": "2026-11-19 漲幅前 100（+0.842358604091456%）"
   },
   "analysis": {
    "industry": "紡織與製鞋",
@@ -38051,7 +38057,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 511 百萬元，YoY -7%，MoM -20%，累計 YoY +10%",
@@ -38112,7 +38118,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-19T01:00:39+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
  },
  "9902-2026-11-18": {
   "key": "9902-2026-11-18",
@@ -38134,7 +38140,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "超過執行時間，下次轉",
+  "videoStatus": "處理中",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 2 百萬元，YoY -97%，MoM -95%，累計 YoY -58%",
@@ -38194,6 +38200,1603 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-19T01:00:39+08:00",
   "state": "partial",
-  "pendingNote": "影音：超過執行時間，下次轉"
+  "pendingNote": "影音轉文字中"
+ },
+ "1303-2026-11-19": {
+  "key": "1303-2026-11-19",
+  "code": "1303",
+  "name": "南亞",
+  "market": "sii",
+  "date": "2026-11-19",
+  "time": "10:50",
+  "place": "台北晶華酒店",
+  "summary": "本公司受邀參加康和證券舉辦之法人說明會，說明本公司之營運概況。",
+  "fileZh": "130320261118M002.pdf",
+  "fileEn": "130320261118E002.pdf",
+  "videoUrl": null,
+  "note": "無",
+  "deck": {
+   "file": "130320261118M002.pdf",
+   "pages": 15,
+   "chars": 4110,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "無影片",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 34,942 百萬元，YoY +65%，MoM +2%，累計 YoY +31%，YoY 65%，連8月YoY成長，MoM連4月正成長，同期歷史新高，比前三月加速 16pp",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；等待富果整理"
+ },
+ "1417-2026-11-19": {
+  "key": "1417-2026-11-19",
+  "code": "1417",
+  "name": "嘉裕",
+  "market": "sii",
+  "date": "2026-11-19",
+  "time": "15:10",
+  "place": "線上法說會",
+  "summary": "本公司受邀參加富邦證券舉辦之線上法說會，會中介紹本公司2026年第三季營運成果報告",
+  "fileZh": "141720261119M001.pdf",
+  "fileEn": "141720261119E001.pdf",
+  "videoUrl": "http://irconference.twse.com.tw/1417_15_20261119_ch.mp4",
+  "note": "報名請洽富邦證券法人業務部tingju.yeh@fubon.com",
+  "deck": {
+   "file": "141720261119M001.pdf",
+   "pages": 17,
+   "chars": 2417,
+   "imageHeavy": false
+  },
+  "transcript": {
+   "minutes": 27,
+   "chars": 5554
+  },
+  "videoStatus": "ok",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 68 百萬元，YoY -2%，MoM +261%，累計 YoY -9%",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試"
+ },
+ "1525-2026-11-19": {
+  "key": "1525-2026-11-19",
+  "code": "1525",
+  "name": "江申",
+  "market": "sii",
+  "date": "2026-11-19",
+  "time": "14:20",
+  "place": "線上法人說明會",
+  "summary": "本公司受邀參加富邦證券舉辦之上市公司法人說會，會中說明本公司2026年前三季營運概況。 線上報名網址：https://fubonseca.webex.com/weblink/register/rf7c25117d0595bfdddafb02e21d953e9",
+  "fileZh": "152520261119M003.pdf",
+  "fileEn": "152520261119E003.pdf",
+  "videoUrl": "http://irconference.twse.com.tw/1525_27_20261119_ch.mp4",
+  "note": "報名請洽富邦法人業務部tingju.yeh@fubon.com",
+  "deck": {
+   "file": "152520261119M003.pdf",
+   "pages": 17,
+   "chars": 4885,
+   "imageHeavy": false
+  },
+  "transcript": {
+   "minutes": 18,
+   "chars": 3957
+  },
+  "videoStatus": "ok",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 133 百萬元，YoY +22%，MoM +9%，累計 YoY +10%，YoY 22%，24月營收新高，比前三月加速 17pp",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試"
+ },
+ "1609-2026-11-19": {
+  "key": "1609-2026-11-19",
+  "code": "1609",
+  "name": "大亞",
+  "market": "sii",
+  "date": "2026-11-19",
+  "time": "14:00",
+  "place": "線上法人說明會",
+  "summary": "本公司受邀參加華南永昌證券於115年11月19日舉辦之線上法人說明會，說明本公司營運概況",
+  "fileZh": "160920261119M001.pdf",
+  "fileEn": "160920261119E001.pdf",
+  "videoUrl": "https://www.youtube.com/watch?v=Qu3wb9gBz98",
+  "note": "無",
+  "deck": {
+   "file": "160920261119M001.pdf",
+   "pages": 32,
+   "chars": 5722,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "Groq 額度已滿，下次轉",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 3,283 百萬元，YoY +14%，MoM -8%，累計 YoY +20%",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；影音：Groq 額度已滿，下次轉"
+ },
+ "1618-2026-11-19": {
+  "key": "1618-2026-11-19",
+  "code": "1618",
+  "name": "合機",
+  "market": "sii",
+  "date": "2026-11-19",
+  "time": "14:00",
+  "place": "本公司觀音二廠。(桃園巿觀音區觀音工業區經建5路32號)",
+  "summary": "本公司簡介及營運概況說明。",
+  "fileZh": "161820261119M001.pdf",
+  "fileEn": "161820261119E001.pdf",
+  "videoUrl": "http://irconference.twse.com.tw/1618_13_20261119_ch.mp4",
+  "note": "無",
+  "deck": {
+   "file": "161820261119M001.pdf",
+   "pages": 9,
+   "chars": 1234,
+   "imageHeavy": false
+  },
+  "transcript": {
+   "minutes": 14,
+   "chars": 2921
+  },
+  "videoStatus": "ok",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 347 百萬元，YoY +30%，MoM -1%，累計 YoY +2%，YoY 30%，同期歷史新高",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試"
+ },
+ "1717-2026-11-19": {
+  "key": "1717-2026-11-19",
+  "code": "1717",
+  "name": "長興",
+  "market": "sii",
+  "date": "2026-11-19",
+  "time": "14:00",
+  "place": "線上法說會",
+  "summary": "富邦證券舉辦之線上法人說明會",
+  "fileZh": "171720261119M001.pdf",
+  "fileEn": "171720261119E001.pdf",
+  "videoUrl": "http://irconference.twse.com.tw/1717_35_20261119_ch.mp4",
+  "note": "無",
+  "deck": {
+   "file": "171720261119M001.pdf",
+   "pages": 21,
+   "chars": 3346,
+   "imageHeavy": false
+  },
+  "transcript": {
+   "minutes": 28,
+   "chars": 5288
+  },
+  "videoStatus": "ok",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 4,058 百萬元，YoY +31%，MoM -8%，累計 YoY +15%，YoY 31%，連8月YoY成長，比前三月加速 6pp",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試"
+ },
+ "2204-2026-11-19": {
+  "key": "2204-2026-11-19",
+  "code": "2204",
+  "name": "中華",
+  "market": "sii",
+  "date": "2026-11-19",
+  "time": "16:00",
+  "place": "線上法人說明會",
+  "summary": "(1)中華汽車2026年Q1~Q3經營成果\n(2)中華汽車2026年Q4及2027年營運展望",
+  "fileZh": "220420261119M001.pdf",
+  "fileEn": "220420261119E001.pdf",
+  "videoUrl": "https://youtu.be/jPFeC25Z8Mw",
+  "note": "報名請洽富邦法人業務部tingju.yeh@fubon.com",
+  "deck": {
+   "file": "220420261119M001.pdf",
+   "pages": 20,
+   "chars": 3733,
+   "imageHeavy": false
+  },
+  "transcript": {
+   "minutes": 20,
+   "chars": 4519
+  },
+  "videoStatus": "ok",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 2,358 百萬元，YoY -4%，MoM -16%，累計 YoY +7%",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試"
+ },
+ "2211-2026-11-19": {
+  "key": "2211-2026-11-19",
+  "code": "2211",
+  "name": "長榮鋼",
+  "market": "sii",
+  "date": "2026-11-19",
+  "time": "14:30",
+  "place": "線上法人說明會",
+  "summary": "本公司受邀參加由凱基證券舉辦之線上法人說明會，說明公司營運之現況及未來發展。",
+  "fileZh": "221120261119M001.pdf",
+  "fileEn": "221120261119E001.pdf",
+  "videoUrl": "https://www.youtube.com/watch?v=FkFd_aNUTvg",
+  "note": "無",
+  "deck": {
+   "file": "221120261119M001.pdf",
+   "pages": 39,
+   "chars": 6312,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 1,363 百萬元，YoY -5%，MoM -2%，累計 YoY +3%",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；影音轉文字中"
+ },
+ "2327-2026-11-19": {
+  "key": "2327-2026-11-19",
+  "code": "2327",
+  "name": "國巨*",
+  "market": "sii",
+  "date": "2026-11-19",
+  "time": "15:00",
+  "place": "台北晶華酒店",
+  "summary": "本公司於115/11/19受邀參加由康和證券舉辦之\"2026年第四季投資論壇\"投資人說明會，\n就公司營運及產業概況向投資機構做說明。",
+  "fileZh": "232720261105M001.pdf",
+  "fileEn": "232720261105E001.pdf",
+  "videoUrl": null,
+  "note": "公司網站https://yageogroup.com/About/InvestorRelations/InvestorConference",
+  "deck": {
+   "file": "232720261105M001.pdf",
+   "pages": 26,
+   "chars": 8417,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "無影片",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 17,597 百萬元，YoY +55%，MoM +3%，累計 YoY +38%，YoY 55%，連12月YoY成長，MoM連8月正成長，5年新高，比前三月加速 5pp",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；等待富果整理"
+ },
+ "2328-2026-11-19": {
+  "key": "2328-2026-11-19",
+  "code": "2328",
+  "name": "廣宇",
+  "market": "sii",
+  "date": "2026-11-19",
+  "time": "14:00",
+  "place": "群益金鼎證券忠孝分公司會議室\n(台北市大安區忠孝東路四段87號15F)",
+  "summary": "本公司受邀參加群益金鼎證券所舉辦之法人說明會，說明本公司營運概況。",
+  "fileZh": "232820261119M001.pdf",
+  "fileEn": "232820261119E001.pdf",
+  "videoUrl": "http://irconference.twse.com.tw/2328_33_20261119_ch.MP4",
+  "note": "無。",
+  "deck": {
+   "file": "232820261119M001.pdf",
+   "pages": 27,
+   "chars": 5767,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 1,996 百萬元，YoY +28%，MoM -18%，累計 YoY -1%，YoY 28%，連4月YoY成長，比前三月加速 4pp",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；影音轉文字中"
+ },
+ "2436-2026-11-19": {
+  "key": "2436-2026-11-19",
+  "code": "2436",
+  "name": "偉詮電",
+  "market": "sii",
+  "date": "2026-11-19",
+  "time": "14:00",
+  "place": "台北市松山區敦化北路315號16樓",
+  "summary": "報告115年第三季財報與業務營運相關資訊報告。簡報資料請參閱公開資訊觀測站。",
+  "fileZh": "243620261119M001.pdf",
+  "fileEn": "243620261119E001.pdf",
+  "videoUrl": "https://www.weltrend.com.tw/tw/investors/financials?tab=seminar",
+  "note": "無",
+  "deck": {
+   "file": "243620261119M001.pdf",
+   "pages": 24,
+   "chars": 7338,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 301 百萬元，YoY +8%，MoM -27%，累計 YoY +28%",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；等待富果整理"
+ },
+ "2476-2026-11-19": {
+  "key": "2476-2026-11-19",
+  "code": "2476",
+  "name": "鉅祥",
+  "market": "sii",
+  "date": "2026-11-19",
+  "time": "14:30",
+  "place": "永豐金證券(台開大樓22樓會議中心)\n(台北市重慶南路一段2號22樓)",
+  "summary": "本公司將參加永豐金證券舉辦之法人說明會，公布營運成果",
+  "fileZh": "247620261119M001.pdf",
+  "fileEn": "247620261119E001.pdf",
+  "videoUrl": "https://www.gshank.info/tw/ir/shareholder",
+  "note": "報名請洽永豐金證券鄒小姐(02)23828166或mail:ECM@sinopac.com",
+  "deck": {
+   "file": "247620261119M001.pdf",
+   "pages": 22,
+   "chars": 4459,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 1,013 百萬元，YoY +63%，MoM -2%，累計 YoY +44%，YoY 63%，連12月YoY成長，同期歷史新高，比前三月加速 13pp",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；等待富果整理"
+ },
+ "2535-2026-11-19": {
+  "key": "2535-2026-11-19",
+  "code": "2535",
+  "name": "達欣工",
+  "market": "sii",
+  "date": "2026-11-19",
+  "time": "14:50",
+  "place": "臺灣證券交易所(101大樓) 1樓資訊展示中心",
+  "summary": "本公司受邀參加永豐金證券及臺灣證券交易所舉辦之115年「臺灣璞玉指數」主題式業績發表會。",
+  "fileZh": "253520261119M001.pdf",
+  "fileEn": "253520261119E001.pdf",
+  "videoUrl": "https://webpro.twse.com.tw/WebPortal/vod/101/D9ACF6A445F7-2BF21855-E3E8-11F1-A196/?categoryId=195",
+  "note": "無",
+  "deck": {
+   "file": "253520261119E001.pdf",
+   "pages": 21,
+   "chars": 8125,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 2,331 百萬元，YoY +64%，MoM +8%，累計 YoY +28%",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；等待富果整理"
+ },
+ "2617-2026-11-19": {
+  "key": "2617-2026-11-19",
+  "code": "2617",
+  "name": "台航",
+  "market": "sii",
+  "date": "2026-11-19",
+  "time": "15:40",
+  "place": "臺灣證券交易所一樓資訊展示中心(台北市信義區信義路五段7號1樓)",
+  "summary": "本公司受邀參加永豐金證券及臺灣證券交易所舉辦115年「臺灣璞玉指數」主題式業績發表會，將於會中說明本公司業務簡介、產業現況、展望與策略。",
+  "fileZh": "261720261118M001.pdf",
+  "fileEn": "261720261118E001.pdf",
+  "videoUrl": "https://webpro.twse.com.tw/WebPortal/vod/101/D9ACF6A445F7-FBE2FFE6-E3F0-11F1-A196/?categoryId=195",
+  "note": "無",
+  "deck": {
+   "file": "261720261118M001.pdf",
+   "pages": 26,
+   "chars": 5098,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 483 百萬元，YoY +22%，MoM +8%，累計 YoY +19%，YoY 22%，連12月YoY成長，5年新高",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；等待富果整理"
+ },
+ "3056-2026-11-19": {
+  "key": "3056-2026-11-19",
+  "code": "3056",
+  "name": "富華新",
+  "market": "sii",
+  "date": "2026-11-19",
+  "time": "14:30",
+  "place": "線上法人說明會",
+  "summary": "本公司營運概況說明。\n報名方式：https://forms.gle/FTayTKXoRNgQzynM7",
+  "fileZh": "305620261119M001.pdf",
+  "fileEn": "305620261119E001.pdf",
+  "videoUrl": "https://www.youtube.com/watch?v=bptSze_BRC4",
+  "note": "無。",
+  "deck": {
+   "file": "305620261119M001.pdf",
+   "pages": 21,
+   "chars": 2352,
+   "imageHeavy": true
+  },
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 104 百萬元，YoY -20%，MoM +4%，累計 YoY -77%",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；影音轉文字中"
+ },
+ "3357-2026-11-19": {
+  "key": "3357-2026-11-19",
+  "code": "3357",
+  "name": "臺慶科",
+  "market": "otc",
+  "date": "2026-11-19",
+  "time": "13:50",
+  "place": "台北晶華酒店 (台北市中山區中山北路二段39巷3號4樓)",
+  "summary": "本公司將於2026/11/19參加康和證券投資論壇，就本公司已公布之經營績效等相關資訊做說明。",
+  "fileZh": "335720261118M001.pdf",
+  "fileEn": "335720261118E001.pdf",
+  "videoUrl": null,
+  "note": "無。",
+  "deck": {
+   "file": "335720261118M001.pdf",
+   "pages": 21,
+   "chars": 6247,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "無影片",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 822 百萬元，YoY +43%，MoM -4%，累計 YoY +35%，YoY 43%，連12月YoY成長，同期歷史新高",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；等待富果整理"
+ },
+ "3406-2026-11-19": {
+  "key": "3406-2026-11-19",
+  "code": "3406",
+  "name": "玉晶光",
+  "market": "sii",
+  "date": "2026-11-19",
+  "time": "14:30",
+  "place": "線上法說會",
+  "summary": "115年前三季營運報告及說明",
+  "fileZh": "340620261116M001.pdf",
+  "fileEn": "340620261116E001.pdf",
+  "videoUrl": "http://irconference.twse.com.tw/3406_10_20261119_ch.mp4",
+  "note": "完整財務業務資訊請至公開資訊觀測站之法人說明會一覽表或法說會項下查閱",
+  "deck": {
+   "file": "340620261116M001.pdf",
+   "pages": 9,
+   "chars": 1001,
+   "imageHeavy": true
+  },
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 2,126 百萬元，YoY -6%，MoM -20%，累計 YoY +8%",
+   "move": "2026-11-19 跌幅前 100（-10%）"
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；影音轉文字中"
+ },
+ "3489-2026-11-19": {
+  "key": "3489-2026-11-19",
+  "code": "3489",
+  "name": "長耀地產",
+  "market": "otc",
+  "date": "2026-11-19",
+  "time": "15:00",
+  "place": "線上法說會",
+  "summary": "本公司受邀參加合作金庫證券股份有限公司所舉辦之線上法人說明會，說明本公司營運概況。",
+  "fileZh": "348920261118M001.pdf",
+  "fileEn": "348920261118E001.pdf",
+  "videoUrl": "http://irconference.twse.com.tw/3489_6_20261119_ch.mp4",
+  "note": "無",
+  "deck": {
+   "file": "348920261118M001.pdf",
+   "pages": 16,
+   "chars": 1476,
+   "imageHeavy": true
+  },
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 84 百萬元，YoY +1%，MoM -9%，累計 YoY +51%",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；影音轉文字中"
+ },
+ "3511-2026-11-19": {
+  "key": "3511-2026-11-19",
+  "code": "3511",
+  "name": "矽瑪",
+  "market": "otc",
+  "date": "2026-11-19",
+  "time": "14:30",
+  "place": "Webex線上會議",
+  "summary": "台新綜合證券舉辦之法人說明會，就本公司已公開之財務業務資訊作說明。",
+  "fileZh": "351120261119M001.pdf",
+  "fileEn": "351120261119E001.pdf",
+  "videoUrl": "http://irconference.twse.com.tw/3511_11_20261119_ch.mp4",
+  "note": "會議簡報檔及影音連結將於法人說明會後揭露於公開資訊觀測站。",
+  "deck": {
+   "file": "351120261119M001.pdf",
+   "pages": 13,
+   "chars": 3089,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 167 百萬元，YoY +10%，MoM -3%，累計 YoY +12%",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；影音轉文字中"
+ },
+ "3551-2026-11-19": {
+  "key": "3551-2026-11-19",
+  "code": "3551",
+  "name": "世禾",
+  "market": "otc",
+  "date": "2026-11-19",
+  "time": "14:30",
+  "place": "台北市明水路700號",
+  "summary": "本公司受邀參加凱基證券舉辦之法人說明會，說明公司營運概況及展望",
+  "fileZh": "355120261119M001.pdf",
+  "fileEn": "355120261119E001.pdf",
+  "videoUrl": "http://irconference.twse.com.tw/3551_7_20261119_ch.mp4",
+  "note": "無",
+  "deck": {
+   "file": "355120261119M001.pdf",
+   "pages": 17,
+   "chars": 3429,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 311 百萬元，YoY +11%，MoM +1%，累計 YoY +19%",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；影音轉文字中"
+ },
+ "3675-2026-11-19": {
+  "key": "3675-2026-11-19",
+  "code": "3675",
+  "name": "德微",
+  "market": "otc",
+  "date": "2026-11-19",
+  "time": "13:50",
+  "place": "台北晶華酒店",
+  "summary": "本公司受邀參加康和證券舉辦之「2027投資趨勢論壇」，說明公司營運概況與未來展望。",
+  "fileZh": "367520261119M001.pdf",
+  "fileEn": "367520261119E001.pdf",
+  "videoUrl": null,
+  "note": "無",
+  "deck": {
+   "file": "367520261119M001.pdf",
+   "pages": 27,
+   "chars": 4790,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "無影片",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 319 百萬元，YoY +37%，MoM +1%，累計 YoY +24%，YoY 37%，連10月YoY成長，MoM連10月正成長，5年新高，比前三月加速 4pp",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；等待富果整理"
+ },
+ "4109-2026-11-19": {
+  "key": "4109-2026-11-19",
+  "code": "4109",
+  "name": "加捷生醫",
+  "market": "otc",
+  "date": "2026-11-19",
+  "time": "14:30",
+  "place": "線上法說會",
+  "summary": "本公司受邀參加群益金鼎證券舉辦之線上法說會，報告本公司營運狀況。",
+  "fileZh": "410920261119M001.pdf",
+  "fileEn": "410920261119E001.pdf",
+  "videoUrl": "http://irconference.twse.com.tw/4109_12_20261119_ch.mp4",
+  "note": "無。",
+  "deck": {
+   "file": "410920261119M001.pdf",
+   "pages": 23,
+   "chars": 2614,
+   "imageHeavy": true
+  },
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 42 百萬元，YoY +8%，MoM -16%，累計 YoY +16%",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；影音轉文字中"
+ },
+ "4167-2026-11-19": {
+  "key": "4167-2026-11-19",
+  "code": "4167",
+  "name": "松瑞藥",
+  "market": "otc",
+  "date": "2026-11-19",
+  "time": "14:00",
+  "place": "線上法人說明會",
+  "summary": "本公司受邀參加宏遠證券舉辦之線上法人說明會，會中將說明公司財務及業務相關資訊。",
+  "fileZh": "416720261119M001.pdf",
+  "fileEn": "416720261119E001.pdf",
+  "videoUrl": "https://www.youtube.com/watch?v=sydb7RsZVo4",
+  "note": "相關資訊請參閱公開資訊觀測站。",
+  "deck": {
+   "file": "416720261119E001.pdf",
+   "pages": 15,
+   "chars": 6244,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 136 百萬元，YoY +21%，MoM +31%，累計 YoY -2%，YoY 21%，連3月YoY成長，同期歷史新高，比前三月加速 6pp",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；影音轉文字中"
+ },
+ "4401-2026-11-19": {
+  "key": "4401-2026-11-19",
+  "code": "4401",
+  "name": "東隆興",
+  "market": "otc",
+  "date": "2026-11-19",
+  "time": "14:30",
+  "place": "本公司(新北市板橋區三民路2段31號19F大會議室)",
+  "summary": "本公司召開法人說明會說明本公司營運概況",
+  "fileZh": null,
+  "fileEn": null,
+  "videoUrl": "http://irconference.twse.com.tw/4401_17_20261119_ch.mp4",
+  "note": "無",
+  "deck": null,
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "尚未上傳",
+  "context": {
+   "revenue": "2026-10 月營收 273 百萬元，YoY -17%，MoM +1%，累計 YoY -6%",
+   "move": null
+  },
+  "analysis": null,
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "尚未判讀；簡報還沒上傳；影音轉文字中"
+ },
+ "4536-2026-11-19": {
+  "key": "4536-2026-11-19",
+  "code": "4536",
+  "name": "拓凱",
+  "market": "sii",
+  "date": "2026-11-19",
+  "time": "14:00",
+  "place": "臺灣證券交易所1F資訊展示中心(台北市信義路五段7號101大樓)",
+  "summary": "本公司受邀參加由臺灣證券交易所及永豐金證券舉辦之『115年臺灣璞玉指數業績發表會』",
+  "fileZh": "453620261117M001.pdf",
+  "fileEn": "453620261117E001.pdf",
+  "videoUrl": "https://webpro.twse.com.tw/WebPortal/vod/101/?categoryId=171",
+  "note": "無",
+  "deck": {
+   "file": "453620261117M001.pdf",
+   "pages": 23,
+   "chars": 5433,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 777 百萬元，YoY +33%，MoM -6%，累計 YoY +6%，YoY 33%，連6月YoY成長，比前三月加速 21pp",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；等待富果整理"
+ },
+ "4577-2026-11-19": {
+  "key": "4577-2026-11-19",
+  "code": "4577",
+  "name": "達航科技",
+  "market": "otc",
+  "date": "2026-11-19",
+  "time": "14:00",
+  "place": "櫃檯買賣中心(台北市羅斯福路二段100號11樓)",
+  "summary": "115年度法人說明會",
+  "fileZh": "457720261118M001.pdf",
+  "fileEn": "457720261118E001.pdf",
+  "videoUrl": "https://www.youtube.com/watch?v=__gj8GL5LoM",
+  "note": "無",
+  "deck": {
+   "file": "457720261118M001.pdf",
+   "pages": 21,
+   "chars": 4513,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 104 百萬元，YoY +42%，MoM +12%，累計 YoY +48%，YoY 42%，連11月YoY成長，比前三月加速 3pp",
+   "move": "2026-11-19 跌幅前 100（-10%）"
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；影音轉文字中"
+ },
+ "4904-2026-11-19": {
+  "key": "4904-2026-11-19",
+  "code": "4904",
+  "name": "遠傳",
+  "market": "sii",
+  "date": "2026-11-19",
+  "time": "10:50",
+  "place": "台北晶華酒店",
+  "summary": "說明本公司115年度第3季營運與財務概況",
+  "fileZh": "490420261105M001.pdf",
+  "fileEn": "490420261105E001.pdf",
+  "videoUrl": null,
+  "note": "無",
+  "deck": {
+   "file": "490420261105M001.pdf",
+   "pages": 12,
+   "chars": 3719,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "無影片",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 11,618 百萬元，YoY +5%，MoM +6%，累計 YoY +10%",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；等待富果整理"
+ },
+ "4999-2026-11-19": {
+  "key": "4999-2026-11-19",
+  "code": "4999",
+  "name": "鑫禾",
+  "market": "sii",
+  "date": "2026-11-19",
+  "time": "14:30",
+  "place": "臺北兆豐證券大樓(臺北市忠孝東路二段95號13樓)",
+  "summary": "本公司受邀參加兆豐證券舉辦之法人說明會",
+  "fileZh": "499920261118M001.pdf",
+  "fileEn": "499920261118E001.pdf",
+  "videoUrl": "https://youtu.be/iEWwGTTQSdg",
+  "note": "無",
+  "deck": {
+   "file": "499920261118E001.pdf",
+   "pages": 27,
+   "chars": 4813,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 112 百萬元，YoY -33%，MoM +21%，累計 YoY -20%",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；影音轉文字中"
+ },
+ "5206-2026-11-19": {
+  "key": "5206-2026-11-19",
+  "code": "5206",
+  "name": "坤悅",
+  "market": "otc",
+  "date": "2026-11-19",
+  "time": "14:00",
+  "place": "線上法人說明會。",
+  "summary": "本公司受邀參加國泰綜合證券舉辦之線上法人說明會，會中說明本公司之財務及營運狀況。",
+  "fileZh": "520620261119M001.pdf",
+  "fileEn": "520620261119E001.pdf",
+  "videoUrl": null,
+  "note": "無",
+  "deck": {
+   "file": "520620261119E001.pdf",
+   "pages": 29,
+   "chars": 7241,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "無影片",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 542 百萬元，YoY +4078%，MoM -60%，累計 YoY +35%",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；等待富果整理"
+ },
+ "5236-2026-11-19": {
+  "key": "5236-2026-11-19",
+  "code": "5236",
+  "name": "凌陽創新",
+  "market": "sii",
+  "date": "2026-11-19",
+  "time": "09:40",
+  "place": "晶華酒店 4F（台北市中山區中山北路二段39巷3號4樓）",
+  "summary": "本公司受邀參加康和證券舉辦的 「2027投資趨勢論壇」，說明本公司營運概況。",
+  "fileZh": "523620261118M001.pdf",
+  "fileEn": "523620261118E001.pdf",
+  "videoUrl": null,
+  "note": "無",
+  "deck": {
+   "file": "523620261118M001.pdf",
+   "pages": 11,
+   "chars": 1499,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "無影片",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 113 百萬元，YoY -29%，MoM -20%，累計 YoY +5%",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；等待富果整理"
+ },
+ "5315-2026-11-19": {
+  "key": "5315-2026-11-19",
+  "code": "5315",
+  "name": "光聯",
+  "market": "otc",
+  "date": "2026-11-19",
+  "time": "14:00",
+  "place": "本公司(台中市潭子區潭子科技產業園區復興路2號員工餐廳)",
+  "summary": "公司營運暨財務報告",
+  "fileZh": "531520261118M001.pdf",
+  "fileEn": "531520261118E001.pdf",
+  "videoUrl": "http://irconference.twse.com.tw/5315_5_20261119_ch.mp4",
+  "note": "https://www.urt.com.tw/zh-TW/investors/Shareholder",
+  "deck": {
+   "file": "531520261118M001.pdf",
+   "pages": 27,
+   "chars": 5020,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 120 百萬元，YoY -32%，MoM -8%，累計 YoY -13%",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"detail\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"error\":{\"type\":\"invalid_request_error\",\"code\":\"model_not_found\",\"message\":\"The 'gpt-",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；影音轉文字中"
+ },
+ "5351-2026-11-19": {
+  "key": "5351-2026-11-19",
+  "code": "5351",
+  "name": "鈺創",
+  "market": "otc",
+  "date": "2026-11-19",
+  "time": "14:00",
+  "place": "線上法說會",
+  "summary": "本公司受邀參加元大證券舉辦之線上法人說明會，說明本公司之營運及財務概況。",
+  "fileZh": "535120261119M001.pdf",
+  "fileEn": "535120261119E001.pdf",
+  "videoUrl": "https://etron.com/zh-hant/ir/irevents/",
+  "note": "無。",
+  "deck": {
+   "file": "535120261119M001.pdf",
+   "pages": 34,
+   "chars": 6480,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 2,420 百萬元，YoY +417%，MoM +1%，累計 YoY +479%，YoY 417%，連12月YoY成長，MoM連17月正成長，5年新高",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"detail\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"error\":{\"type\":\"invalid_request_error\",\"code\":\"model_not_found\",\"message\":\"The 'gpt-",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；等待富果整理"
+ },
+ "5471-2026-11-19": {
+  "key": "5471-2026-11-19",
+  "code": "5471",
+  "name": "松翰",
+  "market": "sii",
+  "date": "2026-11-19",
+  "time": "14:00",
+  "place": "線上法說會",
+  "summary": "本公司受邀參加元大證券舉辦之線上法人說明會，報告本公司營運狀況。",
+  "fileZh": "547120261117M001.pdf",
+  "fileEn": "547120261117E001.pdf",
+  "videoUrl": null,
+  "note": "無",
+  "deck": {
+   "file": "547120261117M001.pdf",
+   "pages": 14,
+   "chars": 1851,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "無影片",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 255 百萬元，YoY +16%，MoM -6%，累計 YoY +28%",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；等待富果整理"
+ },
+ "5488-2026-11-19": {
+  "key": "5488-2026-11-19",
+  "code": "5488",
+  "name": "松普",
+  "market": "otc",
+  "date": "2026-11-19",
+  "time": "14:00",
+  "place": "台北市忠孝西路一段6號7樓",
+  "summary": "本公司受邀參加福邦證券舉辦之法人說明會，說明公司營運報告及營運展望。",
+  "fileZh": null,
+  "fileEn": null,
+  "videoUrl": "https://youtu.be/2rIcNVC3agI?si=NVQUnm9r-DfFpI81",
+  "note": "無",
+  "deck": null,
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "尚未上傳",
+  "context": {
+   "revenue": "2026-10 月營收 65 百萬元，YoY -15%，MoM -12%，累計 YoY +25%",
+   "move": null
+  },
+  "analysis": null,
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "尚未判讀；簡報還沒上傳；影音轉文字中"
+ },
+ "5508-2026-11-19": {
+  "key": "5508-2026-11-19",
+  "code": "5508",
+  "name": "永信建",
+  "market": "otc",
+  "date": "2026-11-19",
+  "time": "16:00",
+  "place": "線上法說會",
+  "summary": "本公司受邀參加元大證券舉辦之線上法說會，說明2026年第三季財務業務狀況及未來營運展望。",
+  "fileZh": "550820261119M001.pdf",
+  "fileEn": "550820261119E001.pdf",
+  "videoUrl": "https://youtu.be/Yfb89gQLf-4",
+  "note": "無。",
+  "deck": {
+   "file": "550820261119M001.pdf",
+   "pages": 16,
+   "chars": 2139,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 377 百萬元，YoY +118%，MoM -40%，累計 YoY +73%",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；影音轉文字中"
+ },
+ "6016-2026-11-19": {
+  "key": "6016-2026-11-19",
+  "code": "6016",
+  "name": "康和證",
+  "market": "otc",
+  "date": "2026-11-19",
+  "time": "14:00",
+  "place": "線上法說會",
+  "summary": "康和證券受邀宏遠證券參加115年度第二次線上法說會",
+  "fileZh": "601620261119M001.pdf",
+  "fileEn": "601620261119E001.pdf",
+  "videoUrl": "https://reurl.cc/Xx7Yea",
+  "note": "無",
+  "deck": {
+   "file": "601620261119M001.pdf",
+   "pages": 19,
+   "chars": 4536,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 -1,086 百萬元，YoY -355%，MoM -261%，累計 YoY +124%",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；等待富果整理"
+ },
+ "6213-2026-11-19": {
+  "key": "6213-2026-11-19",
+  "code": "6213",
+  "name": "聯茂",
+  "market": "sii",
+  "date": "2026-11-19",
+  "time": "13:50",
+  "place": "台北晶華酒店(台北市中山北路二段39巷3號)",
+  "summary": "本公司將於2026/11/19參加康和舉辦之\"2027年投資趨勢論壇\"，\n就本公司已公布之經營績效等相關資訊做說明。",
+  "fileZh": "621320261117M001.pdf",
+  "fileEn": "621320261117E001.pdf",
+  "videoUrl": null,
+  "note": "無",
+  "deck": {
+   "file": "621320261117M001.pdf",
+   "pages": 26,
+   "chars": 6448,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "無影片",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 6,036 百萬元，YoY +120%，MoM +4%，累計 YoY +57%，YoY 120%，連12月YoY成長，MoM連8月正成長，5年新高，比前三月加速 18pp",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；等待富果整理"
+ },
+ "6614-2026-11-19": {
+  "key": "6614-2026-11-19",
+  "code": "6614",
+  "name": "資拓宏宇",
+  "market": "sii",
+  "date": "2026-11-19",
+  "time": "14:30",
+  "place": "台証金融大樓B1福爾摩沙廳(臺北市中山區建國北路一段96號B1)",
+  "summary": "本公司受邀參加台新綜合證券舉辦之法人說明會，說明本公司營運成果以及未來展望。",
+  "fileZh": "661420261119M001.pdf",
+  "fileEn": "661420261119E001.pdf",
+  "videoUrl": "https://www.youtube.com/watch?v=0fOsS9-fdVI",
+  "note": "無",
+  "deck": {
+   "file": "661420261119M001.pdf",
+   "pages": 20,
+   "chars": 6123,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 399 百萬元，YoY +2%，MoM -16%，累計 YoY +16%",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；影音轉文字中"
+ },
+ "6869-2026-11-19": {
+  "key": "6869-2026-11-19",
+  "code": "6869",
+  "name": "雲豹能源",
+  "market": "sii",
+  "date": "2026-11-19",
+  "time": "14:30",
+  "place": "線上法說會",
+  "summary": "本公司受邀參加凱基證券股份有限公司主辦之法人說明會，\n向投資人說明本公司之營運概況、財務及業務相關資訊。",
+  "fileZh": "686920261119M001.pdf",
+  "fileEn": "686920261119E001.pdf",
+  "videoUrl": "http://irconference.twse.com.tw/6869_29_20261119_ch.mp4",
+  "note": "無",
+  "deck": {
+   "file": "686920261119M001.pdf",
+   "pages": 68,
+   "chars": 16816,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 677 百萬元，YoY +25%，MoM +16%，累計 YoY -3%，YoY 25%，同期歷史新高，比前三月加速 21pp",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；影音轉文字中"
+ },
+ "6987-2026-11-19": {
+  "key": "6987-2026-11-19",
+  "code": "6987",
+  "name": "寶晶能源*",
+  "market": "rotc",
+  "date": "2026-11-19",
+  "time": "15:00",
+  "place": "台北市內湖區行善路463號8樓",
+  "summary": "本公司受邀參加富邦證券舉辦之法人說明會，說明本公司營運概況。",
+  "fileZh": "698720261119M001.pdf",
+  "fileEn": "698720261119E001.pdf",
+  "videoUrl": null,
+  "note": "",
+  "deck": {
+   "file": "698720261119M001.pdf",
+   "pages": 21,
+   "chars": 2979,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "無影片",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": null,
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；等待富果整理"
+ },
+ "7713-2026-11-19": {
+  "key": "7713-2026-11-19",
+  "code": "7713",
+  "name": "威力德生醫",
+  "market": "otc",
+  "date": "2026-11-19",
+  "time": "14:30",
+  "place": "台中市西區自由路一段144號7樓(第一金證券自由分公司)",
+  "summary": "本公司受邀參加第一金證券舉辦之法人說明會，說明本公司營運概況。",
+  "fileZh": "771320261119M001.pdf",
+  "fileEn": "771320261119E001.pdf",
+  "videoUrl": "https://youtu.be/bGMaTdCwr90",
+  "note": "無",
+  "deck": {
+   "file": "771320261119E001.pdf",
+   "pages": 16,
+   "chars": 1812,
+   "imageHeavy": true
+  },
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 113 百萬元，YoY +15%，MoM -3%，累計 YoY +19%",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；影音轉文字中"
+ },
+ "7717-2026-11-19": {
+  "key": "7717-2026-11-19",
+  "code": "7717",
+  "name": "萊德光電-KY",
+  "market": "otc",
+  "date": "2026-11-19",
+  "time": "14:30",
+  "place": "中信金融園區 B棟1302會議室（台北市南港區經貿二路188號13樓）",
+  "summary": "本公司受邀參加 115/11/19 中信證券舉辦之法說會，說明本公司之營運概況與未來展望，法人說明會參加者以受中信證券邀請者為優先，報名請洽中信證券法人部 (6639-2875)。",
+  "fileZh": "771720261116M004.pdf",
+  "fileEn": "771720261116E004.pdf",
+  "videoUrl": null,
+  "note": "無",
+  "deck": {
+   "file": "771720261116M004.pdf",
+   "pages": 20,
+   "chars": 7669,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "無影片",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": null,
+   "move": "2026-11-19 跌幅前 100（-10%）"
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；等待富果整理"
+ },
+ "7782-2026-11-19": {
+  "key": "7782-2026-11-19",
+  "code": "7782",
+  "name": "光速火箭",
+  "market": "otc",
+  "date": "2026-11-19",
+  "time": "14:30",
+  "place": "台北市中山區建國北路一段96號13F(台證大樓台北廳)",
+  "summary": "本公司受邀參加台新證券舉辦之法人說明會，說明近期營運成果及未來展望。",
+  "fileZh": "778220261119M002.pdf",
+  "fileEn": "778220261119E002.pdf",
+  "videoUrl": "https://youtu.be/OHSnEWJsCFc",
+  "note": "法說會簡報依規定揭露於「公開資訊觀測站」。",
+  "deck": {
+   "file": "778220261119M002.pdf",
+   "pages": 22,
+   "chars": 4204,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 71 百萬元，YoY +31%，MoM +8%，累計 YoY +7%",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；影音轉文字中"
+ },
+ "7801-2026-11-19": {
+  "key": "7801-2026-11-19",
+  "code": "7801",
+  "name": "華芸科技",
+  "market": "rotc",
+  "date": "2026-11-19",
+  "time": "14:30",
+  "place": "台北君悅酒店三樓凱悅廳二區（台北市信義區松壽路2號）",
+  "summary": "由公司經營團隊說明公司產業發展、財務業務狀況、未來風險、公司治理及企業社會責任及有價證券上櫃審議委員會詢問重點暨財團法人中華民國證券櫃檯買賣中心要求於公開說明書及評估報告補充揭露事項",
+  "fileZh": "780120261117M001.pdf",
+  "fileEn": "780120261117E001.pdf",
+  "videoUrl": null,
+  "note": "",
+  "deck": {
+   "file": "780120261117M001.pdf",
+   "pages": 28,
+   "chars": 3828,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "無影片",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": null,
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；等待富果整理"
+ },
+ "7881-2026-11-19": {
+  "key": "7881-2026-11-19",
+  "code": "7881",
+  "name": "科明",
+  "market": "rotc",
+  "date": "2026-11-19",
+  "time": "14:30",
+  "place": "台北市大安區仁愛路三段157號5樓",
+  "summary": "本公司受邀參加元大證券舉辦之法人說明會",
+  "fileZh": "788120261116M001.pdf",
+  "fileEn": "788120261116E001.pdf",
+  "videoUrl": null,
+  "note": "",
+  "deck": {
+   "file": "788120261116M001.pdf",
+   "pages": 50,
+   "chars": 8851,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "無影片",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": null,
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；等待富果整理"
+ },
+ "8028-2026-11-19": {
+  "key": "8028-2026-11-19",
+  "code": "8028",
+  "name": "昇陽半導體",
+  "market": "sii",
+  "date": "2026-11-19",
+  "time": "14:30",
+  "place": "台北市仁愛路四段169號15樓",
+  "summary": "本公司受邀參加富邦證券舉辦之法說會，會中就本公司115年第3季營運實績進行說明。",
+  "fileZh": "802820261118M001.pdf",
+  "fileEn": "802820261118E001.pdf",
+  "videoUrl": "http://irconference.twse.com.tw/8028_44_20261119_ch.mp4",
+  "note": "無",
+  "deck": {
+   "file": "802820261118M001.pdf",
+   "pages": 34,
+   "chars": 4237,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 550 百萬元，YoY +35%，MoM +7%，累計 YoY +30%，YoY 35%，連12月YoY成長，5年新高，比前三月加速 3pp",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；影音轉文字中"
+ },
+ "8227-2026-11-19": {
+  "key": "8227-2026-11-19",
+  "code": "8227",
+  "name": "巨有科技",
+  "market": "otc",
+  "date": "2026-11-19",
+  "time": "15:00",
+  "place": "臺北市中山區中山北路二段39巷3號4樓(台北晶華酒店)",
+  "summary": "本公司於115/11/19受邀參加由康和證券舉辦之\"2026年第四季投資論壇\"投資人說明會，",
+  "fileZh": "822720261116M001.pdf",
+  "fileEn": "822720261116E001.pdf",
+  "videoUrl": null,
+  "note": "無。",
+  "deck": {
+   "file": "822720261116M001.pdf",
+   "pages": 18,
+   "chars": 10952,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "無影片",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 181 百萬元，YoY +112%，MoM +16%，累計 YoY +57%，YoY 112%，MoM連3月正成長，同期歷史新高，比前三月加速 110pp",
+   "move": "2026-11-19 跌幅前 100（-9.956709956709958%）"
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；等待富果整理"
+ },
+ "8416-2026-11-19": {
+  "key": "8416-2026-11-19",
+  "code": "8416",
+  "name": "實威",
+  "market": "otc",
+  "date": "2026-11-19",
+  "time": "14:30",
+  "place": "線上法人說明會",
+  "summary": "本公司受邀參加統一證券所舉辦之法人說明會，說明本公司營運概況與展望。",
+  "fileZh": "841620261118M001.pdf",
+  "fileEn": "841620261118E001.pdf",
+  "videoUrl": "http://irconference.twse.com.tw/8416_11_20261119_ch.mp4",
+  "note": "無",
+  "deck": {
+   "file": "841620261118M001.pdf",
+   "pages": 41,
+   "chars": 5042,
+   "imageHeavy": false
+  },
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": "2026-10 月營收 137 百萬元，YoY +30%，MoM -19%，累計 YoY +15%，YoY 30%，連10月YoY成長，同期歷史新高，比前三月加速 10pp",
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；影音轉文字中"
+ },
+ "9941-2026-11-19": {
+  "key": "9941-2026-11-19",
+  "code": "9941",
+  "name": "裕融",
+  "market": "sii",
+  "date": "2026-11-19",
+  "time": "13:30",
+  "place": "線上法人說明會",
+  "summary": "本公司受邀參加富邦證券於2026年11月19日舉辦之上市公司財務業務概況座談會，會中將說明本公司2026年第三季營運概況。 線上報名網址\nhttps://fubonseca.webex.com/weblink/register/rf7c25117d0595bfdddafb02e21d953e9",
+  "fileZh": null,
+  "fileEn": null,
+  "videoUrl": "http://irconference.twse.com.tw/9941_44_20261119_ch.mp4",
+  "note": "請預先完成線上報名，如有問題請聯繫富邦法人部tingju.yeh@fubon.com",
+  "deck": null,
+  "transcript": null,
+  "videoStatus": "處理中",
+  "deckStatus": "尚未上傳",
+  "context": {
+   "revenue": "2026-10 月營收 3,239 百萬元，YoY +2%，MoM -5%，累計 YoY -0%",
+   "move": null
+  },
+  "analysis": null,
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "尚未判讀；簡報還沒上傳；影音轉文字中"
+ },
+ "7961-2026-11-17": {
+  "key": "7961-2026-11-17",
+  "code": "7961",
+  "name": "凱智科技",
+  "market": "rotc",
+  "date": "2026-11-17",
+  "time": "14:30",
+  "place": "台北君悅飯店3樓 凱悅廳I區(台北市信義區松壽路2號)",
+  "summary": "本公司受邀參加華南永昌綜合證券舉辦之興櫃前法人說明會，說明公司營運概況及未來展望。",
+  "fileZh": "796120261117M001.pdf",
+  "fileEn": "796120261117E001.pdf",
+  "videoUrl": null,
+  "note": "",
+  "deck": {
+   "file": "796120261117M001.pdf",
+   "pages": 28,
+   "chars": 73,
+   "imageHeavy": true
+  },
+  "transcript": null,
+  "videoStatus": "無影片",
+  "deckStatus": "ok",
+  "context": {
+   "revenue": null,
+   "move": null
+  },
+  "analysis": null,
+  "analysisError": "codex exit 1: ERROR: {\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.2-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_no",
+  "firstSeen": "2026-11-20T00:04:14+08:00",
+  "state": "pending",
+  "pendingNote": "判讀失敗，下次重試；等待富果整理"
  }
 }
