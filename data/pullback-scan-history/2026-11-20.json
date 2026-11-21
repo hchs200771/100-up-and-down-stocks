@@ -1,0 +1,16 @@
+{
+ "tradingDate": "2026-11-20",
+ "regime": {
+  "close": 36033.2890625,
+  "ema50": 44264.84,
+  "ok": false
+ },
+ "universe": {
+  "listed": 250,
+  "liquid": 202,
+  "minFutVolume": 50,
+  "priced": 202
+ },
+ "signals": [],
+ "watch": []
+}

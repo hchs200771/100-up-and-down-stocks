@@ -1,0 +1,214 @@
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>避險基金警示｜台股盤後報告</title><meta name="robots" content="noindex">
+<style>
+:root{--bg:#f7f8fa;--card:#fff;--fg:#1a202c;--muted:#54657a;--line:#e2e8f0;--accent:#2563eb;--up:#9a3412;--chip:#eef2f7;--red:#b91c1c;--red-bg:#fef2f2;--yellow:#92400e;--yellow-bg:#fffbeb;--green:#166534;--green-bg:#f0fdf4}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1420;--card:#171e2e;--fg:#e5eaf3;--muted:#a9b6c9;--line:#28334a;--accent:#9ab8ff;--up:#ff9a73;--chip:#222c42;--red:#fca5a5;--red-bg:#2a1922;--yellow:#fcd34d;--yellow-bg:#292315;--green:#86efac;--green-bg:#162820}}
+*{box-sizing:border-box}body{margin:0;padding:16px;color:var(--fg);background:var(--bg);font:15px/1.65 -apple-system,"PingFang TC","Noto Sans TC",sans-serif}
+.wrap{max-width:1100px;margin:auto;min-width:0}main{overflow-wrap:anywhere}a{color:var(--accent)}h1{font-size:24px;margin:0 0 8px}h2{font-size:19px;margin:0 0 8px}h3{font-size:16px;margin:16px 0 4px}h4{font-size:15px;margin:0 0 4px}p,ul{margin:6px 0 10px}ul{padding-left:1.4em}li+li{margin-top:5px}
+.card,.inset{min-width:0;border:1px solid var(--line);border-radius:10px;padding:14px 16px}.card{margin:12px 0;background:var(--card)}.inset{background:var(--bg);padding:12px}
+.hero{border-left:4px solid var(--level-color);background:var(--level-bg)}.hero h2{color:var(--level-color)}.hero.red{--level-color:var(--red);--level-bg:var(--red-bg)}.hero.yellow{--level-color:var(--yellow);--level-bg:var(--yellow-bg)}.hero.green{--level-color:var(--green);--level-bg:var(--green-bg)}
+.eyebrow,.muted,figcaption{color:var(--muted);font-size:13px}.note,.hot{color:var(--up)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.cot-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.chip{display:inline-block;background:var(--chip);border-radius:99px;padding:2px 9px;font-size:13px;font-weight:700}figure{margin:12px 0 0}svg{display:block;width:100%;color:var(--accent);overflow:visible}svg polyline,svg path{fill:none;stroke:currentColor;stroke-width:1.5;vector-effect:non-scaling-stroke}svg .guides{color:var(--muted);opacity:.6;stroke-width:1;stroke-dasharray:3 4}figcaption{display:flex;justify-content:space-between;gap:8px}details{margin:12px 0}summary{cursor:pointer;color:var(--accent);font-weight:700}dl{margin:0}dt{font-weight:700;margin-top:8px}dd{margin:0 0 4px}
+@media(max-width:740px){.cot-grid{grid-template-columns:1fr}}@media(max-width:570px){body{padding:12px}.grid{grid-template-columns:1fr}.wrap .gnav .gnav-sub.on{flex-wrap:wrap;overflow:visible}}
+</style></head><body><div class="wrap"><nav class="nav gnav"><style>
+nav.gnav{display:block;position:sticky;top:0;z-index:40;margin:0 0 14px;padding:8px 0 6px;background:var(--bg,#fff);border-bottom:1px solid var(--line,#e5e7eb);font-family:inherit}
+.gnav .gnav-top{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.gnav .gnav-g{position:relative}
+.gnav .gnav-btn{display:inline-block;border:1px solid var(--line,#e5e7eb);border-radius:999px;padding:7px 14px;font-size:14px;font-weight:700;line-height:1.3;background:var(--card,#fff);color:var(--fg,#374151);text-decoration:none;cursor:pointer;white-space:nowrap}
+.gnav .gnav-btn:hover{border-color:var(--accent,#6366f1);color:var(--accent,#4338ca)}
+.gnav .gnav-btn.on{background:var(--accent,#4f46e5);border-color:var(--accent,#4f46e5);color:#fff}
+.gnav .gnav-caret{font-size:10px;margin-left:4px;opacity:.7}
+.gnav .gnav-menu{display:none;position:absolute;left:0;top:100%;padding-top:6px;z-index:41;min-width:168px}
+.gnav .gnav-g:nth-last-child(-n+2) .gnav-menu{left:auto;right:0}
+.gnav .gnav-menu-in{background:var(--card,#fff);border:1px solid var(--line,#e5e7eb);border-radius:10px;box-shadow:0 8px 24px rgba(15,23,42,.14);padding:6px}
+.gnav .gnav-item{display:block;border:0;border-radius:6px;padding:8px 12px;font-size:14px;font-weight:600;line-height:1.3;background:transparent;color:var(--fg,#374151);text-decoration:none;white-space:nowrap}
+.gnav .gnav-item:hover{background:var(--chip,#f1f5f9);color:var(--accent,#4338ca)}
+.gnav .gnav-item.on{color:var(--accent,#4338ca);background:var(--chip,#eef2ff)}
+.gnav .gnav-g.open .gnav-menu{display:block}
+@media (any-hover:hover){.gnav .gnav-g:hover .gnav-menu{display:block}}
+.gnav .gnav-sub{display:none;gap:4px;margin-top:6px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.gnav .gnav-sub::-webkit-scrollbar{display:none}
+.gnav .gnav-sub.on{display:flex}
+.gnav .gnav-subitem{flex:none;display:inline-block;border:0;border-radius:6px;padding:4px 10px;font-size:13px;font-weight:600;line-height:1.4;background:transparent;color:var(--muted,#6b7280);text-decoration:none;white-space:nowrap}
+.gnav .gnav-subitem:hover{color:var(--accent,#4338ca)}
+.gnav .gnav-subitem.on{background:var(--chip,#eef2ff);color:var(--accent,#4338ca)}
+@media (max-width:640px){.gnav .gnav-btn{padding:6px 11px;font-size:13px}}
+</style><style>@media (prefers-color-scheme:dark){:root{--bg:#1b2232;--card:#242d40;--line:#36425b;--chip:#2e3a52}}</style><div class="gnav-top"><a class="gnav-btn gnav-home" href="index.html" data-tab="🏠 總覽" data-g="-1">今日</a><div class="gnav-g" data-g="0"><a class="gnav-btn on" href="index.html#tab=%F0%9F%93%8A%20%E5%B8%82%E5%A0%B4%E7%B8%BD%E8%A6%BD" aria-haspopup="true">大盤<span class="gnav-caret">▾</span></a><div class="gnav-menu"><div class="gnav-menu-in"><a class="gnav-item" href="index.html#tab=%F0%9F%93%8A%20%E5%B8%82%E5%A0%B4%E7%B8%BD%E8%A6%BD" data-tab="📊 市場總覽" data-g="0">📊 市場總覽</a><a class="gnav-item" href="index.html#tab=%E2%9A%96%EF%B8%8F%20%E6%8C%87%E6%95%B8%E8%B2%A2%E7%8D%BB" data-tab="⚖️ 指數貢獻" data-g="0">⚖️ 指數貢獻</a><a class="gnav-item" href="index.html#tab=%F0%9F%8E%99%EF%B8%8F%20KOL%20%E8%A7%80%E9%BB%9E" data-tab="🎙️ KOL 觀點" data-g="0">🎙️ KOL 觀點</a><a class="gnav-item on" href="hedge-fund-watch.html">🚨 避險基金警示</a></div></div></div><div class="gnav-g" data-g="1"><a class="gnav-btn" href="index.html#tab=%F0%9F%94%A5%20%E4%B8%8A%E6%BC%B2%E6%97%8F%E7%BE%A4" aria-haspopup="true">族群<span class="gnav-caret">▾</span></a><div class="gnav-menu"><div class="gnav-menu-in"><a class="gnav-item" href="index.html#tab=%F0%9F%94%A5%20%E4%B8%8A%E6%BC%B2%E6%97%8F%E7%BE%A4" data-tab="🔥 上漲族群" data-g="1">🔥 上漲族群</a><a class="gnav-item" href="index.html#tab=%F0%9F%A7%8A%20%E4%B8%8B%E8%B7%8C%E6%97%8F%E7%BE%A4" data-tab="🧊 下跌族群" data-g="1">🧊 下跌族群</a><a class="gnav-item" href="index.html#tab=%F0%9F%94%84%20%E6%97%8F%E7%BE%A4%E8%BC%AA%E5%8B%95" data-tab="🔄 族群輪動" data-g="1">🔄 族群輪動</a><a class="gnav-item" href="themes.html">📡 題材雷達</a></div></div></div><div class="gnav-g" data-g="2"><a class="gnav-btn" href="index.html#tab=%F0%9F%91%80%20%E8%A7%80%E5%AF%9F%E5%90%8D%E5%96%AE" aria-haspopup="true">個股<span class="gnav-caret">▾</span></a><div class="gnav-menu"><div class="gnav-menu-in"><a class="gnav-item" href="index.html#tab=%F0%9F%91%80%20%E8%A7%80%E5%AF%9F%E5%90%8D%E5%96%AE" data-tab="👀 觀察名單" data-g="2">👀 觀察名單</a><a class="gnav-item" href="pick-deepdive.html">🔬 選股深挖</a><a class="gnav-item" href="index.html#tab=%F0%9F%8F%A6%20%E5%A4%A7%E6%88%B6%E7%B1%8C%E7%A2%BC" data-tab="🏦 大戶籌碼" data-g="2">🏦 大戶籌碼</a><a class="gnav-item" href="broker-watch.html">🕵️ 贏家分點</a><a class="gnav-item" href="target-price.html">🎯 目標價</a><a class="gnav-item" href="investor-conf.html">🎤 法說會</a><a class="gnav-item" href="revenue.html">📈 月營收</a><a class="gnav-item" href="revenue-decline.html">📉 營收衰退</a><a class="gnav-item" href="cb-pledge.html">🔐 設質+CB</a></div></div></div><div class="gnav-g" data-g="3"><a class="gnav-btn" href="index.html#tab=%F0%9F%8E%AF%20%E6%93%8D%E4%BD%9C%E5%BB%BA%E8%AD%B0" aria-haspopup="true">策略<span class="gnav-caret">▾</span></a><div class="gnav-menu"><div class="gnav-menu-in"><a class="gnav-item" href="index.html#tab=%F0%9F%8E%AF%20%E6%93%8D%E4%BD%9C%E5%BB%BA%E8%AD%B0" data-tab="🎯 操作建議" data-g="3">🎯 操作建議</a><a class="gnav-item" href="strong-tracking.html">💪 強勢追蹤</a><a class="gnav-item" href="review.html">🔒 交易檢討</a><a class="gnav-item" href="factor-lab.html">🧪 因子驗證</a></div></div></div></div><div class="gnav-sub on" data-g="0"><a class="gnav-subitem" href="index.html#tab=%F0%9F%93%8A%20%E5%B8%82%E5%A0%B4%E7%B8%BD%E8%A6%BD" data-tab="📊 市場總覽" data-g="0">市場總覽</a><a class="gnav-subitem" href="index.html#tab=%E2%9A%96%EF%B8%8F%20%E6%8C%87%E6%95%B8%E8%B2%A2%E7%8D%BB" data-tab="⚖️ 指數貢獻" data-g="0">指數貢獻</a><a class="gnav-subitem" href="index.html#tab=%F0%9F%8E%99%EF%B8%8F%20KOL%20%E8%A7%80%E9%BB%9E" data-tab="🎙️ KOL 觀點" data-g="0">KOL 觀點</a><a class="gnav-subitem on" href="hedge-fund-watch.html">避險基金警示</a></div><div class="gnav-sub" data-g="1"><a class="gnav-subitem" href="index.html#tab=%F0%9F%94%A5%20%E4%B8%8A%E6%BC%B2%E6%97%8F%E7%BE%A4" data-tab="🔥 上漲族群" data-g="1">上漲族群</a><a class="gnav-subitem" href="index.html#tab=%F0%9F%A7%8A%20%E4%B8%8B%E8%B7%8C%E6%97%8F%E7%BE%A4" data-tab="🧊 下跌族群" data-g="1">下跌族群</a><a class="gnav-subitem" href="index.html#tab=%F0%9F%94%84%20%E6%97%8F%E7%BE%A4%E8%BC%AA%E5%8B%95" data-tab="🔄 族群輪動" data-g="1">族群輪動</a><a class="gnav-subitem" href="themes.html">題材雷達</a></div><div class="gnav-sub" data-g="2"><a class="gnav-subitem" href="index.html#tab=%F0%9F%91%80%20%E8%A7%80%E5%AF%9F%E5%90%8D%E5%96%AE" data-tab="👀 觀察名單" data-g="2">觀察名單</a><a class="gnav-subitem" href="pick-deepdive.html">選股深挖</a><a class="gnav-subitem" href="index.html#tab=%F0%9F%8F%A6%20%E5%A4%A7%E6%88%B6%E7%B1%8C%E7%A2%BC" data-tab="🏦 大戶籌碼" data-g="2">大戶籌碼</a><a class="gnav-subitem" href="broker-watch.html">贏家分點</a><a class="gnav-subitem" href="target-price.html">目標價</a><a class="gnav-subitem" href="investor-conf.html">法說會</a><a class="gnav-subitem" href="revenue.html">月營收</a><a class="gnav-subitem" href="revenue-decline.html">營收衰退</a><a class="gnav-subitem" href="cb-pledge.html">設質CB</a></div><div class="gnav-sub" data-g="3"><a class="gnav-subitem" href="index.html#tab=%F0%9F%8E%AF%20%E6%93%8D%E4%BD%9C%E5%BB%BA%E8%AD%B0" data-tab="🎯 操作建議" data-g="3">操作建議</a><a class="gnav-subitem" href="strong-tracking.html">強勢追蹤</a><a class="gnav-subitem" href="review.html">交易檢討</a><a class="gnav-subitem" href="factor-lab.html">因子驗證</a></div><script>(function(){
+var nav=document.currentScript&&document.currentScript.parentNode;if(!nav)return;
+var groups=[].slice.call(nav.querySelectorAll('.gnav-g'));
+function closeAll(except){groups.forEach(function(g){if(g!==except)g.classList.remove('open');});}
+groups.forEach(function(g){var b=g.querySelector('.gnav-btn');if(!b)return;
+b.addEventListener('click',function(e){e.preventDefault();closeAll(g);g.classList.toggle('open');});});
+document.addEventListener('click',function(e){if(!nav.contains(e.target))closeAll();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll();});
+nav.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('.gnav-item,.gnav-subitem'))closeAll();});
+window.gnavMark=function(label){
+  var gi=-1;
+  [].slice.call(nav.querySelectorAll('[data-tab]')).forEach(function(a){var on=a.getAttribute('data-tab')===label;a.classList.toggle('on',on);if(on)gi=+a.getAttribute('data-g');});
+  groups.forEach(function(g){g.querySelector('.gnav-btn').classList.toggle('on',+g.getAttribute('data-g')===gi);});
+  [].slice.call(nav.querySelectorAll('.gnav-sub')).forEach(function(s){s.classList.toggle('on',+s.getAttribute('data-g')===gi);});
+  showCurrent();
+};
+// 手機上小分頁列是橫向捲動的：把目前這一項捲進畫面
+function showCurrent(){var on=nav.querySelector('.gnav-sub.on .gnav-subitem.on');if(!on)return;var row=on.parentNode;
+if(row.scrollWidth>row.clientWidth)row.scrollLeft=on.offsetLeft-row.offsetLeft-(row.clientWidth-on.offsetWidth)/2;}
+showCurrent();
+})();</script></nav><main>
+<h1>避險基金警示</h1>
+<section class="card hero red"><p class="eyebrow">整體狀態 · 最新資料日 2026-11-20</p>
+<h2>紅燈 · 新亮燈</h2><p>亮燈項目為 MTUM/SPY 11/20 新亮燈、標普 500 槓桿基金極端偏多、VIX 槓桿基金極端偏空。</p>
+
+</section>
+<p>過去兩年：紅燈 14.1%、黃燈 76.7%、綠燈 9.2% 的交易日</p>
+<p>黃燈是常態提醒；紅燈才是要立刻檢查部位的時候。</p>
+<section class="card"><h2>這頁怎麼用</h2>
+<p>警示只是提醒你留意風險，無法預測大盤。它不改變原有的持股水位或燈號規則。以 MTUM／SPY 為例，亮燈後 60 個交易日內首次跌破 10% 的精確率，台股為 26.1%，標普 500 為 14.5%。多數亮燈後沒有發生這種大跌。</p>
+<ul>
+<li><strong>紅燈</strong> · 檢查停損、不加槓桿、不追高、減少新倉。</li>
+<li><strong>黃燈</strong> · 不加槓桿、新倉縮小、確認每檔都有停損。</li>
+<li><strong>綠燈</strong> · 照原規則。</li>
+</ul></section>
+
+<section class="card"><h2>MTUM／SPY 動能急跌</h2>
+<h3>現在</h3>
+<p><strong>−3.09%</strong> 的 5 個美股交易日相對對數報酬 · 第 4.1 百分位（2026-11-20 美國收盤）。當日門檻為 −2.88%，目前在觸發區內。</p>
+<p><span class="chip hot">警戒中</span>
+最近亮燈日 2026-11-20，距資料日 0 個美股交易日。警戒期預計至 2027-02-19 收盤（含當日）。
+</p><details open><summary>過去兩年亮燈日（美國收盤日，共 15 次）</summary><p>2026-11-20、2026-11-02、2026-10-08、2026-08-19、2026-07-28、2026-06-29、2026-06-10、2026-05-18、2026-03-30、2026-03-05、2026-02-04、2025-12-17、2025-06-10、2025-03-06、2025-02-24</p></details>
+<h3>這是什麼</h3><p>MTUM 是持有美股強勢股的 ETF，SPY 跟蹤標普 500。用兩者含配息的調整收盤價，計算 MTUM ÷ SPY 的比值在 5 個美股交易日內的對數變化。負值表示強勢股相對大盤落後，正值表示相對領先。</p>
+<h3>怎麼看</h3><p>把今天的變化跟前 3 年的同類變化相比，今天不放進門檻樣本。低於或等於歷史第 5 百分位門檻才進入觸發區。第一次從區外進入才亮燈，離開至少 5 個美股交易日後再進入才能重響。重新亮燈會重算 60 個美股交易日警戒期。</p>
+<h3>歷史成績</h3><p>回測到 2026-11-20 收盤。以下「跌破」指從該輪最高收盤起第一次回撤達 10%。隨機比較保留警報次數與最短間隔，在同一批可用日期重新抽取警報日。</p>
+<div class="grid"><section class="inset"><h4>台灣加權指數</h4><ul>
+<li>跌破前 60 個交易日內命中率 100.0%（9／9 次），隨機平均 80.0%。</li>
+<li>同一觀察窗且警報早於高點的命中率 66.7%（6／9 次），隨機平均 45.7%。</li>
+<li>警報後 60 個交易日內精確率 26.1%（18／69 次），隨機平均 16.8%。假警報率 73.9%（51／69 次）。</li>
+<li>從任一可完整追蹤的交易日起算，接下來 60 個交易日內首次跌破 10% 的基準機率是 13.8%（734／5,319 個交易日）。</li>
+</ul></section><section class="inset"><h4>標普 500</h4><ul>
+<li>跌破前 60 個交易日內命中率 100.0%（7／7 次），隨機平均 78.7%。</li>
+<li>同一觀察窗且警報早於高點的命中率 42.9%（3／7 次），隨機平均 49.7%。</li>
+<li>警報後 60 個交易日內精確率 14.5%（10／69 次），隨機平均 11.6%。假警報率 85.5%（59／69 次）。</li>
+<li>從任一可完整追蹤的交易日起算，接下來 60 個交易日內首次跌破 10% 的基準機率是 7.7%（421／5,447 個交易日）。</li>
+</ul></section></div>
+<p>全期 80 項主要比較中，Holm 校正後 0 項過關。把台股樣本分開看，2005–2015 年精確率 11.1%（1／9 次），隨機平均 14.2%。2016 年到樣本結束為 28.3%（17／60 次），隨機平均 17.1%。兩段相對隨機的表現不同，前段警報也少。<a href="factor-lab.html#2026-11-22-crash-warning">完整回測及比較方法</a></p>
+<details open><summary>三段行情實例</summary><ul>
+<li><strong>2024 年 7–8 月。</strong>標普 500 從 2024-07-16 高點到 2024-08-05 低點的收盤跌幅為 8.5%，未達 10%。台股從 2024-07-11 高點到 2024-08-05 低點的收盤跌幅為 18.7%，在 2024-08-02 首次跌破 10%。台股 MTUM／SPY 早在 2024-06-05 亮燈，UMD 5 日警報到高點後的 2024-07-18 才出現。</li>
+<li><strong>2025 年 2–4 月。</strong>標普 500 從 2025-02-19 高點到 2025-04-08 低點的收盤跌幅為 18.9%，在 2025-03-13 首次跌破 10%。NQ 極端偏空於 2025-02-18 亮燈，早於高點。MTUM／SPY 與 UMD 5 日警報都在高點後的 2025-02-24 才出現。台股這段的波段跌幅為 26.7%，仍屬 2024 年高點以來同一輪下跌，直到 2025-04-07 才首次從該輪高點回撤達 20%。</li>
+<li><strong>2026 年 10–11 月。</strong>兩市高點同為 2026-10-06。標普 500 至 2026-11-20 首次回撤達 10%，樣本末跌幅為 11.6%。在跌破前 60 個交易日內，MTUM／SPY 和 NQ 極端偏多分別在高點後的 2026-10-08、2026-10-26 才亮燈。台股在 2026-11-03 首次跌破 10%，2026-11-06 首次跌破 20%，樣本末跌幅為 27.7%。台股 MTUM／SPY 曾在高點前的 2026-08-20 亮燈。台股後續從 2026-11-11 高點到 2026-11-20 低點的收盤跌幅為 18.6%，這段波段內各訊號都沒有新警報。</li>
+</ul></details>
+<h3>限制</h3><p>強勢股相對落後有時出現在大盤已跌之後，也可能只是資金輪動。台股回測把美股警報移到下一個台股交易日。這頁的亮燈與到期日期用美股交易日，未來到期日依交易所例行休市日估算。</p>
+</section>
+
+<section class="card"><h2>COT 槓桿基金部位</h2>
+<h3>現在</h3><div class="grid cot-grid"><section class="inset"><h4>ES 標普 500</h4>
+<p class="muted">週報基準日 2026-11-17<br>公布日 2026-11-20（依回測日曆）<br>回測對應美股收盤日 2026-11-23</p>
+
+<p><strong>−11.21%</strong> 淨部位 · 第 93.5 百分位</p>
+<p><span class="chip hot">極端偏多 · 本期進入</span></p>
+<p>四週變化 7.98 個百分點<br>四週變化 z 分數 2.17 個標準差（四週驟升，本期進入）</p>
+<figure><svg viewBox="0 0 300 54" role="img" aria-label="ES 近三年淨部位百分位走勢，虛線為第 10 與第 90 百分位">
+<path class="guides" d="M0 7H300 M0 47H300"></path><polyline points="0.0,34.3 1.9,34.6 3.8,37.5 5.8,32.3 7.7,34.9 9.6,38.8 11.5,40.7 13.5,33.3 15.4,30.7 17.3,40.4 19.2,42.6 21.2,40.7 23.1,37.2 25.0,40.7 26.9,41.7 28.8,38.8 30.8,41.4 32.7,46.8 34.6,48.5 36.5,38.5 38.5,34.9 40.4,20.7 42.3,21.4 44.2,20.4 46.2,24.6 48.1,29.1 50.0,33.3 51.9,33.3 53.8,33.9 55.8,34.3 57.7,29.1 59.6,29.4 61.5,24.6 63.5,33.0 65.4,35.2 67.3,23.3 69.2,19.1 71.2,17.5 73.1,23.9 75.0,37.5 76.9,33.0 78.8,19.4 80.8,16.8 82.7,23.3 84.6,31.7 86.5,27.2 88.5,30.1 90.4,27.2 92.3,21.0 94.2,20.1 96.2,10.4 98.1,15.5 100.0,13.9 101.9,20.1 103.8,31.7 105.8,16.5 107.7,10.4 109.6,32.0 111.5,31.4 113.5,34.3 115.4,25.9 117.3,43.3 119.2,44.3 121.2,29.7 123.1,35.5 125.0,33.6 126.9,29.7 128.8,14.3 130.8,4.6 132.7,4.6 134.6,10.1 136.5,12.3 138.5,10.1 140.4,8.5 142.3,9.7 144.2,10.4 146.2,11.0 148.1,17.8 150.0,21.0 151.9,10.4 153.8,16.2 155.8,21.0 157.7,13.6 159.6,23.6 161.5,32.3 163.5,39.7 165.4,38.1 167.3,38.1 169.2,42.3 171.2,34.9 173.1,45.9 175.0,41.0 176.9,48.1 178.8,44.9 180.8,47.2 182.7,45.5 184.6,51.0 186.5,50.4 188.5,51.0 190.4,48.5 192.3,50.7 194.2,50.4 196.2,45.9 197.8,47.2 200.0,35.9 201.9,38.8 203.8,47.2 205.8,45.9 207.7,28.1 209.6,42.3 211.5,40.7 213.5,47.2 215.4,50.4 217.3,47.2 219.2,49.1 221.2,49.7 223.1,47.8 225.0,51.4 226.9,50.4 228.8,41.0 230.8,33.3 232.7,21.7 234.6,36.8 236.5,8.1 238.5,10.7 240.4,46.2 242.3,44.3 244.2,43.6 246.2,42.6 248.1,45.2 250.0,41.0 251.9,48.1 253.8,50.4 255.8,43.3 257.7,42.3 259.6,39.1 261.5,36.8 263.5,36.8 265.4,38.5 267.3,30.1 269.2,23.0 271.2,24.6 273.1,12.3 275.0,16.2 276.9,23.9 278.8,23.9 280.8,29.7 282.7,7.8 284.6,42.0 286.5,41.0 288.5,46.8 290.4,45.2 292.3,38.8 294.2,42.3 296.2,36.2 298.1,20.1 300.0,5.2"></polyline></svg>
+<figcaption><span>2023-11-21</span><span>2026-11-17</span></figcaption></figure></section><section class="inset"><h4>NQ 那斯達克 100</h4>
+<p class="muted">週報基準日 2026-11-17<br>公布日 2026-11-20（依回測日曆）<br>回測對應美股收盤日 2026-11-23</p>
+
+<p><strong>−3.69%</strong> 淨部位 · 第 85.2 百分位</p>
+<p><span class="chip">一般區</span></p>
+<p>四週變化 −4.04 個百分點<br>四週變化 z 分數 −0.56 個標準差</p>
+<figure><svg viewBox="0 0 300 54" role="img" aria-label="NQ 近三年淨部位百分位走勢，虛線為第 10 與第 90 百分位">
+<path class="guides" d="M0 7H300 M0 47H300"></path><polyline points="0.0,9.1 1.9,5.5 3.8,21.7 5.8,31.0 7.7,43.9 9.6,43.9 11.5,34.6 13.5,35.9 15.4,33.3 17.3,34.6 19.2,21.0 21.2,29.4 23.1,34.9 25.0,31.7 26.9,47.5 28.8,49.4 30.8,49.4 32.7,43.9 34.6,47.8 36.5,47.2 38.5,45.9 40.4,48.5 42.3,47.2 44.2,49.4 46.2,49.4 48.1,51.0 50.0,43.6 51.9,46.2 53.8,41.0 55.8,46.5 57.7,45.2 59.6,43.6 61.5,44.9 63.5,45.9 65.4,44.3 67.3,33.6 69.2,27.8 71.2,34.9 73.1,47.5 75.0,51.4 76.9,48.5 78.8,47.2 80.8,34.9 82.7,49.1 84.6,48.8 86.5,50.4 88.5,50.1 90.4,51.0 92.3,46.2 94.2,40.4 96.2,37.8 98.1,42.6 100.0,34.6 101.9,39.4 103.8,41.7 105.8,38.8 107.7,41.0 109.6,43.0 111.5,25.9 113.5,38.1 115.4,33.6 117.3,36.2 119.2,44.9 121.2,44.9 123.1,47.2 125.0,51.4 126.9,13.0 128.8,5.9 130.8,2.6 132.7,3.3 134.6,36.2 136.5,22.6 138.5,2.6 140.4,8.8 142.3,3.9 144.2,15.9 146.2,31.0 148.1,45.5 150.0,44.9 151.9,41.0 153.8,42.0 155.8,31.4 157.7,29.7 159.6,22.0 161.5,7.8 163.5,6.2 165.4,10.4 167.3,11.4 169.2,10.7 171.2,7.2 173.1,7.5 175.0,9.4 176.9,9.1 178.8,10.4 180.8,13.3 182.7,10.7 184.6,14.9 186.5,3.6 188.5,5.2 190.4,4.9 192.3,3.0 194.2,2.3 196.2,2.6 197.8,2.0 200.0,3.0 201.9,3.3 203.8,6.5 205.8,13.3 207.7,7.5 209.6,11.7 211.5,16.8 213.5,13.3 215.4,15.2 217.3,19.1 219.2,12.0 221.2,9.4 223.1,8.5 225.0,9.1 226.9,13.0 228.8,16.8 230.8,19.7 232.7,21.7 234.6,39.7 236.5,34.3 238.5,35.2 240.4,46.5 242.3,32.0 244.2,27.8 246.2,25.9 248.1,42.6 250.0,34.3 251.9,40.1 253.8,39.7 255.8,22.6 257.7,16.8 259.6,46.5 261.5,52.0 263.5,46.2 265.4,50.7 267.3,52.0 269.2,47.2 271.2,51.7 273.1,52.0 275.0,48.5 276.9,27.2 278.8,10.1 280.8,21.4 282.7,7.5 284.6,21.4 286.5,18.5 288.5,15.2 290.4,10.1 292.3,5.2 294.2,4.6 296.2,3.0 298.1,2.3 300.0,9.4"></polyline></svg>
+<figcaption><span>2023-11-21</span><span>2026-11-17</span></figcaption></figure></section><section class="inset"><h4>VIX 波動率期貨</h4>
+<p class="muted">週報基準日 2026-11-17<br>公布日 2026-11-20（依回測日曆）<br>回測對應美股收盤日 2026-11-23</p>
+
+<p><strong>−18.34%</strong> 淨部位 · 第 3.9 百分位</p>
+<p><span class="chip hot">極端偏空 · 本期進入</span></p>
+<p>四週變化 −13.53 個百分點<br>四週變化 z 分數 −2.38 個標準差（四週驟降，本期進入）</p>
+<figure><svg viewBox="0 0 300 54" role="img" aria-label="VIX 近三年淨部位百分位走勢，虛線為第 10 與第 90 百分位">
+<path class="guides" d="M0 7H300 M0 47H300"></path><polyline points="0.0,10.4 1.9,7.8 3.8,4.6 5.8,2.3 7.7,2.0 9.6,10.4 11.5,3.9 13.5,6.5 15.4,5.2 17.3,3.9 19.2,7.5 21.2,3.9 23.1,8.1 25.0,8.1 26.9,8.5 28.8,7.5 30.8,7.8 32.7,3.3 34.6,2.0 36.5,4.9 38.5,9.4 40.4,9.4 42.3,7.2 44.2,10.7 46.2,3.6 48.1,2.0 50.0,2.0 51.9,2.3 53.8,2.3 55.8,3.3 57.7,4.3 59.6,4.3 61.5,2.0 63.5,3.6 65.4,4.9 67.3,20.7 69.2,29.7 71.2,36.5 73.1,25.9 75.0,15.5 76.9,17.5 78.8,31.4 80.8,32.3 82.7,19.7 84.6,5.9 86.5,8.1 88.5,18.1 90.4,17.8 92.3,18.8 94.2,34.3 96.2,40.1 98.1,5.9 100.0,10.1 101.9,7.8 103.8,2.6 105.8,4.6 107.7,20.7 109.6,2.3 111.5,17.2 113.5,23.9 115.4,29.7 117.3,30.7 119.2,38.5 121.2,34.6 123.1,36.8 125.0,33.3 126.9,30.4 128.8,34.3 130.8,36.8 132.7,26.5 134.6,23.0 136.5,29.4 138.5,33.9 140.4,26.5 142.3,42.6 144.2,12.6 146.2,15.2 148.1,2.0 150.0,9.7 151.9,19.1 153.8,30.1 155.8,38.1 157.7,44.3 159.6,45.5 161.5,46.8 163.5,49.7 165.4,46.2 167.3,51.7 169.2,48.1 171.2,49.1 173.1,47.5 175.0,49.1 176.9,52.0 178.8,51.7 180.8,47.8 182.7,49.1 184.6,50.7 186.5,48.5 188.5,50.4 190.4,46.5 192.3,45.9 194.2,46.8 196.2,49.1 197.8,46.8 200.0,50.1 201.9,44.6 203.8,38.1 205.8,37.8 207.7,21.0 209.6,22.0 211.5,22.0 213.5,19.1 215.4,19.1 217.3,33.0 219.2,16.8 221.2,17.8 223.1,21.0 225.0,25.9 226.9,29.4 228.8,28.1 230.8,47.2 232.7,46.8 234.6,41.0 236.5,41.4 238.5,43.0 240.4,28.1 242.3,41.4 244.2,37.8 246.2,34.9 248.1,40.1 250.0,39.4 251.9,42.6 253.8,26.8 255.8,30.1 257.7,12.0 259.6,16.8 261.5,5.9 263.5,3.9 265.4,2.3 267.3,4.9 269.2,13.9 271.2,4.9 273.1,13.6 275.0,16.2 276.9,29.1 278.8,23.6 280.8,19.7 282.7,14.9 284.6,14.9 286.5,9.7 288.5,4.6 290.4,6.5 292.3,17.8 294.2,27.8 296.2,32.6 298.1,34.9 300.0,50.1"></polyline></svg>
+<figcaption><span>2023-11-21</span><span>2026-11-17</span></figcaption></figure></section></div>
+<p class="muted">每條線顯示近 3 年的淨部位百分位。上、下虛線分別為第 90、10 百分位。</p>
+<h3>這是什麼</h3><p>CFTC 的金融期貨純期貨週報（TFF）列出槓桿基金等交易者的期貨部位。涵蓋避險基金與管理期貨策略的交易者。ES 追蹤標普 500，NQ 追蹤那斯達克 100，VIX 期貨反映市場對未來波動率的定價。部位通常截至美東週二，週五公布，遇假日或補發可能延後。</p>
+<h3>怎麼看</h3><p>當週淨部位放進最近 156 份週報一起排名。第 90 百分位以上（含 90）為極端偏多，第 10 百分位以下（含 10）為極端偏空。四週變化是當週淨部位減四個日曆週前的淨部位。把變化與同一窗口的平均比較，用樣本標準差衡量距離。達 +2 個標準差是驟升，達 −2 個標準差是驟降。四週變化只當背景，整體警示看已公布的部位百分位。</p>
+<p>ES 槓桿基金長期多為淨空，回測的 1,067 個報告週中有 96.2% 為淨空。基差交易可解釋部分結構性淨空，例如買進一籃子現貨、同時放空期貨，賺取兩者價差收斂。即使淨部位是負數，仍可能處於歷史極端偏多區。</p>
+<h3>歷史成績</h3><p>部位回測到 2026-11-17 這份週報。全期 72 組比較，經 Bonferroni 校正後 0 組過關，同時通過分期檢查與校正的有 0 組。</p>
+<p>下列為各訊號首次進入門檻後的台股 20 個交易日結果。基準是同合約所有可比較週的平均報酬，含事件週。超額是事件平均減基準，95% 信賴區間由重抽樣估計。</p>
+<div class="grid cot-grid"><section class="inset"><h4>ES 對台灣加權指數</h4><ul><li><strong>極端偏空</strong>（33 次）。平均 1.61%，基準 1.09%。超額 0.52 個百分點，95% 區間 −2.40 至 2.84 個百分點。</li><li><strong>極端偏多</strong>（33 次）。平均 0.82%，基準 1.09%。超額 −0.27 個百分點，95% 區間 −1.85 至 1.22 個百分點。</li><li><strong>四週驟降</strong>（16 次）。平均 0.01%，基準 1.09%。超額 −1.07 個百分點，95% 區間 −4.22 至 1.90 個百分點。</li><li><strong>四週驟升</strong>（15 次）。平均 4.63%，基準 1.09%。超額 3.55 個百分點，95% 區間 −0.75 至 8.52 個百分點。</li></ul></section><section class="inset"><h4>NQ 對台灣加權指數</h4><ul><li><strong>極端偏空</strong>（35 次）。平均 1.53%，基準 1.09%。超額 0.45 個百分點，95% 區間 −0.94 至 1.65 個百分點。</li><li><strong>極端偏多</strong>（29 次）。平均 0.20%，基準 1.09%。超額 −0.88 個百分點，95% 區間 −3.09 至 0.97 個百分點。</li><li><strong>四週驟降</strong>（12 次）。平均 2.79%，基準 1.09%。超額 1.71 個百分點，95% 區間 −0.58 至 3.67 個百分點。</li><li><strong>四週驟升</strong>（10 次）。平均 −3.03%，基準 1.09%。超額 −4.11 個百分點，95% 區間 −9.75 至 0.60 個百分點。</li></ul></section><section class="inset"><h4>VIX 對台灣加權指數</h4><ul><li><strong>極端偏空</strong>（30 次）。平均 2.98%，基準 1.09%。超額 1.89 個百分點，95% 區間 0.18 至 3.75 個百分點。</li><li><strong>極端偏多</strong>（34 次）。平均 1.60%，基準 1.09%。超額 0.51 個百分點，95% 區間 −0.79 至 1.85 個百分點。</li><li><strong>四週驟降</strong>（16 次）。平均 4.02%，基準 1.09%。超額 2.94 個百分點，95% 區間 1.14 至 5.12 個百分點。</li><li><strong>四週驟升</strong>（12 次）。平均 3.27%，基準 1.09%。超額 2.18 個百分點，95% 區間 −0.82 至 5.58 個百分點。</li></ul></section></div><details><summary>查看 COT 預警回測的命中率、精確率與假警報率</summary>
+<p>回測從公布後的下一個美股交易日收盤觀察部位。首次進入極端才發警報，須離開至少 5 個美股交易日才可再響。下列為 10% 回撤門檻的 60 個交易日結果。</p>
+<div class="grid"><section class="inset"><h4>台灣加權指數</h4><p><strong>ES 極端偏多</strong></p><ul>
+<li>跌破前 60 個交易日內命中率 11.1%（1／9 次），隨機平均 42.5%。</li>
+<li>同一觀察窗且警報早於高點的命中率 0.0%（0／9 次），隨機平均 21.5%。</li>
+<li>警報後 60 個交易日內精確率 3.1%（1／32 次），隨機平均 13.6%。假警報率 96.9%（31／32 次）。</li>
+
+</ul><p><strong>ES 極端偏空</strong></p><ul>
+<li>跌破前 60 個交易日內命中率 66.7%（6／9 次），隨機平均 40.5%。</li>
+<li>同一觀察窗且警報早於高點的命中率 33.3%（3／9 次），隨機平均 20.2%。</li>
+<li>警報後 60 個交易日內精確率 23.3%（7／30 次），隨機平均 13.7%。假警報率 76.7%（23／30 次）。</li>
+
+</ul><p><strong>NQ 極端偏多</strong></p><ul>
+<li>跌破前 60 個交易日內命中率 22.2%（2／9 次），隨機平均 38.8%。</li>
+<li>同一觀察窗且警報早於高點的命中率 0.0%（0／9 次），隨機平均 19.4%。</li>
+<li>警報後 60 個交易日內精確率 7.1%（2／28 次），隨機平均 13.5%。假警報率 92.9%（26／28 次）。</li>
+
+</ul><p><strong>NQ 極端偏空</strong></p><ul>
+<li>跌破前 60 個交易日內命中率 33.3%（3／9 次），隨機平均 43.9%。</li>
+<li>同一觀察窗且警報早於高點的命中率 0.0%（0／9 次），隨機平均 22.4%。</li>
+<li>警報後 60 個交易日內精確率 9.1%（3／33 次），隨機平均 13.8%。假警報率 90.9%（30／33 次）。</li>
+
+</ul><p><strong>VIX 極端偏空</strong></p><ul>
+<li>跌破前 60 個交易日內命中率 33.3%（3／9 次），隨機平均 38.5%。</li>
+<li>同一觀察窗且警報早於高點的命中率 11.1%（1／9 次），隨機平均 19.5%。</li>
+<li>警報後 60 個交易日內精確率 10.7%（3／28 次），隨機平均 13.8%。假警報率 89.3%（25／28 次）。</li>
+
+</ul>
+<p>任一交易日起算的基準機率為 13.8%。</p></section><section class="inset"><h4>標普 500</h4><p><strong>ES 極端偏多</strong></p><ul>
+<li>跌破前 60 個交易日內命中率 42.9%（3／7 次），隨機平均 40.5%。</li>
+<li>同一觀察窗且警報早於高點的命中率 0.0%（0／7 次），隨機平均 22.9%。</li>
+<li>警報後 60 個交易日內精確率 12.5%（4／32 次），隨機平均 9.2%。假警報率 87.5%（28／32 次）。</li>
+
+</ul><p><strong>ES 極端偏空</strong></p><ul>
+<li>跌破前 60 個交易日內命中率 28.6%（2／7 次），隨機平均 37.8%。</li>
+<li>同一觀察窗且警報早於高點的命中率 14.3%（1／7 次），隨機平均 21.8%。</li>
+<li>警報後 60 個交易日內精確率 10.0%（3／30 次），隨機平均 9.2%。假警報率 90.0%（27／30 次）。</li>
+
+</ul><p><strong>NQ 極端偏多</strong></p><ul>
+<li>跌破前 60 個交易日內命中率 42.9%（3／7 次），隨機平均 36.8%。</li>
+<li>同一觀察窗且警報早於高點的命中率 14.3%（1／7 次），隨機平均 20.6%。</li>
+<li>警報後 60 個交易日內精確率 14.3%（4／28 次），隨機平均 9.1%。假警報率 85.7%（24／28 次）。</li>
+
+</ul><p><strong>NQ 極端偏空</strong></p><ul>
+<li>跌破前 60 個交易日內命中率 57.1%（4／7 次），隨機平均 40.7%。</li>
+<li>同一觀察窗且警報早於高點的命中率 42.9%（3／7 次），隨機平均 23.1%。</li>
+<li>警報後 60 個交易日內精確率 15.2%（5／33 次），隨機平均 9.0%。假警報率 84.8%（28／33 次）。</li>
+
+</ul><p><strong>VIX 極端偏空</strong></p><ul>
+<li>跌破前 60 個交易日內命中率 0.0%（0／7 次），隨機平均 36.0%。</li>
+<li>同一觀察窗且警報早於高點的命中率 0.0%（0／7 次），隨機平均 20.6%。</li>
+<li>警報後 60 個交易日內精確率 0.0%（0／28 次），隨機平均 9.2%。假警報率 100.0%（28／28 次）。</li>
+
+</ul>
+<p>任一交易日起算的基準機率為 7.7%。</p></section></div></details><p><a href="factor-lab.html#2026-11-22-cot-leveraged-funds">完整部位回測</a> · <a href="factor-lab.html#2026-11-22-crash-warning">完整回撤預警回測</a></p>
+<h3>限制</h3><p>週報是較早某一日的部位快照，公布時部位可能已經改變。整體警示只要任一合約在兩端就會亮燈。回撤預警回測採首次觸發，且 VIX 只測極端偏空，所以這份回測無法估算整體警示或 VIX 極端偏多的精確率。COT 看得到期貨口數，無法從中還原現貨、選擇權和其他部位。<a href="https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm">CFTC COT 週報</a> · <a href="https://www.cftc.gov/MarketReports/CommitmentsofTraders/ReleaseSchedule/index.htm">公布日程</a></p>
+</section>
+
+<section class="card"><h2>FINRA 每日放空成交比例</h2>
+<h3>現在</h3><p>美國交易日 2026-11-20，放空成交占比 <strong>46.12%</strong>。最近 20 筆交易日均值 47.62%，在近 30 個有資料的交易日中居 第 6.9 百分位。</p>
+<h3>這是什麼</h3><p>把 FINRA 合併檔中的所有股票放空成交股數加總，再除以這些股票的總成交股數。使用 ShortVolume 欄，分母使用 TotalVolume 欄。</p>
+<h3>怎麼看</h3><p>比例愈高，表示這批成交中標記為放空的占比愈大。20 日均值用每日比率取平均。百分位和最多 30 個美股交易日的可用樣本比較。</p>
+<h3>歷史成績</h3><p><strong>沒有回測過，只當背景。</strong>本項不參與亮燈。</p>
+<h3>限制</h3><p>檔案涵蓋向 FINRA 回報並公開的場外成交。做市商、避險交易和當天就回補的交易也可能推高比例。盤後若檔案尚未更新，會標明最後取得的日期。<a href="https://www.finra.org/finra-data/browse-catalog/short-sale-volume-data">FINRA 放空成交量資料</a></p>
+</section>
+
+<section class="card"><h2>名詞解釋</h2><dl>
+<dt>百分位</dt><dd>把數字放在一段歷史中比較高低。第 90 百分位約表示比九成的觀測值高。MTUM／SPY 用先前觀測排名，COT 和 FINRA 的窗口含當期。</dd>
+<dt>淨部位</dt><dd>多單口數減空單口數。除以全市場該合約尚未結清的口數，就是這頁的淨部位百分比。</dd>
+<dt>淨空</dt><dd>空單口數多於多單，淨部位為負。極端偏多或偏空描述的是相對歷史位置。</dd>
+<dt>命中率</dt><dd>以回撤事件為分母，計算其中多少次在跌破門檻前的觀察窗內亮燈。高點前命中另要求亮燈日比那一輪高點早。</dd>
+<dt>精確率</dt><dd>以有完整追蹤期的所有警報為分母，計算多少次警報之後才首次跌破門檻。亮燈當天已跌破不算。</dd>
+<dt>假警報率</dt><dd>有完整追蹤的警報中，期限內沒有首次跌破門檻的比例，也就是 100% 減精確率。</dd>
+<dt>警戒期</dt><dd>從 MTUM／SPY 亮燈日起到其後第 60 個美股交易日收盤（含）。COT 則在最新公布部位仍處於極端區時亮燈。</dd>
+</dl></section>
+<section class="card"><h2>沒有放進來的指標</h2><ul>
+<li><strong>Kenneth French UMD。</strong>買入前期強勢股、放空前期弱勢股的報酬差。日資料按月更新，有發布落差。回測中多次在指數高點後才響。<a href="https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html">Kenneth French 資料庫</a></li>
+<li><strong>13F。</strong>大型機構每季申報部分證券持倉，最遲可在季末後 45 天才申報。看到的是季末快照。<a href="https://www.sec.gov/divisions/investment/13ffaq">SEC 13F 問答</a></li>
+<li><strong>FINRA 放空餘額。</strong>每月兩次統計尚未回補的空頭部位，這頁尚未接入。日成交比率和放空餘額是兩種不同的統計。</li>
+<li><strong>GS／MS Prime Book。</strong>高盛和摩根士丹利的主經紀商客戶部位報告通常需付費或限客戶。Hedgeweek、Investing.com 和 Yahoo Finance 可能有二手引述。閱讀時先核對統計口徑與日期，整體客戶帳簿與只看基本面多空股票基金會涵蓋不同部位。<a href="https://www.hedgeweek.com/?s=Goldman+prime">Hedgeweek 搜尋 Goldman prime</a></li>
+</ul></section>
+</main></div></body></html>

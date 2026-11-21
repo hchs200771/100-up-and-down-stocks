@@ -314,10 +314,10 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 171.5,
-  "lastDate": "2026-11-18",
-  "ret": 9.34,
-  "held": 15
+  "lastClose": 169.5,
+  "lastDate": "2026-11-20",
+  "ret": 8.05,
+  "held": 17
  },
  {
   "code": "6925",
@@ -449,15 +449,20 @@
   "risk": 7.11,
   "gap": 3,
   "ma20": {
-   "status": "open"
+   "status": "closed",
+   "exitDate": "2026-11-19",
+   "exit": 122.5,
+   "reason": "ma20",
+   "ret": 6.86,
+   "held": 12
   },
   "d60": {
    "status": "open"
   },
-  "lastClose": 136,
-  "lastDate": "2026-11-18",
-  "ret": 18.7,
-  "held": 11
+  "lastClose": 110.5,
+  "lastDate": "2026-11-20",
+  "ret": -3.67,
+  "held": 13
  },
  {
   "code": "2880",
@@ -529,14 +534,24 @@
   "risk": 5.13,
   "gap": 2,
   "ma20": {
-   "status": "open"
+   "status": "closed",
+   "exitDate": "2026-11-20",
+   "exit": 45.3,
+   "reason": "stop",
+   "ret": -5.73,
+   "held": 5
   },
   "d60": {
-   "status": "open"
+   "status": "closed",
+   "exitDate": "2026-11-20",
+   "exit": 45.3,
+   "reason": "stop",
+   "ret": -5.73,
+   "held": 5
   },
-  "lastClose": 46.8,
-  "lastDate": "2026-11-18",
-  "ret": -2.59,
-  "held": 3
+  "lastClose": 44.65,
+  "lastDate": "2026-11-20",
+  "ret": -7.09,
+  "held": 5
  }
 ]
