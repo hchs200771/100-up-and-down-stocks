@@ -16977,7 +16977,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "videoStatus": "未設定 GROQ_API_KEY",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,899 百萬元，YoY -13%，MoM +10%，累計 YoY -10%",
@@ -17037,7 +17037,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-13T21:45:18+08:00",
   "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "pendingNote": "影音：未設定 GROQ_API_KEY"
  },
  "6103-2026-11-13": {
   "key": "6103-2026-11-13",
@@ -27025,7 +27025,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "videoStatus": "未設定 GROQ_API_KEY",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 360 百萬元，YoY +33%，MoM +0%，累計 YoY -8%，YoY 33%，MoM連8月正成長，12月營收新高，比前三月加速 34pp",
@@ -27086,7 +27086,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-17T00:57:14+08:00",
   "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "pendingNote": "影音：未設定 GROQ_API_KEY"
  },
  "6770-2026-11-16": {
   "key": "6770-2026-11-16",
@@ -28642,7 +28642,7 @@
    "imageHeavy": true
   },
   "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "videoStatus": "未設定 GROQ_API_KEY",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 411 百萬元，YoY -1%，MoM -5%，累計 YoY -2%",
@@ -28672,7 +28672,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-18T00:46:27+08:00",
   "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "pendingNote": "影音：未設定 GROQ_API_KEY"
  },
  "2301-2026-11-17": {
   "key": "2301-2026-11-17",
@@ -30217,7 +30217,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "videoStatus": "未設定 GROQ_API_KEY",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 72 百萬元，YoY +51%，MoM -4%，累計 YoY +43%",
@@ -30276,7 +30276,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-18T00:46:27+08:00",
   "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "pendingNote": "影音：未設定 GROQ_API_KEY"
  },
  "3529-2026-11-17": {
   "key": "3529-2026-11-17",
@@ -32507,7 +32507,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "videoStatus": "未設定 GROQ_API_KEY",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 2,328 百萬元，YoY +55%，MoM +6%，累計 YoY +24%，YoY 55%，連7月YoY成長，同期歷史新高，比前三月加速 14pp",
@@ -32566,7 +32566,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-18T00:46:27+08:00",
   "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "pendingNote": "影音：未設定 GROQ_API_KEY"
  },
  "8234-2026-11-17": {
   "key": "8234-2026-11-17",
@@ -34598,7 +34598,34 @@
   "fileEn": "261020261118E001.pdf",
   "videoUrl": "http://irconference.twse.com.tw/2610_31_20261118_ch.mp4",
   "note": "無。",
-  "externalError": "codex exit null: web search: 華航 2610 2026 11 19 11 20 法說會 目標價 法人 春節 收盤 華航明年客貨運需求看旺 web search:",
+  "external": {
+   "summary": "華航 11 月 18 日法說後，媒體聚焦 2027 年寒假及春節機位已售八成、部分熱門航線票價有望年增，以及 AI 需求支撐貨運運價維持高檔，與原摘要及展望一致。會後報導也確認前三季貨運單位收益年增 23.9%、每股盈餘 1.80 元，並指出高油價仍壓抑獲利，與營收大增但營業淨利近乎持平的數字一致。會後兩個交易日股價均收跌，但跌幅與法說的關聯仍待確認，也缺乏可直接比對本場法說內容的市場共識。",
+   "vsExpectation": "無資料",
+   "reactions": [
+    "NOWnews 今日新聞報導，日韓需求最旺，中國、歐洲及東北亞部分熱門航線票價有望高於今年同期。華航預期航空貨運需求增幅高於運能增幅，運價可望維持相對高檔。",
+    "時報新聞指出，前三季貨運單位收益由約 11.6 元升至 14.3 元，油料費用占營業成本比重也由 30% 升至 38%，反映貨運收益改善與燃油成本壓力並存。",
+    "Goodinfo! 台灣股市資訊網顯示，11 月 19 日華航收 22.50 元、跌 1.75%，11 月 20 日收 21.30 元、跌 5.33%。",
+    "鉅亨網於 11 月 19 日刊登 FactSet 調查，報導未交代預估變動與本場法說的關聯。可確認由本場法說引發的券商評論或目標價調整，無資料。"
+   ],
+   "sources": [
+    {
+     "title": "NOWnews 今日新聞｜華航明年寒假春節機票已賣八成　貨運仍看好AI需求帶動",
+     "url": "https://www.nownews.com/news/6893489",
+     "date": "2026-11-18"
+    },
+    {
+     "title": "時報新聞｜華航明年客貨運需求看旺 春節訂位達8成、高艙等收益續增",
+     "url": "https://ww2.money-link.com.tw/RealtimeNews/NewsContent.aspx?pu=News_0002_5&sn=6365587001",
+     "date": "2026-11-19"
+    },
+    {
+     "title": "Goodinfo! 台灣股市資訊網｜2610 華航日K線及歷史股價",
+     "url": "https://goodinfo.tw/tw/ShowK_Chart.asp?CHT_CAT=DATE&STOCK_ID=2610",
+     "date": ""
+    }
+   ],
+   "searchedAt": "2026-11-21T11:16:26+08:00"
+  },
   "deck": {
    "file": "261020261118M001.pdf",
    "pages": 38,
@@ -34690,7 +34717,27 @@
   "fileEn": "276220261118E001.pdf",
   "videoUrl": null,
   "note": "無",
-  "externalError": "spawn codex ENOENT",
+  "external": {
+   "summary": "11 月 18 日法說後，《經濟日報》聚焦台灣、泰國展店及皮拉提斯帶動同店銷售，與原摘要方向一致，但報導將台泰合計新增 48 家、其中泰國 12 家的時程寫為「到 2029 年」，與輸入的 2026 至 2028 年口徑不同。該篇報導未核實下半年至少增設 30 家皮拉提斯據點，也未披露下一季或全年營收、獲利財測。法說後兩個交易日股價連跌，公開資料中未找到可核實的法人或分析師評論、目標價調整或市場共識比較。",
+   "vsExpectation": "無資料",
+   "reactions": [
+    "《經濟日報》11 月 18 日報導，管理層將台泰展店列為成長重點，並以皮拉提斯及 HYROX 聯名課程強化既有門市銷售。",
+    "Goodinfo! 台灣股市資訊網顯示，法說後首個交易日 11 月 19 日下跌 1.45%，收 74.60 元，11 月 20 日再跌 2.14%，收 73.00 元。"
+   ],
+   "sources": [
+    {
+     "title": "經濟日報｜世界健身法說會／未來三年展店不歇腳 估到2029年台灣與泰國共增48店",
+     "url": "https://money.udn.com/money/amp/story/5612/9887460",
+     "date": "2026-11-18"
+    },
+    {
+     "title": "Goodinfo! 台灣股市資訊網｜2762 世界健身-KY 歷史股價",
+     "url": "https://goodinfo.tw/tw/ShowK_Chart.asp?STOCK_ID=2762",
+     "date": ""
+    }
+   ],
+   "searchedAt": "2026-11-21T11:17:04+08:00"
+  },
   "deck": {
    "file": "276220261118M001.pdf",
    "pages": 37,
@@ -35275,7 +35322,44 @@
   "fileEn": "303220261117E001.pdf",
   "videoUrl": "http://irconference.twse.com.tw/3032_10_20261118_ch.mp4",
   "note": "完整財務業務資訊請至公開資訊觀測站之法人說明會一覽表或法說會項目下查閱",
-  "externalError": "spawn codex ENOENT",
+  "external": {
+   "summary": "11 月 18 日法說後，媒體聚焦第四季營運回溫與 AI 機櫃出貨放量，報導中的相關營收占比約 25%、部分機櫃訂單能見度至 2027 年第二季，以及前三季每股盈餘 2.88 元，均與輸入重點一致。股價在法說當日小跌，接下來兩個交易日跌幅擴大，20 日收在跌停價 50.50 元，現有報導未能確認跌勢是否由法說引發。截至 11 月 21 日，未查得針對這場法說的可核實法人或分析師評論、目標價調整，也沒有可靠的市場預期可供比較。",
+   "vsExpectation": "無資料",
+   "reactions": [
+    "經濟日報報導，AI 伺服器機櫃是成長最顯著的業務，AI 相關業務占比約 25%，機櫃訂單能見度延伸至 2027 年第二季。",
+    "MoneyDJ 新聞（台視財經轉載）報導，客戶庫存調整接近尾聲，農曆年前備貨啟動，第四季營收已見回溫，AI 機櫃、伺服器機殼與機構零組件出貨同步成長。",
+    "富果直送整理，前三季營收約 88.6 億元、年增 9%，毛利率約 23.5%，每股盈餘 2.88 元，與輸入數字一致。",
+    "Investing.com 歷史行情顯示，11 月 18 日收 60.80 元、跌 0.49%，19 日收 56.10 元、跌 7.73%，20 日收 50.50 元、跌 9.98%。"
+   ],
+   "sources": [
+    {
+     "title": "經濟日報｜偉訓、富驊 AI接單旺",
+     "url": "https://udn.com/news/amp/story/7252/9887328?from=udnamp-relatednews_ch2artbottom",
+     "date": "2026-11-18"
+    },
+    {
+     "title": "MoneyDJ 新聞（台視財經轉載）｜偉訓Q4營運回溫，AI機櫃訂單能見度達明年Q2",
+     "url": "https://ttv.com.tw/finance/view/default.asp?from=588&i=1120261811327667B4D403E948679DCF7E6527DEC98A6A66",
+     "date": "2026-11-18"
+    },
+    {
+     "title": "富果直送｜偉訓法說會重點內容備忘錄",
+     "url": "https://prod-blog.fugle.tw/post/earnings-call-3032-2026-11-18",
+     "date": "2026-11-18"
+    },
+    {
+     "title": "Investing.com｜偉訓（3032）歷史股價",
+     "url": "https://hk.investing.com/equities/compucase-historical-data",
+     "date": ""
+    },
+    {
+     "title": "鉅亨網｜盤中速報：偉訓股價跌停至50.5元",
+     "url": "https://news.cnyes.com/news/id/6668664",
+     "date": "2026-11-20"
+    }
+   ],
+   "searchedAt": "2026-11-21T11:17:47+08:00"
+  },
   "deck": {
    "file": "303220261117M001.pdf",
    "pages": 25,
@@ -35629,7 +35713,44 @@
   "fileEn": "321720261118E001.pdf",
   "videoUrl": "http://irconference.twse.com.tw/3217_15_20261118_ch.mp4",
   "note": "1.相關資訊將依規定揭露於公司及公開網站。2.實體 會議現場空間有限,歡迎視訊參加",
-  "externalError": "spawn codex ENOENT",
+  "external": {
+   "summary": "11 月 18 日法說後，媒體聚焦伺服器與電信能否填補筆電需求下滑，報導與原摘要一致：Google 新案預計 2027 年首季在越南量產，雙位數營收成長仍是公司目標，第四季營收則仍預估年減、毛利率可能較第三季略降。營收占比規劃大致一致，但《自由時報》將 2026 年筆電占比報為約 65%，《經濟日報》與 MoneyDJ 則報為 60%，與輸入數字相同。法說後兩個交易日股價連跌，截至 11 月 21 日未查得可核實的會後券商評論、目標價調整或市場預期比較。",
+   "vsExpectation": "無資料",
+   "reactions": [
+    "《經濟日報》將 Google 越南量產案列為 2027 年成長重點，並引述公司規劃，桌機與伺服器營收占比由 14% 升至 20%，電信由 5% 升至 10%。[報導](https://udn.com/news/story/7240/9887131?from=udn-relatednews_ch2)",
+    "MoneyDJ 指出，第四季營收仍預估年減、毛利率可能續降，公司預期 2027 年毛利率有望優於 2026 年下半年。富果直送的法說整理也確認第三季營收年減 13.8%。[MoneyDJ](https://5850web.moneydj.com/z/zf/zufzVIP_5D8158C5-13CC-4E0D-8122-94BEB6DC2EA5_E_.djhtm) [富果直送](https://blog.fugle.tw/post/earnings-call-3217-2026-11-18)",
+    "《自由時報》同樣報導 Google 新案預計 2027 年首季量產，但將 2026 年筆電營收占比報為約 65%，各家對 2027 年降至約 50% 的報導一致。[報導](https://stock.ltn.com.tw/article/w6h0nnvecbnx)",
+    "Goodinfo! 行情顯示，11 月 19 日收 102 元、下跌 2.39%，11 月 20 日收 95.4 元、再跌 6.47%，較法說當日收盤累計下跌 8.71%。跌幅是否由法說內容帶動，仍無法確認。[行情](https://goodinfo.tw/tw/ShowK_ChartFlow.asp?CHT_CAT=DATE&RPT_CAT=DR_ADJ_10Y&STOCK_ID=3217)"
+   ],
+   "sources": [
+    {
+     "title": "經濟日報｜優群法說會／CSP 伺服器帶動 拚明年兩位數成長",
+     "url": "https://udn.com/news/story/7240/9887131?from=udn-relatednews_ch2",
+     "date": "2026-11-18"
+    },
+    {
+     "title": "MoneyDJ 新聞｜優群法說會報導",
+     "url": "https://5850web.moneydj.com/z/zf/zufzVIP_5D8158C5-13CC-4E0D-8122-94BEB6DC2EA5_E_.djhtm",
+     "date": "2026-11-18"
+    },
+    {
+     "title": "富果直送｜優群法說會重點內容備忘錄",
+     "url": "https://blog.fugle.tw/post/earnings-call-3217-2026-11-18",
+     "date": "2026-11-18"
+    },
+    {
+     "title": "自由時報｜優群Google新案明年首季量產 越南廠迎伺服器商機",
+     "url": "https://stock.ltn.com.tw/article/w6h0nnvecbnx",
+     "date": "2026-11-18"
+    },
+    {
+     "title": "Goodinfo! 台灣股市資訊網｜優群日行情",
+     "url": "https://goodinfo.tw/tw/ShowK_ChartFlow.asp?CHT_CAT=DATE&RPT_CAT=DR_ADJ_10Y&STOCK_ID=3217",
+     "date": ""
+    }
+   ],
+   "searchedAt": "2026-11-21T11:18:33+08:00"
+  },
   "deck": {
    "file": "321720261118M001.pdf",
    "pages": 30,
@@ -35839,6 +35960,44 @@
   "fileEn": "340220261118E001.pdf",
   "videoUrl": "https://www.youtube.com/watch?v=JeTdWY_MRVo",
   "note": "無",
+  "external": {
+   "summary": "漢科 11 月 18 日法說會後，媒體聚焦 AI、記憶體與先進封裝擴產帶動廠務需求，以及漢科深化海外在地服務，與原展望一致，公開報導未見明確營收、獲利財測或訂單認列時程。經濟日報與知新聞報導在手訂單約 150 億元、半導體擴廠約占八成，與原摘要一致，MoneyDJ 則報導約 160 億元。第三季營收 18.45 億元、每股盈餘 2.82 元均與原數字一致，下半年新接訂單毛利率改善，第三季整體毛利率約與去年同期持平，前三季仍低於去年同期。",
+   "vsExpectation": "無資料",
+   "reactions": [
+    "經濟日報報導，上半年認列較多毛利率偏低的機電業務，壓抑整體毛利率，下半年新接訂單毛利率已有改善。[經濟日報](https://udn.com/news/story/7240/9886754)",
+    "知新聞報導，現場法人追問半導體擴廠需求有多少已轉成訂單，以及台美施工人力能否支應接單量。漢科表示，美國初期由台灣技術人員支援，中長期將培訓當地工班。[知新聞](https://www.knews.com.tw/news/7959ACADADACC8A99F26D7326B8D04B9)",
+    "MoneyDJ 報導在手訂單約 160 億元，並指出漢科將客戶擴建進度及台美施工人力列為 2027 年成長關鍵。[MoneyDJ](https://5850web.moneydj.com/z/zf/zufzVIP_BDAAB92A-FF5A-4CAB-9110-1F91B492E598_E_.djhtm)",
+    "ToAlpha 行情顯示，會後兩個交易日股價連跌，11 月 19 日收 101 元、跌 6.48%，11 月 20 日收 93.60 元、跌 7.33%。跌勢與法說內容的因果關係未獲證實，會後分析師評等、目標價調整及可供比較的市場共識均無資料。[ToAlpha](https://toalpha.tw/stock/3402)"
+   ],
+   "sources": [
+    {
+     "title": "經濟日報｜漢科法說會／在手訂單約150億元 半導體擴廠占八成、深化海外布局",
+     "url": "https://udn.com/news/story/7240/9886754",
+     "date": "2026-11-18"
+    },
+    {
+     "title": "知新聞｜漢科法說：在手訂單衝150億元",
+     "url": "https://www.knews.com.tw/news/7959ACADADACC8A99F26D7326B8D04B9",
+     "date": "2026-11-18"
+    },
+    {
+     "title": "MoneyDJ｜漢科在手訂單約160億，看好明年半導體擴產需求",
+     "url": "https://5850web.moneydj.com/z/zf/zufzVIP_BDAAB92A-FF5A-4CAB-9110-1F91B492E598_E_.djhtm",
+     "date": "2026-11-18"
+    },
+    {
+     "title": "富果直送｜漢科法說會重點內容備忘錄",
+     "url": "https://blog.fugle.tw/post/earnings-call-3402-2026-11-18",
+     "date": "2026-11-18"
+    },
+    {
+     "title": "ToAlpha｜漢科（3402）股價與券商評等資訊",
+     "url": "https://toalpha.tw/stock/3402",
+     "date": "2026-11-20"
+    }
+   ],
+   "searchedAt": "2026-11-21T11:19:36+08:00"
+  },
   "deck": {
    "file": "340220261118M001.pdf",
    "pages": 25,
@@ -36098,6 +36257,27 @@
   "fileEn": "354620261118E001.pdf",
   "videoUrl": "https://vimeopro.com/tpex/investor2026/video/1247905613",
   "note": "無",
+  "external": {
+   "summary": "宇峻（3546）11 月 18 日法說後，股價首個交易日上漲 1.54%，隔日下跌 4.56%，兩日合計下跌 3.09%，首日漲幅未能延續。富果直送的會後摘要與輸入的第四季兩款新品首度完整貢獻、行銷費預期下降，以及 2027 年新作排程一致，第三季營收 5.80 億元、每股盈餘 1.84 元也相符。可核實的法人或分析師評論、目標價調整及市場預期比較均無資料。",
+   "vsExpectation": "無資料",
+   "reactions": [
+    "富果直送（11 月 19 日）整理法說內容，指出《三國群英傳：策定九州》與《幻世錄 重製版》將在第四季首度完整貢獻，當季無大型新作發行，行銷費預期較低。《三國群英傳：覺醒》預計於 2027 年第一季推出，《三國群英傳：武魂》預計於下半年推出。",
+    "StockU 行情顯示，11 月 19 日收 72.40 元，較法說當日收盤上漲 1.54%，成交量由 215 張增至 1,013 張。11 月 20 日收 69.10 元，下跌 4.56%，低於法說當日收盤的 71.30 元。"
+   ],
+   "sources": [
+    {
+     "title": "富果直送｜宇峻法說會重點內容備忘錄 20261118",
+     "url": "https://blog.fugle.tw/post/earnings-call-3546-2026-11-18",
+     "date": "2026-11-19"
+    },
+    {
+     "title": "StockU｜宇峻（3546）股價行情",
+     "url": "https://stock.uurl.ws/stock/3546",
+     "date": ""
+    }
+   ],
+   "searchedAt": "2026-11-21T11:20:14+08:00"
+  },
   "deck": {
    "file": "354620261118M001.pdf",
    "pages": 30,
@@ -36521,6 +36701,44 @@
   "fileEn": "493320261116E001.pdf",
   "videoUrl": "http://irconference.twse.com.tw/4933_13_20261118_ch.mp4",
   "note": "無",
+  "external": {
+   "summary": "法說後的報導聚焦筆電需求疲弱與新事業貢獻有限，與原判斷大致一致：第三季營收為 5.02 億元、年減 35%，筆電出貨最快到 2027 年第二季後才有望回升，車載出貨維持穩定。被動元件與智慧聲學的營收估計與輸入一致，但 MoneyDJ 將封裝與光波導開發案的初步成果指向 2027 年底，晚於富果整理的年中，兩者是否指同一批專案仍待確認。法說後兩個交易日股價連跌，但截至 11 月 21 日，未查得可歸因於本場法說的法人或分析師評論、目標價調整，或可供比較的市場共識。",
+   "vsExpectation": "無資料",
+   "reactions": [
+    "MoneyDJ 理財網引述總經理指出，第三季營收下滑主要反映筆電終端需求疲弱，2027 年首季仍難見明顯改善，車載出貨維持穩定。2027 年資本支出預計與 2026 年的 3 億多元相近。 [報導](https://www.moneydj.com/KMDJ/news/newsviewer.aspx?a=c5cdb8a2-180b-482e-9747-9c3d76128add)",
+    "MoneyDJ 理財網報導，2027 年被動元件營收目標約 6,000 萬元，智慧聲學在樂觀情境下約 1 億元，實際貢獻取決於認證、客戶導入與量產進度。 [報導](https://www.moneydj.com/KMDJ/news/newsviewer.aspx?a=9ed8d503-2ecc-4482-8e1c-54d82dc2c5dd)",
+    "富果直送整理，第三季毛利率為 27.2%，低於前季的 31.2%，營業利益為 1,700 萬元，兩項數值均與輸入一致。 [法說備忘錄](https://blog.fugle.tw/post/earnings-call-4933-2026-11-18)",
+    "Investing.com 與 Yahoo 股市行情顯示，法說後首個交易日 11 月 19 日收 37.50 元、跌 6.95%，11 月 20 日收 33.95 元、再跌 9.47%，兩日累計下跌約 15.8%；跌幅成因未獲證實。 [Investing.com 歷史行情](https://hk.investing.com/equities/ubright-optronics-historical-data) [Yahoo 股市行情](https://tw.stock.yahoo.com/quote/4933.TW)"
+   ],
+   "sources": [
+    {
+     "title": "友輝跨足封裝/光波導領域，冀明年底有成果",
+     "url": "https://www.moneydj.com/KMDJ/news/newsviewer.aspx?a=c5cdb8a2-180b-482e-9747-9c3d76128add",
+     "date": "2026-11-18"
+    },
+    {
+     "title": "友輝布局被動元件/智慧聲學，冀拓非LCD應用",
+     "url": "https://www.moneydj.com/KMDJ/news/newsviewer.aspx?a=9ed8d503-2ecc-4482-8e1c-54d82dc2c5dd",
+     "date": "2026-11-18"
+    },
+    {
+     "title": "〖友輝法說會重點內容備忘錄〗未來展望趨勢 20261118",
+     "url": "https://blog.fugle.tw/post/earnings-call-4933-2026-11-18",
+     "date": "2026-11-18"
+    },
+    {
+     "title": "友輝（4933）歷史價格｜Investing.com",
+     "url": "https://hk.investing.com/equities/ubright-optronics-historical-data",
+     "date": ""
+    },
+    {
+     "title": "友輝（4933）走勢圖｜Yahoo 股市",
+     "url": "https://tw.stock.yahoo.com/quote/4933.TW",
+     "date": "2026-11-20"
+    }
+   ],
+   "searchedAt": "2026-11-21T11:21:17+08:00"
+  },
   "deck": {
    "file": "493320261116M001.pdf",
    "pages": 16,
@@ -36613,6 +36831,13 @@
   "fileEn": "495820261110E001.pdf",
   "videoUrl": null,
   "note": "115/11/18上午8:30-下午6:20，115/11/19上午8:30-下午1:20",
+  "external": {
+   "summary": "截至 2026 年 11 月 21 日，臻鼎-KY 這場法說的市場解讀無資料，未找到可確認直接回應該場法說的法人評論、目標價調整或股價歸因。輸入摘要的「提前兩年達成」應解讀為公司預期於 2028 年達到高階業務營收占比 45%～50% 的目標，目前也缺乏可與第四季展望及其他關鍵數字對照的可靠市場預期。",
+   "vsExpectation": "無資料",
+   "reactions": [],
+   "sources": [],
+   "searchedAt": "2026-11-21T11:21:58+08:00"
+  },
   "deck": {
    "file": "495820261110M001.pdf",
    "pages": 40,
@@ -36779,6 +37004,27 @@
   "fileEn": "498920261118E001.pdf",
   "videoUrl": "http://irconference.twse.com.tw/4989_10_20261118_ch.mp4",
   "note": "無",
+  "external": {
+   "summary": "富果直送將高階銅箔開始出貨與泰國擴產列為榮科的成長重點，與原摘要所列的前三季毛利率回升至 3%、泰國一期預計 2028 年第一季量產，以及屆時台泰合計名目年產能 20,000 噸一致。榮科在會後兩個交易日分別下跌 10.00% 和 9.90%，目前缺乏可將跌勢歸因於本場法說的報導。法人或分析師評論、目標價調整及可供比較的市場預期均無可核實資料。",
+   "vsExpectation": "無資料",
+   "reactions": [
+    "富果直送指出，榮科正加快高階銅箔 RTF／HVLP 的客戶認證，部分產品已開始出貨，泰國一期規劃年產 10,000 噸。",
+    "Investing.com 行情顯示，榮科在法說後首個交易日（11 月 19 日）收 45.45 元，下跌 10.00%，11 月 20 日收 40.95 元，再跌 9.90%。"
+   ],
+   "sources": [
+    {
+     "title": "富果直送｜榮科法說會重點內容備忘錄",
+     "url": "https://blog.fugle.tw/post/earnings-call-4989-2026-11-18",
+     "date": "2026-11-18"
+    },
+    {
+     "title": "Investing.com｜榮科（4989）歷史價格",
+     "url": "https://hk.investing.com/equities/lcy-tech-historical-data",
+     "date": ""
+    }
+   ],
+   "searchedAt": "2026-11-21T11:22:25+08:00"
+  },
   "deck": {
    "file": "498920261118M001.pdf",
    "pages": 28,
@@ -36953,6 +37199,33 @@
   "fileEn": "546520261117E002.pdf",
   "videoUrl": "http://irconference.twse.com.tw/5465_6_20261118_ch.mp4",
   "note": "完整財務業務資訊請至公開資訊觀測站之法人說明會一覽表或法說會項目下查閱。",
+  "external": {
+   "summary": "法說後的報導聚焦富驊第四季營運回溫、2027年由伺服器機箱延伸至AI整櫃，以及泰國自有廠力拚2027年第一至第二季取得客戶認證，與輸入的標題及展望一致。富果整理的前三季營收32.68億元、年減26.01%、毛利率升至15.09%及每股盈餘1.40元，也與輸入數據一致。股價法說當日上漲、隨後兩個交易日連跌，跌因無從確認，公開券商評論、目標價調整及可核實的市場預期比較均無資料。",
+   "vsExpectation": "無資料",
+   "reactions": [
+    "MoneyDJ理財網報導，第四季動能來自伺服器、高密度儲存新品、AI資料中心機櫃及高速網路設備，泰國自有廠預計於2027年第一至第二季取得客戶認證。",
+    "富果直送整理，公司對第四季維持審慎樂觀，9月及10月營收分別年增36%及41%。",
+    "Goodinfo!台灣股市資訊網行情顯示，富驊11月18日收30.35元、漲3.58%，11月19日跌8.90%，11月20日再跌9.95%，收24.90元。"
+   ],
+   "sources": [
+    {
+     "title": "MoneyDJ理財網｜富驊Q4營運續升溫，AI機櫃、網通新品明年接棒",
+     "url": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=bd55f1dc-4139-4156-b1d0-773c44275646",
+     "date": "2026-11-18"
+    },
+    {
+     "title": "富果直送｜富驊法說會重點內容備忘錄：未來展望趨勢 20261118",
+     "url": "https://blog.fugle.tw/post/earnings-call-5465-2026-11-18",
+     "date": "2026-11-18"
+    },
+    {
+     "title": "Goodinfo!台灣股市資訊網｜5465 富驊日K線走勢圖及歷史股價",
+     "url": "https://goodinfo.tw/tw/ShowK_Chart.asp?CHT_CAT=DATE&STOCK_ID=5465",
+     "date": ""
+    }
+   ],
+   "searchedAt": "2026-11-21T11:22:57+08:00"
+  },
   "deck": {
    "file": "546520261117M002.pdf",
    "pages": 23,
@@ -37142,8 +37415,13 @@
    "chars": 2446,
    "imageHeavy": true
   },
-  "transcript": null,
-  "videoStatus": "未設定 GROQ_API_KEY",
+  "transcript": {
+   "minutes": 0,
+   "chars": 1947,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-6028-2026-11-18"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 478 百萬元，YoY +33%，MoM -11%，累計 YoY +32%，YoY 33%，連10月YoY成長，同期歷史新高",
@@ -37152,18 +37430,22 @@
   "analysis": {
    "industry": "金融",
    "subIndustry": "保險經紀",
-   "direction": "利多",
-   "headline": "前三季淨利增91%，未給量化成長展望",
+   "direction": "中性",
+   "headline": "公勝保經前三季EPS年增74%，未給新財測",
    "score": 3,
    "verdict": "一般",
-   "reason": "已公布的獲利成長屬利多，但本場以財報回顧與定性策略為主，缺乏足以進一步上修獲利預期的新資訊。",
+   "reason": "法說主要回顧已公布的獲利成長，高資產客群與數位化布局均未提供量化目標或落地時程，對獲利預期中性。補充來源為[富果整理（第三方 AI 摘要）](https://blog.fugle.tw/post/earnings-call-6028-2026-11-18)。",
    "keyNumbers": [
     {
      "label": "2026年前三季營收",
      "value": "46.53億元，年增32%"
     },
     {
-     "label": "2026年前三季淨利",
+     "label": "2026年前三季營業利益",
+     "value": "3.06億元，年增63%"
+    },
+    {
+     "label": "2026年前三季稅後淨利",
      "value": "2.46億元，年增91%"
     },
     {
@@ -37172,37 +37454,32 @@
     },
     {
      "label": "2026年前三季毛利率",
-     "value": "14.33%，去年同期14.62%"
+     "value": "14.33%，年減0.29個百分點"
     },
     {
      "label": "2026年前三季營業利益率",
-     "value": "6.58%，去年同期5.32%"
-    },
-    {
-     "label": "2026年前三季營業現金流入",
-     "value": "3.85億元，去年同期1.24億元"
+     "value": "6.58%，年增1.26個百分點"
     }
    ],
-   "guidance": "未提供明確展望；短期聚焦高產值顧問、高端客群與菁英團隊，未給下一季或全年財測及量化目標。",
+   "guidance": "未提供明確展望",
    "drivers": [
-    "保經代通路2025年新契約保費較2021年成長99%，提供通路擴張背景。",
-    "布局高端富裕客群、提升顧問產值，並推動數位服務與行政自動化，惟未揭露效益及時程。"
+    "保經代通路占壽險新契約保費的比重由2021年8.7%升至2025年18.0%，近兩年持平。",
+    "公司計畫培育專業財務顧問、拓展高資產客群，並改善數位投保與理賠流程。"
    ],
    "risks": [
-    "前三季毛利率年減0.29個百分點，簡報未說明原因與後續走勢。",
-    "業外由虧轉盈也推升淨利增幅，不能將91%的淨利成長全視為本業動能。",
-    "未說明營業利益率改善原因及持續性，亦無新增業績或人力成長目標。"
+    "前三季營收年增32%，毛利率仍年減0.29個百分點，簡報未說明下滑原因。",
+    "富果整理將全壽險業新契約保費的降幅標為年複合成長率，公司簡報所列為2021至2025年整段約減4%，以簡報為準。"
    ],
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "簡報多為圖片"
   },
-  "analyzedAt": "2026-11-19T01:23:47+08:00",
-  "model": "gpt-6.1-sol",
-  "analyzedEvidence": 1,
+  "analyzedAt": "2026-11-21T11:12:33+08:00",
+  "model": "gpt-6.2-sol",
+  "analyzedEvidence": 3,
   "firstSeen": "2026-11-19T01:00:39+08:00",
-  "state": "partial",
-  "pendingNote": "影音：未設定 GROQ_API_KEY"
+  "state": "done",
+  "pendingNote": ""
  },
  "6123-2026-11-18": {
   "key": "6123-2026-11-18",
@@ -37303,14 +37580,40 @@
   "fileEn": "612420261118E001.pdf",
   "videoUrl": "https://www.youtube.com/watch?v=9CM7rOaVNx8",
   "note": "無",
+  "external": {
+   "summary": "業強（6124）11 月 18 日法說會的公開摘要聚焦 AI 液冷投資，與輸入的標題和指引一致：公司預期 2027 年第二季起明顯貢獻營收，未提供具體營收金額或獲利財測。[富果直送](https://blog.fugle.tw/post/earnings-call-6124-2026-11-18) 法說後兩個交易日股價連跌，跌勢是否與法說有關仍無法確認。[玩股網](https://www.wantgoo.com/stock/6124/major-investors/main-trend) 截至 11 月 21 日，未查到針對本場法說的公開法人或分析師評論、目標價調整，市場預期比較無資料。",
+   "vsExpectation": "無資料",
+   "reactions": [
+    "富果直送的法說摘要將 AI 液冷列為成長重點，整理出公司於 2026 年第四季投入設備與技術、預期 2027 年第二季起明顯貢獻營收的時程。[富果直送](https://blog.fugle.tw/post/earnings-call-6124-2026-11-18)",
+    "玩股網行情顯示，業強在法說後首個交易日 11 月 19 日收 23.50 元、跌 2.89%，11 月 20 日收 22.00 元、再跌 6.38%。[玩股網](https://www.wantgoo.com/stock/6124/major-investors/main-trend)"
+   ],
+   "sources": [
+    {
+     "title": "富果直送｜業強法說會重點內容備忘錄",
+     "url": "https://blog.fugle.tw/post/earnings-call-6124-2026-11-18",
+     "date": "2026-11-18"
+    },
+    {
+     "title": "玩股網｜業強（6124）主力進出動向與每日收盤價",
+     "url": "https://www.wantgoo.com/stock/6124/major-investors/main-trend",
+     "date": ""
+    }
+   ],
+   "searchedAt": "2026-11-21T11:23:50+08:00"
+  },
   "deck": {
    "file": "612420261118M001.pdf",
    "pages": 16,
    "chars": 850,
    "imageHeavy": true
   },
-  "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "transcript": {
+   "minutes": 0,
+   "chars": 1667,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-6124-2026-11-18"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 100 百萬元，YoY -19%，MoM +5%，累計 YoY -6%",
@@ -37318,41 +37621,32 @@
   },
   "analysis": {
    "industry": "電源與散熱",
-   "subIndustry": "熱導管、熱導板與液冷",
-   "direction": "中性",
-   "headline": "列AI熱導板與液冷方向，未揭放量時程",
-   "score": 2,
-   "verdict": "可略過",
-   "reason": "中性、未見明確利多或利空新資訊，簡報僅列散熱應用方向，缺乏可驗證的訂單、放量時程與獲利展望。",
-   "keyNumbers": [
-    {
-     "label": "實收資本額",
-     "value": "新台幣18.25億元"
-    },
-    {
-     "label": "員工人數",
-     "value": "約1,500人"
-    }
-   ],
-   "guidance": "未提供明確展望；僅列手機超薄熱導管、AI熱導板與液冷、車載散熱等市場方向。",
+   "subIndustry": "熱導管與液冷散熱零組件",
+   "direction": "利多",
+   "headline": "業強預期AI液冷2027年第二季明顯貢獻營收",
+   "score": 4,
+   "verdict": "值得留意",
+   "reason": "利多，AI 液冷有明確的營收貢獻時程，但訂單與營收規模尚未量化，獲利影響仍待確認。",
+   "keyNumbers": [],
+   "guidance": "據富果整理（第三方 AI 摘要），業強於 2026 年第四季開始投入 AI 液冷設備與技術，預期 2027 年第二季起明顯貢獻營收，未提供營收金額或獲利財測。[富果法說整理](https://blog.fugle.tw/post/earnings-call-6124-2026-11-18)",
    "drivers": [
-    "手機超薄熱導管應用",
-    "AI熱導板、液冷及車載散熱應用，未揭露營收貢獻與時程"
+    "AI 熱導板與液冷是主要成長項目，液冷已進入設備與技術投入階段。",
+    "手機超薄熱導管與車載散熱可拓展應用，貢獻時程尚未揭露。"
    ],
    "risks": [
-    "10月營收年減19%、累計年減6%，現有營收動能偏弱",
-    "財務頁未抽出數字，且無逐字稿，無法確認毛利率變化或新產品進度"
+    "2026 年 10 月營收年減 19%，累計年減 6%，近期營收仍承壓。",
+    "液冷訂單規模與毛利率未揭露，目前仍難估算獲利貢獻。"
    ],
    "qaHighlights": [],
-   "tone": "無法判斷",
-   "evidence": "簡報多為圖片"
+   "tone": "持平",
+   "evidence": "僅摘要"
   },
-  "analyzedAt": "2026-11-19T01:24:52+08:00",
-  "model": "gpt-6.1-sol",
-  "analyzedEvidence": 1,
+  "analyzedAt": "2026-11-21T11:12:42+08:00",
+  "model": "gpt-6.2-sol",
+  "analyzedEvidence": 3,
   "firstSeen": "2026-11-19T01:00:39+08:00",
-  "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "state": "done",
+  "pendingNote": ""
  },
  "6153-2026-11-18": {
   "key": "6153-2026-11-18",
@@ -37545,8 +37839,13 @@
    "chars": 2046,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "transcript": {
+   "minutes": 0,
+   "chars": 2911,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-6441-2026-11-18"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 30 百萬元，YoY +456%，MoM +136%，累計 YoY -41%",
@@ -37554,60 +37853,58 @@
   },
   "analysis": {
    "industry": "AI伺服器與電腦硬體",
-   "subIndustry": "博弈工業電腦、儲能系統整合",
-   "direction": "利空",
-   "headline": "博弈量產遞延，20MW儲能案待轉現金流",
-   "score": 3,
-   "verdict": "一般",
-   "reason": "偏利空：公司說明需求疲弱與量產遞延，但新訂單缺金額、認列及放量時程，尚不足以重估未來獲利。",
+   "subIndustry": "博弈與工業電腦",
+   "direction": "利多",
+   "headline": "廣錠拿下20MW儲能案與美系光通訊訂單",
+   "score": 4,
+   "verdict": "值得留意",
+   "reason": "偏利多，儲能與光通訊均已有實單，富果整理指兩項業務可望於2027年率先貢獻營收，但訂單金額及認列時程尚未揭露，獲利貢獻仍難估算。",
    "keyNumbers": [
     {
      "label": "2026年前三季營收",
-     "value": "9,873.2萬元"
+     "value": "新台幣9,873.2萬元（富果整理將簡報的2025全年營收誤列為同期）"
     },
     {
-     "label": "2026年前三季毛損",
-     "value": "1億517.2萬元"
+     "label": "2026年前三季毛利率",
+     "value": "−107%"
     },
     {
      "label": "2026年前三季EPS",
-     "value": "-4.54元"
+     "value": "−4.54元"
     },
     {
-     "label": "2026年第三季底流動比率",
+     "label": "2026年第三季末流動比率",
      "value": "80.56%"
     },
     {
-     "label": "2026年第三季底速動比率",
-     "value": "31.90%"
-    },
-    {
-     "label": "已取得東盟工業儲能專案規模",
-     "value": "20MW"
+     "label": "東盟工業儲能專案規模",
+     "value": "20 MW"
     }
    ],
-   "guidance": "2027年優先推動博弈新平台量產轉換、東盟20MW儲能案交付收款及光通訊產能擴充；未提供營收、獲利目標或具體完成時程。",
+   "guidance": "2027年優先推進博弈新平台量產、東盟儲能案交付與收款，以及光通訊擴產。公司未提供營收或獲利財測。",
    "drivers": [
-    "已取得東盟20MW工業儲能專案，有待交付與驗收。",
-    "廣熯科技切入光通訊散熱貼合製程，已取得美國大廠訂單，規劃延伸組裝測試。",
-    "新世代Gaming PC平台持續客戶驗證；模組化AIDC方案正與潛在客戶洽談。"
+    "東盟20 MW工業儲能案已取得，後續可拓展至其他工業用戶的表後儲能。",
+    "光通訊散熱貼合已取得美國大廠訂單，規劃延伸至成品組裝與測試。子公司名稱依簡報為廣熯科技，富果整理寫作廣漢科技。"
    ],
    "risks": [
-    "美國非監管博弈需求疲弱，既有機種進入週期末期，新平台量產銜接延後。",
-    "固定成本難隨營收縮減，前三季持續大幅毛損，新事業尚未補足缺口。",
-    "流動與速動比率偏低，儲能工程進度、驗收、收款及履約保證增加資金調度壓力。",
-    "10月營收跳升但累計仍年減41%，簡報未說明回升來源與持續性；光通訊訂單亦未揭露金額及交期。"
+    "美國非監管博弈市場需求疲弱，新平台驗證與量產銜接延後。",
+    "10月營收年增456%，但累計仍年減41%，固定成本難以隨營收下滑而縮減。",
+    "流動比率低於100%，儲能案工程進度、驗收及付款條件牽動現金流。",
+    "模組化AIDC仍在洽談，投入資金與專案可行性待評估。"
    ],
-   "qaHighlights": [],
+   "qaHighlights": [
+    "富果整理（第三方AI摘要）記載，管理層看好光通訊與儲能率先貢獻2027年營收，儲能案依實際履約進度及合約條件認列。",
+    "富果整理記載，公司擬把東盟儲能案的做法推向台灣大用電戶。[富果法說整理](https://blog.fugle.tw/post/earnings-call-6441-2026-11-18)"
+   ],
    "tone": "持平",
    "evidence": "僅簡報"
   },
-  "analyzedAt": "2026-11-19T01:24:55+08:00",
-  "model": "gpt-6.1-sol",
-  "analyzedEvidence": 1,
+  "analyzedAt": "2026-11-21T11:12:57+08:00",
+  "model": "gpt-6.2-sol",
+  "analyzedEvidence": 3,
   "firstSeen": "2026-11-19T01:00:39+08:00",
-  "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "state": "done",
+  "pendingNote": ""
  },
  "6510-2026-11-18": {
   "key": "6510-2026-11-18",
@@ -37708,8 +38005,13 @@
    "chars": 16530,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "transcript": {
+   "minutes": 0,
+   "chars": 3026,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-6533-2026-11-18"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 198 百萬元，YoY +32%，MoM +3%，累計 YoY +30%，YoY 32%，同期歷史新高，比前三月加速 36pp",
@@ -37717,58 +38019,59 @@
   },
   "analysis": {
    "industry": "IC設計",
-   "subIndustry": "RISC-V CPU IP",
-   "direction": "中性",
-   "headline": "沿用前次簡報，AI客戶案未揭放量時程",
-   "score": 2,
-   "verdict": "可略過",
-   "reason": "權利金成長偏利多、授權金下滑偏利空，但沿用11月13日簡報，未新增足以改變獲利預期的展望。",
+   "subIndustry": "RISC-V CPU IP 授權",
+   "direction": "利多",
+   "headline": "晶心科力拚全年損平，高階IP預計明年底供客戶使用",
+   "score": 4,
+   "verdict": "值得留意",
+   "reason": "新增單季費用趨穩的展望及高階 IP 交付時程，對獲利預期偏利多，但全年損平仍是努力目標，營收貢獻也尚未量化。",
    "keyNumbers": [
     {
-     "label": "2026年10月營收",
-     "value": "1.98億元，年增31.65%"
+     "label": "2026 年前三季營收",
+     "value": "13.20 億元，年增 29.7%"
     },
     {
-     "label": "2026年第三季營收",
-     "value": "季減24.6%、年減8.4%"
+     "label": "2026 年第三季營收年增率",
+     "value": "−8.4%"
     },
     {
-     "label": "2026年第三季授權金",
-     "value": "季減41.9%、年減28.2%"
+     "label": "2026 年第三季授權金年增率",
+     "value": "−28.2%"
     },
     {
-     "label": "2026年第三季權利金",
-     "value": "季增23.0%、年增21.1%"
+     "label": "2026 年第三季權利金年增率",
+     "value": "+21.1%"
     },
     {
-     "label": "2026年第三季EPS",
-     "value": "-0.58元"
+     "label": "2026 年第三季 EPS",
+     "value": "−0.58 元"
     },
     {
-     "label": "2026年第三季營業費用",
-     "value": "季減34.1%、年減10.0%"
+     "label": "2026 年 10 月營收",
+     "value": "1.98 億元，年增 31.65%"
     }
    ],
-   "guidance": "未提供明確展望；未揭露下一季或全年財測、客戶放量時程及訂單金額。",
+   "guidance": "據富果整理，公司力拚 2026 年全年損益兩平，維持每年營收成長 30% 的長期目標，預期扣除一次性項目後單季費用趨穩。高階 CPU IP Cuzco 預計 2027 年底可供客戶使用。財務數字採公司簡報，展望由第三方摘要補充。 [富果整理](https://blog.fugle.tw/post/earnings-call-6533-2026-11-18)",
    "drivers": [
-    "權利金維持成長，客戶晶片出貨帶來營收貢獻。",
-    "展示d-Matrix、Fractile等AI運算客戶應用，以及車用與邊緣AI產品布局。"
+    "一次性費用消退後，單季費用預期趨穩。",
+    "AI 加速器與車用晶片帶動 RISC-V IP 導入，簡報列有 Meta MTIA 與 d-Matrix Raptor 案例。",
+    "第三季權利金年增 21.1%，既有客戶晶片出貨持續貢獻營收。"
    ],
    "risks": [
-    "第三季授權金明顯下滑，整體營收年減且仍虧損。",
-    "AI與車用案例未揭露授權金額、權利金貢獻或量產時程，難估獲利影響。",
-    "部分市場預測引用2021年資料，對未來需求的參考性有限。"
+    "前三季累計虧損，全年損平仰賴第四季獲利彌補。",
+    "第三季授權金年減 28.2%，營收仍易受授權案認列時點影響。",
+    "Cuzco 已有預計交付時程，客戶量產時程及訂單金額尚未揭露。"
    ],
    "qaHighlights": [],
-   "tone": "持平",
-   "evidence": "僅簡報"
+   "tone": "轉佳",
+   "evidence": "僅摘要"
   },
-  "analyzedAt": "2026-11-19T01:24:33+08:00",
-  "model": "gpt-6.1-sol",
-  "analyzedEvidence": 1,
+  "analyzedAt": "2026-11-21T11:12:56+08:00",
+  "model": "gpt-6.2-sol",
+  "analyzedEvidence": 3,
   "firstSeen": "2026-11-19T01:00:39+08:00",
-  "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "state": "done",
+  "pendingNote": ""
  },
  "6592-2026-11-18": {
   "key": "6592-2026-11-18",
@@ -38279,8 +38582,13 @@
    "chars": 5478,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "transcript": {
+   "minutes": 0,
+   "chars": 3007,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-6997-2026-11-18"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 554 百萬元，YoY +39%，MoM +17%，累計 YoY +30%，YoY 39%，連12月YoY成長，同期歷史新高，比前三月加速 10pp",
@@ -38288,60 +38596,60 @@
   },
   "analysis": {
    "industry": "軟體與資訊服務",
-   "subIndustry": "雲端代理與AI專業服務",
-   "direction": "利多",
-   "headline": "專業服務年增逾倍，Q4未給量化展望",
+   "subIndustry": "公有雲代理與雲端專業服務",
+   "direction": "中性",
+   "headline": "博弘專業服務營收翻倍，毛利率仍低於去年",
    "score": 3,
    "verdict": "一般",
-   "reason": "屬溫和利多，專業服務成長與授信管理改善獲利，但主要回顧已公布財報，未提供新訂單或量化展望。",
+   "reason": "對獲利預期中性，專業服務成長與全年毛利率回歸正常的說法偏正面，但 AI 平台僅有發表日期，獲利貢獻仍未量化。",
    "keyNumbers": [
     {
-     "label": "Q3營收",
-     "value": "14.50億元，年增29.3%、季減8.2%"
+     "label": "第三季營收",
+     "value": "14.5 億元，年增 29.3%，季減 8.2%"
     },
     {
-     "label": "Q3毛利率",
-     "value": "8.9%，季增0.5個百分點、年減0.6個百分點"
+     "label": "第三季毛利率",
+     "value": "8.9%，季增 0.5 個百分點，年減 0.6 個百分點"
     },
     {
-     "label": "Q3稅後淨利",
-     "value": "2,900萬元，年增35.9%、季減11.0%"
+     "label": "第三季稀釋 EPS",
+     "value": "1.30 元，年增 36.8%"
     },
     {
-     "label": "Q3稀釋EPS",
-     "value": "1.30元"
+     "label": "前三季稀釋 EPS",
+     "value": "0.44 元，年減 86.2%"
     },
     {
-     "label": "Q3專業服務營收",
-     "value": "8,700萬元，年增113.7%"
+     "label": "第三季專業服務營收",
+     "value": "8,700 萬元，年增 113.7%"
     },
     {
-     "label": "前三季稅後淨利",
-     "value": "1,000萬元，年減86.3%"
+     "label": "第三季專業服務營收占比",
+     "value": "約 6%"
     }
    ],
-   "guidance": "Q4持續優化客戶信用與組成、提高專業服務滲透率，並打造自主AI營運平台；未提供營收、獲利目標或放量時程。",
+   "guidance": "第四季持續調整客戶組合、控管授信並提高專業服務占比。財務長預期 Renova Cloud 的認列時間差在全年抵銷，毛利率回歸正常水準，未給出目標值。自主 AI 平台預計於 12 月 8 日發表，營收及獲利貢獻未量化。 [富果整理（第三方 AI 摘要）](https://blog.fugle.tw/post/earnings-call-6997-2026-11-18)",
    "drivers": [
-    "AI與雲端轉型需求帶動專業服務成長，有助提高高毛利服務比重。",
-    "併入越南Renova Cloud擴大東南亞營收，台灣Q3營收年增17.4%。",
-    "逾期帳款陸續回收及營運效率改善，推動前三季營業利益轉正。"
+    "AI 導入與雲端轉型需求帶動較高毛利的專業服務成長。",
+    "越南 Renova Cloud 自第二季併入，挹注合併營收，第三季東南亞占營收約 15%。"
    ],
    "risks": [
-    "客戶組成調整壓抑短期營收，Q3營收與稅後淨利均季減。",
-    "Q3毛利率仍低於去年同期，越南代理服務原廠獎金與成本存在入帳時間差。",
-    "前三季獲利仍大幅年減，負債占資產比重升至75%。",
-    "專業服務占比文字稱6%，與同頁圖表標示不一致，需釐清。"
+    "較低毛利的雲端代理仍是主要收入來源，調整客戶組合也壓抑第三季營收。",
+    "前三季營業利益雖已轉正，累計稀釋 EPS 仍較去年同期減少 86.2%。"
    ],
-   "qaHighlights": [],
+   "qaHighlights": [
+    "財務長預期原廠結算與越南子公司認列的時間差會在全年抵銷，未提供正常毛利率區間。",
+    "管理層擬將台灣團隊的 AI 整合與資料治理服務複製到香港、越南，未提供第四季或 2027 年的營收與獲利預估。"
+   ],
    "tone": "持平",
    "evidence": "僅簡報"
   },
-  "analyzedAt": "2026-11-19T01:25:35+08:00",
-  "model": "gpt-6.1-sol",
-  "analyzedEvidence": 1,
+  "analyzedAt": "2026-11-21T11:13:06+08:00",
+  "model": "gpt-6.2-sol",
+  "analyzedEvidence": 3,
   "firstSeen": "2026-11-19T01:00:39+08:00",
-  "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "state": "done",
+  "pendingNote": ""
  },
  "7669-2026-11-18": {
   "key": "7669-2026-11-18",
@@ -38352,12 +38660,12 @@
   "time": "14:30",
   "place": "台北君悅酒店3F凱悅廳一區(台北市信義區松壽路2號)",
   "summary": "本次業績發表會將由本公司經營團隊說明產業發展、財務業務狀況、未來風險、公司治理及企業社會責任及財團法人中華民國證券櫃檯買賣中心有價證券董事會暨上櫃審議委員會要求補充揭露事項。",
-  "fileZh": "766920261118M003.pdf",
-  "fileEn": "766920261118E003.pdf",
+  "fileZh": "766920261118M001.pdf",
+  "fileEn": "766920261118E001.pdf",
   "videoUrl": null,
   "note": "",
   "deck": {
-   "file": "766920261118M003.pdf",
+   "file": "766920261118M001.pdf",
    "pages": 51,
    "chars": 5001,
    "imageHeavy": true
@@ -38862,7 +39170,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "本次轉檔數已滿，下次轉",
+  "videoStatus": "未設定 GROQ_API_KEY",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 3,049 百萬元，YoY +44%，MoM +10%，累計 YoY +28%，YoY 44%，連11月YoY成長，5年新高，比前三月加速 4pp",
@@ -38921,7 +39229,7 @@
   "analyzedEvidence": 1,
   "firstSeen": "2026-11-19T01:00:39+08:00",
   "state": "partial",
-  "pendingNote": "影音：本次轉檔數已滿，下次轉"
+  "pendingNote": "影音：未設定 GROQ_API_KEY"
  },
  "8442-2026-11-18": {
   "key": "8442-2026-11-18",
@@ -39819,14 +40127,57 @@
   "fileEn": "221120261119E001.pdf",
   "videoUrl": "https://www.youtube.com/watch?v=FkFd_aNUTvg",
   "note": "無",
+  "external": {
+   "summary": "11 月 19 日法說後，媒體聚焦 AI 與半導體擴廠、都更需求及在手訂單增加，對 2027 年營運的解讀與公司審慎樂觀的展望一致，並呼應全年鋼構吊裝量可望突破 17 萬噸的預估。報導確認前三季營收 119.32 億元、每股盈餘 6.06 元，以及第三季營業利益年增約 8.3%；10 月底在手訂單約 22.75 萬噸，較原資料的 9 月底 20.84 萬噸增加。法說後首個交易日股價下跌 3.60%，跌幅歸因、可核實的法人或分析師評論、目標價調整及市場共識比較均無資料。",
+   "vsExpectation": "無資料",
+   "reactions": [
+    "《經濟日報》將 AI 與半導體擴廠、商辦及都更需求視為接單支撐，報導 10 月新增逾 3.1 萬噸訂單，第三季營業利益年增約 8.3%。",
+    "TVBS 新聞指出，前三季營收年增 3.67%，但工資與外包成本上升、轉投資股利減少，每股盈餘由去年同期 7.36 元降至 6.06 元。",
+    "《財訊快報》報導，公司預估 2027 年鋼構吊裝量可超過 17 萬噸、環保業務營收與獲利可望維持穩定，並指出業主土木工程延後已影響 2026 年吊裝量。",
+    "Goodinfo! 台灣股市資訊網顯示，11 月 20 日收 75 元、下跌 3.60%，成交約 1,452 張，高於法說當日的約 531 張。"
+   ],
+   "sources": [
+    {
+     "title": "經濟日報｜長榮鋼法說會／鋼構在手訂單逾22萬公噸 AI 建廠、都更添營運動能",
+     "url": "https://money.udn.com/money/story/5612/9889501?from=edn_newest_index",
+     "date": "2026-11-19"
+    },
+    {
+     "title": "TVBS 新聞｜長榮鋼法說／前三季EPS 6.06元、在手訂單破22萬噸　中長期看2變數",
+     "url": "https://news.tvbs.com.tw/money/4053024",
+     "date": "2026-11-19"
+    },
+    {
+     "title": "財訊快報｜長榮鋼在手訂單衝上高檔，2027年鋼構量提升、營運展望樂觀",
+     "url": "https://ww2.money-link.com.tw/realtimenews/NewsContent.aspx?PU=1002&SN=2447759002",
+     "date": "2026-11-19"
+    },
+    {
+     "title": "鉅亨網｜長榮鋼在手訂單逾20.8萬噸 AI、半導體廠房需求支撐鋼構景氣",
+     "url": "https://news.cnyes.com/news/id/6667913?embed=1",
+     "date": "2026-11-19"
+    },
+    {
+     "title": "Goodinfo! 台灣股市資訊網｜2211 長榮鋼歷史價量",
+     "url": "https://goodinfo.tw/tw/ShowK_Chart.asp?CHT_CAT=DATE&PRICE_ADJ=T&STOCK_ID=2211",
+     "date": ""
+    }
+   ],
+   "searchedAt": "2026-11-21T11:13:44+08:00"
+  },
   "deck": {
    "file": "221120261119M001.pdf",
    "pages": 39,
    "chars": 6312,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "未設定 GROQ_API_KEY",
+  "transcript": {
+   "minutes": 0,
+   "chars": 3034,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-2211-2026-11-19"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,363 百萬元，YoY -5%，MoM -2%，累計 YoY +3%",
@@ -39834,23 +40185,15 @@
   },
   "analysis": {
    "industry": "鋼鐵與金屬",
-   "subIndustry": "鋼構製造與吊裝、廢棄物處理",
-   "direction": "中性",
-   "headline": "鋼構在手訂單20.8萬噸，未給獲利成長指引",
-   "score": 3,
-   "verdict": "一般",
-   "reason": "中性，主要回顧財報及訂單，AI擴廠與都更題材未附新增訂單金額或獲利貢獻時程，尚無足以改變獲利預期的新利多或利空。",
+   "subIndustry": "鋼構製造與吊裝",
+   "direction": "利多",
+   "headline": "長榮鋼估2027年鋼構吊裝逾17萬噸",
+   "score": 4,
+   "verdict": "值得留意",
+   "reason": "利多，2027年吊裝量目標高於2025年實績約13萬噸，為鋼構營收提供可追蹤的成長指標，公司尚未量化獲利增幅。財務與9月底訂單數字採公司簡報，口頭展望與問答採[富果整理（第三方AI摘要）](https://blog.fugle.tw/post/earnings-call-2211-2026-11-19)。",
    "keyNumbers": [
     {
-     "label": "截至2026年9月底鋼構在手訂單",
-     "value": "208,426噸，大樓占80%"
-    },
-    {
-     "label": "2025年9月至2026年9月接單量",
-     "value": "57,980噸"
-    },
-    {
-     "label": "2026年前三季營收",
+     "label": "2026年前三季合併營收",
      "value": "119.32億元，年增3.67%"
     },
     {
@@ -39864,30 +40207,41 @@
     {
      "label": "2026年第三季營業淨利",
      "value": "10.68億元，年增8.34%"
+    },
+    {
+     "label": "2026年9月底鋼構在手訂單",
+     "value": "208,426噸，大樓占80%、廠房占20%"
+    },
+    {
+     "label": "2025年鋼構實際吊裝量",
+     "value": "130,281噸"
     }
    ],
-   "guidance": "公司預期鋼構市場維持穩定，欣榮以維持正常處理量能為主，水美與榮鼎亦以穩定營運為目標；未提供下一季或全年營收、獲利財測及訂單認列時程。",
+   "guidance": "據富果整理，2026年全年吊裝量估略高於2025年，獲利可能因股利收入減少及榮鼎停爐而略低於上年。公司對2027年營收與獲利審慎樂觀，估鋼構吊裝逾17萬噸，環保事業可望穩定或成長，轉投資股利有望挹注。",
    "drivers": [
-    "AI與半導體擴廠、捷運聯開、都更及物流廠房支撐鋼構需求。",
-    "欣榮設備整改完成後效能提升，前三季售電率由2025年87.84%升至88.25%。",
-    "持股20%的皇昌福榮建設取得北市公辦都更案，但未揭露投資報酬及獲利認列時程。"
+    "科技廠房擴建、捷運聯開與物流廠房支撐鋼構需求。富果整理稱10月底在手訂單達22.7萬噸。",
+    "欣榮整改後營運效率提升，水美新產線擴充廢棄物處理量能。",
+    "取得北安段公辦都更案，長榮鋼持有專案公司20%股權。"
    ],
    "risks": [
-    "前三季營收成長但營業淨利與EPS衰退，簡報未具體解釋獲利落差及改善時程。",
-    "住宅推案放緩，在手訂單大樓占80%，須留意後續接單與去化。",
-    "鋼材成本、施工人力及水美同業報價競爭可能壓抑獲利。",
-    "榮鼎停爐事故已於4月29日恢復正常營運，求償與保險理賠仍在辦理；總處理量固定且須優先處理家戶垃圾，自收量受限。"
+    "住宅推案持續放緩，鋼材、工資及外包成本可能壓抑鋼構獲利。",
+    "截至9月底在手訂單的大樓占比為80%，富果整理寫為廠房約80%，此處採公司簡報。",
+    "榮鼎綠能已於4月底復運，求償與保險理賠仍在辦理。"
    ],
-   "qaHighlights": [],
+   "qaHighlights": [
+    "水美新產線帶動前三季處理量、營收及獲利年增，後續將優先配置產能承接高單價有害事業廢棄物。",
+    "北安段都更案預計2031年開工、2034年完工交屋，營收與獲利將依工程及交屋進度認列。",
+    "榮鼎理賠仍由保險公司審理，對肇事第三方求償已委託技師公會鑑定。"
+   ],
    "tone": "持平",
-   "evidence": "僅簡報"
+   "evidence": "僅摘要"
   },
-  "analyzedAt": "2026-11-20T00:20:38+08:00",
-  "model": "gpt-6.1-sol",
-  "analyzedEvidence": 1,
+  "analyzedAt": "2026-11-21T11:11:42+08:00",
+  "model": "gpt-6.2-sol",
+  "analyzedEvidence": 3,
   "firstSeen": "2026-11-20T00:04:14+08:00",
-  "state": "partial",
-  "pendingNote": "影音：未設定 GROQ_API_KEY"
+  "state": "done",
+  "pendingNote": ""
  },
  "2327-2026-11-19": {
   "key": "2327-2026-11-19",
@@ -40434,8 +40788,13 @@
    "chars": 2352,
    "imageHeavy": true
   },
-  "transcript": null,
-  "videoStatus": "未設定 GROQ_API_KEY",
+  "transcript": {
+   "minutes": 0,
+   "chars": 2838,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-3056-2026-11-19"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 104 百萬元，YoY -20%，MoM +4%，累計 YoY -77%",
@@ -40444,59 +40803,63 @@
   "analysis": {
    "industry": "營建與資產",
    "subIndustry": "住宅開發與營造工程",
-   "direction": "利空",
-   "headline": "毛利率降至16%，之序預計2027年完工",
+   "direction": "中性",
+   "headline": "富華新「之序」預計2027年中交屋",
    "score": 3,
    "verdict": "一般",
-   "reason": "偏利空，毛利率下滑且轉虧，但主要回顧既有財報與建案進度，未提供足以改變獲利預期的新財測或交屋指引。",
+   "reason": "獲利預期中性，法說將「之序」交屋時程細化到2027年中，但可認列金額與毛利率仍未量化，尚不足以調整全年獲利預期。",
    "keyNumbers": [
     {
-     "label": "2026年Q3欄列營收",
+     "label": "2026年前三季合併營收",
      "value": "7.80億元"
     },
     {
-     "label": "2026年Q3欄列毛利率",
-     "value": "16%，2025全年為22%"
+     "label": "2026年前三季毛利率",
+     "value": "16%"
     },
     {
-     "label": "2026年Q3欄列EPS",
-     "value": "-0.08元"
+     "label": "2026年前三季EPS",
+     "value": "−0.08元"
     },
     {
-     "label": "之序",
-     "value": "總銷82.6億元、銷售率58%，預計2027年完工"
+     "label": "之序總銷／銷售率",
+     "value": "82.6億元／58%"
     },
     {
-     "label": "總太營造列示承攬總額",
-     "value": "83.21億元，含集團內工程"
+     "label": "澐光總銷／銷售率",
+     "value": "18.6億元／98%"
     },
     {
-     "label": "文商15規劃",
-     "value": "總銷77億元、277戶"
+     "label": "水湳文商15預估總銷",
+     "value": "77億元"
     }
    ],
-   "guidance": "之序預計2027年、澐光預計2029年完工；水湳文商15及文商53仍在變更設計。未提供明確季度／全年財測，亦未說明交屋認列金額與毛利率展望。",
+   "guidance": "公司簡報列「之序」預計2027年完工。富果整理補充，公司預計年中交屋並成為當年主要營收及獲利來源，時程將視工程與交屋進度調整。公司未提供量化財測。[富果法說整理（第三方 AI 摘要）](https://blog.fugle.tw/post/earnings-call-3056-2026-11-19)",
    "drivers": [
-    "之序與澐光後續完工交屋，可帶動建案收入認列。",
-    "社宅與公共工程提供營造業務來源。",
-    "文商15規劃總銷77億元，具後續開發潛力。"
+    "「之序」交屋可望填補2026年缺乏新案完工的營收空窗。",
+    "「澐光」預計2029年完工，已售98%。",
+    "總太營造列示承攬總額83.21億元，社宅工程約占六成。",
+    "水湳文商15預估總銷77億元，目前仍在變更設計。"
    ],
    "risks": [
-    "毛利率降至16%且EPS轉負，簡報未說明原因及改善時程。",
-    "10月累計營收年減77%，近期營收仍弱。",
-    "之序銷售率58%，後續去化與交屋進度影響獲利實現。",
-    "承攬總額包含集團內工程，不能直接視為合併新增營收或未認列訂單；文商15亦未揭露推案時程。"
+    "「之序」目前銷售率58%，2027年認列仍取決於完工交屋進度，後續去化也會影響案量貢獻。",
+    "2026年前三季EPS為負，10月營收年減20%，累計營收年減77%。",
+    "水湳文商15尚未公布推案時程，辦公室的出售或出租方案待定。"
    ],
-   "qaHighlights": [],
-   "tone": "無法判斷",
+   "qaHighlights": [
+    "富果整理的問答指出，庫藏股須視市況與資金安排，經董事會決議。",
+    "公司以穩定配息為目標，每年現金股利1元未獲承諾。",
+    "文商15估計總銷已含辦公室，辦公室可能出售或出租。"
+   ],
+   "tone": "持平",
    "evidence": "簡報多為圖片"
   },
-  "analyzedAt": "2026-11-20T00:21:24+08:00",
-  "model": "gpt-6.1-sol",
-  "analyzedEvidence": 1,
+  "analyzedAt": "2026-11-21T11:11:37+08:00",
+  "model": "gpt-6.2-sol",
+  "analyzedEvidence": 3,
   "firstSeen": "2026-11-20T00:04:14+08:00",
-  "state": "partial",
-  "pendingNote": "影音：未設定 GROQ_API_KEY"
+  "state": "done",
+  "pendingNote": ""
  },
  "3357-2026-11-19": {
   "key": "3357-2026-11-19",
@@ -41183,14 +41546,40 @@
   "fileEn": "416720261119E001.pdf",
   "videoUrl": "https://www.youtube.com/watch?v=sydb7RsZVo4",
   "note": "相關資訊請參閱公開資訊觀測站。",
+  "external": {
+   "summary": "松瑞藥在 11 月 19 日法說後的首個交易日收跌 6.53%，外資賣超 619 張，短線市場表現偏弱，跌因無法確認。會後摘要與原摘要一致，厄他培南第三條產線已於第 3 季商業量產，有望承接全球供應缺口，前三季營收 8.38 億元、EPS 2.30 元也相符。公開法人或分析師評論、目標價調整及可比較的市場預期均無資料。",
+   "vsExpectation": "無資料",
+   "reactions": [
+    "Yahoo 股市顯示，11 月 20 日松瑞藥收 15.75 元，跌 6.53%，外資賣超 619 張。[Yahoo 股市](https://tw.finance.yahoo.com/quote/4167.TWO/institutional-trading)",
+    "AlphaMemo.ai 的法說摘要指出，新線量產後，公司將拓展全球供貨以填補供應缺口。摘要提及產能倍增，原輸入所據的公司簡報未揭露增幅，也未提供量化財測。[AlphaMemo.ai](https://www.alphamemo.ai/free-transcripts/2a065a13-8bcc-407b-b8a0-0de370e1a678)"
+   ],
+   "sources": [
+    {
+     "title": "Yahoo 股市｜松瑞藥（4167）法人買賣",
+     "url": "https://tw.finance.yahoo.com/quote/4167.TWO/institutional-trading",
+     "date": "2026-11-20"
+    },
+    {
+     "title": "AlphaMemo.ai｜松瑞藥（4167）2026/11/19 法說會逐字稿與重點摘要",
+     "url": "https://www.alphamemo.ai/free-transcripts/2a065a13-8bcc-407b-b8a0-0de370e1a678",
+     "date": "2026-11-19"
+    }
+   ],
+   "searchedAt": "2026-11-21T11:14:14+08:00"
+  },
   "deck": {
    "file": "416720261119M001.pdf",
    "pages": 15,
    "chars": 2424,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "未設定 GROQ_API_KEY",
+  "transcript": {
+   "minutes": 0,
+   "chars": 2275,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-4167-2026-11-19"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 136 百萬元，YoY +21%，MoM +31%，累計 YoY -2%，YoY 21%，連3月YoY成長，同期歷史新高，比前三月加速 6pp",
@@ -41200,58 +41589,55 @@
    "industry": "生技新藥",
    "subIndustry": "培南類抗生素原料藥與無菌針劑",
    "direction": "利多",
-   "headline": "厄他培南第三線已量產，新增供貨效益待驗證",
-   "score": 3,
-   "verdict": "一般",
-   "reason": "新產線量產與供應缺口偏利多，但未提供新增訂單、產能或未來獲利貢獻，尚不足以明確上修獲利預期。",
+   "headline": "厄他培南新線已量產，有望承接供應缺口",
+   "score": 4,
+   "verdict": "值得留意",
+   "reason": "利多，厄他培南第三條原料藥產線已於第三季商業量產，讓公司有產能承接同業供應缺口，但新增訂單與獲利貢獻尚未量化。",
    "keyNumbers": [
     {
-     "label": "2026年前三季營收",
-     "value": "8.38億元"
+     "label": "2026 年前三季營收",
+     "value": "新台幣 8.38 億元"
     },
     {
-     "label": "2026年前三季毛利率",
+     "label": "2026 年前三季毛利率",
      "value": "34%"
     },
     {
-     "label": "2026年前三季營業淨利",
-     "value": "9,300萬元"
+     "label": "2026 年前三季營業淨利",
+     "value": "新台幣 9,300 萬元"
     },
     {
-     "label": "2026年前三季EPS",
-     "value": "2.30元"
+     "label": "2026 年前三季 EPS",
+     "value": "新台幣 2.30 元"
     },
     {
-     "label": "前三季股票出售及評價利益",
-     "value": "約6.31億元"
+     "label": "2026 年前三季股票出售及評價利益",
+     "value": "約新台幣 6.31 億元"
     },
     {
-     "label": "第三條原料藥產線商業量產",
-     "value": "2026年第3季"
+     "label": "厄他培南第三條原料藥產線商業量產",
+     "value": "2026 年第 3 季"
     }
    ],
-   "guidance": "以厄他培南新產線支援全球供貨，拓展CDMO、利基藥品與保健事業；未提供下一季或全年量化財測、訂單及產能利用率目標。",
+   "guidance": "公司將以新產線拓展厄他培南全球供貨，並改善製程效率，未提供下一季或全年的量化財測。公司簡報載明 6 月獲准、第 3 季商業量產，時間以簡報為準。富果整理提及產能倍增潛力，公司簡報未揭露增幅。[富果整理](https://blog.fugle.tw/post/earnings-call-4167-2026-11-19)",
    "drivers": [
-    "厄他培南第三條原料藥產線已商業量產，增加市場拓展的供貨能力。",
-    "原廠退出與部分同業供應受限，帶來供應鏈轉單機會，但尚無訂單量化佐證。",
-    "具原料藥至無菌針劑的垂直整合能力，可拓展CDMO合作。"
+    "原廠退出部分原料藥產能，同業供應受限，新線可支援厄他培南拓展海外供貨。",
+    "厄他培南已取得中國藥證，新產能可支援當地市場開發。"
    ],
    "risks": [
-    "前三季獲利高度受股票出售及評價利益挹注，EPS不宜直接外推。",
-    "前三季毛利率34%，低於2025全年35%；營業淨利率亦由15%降至11%，比較期間不同，仍須追蹤本業表現。",
-    "未揭露新產線產能、利用率與獲利貢獻，無法確認量產效益。",
-    "10月營收雖加速成長，累計營收仍年減2%，持續性待觀察。"
+    "新線稼動率、客戶訂單及放量速度未揭露，營收與毛利貢獻仍難估算。",
+    "前三季 EPS 受股票出售及評價利益挹注，推估後續獲利時須留意這筆收益的可持續性。"
    ],
    "qaHighlights": [],
    "tone": "持平",
    "evidence": "僅簡報"
   },
-  "analyzedAt": "2026-11-20T00:22:42+08:00",
-  "model": "gpt-6.1-sol",
-  "analyzedEvidence": 1,
+  "analyzedAt": "2026-11-21T11:11:53+08:00",
+  "model": "gpt-6.2-sol",
+  "analyzedEvidence": 3,
   "firstSeen": "2026-11-20T00:04:14+08:00",
-  "state": "partial",
-  "pendingNote": "影音：未設定 GROQ_API_KEY"
+  "state": "done",
+  "pendingNote": ""
  },
  "4401-2026-11-19": {
   "key": "4401-2026-11-19",
@@ -41419,8 +41805,13 @@
    "chars": 4513,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "未設定 GROQ_API_KEY",
+  "transcript": {
+   "minutes": 0,
+   "chars": 3699,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-4577-2026-11-19"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 104 百萬元，YoY +42%，MoM +12%，累計 YoY +48%，YoY 42%，連11月YoY成長，比前三月加速 3pp",
@@ -41428,60 +41819,62 @@
   },
   "analysis": {
    "industry": "機械與自動化",
-   "subIndustry": "PCB與IC載板鑽孔、成型設備",
+   "subIndustry": "PCB／IC 載板鑽孔與成型設備",
    "direction": "利多",
-   "headline": "2027年載板占比估76.3%，規劃擴產",
+   "headline": "達航估2027年載板營收占比升至76.3%",
    "score": 4,
    "verdict": "值得留意",
-   "reason": "屬利多：毛利率明顯改善，公司以研發與海外布局成果解釋轉折，並提出2027年載板占比與產能目標，但尚缺訂單及獲利財測佐證。",
+   "reason": "利多，雷射研發與海外布局開始貢獻設備銷售及加工服務，前三季本業轉盈，2027 年載板占比與擴產目標提供具體成長線索，訂單金額及獲利財測仍未揭露。",
    "keyNumbers": [
     {
-     "label": "前三季營收",
-     "value": "7.16億元，年增48.8%"
+     "label": "2026 年前三季營收",
+     "value": "7.16 億元，年增 48.8%"
     },
     {
-     "label": "前三季毛利率",
-     "value": "28%，去年同期17%"
+     "label": "2026 年前三季毛利率",
+     "value": "28%，去年同期 17%"
     },
     {
-     "label": "第三季獲利能力",
-     "value": "毛利率34%、營業利益率7%"
+     "label": "2026 年前三季營業利益",
+     "value": "2,392.4 萬元，去年同期虧損 3,624.1 萬元。富果摘要一處寫約 2,300 萬元，以公司簡報為準。"
     },
     {
-     "label": "前三季營業利益",
-     "value": "2,392.4萬元，去年同期虧損3,624.1萬元"
+     "label": "2026 年第三季毛利率",
+     "value": "34%，去年同期 21%"
     },
     {
      "label": "載板營收占比",
-     "value": "2026年59.2%；2027年預估76.3%"
+     "value": "2026 年 59.2%，2027 年預估 76.3%"
     },
     {
-     "label": "2027年規劃月產能",
-     "value": "機械鑽孔與精密成型設備50台、雷射鑽孔設備10台、主軸750軸"
+     "label": "2027 年月產能目標",
+     "value": "機械鑽孔與成型設備 50 台、雷射鑽孔設備 10 台、主軸 750 軸"
     }
    ],
-   "guidance": "2027年預估載板營收占比升至76.3%，並提出設備與主軸擴產目標；未提供下一季或全年營收、獲利財測，也未揭露擴產幅度及投產月份。",
+   "guidance": "公司預估 2027 年載板營收占比達 76.3%，並提出三項月產能目標。2027 年第二季達標的時程來自第三方 AI 摘要。公司未提供全年營收、毛利率或 EPS 財測。[富果法說整理](https://blog.fugle.tw/post/earnings-call-4577-2026-11-19)",
    "drivers": [
-    "高階ABF載板擴產與多層核心板加工難度提升，帶動精密鑽孔需求。",
-    "機械鑽孔設備已通過IC設計大廠認證，具客戶指定設備地位。",
-    "公司表示雷射研發與海外布局已逐步轉化為設備銷售及加工服務收入。"
+    "AI 晶片推動 ABF 載板大型化及多層化，帶動精密鑽孔設備需求。",
+    "CCD 鑽孔設備已獲終端 IC 設計大廠認證，成為客戶指定的多層核心板鑽孔機種。",
+    "公司規劃優先供應毛利較高的高階載板設備，載板營收占比若如期提升，有利產品組合。"
    ],
    "risks": [
-    "未揭露新增訂單金額、在手訂單或客戶拉貨時程，擴產目標不等於營收保證。",
-    "缺少現有產能、稼動率與資本支出，無法估算新增產能的獲利貢獻。",
-    "前三季營業利益率僅3%，高毛利能否延續仍待驗證。",
-    "載板營收集中度預計提高，對載板資本支出循環的敏感度增加。"
+    "線性馬達、滑軌、光學尺及鑄鐵供應吃緊，可能拖延擴產及交付。",
+    "載板營收占比預估超過四分之三，出貨更仰賴載板客戶的擴產進度。"
    ],
-   "qaHighlights": [],
-   "tone": "轉佳",
+   "qaHighlights": [
+    "依富果問答摘要，在手訂單能見度延伸至 2028–2029 年，公司希望藉擴產提前交付部分遠期訂單。",
+    "依富果問答摘要，擴產目標為 2027 年第二季達標，物料交期是主要障礙。",
+    "依富果問答摘要，搭載 CCD 的高階載板鑽孔機售價約為一般載板鑽孔機的 1.5–2 倍。"
+   ],
+   "tone": "持平",
    "evidence": "僅簡報"
   },
-  "analyzedAt": "2026-11-20T00:22:30+08:00",
-  "model": "gpt-6.1-sol",
-  "analyzedEvidence": 1,
+  "analyzedAt": "2026-11-21T11:12:07+08:00",
+  "model": "gpt-6.2-sol",
+  "analyzedEvidence": 3,
   "firstSeen": "2026-11-20T00:04:14+08:00",
-  "state": "partial",
-  "pendingNote": "影音：未設定 GROQ_API_KEY"
+  "state": "done",
+  "pendingNote": ""
  },
  "4904-2026-11-19": {
   "key": "4904-2026-11-19",
@@ -41582,8 +41975,13 @@
    "chars": 2079,
    "imageHeavy": true
   },
-  "transcript": null,
-  "videoStatus": "未設定 GROQ_API_KEY",
+  "transcript": {
+   "minutes": 0,
+   "chars": 1659,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-4999-2026-11-19"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 112 百萬元，YoY -33%，MoM +21%，累計 YoY -20%",
@@ -41591,58 +41989,57 @@
   },
   "analysis": {
    "industry": "AI伺服器與電腦硬體",
-   "subIndustry": "筆電與無人機樞紐",
-   "direction": "利空",
-   "headline": "毛利率降至9%、虧損擴大，無人機貢獻未量化",
+   "subIndustry": "筆電轉軸（Hinge）",
+   "direction": "中性",
+   "headline": "鑫禾前三季每股虧2.15元，無人機轉軸放量未定",
    "score": 3,
    "verdict": "一般",
-   "reason": "利空在於毛利率與獲利惡化，但主要回顧既有財報，無人機模具進入量產仍缺訂單規模與營收貢獻指引。",
+   "reason": "既有虧損偏空，但法說未揭露新訂單、放量時程或財測，對獲利預期的影響中性。",
    "keyNumbers": [
     {
-     "label": "2026Q3營收（簡報標示期間）",
+     "label": "2026年前三季營收",
      "value": "11.69億元"
     },
     {
-     "label": "2026Q3淨損",
-     "value": "1.58億元"
+     "label": "2026年前三季毛利率",
+     "value": "9%"
     },
     {
-     "label": "毛利率",
-     "value": "2025年14%→2026Q3 9%"
-    },
-    {
-     "label": "2026Q3營業利益率",
+     "label": "2026年前三季營業淨利率",
      "value": "-14%"
     },
     {
-     "label": "2026Q3 EPS",
+     "label": "2026年前三季稅後淨損",
+     "value": "1.58億元"
+    },
+    {
+     "label": "2026年前三季EPS",
      "value": "-2.15元"
     },
     {
-     "label": "2026年全球筆電出貨預估（引述TrendForce）",
-     "value": "1.82億台，年增1%"
+     "label": "TrendForce預估2026年全球筆電出貨",
+     "value": "1.82億台，年增約1%"
     }
    ],
-   "guidance": "未提供明確展望；簡報所列筆電市場成長預估並非公司營收或獲利財測。",
+   "guidance": "未提供明確展望。簡報引用TrendForce的全球筆電出貨預估。",
    "drivers": [
-    "無人機自動鎖定與折疊樞紐模具已進入量產階段，但未揭露產品出貨規模或營收貢獻。",
-    "布局折疊螢幕、無線基地台等樞紐應用，推進自動組裝與檢測。"
+    "兩款無人機轉軸的模具已量產，成品出貨時程與規模未揭露。",
+    "轉軸應用拓展至車用螢幕、無線基地台及平板，並持續推進組裝與檢測自動化。"
    ],
    "risks": [
-    "毛利率降至9%、營業利益率為負，未說明惡化原因與改善時程。",
-    "10月營收年減33%、累計年減20%，單月月增尚不足確認需求回升。",
-    "新產品與海外產線未提供訂單、稼動率及損益改善目標。"
+    "10月營收月增21%，仍年減33%，累計營收年減20%。",
+    "泰國組裝線進度及無人機案的量產範圍均以公司簡報為準，簡報列泰國組裝線為籌建、無人機案為模具已量產，富果整理的表述較為積極。[富果整理](https://blog.fugle.tw/post/earnings-call-4999-2026-11-19)"
    ],
    "qaHighlights": [],
    "tone": "持平",
-   "evidence": "僅簡報"
+   "evidence": "簡報多為圖片"
   },
-  "analyzedAt": "2026-11-20T00:30:58+08:00",
-  "model": "gpt-6.1-sol",
-  "analyzedEvidence": 1,
+  "analyzedAt": "2026-11-21T11:12:01+08:00",
+  "model": "gpt-6.2-sol",
+  "analyzedEvidence": 3,
   "firstSeen": "2026-11-20T00:04:14+08:00",
-  "state": "partial",
-  "pendingNote": "影音：未設定 GROQ_API_KEY"
+  "state": "done",
+  "pendingNote": ""
  },
  "5206-2026-11-19": {
   "key": "5206-2026-11-19",
@@ -42108,17 +42505,73 @@
   "videoUrl": "https://youtu.be/2rIcNVC3agI?si=NVQUnm9r-DfFpI81",
   "note": "無",
   "deck": null,
-  "transcript": null,
-  "videoStatus": "未設定 GROQ_API_KEY",
+  "transcript": {
+   "minutes": 0,
+   "chars": 1627,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-5488-2026-11-19"
+  },
+  "videoStatus": "ok",
   "deckStatus": "尚未上傳",
   "context": {
    "revenue": "2026-10 月營收 65 百萬元，YoY -15%，MoM -12%，累計 YoY +25%",
    "move": null
   },
-  "analysis": null,
+  "analysis": {
+   "industry": "重電與電線電纜",
+   "subIndustry": "3C線材與連接器組裝代工",
+   "direction": "利空",
+   "headline": "松普銅成本占六至七成，中國訂單偏短",
+   "score": 3,
+   "verdict": "一般",
+   "reason": "銅料現金採購與中國客戶偏向短單，對獲利預期偏利空，但本場以回顧前三季財報與產品布局為主，高毛利新品尚無放量時程。[富果整理（第三方 AI 摘要）](https://blog.fugle.tw/post/earnings-call-5488-2026-11-19)",
+   "keyNumbers": [
+    {
+     "label": "2026年前三季營收",
+     "value": "新台幣7.16億元"
+    },
+    {
+     "label": "去年同期營收",
+     "value": "新台幣5.5億元"
+    },
+    {
+     "label": "2026年前三季營業毛利",
+     "value": "新台幣1.07億元"
+    },
+    {
+     "label": "2026年前三季稅後淨利",
+     "value": "新台幣568.5萬元"
+    },
+    {
+     "label": "2026年前三季EPS",
+     "value": "新台幣0.06元"
+    },
+    {
+     "label": "銅占總成本比重",
+     "value": "約60%至70%"
+    }
+   ],
+   "guidance": "未提供明確展望",
+   "drivers": [
+    "前三季營收成長主要來自訂單增加，網路線訂單支撐產能利用率。",
+    "調整材料配方與簡化製程，使前三季成本率較去年同期略降。",
+    "布局綠能、電源與精密儀器線材，持續開發單對乙太網電纜（SPE）。"
+   ],
+   "risks": [
+    "銅價高檔壓抑毛利，原料採購需付現，增加營運資金壓力。",
+    "中國內銷客戶下單謹慎，短單量小且交期急，降低訂單能見度。",
+    "10月營收年減15%、月減12%，近期動能轉弱。"
+   ],
+   "qaHighlights": [],
+   "tone": "持平",
+   "evidence": "僅摘要"
+  },
+  "analyzedAt": "2026-11-21T11:12:12+08:00",
+  "model": "gpt-6.2-sol",
+  "analyzedEvidence": 2,
   "firstSeen": "2026-11-20T00:04:14+08:00",
-  "state": "pending",
-  "pendingNote": "尚未判讀；簡報還沒上傳；影音：未設定 GROQ_API_KEY"
+  "state": "partial",
+  "pendingNote": "簡報還沒上傳"
  },
  "5508-2026-11-19": {
   "key": "5508-2026-11-19",
@@ -42133,14 +42586,52 @@
   "fileEn": "550820261119E001.pdf",
   "videoUrl": "https://youtu.be/Yfb89gQLf-4",
   "note": "無。",
+  "external": {
+   "summary": "法說後的報導聚焦成屋去化與交屋進度，與公司對房市買氣維持審慎、優先去化待售成屋的說法一致。報導也與前三季營收 29.51 億元、每股盈餘 3.21 元、毛利率約 39%，以及龍華十期預計 2027 年完工、總銷約 16 億元的資料一致，但未確認部分建案延後 9 至 15 個月。法說後首個交易日股價下跌 4.34%，跌幅與法說內容的關聯仍待確認，公開法人評論、目標價調整與可供比較的市場預期均無資料。",
+   "vsExpectation": "無資料",
+   "reactions": [
+    "鉅亨網（11 月 19 日）指出，前三季毛利率為 39.39%，年減 5.74 個百分點，完工建案的營收認列仍取決於實際銷售與交屋進度。",
+    "經濟日報（11 月 20 日）指出，龍華十期預計 2027 年第 4 季完工，總銷約 16 億元，公司對未來一年的房市買氣仍持審慎看法。",
+    "AlphaMemo 法說摘要記錄，公司將去化待售成屋列為未來一年的首要目標，並稱待售房屋總額約 170 億元。",
+    "Signova 行情顯示，法說後首個交易日 11 月 20 日收在 44.05 元，下跌 4.34%。"
+   ],
+   "sources": [
+    {
+     "title": "鉅亨網｜永信建高雄龍華10期預計明年完工 後續有9大案1201戶住宅開發規劃",
+     "url": "https://news.cnyes.com/news/id/6667707",
+     "date": "2026-11-19"
+    },
+    {
+     "title": "經濟日報｜永信建法說會／高雄鼓山「龍華十期」已於9月上樑、明年完工",
+     "url": "https://money.udn.com/money/amp/story/5612/9890905",
+     "date": "2026-11-20"
+    },
+    {
+     "title": "AlphaMemo｜永信建（5508）2026/11/19 法說會逐字稿與重點摘要",
+     "url": "https://www.alphamemo.ai/free-transcripts/4a06a159-8217-4e7d-a386-64705bc0bc2a",
+     "date": "2026-11-19"
+    },
+    {
+     "title": "Signova｜永信建（5508）股票走勢與數據",
+     "url": "https://signova.tw/stock/5508",
+     "date": "2026-11-20"
+    }
+   ],
+   "searchedAt": "2026-11-21T11:14:51+08:00"
+  },
   "deck": {
    "file": "550820261119M001.pdf",
    "pages": 16,
    "chars": 2139,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "未設定 GROQ_API_KEY",
+  "transcript": {
+   "minutes": 0,
+   "chars": 2602,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-5508-2026-11-19"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 377 百萬元，YoY +118%，MoM -40%，累計 YoY +73%",
@@ -42148,58 +42639,62 @@
   },
   "analysis": {
    "industry": "營建與資產",
-   "subIndustry": "住宅開發",
-   "direction": "中性",
-   "headline": "2027年預計完工16億元，未揭交屋認列進度",
-   "score": 3,
-   "verdict": "一般",
-   "reason": "2027年完工規劃屬利多題材，但未提供銷售率、交屋認列進度及獲利預估，尚不足以改變獲利預期。",
+   "subIndustry": "住宅建設",
+   "direction": "利空",
+   "headline": "永信建部分建案估延後9至15個月",
+   "score": 4,
+   "verdict": "值得留意",
+   "reason": "利空，富果整理指出土方管制令部分案場估延後 9 至 15 個月並增加成本，可能推遲交屋與營收認列，但受影響案別及獲利幅度仍未量化。",
    "keyNumbers": [
     {
-     "label": "2026年前三季營收",
-     "value": "29.51億元"
+     "label": "2026 年前三季營收（簡報）",
+     "value": "29.51 億元"
     },
     {
-     "label": "2026年前三季EPS",
-     "value": "3.21元"
+     "label": "2026 年前三季 EPS（簡報）",
+     "value": "3.21 元"
     },
     {
-     "label": "2026年前三季毛利率",
-     "value": "39%，2025全年為44%"
+     "label": "2026 年前三季毛利率（簡報）",
+     "value": "39%"
     },
     {
-     "label": "2026年第三季負債比",
-     "value": "69%"
+     "label": "2027 年預計完工的龍華十期總銷（簡報）",
+     "value": "16 億元"
     },
     {
-     "label": "2026年完工案預計總銷",
-     "value": "清朗31億元、晴仰21億元"
+     "label": "已完工待售成屋總銷（富果整理）",
+     "value": "約 170 億元"
     },
     {
-     "label": "龍華十期",
-     "value": "預計2027年完工，65戶、總銷16億元"
+     "label": "部分案場預估工程延後（富果整理）",
+     "value": "9 至 15 個月"
     }
    ],
-   "guidance": "預計未來一年完工項目為龍華十期，2027年完工、總銷16億元；未提供下一季或全年營收、獲利及交屋認列預估。",
+   "guidance": "公司對未來一年房市買氣維持審慎，優先去化待售成屋。簡報列龍華十期預計於 2027 年完工，公司未提供量化營收或毛利率指引。",
    "drivers": [
-    "清朗、晴仰列為本年度完工案，後續交屋認列值得追蹤。",
-    "另有九項未來推案規劃、合計1,201戶，但未揭露推案及完工時程。"
+    "今年完工的晴仰與清朗，簡報預估總銷合計 52 億元，後續認列取決於成交與交屋進度。",
+    "鼓山龍華十期規劃 65 戶，預計 2027 年完工。"
    ],
    "risks": [
-    "前三季毛利率39%，低於2025全年44%；簡報未解釋差異原因及持續性。",
-    "總銷金額不等於已售訂單或可認列營收，未揭露各案銷售率及交屋進度。",
-    "負債比69%，資金回收仍需配合銷售與交屋進度。"
+    "高雄土方管制拖延部分工程並增加成本，科學園區建廠需求也推升營建人力成本。",
+    "買氣偏弱且待售成屋規模大，去化較慢的戶別可能調整售價，進一步壓縮毛利率。"
    ],
-   "qaHighlights": [],
+   "qaHighlights": [
+    "富果整理的問答顯示，晴仰自 10 月開賣以來銷售約一成，清朗約三成。",
+    "去化較慢的戶別可視成交情況調價。簡報總銷採原始推案估值，後續調價尚未反映。",
+    "少數銀行年底撥款略有延遲，目前對購屋客戶的整體影響有限。",
+    "各案受土方與缺工影響的程度不同，部分在建案仍在估算新增成本，公司未給未來毛利率區間。[富果法說整理](https://blog.fugle.tw/post/earnings-call-5508-2026-11-19)"
+   ],
    "tone": "持平",
-   "evidence": "僅簡報"
+   "evidence": "僅摘要"
   },
-  "analyzedAt": "2026-11-20T00:23:15+08:00",
-  "model": "gpt-6.1-sol",
-  "analyzedEvidence": 1,
+  "analyzedAt": "2026-11-21T11:12:25+08:00",
+  "model": "gpt-6.2-sol",
+  "analyzedEvidence": 3,
   "firstSeen": "2026-11-20T00:04:14+08:00",
-  "state": "partial",
-  "pendingNote": "影音：未設定 GROQ_API_KEY"
+  "state": "done",
+  "pendingNote": ""
  },
  "6016-2026-11-19": {
   "key": "6016-2026-11-19",
@@ -42384,14 +42879,46 @@
   "fileEn": "661420261119E001.pdf",
   "videoUrl": "https://www.youtube.com/watch?v=0fOsS9-fdVI",
   "note": "無",
+  "external": {
+   "summary": "法說後媒體聚焦大型專案推升營收，以及伺服器與軟硬體漲價壓縮建置毛利，與原摘要一致。MoneyDJ 報導前三季營收為 38.19 億元，較輸入的 38.18 億元多 0.01 億元，年增 17.54% 與毛利率 10.3% 則一致。展望方面，報導補充公司看好專案轉入維護後改善獲利，內容屬定性展望，第四季驗收後負債比率下降的說法未獲這些報導佐證。",
+   "vsExpectation": "無資料",
+   "reactions": [
+    "經濟日報報導，大型專案帶動營收，但部分政府標案預算早已編定，設備漲價壓縮建置毛利，後續維護服務有望改善獲利。",
+    "MoneyDJ 報導，公司看好六年期勞保局核心系統等多年期專案支撐未來數年營運。本次搜尋未找到可核實的券商評等、目標價調整或市場預期比較。",
+    "天米智 Fintech 盤後資料顯示，法說後首個交易日（11 月 20 日）收在 40.70 元，上漲 10.00%，居當日漲幅排行首位。漲勢是否由這場法說帶動，無法確認。"
+   ],
+   "sources": [
+    {
+     "title": "經濟日報｜資拓宏宇法說會／大型專案帶動營收成長 後續維護服務有望提升獲利",
+     "url": "https://udn.com/news/story/7240/9889415",
+     "date": "2026-11-19"
+    },
+    {
+     "title": "MoneyDJ 新聞｜資拓宏宇法說與前三季營運報導",
+     "url": "https://5850web.moneydj.com/z/zf/zufzVIP_C3349ECE-1031-429B-B192-6BB06CC3D36B_E_.djhtm",
+     "date": "2026-11-19"
+    },
+    {
+     "title": "天米智 Fintech｜台股漲幅排行：11 月 20 日第 1 名 資拓宏宇",
+     "url": "https://www.tenmz.com/rankings/gainers",
+     "date": "2026-11-20"
+    }
+   ],
+   "searchedAt": "2026-11-21T11:15:31+08:00"
+  },
   "deck": {
    "file": "661420261119M001.pdf",
    "pages": 20,
    "chars": 6123,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "未設定 GROQ_API_KEY",
+  "transcript": {
+   "minutes": 0,
+   "chars": 3097,
+   "source": "fugle",
+   "url": "https://blog.fugle.tw/post/earnings-call-6614-2026-11-19"
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 399 百萬元，YoY +2%，MoM -16%，累計 YoY +16%",
@@ -42399,60 +42926,56 @@
   },
   "analysis": {
    "industry": "軟體與資訊服務",
-   "subIndustry": "系統整合與客製軟體開發",
+   "subIndustry": "政府與金融資訊系統整合",
    "direction": "利空",
-   "headline": "前三季營收增17.5%，毛利率降至10.3%",
-   "score": 3,
-   "verdict": "一般",
-   "reason": "偏利空，營收成長未帶動毛利增加，但主要回顧已公布財報，AI與海外布局未提供訂單金額或放量時程。",
+   "headline": "前三季營收增17.5%，硬體漲價壓低毛利率",
+   "score": 4,
+   "verdict": "值得留意",
+   "reason": "偏利空，前三季毛利率年減2.2個百分點，富果整理補充固定預算的政府案受硬體漲價擠壓，後續維護收入能補回多少仍待觀察。",
    "keyNumbers": [
     {
      "label": "2026年前三季營收",
-     "value": "38.18億元，年增17.5%"
+     "value": "38.18億元"
+    },
+    {
+     "label": "2026年前三季營收年增率",
+     "value": "+17.5%"
     },
     {
      "label": "2026年前三季營業毛利",
-     "value": "3.93億元，去年同期4.06億元"
+     "value": "3.93億元"
     },
     {
      "label": "2026年前三季毛利率",
-     "value": "10.3%，年減2.2個百分點"
+     "value": "10.3%，去年同期12.5%"
     },
     {
-     "label": "2026Q3負債比率",
+     "label": "2026年第三季末負債比率",
      "value": "67.18%，去年同期64.58%"
-    },
-    {
-     "label": "2026Q3近十二個月ROE",
-     "value": "8.75%，去年同期14.28%"
-    },
-    {
-     "label": "2026Q3近十二個月應收款項週轉率",
-     "value": "11.84次，去年同期19.26次"
     }
    ],
-   "guidance": "持續執行勞保核心系統等專案，拓展海外整廠輸出、銀行系統轉型及AI應用，並推動SaaS訂閱服務；未提供下一季或全年量化財測、訂單能見度及毛利率回升時程。",
+   "guidance": "未提供明確展望。據富果整理，公司預期第四季專案陸續驗收後負債比率下降。",
    "drivers": [
-    "勞保、健保及多年期氣象專案支撐營收認列。",
-    "與中華電信取得瓜地馬拉備援資料中心案，拓展海外整廠輸出。",
-    "銀行核心系統移轉、AI報表及RAG已有應用實績，持續研發企業AI代理人。"
+    "勞保局與健保署核心系統案持續執行，依專案進度認列營收。",
+    "與中華電信取得瓜地馬拉財政部備援資料中心案，拓展海外雲端基礎建設業務。"
    ],
    "risks": [
-    "前三季營收成長但毛利減少，未具體交代毛利率下滑原因及改善幅度。",
-    "毛利率下降與研發、管理費用增加拖累資產及股東報酬率。",
-    "專案營運資金需求推升負債比率，驗收及請款時點影響款項週轉。",
-    "AI、SaaS及海外業務缺少營收貢獻、訂單金額與放量時程，難以估算獲利增量。"
+    "伺服器等硬體漲價壓縮固定預算政府案的毛利，維護服務的獲利貢獻尚未量化。",
+    "大型政府案需要較多營運資金，驗收與請款時點會影響資金回收。"
    ],
-   "qaHighlights": [],
+   "qaHighlights": [
+    "AI 功能主要整合進大型專案，營收隨履約進度認列。",
+    "已取得銀行大型主機降載首案，計畫待上線後向其他銀行推廣，合約金額與上線日期尚未揭露。 [富果整理](https://blog.fugle.tw/post/earnings-call-6614-2026-11-19)"
+   ],
    "tone": "持平",
-   "evidence": "僅簡報"
+   "evidence": "僅摘要"
   },
-  "analyzedAt": "2026-11-20T00:23:36+08:00",
-  "model": "gpt-6.1-sol",
-  "analyzedEvidence": 1,
+  "analyzedAt": "2026-11-21T11:12:29+08:00",
+  "model": "gpt-6.2-sol",
+  "analyzedEvidence": 3,
   "firstSeen": "2026-11-20T00:04:14+08:00",
-  "state": "partial",
-  "pendingNote": "影音：未設定 GROQ_API_KEY"
+  "state": "done",
+  "pendingNote": ""
  },
  "6869-2026-11-19": {
   "key": "6869-2026-11-19",
@@ -43338,8 +43861,8 @@
   "time": "13:30",
   "place": "線上法人說明會",
   "summary": "本公司受邀參加富邦證券於2026年11月19日舉辦之上市公司財務業務概況座談會，會中將說明本公司2026年第三季營運概況。 線上報名網址\nhttps://fubonseca.webex.com/weblink/register/rf7c25117d0595bfdddafb02e21d953e9",
-  "fileZh": null,
-  "fileEn": null,
+  "fileZh": "994120261120M001.pdf",
+  "fileEn": "994120261120E001.pdf",
   "videoUrl": "http://irconference.twse.com.tw/9941_44_20261119_ch.mp4",
   "note": "請預先完成線上報名，如有問題請聯繫富邦法人部tingju.yeh@fubon.com",
   "external": {
@@ -43363,7 +43886,12 @@
    ],
    "searchedAt": "2026-11-20T00:46:55+08:00"
   },
-  "deck": null,
+  "deck": {
+   "file": "994120261120M001.pdf",
+   "pages": 18,
+   "chars": 4926,
+   "imageHeavy": false
+  },
   "transcript": {
    "minutes": 0,
    "chars": 3414,
@@ -43371,69 +43899,64 @@
    "url": "https://blog.fugle.tw/post/earnings-call-9941-2026-11-19"
   },
   "videoStatus": "ok",
-  "deckStatus": "尚未上傳",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 3,239 百萬元，YoY +2%，MoM -5%，累計 YoY -0%",
    "move": null
   },
   "analysis": {
    "industry": "金融",
-   "subIndustry": "租賃與分期融資",
+   "subIndustry": "汽車金融與融資租賃",
    "direction": "中性",
-   "headline": "裕融明年台灣新承作拚雙位數成長，利差難回升",
-   "score": 4,
-   "verdict": "值得留意",
-   "reason": "2027 年新承作目標提供成長利多，但利差回升機率低是獲利利空，整體中性。資料來自[富果整理（第三方 AI 摘要）](https://blog.fugle.tw/post/earnings-call-9941-2026-11-19)。",
+   "headline": "裕融第三季信用減損降35.5%，EPS仍年減",
+   "score": 3,
+   "verdict": "一般",
+   "reason": "本場對獲利預期中性，主要說明第三季信用減損下降如何支撐營業利益，未提供足以調整獲利預估的新展望。",
    "keyNumbers": [
     {
-     "label": "2026Q3 合併營收",
-     "value": "101 億元，季增 2%，年增約持平"
+     "label": "第三季合併營收",
+     "value": "101.71億元，年增3.2%"
     },
     {
-     "label": "2026Q3 EPS",
-     "value": "2.00 元"
+     "label": "第三季毛利率",
+     "value": "41.5%，年減3.0個百分點"
     },
     {
-     "label": "2026 年前三季毛利率",
-     "value": "42.6%，去年同期 44.5%"
+     "label": "第三季預期信用減損損失",
+     "value": "4.10億元，年減35.5%"
     },
     {
-     "label": "2026 年前三季預期信用損失",
-     "value": "年減 6.3 億元（29%）"
+     "label": "第三季營業利益",
+     "value": "15.34億元，年增4.7%"
     },
     {
-     "label": "2026Q3 台灣 30 天延滯率",
-     "value": "1.65%，上季 1.35%"
+     "label": "第三季EPS",
+     "value": "2.00元，年減0.03元"
     },
     {
-     "label": "若央行升息半碼，台灣資金成本估計增幅",
-     "value": "約 1～2 億元"
+     "label": "第三季中國大陸營收",
+     "value": "11.90億元，年增71.5%"
     }
    ],
-   "guidance": "2027 年台灣企金與消金新承作業績目標成長雙位數，海外新承作占比目標 25%。公司預期 2026Q4 延滯率與 Q3 持平，2027 年信用減損有望下降，但台灣整體利差回升機率低。未提供獲利財測。",
+   "guidance": "未提供明確展望",
    "drivers": [
-    "台灣企金資產餘額年增 9.7%，已成為最大收息資產類別。",
-    "中國大陸企金資產餘額年增 11.3%，公司預期海外業務的獲利貢獻逐步提升。"
+    "信用減損費用年減，支撐第三季營業利益成長。",
+    "中國大陸業務資產成長，第三季營業利益由虧轉盈。"
    ],
    "risks": [
-    "台灣消金資產餘額年減 6.4%，拖累前三季毛利率。",
-    "多數產品採固定利率，新案調價需時間反映至整體利差，升息可能先推高資金成本。",
-    "排除兩筆大額案後，台灣延滯率仍升至約 1.45%，法院拍賣時程拉長。"
+    "台灣第三季營收年減2.8%，毛利率與業外收益下滑亦壓抑合併獲利。",
+    "台灣延滯率受法院審理時間拉長及足額擔保的大額案件影響而上升，公司表示該案件無損失。"
    ],
-   "qaHighlights": [
-    "台灣兩筆大額延滯案中，一筆已恢復正常繳款，另一筆具第一順位抵押，公司預期可收回債權。",
-    "中國大陸子公司裕貿的貿易融資採總額認列，營收含本金，該業務毛利率通常為個位數。",
-    "10 月營業利益下滑，管理層歸因於營收略減及信用損失提列增加。"
-   ],
+   "qaHighlights": [],
    "tone": "持平",
-   "evidence": "僅摘要"
+   "evidence": "僅簡報"
   },
-  "analyzedAt": "2026-11-20T00:40:52+08:00",
+  "analyzedAt": "2026-11-21T11:11:29+08:00",
   "model": "gpt-6.2-sol",
-  "analyzedEvidence": 2,
+  "analyzedEvidence": 3,
   "firstSeen": "2026-11-20T00:04:14+08:00",
-  "state": "partial",
-  "pendingNote": "簡報還沒上傳"
+  "state": "done",
+  "pendingNote": ""
  },
  "7961-2026-11-17": {
   "key": "7961-2026-11-17",
