@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 410" font-family="system-ui,sans-serif" font-size="13" fill="currentColor" role="img"><title>60 日事件命中率｜實測 vs 隨機</title>
+<text x="450.0" y="29.0" text-anchor="middle" font-size="20" fill="currentColor">60 日事件命中率｜實測 vs 隨機</text>
+<line x1="50.0" y1="50.0" x2="67.0" y2="50.0" stroke="#397fc3" opacity="1" stroke-width="6"/>
+<text x="72.0" y="54.0" text-anchor="start" font-size="12" fill="currentColor">實測</text>
+<line x1="150.0" y1="50.0" x2="167.0" y2="50.0" stroke="currentColor" opacity="0.5" stroke-width="6"/>
+<text x="172.0" y="54.0" text-anchor="start" font-size="12" fill="currentColor">隨機平均</text>
+<line x1="268.0" y1="50.0" x2="285.0" y2="50.0" stroke="#239882" opacity="1" stroke-width="6"/>
+<text x="290.0" y="54.0" text-anchor="start" font-size="12" fill="currentColor">實測中早於高點的命中</text>
+<text x="273.0" y="85.0" text-anchor="middle" font-size="15" fill="currentColor">標普 500</text>
+<line x1="133.0" y1="107.0" x2="133.0" y2="371.0" stroke="currentColor" opacity="0.13" stroke-width="1"/>
+<text x="133.0" y="391.0" text-anchor="middle" font-size="12" fill="currentColor">0%</text>
+<line x1="203.0" y1="107.0" x2="203.0" y2="371.0" stroke="currentColor" opacity="0.13" stroke-width="1"/>
+<text x="203.0" y="391.0" text-anchor="middle" font-size="12" fill="currentColor">25%</text>
+<line x1="273.0" y1="107.0" x2="273.0" y2="371.0" stroke="currentColor" opacity="0.13" stroke-width="1"/>
+<text x="273.0" y="391.0" text-anchor="middle" font-size="12" fill="currentColor">50%</text>
+<line x1="343.0" y1="107.0" x2="343.0" y2="371.0" stroke="currentColor" opacity="0.13" stroke-width="1"/>
+<text x="343.0" y="391.0" text-anchor="middle" font-size="12" fill="currentColor">75%</text>
+<line x1="413.0" y1="107.0" x2="413.0" y2="371.0" stroke="currentColor" opacity="0.13" stroke-width="1"/>
+<text x="413.0" y="391.0" text-anchor="middle" font-size="12" fill="currentColor">100%</text>
+<text x="124.0" y="123.0" text-anchor="end" font-size="12" fill="currentColor">UMD 5 日</text>
+<line x1="133.0" y1="116.0" x2="333.0" y2="116.0" stroke="#397fc3" opacity="0.9" stroke-width="7"/>
+<line x1="133.0" y1="125.0" x2="316.7" y2="125.0" stroke="currentColor" opacity="0.35" stroke-width="7"/>
+<line x1="133.0" y1="116.0" x2="173.0" y2="116.0" stroke="#239882" opacity="1" stroke-width="7"/>
+<text x="421.0" y="122.0" text-anchor="start" font-size="11" fill="currentColor">5/7</text>
+<text x="124.0" y="156.0" text-anchor="end" font-size="12" fill="currentColor">UMD 20 日</text>
+<line x1="133.0" y1="149.0" x2="173.0" y2="149.0" stroke="#397fc3" opacity="0.9" stroke-width="7"/>
+<line x1="133.0" y1="158.0" x2="214.1" y2="158.0" stroke="currentColor" opacity="0.35" stroke-width="7"/>
+<text x="421.0" y="155.0" text-anchor="start" font-size="11" fill="currentColor">1/7</text>
+<text x="124.0" y="189.0" text-anchor="end" font-size="12" fill="currentColor">MTUM／SPY 5 日</text>
+<line x1="133.0" y1="182.0" x2="413.0" y2="182.0" stroke="#397fc3" opacity="0.9" stroke-width="7"/>
+<line x1="133.0" y1="191.0" x2="353.4" y2="191.0" stroke="currentColor" opacity="0.35" stroke-width="7"/>
+<line x1="133.0" y1="182.0" x2="253.0" y2="182.0" stroke="#239882" opacity="1" stroke-width="7"/>
+<text x="421.0" y="188.0" text-anchor="start" font-size="11" fill="currentColor">7/7</text>
+<text x="124.0" y="222.0" text-anchor="end" font-size="12" fill="currentColor">ES 偏多</text>
+<line x1="133.0" y1="215.0" x2="253.0" y2="215.0" stroke="#397fc3" opacity="0.9" stroke-width="7"/>
+<line x1="133.0" y1="224.0" x2="246.5" y2="224.0" stroke="currentColor" opacity="0.35" stroke-width="7"/>
+<text x="421.0" y="221.0" text-anchor="start" font-size="11" fill="currentColor">3/7</text>
+<text x="124.0" y="255.0" text-anchor="end" font-size="12" fill="currentColor">ES 偏空</text>
+<line x1="133.0" y1="248.0" x2="213.0" y2="248.0" stroke="#397fc3" opacity="0.9" stroke-width="7"/>
+<line x1="133.0" y1="257.0" x2="238.7" y2="257.0" stroke="currentColor" opacity="0.35" stroke-width="7"/>
+<line x1="133.0" y1="248.0" x2="173.0" y2="248.0" stroke="#239882" opacity="1" stroke-width="7"/>
+<text x="421.0" y="254.0" text-anchor="start" font-size="11" fill="currentColor">2/7</text>
+<text x="124.0" y="288.0" text-anchor="end" font-size="12" fill="currentColor">NQ 偏多</text>
+<line x1="133.0" y1="281.0" x2="253.0" y2="281.0" stroke="#397fc3" opacity="0.9" stroke-width="7"/>
+<line x1="133.0" y1="290.0" x2="235.9" y2="290.0" stroke="currentColor" opacity="0.35" stroke-width="7"/>
+<line x1="133.0" y1="281.0" x2="173.0" y2="281.0" stroke="#239882" opacity="1" stroke-width="7"/>
+<text x="421.0" y="287.0" text-anchor="start" font-size="11" fill="currentColor">3/7</text>
+<text x="124.0" y="321.0" text-anchor="end" font-size="12" fill="currentColor">NQ 偏空</text>
+<line x1="133.0" y1="314.0" x2="293.0" y2="314.0" stroke="#397fc3" opacity="0.9" stroke-width="7"/>
+<line x1="133.0" y1="323.0" x2="247.0" y2="323.0" stroke="currentColor" opacity="0.35" stroke-width="7"/>
+<line x1="133.0" y1="314.0" x2="253.0" y2="314.0" stroke="#239882" opacity="1" stroke-width="7"/>
+<text x="421.0" y="320.0" text-anchor="start" font-size="11" fill="currentColor">4/7</text>
+<text x="124.0" y="354.0" text-anchor="end" font-size="12" fill="currentColor">VIX 偏空</text>
+<line x1="133.0" y1="356.0" x2="233.9" y2="356.0" stroke="currentColor" opacity="0.35" stroke-width="7"/>
+<text x="421.0" y="353.0" text-anchor="start" font-size="11" fill="currentColor">0/7</text>
+<text x="715.0" y="85.0" text-anchor="middle" font-size="15" fill="currentColor">台灣加權</text>
+<line x1="575.0" y1="107.0" x2="575.0" y2="371.0" stroke="currentColor" opacity="0.13" stroke-width="1"/>
+<text x="575.0" y="391.0" text-anchor="middle" font-size="12" fill="currentColor">0%</text>
+<line x1="645.0" y1="107.0" x2="645.0" y2="371.0" stroke="currentColor" opacity="0.13" stroke-width="1"/>
+<text x="645.0" y="391.0" text-anchor="middle" font-size="12" fill="currentColor">25%</text>
+<line x1="715.0" y1="107.0" x2="715.0" y2="371.0" stroke="currentColor" opacity="0.13" stroke-width="1"/>
+<text x="715.0" y="391.0" text-anchor="middle" font-size="12" fill="currentColor">50%</text>
+<line x1="785.0" y1="107.0" x2="785.0" y2="371.0" stroke="currentColor" opacity="0.13" stroke-width="1"/>
+<text x="785.0" y="391.0" text-anchor="middle" font-size="12" fill="currentColor">75%</text>
+<line x1="855.0" y1="107.0" x2="855.0" y2="371.0" stroke="currentColor" opacity="0.13" stroke-width="1"/>
+<text x="855.0" y="391.0" text-anchor="middle" font-size="12" fill="currentColor">100%</text>
+<text x="566.0" y="123.0" text-anchor="end" font-size="12" fill="currentColor">UMD 5 日</text>
+<line x1="575.0" y1="116.0" x2="761.7" y2="116.0" stroke="#397fc3" opacity="0.9" stroke-width="7"/>
+<line x1="575.0" y1="125.0" x2="764.1" y2="125.0" stroke="currentColor" opacity="0.35" stroke-width="7"/>
+<line x1="575.0" y1="116.0" x2="645.0" y2="116.0" stroke="#239882" opacity="1" stroke-width="7"/>
+<text x="863.0" y="122.0" text-anchor="start" font-size="11" fill="currentColor">8/12</text>
+<text x="566.0" y="156.0" text-anchor="end" font-size="12" fill="currentColor">UMD 20 日</text>
+<line x1="575.0" y1="149.0" x2="691.7" y2="149.0" stroke="#397fc3" opacity="0.9" stroke-width="7"/>
+<line x1="575.0" y1="158.0" x2="658.3" y2="158.0" stroke="currentColor" opacity="0.35" stroke-width="7"/>
+<line x1="575.0" y1="149.0" x2="645.0" y2="149.0" stroke="#239882" opacity="1" stroke-width="7"/>
+<text x="863.0" y="155.0" text-anchor="start" font-size="11" fill="currentColor">5/12</text>
+<text x="566.0" y="189.0" text-anchor="end" font-size="12" fill="currentColor">MTUM／SPY 5 日</text>
+<line x1="575.0" y1="182.0" x2="855.0" y2="182.0" stroke="#397fc3" opacity="0.9" stroke-width="7"/>
+<line x1="575.0" y1="191.0" x2="799.0" y2="191.0" stroke="currentColor" opacity="0.35" stroke-width="7"/>
+<line x1="575.0" y1="182.0" x2="761.7" y2="182.0" stroke="#239882" opacity="1" stroke-width="7"/>
+<text x="863.0" y="188.0" text-anchor="start" font-size="11" fill="currentColor">9/9</text>
+<text x="566.0" y="222.0" text-anchor="end" font-size="12" fill="currentColor">ES 偏多</text>
+<line x1="575.0" y1="215.0" x2="606.1" y2="215.0" stroke="#397fc3" opacity="0.9" stroke-width="7"/>
+<line x1="575.0" y1="224.0" x2="693.9" y2="224.0" stroke="currentColor" opacity="0.35" stroke-width="7"/>
+<text x="863.0" y="221.0" text-anchor="start" font-size="11" fill="currentColor">1/9</text>
+<text x="566.0" y="255.0" text-anchor="end" font-size="12" fill="currentColor">ES 偏空</text>
+<line x1="575.0" y1="248.0" x2="761.7" y2="248.0" stroke="#397fc3" opacity="0.9" stroke-width="7"/>
+<line x1="575.0" y1="257.0" x2="688.3" y2="257.0" stroke="currentColor" opacity="0.35" stroke-width="7"/>
+<line x1="575.0" y1="248.0" x2="668.3" y2="248.0" stroke="#239882" opacity="1" stroke-width="7"/>
+<text x="863.0" y="254.0" text-anchor="start" font-size="11" fill="currentColor">6/9</text>
+<text x="566.0" y="288.0" text-anchor="end" font-size="12" fill="currentColor">NQ 偏多</text>
+<line x1="575.0" y1="281.0" x2="637.2" y2="281.0" stroke="#397fc3" opacity="0.9" stroke-width="7"/>
+<line x1="575.0" y1="290.0" x2="683.6" y2="290.0" stroke="currentColor" opacity="0.35" stroke-width="7"/>
+<text x="863.0" y="287.0" text-anchor="start" font-size="11" fill="currentColor">2/9</text>
+<text x="566.0" y="321.0" text-anchor="end" font-size="12" fill="currentColor">NQ 偏空</text>
+<line x1="575.0" y1="314.0" x2="668.3" y2="314.0" stroke="#397fc3" opacity="0.9" stroke-width="7"/>
+<line x1="575.0" y1="323.0" x2="697.9" y2="323.0" stroke="currentColor" opacity="0.35" stroke-width="7"/>
+<text x="863.0" y="320.0" text-anchor="start" font-size="11" fill="currentColor">3/9</text>
+<text x="566.0" y="354.0" text-anchor="end" font-size="12" fill="currentColor">VIX 偏空</text>
+<line x1="575.0" y1="347.0" x2="668.3" y2="347.0" stroke="#397fc3" opacity="0.9" stroke-width="7"/>
+<line x1="575.0" y1="356.0" x2="682.9" y2="356.0" stroke="currentColor" opacity="0.35" stroke-width="7"/>
+<line x1="575.0" y1="347.0" x2="606.1" y2="347.0" stroke="#239882" opacity="1" stroke-width="7"/>
+<text x="863.0" y="353.0" text-anchor="start" font-size="11" fill="currentColor">3/9</text>
+</svg>

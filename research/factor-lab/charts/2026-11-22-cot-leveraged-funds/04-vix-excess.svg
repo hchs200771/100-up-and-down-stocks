@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 480" font-family="system-ui,sans-serif" font-size="13" fill="currentColor" role="img"><title>VIX 訊號之後的超額報酬</title>
+<text x="520.0" y="29.0" text-anchor="middle" font-size="20" fill="currentColor">VIX 訊號之後的超額報酬</text>
+<text x="520.0" y="52.0" text-anchor="middle" font-size="13" fill="currentColor">平均報酬減去同期所有合格週的平均｜線段為 95% 信賴區間｜單位為百分點</text>
+<text x="317.0" y="84.0" text-anchor="middle" font-size="15" fill="currentColor">5 個交易日</text>
+<line x1="207.0" y1="100.0" x2="207.0" y2="424.0" stroke="currentColor" opacity="0.12" stroke-width="1"/>
+<text x="207.0" y="445.0" text-anchor="middle" font-size="11" fill="currentColor">-10</text>
+<line x1="262.0" y1="100.0" x2="262.0" y2="424.0" stroke="currentColor" opacity="0.12" stroke-width="1"/>
+<text x="262.0" y="445.0" text-anchor="middle" font-size="11" fill="currentColor">-5</text>
+<line x1="317.0" y1="100.0" x2="317.0" y2="424.0" stroke="currentColor" opacity="0.35" stroke-width="1"/>
+<text x="317.0" y="445.0" text-anchor="middle" font-size="11" fill="currentColor">0</text>
+<line x1="372.0" y1="100.0" x2="372.0" y2="424.0" stroke="currentColor" opacity="0.12" stroke-width="1"/>
+<text x="372.0" y="445.0" text-anchor="middle" font-size="11" fill="currentColor">5</text>
+<line x1="427.0" y1="100.0" x2="427.0" y2="424.0" stroke="currentColor" opacity="0.12" stroke-width="1"/>
+<text x="427.0" y="445.0" text-anchor="middle" font-size="11" fill="currentColor">10</text>
+<text x="12.0" y="134.0" text-anchor="start" font-size="13" fill="currentColor">SPX · 極端淨空</text>
+<line x1="310.4" y1="129.0" x2="326.7" y2="129.0" stroke="#397fc3" opacity="1" stroke-width="2"/>
+<line x1="310.4" y1="124.0" x2="310.4" y2="134.0" stroke="#397fc3" opacity="1" stroke-width="1"/>
+<line x1="326.7" y1="124.0" x2="326.7" y2="134.0" stroke="#397fc3" opacity="1" stroke-width="1"/>
+<circle cx="318.3" cy="129.0" r="4" fill="#397fc3"/>
+<text x="437.0" y="133.0" text-anchor="start" font-size="10" fill="currentColor">30 次</text>
+<text x="12.0" y="170.0" text-anchor="start" font-size="13" fill="currentColor">SPX · 極端淨多</text>
+<line x1="306.7" y1="165.0" x2="322.5" y2="165.0" stroke="#cf7628" opacity="1" stroke-width="2"/>
+<line x1="306.7" y1="160.0" x2="306.7" y2="170.0" stroke="#cf7628" opacity="1" stroke-width="1"/>
+<line x1="322.5" y1="160.0" x2="322.5" y2="170.0" stroke="#cf7628" opacity="1" stroke-width="1"/>
+<circle cx="315.0" cy="165.0" r="4" fill="#cf7628"/>
+<text x="437.0" y="169.0" text-anchor="start" font-size="10" fill="currentColor">34 次</text>
+<text x="12.0" y="206.0" text-anchor="start" font-size="13" fill="currentColor">SPX · 淨部位驟降</text>
+<line x1="313.1" y1="201.0" x2="338.0" y2="201.0" stroke="#8057be" opacity="1" stroke-width="2"/>
+<line x1="313.1" y1="196.0" x2="313.1" y2="206.0" stroke="#8057be" opacity="1" stroke-width="1"/>
+<line x1="338.0" y1="196.0" x2="338.0" y2="206.0" stroke="#8057be" opacity="1" stroke-width="1"/>
+<circle cx="324.4" cy="201.0" r="4" fill="#8057be"/>
+<text x="437.0" y="205.0" text-anchor="start" font-size="10" fill="currentColor">16 次</text>
+<text x="12.0" y="242.0" text-anchor="start" font-size="13" fill="currentColor">SPX · 淨部位驟升</text>
+<line x1="312.6" y1="237.0" x2="328.4" y2="237.0" stroke="#239882" opacity="1" stroke-width="2"/>
+<line x1="312.6" y1="232.0" x2="312.6" y2="242.0" stroke="#239882" opacity="1" stroke-width="1"/>
+<line x1="328.4" y1="232.0" x2="328.4" y2="242.0" stroke="#239882" opacity="1" stroke-width="1"/>
+<circle cx="320.3" cy="237.0" r="4" fill="#239882"/>
+<text x="437.0" y="241.0" text-anchor="start" font-size="10" fill="currentColor">12 次</text>
+<text x="12.0" y="298.0" text-anchor="start" font-size="13" fill="currentColor">TAIEX · 極端淨空</text>
+<line x1="312.3" y1="293.0" x2="332.0" y2="293.0" stroke="#397fc3" opacity="1" stroke-width="2"/>
+<line x1="312.3" y1="288.0" x2="312.3" y2="298.0" stroke="#397fc3" opacity="1" stroke-width="1"/>
+<line x1="332.0" y1="288.0" x2="332.0" y2="298.0" stroke="#397fc3" opacity="1" stroke-width="1"/>
+<circle cx="321.5" cy="293.0" r="4" fill="#397fc3"/>
+<text x="437.0" y="297.0" text-anchor="start" font-size="10" fill="currentColor">30 次</text>
+<text x="12.0" y="334.0" text-anchor="start" font-size="13" fill="currentColor">TAIEX · 極端淨多</text>
+<line x1="317.0" y1="329.0" x2="332.6" y2="329.0" stroke="#cf7628" opacity="1" stroke-width="2"/>
+<line x1="317.0" y1="324.0" x2="317.0" y2="334.0" stroke="#cf7628" opacity="1" stroke-width="1"/>
+<line x1="332.6" y1="324.0" x2="332.6" y2="334.0" stroke="#cf7628" opacity="1" stroke-width="1"/>
+<circle cx="324.2" cy="329.0" r="4" fill="#cf7628"/>
+<text x="437.0" y="333.0" text-anchor="start" font-size="10" fill="currentColor">34 次</text>
+<text x="12.0" y="370.0" text-anchor="start" font-size="13" fill="currentColor">TAIEX · 淨部位驟降</text>
+<line x1="313.2" y1="365.0" x2="345.1" y2="365.0" stroke="#8057be" opacity="1" stroke-width="2"/>
+<line x1="313.2" y1="360.0" x2="313.2" y2="370.0" stroke="#8057be" opacity="1" stroke-width="1"/>
+<line x1="345.1" y1="360.0" x2="345.1" y2="370.0" stroke="#8057be" opacity="1" stroke-width="1"/>
+<circle cx="327.4" cy="365.0" r="4" fill="#8057be"/>
+<text x="437.0" y="369.0" text-anchor="start" font-size="10" fill="currentColor">16 次</text>
+<text x="12.0" y="406.0" text-anchor="start" font-size="13" fill="currentColor">TAIEX · 淨部位驟升</text>
+<line x1="317.9" y1="401.0" x2="345.7" y2="401.0" stroke="#239882" opacity="1" stroke-width="2"/>
+<line x1="317.9" y1="396.0" x2="317.9" y2="406.0" stroke="#239882" opacity="1" stroke-width="1"/>
+<line x1="345.7" y1="396.0" x2="345.7" y2="406.0" stroke="#239882" opacity="1" stroke-width="1"/>
+<circle cx="331.7" cy="401.0" r="4" fill="#239882"/>
+<text x="437.0" y="405.0" text-anchor="start" font-size="10" fill="currentColor">12 次</text>
+<text x="603.0" y="84.0" text-anchor="middle" font-size="15" fill="currentColor">20 個交易日</text>
+<line x1="493.0" y1="100.0" x2="493.0" y2="424.0" stroke="currentColor" opacity="0.12" stroke-width="1"/>
+<text x="493.0" y="445.0" text-anchor="middle" font-size="11" fill="currentColor">-10</text>
+<line x1="548.0" y1="100.0" x2="548.0" y2="424.0" stroke="currentColor" opacity="0.12" stroke-width="1"/>
+<text x="548.0" y="445.0" text-anchor="middle" font-size="11" fill="currentColor">-5</text>
+<line x1="603.0" y1="100.0" x2="603.0" y2="424.0" stroke="currentColor" opacity="0.35" stroke-width="1"/>
+<text x="603.0" y="445.0" text-anchor="middle" font-size="11" fill="currentColor">0</text>
+<line x1="658.0" y1="100.0" x2="658.0" y2="424.0" stroke="currentColor" opacity="0.12" stroke-width="1"/>
+<text x="658.0" y="445.0" text-anchor="middle" font-size="11" fill="currentColor">5</text>
+<line x1="713.0" y1="100.0" x2="713.0" y2="424.0" stroke="currentColor" opacity="0.12" stroke-width="1"/>
+<text x="713.0" y="445.0" text-anchor="middle" font-size="11" fill="currentColor">10</text>
+<line x1="600.5" y1="129.0" x2="624.7" y2="129.0" stroke="#397fc3" opacity="1" stroke-width="2"/>
+<line x1="600.5" y1="124.0" x2="600.5" y2="134.0" stroke="#397fc3" opacity="1" stroke-width="1"/>
+<line x1="624.7" y1="124.0" x2="624.7" y2="134.0" stroke="#397fc3" opacity="1" stroke-width="1"/>
+<circle cx="611.9" cy="129.0" r="4" fill="#397fc3"/>
+<text x="723.0" y="133.0" text-anchor="start" font-size="10" fill="currentColor">30 次</text>
+<line x1="583.8" y1="165.0" x2="612.7" y2="165.0" stroke="#cf7628" opacity="1" stroke-width="2"/>
+<line x1="583.8" y1="160.0" x2="583.8" y2="170.0" stroke="#cf7628" opacity="1" stroke-width="1"/>
+<line x1="612.7" y1="160.0" x2="612.7" y2="170.0" stroke="#cf7628" opacity="1" stroke-width="1"/>
+<circle cx="599.3" cy="165.0" r="4" fill="#cf7628"/>
+<text x="723.0" y="169.0" text-anchor="start" font-size="10" fill="currentColor">34 次</text>
+<line x1="607.3" y1="201.0" x2="647.3" y2="201.0" stroke="#8057be" opacity="1" stroke-width="2"/>
+<line x1="607.3" y1="196.0" x2="607.3" y2="206.0" stroke="#8057be" opacity="1" stroke-width="1"/>
+<line x1="647.3" y1="196.0" x2="647.3" y2="206.0" stroke="#8057be" opacity="1" stroke-width="1"/>
+<circle cx="624.6" cy="201.0" r="4" fill="#8057be"/>
+<text x="723.0" y="205.0" text-anchor="start" font-size="10" fill="currentColor">16 次</text>
+<line x1="579.3" y1="237.0" x2="632.7" y2="237.0" stroke="#239882" opacity="1" stroke-width="2"/>
+<line x1="579.3" y1="232.0" x2="579.3" y2="242.0" stroke="#239882" opacity="1" stroke-width="1"/>
+<line x1="632.7" y1="232.0" x2="632.7" y2="242.0" stroke="#239882" opacity="1" stroke-width="1"/>
+<circle cx="603.5" cy="237.0" r="4" fill="#239882"/>
+<text x="723.0" y="241.0" text-anchor="start" font-size="10" fill="currentColor">12 次</text>
+<line x1="605.0" y1="293.0" x2="644.2" y2="293.0" stroke="#397fc3" opacity="1" stroke-width="2"/>
+<line x1="605.0" y1="288.0" x2="605.0" y2="298.0" stroke="#397fc3" opacity="1" stroke-width="1"/>
+<line x1="644.2" y1="288.0" x2="644.2" y2="298.0" stroke="#397fc3" opacity="1" stroke-width="1"/>
+<circle cx="623.8" cy="293.0" r="4" fill="#397fc3"/>
+<text x="723.0" y="297.0" text-anchor="start" font-size="10" fill="currentColor">30 次</text>
+<line x1="594.3" y1="329.0" x2="623.3" y2="329.0" stroke="#cf7628" opacity="1" stroke-width="2"/>
+<line x1="594.3" y1="324.0" x2="594.3" y2="334.0" stroke="#cf7628" opacity="1" stroke-width="1"/>
+<line x1="623.3" y1="324.0" x2="623.3" y2="334.0" stroke="#cf7628" opacity="1" stroke-width="1"/>
+<circle cx="608.6" cy="329.0" r="4" fill="#cf7628"/>
+<text x="723.0" y="333.0" text-anchor="start" font-size="10" fill="currentColor">34 次</text>
+<line x1="615.6" y1="365.0" x2="659.3" y2="365.0" stroke="#8057be" opacity="1" stroke-width="2"/>
+<line x1="615.6" y1="360.0" x2="615.6" y2="370.0" stroke="#8057be" opacity="1" stroke-width="1"/>
+<line x1="659.3" y1="360.0" x2="659.3" y2="370.0" stroke="#8057be" opacity="1" stroke-width="1"/>
+<circle cx="635.3" cy="365.0" r="4" fill="#8057be"/>
+<text x="723.0" y="369.0" text-anchor="start" font-size="10" fill="currentColor">16 次</text>
+<line x1="594.0" y1="401.0" x2="664.4" y2="401.0" stroke="#239882" opacity="1" stroke-width="2"/>
+<line x1="594.0" y1="396.0" x2="594.0" y2="406.0" stroke="#239882" opacity="1" stroke-width="1"/>
+<line x1="664.4" y1="396.0" x2="664.4" y2="406.0" stroke="#239882" opacity="1" stroke-width="1"/>
+<circle cx="627.0" cy="401.0" r="4" fill="#239882"/>
+<text x="723.0" y="405.0" text-anchor="start" font-size="10" fill="currentColor">12 次</text>
+<text x="889.0" y="84.0" text-anchor="middle" font-size="15" fill="currentColor">60 個交易日</text>
+<line x1="779.0" y1="100.0" x2="779.0" y2="424.0" stroke="currentColor" opacity="0.12" stroke-width="1"/>
+<text x="779.0" y="445.0" text-anchor="middle" font-size="11" fill="currentColor">-10</text>
+<line x1="834.0" y1="100.0" x2="834.0" y2="424.0" stroke="currentColor" opacity="0.12" stroke-width="1"/>
+<text x="834.0" y="445.0" text-anchor="middle" font-size="11" fill="currentColor">-5</text>
+<line x1="889.0" y1="100.0" x2="889.0" y2="424.0" stroke="currentColor" opacity="0.35" stroke-width="1"/>
+<text x="889.0" y="445.0" text-anchor="middle" font-size="11" fill="currentColor">0</text>
+<line x1="944.0" y1="100.0" x2="944.0" y2="424.0" stroke="currentColor" opacity="0.12" stroke-width="1"/>
+<text x="944.0" y="445.0" text-anchor="middle" font-size="11" fill="currentColor">5</text>
+<line x1="999.0" y1="100.0" x2="999.0" y2="424.0" stroke="currentColor" opacity="0.12" stroke-width="1"/>
+<text x="999.0" y="445.0" text-anchor="middle" font-size="11" fill="currentColor">10</text>
+<line x1="876.5" y1="129.0" x2="931.0" y2="129.0" stroke="#397fc3" opacity="1" stroke-width="2"/>
+<line x1="876.5" y1="124.0" x2="876.5" y2="134.0" stroke="#397fc3" opacity="1" stroke-width="1"/>
+<line x1="931.0" y1="124.0" x2="931.0" y2="134.0" stroke="#397fc3" opacity="1" stroke-width="1"/>
+<circle cx="905.7" cy="129.0" r="4" fill="#397fc3"/>
+<text x="1009.0" y="133.0" text-anchor="start" font-size="10" fill="currentColor">30 次</text>
+<line x1="864.4" y1="165.0" x2="911.9" y2="165.0" stroke="#cf7628" opacity="1" stroke-width="2"/>
+<line x1="864.4" y1="160.0" x2="864.4" y2="170.0" stroke="#cf7628" opacity="1" stroke-width="1"/>
+<line x1="911.9" y1="160.0" x2="911.9" y2="170.0" stroke="#cf7628" opacity="1" stroke-width="1"/>
+<circle cx="889.6" cy="165.0" r="4" fill="#cf7628"/>
+<text x="1009.0" y="169.0" text-anchor="start" font-size="10" fill="currentColor">33 次</text>
+<line x1="868.3" y1="201.0" x2="931.4" y2="201.0" stroke="#8057be" opacity="1" stroke-width="2"/>
+<line x1="868.3" y1="196.0" x2="868.3" y2="206.0" stroke="#8057be" opacity="1" stroke-width="1"/>
+<line x1="931.4" y1="196.0" x2="931.4" y2="206.0" stroke="#8057be" opacity="1" stroke-width="1"/>
+<circle cx="901.0" cy="201.0" r="4" fill="#8057be"/>
+<text x="1009.0" y="205.0" text-anchor="start" font-size="10" fill="currentColor">16 次</text>
+<line x1="855.1" y1="237.0" x2="923.7" y2="237.0" stroke="#239882" opacity="1" stroke-width="2"/>
+<line x1="855.1" y1="232.0" x2="855.1" y2="242.0" stroke="#239882" opacity="1" stroke-width="1"/>
+<line x1="923.7" y1="232.0" x2="923.7" y2="242.0" stroke="#239882" opacity="1" stroke-width="1"/>
+<circle cx="887.8" cy="237.0" r="4" fill="#239882"/>
+<text x="1009.0" y="241.0" text-anchor="start" font-size="10" fill="currentColor">12 次</text>
+<line x1="885.8" y1="293.0" x2="981.7" y2="293.0" stroke="#397fc3" opacity="1" stroke-width="2"/>
+<line x1="885.8" y1="288.0" x2="885.8" y2="298.0" stroke="#397fc3" opacity="1" stroke-width="1"/>
+<line x1="981.7" y1="288.0" x2="981.7" y2="298.0" stroke="#397fc3" opacity="1" stroke-width="1"/>
+<circle cx="932.1" cy="293.0" r="4" fill="#397fc3"/>
+<text x="1009.0" y="297.0" text-anchor="start" font-size="10" fill="currentColor">30 次</text>
+<line x1="841.5" y1="329.0" x2="926.8" y2="329.0" stroke="#cf7628" opacity="1" stroke-width="2"/>
+<line x1="841.5" y1="324.0" x2="841.5" y2="334.0" stroke="#cf7628" opacity="1" stroke-width="1"/>
+<line x1="926.8" y1="324.0" x2="926.8" y2="334.0" stroke="#cf7628" opacity="1" stroke-width="1"/>
+<circle cx="889.1" cy="329.0" r="4" fill="#cf7628"/>
+<text x="1009.0" y="333.0" text-anchor="start" font-size="10" fill="currentColor">33 次</text>
+<line x1="890.1" y1="365.0" x2="991.6" y2="365.0" stroke="#8057be" opacity="1" stroke-width="2"/>
+<line x1="890.1" y1="360.0" x2="890.1" y2="370.0" stroke="#8057be" opacity="1" stroke-width="1"/>
+<line x1="991.6" y1="360.0" x2="991.6" y2="370.0" stroke="#8057be" opacity="1" stroke-width="1"/>
+<circle cx="938.3" cy="365.0" r="4" fill="#8057be"/>
+<text x="1009.0" y="369.0" text-anchor="start" font-size="10" fill="currentColor">16 次</text>
+<line x1="882.3" y1="401.0" x2="968.5" y2="401.0" stroke="#239882" opacity="1" stroke-width="2"/>
+<line x1="882.3" y1="396.0" x2="882.3" y2="406.0" stroke="#239882" opacity="1" stroke-width="1"/>
+<line x1="968.5" y1="396.0" x2="968.5" y2="406.0" stroke="#239882" opacity="1" stroke-width="1"/>
+<circle cx="924.5" cy="401.0" r="4" fill="#239882"/>
+<text x="1009.0" y="405.0" text-anchor="start" font-size="10" fill="currentColor">12 次</text>
+</svg>
