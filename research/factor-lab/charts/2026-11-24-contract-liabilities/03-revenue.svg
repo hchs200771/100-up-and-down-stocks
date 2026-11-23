@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 350" font-family="system-ui,sans-serif" font-size="13" fill="currentColor" role="img"><title>合約負債有沒有領先營收？</title>
+<text x="520.0" y="29.0" text-anchor="middle" font-size="20" fill="currentColor">合約負債有沒有領先營收？</text>
+<text x="520.0" y="52.0" text-anchor="middle" font-size="13" fill="currentColor">下一季單季營收年增率：訊號組中位數 − 母體中位數（百分點），以季平均</text>
+<line x1="470.0" y1="80.0" x2="470.0" y2="320.0" stroke="currentColor" opacity="0.12" stroke-width="1"/>
+<text x="470.0" y="335.0" text-anchor="middle" font-size="11" fill="currentColor">-5</text>
+<line x1="576.0" y1="80.0" x2="576.0" y2="320.0" stroke="currentColor" opacity="0.35" stroke-width="1"/>
+<text x="576.0" y="335.0" text-anchor="middle" font-size="11" fill="currentColor">0</text>
+<line x1="682.0" y1="80.0" x2="682.0" y2="320.0" stroke="currentColor" opacity="0.12" stroke-width="1"/>
+<text x="682.0" y="335.0" text-anchor="middle" font-size="11" fill="currentColor">5</text>
+<line x1="788.0" y1="80.0" x2="788.0" y2="320.0" stroke="currentColor" opacity="0.12" stroke-width="1"/>
+<text x="788.0" y="335.0" text-anchor="middle" font-size="11" fill="currentColor">10</text>
+<line x1="894.0" y1="80.0" x2="894.0" y2="320.0" stroke="currentColor" opacity="0.12" stroke-width="1"/>
+<text x="894.0" y="335.0" text-anchor="middle" font-size="11" fill="currentColor">15</text>
+<line x1="1000.0" y1="80.0" x2="1000.0" y2="320.0" stroke="currentColor" opacity="0.12" stroke-width="1"/>
+<text x="1000.0" y="335.0" text-anchor="middle" font-size="11" fill="currentColor">20</text>
+<text x="460.0" y="109.0" text-anchor="end" font-size="12" fill="currentColor">圖上規則：合約負債季增&gt;10%、存貨季增&gt;0</text>
+<rect x="576.0" y="96.0" width="163.2" height="18.0" fill="#2f8f5b"/>
+<text x="745.2" y="110.0" text-anchor="start" font-size="12" fill="currentColor">+7.7</text>
+<text x="460.0" y="155.0" text-anchor="end" font-size="12" fill="currentColor">合約負債季增金額÷營收 前 20%</text>
+<rect x="576.0" y="142.0" width="167.5" height="18.0" fill="#2f8f5b"/>
+<text x="749.5" y="156.0" text-anchor="start" font-size="12" fill="currentColor">+7.9</text>
+<text x="460.0" y="201.0" text-anchor="end" font-size="12" fill="currentColor">同上，但先按月營收年增分組再比</text>
+<rect x="576.0" y="188.0" width="72.1" height="18.0" fill="#2f8f5b"/>
+<text x="654.1" y="202.0" text-anchor="start" font-size="12" fill="currentColor">+3.4</text>
+<text x="460.0" y="247.0" text-anchor="end" font-size="12" fill="currentColor">高預收公司（合約負債≥單季營收30%）且合約負債季增&gt;10%</text>
+<rect x="576.0" y="234.0" width="354.0" height="18.0" fill="#2f8f5b"/>
+<text x="936.0" y="248.0" text-anchor="start" font-size="12" fill="currentColor">+16.7</text>
+<text x="460.0" y="293.0" text-anchor="end" font-size="12" fill="currentColor">合約負債季增金額÷營收 後 20%（減少最多）</text>
+<rect x="544.2" y="280.0" width="31.8" height="18.0" fill="#b5484b"/>
+<text x="582.0" y="294.0" text-anchor="start" font-size="12" fill="currentColor">-1.5</text>
+</svg>
