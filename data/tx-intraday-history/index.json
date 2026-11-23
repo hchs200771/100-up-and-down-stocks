@@ -211,8 +211,8 @@
   },
   "2026-11-23": {
     "contract": "202612",
-    "dayBars": 0,
+    "dayBars": 300,
     "nightBars": 840,
-    "ticks": 69064
+    "ticks": 167439
   }
 }
