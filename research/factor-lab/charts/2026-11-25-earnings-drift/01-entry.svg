@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 740" font-family="system-ui,sans-serif" font-size="13" fill="currentColor" role="img"><title>公布隔天買 vs 期限隔天買：20 個交易日平均超額報酬</title>
+<text x="520.0" y="29.0" text-anchor="middle" font-size="20" fill="currentColor">公布隔天買 vs 期限隔天買：20 個交易日平均超額報酬</text>
+<text x="520.0" y="52.0" text-anchor="middle" font-size="13" fill="currentColor">以季為單位平均（百分點，未扣成本）｜細線為 95% 信賴區間｜2020Q3–2026Q2</text>
+<circle cx="360" cy="76" r="4" fill="#397fc3"/>
+<text x="372.0" y="80.0" text-anchor="start" font-size="13" fill="currentColor">公布隔天開盤買</text>
+<circle cx="540" cy="76" r="4" fill="#9aa3ad"/>
+<text x="552.0" y="80.0" text-anchor="start" font-size="13" fill="currentColor">法定期限隔天開盤買</text>
+<line x1="330.0" y1="100.0" x2="330.0" y2="710.0" stroke="currentColor" opacity="0.12" stroke-width="1"/>
+<text x="330.0" y="725.0" text-anchor="middle" font-size="11" fill="currentColor">-4</text>
+<line x1="425.7" y1="100.0" x2="425.7" y2="710.0" stroke="currentColor" opacity="0.12" stroke-width="1"/>
+<text x="425.7" y="725.0" text-anchor="middle" font-size="11" fill="currentColor">-3</text>
+<line x1="521.4" y1="100.0" x2="521.4" y2="710.0" stroke="currentColor" opacity="0.12" stroke-width="1"/>
+<text x="521.4" y="725.0" text-anchor="middle" font-size="11" fill="currentColor">-2</text>
+<line x1="617.1" y1="100.0" x2="617.1" y2="710.0" stroke="currentColor" opacity="0.12" stroke-width="1"/>
+<text x="617.1" y="725.0" text-anchor="middle" font-size="11" fill="currentColor">-1</text>
+<line x1="712.9" y1="100.0" x2="712.9" y2="710.0" stroke="currentColor" opacity="0.35" stroke-width="1"/>
+<text x="712.9" y="725.0" text-anchor="middle" font-size="11" fill="currentColor">0</text>
+<line x1="808.6" y1="100.0" x2="808.6" y2="710.0" stroke="currentColor" opacity="0.12" stroke-width="1"/>
+<text x="808.6" y="725.0" text-anchor="middle" font-size="11" fill="currentColor">1</text>
+<line x1="904.3" y1="100.0" x2="904.3" y2="710.0" stroke="currentColor" opacity="0.12" stroke-width="1"/>
+<text x="904.3" y="725.0" text-anchor="middle" font-size="11" fill="currentColor">2</text>
+<line x1="1000.0" y1="100.0" x2="1000.0" y2="710.0" stroke="currentColor" opacity="0.12" stroke-width="1"/>
+<text x="1000.0" y="725.0" text-anchor="middle" font-size="11" fill="currentColor">3</text>
+<text x="320.0" y="134.0" text-anchor="end" font-size="12" fill="currentColor">獲利驚喜 最高 20%</text>
+<rect x="712.9" y="114.0" width="162.7" height="15.0" fill="#397fc3"/>
+<line x1="806.4" y1="121.5" x2="944.8" y2="121.5" stroke="currentColor" opacity="0.9" stroke-width="1"/>
+<text x="950.8" y="126.0" text-anchor="start" font-size="11" fill="currentColor">+1.70</text>
+<rect x="712.9" y="136.0" width="77.5" height="15.0" fill="#9aa3ad"/>
+<line x1="742.6" y1="143.5" x2="838.2" y2="143.5" stroke="currentColor" opacity="0.9" stroke-width="1"/>
+<text x="844.2" y="148.0" text-anchor="start" font-size="11" fill="currentColor">+0.81</text>
+<text x="320.0" y="196.0" text-anchor="end" font-size="12" fill="currentColor">獲利驚喜 最低 20%</text>
+<rect x="483.1" y="176.0" width="229.7" height="15.0" fill="#397fc3"/>
+<line x1="403.5" y1="183.5" x2="562.8" y2="183.5" stroke="currentColor" opacity="0.9" stroke-width="1"/>
+<text x="718.9" y="188.0" text-anchor="start" font-size="11" fill="currentColor">-2.40</text>
+<rect x="516.6" y="198.0" width="196.2" height="15.0" fill="#9aa3ad"/>
+<line x1="421.7" y1="205.5" x2="611.6" y2="205.5" stroke="currentColor" opacity="0.9" stroke-width="1"/>
+<text x="718.9" y="210.0" text-anchor="start" font-size="11" fill="currentColor">-2.05</text>
+<text x="320.0" y="258.0" text-anchor="end" font-size="12" fill="currentColor">EPS 年增 最高 20%</text>
+<rect x="712.9" y="238.0" width="165.6" height="15.0" fill="#397fc3"/>
+<line x1="792.8" y1="245.5" x2="964.1" y2="245.5" stroke="currentColor" opacity="0.9" stroke-width="1"/>
+<text x="970.1" y="250.0" text-anchor="start" font-size="11" fill="currentColor">+1.73</text>
+<rect x="712.9" y="260.0" width="119.6" height="15.0" fill="#9aa3ad"/>
+<line x1="736.0" y1="267.5" x2="929.0" y2="267.5" stroke="currentColor" opacity="0.9" stroke-width="1"/>
+<text x="935.0" y="272.0" text-anchor="start" font-size="11" fill="currentColor">+1.25</text>
+<text x="320.0" y="320.0" text-anchor="end" font-size="12" fill="currentColor">EPS 年增 最低 20%</text>
+<rect x="517.6" y="300.0" width="195.3" height="15.0" fill="#397fc3"/>
+<line x1="455.8" y1="307.5" x2="579.4" y2="307.5" stroke="currentColor" opacity="0.9" stroke-width="1"/>
+<text x="718.9" y="312.0" text-anchor="start" font-size="11" fill="currentColor">-2.04</text>
+<rect x="547.3" y="322.0" width="165.6" height="15.0" fill="#9aa3ad"/>
+<line x1="475.9" y1="329.5" x2="618.6" y2="329.5" stroke="currentColor" opacity="0.9" stroke-width="1"/>
+<text x="718.9" y="334.0" text-anchor="start" font-size="11" fill="currentColor">-1.73</text>
+<text x="320.0" y="382.0" text-anchor="end" font-size="12" fill="currentColor">毛利率年增 最高 20%</text>
+<rect x="712.9" y="362.0" width="165.6" height="15.0" fill="#397fc3"/>
+<line x1="787.0" y1="369.5" x2="969.9" y2="369.5" stroke="currentColor" opacity="0.9" stroke-width="1"/>
+<text x="975.9" y="374.0" text-anchor="start" font-size="11" fill="currentColor">+1.73</text>
+<rect x="712.9" y="384.0" width="122.5" height="15.0" fill="#9aa3ad"/>
+<line x1="758.4" y1="391.5" x2="912.3" y2="391.5" stroke="currentColor" opacity="0.9" stroke-width="1"/>
+<text x="918.3" y="396.0" text-anchor="start" font-size="11" fill="currentColor">+1.28</text>
+<text x="320.0" y="444.0" text-anchor="end" font-size="12" fill="currentColor">毛利率年增 最低 20%</text>
+<rect x="576.9" y="424.0" width="135.9" height="15.0" fill="#397fc3"/>
+<line x1="528.2" y1="431.5" x2="625.7" y2="431.5" stroke="currentColor" opacity="0.9" stroke-width="1"/>
+<text x="718.9" y="436.0" text-anchor="start" font-size="11" fill="currentColor">-1.42</text>
+<rect x="608.5" y="446.0" width="104.3" height="15.0" fill="#9aa3ad"/>
+<line x1="560.8" y1="453.5" x2="656.3" y2="453.5" stroke="currentColor" opacity="0.9" stroke-width="1"/>
+<text x="718.9" y="458.0" text-anchor="start" font-size="11" fill="currentColor">-1.09</text>
+<text x="320.0" y="506.0" text-anchor="end" font-size="12" fill="currentColor">營益率年增 最高 20%</text>
+<rect x="712.9" y="486.0" width="136.9" height="15.0" fill="#397fc3"/>
+<line x1="760.6" y1="493.5" x2="938.9" y2="493.5" stroke="currentColor" opacity="0.9" stroke-width="1"/>
+<text x="944.9" y="498.0" text-anchor="start" font-size="11" fill="currentColor">+1.43</text>
+<rect x="712.9" y="508.0" width="83.3" height="15.0" fill="#9aa3ad"/>
+<line x1="719.9" y1="515.5" x2="872.4" y2="515.5" stroke="currentColor" opacity="0.9" stroke-width="1"/>
+<text x="878.4" y="520.0" text-anchor="start" font-size="11" fill="currentColor">+0.87</text>
+<text x="320.0" y="568.0" text-anchor="end" font-size="12" fill="currentColor">營益率年增 最低 20%</text>
+<rect x="600.9" y="548.0" width="112.0" height="15.0" fill="#397fc3"/>
+<line x1="540.4" y1="555.5" x2="661.3" y2="555.5" stroke="currentColor" opacity="0.9" stroke-width="1"/>
+<text x="718.9" y="560.0" text-anchor="start" font-size="11" fill="currentColor">-1.17</text>
+<rect x="621.0" y="570.0" width="91.9" height="15.0" fill="#9aa3ad"/>
+<line x1="551.2" y1="577.5" x2="690.8" y2="577.5" stroke="currentColor" opacity="0.9" stroke-width="1"/>
+<text x="718.9" y="582.0" text-anchor="start" font-size="11" fill="currentColor">-0.96</text>
+<text x="320.0" y="630.0" text-anchor="end" font-size="12" fill="currentColor">合約負債季增 最高 20%</text>
+<rect x="712.9" y="610.0" width="33.5" height="15.0" fill="#397fc3"/>
+<line x1="670.0" y1="617.5" x2="822.7" y2="617.5" stroke="currentColor" opacity="0.9" stroke-width="1"/>
+<text x="828.7" y="622.0" text-anchor="start" font-size="11" fill="currentColor">+0.35</text>
+<rect x="712.9" y="632.0" width="67.0" height="15.0" fill="#9aa3ad"/>
+<line x1="702.2" y1="639.5" x2="857.6" y2="639.5" stroke="currentColor" opacity="0.9" stroke-width="1"/>
+<text x="863.6" y="644.0" text-anchor="start" font-size="11" fill="currentColor">+0.70</text>
+<text x="320.0" y="692.0" text-anchor="end" font-size="12" fill="currentColor">合約負債季增 最低 20%</text>
+<rect x="697.5" y="672.0" width="15.3" height="15.0" fill="#397fc3"/>
+<line x1="626.1" y1="679.5" x2="769.0" y2="679.5" stroke="currentColor" opacity="0.9" stroke-width="1"/>
+<text x="775.0" y="684.0" text-anchor="start" font-size="11" fill="currentColor">-0.16</text>
+<rect x="695.6" y="694.0" width="17.2" height="15.0" fill="#9aa3ad"/>
+<line x1="636.4" y1="701.5" x2="754.9" y2="701.5" stroke="currentColor" opacity="0.9" stroke-width="1"/>
+<text x="760.9" y="706.0" text-anchor="start" font-size="11" fill="currentColor">-0.18</text>
+</svg>
