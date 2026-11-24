@@ -139,10 +139,11 @@ showCurrent();
       #world-markets p { margin:4px 0; font-size:13px; color:var(--wm-muted); }
       #world-markets .wm-legend { display:flex; flex-wrap:wrap; gap:4px 14px; }
       #world-markets .wm-legend span::before { content:""; display:inline-block; width:17px; margin-right:5px;
-        vertical-align:middle; }
-      #world-markets .wm-legend .wm-ma20::before { border-top:2px dashed var(--wm-ma20); }
-      #world-markets .wm-legend .wm-ma60::before { border-top:2px dotted var(--wm-ma60); }
+        vertical-align:middle; border-top:1.5px solid currentColor; }
+      #world-markets .wm-legend .wm-ma20 { color:var(--wm-ma20); }
+      #world-markets .wm-legend .wm-ma60 { color:var(--wm-ma60); }
       #world-markets .wm-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%, 270px),1fr)); gap:8px; }
+      #world-markets .wm-chart { max-width:640px; }
       #world-markets .wm-status { font-weight:700; color:var(--wm-text); }
       #world-markets .wm-status[data-trend="above"] { color:var(--wm-bull); }
       #world-markets .wm-status[data-trend="below"] { color:var(--wm-bear); }
@@ -155,14 +156,18 @@ showCurrent();
       #world-markets .wm-down { color:var(--wm-down); }
       #world-markets .wm-wick { stroke:currentColor; }
       #world-markets .wm-body { fill:currentColor; }
-      #world-markets .wm-ma20-line { stroke:var(--wm-ma20); stroke-width:1.5; stroke-dasharray:5 3; }
-      #world-markets .wm-ma60-line { stroke:var(--wm-ma60); stroke-width:1.8; stroke-dasharray:2 3; }
+      #world-markets .wm-ma20-line, #world-markets .wm-ma60-line { stroke-width:1.5; stroke-dasharray:none; }
+      #world-markets .wm-ma20-line { stroke:var(--wm-ma20); }
+      #world-markets .wm-ma60-line { stroke:var(--wm-ma60); }
+      #world-markets svg .wm-extreme { paint-order:stroke; stroke:var(--wm-panel); stroke-width:3;
+        stroke-linejoin:round; font-weight:700; pointer-events:none; }
+      #world-markets .wm-high { fill:var(--wm-bull); }
+      #world-markets .wm-low { fill:var(--wm-bear); }
       #world-markets .wm-cursor { stroke:var(--wm-muted); stroke-dasharray:3 3; }
     </style>
     <details class="wm-panel wm-us">
       <summary>美股走勢</summary>
       <p>綠＝收漲、紅＝收跌（美股慣例，與台股相反）。收盤等於或高於開盤為綠，低於開盤為紅。</p>
-    <p class="wm-legend"><span class="wm-ma20">20 日線</span><span class="wm-ma60">60 日線</span></p>
       <p>近 6 個月日 K。均線是近 20 或 60 個交易日的平均收盤，60 日約一季。移動滑鼠或手指可查看開、高、低、收與相對前一交易日收盤的漲跌幅。</p>
       <article class="wm-card">
     <h5>道瓊工業</h5>
@@ -185,7 +190,6 @@ showCurrent();
     <details class="wm-panel wm-world">
       <summary>各國股市專區</summary>
       <p>綠＝收漲、紅＝收跌（美股慣例，與台股相反）。收盤等於或高於開盤為綠，低於開盤為紅。</p>
-    <p class="wm-legend"><span class="wm-ma20">20 日線</span><span class="wm-ma60">60 日線</span></p>
       <p class="wm-load" role="status"></p>
       
     <section>
@@ -299,10 +303,10 @@ showCurrent();
     const step = (max + padding - (min - padding)) / 3;
     const left = Math.max(number.format(max).length * 7 + 7, 45);
     const right = width - 8;
-    const top = 10;
-    const bottom = height - 22;
+    const top = 18;
+    const bottom = height - 34;
     const slot = (right - left) / points.length;
-    const bodyWidth = Math.min(8, slot * 0.75);
+    const bodyWidth = Math.min(8, slot * 0.7);
     const x = (i) => left + (i + 0.5) * slot;
     const y = (value) => bottom - (value - min + padding) / (3 * step) * (bottom - top);
     const grid = Array.from({ length: 4 }, (_, index) => {
@@ -340,11 +344,27 @@ showCurrent();
         <rect class="wm-body" x="${xx - bodyWidth / 2}" y="${bodyTop}" width="${bodyWidth}" height="${bodyHeight}"/>
       </g>`;
     }).join("");
+    let highIndex = 0;
+    let lowIndex = 0;
+    points.forEach((point, i) => {
+      if (point.high > points[highIndex].high) highIndex = i;
+      if (point.low < points[lowIndex].low) lowIndex = i;
+    });
+    function extremeLabel(key, index, offset) {
+      const value = points[index][key];
+      const label = number.format(value);
+      const xx = x(index);
+      const halfLabelWidth = label.length * 4;
+      const anchor = xx - left < halfLabelWidth ? "start" : right - xx < halfLabelWidth ? "end" : "middle";
+      return '<text class="wm-extreme wm-' + key + '" x="' + xx + '" y="' + (y(value) + offset) +
+        '" text-anchor="' + anchor + '">' + label + '</text>';
+    }
     const svg = state.svg;
     svg.setAttribute("viewBox", "0 0 " + width + " " + height);
     svg.setAttribute("height", height);
     svg.innerHTML = grid + dates + candles + line("ma20") + line("ma60") +
-      '<line class="wm-cursor" y1="' + top + '" y2="' + bottom + '"/>';
+      '<line class="wm-cursor" y1="' + top + '" y2="' + bottom + '"/>' +
+      extremeLabel("high", highIndex, -5) + extremeLabel("low", lowIndex, 14);
     const cursor = svg.querySelector(".wm-cursor");
 
     function show(index) {
@@ -395,8 +415,17 @@ showCurrent();
     const trend = distance > 0 ? "above" : distance < 0 ? "below" : "flat";
     const label = distance > 0 ? "多頭（收盤在 60 日線上方）" :
       distance < 0 ? "空頭（收盤在 60 日線下方）" : "收盤與 60 日線持平";
+    const previous = candles.at(-2);
+    const legend = [20, 60].map((days) => {
+      const key = "ma" + days;
+      const value = last[key];
+      const prior = previous?.[key];
+      const direction = prior == null ? "" : value > prior ? " ▲" : value < prior ? " ▼" : "";
+      return '<span class="wm-' + key + '">MA' + days + ' ' +
+        (value == null ? "資料暫缺" : number.format(value) + direction) + '</span>';
+    }).join("");
     target.innerHTML = '<p class="wm-status" data-trend="' + trend + '">' + label +
-      '　距 60 日線 ' + signed(distance) + '</p><p class="wm-readout"></p>' +
+      '　距 60 日線 ' + signed(distance) + '</p><p class="wm-readout"></p><p class="wm-legend">' + legend + '</p>' +
       '<svg tabindex="0" role="group" aria-label="日 K 走勢，可用左右方向鍵查看每日開高低收與漲跌幅"></svg>';
     const cutoff = sixMonthsAgo(last.date);
     const points = candles.filter((point) => point.date >= cutoff);
