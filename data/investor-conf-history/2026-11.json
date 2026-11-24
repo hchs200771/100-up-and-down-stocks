@@ -33444,6 +33444,7 @@
    "chars": 2164
   },
   "videoStatus": "ok",
+  "deckStatus": "尚未上傳",
   "context": {
    "revenue": "2026-10 月營收 25 百萬元，YoY +37%，MoM +23%，累計 YoY -18%",
    "move": null
@@ -35642,6 +35643,7 @@
    "url": "https://blog.fugle.tw/post/earnings-call-3115-2026-11-18"
   },
   "videoStatus": "ok",
+  "deckStatus": "尚未上傳",
   "context": {
    "revenue": "2026-10 月營收 1 百萬元，YoY +43%，MoM +2%，累計 YoY +89%",
    "move": null
@@ -35844,6 +35846,7 @@
   "deck": null,
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "尚未上傳",
   "context": {
    "revenue": "2026-10 月營收 3,372 百萬元，YoY +45%，MoM +17%，累計 YoY +69%，YoY 45%，連12月YoY成長，同期歷史新高",
    "move": null
@@ -38868,6 +38871,7 @@
    "url": "https://blog.fugle.tw/post/earnings-call-7767-2026-11-18"
   },
   "videoStatus": "ok",
+  "deckStatus": "尚未上傳",
   "context": {
    "revenue": "2026-10 月營收 221 百萬元，YoY -2%，MoM -13%，累計 YoY +41%",
    "move": null
@@ -41696,6 +41700,7 @@
    "url": "https://blog.fugle.tw/post/earnings-call-4401-2026-11-19"
   },
   "videoStatus": "ok",
+  "deckStatus": "尚未上傳",
   "context": {
    "revenue": "2026-10 月營收 273 百萬元，YoY -17%，MoM +1%，累計 YoY -6%",
    "move": null
@@ -42547,6 +42552,7 @@
    "url": "https://blog.fugle.tw/post/earnings-call-5488-2026-11-19"
   },
   "videoStatus": "ok",
+  "deckStatus": "尚未上傳",
   "context": {
    "revenue": "2026-10 月營收 65 百萬元，YoY -15%，MoM -12%，累計 YoY +25%",
    "move": null
@@ -44670,6 +44676,7 @@
    "url": "https://blog.fugle.tw/post/earnings-call-1473-2026-11-20"
   },
   "videoStatus": "ok",
+  "deckStatus": "尚未上傳",
   "context": {
    "revenue": "2026-10 月營收 315 百萬元，YoY +5%，MoM -14%，累計 YoY -8%",
    "move": null
@@ -46941,6 +46948,7 @@
    "url": "https://blog.fugle.tw/post/earnings-call-6209-2026-11-20"
   },
   "videoStatus": "ok",
+  "deckStatus": "尚未上傳",
   "context": {
    "revenue": "2026-10 月營收 604 百萬元，YoY +49%，MoM -10%，累計 YoY +68%，YoY 49%，連12月YoY成長，同期歷史新高",
    "move": null
@@ -47849,9 +47857,9 @@
   "videoUrl": null,
   "note": "無",
   "deck": {
-   "file": "990420261119E001.pdf",
+   "file": "990420261124M001.pdf",
    "pages": 23,
-   "chars": 13156,
+   "chars": 8745,
    "imageHeavy": false
   },
   "transcript": null,
@@ -48747,9 +48755,9 @@
   "videoUrl": null,
   "note": "無",
   "deck": {
-   "file": "495820261118E001.pdf",
+   "file": "495820261118M001.pdf",
    "pages": 40,
-   "chars": 23898,
+   "chars": 13086,
    "imageHeavy": false
   },
   "transcript": null,
@@ -49099,9 +49107,9 @@
   "videoUrl": "http://irconference.twse.com.tw/6603_11_20261123_ch.mp4",
   "note": "無",
   "deck": {
-   "file": "660320261123E001.pdf",
+   "file": "660320261123M001.pdf",
    "pages": 49,
-   "chars": 5189,
+   "chars": 3650,
    "imageHeavy": true
   },
   "transcript": {
@@ -49508,7 +49516,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "失敗：60 秒沒有收到資料",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 379 百萬元，YoY +1%，MoM -9%，累計 YoY +7%",
@@ -49518,7 +49526,7 @@
   "analysisError": "spawn codex ENOENT",
   "firstSeen": "2026-11-24T23:58:08+08:00",
   "state": "pending",
-  "pendingNote": "判讀失敗，下次重試；影音轉文字中"
+  "pendingNote": "判讀失敗，下次重試；影音：失敗：60 秒沒有收到資料"
  },
  "2020-2026-11-24": {
   "key": "2020-2026-11-24",
@@ -49539,8 +49547,11 @@
    "chars": 4557,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 23,
+   "chars": 5259
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 288 百萬元，YoY -1%，MoM -2%，累計 YoY -21%",
@@ -49550,7 +49561,7 @@
   "analysisError": "spawn codex ENOENT",
   "firstSeen": "2026-11-24T23:58:08+08:00",
   "state": "pending",
-  "pendingNote": "判讀失敗，下次重試；影音轉文字中"
+  "pendingNote": "判讀失敗，下次重試"
  },
  "2301-2026-11-24": {
   "key": "2301-2026-11-24",
@@ -49667,8 +49678,11 @@
    "chars": 3227,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 6,
+   "chars": 1558
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 831 百萬元，YoY -9%，MoM -7%，累計 YoY -2%",
@@ -49678,7 +49692,7 @@
   "analysisError": "spawn codex ENOENT",
   "firstSeen": "2026-11-24T23:58:08+08:00",
   "state": "pending",
-  "pendingNote": "判讀失敗，下次重試；影音轉文字中"
+  "pendingNote": "判讀失敗，下次重試"
  },
  "2382-2026-11-24": {
   "key": "2382-2026-11-24",
@@ -49859,8 +49873,11 @@
    "chars": 2152,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 6,
+   "chars": 1377
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 233 百萬元，YoY +2%，MoM +5%，累計 YoY +1%",
@@ -49870,7 +49887,7 @@
   "analysisError": "spawn codex ENOENT",
   "firstSeen": "2026-11-24T23:58:08+08:00",
   "state": "pending",
-  "pendingNote": "判讀失敗，下次重試；影音轉文字中"
+  "pendingNote": "判讀失敗，下次重試"
  },
  "2820-2026-11-24": {
   "key": "2820-2026-11-24",
@@ -49892,7 +49909,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "影音在公司網頁，未轉",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 256 百萬元，YoY +8%，MoM +2%，累計 YoY +38%",
@@ -49924,7 +49941,7 @@
    "imageHeavy": false
   },
   "transcript": null,
-  "videoStatus": "處理中",
+  "videoStatus": "影音在公司網頁，未轉",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 6,147 百萬元，YoY -10%，MoM -26%，累計 YoY +14%",
@@ -49955,8 +49972,11 @@
    "chars": 1668,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 28,
+   "chars": 6408
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 92 百萬元，YoY -35%，MoM -12%，累計 YoY -47%",
@@ -49966,7 +49986,7 @@
   "analysisError": "spawn codex ENOENT",
   "firstSeen": "2026-11-24T23:58:08+08:00",
   "state": "pending",
-  "pendingNote": "判讀失敗，下次重試；影音轉文字中"
+  "pendingNote": "判讀失敗，下次重試"
  },
  "3035-2026-11-24": {
   "key": "3035-2026-11-24",
@@ -50051,8 +50071,11 @@
    "chars": 5279,
    "imageHeavy": false
   },
-  "transcript": null,
-  "videoStatus": "處理中",
+  "transcript": {
+   "minutes": 14,
+   "chars": 3099
+  },
+  "videoStatus": "ok",
   "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 10,637 百萬元，YoY +70%，MoM -0%，累計 YoY +44%，YoY 70%，連12月YoY成長，同期歷史新高，比前三月加速 12pp",
@@ -50062,7 +50085,7 @@
   "analysisError": "spawn codex ENOENT",
   "firstSeen": "2026-11-24T23:58:08+08:00",
   "state": "pending",
-  "pendingNote": "判讀失敗，下次重試；影音轉文字中"
+  "pendingNote": "判讀失敗，下次重試"
  },
  "3050-2026-11-24": {
   "key": "3050-2026-11-24",
@@ -51627,17 +51650,24 @@
   "fileEn": "992120261123E001.pdf",
   "videoUrl": null,
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "992120261123M001.pdf",
+   "pages": 26,
+   "chars": 3153,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 4,639 百萬元，YoY +2%，MoM -14%，累計 YoY -5%",
    "move": null
   },
   "analysis": null,
+  "analysisError": "spawn codex ENOENT",
   "firstSeen": "2026-11-24T23:58:08+08:00",
   "state": "pending",
-  "pendingNote": "尚未判讀；等待富果整理"
+  "pendingNote": "判讀失敗，下次重試；等待富果整理"
  },
  "7972-2026-11-23": {
   "key": "7972-2026-11-23",
@@ -51652,17 +51682,24 @@
   "fileEn": "797220261123E001.pdf",
   "videoUrl": null,
   "note": "",
-  "deck": null,
+  "deck": {
+   "file": "797220261123M001.pdf",
+   "pages": 33,
+   "chars": 8191,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": null,
    "move": null
   },
   "analysis": null,
+  "analysisError": "spawn codex ENOENT",
   "firstSeen": "2026-11-24T23:58:08+08:00",
   "state": "pending",
-  "pendingNote": "尚未判讀；等待富果整理"
+  "pendingNote": "判讀失敗，下次重試；等待富果整理"
  },
  "7973-2026-11-23": {
   "key": "7973-2026-11-23",
@@ -51677,17 +51714,24 @@
   "fileEn": "797320261123E001.pdf",
   "videoUrl": null,
   "note": "",
-  "deck": null,
+  "deck": {
+   "file": "797320261123M001.pdf",
+   "pages": 27,
+   "chars": 5726,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": null,
    "move": null
   },
   "analysis": null,
+  "analysisError": "spawn codex ENOENT",
   "firstSeen": "2026-11-24T23:58:08+08:00",
   "state": "pending",
-  "pendingNote": "尚未判讀；等待富果整理"
+  "pendingNote": "判讀失敗，下次重試；等待富果整理"
  },
  "6623-2026-11-18": {
   "key": "6623-2026-11-18",
@@ -51702,16 +51746,23 @@
   "fileEn": "662320261118E001.pdf",
   "videoUrl": null,
   "note": "",
-  "deck": null,
+  "deck": {
+   "file": "662320261118E001.pdf",
+   "pages": 30,
+   "chars": 832,
+   "imageHeavy": true
+  },
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "ok",
   "context": {
    "revenue": null,
    "move": null
   },
   "analysis": null,
+  "analysisError": "spawn codex ENOENT",
   "firstSeen": "2026-11-24T23:58:08+08:00",
   "state": "pending",
-  "pendingNote": "尚未判讀；等待富果整理"
+  "pendingNote": "判讀失敗，下次重試；等待富果整理"
  }
 }
