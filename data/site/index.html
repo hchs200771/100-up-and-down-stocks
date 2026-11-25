@@ -139,7 +139,8 @@ showCurrent();
         vertical-align:middle; border-top:1.5px solid currentColor; }
       #world-markets .wm-legend .wm-ma20 { color:var(--wm-ma20); }
       #world-markets .wm-legend .wm-ma60 { color:var(--wm-ma60); }
-      #world-markets .wm-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%, 270px),1fr)); gap:8px; }
+      #world-markets .wm-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+      @media (max-width:640px) { #world-markets .wm-grid { grid-template-columns:minmax(0,1fr); } }
       #world-markets .wm-chart { max-width:640px; }
       #world-markets .wm-status { font-weight:700; color:var(--wm-text); }
       #world-markets .wm-status[data-trend="above"] { color:var(--wm-bull); }
