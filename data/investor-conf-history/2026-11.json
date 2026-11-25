@@ -51870,7 +51870,7 @@
    "move": null
   },
   "analysis": null,
-  "analysisError": "spawn codex ENOENT",
+  "analysisError": "codex exit 1: ERROR: You’ve hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/settings/usage to purchase more credits or try again at 9:34 PM. ERROR: Yo",
   "firstSeen": "2026-11-24T23:58:08+08:00",
   "state": "pending",
   "pendingNote": "判讀失敗，下次重試；等待富果整理"
@@ -51905,7 +51905,7 @@
    "move": null
   },
   "analysis": null,
-  "analysisError": "spawn codex ENOENT",
+  "analysisError": "codex exit 1: ERROR: You’ve hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/settings/usage to purchase more credits or try again at 9:34 PM. ERROR: Yo",
   "firstSeen": "2026-11-24T23:58:08+08:00",
   "state": "pending",
   "pendingNote": "判讀失敗，下次重試"
@@ -51937,7 +51937,7 @@
    "move": null
   },
   "analysis": null,
-  "analysisError": "spawn codex ENOENT",
+  "analysisError": "codex exit 1: ERROR: You’ve hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/settings/usage to purchase more credits or try again at 9:34 PM. ERROR: Yo",
   "firstSeen": "2026-11-24T23:58:08+08:00",
   "state": "pending",
   "pendingNote": "判讀失敗，下次重試；等待富果整理"

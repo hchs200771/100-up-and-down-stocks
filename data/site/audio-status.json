@@ -1,7 +1,7 @@
 {
   "date": "2026-11-25",
-  "state": "running",
-  "message": "製作中",
-  "updatedAt": "2026-11-25T13:13:49.723Z",
+  "state": "failed",
+  "message": "codex: exit 1 詳見 /Users/huangguanxue/Desktop/Projects/100-up-and-down-stocks/data/tmp/audio/script-2026-11-25.txt.log",
+  "updatedAt": "2026-11-25T13:15:15.591Z",
   "log": "/Users/huangguanxue/Desktop/Projects/100-up-and-down-stocks/data/logs/audio-brief-2026-11-25_211348.log"
 }
