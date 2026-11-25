@@ -160,18 +160,34 @@ if git diff --cached --quiet -- "${COMMIT_PATHS[@]}"; then
 fi
 
 git commit -m "chore: publish daily report site $(date +%Y-%m-%d)" -- "${COMMIT_PATHS[@]}"
-if ! git push origin main; then
-  echo "[publish] git push failed — check network/auth." >&2
-  echo "[publish] 嘗試 pull --rebase --autostash 後重推一次。" >&2
-  if ! git pull --rebase --autostash -X theirs origin main; then
-    echo "[publish] pull/rebase 失敗，取消 rebase，保留本機提交。" >&2
-    git rebase --abort || true
-    exit 1
+# push 失敗就等一下再試，最多 3 次；第 2 次起先 pull --rebase（遠端可能有別台機器的提交）。
+pushed=0
+for attempt in 1 2 3; do
+  if [ "$attempt" -gt 1 ]; then
+    echo "[publish] push 失敗，$((attempt * 10)) 秒後第 $attempt 次重試（先 pull --rebase）。" >&2
+    sleep $((attempt * 10))
+    if ! git pull --rebase --autostash -X theirs origin main; then
+      echo "[publish] pull/rebase 失敗，取消 rebase，保留本機提交。" >&2
+      git rebase --abort || true
+      continue
+    fi
   fi
-  if ! git push origin main; then
-    echo "[publish] git push failed — check network/auth." >&2
-    exit 1
-  fi
+  if git push origin main; then pushed=1; break; fi
+done
+if [ "$pushed" != 1 ]; then
+  echo "[publish] git push 重試 3 次仍失敗 — check network/auth." >&2
+  exit 1
+fi
+# 確認遠端真的是這個提交
+git fetch -q origin main && [ "$(git rev-parse HEAD)" = "$(git rev-parse origin/main)" ] \
+  || echo "[publish] ⚠️ 遠端 main 與本機 HEAD 不同，請檢查" >&2
+
+# 背景盯 GitHub Pages 部署，失敗自動重跑（紀錄在 data/logs/pages-deploy.log），不拖慢發布。
+# 只有動到 data/site 才會觸發 Pages workflow（pages.yml 的 paths），沒動就不用盯。
+if ! git diff --quiet HEAD~1 HEAD -- data/site; then
+  mkdir -p "$PROJECT_DIR/data/logs"
+  nohup "$SCRIPT_DIR/watch-pages-deploy.sh" "$(git rev-parse HEAD)" >> "$PROJECT_DIR/data/logs/pages-deploy.log" 2>&1 < /dev/null &
+  disown || true
 fi
 
 echo "[publish] Pushed. GitHub Pages workflow will deploy: https://hchs200771.github.io/100-up-and-down-stocks/"
