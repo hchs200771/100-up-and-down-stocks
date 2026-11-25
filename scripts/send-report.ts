@@ -2483,7 +2483,7 @@ function renderHome(h: HomeInput): string {
   line("🎙️ KOL", a.kol?.overview, tabHref("🎙️ KOL 觀點"));
   const context = ctx.length ? card("🧭 背景", `<div style="margin-top:-7px;">${ctx.join("")}</div>`) : "";
 
-  return `<div style="margin-bottom:20px;">${renderMarketRegime(a.intl)}${summary}${gauges}${playbook}${lists}${context}</div>`;
+  return `<div style="margin-bottom:20px;"><!--WORLD_MARKETS-->${renderMarketRegime(a.intl)}${summary}${gauges}${playbook}${lists}${context}</div>`;
 }
 
 function sortGroupsByMemberCount(groups: CategoryGroup[]): CategoryGroup[] {

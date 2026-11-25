@@ -9,8 +9,9 @@
  * Usage: npx tsx scripts/build-site-html.ts <fragmentPath> <outPath>
  */
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
-import { resolve } from "node:path";
+import { dirname, resolve } from "node:path";
 import { HOME_LABEL, NAV_BLOCK_RE, SUBPAGES, navText, renderSiteNav } from "./lib/nav";
+import { renderWorldMarketsPanel } from "./lib/world-markets-panel";
 
 const SITE_URL = "https://hchs200771.github.io/100-up-and-down-stocks/";
 
@@ -37,6 +38,25 @@ if (fragment.includes("<!--RRG_EMBED-->")) {
   } else {
     console.warn("[build-site] data/tw-rrg-embed.html not found — RRG chart omitted.");
   }
+}
+
+// 首頁的各國股市專區展開後才請求旁邊的日 K 資料 JSON。
+if (fragment.includes("<!--WORLD_MARKETS-->")) {
+  const marketsPath = resolve("data/world-markets-latest.json");
+  let panel = "";
+  if (existsSync(marketsPath)) {
+    try {
+      const json = readFileSync(marketsPath, "utf-8");
+      JSON.parse(json);
+      panel = renderWorldMarketsPanel();
+      const siteMarketsPath = resolve(dirname(outPath), "world-markets-latest.json");
+      if (siteMarketsPath !== marketsPath) writeFileSync(siteMarketsPath, json, "utf-8");
+    } catch {
+      panel = "";
+      console.warn("[warn] 各國股市日線無法加入首頁，略過圖表");
+    }
+  }
+  fragment = fragment.replace("<!--WORLD_MARKETS-->", () => panel);
 }
 
 // 導覽列換成目前的版本：新增子頁或調整分組時，不用等重產報告就會出現在主頁上。

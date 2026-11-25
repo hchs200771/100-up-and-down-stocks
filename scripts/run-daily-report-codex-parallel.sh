@@ -520,6 +520,9 @@ if stage_enabled fetch || ! aux_done_today; then
   timed intl-market run_tsx scripts/fetch-intl-market.ts \
     || log "[warn] fetch-intl-market.ts failed; 國際數字略過，不影響台股報告" &
   AUX_PIDS="$AUX_PIDS $!"
+  timed world-markets run_tsx scripts/fetch-world-markets.ts \
+    || log "[warn] fetch-world-markets.ts failed; 各國股市日線資料暫缺" &
+  AUX_PIDS="$AUX_PIDS $!"
   # 板塊熱圖：每天都要跑，因為 ETF 淨流量是靠自己累積的股數快照跨日相減算出來的，
   # 漏跑一天就少一筆基準（fetch-sector-flows.ts）。
   timed sector-flows run_tsx scripts/fetch-sector-flows.ts \
