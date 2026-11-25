@@ -103,8 +103,7 @@ showCurrent();
         var a = results[0], status = results[1];
         if (!a || a.date !== date) {
           title.textContent = status && status.date === date && status.state === 'running' ? '⏳ 語音版製作中'
-            : status && status.date === date && status.state === 'failed' ? '⚠️ 語音版失敗：' + status.message
-            : '語音版尚未啟動';
+            : '今天沒有語音版';
           player.hidden = true;
           document.getElementById('daily-audio-feed').hidden = true; box.hidden = false; return;
         }
