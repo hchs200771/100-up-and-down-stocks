@@ -139,9 +139,8 @@ showCurrent();
         vertical-align:middle; border-top:1.5px solid currentColor; }
       #world-markets .wm-legend .wm-ma20 { color:var(--wm-ma20); }
       #world-markets .wm-legend .wm-ma60 { color:var(--wm-ma60); }
-      #world-markets .wm-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
-      @media (max-width:640px) { #world-markets .wm-grid { grid-template-columns:minmax(0,1fr); } }
-      #world-markets .wm-chart { max-width:640px; }
+      /* 一列一張圖：兩張並排太擠，看不清頸線 */
+      #world-markets .wm-grid { display:grid; grid-template-columns:minmax(0,1fr); gap:8px; }
       #world-markets .wm-status { font-weight:700; color:var(--wm-text); }
       #world-markets .wm-status[data-trend="above"] { color:var(--wm-bull); }
       #world-markets .wm-status[data-trend="below"] { color:var(--wm-bear); }
@@ -270,7 +269,7 @@ showCurrent();
     state.width = width;
 
     const points = state.points;
-    const height = 144;
+    const height = target.clientWidth < 500 ? 200 : 280;
     const values = points.flatMap(({ high, low, ma20, ma60 }) => [high, low, ma20, ma60]).filter(Number.isFinite);
     const min = Math.min(...values);
     const max = Math.max(...values);
