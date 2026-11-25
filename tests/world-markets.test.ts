@@ -99,7 +99,8 @@ test("首頁各國股市專區展開後才載入資料，顯示近一年綠漲�
     assert.match(world.querySelector('[data-symbol="^GSPC"]')!.textContent!, /資料暫缺/);
     svg.dispatchEvent(new KeyboardEvent("keydown", { key: "Home" }));
     assert.match(world.querySelector(".wm-readout")!.textContent!, /2025-11-04.*開 100.*高 112.*低 98.*收 110.*漲跌幅 −1.00%/);
-    assert.equal(world.querySelector(".wm-legend .wm-ma20")!.textContent, "MA20 101.25 ▲");
+    // 均線跟著查價線：顯示游標所在 K 棒當天的均線（第一根沒有前一根可比，不畫箭頭）
+    assert.equal(world.querySelector(".wm-legend .wm-ma20")!.textContent, "MA20 101");
   } finally {
     dom.window.close();
   }

@@ -122,6 +122,15 @@
         "　高 " + number.format(point.high) + "　低 " + number.format(point.low) +
         "　收 " + number.format(point.close) +
         "　當日漲跌幅 " + (point.pct == null ? "資料暫缺" : signed(point.pct));
+      // 均線跟著查價線：顯示這根 K 棒當天的 MA20／MA60，箭頭是跟前一根比
+      const prior = points[state.index - 1];
+      state.legend.innerHTML = [20, 60].map((days) => {
+        const key = "ma" + days;
+        const value = point[key];
+        const before = prior?.[key];
+        const direction = value == null || before == null ? "" : value > before ? " ▲" : value < before ? " ▼" : "";
+        return '<span class="wm-' + key + '">MA' + days + ' ' + (value == null ? "資料暫缺" : number.format(value) + direction) + '</span>';
+      }).join("");
     }
 
     function track(event) {
@@ -160,17 +169,8 @@
     const trend = distance > 0 ? "above" : distance < 0 ? "below" : "flat";
     const label = distance > 0 ? "多頭（收盤在 60 日線上方）" :
       distance < 0 ? "空頭（收盤在 60 日線下方）" : "收盤與 60 日線持平";
-    const previous = candles.at(-2);
-    const legend = [20, 60].map((days) => {
-      const key = "ma" + days;
-      const value = last[key];
-      const prior = previous?.[key];
-      const direction = prior == null ? "" : value > prior ? " ▲" : value < prior ? " ▼" : "";
-      return '<span class="wm-' + key + '">MA' + days + ' ' +
-        (value == null ? "資料暫缺" : number.format(value) + direction) + '</span>';
-    }).join("");
     target.innerHTML = '<p class="wm-status" data-trend="' + trend + '">' + label +
-      '　距 60 日線 ' + signed(distance) + '</p><p class="wm-readout"></p><p class="wm-legend">' + legend + '</p>' +
+      '　距 60 日線 ' + signed(distance) + '</p><p class="wm-readout"></p><p class="wm-legend"></p>' +
       '<svg tabindex="0" role="group" aria-label="日 K 走勢，可用左右方向鍵查看每日開高低收與漲跌幅"></svg>';
     const cutoff = oneYearAgo(last.date);
     const points = candles.filter((point) => point.date >= cutoff);
@@ -179,6 +179,7 @@
       index: points.length - 1,
       svg: target.querySelector("svg"),
       readout: target.querySelector(".wm-readout"),
+      legend: target.querySelector(".wm-legend"),
     });
     plot(target);
     observer.observe(target);

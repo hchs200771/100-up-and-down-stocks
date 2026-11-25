@@ -42,7 +42,8 @@ export function renderWorldMarketsPanel(): string {
       #world-markets .wm-status { font-weight:700; color:var(--wm-text); }
       #world-markets .wm-status[data-trend="above"] { color:var(--wm-bull); }
       #world-markets .wm-status[data-trend="below"] { color:var(--wm-bear); }
-      #world-markets .wm-readout { min-height:2.9em; line-height:1.45; font-variant-numeric:tabular-nums; }
+      #world-markets .wm-readout { line-height:1.45; font-variant-numeric:tabular-nums; }
+      #world-markets .wm-legend { margin-bottom:6px; font-variant-numeric:tabular-nums; }
       #world-markets svg { display:block; width:100%; overflow:visible; touch-action:pan-y; cursor:crosshair; }
       #world-markets svg text { fill:var(--wm-muted); font:11px system-ui,sans-serif; }
       #world-markets svg path, #world-markets svg line { fill:none; }
