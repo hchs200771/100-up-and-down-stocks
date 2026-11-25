@@ -9,6 +9,7 @@ export const WORLD_MARKET_GROUPS = [
   { name: "美股", markets: US_MARKETS },
   { name: "台股與匯率", markets: [
     { symbol: "^TWII", name: "加權指數" },
+    { symbol: "TPEX", name: "櫃買指數" },
     { symbol: "TWD=X", name: "美元兌台幣", note: "數字上升代表台幣貶值（1 美元可換更多台幣）。" },
   ] },
   { name: "陸港股", markets: [
