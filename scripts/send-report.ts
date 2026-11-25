@@ -2458,6 +2458,13 @@ function renderHome(h: HomeInput): string {
   if (cb) {
     row("🔐 設質CB", `事件觀察池 ${cb.candidates.length} 檔`, "cb-pledge.html", cb.isoWeek);
   }
+  const es = readDataJson<{ tradingDate: string; seasons: { quarter: string; filed: number; rows: { name: string; side: string | null; date: string }[] }[]; positions: { open: unknown[] } }>("data/earnings-scan-latest.json");
+  const esq = es?.seasons.at(-1);
+  if (es && esq) {
+    const today = esq.rows.filter((r) => r.side === "top" && r.date === es.tradingDate);
+    const sigText = today.length ? `今日新增候選 ${today.length} 檔：${today.slice(0, 4).map((s) => escHtml(s.name)).join("、")}${today.length > 4 ? " 等" : ""}` : "今日沒有新增候選";
+    row("🧾 財報選股", `${esq.quarter} 已公布 ${esq.filed} 家；${sigText}；紙上部位 ${es.positions.open.length} 檔（前瞻追蹤）`, "earnings-scan.html", es.tradingDate, true);
+  }
   const lists = rows.length
     ? card("📋 名單與訊號", `<table style="width:100%; border-collapse:collapse;">${rows.join("")}</table>`)
     : "";

@@ -36,6 +36,7 @@ export const SUBPAGES: { file: string; label: string }[] = [
   { file: "target-price.html", label: "🎯 目標價" },
   { file: "investor-conf.html", label: "🎤 法說會" },
   // 私人頁：內容加密（scripts/build-private-pages.ts），要密碼才看得到
+  { file: "earnings-scan.html", label: "🧾 財報選股" },
   { file: "review.html", label: "🔒 交易檢討" },
   { file: "factor-lab.html", label: "🧪 因子驗證" },
 ];
@@ -86,6 +87,7 @@ export const NAV_GROUPS: { title: string; items: NavItem[] }[] = [
       { file: "broker-watch.html" },
       { file: "target-price.html" },
       { file: "investor-conf.html" },
+      { file: "earnings-scan.html" },
       { file: "revenue.html" },
       { file: "revenue-picks.html" },
       { file: "revenue-decline.html" },

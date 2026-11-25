@@ -88,6 +88,8 @@ fi
 [ -f "$PROJECT_DIR/data/pullback-scan.html" ] && cp "$PROJECT_DIR/data/pullback-scan.html" "$SITE_DIR/pullback-scan.html"
 
 [ -f "$PROJECT_DIR/data/new-high-scan.html" ] && cp "$PROJECT_DIR/data/new-high-scan.html" "$SITE_DIR/new-high-scan.html"
+# 財報選股子頁（scripts/build-earnings-scan.ts 產出，財報季每天更新）
+[ -f "$PROJECT_DIR/data/earnings-scan.html" ] && cp "$PROJECT_DIR/data/earnings-scan.html" "$SITE_DIR/earnings-scan.html"
 # 選股池前 5 檔深挖子頁（scripts/start-pick-deepdive.sh 背景產出，跑到哪發佈到哪）
 [ -f "$PROJECT_DIR/data/pick-deepdive.html" ] && cp "$PROJECT_DIR/data/pick-deepdive.html" "$SITE_DIR/pick-deepdive.html"
 # 背景語音完成後更新播放器來源與 Podcast 訂閱（音訊放 GitHub Release）。
@@ -140,6 +142,8 @@ HISTORY_PATHS=(
   data/new-high-scan-history
   data/pick-deepdive-history
   data/new-high-scan-positions.json
+  data/earnings-scan-history
+  data/earnings-scan-positions.json
   data/market-history.json
   data/margin-history.json
   data/sector-flows-history.json

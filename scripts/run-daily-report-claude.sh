@@ -542,8 +542,11 @@ if stage_enabled fetch || ! aux_done_today; then
 
   # 季報毛利率：季更，同一季抓過就 skip，平常這步是空轉。
   # 財報有兩個半月的公布時滯，所以就算天天跑，內容一季才會變一次。
-  timed financials run_tsx scripts/fetch-quarterly-financials.ts \
-    || log "[warn] fetch-quarterly-financials.ts failed; 毛利率欄位沿用上次結果" &
+  # 財報選股要等當季財報彙總抓完，所以接在後面跑（財報季外只更新紙上部位，幾秒）。
+  { timed financials run_tsx scripts/fetch-quarterly-financials.ts \
+      || log "[warn] fetch-quarterly-financials.ts failed; 毛利率欄位沿用上次結果"
+    timed earnings-scan run_tsx scripts/build-earnings-scan.ts \
+      || log "[warn] build-earnings-scan.ts failed; 財報選股子頁沿用上次結果"; } &
   AUX_PIDS="$AUX_PIDS $!"
 
   # 月營收：月更。fetch 每天重抓最近 3 個月（公司陸續補報、也會更正），只有 6 個請求。
