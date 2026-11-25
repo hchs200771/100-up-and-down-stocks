@@ -1,0 +1,26 @@
+{
+ "tradingDate": "2026-11-25",
+ "universe": {
+  "candidates": 31,
+  "priced": 31
+ },
+ "signals": [],
+ "others": [
+  {
+   "code": "7765",
+   "name": "中華資安",
+   "market": "twse",
+   "close": 311,
+   "chg": 9.89,
+   "prevHigh": 299.5,
+   "prevHighDate": "2026-11-23",
+   "gap": 2,
+   "stop": 290.71,
+   "risk": 6.52,
+   "ma20": 258.75,
+   "money20": 523,
+   "limitUp": true,
+   "dup": false
+  }
+ ]
+}

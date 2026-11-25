@@ -1,0 +1,58 @@
+{
+ "tradingDate": "2026-11-25",
+ "regime": {
+  "close": 38195.4296875,
+  "ema50": 43600.91,
+  "ok": false
+ },
+ "universe": {
+  "listed": 250,
+  "liquid": 202,
+  "minFutVolume": 50,
+  "priced": 202
+ },
+ "signals": [],
+ "watch": [
+  {
+   "code": "2618",
+   "name": "長榮航",
+   "market": "twse",
+   "close": 45.7,
+   "futVol": 3053,
+   "margin": "13.50%",
+   "adr": 4.4,
+   "mom": 35,
+   "pullback": 6,
+   "near": [
+    {
+     "name": "EMA21",
+     "price": 45.45,
+     "dist": 0.6
+    }
+   ]
+  },
+  {
+   "code": "2355",
+   "name": "敬鵬",
+   "market": "twse",
+   "close": 54.8,
+   "futVol": 1615,
+   "margin": "16.20%",
+   "adr": 8,
+   "mom": 32,
+   "pullback": 16.8,
+   "near": [
+    {
+     "name": "EMA21",
+     "price": 53.96,
+     "dist": 1.6
+    },
+    {
+     "name": "AVWAP",
+     "price": 53.94,
+     "dist": 1.6
+    }
+   ]
+  }
+ ]
+}

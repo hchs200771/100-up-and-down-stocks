@@ -3221,6 +3221,38 @@
    "target": 45.5,
    "targetHigh": 52,
    "targetLow": 38
+  },
+  "6671213": {
+   "id": 6671213,
+   "date": "2026-11-25",
+   "publishedAt": "2026-11-25T08:10:36+08:00",
+   "url": "https://news.cnyes.com/news/id/6671213",
+   "analysts": 7,
+   "name": "旭隼",
+   "code": "6409",
+   "kind": "eps",
+   "epsYear": 2026,
+   "epsPrev": 30.79,
+   "direction": "down",
+   "eps": 29.55,
+   "epsHigh": 45.72,
+   "epsLow": 27.79,
+   "target": 1000
+  },
+  "6671621": {
+   "id": 6671621,
+   "date": "2026-11-25",
+   "publishedAt": "2026-11-25T12:10:33+08:00",
+   "url": "https://news.cnyes.com/news/id/6671621",
+   "analysts": 6,
+   "name": "統一超",
+   "code": "2912",
+   "kind": "target",
+   "targetPrev": 271.5,
+   "direction": "down",
+   "target": 255,
+   "targetHigh": 305,
+   "targetLow": 200
   }
  },
  "headlines": {
@@ -16488,6 +16520,965 @@
    "title": "StoneX維持CrowdStrike Holdings「買進」評等，目標價從325美元調降至250美元",
    "source": "TradingView",
    "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBHRE5ycFZhS0ZfeWVpUFZNS1BKZW90ZVRISzdUcXl1cGV1SVNYWVJrN3ROdTgwZ2NpTXBjUDlsNzJGbnlUazdndnJuaW42N0JnZTJNZ2lhaFBaa1VRbW9CRlg0RTNJeDhabjdGRg?oc=5"
+  },
+  "g:170kbl7": {
+   "id": "g:170kbl7",
+   "date": "2026-11-25",
+   "title": "輝達獲外資集體力挺！花旗升目標價至240美元、最高喊280美元 AI供應鏈反攻受矚目",
+   "source": "Yahoo股市",
+   "url": "https://news.google.com/rss/articles/CBMi3gNBVV95cUxQMmFvQ1JqalkyVkV0eU5DUU82MW9kR1psOXluSU43a3lfZFRhTnB0UGVDUHFkZ3BoN1c2MDhwdkgycnh5a3Nnd3RLcVZwYTVELUxGeTJuek5IYl90Tnplem9jRVpVd1RTMjZlZzRtN05lLUdER3JzM2lCY0o4Mk9RS0dMNlUwUGwwcW1yZTVTM2QyQm9oUjFNcjBlV25YYUlZc1drVzlDS3pRTnFJWnRoZmZ0aXExTXhXZHl2cGo0bUdWT2Uwd25GdUgwZTVzdDczX1J4QmFsd3Y5UFhsR3htNzQyN2kxaHFMS2kxZ3hXQ092OTJ0Q0xjV3ZURDY5ek12cW1oNFl6T21DYllVTHJUejdST19leWNpQy1hTW5SeDkwTzlSd2t4aDEtZkF5QTdGQVl5bENaZ3ZlRXZIU0tTdmNrUHVRTnh5UzZhcHdtTDR0Wm56S0xvV0xGeExzbW1DMVJGcjlTdHU2eW1mTHhLZXM2VW9fOGxUSUFqdkUtVHBFbGlZSzdMYVVUcGIwT1pNWG9vOTctR1VJbDZicVBjeWExdEdOYy1sc2xuMkd3c3AwVGQ4alhDTXNGb0VNVURqVnJNalFNM2xqUTkyS2Y2d1RXcVRuOFpqVlYwbkhB?oc=5"
+  },
+  "g:17ml1q5": {
+   "id": "g:17ml1q5",
+   "date": "2026-11-25",
+   "title": "外資力挺輝達 目標價最高喊280美元",
+   "source": "自由時報",
+   "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFByM21Rc3J6V2poZW9Fb3RkcE1LY3IzYUF3cVZWVW1nT1lId2hkaEpfUzE5alVPTUM0Qk13NkNaU2FQcncydEF2dTVFYldPMFZPbzg2LWIyZ0o?oc=5"
+  },
+  "g:18z0w0p": {
+   "id": "g:18z0w0p",
+   "date": "2026-11-25",
+   "title": "美光股價自高點腰斬 外資連環砍目標價、記憶體超級循環浮現見頂雜音",
+   "source": "BigGo 財經",
+   "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE45OVNvN043alVQNTVtNnlNS3JOemIybDhvaHR5M195c1FCcnp5RGlSR2tlTllyUjFHV3k0YTZ3WVZvb29HWHQxRXh6VV9XUUROb3RDbE1uS2VaUmljUUhRcGlWV3VfZzM3aktSZWxPcGVJS3M5R1pNck5R?oc=5"
+  },
+  "g:1a88c2v": {
+   "id": "g:1a88c2v",
+   "date": "2026-11-25",
+   "title": "目標價高喊2500元！「連接器大廠」CPU插槽採用率提高+新品放量 2027年EPS拼108.42元",
+   "source": "FTNN 新聞網",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFBlWldVaWViOGp2RGFZSl9EMlJKYWNZRkxleDlQQmhCbkdOZURRX1pLOWhqd1hnNjE5Y1NWS0pLY0dZcUlzZTFKZ2Y5SQ?oc=5"
+  },
+  "g:tfh79h": {
+   "id": "g:tfh79h",
+   "date": "2026-11-25",
+   "title": "6526 達發- 輝達獲外資力挺！「目標價最高280美元」台灣供應鏈受矚- 股市爆料同學會",
+   "source": "CMoney",
+   "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9tcW9Ud2JqOE5jYm1mVDNXeFhCb0xPUjBaSVpIZk40WEVQeWEzNUNXQzJJNjZOdk4xb29zNnhqRWlmZjhDVWw2MVlxQVZXbWhEbFo5YklkYVk?oc=5"
+  },
+  "g:1hcwzkx": {
+   "id": "g:1hcwzkx",
+   "date": "2026-11-25",
+   "title": "【即時新聞】Anthropic(ANT)重挫跌破IPO發行價！外資依然看好企業AI潛力，目標價上看150美元",
+   "source": "CMoney投資網誌",
+   "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNbkR2Z0JvZ09pSWQ1ZGUtYzhsbkJvT0RaNlpEUzZMWHZOa050b1ZTQ0Z3blNGMl9OdHowM2Q3TktyZzM3WVphR2UwbXRWVWtiWkFHRFFzUl84alJXejFROXhBU0lUZ2V2eHhTeTlmakxoOUdEQUZ5TUJoblJMc1VzemRzekt4M0tMV3VnaTQwX0I?oc=5"
+  },
+  "g:vzqfzz": {
+   "id": "g:vzqfzz",
+   "date": "2026-11-25",
+   "title": "輝達獲外資力挺！「目標價最高280美元」台灣供應鏈受矚",
+   "source": "TEEPR 亮新聞",
+   "url": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxOMWhFWkZudjd5M3Y0Rk5RNzZPZTEzTGZzQmxvZDVnWE5VdzJIVzBUS0NNR1JxRTZMQ0NKXzExWW9aXzQ4QkJxV3g2VkhJUFc0Y0d0VnlYbUhvR2c0TkJzamJaTUhFNVNtMUVTVDFyQzU1NWZEMUtVMko4TnppYzgwSVd1LU12bk5DRnpCUGJ3d0FicTQwSjh1TlNUcWxuUzRjRjBBcmxRRTlRWk1yZFJpSUM1a1dUT2tpM2hlVVNSVjg5ekpZZkRVVHlzdEN6TzVRS0Z0bVJmOGNSeDJyUzhpTXVMVjl2ODdXOVFSZkxzZXNicklxa3h2Sk1n?oc=5"
+  },
+  "g:an97bh": {
+   "id": "g:an97bh",
+   "date": "2026-11-25",
+   "title": "玻纖布、CCL供不應求！「這大廠」M4以上出貨衝200萬張 目標價至390元",
+   "source": "三立新聞",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE9XX055M3RJMF9UeE1FSHM3VGRJVmFYWVRMR0xkVHNtdVB1R1J6WjNxcVVCYlpLQWwtelpTalRiMm40WmhlekMxMG40SQ?oc=5"
+  },
+  "g:tw20bd": {
+   "id": "g:tw20bd",
+   "date": "2026-11-25",
+   "title": "單季毛利率飆破24%！「這檔」在手訂單暴衝840億 目標價喊上1415元",
+   "source": "三立新聞",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5vSExLU1AyckVRa3paNGJBVUdrT1UwNkVlaTI5ZnZtZVlIWng4N2g0OFYzR3hiQUlDX2VzOExXRDlXdnBQeTQ4YnMwVQ?oc=5"
+  },
+  "g:1vfnkid": {
+   "id": "g:1vfnkid",
+   "date": "2026-11-25",
+   "title": "【即時新聞】美光(MU)遭法巴降評大砍目標價！CrowdStrike(CRWD)併購利多獲外資看好迎爆發",
+   "source": "CMoney投資網誌",
+   "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQN3ZMWlVhYkpqTzRNOEVrYllOSzQ5a0ZTUU9EaHRmclRpUEtLSEJRazhJX2ctajdMZXVzTV9lVXA1czc3MEV5aWNUZ3V2d2gwMFZZNEdKSkZseWc4Vl9yUWhtSWdZdjhXR2dIRkhjN2lFREUxN1lqdnBaRngxYVJMdFBZU0l1ZmxHRTRINWI4YVI?oc=5"
+  },
+  "g:3mudt0": {
+   "id": "g:3mudt0",
+   "date": "2026-11-25",
+   "title": "這檔在手訂單暴衝840億 目標價喊1415元",
+   "source": "鏡週刊Mirror Media",
+   "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBNbVJneEo2cHluQ05TXzhzS0hwcUgxMDJRUi1kMXdQY1ZCbUVjSHhhLWlPNzRuMGZPNTY4TEpDVXItTXNzWjBOVVVwdE42c1dmajlsMHZYWEVWNTFF?oc=5"
+  },
+  "g:kf6s22": {
+   "id": "g:kf6s22",
+   "date": "2026-11-25",
+   "title": "Bharat Petroleum Corporation Limited 12個月目標價調升至INR 349.54，隱含14%上漲空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9lVEhCMjlsdFJLYmh3XzNnbjVtUjR1RlRPcVc0bG9UdXhOX3k3Vi1Vc1YwXzIydHVpcFBaWHc3NHFqamtnYUpQb3MtQzROSm40RGRCcGFIZWkyREJDRkk4NHhEZHIxT19mZjU3Tg?oc=5"
+  },
+  "g:19ydoz6": {
+   "id": "g:19ydoz6",
+   "date": "2026-11-25",
+   "title": "黃仁勳回歸價值估1兆美元！分析師調升英偉達目標價至250美元",
+   "source": "美股放大鏡",
+   "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQWU1pMnljYmo5bWJ3SFhsMl9HWFI2c2JWVHhCQzB4QlhBcDdDZm8zUzJyUHJkcmpkSVdDdVZHeW41TzNrSlJKbFJQYXhJMjRfTDdYZVRwWjI0c1EyY0JlNjVobFowWE5Sb2Z2UEdnVVBLemQ5N2doVEQwTExGVHVsdFRwbHFRdHRjekx4aVJJeVdpUXhU?oc=5"
+  },
+  "g:10w9zpr": {
+   "id": "g:10w9zpr",
+   "date": "2026-11-25",
+   "title": "【即時新聞】輝達(NVDA)迎AI教父回歸！分析師調升目標價至250美元看好大漲61%",
+   "source": "CMoney投資網誌",
+   "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPckhGc0hBYUpubnpoNGRMRzNrUExJdEkwRDExV1JxdWE1QnVlTG9QV21pd3ZFVFh4TUlmV0E2VTl5bm1XSGJ1Wl9USVdKazhOWTZUSG5Td1VmSTVOdENUQlZkX0E2X3FzMVoxRWVOT0M2UEt6cnhBSlNHcnF5aWZHNFI5Nk5UeGlMX3Nod3pBMGE?oc=5"
+  },
+  "g:107usj3": {
+   "id": "g:107usj3",
+   "date": "2026-11-25",
+   "title": "LuxExperience B.V. 12個月目標價調升至13.34美元，隱含19%上漲空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5OSVQtYll4NzNBZlhOZER4NjR4WHAzTVVwN1UzOHFxOV9JcVJwUUxBdzN2bS1mMEpzeURJQWRVVmNyMkJOV2NOTXpTWlZ6YUxIdlRNMlp5TFFlSzZXcG8ySFF0YTNVSjFnQVZlRg?oc=5"
+  },
+  "g:1eouk8b": {
+   "id": "g:1eouk8b",
+   "date": "2026-11-25",
+   "title": "【即時新聞】輝達(NVDA)獲分析師看好調升目標價至250美元，川普稱政府入股還不遲！",
+   "source": "CMoney投資網誌",
+   "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQODZlWlRTX0xmMjBUWVRpeWZBT2JLQ3Z2U3lJOFBQRnhXSWZuQWhSTFViMy1RbTkwRWRJX2RTVF96amszUnhQSGNDRkVUT2RjQXVwNFN3ZENXbEk4Wk92ZW9IQklKZjVoYllHcjRRTk9zdmx6WVlvR2l0dHgxRWlUTlNnbmgwQjBBa1VBUVZPbUQ?oc=5"
+  },
+  "g:15mbtc0": {
+   "id": "g:15mbtc0",
+   "date": "2026-11-25",
+   "title": "Fluence Energy, Inc. 12個月目標價調降至7.24美元，隱含77%上漲空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5WM1FwbHEzZElYSmJ2X1JWWlZidDB4ay1jOU5DY1pHdlhwbXNzcm1HTV8wbzZxdUNRbE9sc0s3Y3BjQXkzZTB2UVVFNEdRVlR3RnR0VU92cnQ5ajFIUzBlM2lXVE1xSVV3N2pKWg?oc=5"
+  },
+  "g:1vbh0": {
+   "id": "g:1vbh0",
+   "date": "2026-11-25",
+   "title": "Rosenblatt維持Rubrik「買進」評等，目標價從115美元調升至125美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1UU2NSM1FUZ1hacHY1bDdhVDU2VE1rWTV5SnVfR3U3M1UwQ19kV0pCQVNZa0xrNUI5aWlDRXczWWVhZTZtclVlZkF3N1V6eVRFTzZ4YmN0TDdIYjZ6clRvQTdiQVQ5ak5Ccjh1cA?oc=5"
+  },
+  "g:6g7f2o": {
+   "id": "g:6g7f2o",
+   "date": "2026-11-25",
+   "title": "Kingsoft Cloud Holdings Limited 12個月目標價調降至18.53美元，隱含198%上漲空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1rdFF0YU4weEJlVTNyY2RXVmU1SjA3MlpLOUx1dWNFZHc3NkM1UHpMbXNZaGktM1RLZlFJcnZjWWRpTjJzR2o3S2tfUTdmV0NvSzR6WWd1NTJHWm1QMnQ0OW1iV19qNGptd2tNWQ?oc=5"
+  },
+  "g:vs4jk3": {
+   "id": "g:vs4jk3",
+   "date": "2026-11-25",
+   "title": "CleanSpark, Inc. 12個月目標價調降至19.96美元，隱含290%上漲空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBzcVhFdG5BakxZWXpESGtITFhtTGZKQ3kwUmxUbVowbUNWX0JzRDR1Ry1nYlREN0dwV0oxWTJ6M3YybHNlcVdqYVJibHU2OVM0ZDJseGxuWlEwQjhXakZvVldjc3I0V0VKWlFBTQ?oc=5"
+  },
+  "g:1jvzvzl": {
+   "id": "g:1jvzvzl",
+   "date": "2026-11-25",
+   "title": "Ascendiant Capital維持NextTrip「買進」評等，目標價從7.75美元調升至8美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9LQ1lrZnlJVTJpLXBXeVZUSmJ6VnRIMmZMTy1pbHh4LTRhQng4WExPd0V4TWlRcDZ2OUxQZ1Z1ZWZWdS1UYjd3M0RvUkNkOG0wbzdFdXlvZkR2VkJQaWVfU3F2MkxndDFvUVMxRA?oc=5"
+  },
+  "g:1q6gasv": {
+   "id": "g:1q6gasv",
+   "date": "2026-11-25",
+   "title": "EyePoint, Inc. 12個月目標價調降至5.07美元，隱含1756%上漲空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5FYmRKZzZFQjJicElFaW9SZWkzUEM1aXg0S2x6TGhVRVY0aGZveW9zZEtUeFRTNkVkWWptcGx3czlzX3BiNUxTcWZBS2dhWEF6dmVsbmE0WmV5Nkw1ZFpzVUlHNmU5bXptTjVneQ?oc=5"
+  },
+  "g:dnwwnn": {
+   "id": "g:dnwwnn",
+   "date": "2026-11-25",
+   "title": "Best Buy Co., Inc. 12個月目標價調升至94.62美元，隱含2%下跌空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNNTBkc0J6c3djSmNFTzFNSWhCcDN1TVhUMUQ0MGJXMEVfdXZLREY3ck5feXVQODc0WjFrUEVweUVYMC1YVnRVbmRPRzBtS3JjdU54MFV2YVVNYVpIb3E4TjZWVnNBY1d1eGUycjJkYlhLcGdxRThPSldwaFcyLS1NbnEtcWJMUQ?oc=5"
+  },
+  "g:eihw0g": {
+   "id": "g:eihw0g",
+   "date": "2026-11-25",
+   "title": "Analog Devices, Inc. 12個月目標價調降至470.1美元，隱含24%上漲空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBpWWtxSm1JSy1LSWtBRGdkb2czYVdpZFBCMng4bUpPelpDNUJKanBUdG5MS2JBV0RqYnZuLVZfb244VnNCLV9rNzZHREo1dkNqc0hrWXBqOUI5VExyNGNCYnVOSHhmYTJRLTlwZw?oc=5"
+  },
+  "g:1o22jl7": {
+   "id": "g:1o22jl7",
+   "date": "2026-11-25",
+   "title": "花旗下調MongoDB目標價至525美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9zaEhXT3ZwS0ZRWEV6WndfUEtfUjFzaVI1alEyNm5IRmpHTGZWd2N0SmYyZDVHS1hCc1N5N0lqUERkaWVtVHZidXpLM2FsazZZTllGMy15R05wX1lCVUhnX3laTVpUZERGV0E?oc=5"
+  },
+  "g:ro1r82": {
+   "id": "g:ro1r82",
+   "date": "2026-11-25",
+   "title": "Insmed Incorporated 12個月目標價調降至185.32美元，隱含24%上漲空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBSaXJrRnM5QW9ydVpqdS1UMVBOLUpVRlZrcjNYMmJ1RFhDM2RZX21vem1QV0lPSnhTUnkyT2RWMkhjeV8wNmp3dm5KSFJtWmlkVDNMdjR2UHp1dHdWS1VEVHYyRV9UQWE3STN0ZA?oc=5"
+  },
+  "g:6is4td": {
+   "id": "g:6is4td",
+   "date": "2026-11-25",
+   "title": "Best Buy Co., Inc. 12個月目標價調升至92.14美元，隱含5%下跌空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE0zRXkwc1lMRjFqNFpRRlNvLXV4TVZ2VHI3TTh6NWpKYTFMS1pjbTIzZzU2QmEwX2hBb05JeklyM2MxS1Nma0E5TTFBblo2cFVCOUYzY3l2eTI2TFVFWDZBS2tiTzZJVGxuc21HYg?oc=5"
+  },
+  "g:1w2nho8": {
+   "id": "g:1w2nho8",
+   "date": "2026-11-25",
+   "title": "鉅亨速報 - Factset 最新調查：統一超(2912-TW)目標價調降至255元，幅度約6.08%",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1CZ2M2TzN4Uk1VNUgwajdjYkpOaWg4TkVIT0I2OWhTb19XdTNDWGEzdTVEWC1Zc2gxZ2ZFOFpEZk92V01QMm9lV1VUYVNWY3k3NHJkdEdxejc1QV9zY2EtQnI4QzQ?oc=5"
+  },
+  "g:te2nlo": {
+   "id": "g:te2nlo",
+   "date": "2026-11-25",
+   "title": "PennantPark Floating Rate Capital Ltd. 12個月目標價調降至9.38美元，隱含50%上漲空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5FNE1LMmJOekE2Y2hmcUV5Mkh2RTZWSnFUcGpwLXFRaGZpbmU4RmxPTDNhZEM1Z0ZBajdnaTlORDhtZWxEM3gzYk8xQW94Tkk3MWxUX0drY2VoSXJ5WmhRY3hWVDN6akRfSS1YRQ?oc=5"
+  },
+  "g:ld8aos": {
+   "id": "g:ld8aos",
+   "date": "2026-11-25",
+   "title": "摩根大通：戴爾基礎設施需求加速，維持超配評級，目標價515美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE91ejI2dm0tangtUDFvSWdWMUIzQWpNbW43VS1FQWdfcTR4b2pWUDB5S1habkVMR3NiQmFMVU1lb24zLVNzNXlYaXFMc3NRNm9hUmJyOV9YVmN0elk1TDB6SXVnM3JHaWVyd2c?oc=5"
+  },
+  "g:1sxefs4": {
+   "id": "g:1sxefs4",
+   "date": "2026-11-25",
+   "title": "富國銀行下調CrowdStrike目標價至265美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFAwWTM3RDg1elUwWTk3OEJPbEx3VEdZSVR2Ty1jcDlsY3hGZTlwOHB4WVRiZWxCR0Z0RVdwVGxydTJMRF9hLTBMcWJ3eTloU3VpbENtNWtFS3VvQ19wRzNBbXoyWUpZeGhpOFE?oc=5"
+  },
+  "g:1kwtjlp": {
+   "id": "g:1kwtjlp",
+   "date": "2026-11-25",
+   "title": "Grupo Financiero Galicia S.A. 12個月目標價調降至61.47美元，隱含131%上漲空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE54WFpjYmFTenJvY2pXRDRkX0FLajlLQzh4X2hHWGdFQklGQWx3VFR6SFo2SVV3b0VsNTMtbkQzaDZ1VEkxNUJXZWRxeGh3N0syTEltMVBLX1hsRjZXWGpwXzJNVmlCa0NocFBhNg?oc=5"
+  },
+  "g:7rkmh1": {
+   "id": "g:7rkmh1",
+   "date": "2026-11-25",
+   "title": "Commercial Metals Company 12個月目標價調降至77.45美元，隱含35%上漲空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE92bURlYmtJRGxSM18tYVFqNnFrTFVmS09RX3Atb2hsX2M2d0JHTlFPcjlsOUpqUEIzZF9ZbE9jZjd0Z3lHSGsxQ2VUNVBFZE9JbEJiM1Rjam9vdlZSUm1DazU1VGlZc1FjbG9aag?oc=5"
+  },
+  "g:y97yo5": {
+   "id": "g:y97yo5",
+   "date": "2026-11-25",
+   "title": "鉅亨速報 - Factset 最新調查：百思買BBY-US的目標價調升至95元，幅度約5.56%",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1YT3UxNDhHa1dvb1RpOFBtVzJCYlFuMFNIVnNveTZ4ejB3Mlk4TFZIcUZUeEJobUtBb2ZzLXgtQXY0NmNGTExDeVFMWFRvTzZpY1E4YmdFQ1FjNDNVakJ4OUNYdkU?oc=5"
+  },
+  "g:1dsi4u2": {
+   "id": "g:1dsi4u2",
+   "date": "2026-11-25",
+   "title": "大行評級｜大摩：SpaceX在新興物理智能經濟中角色關鍵，維持“增持”評級及目標價300美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5sc2dSbUhkNW9tMU9LT2dvQURiMkRZV0dLeDJRSmxNUWhEQXJvWG9QbFFKUkRaZjBtVnF1dWxYNVFKaXdHdjR5UjVUVmdLbTMxMmxLWHhTZXUzLXNicTZXWUZPZHE4WXNMakE?oc=5"
+  },
+  "g:sllimi": {
+   "id": "g:sllimi",
+   "date": "2026-11-25",
+   "title": "MP Materials Corp. 12個月目標價調降至62.13美元，隱含75%上漲空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1aZGZTNUloT0huN2d5NTFCOXF5M2lNOFJLR1kzUzAxbTZLQ3N6Q0ZxZHRGNUFyTTJYT0pIM3h5WG5idjlKcXN2b3gtNXNqR1pwcnZGNmVkWmtGcDJpZHZ1UmV1RWRVR2FlYkVleg?oc=5"
+  },
+  "g:1shgbcp": {
+   "id": "g:1shgbcp",
+   "date": "2026-11-25",
+   "title": "美銀上調百思買目標價至83美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9QWTgtMDFLbUluNl8wcDFITnIxS1FQa0JDdHdxU0pVS3NlU3VrRjVRU1RzXzhoY0xxb1B2RUxYeGx6V0JHSDhJcWcwWjU2SFpDWTdLcHJvRWIyaXpJRE1yUl9YRWQySXRNblE?oc=5"
+  },
+  "g:cf3o1i": {
+   "id": "g:cf3o1i",
+   "date": "2026-11-25",
+   "title": "CMB.TECH NV 12個月目標價調升至20.87美元，隱含24%上漲空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9paHdicG8tUlZabnJLMFVZNk9OWENBRGZ0VGFsWW5LeUkwOFFwZ0lKX2F6RUxmNFNzSmdndEhmLUZ3RU5wV2d2d2F5TW1walBaTE56TmYweFpEREhNOXpPUGpjZ1A0eVBqNG9jWQ?oc=5"
+  },
+  "g:v5icp5": {
+   "id": "g:v5icp5",
+   "date": "2026-11-25",
+   "title": "分析師喊輝達目標價 250 美元，輝達的訂單和獲利撐得起嗎？-下午先生",
+   "source": "CMoney投資網誌",
+   "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1JNFlwLU91SHVGWUhHb0dvSjNpcVczOEVQaDdoSlBtSV9CYWNwdTF0NE9raHhTTDFaaGRNT0syU2dVZEo1Zmp3cTh4SnJjZW5fUmNMSmNwOXNaUkU0MmZWTFdpVzBzbkRod1g5cjJvbTNKbUpIRkV2ZTQ5OA?oc=5"
+  },
+  "g:1kyfmym": {
+   "id": "g:1kyfmym",
+   "date": "2026-11-25",
+   "title": "Alamos Gold Inc. 12個月目標價調降至43.07美元，隱含64%上漲空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE82cElSY0lMQ3FFTTRwZ082QWs0V3VWMzlUNFI4LUx2RGM3dkZoZUUzSHpLTzdCZ3BwWDdXaWZWMXpTZENBLW1EZWhzQ2hEZGZDeXR3c0tkNm9JMnFYdHJTT29INUZvQ0FZc0o2OQ?oc=5"
+  },
+  "g:1z077e1": {
+   "id": "g:1z077e1",
+   "date": "2026-11-25",
+   "title": "Freeport-McMoRan, Inc. 12個月目標價調降至79.09美元，隱含59%上漲空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1DdlVpWkxhSUNRNEV6TVMwd00tVkpNVkxCelljclgydlF1eHJrTnY3V1VuVGpCTG8xNmFBZzVxYkNWdVhJNlY3SzZWTXBGV1d2MUJCZWFheXFPLTZCZVY5dThNNHBYa01uUWlzMA?oc=5"
+  },
+  "g:h4adji": {
+   "id": "g:h4adji",
+   "date": "2026-11-25",
+   "title": "Citigroup維持Cracker Barrel Old「賣出」評等，目標價從44美元調升至46美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE00STg2T2JZYXdPb3VRMTU5aUV6QzhWcXhtLUdWaDJ2SVJSZzNUeHR4VHlIbC10T2ZyOXF4eW9JQWRHM0pKVjMzbmZ0X2xPaWFFcVptRGtxWjRkZjl0NmZLZHJ4RHBwdndjQmpFcA?oc=5"
+  },
+  "g:qblww4": {
+   "id": "g:qblww4",
+   "date": "2026-11-25",
+   "title": "B of A Securities維持Box「買進」評等，目標價從50美元調升至55美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBYSG00b0xSMTZzZG1QbnJBXzVpQW5UQzI0OWd6TGZwR2pHUXRXUFF0SnlFWWpUeXc4UFNPZmFWOUt3eE9BUzltV1ZwbmpNVFdVZlNaY2psQTN3TDZrUFZfMEdxU1J5NDJzOWVwMw?oc=5"
+  },
+  "g:ty4aie": {
+   "id": "g:ty4aie",
+   "date": "2026-11-25",
+   "title": "B of A Securities維持BridgeBio Pharma「買進」評等，目標價從102美元調升至104美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE45SzQzM1BSQWk5VEdKZVNranl2ZHk0NTVaeWlqUmNHQ0RGRE5fclMtVjloNGY5aEF3ZWxmd1RYMDZLYTR2c0RSTTRfYzZ0WU5yTlp2YXk2anpHY2p1YXdoSUtuYWx6bXJ0ZTlJVw?oc=5"
+  },
+  "g:1ozznb9": {
+   "id": "g:1ozznb9",
+   "date": "2026-11-25",
+   "title": "Mizuho維持Zscaler「優於大盤」評等，目標價從235美元調升至265美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBwUE5pb3BxYUdBV0p2SVljLVppazluYXFxbjVvUFc4SGtDSVA1QVNGaFQ4RExJZ0NsV0tzazhmMkxIeWF1dGhLVlZjZnJIRnpzd0lHZTl2WlpBOTNvanZMVWRtenNFREtXMXdMeg?oc=5"
+  },
+  "g:11rqfww": {
+   "id": "g:11rqfww",
+   "date": "2026-11-24",
+   "title": "Millicom International Cellular S.A. 12個月目標價調升至106.5美元，隱含38%上漲空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBsRGI1YVhXbHhXZnBNR2wzU0d4NzIzSVV1NkpBb0pOT2dkWTVaaUc3NU13dEJIaS1OZUFxMHRGYlgyTmRZTEhMUXRfRXJwQTZFMldBTktvZTVfR1pjVERtSTNOUUhmeFA5WU1acA?oc=5"
+  },
+  "g:1m4z1hp": {
+   "id": "g:1m4z1hp",
+   "date": "2026-11-25",
+   "title": "Citigroup維持Agilent Technologies「買進」評等，目標價從190美元調升至205美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFB2N09PNGgyOC1QTko2VlJ3QWlHSHNIbEVRbENXczJBVUNQUl9iUHp4MlR3RkVWb1hTS0tMZzJNaVlkOWo2cGt3bGp4cUpqalU4R0pVTDliS001MWw0dVV0cHlIUmxiQW5yTmtFMw?oc=5"
+  },
+  "g:6wnf5g": {
+   "id": "g:6wnf5g",
+   "date": "2026-11-25",
+   "title": "UBS維持Tesla「中立」評等，目標價從425美元調升至430美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBXOVBsbE4wbDR3cW13NjFfSXFlRTNmbW9PX0phT0FOWFFCd2paemtCa0R0UTYzT09MWjhKV3k1cWNCYUVycDBveXRRanJ3bFpYRWNZaG1lT2ZpUDYwcUhBdXZzMjdBbW5QUnBGVg?oc=5"
+  },
+  "g:1np2chb": {
+   "id": "g:1np2chb",
+   "date": "2026-11-25",
+   "title": "BW LPG Limited 12個月目標價調降至25.44美元，隱含14%上漲空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5uTjdwZHdzY19xWTlsWWYzNV95Rlk5SDk1VnUyT09ydDRrd1hwTm5TNE95N1U5ZGl2UmN6TlVnTXgzTHFCcFpheE1iZ0Y4TVJOQzdfSWI1bE83YVhqcFV6YXhBYTVTVGlMbnE5Sw?oc=5"
+  },
+  "g:1khlfl5": {
+   "id": "g:1khlfl5",
+   "date": "2026-11-25",
+   "title": "UBS維持BridgeBio Pharma「買進」評等，目標價從92美元調升至99美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBoY0R3TERWTGIwcXhONXNuWEQyZ045cHU3QnB6Mkp5d28xUEk4RVBPdXpwQ1BuQXZqZi1KdVN1dEJ6X2JLWE5YMWJuemlBQ0x3S2JNRE1UMUg1Y1ZlTUJTcllTaUVhcEhEZlh5ZA?oc=5"
+  },
+  "g:lvjae8": {
+   "id": "g:lvjae8",
+   "date": "2026-11-25",
+   "title": "UBS維持Globant「中立」評等，目標價從43美元調升至47美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5SYjgwQk81U0JGcHhYemRKSTJ0ZDZtWDM5cEw1cTRvZ2ZjdHB2Y2pWc0xmd2NCQXpPUWdaSHU2dUJXM2N4aTM5UnJ5MFpWYXE3SjNTRzE2Nl9rS2tjLWlZWjlOd1QxbXdnWFJoMw?oc=5"
+  },
+  "g:1bg9riu": {
+   "id": "g:1bg9riu",
+   "date": "2026-11-25",
+   "title": "Wells Fargo維持Medline「中立」評等，目標價從34美元調升至40美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBHMWpjT3VyS1FjVnNxMm85SktCTHA0MXNBYm5UTms2VW16YnhLTDZPTWNSd2NCOHVYalQtR0huanhGMVprbDRMcXZPM3JxU1l0MnpYMHZycEMxRE8zODZYSVRISVRpUVozLUJvaA?oc=5"
+  },
+  "g:gxjvh2": {
+   "id": "g:gxjvh2",
+   "date": "2026-11-25",
+   "title": "BMO Capital維持Bright Horizon Energy「優於大盤」評等，目標價從93美元調升至96美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5ReW9DNGhCbzEwMGFKQTFaZGgydVZrTWJPMURxbjhjajhTcU1MTzNvS0pVa0k0MmwxaTZ6M0VPSXF6NUp6X2x0STd2OEJDMWhWdTBYeUt3Vm1SY2xuXzlkNWpfNHIyNjI2Q18zaQ?oc=5"
+  },
+  "g:15z84k6": {
+   "id": "g:15z84k6",
+   "date": "2026-11-25",
+   "title": "UBS維持Kymera Therapeutics「買進」評等，目標價從128美元調升至205美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBHUEtOR1U0elEzRU45VlcyMDd3eVZ3REJXZUxuVVNjRmhDVjV4M1NtVjVzbXB0c3pfTzhlanhZV2FZYjVYMktNZVRsUnV5Tkt6TEhaaTE1R0k3d1ludG9JdzdoMm1QdDkwTFM3UQ?oc=5"
+  },
+  "g:rswjsl": {
+   "id": "g:rswjsl",
+   "date": "2026-11-25",
+   "title": "UBS維持Jacobs Solutions「買進」評等，目標價從167美元調升至182美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE53aVZZNWxlTmZHQlZkblg0X0Q4RE5EcURfSlFhNmEyWldQaFdXdzU1ZjVlcmFySTNWOFI2N29WN3V0TDZHT1p3Vk9Xb0ZpeWtiNnZKUTZHVDlBMXhJTWV1T2dMVFJYdkFOMFdabg?oc=5"
+  },
+  "g:mno38r": {
+   "id": "g:mno38r",
+   "date": "2026-11-24",
+   "title": "Symbotic Inc. 12個月目標價調降至55.3美元，隱含58%上漲空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFAwSklfcEdseWhCTEtfQXRqbzVuOTlKZ3IxWjhpUVVCakVoU00zYm5CcE5QZXdDNGRMZlQyeUNOYk0wWUh4UW05QzFsTUlXaG1wSllTYkRpSWRMcy1rSUp0MkJ3RzNxOFVRdkRyYg?oc=5"
+  },
+  "g:clun6m": {
+   "id": "g:clun6m",
+   "date": "2026-11-25",
+   "title": "Wells Fargo維持BridgeBio Pharma「加碼」評等，目標價從102美元調升至116美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5wWHRldEoxblRmcW5EdmJxeXpWaTdaQTljMDJMLTVwYWxEWDlXdnJHZ3RDbGo2RHpWdWJ2Qk9Ibk5ZZnVFOEJlZDFpNzEtMlNDTHlET0NkckFXakFVM0ZtTDlSaktKdUdjVzlhUA?oc=5"
+  },
+  "g:1v786k": {
+   "id": "g:1v786k",
+   "date": "2026-11-25",
+   "title": "JP Morgan維持Public Service Enterprise「中立」評等，目標價從77美元調升至79美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1nTDcxQTNnN0tyWmlpanp0TlE0WVotUlJUM0RNWEJWc1Y4NXV3YVFNdlZwbmYtN0VMd1k4UlNBTUNhUThwSEdhSl9rcXptd1QtX3RyYTV3UWNwcHNQX1RkcUV5YmNLa0xCS1JkRA?oc=5"
+  },
+  "g:yvtpt3": {
+   "id": "g:yvtpt3",
+   "date": "2026-11-25",
+   "title": "JP Morgan維持TC Energy「加碼」評等，目標價從102美元調升至103美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFA5ZzNqdjZRQm9RTWppdTgyaUUwb2xsbm1EMUxoWGJwQVMxMHpYbzBKSGJPR3I2OGRSTzFfVDJGblNlSWlGSUNMbFpOV1R5TW9xWWFVOHR4UFZpdDdUR2JEWEkzeFBtWDh0WTlzYw?oc=5"
+  },
+  "g:1h0ekcj": {
+   "id": "g:1h0ekcj",
+   "date": "2026-11-24",
+   "title": "JP Morgan維持Exelon「中立」評等，目標價從46美元調升至47美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBrVzNkUlZfcEFGanBMZnVTSFNNN2lnQmQ3VlZoM0JYTTVuX0N0ekdtOW5Hci03QlZYLXl3dF91V0hnbElpSndtQ0xXaVBJYzJ1ZEUySmRsSkI5ZzRQVFFPakwzUXZJN2Jza0ZMQg?oc=5"
+  },
+  "g:1mghf98": {
+   "id": "g:1mghf98",
+   "date": "2026-11-24",
+   "title": "JP Morgan維持Eversource Energy「減碼」評等，目標價從68美元調升至70美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1zYkoxWXVRenJLa0FxNzNfRnRySE5qcjA2TmJzME5ISHRMVUJsY2FtSVJWU3o1S1hId3FOOUhrNnJ2d0NFN3AwUTdFUmR0bkFQelZ1QldsVksyMmFESTFJMHpPU25nTTNZbFlsbg?oc=5"
+  },
+  "g:xlbix2": {
+   "id": "g:xlbix2",
+   "date": "2026-11-24",
+   "title": "JP Morgan維持Hormel Foods「中立」評等，目標價從23美元調升至24美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE4xSGt1RGwzVkNvX0k5Q0UtQmpKSnU5cGFLU0xjSFc2VmpWVUg4SWJFc1MwWkRXam1vd3Z3eHFBenZoY1V5WndCZlJacHRfMUZPWFVnWGNlMUh5Q3RIejNfVmpMMWJIendEMnNCUQ?oc=5"
+  },
+  "g:13r491t": {
+   "id": "g:13r491t",
+   "date": "2026-11-24",
+   "title": "JP Morgan維持Gibson Energy「減碼」評等，目標價從31美元調升至32美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBrc1dJeUxZRy14MmFlS1ZEdi16eldMTmJzNy1rbXRXaXlyODhXRnk4aFJveFM3UW9MM0V5MVJqcXJ5NWFSYXBnTjdQbk5OMFFER0ROUEFjVWdlV2Y0amU5TzBjN3hXdkNSdnhWdg?oc=5"
+  },
+  "g:1cthshd": {
+   "id": "g:1cthshd",
+   "date": "2026-11-24",
+   "title": "Stifel維持CrowdStrike Holdings「買進」評等，目標價從240美元調升至245美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5weGQyOGZnSUIxUXNLNjZNZmx5UFBfdk8wU3hyNGdWV01IM2NpdHZrSk13SndxLWQxX3pRSFZ4TndiX2Izd3NNd0I1dmZXY2VKSFYzQ3dXWU8yVUdfckdLQ1JaaUltY2dGVnpSSg?oc=5"
+  },
+  "g:1woz326": {
+   "id": "g:1woz326",
+   "date": "2026-11-24",
+   "title": "TD Cowen將Zscaler評等從「買進」調降至「持有」，目標價從230美元調升至260美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE54TS1BOHdhNWdfY3pYSVhvTnF5TlJKZGFLU0VtTHNZUkk5d1BJQ2lOMXI3ZWF2bFhzNFRkVnRZZldIMEMyMzlVcWZNTEVxRDVFd2lKVkZzMTg1b2cyUnFDR2sxeUtXblZNUGp5Zw?oc=5"
+  },
+  "g:1she3cb": {
+   "id": "g:1she3cb",
+   "date": "2026-11-25",
+   "title": "Wells Fargo維持Kymera Therapeutics「加碼」評等，目標價從151美元調升至191美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9YbGlfRTRSYllLaTBUQVNreHh1d251ZUhHaXE2THNaTW1ZeWczNDc3WklLeXo3bU9sUkpHZ3JWOHVMRjFKb2pxOHdJQ09RWEUyUVk1VklNUnlfWktSc0hzQzQ0dkUybWJwaWlhcQ?oc=5"
+  },
+  "g:1uk7hhj": {
+   "id": "g:1uk7hhj",
+   "date": "2026-11-25",
+   "title": "Factset 最新調查：慧與HPE-US的目標價調降至66元，幅度約5.71%｜新聞快訊｜豐雲學堂",
+   "source": "永豐金證券",
+   "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1BTHl0UmRWWnFIM29GdEVXaTBUdjZxWTZvajBlSGpodG9iR2ZDS1UxSXVCVHNBLVdnZ01leEdBQ3RYcmphOXFKYmZza1NfanhVa0tOQ1djWnUwUU1aWmNRZkRWOGk3X190alMtQTNqc2ZWcVBjcWc?oc=5"
+  },
+  "g:1tg7u1e": {
+   "id": "g:1tg7u1e",
+   "date": "2026-11-25",
+   "title": "Workday, Inc. 12個月目標價調降至210.52美元，隱含17%上漲空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFA3bG9WQUd1NmJ1elhCRjdKeFVYT2hnVXJPaTZwYkFJM1ZkWGl0cFpNYk1uNU9HZzhGRFJhSXdqVkdBU3hKckpnMmhHWmZJLUpueVlWT1lFSFBzdmNGcHczTTk4eUx3dExOclMxVw?oc=5"
+  },
+  "g:17yyiyu": {
+   "id": "g:17yyiyu",
+   "date": "2026-11-25",
+   "title": "Urban Outfitters, Inc. 12個月目標價調降至91.08美元，隱含6%上漲空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBZNnNOSGx4VnlIdFFqUUtRby1xTE1tRzcyMl82VEVVcHRSZVF4b3BuQ2RrVWJ4dVZJTGFvZ280ZWtlUTJ2SXZMV2tCR3RxX0w5ZkZubnJ3M3Uta3RXZ0tPWVl3azV4WlA0V2g3Ug?oc=5"
+  },
+  "g:14lloea": {
+   "id": "g:14lloea",
+   "date": "2026-11-25",
+   "title": "GDS Holdings Limited 12個月目標價調降至47.23美元，隱含243%上漲空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE03WGNoTGZHQVJYZGQ0ZVh2N0NXUVVFM2VmYnR1ekhYejBSdVBzQkE5SUZJdXpvOG5zbG1lWXA4d0lENm91WU52Y3BwVnYzejBkVDhvQTJibDRsb1M3OGtFYTF1QjJROTFVR2lhZw?oc=5"
+  },
+  "g:1wmcjxe": {
+   "id": "g:1wmcjxe",
+   "date": "2026-11-25",
+   "title": "Bilibili Inc. 12個月目標價調降至22.36美元，隱含101%上漲空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5kbjU1SzJHNi1qTGoyWFBZbE5YYVZRRE9TcVpHMnVtR2Q4bUdYMEVaUW9hTFlHRDhBdTlDVGZkbW02NEpJTVBvdHZhUFFwbjZaMU1URnFYRnZQZ2pCSHVyRDd5Z1NBYXZEbl92cg?oc=5"
+  },
+  "g:pjg2lp": {
+   "id": "g:pjg2lp",
+   "date": "2026-11-25",
+   "title": "UP Fintech Holding Limited 12個月目標價調降至7.15美元，隱含80%上漲空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9SWGJhbFFRLVNTMDFFTHZfNnhtMnhVcjZSelVsT0VLLVVLeG81anpqc0xCUEc4S1k1RTIxSVVTakoyZDhsS200cGY5b2JZVEU5Ti1wMWp0RHBOTUxHZ3dzWG5KRlo3V2RHeC1TbQ?oc=5"
+  },
+  "g:p7th4p": {
+   "id": "g:p7th4p",
+   "date": "2026-11-25",
+   "title": "JP Morgan將Goodyear Tire & Rubber評等從「加碼」調降至「中立」，目標價從9美元調降至4美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5OTFg2UF84b2M1TF9fWXpOT1ptMEhJQXB0TjVVcGFzcmZBdklpaUhyTHJpSHF4Z1I5MHVLZjNlUl92dnFBQThJSjJ1eHVDamZnYTBxbWNyNDY4QnJLZUQ0UzV3czZxWU9heVdadg?oc=5"
+  },
+  "g:23bd7i": {
+   "id": "g:23bd7i",
+   "date": "2026-11-25",
+   "title": "HC Wainwright & Co.維持Cleanspark「買進」評等，目標價從22美元調降至18美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFAxd2RTVVVUYi1WSHpoTU5hVS1ob3VtVWt4UDQyVVBiUktuX1c1eFdiUmJ6d0FIZEI4T05va1oxcUlEU1lwTkQzQ1JBeWxnTUk3dXQycnM3bmszeEg5U1IycHFGTVRDdDlEZmdQdA?oc=5"
+  },
+  "g:1nm8qm0": {
+   "id": "g:1nm8qm0",
+   "date": "2026-11-25",
+   "title": "Rosenblatt維持Nutanix「買進」評等，目標價從75美元調降至70美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5lM05WSlJ0RWl1SWt1WlZrZUlLdHU1VkVoOEMtM3NQZGhubTNSRlZMZEFoTDlxWE1yaGtpc2tOZGd0UnQxNXcyLUdJajJLVHpsY2cwclFMSDdNRkpEOTY4alZCUktReF94cDI0dQ?oc=5"
+  },
+  "g:1xsd2ga": {
+   "id": "g:1xsd2ga",
+   "date": "2026-11-25",
+   "title": "Rosenblatt維持Ambarella「買進」評等，目標價從120美元調降至55美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE81N0RDS05NalBXMjRQbmtSOGdHZFd3aDBvQnpfejdkekYtVDJPUHh2Wm1xc3VBdXNSb2pFbGQwWmc0YksyVzFvd0JKYWU2ZUdfdFhVc2R3dThxVlNpZk04UkVETzlpcFVqcjhHRg?oc=5"
+  },
+  "g:16iyp6r": {
+   "id": "g:16iyp6r",
+   "date": "2026-11-25",
+   "title": "Cantor Fitzgerald維持Cleanspark「加碼」評等，目標價從19美元調降至14美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9xMzJUYWE1SjdYVkRvcXZxSG1qWmRYUzlCNjZfMXNuSDFxemxucDVIdTVrdFlpVG5NdENiaGpkNHk5TWZrc0VzWEtIM3ItNU02Uk5ETlRqX1NMQURfRFM0b1ZGa1FtVXlZY19NNw?oc=5"
+  },
+  "g:1c247ku": {
+   "id": "g:1c247ku",
+   "date": "2026-11-25",
+   "title": "Needham維持Analog Devices「買進」評等，目標價從450美元調降至400美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBXSVlqZjBBZHBuZDRKOTE1aVRTYks0VkxIdjd4MjZtM3laMk1haUlrTDFteE5MZjk1MmE0WUN4Z1d3c3dHeVA1TVpST1FaempjTFZuNU4wdUs4SUtnYy1ESTJfZmtQMkRKWVo5TQ?oc=5"
+  },
+  "g:dl8s5": {
+   "id": "g:dl8s5",
+   "date": "2026-11-25",
+   "title": "GLJ Research維持Enphase Energy「賣出」評等，目標價從21.49美元調降至13.92美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1EUHkyMkZocUtEdnAzSi1GR29fVWk3dXgyZ2c1T0N2T1dZQ1EzU3hQNGItRXFkRnltZ1lrWE9TaFp6TFBQTzlqVHhSRE4xb2xmamJrTHE3VThkQ0dpUVdsVDNPWjRqdFBLZUJ2QQ?oc=5"
+  },
+  "g:1rhruev": {
+   "id": "g:1rhruev",
+   "date": "2026-11-25",
+   "title": "Factset 最新調查：Nutanix公司NTNX-US的目標價調降至72.5元，幅度約7.64%｜新聞快訊｜豐雲學堂",
+   "source": "永豐金證券",
+   "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1iOFgta3R2c3g1cmQ4OG1Nc1F0TW9MRlhTcGZycDUtdkM3aEs3ZWtKUGN5d1ZsSHJ0SFdYOHQzblNGSDBMU0hiczdVbGpYY0xuLUhUY1d2VjV6TnVsOXlmY3pmMWw4LXE0X2V6TVFhVVdMYUF5c0E?oc=5"
+  },
+  "g:i2x3lt": {
+   "id": "g:i2x3lt",
+   "date": "2026-11-25",
+   "title": "Factset 最新調查：Workday公司WDAY-US的目標價調降至205元，幅度約4.65%｜新聞快訊｜豐雲學堂",
+   "source": "永豐金證券",
+   "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9rbDlSVlk5ZUUzVUs5TGg0UmpVUDltdVZZTXQtT0l5RW4zRGY5NldMcnVRRk45VXZjdmJHZGZ2bC1rRDIyeHRYUW9UQVRZTENoeXZQTGcwSGx5ejJBZ3hlSGdpQWlxLVduSExmWHlZdzcyUlJueEE?oc=5"
+  },
+  "g:1dmnyme": {
+   "id": "g:1dmnyme",
+   "date": "2026-11-25",
+   "title": "Factset 最新調查：Argen X SE - ADRARGX-US的目標價調降至1130元，幅度約3%｜新聞快訊｜豐雲學堂",
+   "source": "永豐金證券",
+   "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE93VXNmN2JzaG5rNkk3UVRjeWh3LXFWNUJaTE1Nc092NEpkc0JpNkVkLTN5OE1OR1dxeW1TNHhyS1pJUFlDSkYxWXgxWS13ZUM1WEJQMFEwZDh4OWdyWnRHcE8zeWgtVzZGbm1LaVJRMnlJNzZqZXc?oc=5"
+  },
+  "g:10cmjax": {
+   "id": "g:10cmjax",
+   "date": "2026-11-25",
+   "title": "鉅亨速報 - Factset 最新調查：亞德諾ADI-US的目標價調降至450元，幅度約5.26%",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE43TUpMb3RSVjZzSzhMQzNHOG8wd2FoTW5GalJfcXh5ZXh1SzRQUGpBSmI0aUtVT2xrWUM5OWJranp4Ym0wR1VySGtTRnE5aElYallzeEt6dDZ6N3pWUU04bUlVUzg?oc=5"
+  },
+  "g:1oj9zi5": {
+   "id": "g:1oj9zi5",
+   "date": "2026-11-25",
+   "title": "Piper Sandler維持Workday「中立」評等，目標價從190美元調降至185美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE44RmdydGRRWm1oeU9kZXdOTXUxek9kc2lyNjhBYWxoeHVLSjRwUkcxYU5vNTBmaFNweklKVWZ2ZnVtOTJjZ3NKcFBCdk5NM3lmbkhoX1gxUEgxZHFhd1pYeWZ0a19zTlFjalBVcA?oc=5"
+  },
+  "g:t57gqv": {
+   "id": "g:t57gqv",
+   "date": "2026-11-25",
+   "title": "Alamos Gold Inc. 12個月目標價調降至43.08美元，隱含64%上漲空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPRExiLUltcUt5UDc5Nmp3VWU4SlE0VTV2TER3aGRzVzhXeGlXR1g4Sm9rbGNHaEF0VmdrOTRnbDVheTRobDZlZUZQNE5fSEV4OEFVWFM0S0xOSVBOY3FHLWg0bDZ4c3FiSGd3VDBIVkZXWGp1U2FBcVVCWHRfRTZ4RHVqT1Vfdw?oc=5"
+  },
+  "g:13zfm87": {
+   "id": "g:13zfm87",
+   "date": "2026-11-25",
+   "title": "Factset 最新調查：亞歷山卓不動產股份ARE-US的目標價調降至46元，幅度約5.15%｜新聞快訊｜豐雲學堂",
+   "source": "永豐金證券",
+   "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9ySUR1UktMaVBjY3BOS3dGNVZoQzBRaXJyMEk5SUtvYmJMOGtKdnJTaGY4em1uamFZSUlhMm5ZWXZNUTVEeGRrY2pDS0lDT0ZYX3hUZzEtQVRNbGIyNXVWMXFYTkRjS09UY2prNDlFYWZqc283dlE?oc=5"
+  },
+  "g:1kn6qu6": {
+   "id": "g:1kn6qu6",
+   "date": "2026-11-25",
+   "title": "Nutanix, Inc. 12個月目標價調降至78美元，隱含43%上漲空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5EUXVhUDVLckkxM3p5bi1Pak9EWGJBOHdTRHl0cDJGUjlLSGNhMXZyVGk1eTFtSHBhSzRCaUJEcDJ0RTBKeFhsYU56UzBYQ19GNldkd3k1OTdNbW5XbmpnSE9idUU4NVZzUld1WXhn?oc=5"
+  },
+  "g:16941c8": {
+   "id": "g:16941c8",
+   "date": "2026-11-25",
+   "title": "Delek US Holdings, Inc. 12個月目標價調降至80.64美元，隱含39%上漲空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBvQnBQM29xQkU4c1lfQU4xVkdCVjROWHBKLUJ6VkhnSHBMTnVYUFRPcnA3bEVJSC05ZzI0MUhPU3RTc1RFajh4dlZYQnZnUVhNamFIaHBQRVNpaFBBSnpFLVJWRUh5RmkxdkRkZg?oc=5"
+  },
+  "g:vvp4pj": {
+   "id": "g:vvp4pj",
+   "date": "2026-11-25",
+   "title": "Bilibili Inc. 12個月目標價調降至23.99美元，隱含120%上漲空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9hNGxhV0pIWXBtZ2ZyZm1hZWdmVGM0SlZyTmE5aXgwSkNRdHRWR09VWU5XaFEtdWR5bzI3YTUtNnJkNWNEdHNaTW0tYnMtNF9JNFQyQ215RVZDTW1oSXRYal9jX1RYTTR5SWxjVQ?oc=5"
+  },
+  "g:ribhjx": {
+   "id": "g:ribhjx",
+   "date": "2026-11-25",
+   "title": "美光暴跌超10% 遭投行降評、腰斬目標價 示警記憶體「供過於求」風險升高",
+   "source": "鉅亨網",
+   "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFA5YXhPSVVXbDhHd196emlvd1I0X1c2M2g2LXYyMW5YcVN5YVcxWUNkeWdjX1RiMEg1cktZNEhNcVFpN0FhcmNDUmJYUnNiaGc?oc=5"
+  },
+  "g:1ircmng": {
+   "id": "g:1ircmng",
+   "date": "2026-11-25",
+   "title": "Borr Drilling Limited 12個月目標價調降至4.38美元，隱含15%上漲空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE14QW1HaU00NjIxRzlPb1ZpUlBNbXB5NWw2Sk8zR1FEdlJYb2RieVUwMXA3X0RhdDA2VlEyZE9iOU96dEFMM0FlM3RsR0dxMm5IR0dJRmpfeUdMQWlISF8tTGozNnVXNXNia0VZYg?oc=5"
+  },
+  "g:9qcq1y": {
+   "id": "g:9qcq1y",
+   "date": "2026-11-25",
+   "title": "Cleveland-Cliffs Inc. 12個月目標價調降至14.5美元，隱含30%上漲空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPb1FZVmRmQVYzcXhQT01wZW9KbThKa2tGbnY4U2Rrb213UGJoWEF4TFAxemcyUTIzWXVOWDJrME14UGMtTFlUUHdRb2lZM1B2T3psTXNVRzdaNTZUYkhJTHlob0trNEdQVXBSZmJKbEtaMF9lZ29Da0MtbnNKMm91b2d0cF84QQ?oc=5"
+  },
+  "g:1fmsbcv": {
+   "id": "g:1fmsbcv",
+   "date": "2026-11-25",
+   "title": "Expedia Group, Inc. 12個月目標價調降至333.88美元，隱含40%上漲空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9OZUxQUHdsTWRqZjJoeHd2aDhDY0xzbloyWUR4T0ZobDF4VFRuX2dhVU1ueWVyTXFrSEh1UE1IeFNOazRjcTEtTWVMX2k5UlotbmZzS3Z2cEQ3b0cwV0Q2X2JwQ1dKN0hEeEw4YzBB?oc=5"
+  },
+  "g:1gatujy": {
+   "id": "g:1gatujy",
+   "date": "2026-11-25",
+   "title": "奧本海默力挺邁威爾維持買進 目標價下修至325美元",
+   "source": "商傳媒",
+   "url": "https://news.google.com/rss/articles/CBMi4wJBVV95cUxNYnFpTFlzRzNPblVBaFVfT3VlTEtWWDJGYjhHQnlEVFVYUWlWZE1Ba21kZ2JGMnpkQndqSlk5SWctOGQ1MG9YWFhnZ2NrRUh1ek9qVHBXVUJOX1dtMnNzUGx4clhvY2h3Q2JXaG90V2c3TjdZSW0wMFpNZm10UE1FT3d2YXRBZmVsZ2Z2R0paMkhuel9kempMc3pNVklYSWQ2T0pmdzFrN2N6Wi1qU1dESjk0aVhGdnotRU5ibjZ2Rzl1YThyQzJRWjJ1RFVacjdieVNyczd0eTF2Z1kzeThxcXptd29pejE1dU1aNXl1UVhkUndUREV4aVpqdXloVllZS08xeHRpemQzZmxlSlhNclF0SGFXNXRaYzM1LV85SkdCRVl6WUhMNnN6bDhsQ2R3c2VjcVJUcHBtRTBRWU5ielNSN0ZiOXV2MW50VllaRDVNNjlBTlo3Y2FGaFpKQkdYSVZZ?oc=5"
+  },
+  "g:igqwhj": {
+   "id": "g:igqwhj",
+   "date": "2026-11-25",
+   "title": "Par Pacific Holdings, Inc. Common Stock 12個月目標價調降至92.62美元，隱含46%上漲空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9kYmNORXJlOXdFWWFXVkRrXy03cS04endhNkppTDRLZnNhOU9iUVZGUDBUS3M1TjdQVGN4d3BEaDN5UXlETG5LNHg4dlo5QldVeTExVkxBdGhZQWNMVWFBZWZRRVNvOGJyTkMtTQ?oc=5"
+  },
+  "g:159iv4z": {
+   "id": "g:159iv4z",
+   "date": "2026-11-25",
+   "title": "分析師示警記憶體供應過剩風險大砍美光目標價- 新聞",
+   "source": "MoneyDJ",
+   "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOUGU0d1JiOWR1NjA3aWxzLXZZLWdjUlJJSmhOWkJpWm5qUFVMb2tBMS03SjhSNEtQMDQtbHNBZmtvVjhoWFBKV0pPTWxRWlZ5cEsxZHU0RDNHbDRiOVBsdmFVcG5QMXRqUzVDcFBpeUJKdlRpblNiVTMtaEZLOVFFSXFYcnI2Sm1KRXluTHV2b3kwUQ?oc=5"
+  },
+  "g:1jig7qx": {
+   "id": "g:1jig7qx",
+   "date": "2026-11-25",
+   "title": "鉅亨速報 - Factset 最新調查：Insmed IncINSM-US的目標價調降至175元，幅度約4.63%",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE01aEJ0SGxTNzBjcWZaYXBoQnlDX2JmaEp4XzFlanhYd1JyTTJxbVVDWmlhUDYyWTA0TXQ2VDhFRi1tcHJYcFplODcxMk1qVENMMWpINFNsVGdOQmdLd0NvNXVOQUE?oc=5"
+  },
+  "g:5t1azg": {
+   "id": "g:5t1azg",
+   "date": "2026-11-25",
+   "title": "物理AI的“ChatGPT時刻”或一年內到來！首程控股(0697.HK)被投宇樹獲摩根大通上調目標價",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5EMUdpSktWTjZqUkxHREx0bWVfNHowSnhubXdiSm9yWUtWYjlYVElRbzNqV19kb1lVcjFjdGo5T1Vkelg3dmFVRmZvQ291Wk1tZi1yTjJBTDkxd3I2U2RzSWJlMUJXamUtemc?oc=5"
+  },
+  "g:19zxi5k": {
+   "id": "g:19zxi5k",
+   "date": "2026-11-25",
+   "title": "Craig-Hallum維持Symbotic「買進」評等，目標價從65美元調降至50美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1tQWdzSTFwYmNwNXJ1ajdyTEVJaGNRVi1YbDFQeC14SF9qSXRDdlFWbmpfSGZjbkVfQnFMdkRvbnIxUWJRR3VWZEhtYjQ1NXFodFZMcDdOdU44by1KRVJwbW53Z1paMFNHSVBIQg?oc=5"
+  },
+  "g:1kzynoo": {
+   "id": "g:1kzynoo",
+   "date": "2026-11-25",
+   "title": "分析師憂記憶體過剩美光目標價腰斬| 全球財經| 全球",
+   "source": "UDN",
+   "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1neXd4MjBpUzFUSjNSbVZvcFBDSFRkOHdsRVY2dUZYdU43Xzk0MHhpM2VFejlnOW1RQzlUSHI4cTc3Uy01TlZyOGk0QWk4SGZ5R3plYVFvLVZrZG5ldTI5eGRTRVNSRTlFbGNEWGlMWDk5NzByTkpUbVd0bw?oc=5"
+  },
+  "g:1jczg0p": {
+   "id": "g:1jczg0p",
+   "date": "2026-11-25",
+   "title": "Box, Inc. 12個月目標價調升至48美元，隱含5%上漲空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFB1T0N5QmcxZ1JQUHlvZm52YzhVOVZIMHJJTFJrdmZ4Y1lUdVlNalhYY0ZZVXdQZVlfT3d0SEg3Q2wyMmc3SWpjREM5YlJWOUlGMTIwaTJJY3Bzd0Fka3JtSnhQa0hHWXRyTTdnbQ?oc=5"
+  },
+  "g:4nq2qd": {
+   "id": "g:4nq2qd",
+   "date": "2026-11-24",
+   "title": "Factset 最新調查：藍博士半導體RMBS-US的目標價調降至140.5元，幅度約3.1%｜新聞快訊｜豐雲學堂",
+   "source": "永豐金證券",
+   "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5hblhJX0ZfNnBMMHFoVC05Q09xLXItVHljMklLUFQtZ2RVU1pnN1dQWmhfa05UTldyYXpEVi1OMk55QVNMWWR2LVN1clVZdUZha2xYMzVEcFVZd1N0TzBKVEpwT1h6bFk0aUxWaGZuS0s1VVhDT1E?oc=5"
+  },
+  "g:1gvtd3m": {
+   "id": "g:1gvtd3m",
+   "date": "2026-11-25",
+   "title": "UBS維持Zoom Communications「中立」評等，目標價從112美元調降至98美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE4wQkxleEFMazRWUGktTnVHcG9SRFFYSEVONTNOYkdlUXZXdnZPVVFzZU5jRGkwZklPOGdock9NWldNRTBUbUJCWmV3UkNzaURzSDQ2eVpMLXhuRnk2QjU3NGFXSkhpQ3FiYkp1bA?oc=5"
+  },
+  "g:z0mj0g": {
+   "id": "g:z0mj0g",
+   "date": "2026-11-25",
+   "title": "Citigroup維持MongoDB「買進」評等，目標價從565美元調降至525美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5CTmF5R21uLXctQVJKRFpybFdHSFozVWpFbF9CbkFFa05FOFg5NzZ2NUZoNlA1VzBzaGVJUW0zSk5jMXFjWmV3UmMzNnFqS2JpOXZPQnNCU0hxRGFIS3FuWnZwUTBkOWdyaUwwaw?oc=5"
+  },
+  "g:tdyyx0": {
+   "id": "g:tdyyx0",
+   "date": "2026-11-25",
+   "title": "Iamgold Corporation 12個月目標價調降至23.11美元，隱含50%上漲空間",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQYW9JWlJYRXBFZFI1ZXNUZUdUR2VkVmtsamJ5R1UxNXhaeHlicWYxWXdZdkxlZU1DeDRqYTlncHlyeUo5ZDVjRFVaNVcwY0FXZWpWUlpLQWp2cGM3UU96S1M0ZTBkQkI1anh2b0J2X2JzZDVYLTNqQUI3amFZdkNDZ1ZkdnpTLW8?oc=5"
+  },
+  "g:j9o1nj": {
+   "id": "g:j9o1nj",
+   "date": "2026-11-25",
+   "title": "目標價1表看》穩懋跌停還有戲？CPO商業化元年來了！光引擎需求旺「這檔」EPS翻倍21元→53元 大立光、智邦、聯亞…7大廠投顧喊買",
+   "source": "旺得富理財網",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9McmhZMXdRaU1jc1RUbi1mY3NRVnhJWnJLTkJVVF9OS0Zud1RwVTZheEVOeFY3emg2QUZRNnN6T05qakJaNU16RnlwZDVRUmstV0JhYXNmVkxoV2x3My01MHBxd3Q2QkVLclE?oc=5"
+  },
+  "g:sopoy9": {
+   "id": "g:sopoy9",
+   "date": "2026-11-25",
+   "title": "AI測試商機持續升溫！「探針大廠」目標價上看6500元 明年EPS至119元",
+   "source": "三立新聞",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE9PaFZ1NGp2R2lITm9wTUc4UDVoeHI5LTRERVRqZTJfTEphb1BsMW5aUEpMWUkxMWZWbDNRZUtDWF9RVXVna1ZlYzF1bw?oc=5"
+  },
+  "g:q7h5l8": {
+   "id": "g:q7h5l8",
+   "date": "2026-11-25",
+   "title": "日月光765元修正41％後「強攻漲停」！吃下台積電CoWoS外溢大單、EPS估衝35元投顧喊出目標價：還有18％空間 - 上市櫃",
+   "source": "旺得富理財網",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE10NzRfYjVySUpUUEZ1em9EekI5UEdMbjFIMXJvMHdRNk1rZDBSOVJsT2VvQmdvMjJBMXVtY3F3MElMY00wYUR2NUpCVFhBQ1g5eHJkRGFPekhIaHpJMGFwdkNTX0o2WndDcWc?oc=5"
+  },
+  "g:bvhuks": {
+   "id": "g:bvhuks",
+   "date": "2026-11-22",
+   "title": "目標價奔到30元、41.3元！台股殺7千點「2檔防禦股」EPS衝0.79元、3.14元 法人曝利多",
+   "source": "FTNN 新聞網",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE10Z0hBNEg1a1BuRFVCMmlpZ0t0RGlWWnJBQVhQU1Uzd2JzblNLb3JKWkFMdUJFZXhpVzQyZk1lNnJSQjJWTnNxVE5fUQ?oc=5"
+  },
+  "g:7fv41r": {
+   "id": "g:7fv41r",
+   "date": "2026-11-24",
+   "title": "當心抄底變抄家！國巨彈上「3字頭」能攤平？老牌法人目標價露餡了：1數據連降2季 - 上市櫃",
+   "source": "旺得富理財網",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1nV21DLUc5WG55Sy1sdDdYcl9xRXktMy1ZQk5HZGs2VzZuT0Jzb3dfMDJmQzBBSmkxdkFBSG84dldhbk1FbUd2QTJnM2wzaWtIYVJtNXl0b3h4NzM5UXVWQVpXRGRQWXZVdkE?oc=5"
+  },
+  "g:fjhxll": {
+   "id": "g:fjhxll",
+   "date": "2026-11-25",
+   "title": "Needham維持Cleanspark「買進」評等，目標價從23美元調降至15美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFA3cG95d3haai0yNHBHU3g0aGs5SmdWaXdrdzI4akhfeWV3UFFXTGFRRVRjYm0zU1MydE5halEzTm9DMVpDaFR5ZFRKUW1ja21SSmVuazQ4MFFKNGl4UjZPX29QaHhHY3YwMnQ3TQ?oc=5"
+  },
+  "g:1azind3": {
+   "id": "g:1azind3",
+   "date": "2026-11-25",
+   "title": "Rosenblatt維持Autodesk「買進」評等，目標價330美元不變",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE40QTJ4OVVrQU1Qck1DNDFNSHZ1RjZsM3VyM3VESXJ4ZC1nbmFHb1ZSYWxzNlpvSmdTcHUzMGswZ011M1R6aUZpTTFxb2tfWi0yUVQzbjh1VThZczBaRWdBMmNPTGY2OEp1Qjhrcw?oc=5"
+  },
+  "g:16d361f": {
+   "id": "g:16d361f",
+   "date": "2026-11-25",
+   "title": "Needham維持Workday「買進」評等，目標價230美元不變",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE40NTBkYlNwLU9lOVdYUV9TNFI4ZTcwaTFKX1VKWndYd0VpVXBGeW1xTFZ6YzVMSzhuUTl6c09MVmVZNkg4dGgtcTBBY29ROFpHeGxoZU5tWDM2SS1BMF8tWGxCSE5uejdzbHhxMw?oc=5"
+  },
+  "g:fd9wzo": {
+   "id": "g:fd9wzo",
+   "date": "2026-11-25",
+   "title": "跌近10％誰在接？兆豐金獲利創高、股利維持7成獲投信砸近40億居冠「這檔」持高階電子材料助攻獲喊300元目標價入列",
+   "source": "FTNN 新聞網",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5HdjdmNXp1Y2hMVzFnQmt1X0dIdmpRME04NXN3Z2NWM0ktZ2ZUTmx6a3lYYWVrNWZVc1lTSGtrX2F4VDNpUl8tVFNVaw?oc=5"
+  },
+  "g:1vab5no": {
+   "id": "g:1vab5no",
+   "date": "2026-11-25",
+   "title": "Anthropic 股價破發，但多間券商目標價最高 155 美元",
+   "source": "動區動趨",
+   "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPU2s1djdnNXNOUWRrckpsbGl5N2ItOWh4WDhyV1VDRjBJYmVEcUZ1aVRUN3NtV2c0WlpsaDMteFZVYTlQV3U1MFBQWmMxdmhIOTBzWnN0N29yS3lDV0xVVnNyZVZZbnpnMG9lbFVzYjE0ZzIzS2RKYkpOMFpFNUdVT1ZNM01NengydjFicnpyY3Z1UnF1Mk9lQmNfQ1dBdVNwZENzWURLV01uUWc?oc=5"
+  },
+  "g:3ac2zw": {
+   "id": "g:3ac2zw",
+   "date": "2026-11-25",
+   "title": "Tigress Financial維持Fiserv「買進」評等，目標價95美元不變",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE12eWhnNER2VWcxLVl1RkIybXZYaXZ0V1pGc0xxTlJqdTVNUEJtODBhcHZFRjNqYWVGYW96M2Y0UjdFdGU5eW9WdXFzWmloVmljNVFlUWM2eTMyLXBkYmg0ZkZUanlLdGxnWVk0VQ?oc=5"
+  },
+  "g:1vh5o2r": {
+   "id": "g:1vh5o2r",
+   "date": "2026-11-25",
+   "title": "Craig-Hallum維持Semtech「買進」評等，目標價從205美元調降至160美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFA4S2Z5NTQzTkxpa1RreUVERXh2NHlDYWktMGFRNWlFajkwREQ3MVFYa1cyZHNGd3ZIdnlZTW9JRnlOOUdjOUFhVUctd3hzVmxqdmowbmhoejc0LUd1Y0tuZ0hFd3Vadm5fdTljdw?oc=5"
+  },
+  "g:15dv5fl": {
+   "id": "g:15dv5fl",
+   "date": "2026-11-25",
+   "title": "UBS維持Standard Nuclear「買進」評等，目標價從20美元調降至15美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE96bk52bHBtbVlocUxBcE96dWYyNF9Bb28tSERFdHlTLWFEQW9SRm83UERtOW10enZMNmRxaVg4dG92N2k2TnRtS3c3VE5QR0JJV2hTUHZNY2ItdWswaHVhTjBkUHBRTnZ2UGV6cg?oc=5"
+  },
+  "g:1flpjzi": {
+   "id": "g:1flpjzi",
+   "date": "2026-11-25",
+   "title": "BTIG維持Medtronic「買進」評等，目標價從109美元調降至108美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5vT3ZVYlFLc1dnTndoa0U0a3I1cl9JRF82aGJRa3dCY29fOXo1S3pQUDBDeERzT3ZYaXh6SnQzSm5KMHZGZ2N0Ylo0dXpnQmNQamlZTlUzaXlSUTJJbzRPM3RIMTk4cGFMTkk3NQ?oc=5"
+  },
+  "g:5sesx2": {
+   "id": "g:5sesx2",
+   "date": "2026-11-25",
+   "title": "Craig-Hallum維持Freightos「買進」評等，目標價從3美元調降至2美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE8zTVBnbFJJTkpDU0tWdDA4UnhYWXZNd3ZjdjVKYkJULWxxd2xEQkxKMWI4R1FpeEo3RDU3cUVXcVh5bFZyaEt0NUdUbi1HaG5tME02RGkyQXMyOXlaWEFEbklQbGJTRkd5NndFZw?oc=5"
+  },
+  "g:8uzgqu": {
+   "id": "g:8uzgqu",
+   "date": "2026-11-25",
+   "title": "HC Wainwright & Co.維持Arrowhead Pharmaceuticals「買進」評等，目標價120美元不變",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5haGNXY3dSbkpVUEhJbi0wRW9JcW5UR05XY1lMSUNLQThJalFTM1U5bjZrbVVPMmhBSGxhdEZiOVZRN2pSdV90dTdsVFR5NkJwaU1QNElTV0ZOVEJjTXgwYzhhRy0xOU9Fd1JXZw?oc=5"
+  },
+  "g:s8t0j": {
+   "id": "g:s8t0j",
+   "date": "2026-11-25",
+   "title": "B of A Securities維持Zoom Communications「買進」評等，目標價從130美元調降至115美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE53X3FjQ0ZVRUtOVEd6ZVZTN2xSd1dKUGUwRllqTmU2b1JCUXdhUTVQNkpGcFhpZnVmTHM0Vy1uWWxzNE5FMmdVTE8yaUJNdkJOYnZWVFRXWGQxYkZuT0ttcmtpNTdJelBZLWlvRQ?oc=5"
+  },
+  "g:1qfz6ql": {
+   "id": "g:1qfz6ql",
+   "date": "2026-11-25",
+   "title": "迎台積電轉單大補丸！大咖法人首選「2檔成熟製程」 目標價分別喊出160元、170元",
+   "source": "FTNN 新聞網",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE9JWktwRUs5UTU0VlNUeDh5cV95WV9yRmQ2ZlB2WkdHbGx0RWxQQk9YR3pLbE5hVkdubGFrMTNhMjZmODU2R3ZacTZyNA?oc=5"
+  },
+  "g:iea2cx": {
+   "id": "g:iea2cx",
+   "date": "2026-11-24",
+   "title": "Canaccord Genuity首次涵蓋Anthropic，給予「買進」評等，目標價定為135美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBaOHd3Q05Md0tfSXZPcFU2M1p5bF9BYWd5MEF6TmVWV1hTMXJmUm9XTjdDRmVzLTdVN3B3VlcwSXNFTGdlRjFXRjQ1cmNmdmFPb2kxeUg0aDZmTUptMGVYTGFOWDBxemZIdmJaOA?oc=5"
+  },
+  "g:3gpwp0": {
+   "id": "g:3gpwp0",
+   "date": "2026-11-25",
+   "title": "記憶體股王群聯漲停還有肉？老牌法人庫存天數、應收帳款全說了最新目標價、評等同步曝光- 上市櫃",
+   "source": "旺得富理財網",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1QQjFMU3dNMHR4V0Y4UDBBeXZfaTJQNTM5VmlOQmlUQ0d6UmN0bnlwWWVCZTNjREs5Y3NrVXV5ZHVRaktGWG5BMHNaUnR0TWw2XzVjbTM0UThXbmZXaUxfcEFxSXNrUVZ1Y2c?oc=5"
+  },
+  "g:nhpxq9": {
+   "id": "g:nhpxq9",
+   "date": "2026-11-24",
+   "title": "HC Wainwright & Co.維持Definium Therapeutics「買進」評等，目標價70美元不變",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9IMkZoaFlhdUpoSWJiTERRd0JXZGRDTGFVVGl4WnlNR0o4Q01sQVQzeDJuMGhzMG1jUEdJWUtVTzlNZ3BIcmpfcElnTVRaN1BRUXVZcXdhZTZNdHRreGh6QjhPYXhJUjVRbFg3Mg?oc=5"
+  },
+  "g:1ptjchw": {
+   "id": "g:1ptjchw",
+   "date": "2026-11-24",
+   "title": "HC Wainwright & Co.維持Belite Bio「買進」評等，目標價245美元不變",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1wa2NTOHdWN1FwMFBEa1hFRnh1aVlhOF9wQmViSks5UEVrNmNkX2N4X19EbjIwdVQ5cEd2WE1ZVWU1LW9UcHFySUpHaV85MWIxdThVX20zRWtYZ0tDX3hDTGt5NzR4QnlqdW9PYQ?oc=5"
+  },
+  "g:1mb0me6": {
+   "id": "g:1mb0me6",
+   "date": "2026-11-24",
+   "title": "HC Wainwright & Co.維持Rigel Pharmaceuticals「買進」評等，目標價85美元不變",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9jQVZXLWxFVGlZcjdCT1RvbmtkRG1ieGo1V0ctSkVUNHlEMjFUSUo3eVNDZElKYUMzUkloVUs5YUpDZmhnUW94c2xtWjVfWXo5b1ozTzZ3cWNHRU5xWUdhUndPVS12c3lfMDVIOQ?oc=5"
+  },
+  "g:1g6s137": {
+   "id": "g:1g6s137",
+   "date": "2026-11-24",
+   "title": "UBS首次涵蓋Aspen Neuroscience，給予「買進」評等，目標價定為35美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBQUVFCd0JVYzJDX1VKN096TEkxU1hPX0Rla3d0M3hRaEgzOTB0ZlplVTUxUks1M25NekVVNElJWkpfX1BMM1A0eEZtQlBCUmM1c1FWcmFPN0lYT2lXQ1A0Z2RjdlktbmxpS1B2ag?oc=5"
+  },
+  "g:1qmd5xi": {
+   "id": "g:1qmd5xi",
+   "date": "2026-11-24",
+   "title": "UBS首次涵蓋Bambusa Therapeutics，給予「買進」評等，目標價定為36美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5oc2lDTnctc0FXbTNWTTU2YzU4ZUl4QVoxUUNDNFJuUmtkbWlfb0s2WHVlUTk3TklJdzdOVm5ySnQwT21ub2dLNGc5TmVOUUdfUzE3T3hvTHRjR19qM2VDbUZrQ1RVWTdtY0swMA?oc=5"
+  },
+  "g:4b157t": {
+   "id": "g:4b157t",
+   "date": "2026-11-24",
+   "title": "Needham維持Symbotic「買進」評等，目標價從60美元調升至65美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE8ySFNxb3pKUUJ1dlJrY2twd3g5aGRMLURBUWhMSmt0NHpRMnpJU0Q1c3FnaUstVmgwNllGd2JMY3lvRGFpdzhhNFdkS0dlSnZ1aTFTbGlselJiNWZKeU5CTlZiTHM4OVR3RDNxSw?oc=5"
+  },
+  "g:1po76p7": {
+   "id": "g:1po76p7",
+   "date": "2026-11-24",
+   "title": "Needham首次涵蓋GameStop，給予「買進」評等，目標價定為33美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1mS0JvdDk5ZVhRUXhvTDk5WlR2RjdRZ2sxOF9MSS1iRTF6emNoQUloaUxQMTg1ajZaZUZocVZYNnN6cWJITk9JSmhmc1hISnVDZ0ZUaGhRYkhYR0NIdEltU09yYk5rMGNPaWRzaw?oc=5"
+  },
+  "g:3t0klp": {
+   "id": "g:3t0klp",
+   "date": "2026-11-24",
+   "title": "Seaport Global首次涵蓋Tesla，給予「買進」評等，目標價定為475美元",
+   "source": "TradingView",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE15OEpQNXRHdHdQXzZVeHZudXJMNWJYdW5Ka09aUlhMVUJRTXRQaklWVEJJU1g1Y2wwVVdQNE9BcU1xQmY3djVyWjBHV2RRaTVkQUFCZ3Eyd2tDTklfdV96TEd6ZWFUa0NOUDNYMw?oc=5"
+  },
+  "g:1tqbjf0": {
+   "id": "g:1tqbjf0",
+   "date": "2026-11-25",
+   "title": "封測齊殺！「這檔」目標價上看6500元卻崩跌停 日月光、力成、精測、訊芯都亮綠燈",
+   "source": "FTNN 新聞網",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFA0aHdCZ3NDMUppeFpTc0I5aFdlWEM1RkxLbkZ6Z2FFN19rWFp1VXBrN2JoWDdEZ1hWUmpoUThnSmV1ZEpUT0JZSzd2UQ?oc=5"
+  },
+  "g:1uy1gyd": {
+   "id": "g:1uy1gyd",
+   "date": "2026-11-25",
+   "title": "黃仁勳回歸點燃輝達！Dan Ives上調目標價喊300美元 最高看漲近82%",
+   "source": "鉅亨網",
+   "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9XSjU4NzBJNEJYNHBYeHlTdkhHY0xrZ0FTM0ZHbjVhQ0E4TDdTVmlqWGNQVXpBMUFyMnVyb3ZQbFNVR0wtRDlPZDlxWUdrMmM?oc=5"
+  },
+  "g:t9khsa": {
+   "id": "g:t9khsa",
+   "date": "2026-11-24",
+   "title": "台新投顧剛剛發布了一份景碩(3189)的券商報告，目標價為715.00，多空評等為看多",
+   "source": "CMoney",
+   "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1pR1FON0ViMVJmdncwUzYtRXl6bGlsS052NWFENmxfTDVPbVE5UzI3Tm1GdDk1QWdIMWM3NHdWOVExa0JDZGNoSVFwYXpZS3BrbnlZSUZqSl8?oc=5"
+  },
+  "g:puzzym": {
+   "id": "g:puzzym",
+   "date": "2026-11-24",
+   "title": "中國信託綜合證券剛剛發布了一份兆豐金(2886)的券商報告，目標價為57.00，多空評等為看多",
+   "source": "CMoney",
+   "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9yWXQ1TS15YTVNU1RLZWVBSndmX1M2eE9DSEZEOUcteWhNSGFfQ0xzTmF1SnNDRkJkM3VWc184b2dwNGtRZ01qY1VVVDFqYU02bW1PVDlfUmc?oc=5"
   }
  }
 }
