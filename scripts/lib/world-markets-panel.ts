@@ -59,6 +59,8 @@ export function renderWorldMarketsPanel(): string {
       #world-markets .wm-high { fill:var(--wm-bull); }
       #world-markets .wm-low { fill:var(--wm-bear); }
       #world-markets .wm-cursor { stroke:var(--wm-muted); stroke-dasharray:3 3; }
+      #world-markets svg .wm-price { fill:currentColor; font-size:12px; font-weight:700; paint-order:stroke;
+        stroke:var(--wm-panel); stroke-width:3; stroke-linejoin:round; pointer-events:none; }
     </style>
     <details class="wm-panel wm-world">
       <summary>各國股市專區</summary>

@@ -95,8 +95,12 @@
     svg.setAttribute("height", height);
     svg.innerHTML = grid + dates + candles + line("ma20") + line("ma60") +
       '<line class="wm-cursor" y1="' + top + '" y2="' + bottom + '"/>' +
-      extremeLabel("high", highIndex, -5) + extremeLabel("low", lowIndex, 14);
+      '<line class="wm-cursor wm-price-line" x1="' + left + '" x2="' + right + '"/>' +
+      extremeLabel("high", highIndex, -5) + extremeLabel("low", lowIndex, 14) +
+      '<text class="wm-price"></text>';
     const cursor = svg.querySelector(".wm-cursor");
+    const priceLine = svg.querySelector(".wm-price-line");
+    const priceLabel = svg.querySelector(".wm-price");
 
     function show(index) {
       state.index = Math.max(0, Math.min(points.length - 1, index));
@@ -104,6 +108,16 @@
       const xx = x(state.index);
       cursor.setAttribute("x1", xx);
       cursor.setAttribute("x2", xx);
+      // 收盤價標在 K 棒旁邊，並拉一條水平線對照頸線；靠右邊時標在左側
+      const yy = y(point.close);
+      priceLine.setAttribute("y1", yy);
+      priceLine.setAttribute("y2", yy);
+      const onLeft = right - xx < 70;
+      priceLabel.setAttribute("x", onLeft ? xx - bodyWidth / 2 - 4 : xx + bodyWidth / 2 + 4);
+      priceLabel.setAttribute("y", yy + 4);
+      priceLabel.setAttribute("text-anchor", onLeft ? "end" : "start");
+      priceLabel.setAttribute("class", "wm-price " + (point.close >= point.open ? "wm-up" : "wm-down"));
+      priceLabel.textContent = number.format(point.close);
       state.readout.textContent = point.date + "　開 " + number.format(point.open) +
         "　高 " + number.format(point.high) + "　低 " + number.format(point.low) +
         "　收 " + number.format(point.close) +
