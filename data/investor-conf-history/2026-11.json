@@ -51561,11 +51561,59 @@
    "revenue": "2026-10 月營收 24,473 百萬元，YoY +203%，MoM +14%，累計 YoY +114%，YoY 203%，連12月YoY成長，MoM連8月正成長，5年新高，比前三月加速 60pp",
    "move": null
   },
-  "analysis": null,
-  "analysisError": "spawn codex ENOENT",
+  "analysis": {
+   "industry": "PCB與載板",
+   "subIndustry": "銅箔基板（CCL）",
+   "direction": "中性",
+   "headline": "載板材料放量時程未明，2027年產能目標不變",
+   "score": 3,
+   "verdict": "一般",
+   "reason": "中性，第三季毛利率年增7.6個百分點，但本場沿用既有擴產計畫，未新增足以改變獲利預期的放量時程或營收貢獻。",
+   "keyNumbers": [
+    {
+     "label": "2026年第三季營收",
+     "value": "608.85億元，年增142.1%"
+    },
+    {
+     "label": "2026年第三季毛利率",
+     "value": "37.7%，年增7.6個百分點"
+    },
+    {
+     "label": "2026年第三季EPS",
+     "value": "40.47元，年增261.7%"
+    },
+    {
+     "label": "2026年月產能",
+     "value": "585萬張"
+    },
+    {
+     "label": "2027年月產能目標",
+     "value": "900萬張"
+    },
+    {
+     "label": "2030年月產能目標",
+     "value": "1,525萬張"
+    }
+   ],
+   "guidance": "公司重申載板用銅箔基板即將放量，未提供具體季度或營收貢獻。2027至2030年月產能目標維持900萬、1,045萬、1,195萬及1,525萬張。未提供下一季或全年營收與獲利財測。",
+   "drivers": [
+    "公司指出，高階材料市占率提升帶動第三季基礎設施產品銷售成長。",
+    "AI基礎設施朝高密度互連（HDI）及載板技術發展，支撐高階基材需求。"
+   ],
+   "risks": [
+    "載板用銅箔基板的放量季度與營收貢獻仍待確認。",
+    "第三季短期及長期借款均較第二季增加。"
+   ],
+   "qaHighlights": [],
+   "tone": "持平",
+   "evidence": "僅簡報"
+  },
+  "analyzedAt": "2026-11-25T21:14:39+08:00",
+  "model": "gpt-6.2-sol",
+  "analyzedEvidence": 1,
   "firstSeen": "2026-11-24T23:58:08+08:00",
-  "state": "pending",
-  "pendingNote": "判讀失敗，下次重試；等待富果整理"
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "2395-2026-11-24": {
   "key": "2395-2026-11-24",
@@ -51593,11 +51641,57 @@
    "revenue": "2026-10 月營收 11,336 百萬元，YoY +88%，MoM +5%，累計 YoY +53%，YoY 88%，連12月YoY成長，5年新高，比前三月加速 6pp",
    "move": null
   },
-  "analysis": null,
-  "analysisError": "spawn codex ENOENT",
+  "analysis": {
+   "industry": "AI伺服器與電腦硬體",
+   "subIndustry": "工業電腦與嵌入式系統",
+   "direction": "中性",
+   "headline": "研華沿用舊簡報，第四季營收仍估季減3%至5%",
+   "score": 2,
+   "verdict": "可略過",
+   "reason": "本次沿用11月4日簡報，第四季財測與上次一致，未見足以改變獲利預期的新利多或利空。",
+   "keyNumbers": [
+    {
+     "label": "第三季營收",
+     "value": "新台幣324.4億元，年增83%"
+    },
+    {
+     "label": "第三季毛利率",
+     "value": "36.7%，年減2.2個百分點"
+    },
+    {
+     "label": "第三季營業利益率",
+     "value": "20.9%，年增5.7個百分點"
+    },
+    {
+     "label": "第三季歸母淨利",
+     "value": "新台幣62.18億元，年增125%"
+    },
+    {
+     "label": "第三季EPS",
+     "value": "新台幣7.15元"
+    }
+   ],
+   "guidance": "沿用11月4日財測。第四季營收預估9.7億至9.9億美元，以匯率31.8元換算約新台幣308.46億至314.82億元，季減約3%至5%。毛利率估36%至38%，營業利益率估18%至20%。",
+   "drivers": [
+    "前三季智能系統營收以美元計年增49%，主要受惠於半導體設備及北美雲端基礎設施與資料中心專案。",
+    "前三季嵌入式事業營收以美元計年增40%，受惠於醫療設備與工廠自動化需求。",
+    "第三季營收規模擴大與費用控管推升營業利益率。"
+   ],
+   "risks": [
+    "原物料成本上升，第三季毛利率季減1.0個百分點。",
+    "第四季營業利益率指引為18%至20%，低於第三季的20.9%。",
+    "第三季業外收入含一次性處分利益。"
+   ],
+   "qaHighlights": [],
+   "tone": "持平",
+   "evidence": "僅簡報"
+  },
+  "analyzedAt": "2026-11-25T21:14:40+08:00",
+  "model": "gpt-6.2-sol",
+  "analyzedEvidence": 1,
   "firstSeen": "2026-11-24T23:58:08+08:00",
-  "state": "pending",
-  "pendingNote": "判讀失敗，下次重試；等待富果整理"
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "2409-2026-11-24": {
   "key": "2409-2026-11-24",
@@ -51625,11 +51719,30 @@
    "revenue": "2026-10 月營收 20,779 百萬元，YoY -1%，MoM -11%，累計 YoY -2%",
    "move": null
   },
-  "analysis": null,
-  "analysisError": "spawn codex ENOENT",
+  "analysis": {
+   "industry": "面板與顯示",
+   "subIndustry": "液晶面板",
+   "direction": "中性",
+   "headline": "友達沿用第三季法說，未見新增展望",
+   "score": 2,
+   "verdict": "可略過",
+   "reason": "本次沿用第三季法說內容，可讀資料未見足以改變獲利預期的新資訊，判為中性。",
+   "keyNumbers": [],
+   "guidance": "未提供明確展望",
+   "drivers": [],
+   "risks": [
+    "10 月營收年減 1%、月減 11%，累計年減 2%，營收動能偏弱。"
+   ],
+   "qaHighlights": [],
+   "tone": "無法判斷",
+   "evidence": "簡報多為圖片"
+  },
+  "analyzedAt": "2026-11-25T21:14:40+08:00",
+  "model": "gpt-6.2-sol",
+  "analyzedEvidence": 1,
   "firstSeen": "2026-11-24T23:58:08+08:00",
-  "state": "pending",
-  "pendingNote": "判讀失敗，下次重試；等待富果整理"
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "2412-2026-11-24": {
   "key": "2412-2026-11-24",
@@ -51658,7 +51771,7 @@
    "move": null
   },
   "analysis": null,
-  "analysisError": "spawn codex ENOENT",
+  "analysisError": "codex exit 1: ERROR: You’ve hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/settings/usage to purchase more credits or try again at 9:34 PM. ERROR: Yo",
   "firstSeen": "2026-11-24T23:58:08+08:00",
   "state": "pending",
   "pendingNote": "判讀失敗，下次重試；等待富果整理"
@@ -51693,7 +51806,7 @@
    "move": null
   },
   "analysis": null,
-  "analysisError": "spawn codex ENOENT",
+  "analysisError": "codex exit 1: ERROR: You’ve hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/settings/usage to purchase more credits or try again at 9:34 PM. ERROR: Yo",
   "firstSeen": "2026-11-24T23:58:08+08:00",
   "state": "pending",
   "pendingNote": "判讀失敗，下次重試"
@@ -51725,7 +51838,7 @@
    "move": null
   },
   "analysis": null,
-  "analysisError": "spawn codex ENOENT",
+  "analysisError": "codex exit 1: ERROR: You’ve hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/settings/usage to purchase more credits or try again at 9:34 PM. ERROR: Yo",
   "firstSeen": "2026-11-24T23:58:08+08:00",
   "state": "pending",
   "pendingNote": "判讀失敗，下次重試；等待富果整理"
