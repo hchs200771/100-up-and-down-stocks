@@ -60945,17 +60945,55 @@
   "fileEn": "611320261126E001.pdf",
   "videoUrl": "https://www.youtube.com/watch?v=TOrWto6ce1w",
   "note": "無。",
-  "deck": null,
+  "deck": {
+   "file": "611320261126M001.pdf",
+   "pages": 45,
+   "chars": 1547,
+   "imageHeavy": true
+  },
   "transcript": null,
   "videoStatus": "處理中",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 102 百萬元，YoY +83%，MoM -8%，累計 YoY +75%，YoY 83%，連10月YoY成長",
    "move": null
   },
-  "analysis": null,
+  "analysis": {
+   "industry": "IC設計",
+   "subIndustry": "IC代理通路與技術加值服務",
+   "direction": "中性",
+   "headline": "亞矽談技術加值轉型，未見量化展望",
+   "score": 2,
+   "verdict": "可略過",
+   "reason": "10 月營收年增 83%，但可讀簡報未見公司說明成長能否延續，現有資訊對獲利預期的影響為中性。",
+   "keyNumbers": [
+    {
+     "label": "平均銷貨天數",
+     "value": "37.47 天（統計期間未標明）"
+    },
+    {
+     "label": "總資產周轉率",
+     "value": "1.26 次（統計期間未標明）"
+    }
+   ],
+   "guidance": "未提供明確展望",
+   "drivers": [
+    "公司將技術加值服務（VAR）與整合型方案（IDH）列為轉型方向。",
+    "簡報點名次世代網通商機，未見公司訂單或放量時程。"
+   ],
+   "risks": [
+    "簡報所列總資產周轉率低於同頁比較的七家同業，統計期間未標明。"
+   ],
+   "qaHighlights": [],
+   "tone": "無法判斷",
+   "evidence": "簡報多為圖片"
+  },
+  "analyzedAt": "2026-11-26T23:07:39+08:00",
+  "model": "gpt-6.2-sol",
+  "analyzedEvidence": 1,
   "firstSeen": "2026-11-26T22:54:38+08:00",
-  "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "state": "partial",
+  "pendingNote": "影音轉文字中"
  },
  "6117-2026-11-26": {
   "key": "6117-2026-11-26",
@@ -60970,17 +61008,71 @@
   "fileEn": "611720261126E001.pdf",
   "videoUrl": "https://webpro.twse.com.tw/WebPortal/vod/101/A9CF9DD26552-4255A1AC-E966-11F1-B91C/?categoryId=101",
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "611720261126M001.pdf",
+   "pages": 24,
+   "chars": 4948,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "處理中",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 303 百萬元，YoY +16%，MoM -21%，累計 YoY +9%",
    "move": null
   },
-  "analysis": null,
+  "analysis": {
+   "industry": "AI伺服器與電腦硬體",
+   "subIndustry": "伺服器機殼與系統整合",
+   "direction": "中性",
+   "headline": "迎廣伺服器營收占68.21%，未揭露放量時程",
+   "score": 3,
+   "verdict": "一般",
+   "reason": "本場以回顧前三季獲利成長及介紹伺服器產品為主，訂單與放量時程均未揭露，對獲利預期影響中性。",
+   "keyNumbers": [
+    {
+     "label": "2026 年前三季營收",
+     "value": "25.87 億元，年增 8%"
+    },
+    {
+     "label": "2026 年前三季營業毛利",
+     "value": "9.00 億元，年增 24%"
+    },
+    {
+     "label": "2026 年前三季營業利益",
+     "value": "4.25 億元，年增 27%"
+    },
+    {
+     "label": "2026 年前三季 EPS",
+     "value": "3.27 元，年增 48%"
+    },
+    {
+     "label": "2026 年前三季伺服器營收占比",
+     "value": "68.21%，2025 全年為 58.79%"
+    },
+    {
+     "label": "2026 年 9 月底長期借款（含一年內到期）",
+     "value": "18.74 億元，上年同期為 13.11 億元"
+    }
+   ],
+   "guidance": "未提供明確展望",
+   "drivers": [
+    "伺服器是最大營收來源，產品涵蓋 AI GPU 伺服器、液冷平台及資料中心系統整合。"
+   ],
+   "risks": [
+    "AI 與液冷伺服器未揭露訂單金額或出貨時程，獲利貢獻難以估算。",
+    "長期借款較上年同期增加約 5.63 億元。"
+   ],
+   "qaHighlights": [],
+   "tone": "持平",
+   "evidence": "僅簡報"
+  },
+  "analyzedAt": "2026-11-26T23:07:20+08:00",
+  "model": "gpt-6.2-sol",
+  "analyzedEvidence": 1,
   "firstSeen": "2026-11-26T22:54:38+08:00",
-  "state": "pending",
-  "pendingNote": "尚未判讀；等待富果整理"
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "6190-2026-11-26": {
   "key": "6190-2026-11-26",
@@ -61076,17 +61168,68 @@
   "fileEn": "624120261126E003.pdf",
   "videoUrl": "http://irconference.twse.com.tw/6241_3_20261126_ch.mp4",
   "note": "會議簡報等資料將依規定於期限前揭露於公開資訊觀測站。",
-  "deck": null,
+  "deck": {
+   "file": "624120261126M003.pdf",
+   "pages": 13,
+   "chars": 1721,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "處理中",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 57 百萬元，YoY +24%，MoM +26%，累計 YoY -1%",
    "move": null
   },
-  "analysis": null,
+  "analysis": {
+   "industry": "網通",
+   "subIndustry": "網路通訊產品 ODM",
+   "direction": "中性",
+   "headline": "鑫永洋籌畫高速光模組產線，量產時程未定",
+   "score": 3,
+   "verdict": "一般",
+   "reason": "高速光模組布局有利多題材，但公司未揭露訂單、量產時程或營收貢獻，本場對獲利預期影響中性。",
+   "keyNumbers": [
+    {
+     "label": "2026 年前三季累計營收",
+     "value": "新台幣 5.25 億元，年減約 3%"
+    },
+    {
+     "label": "2026 年前三季累計出貨量",
+     "value": "148 萬件，去年同期 130 萬件"
+    },
+    {
+     "label": "2026 年前三季毛利率",
+     "value": "15.7%，去年同期 16.0%"
+    },
+    {
+     "label": "2026 年前三季營業利益",
+     "value": "新台幣 2,954 萬元，營益率 5.63%"
+    },
+    {
+     "label": "2026 年前三季 EPS",
+     "value": "0.74 元，2025 全年為 −0.16 元"
+    }
+   ],
+   "guidance": "未提供明確展望",
+   "drivers": [
+    "規劃在台灣建立高速光收發模組產線，初期聚焦 400G、800G 與 1.6T。",
+    "持續觀察 Wi‑Fi 8 與高速 PON 需求，評估產品開發時機。"
+   ],
+   "risks": [
+    "物料缺貨與漲價增加備料及成本控制壓力。",
+    "前三季出貨量增加，但營收年減約 3%，毛利率也較去年同期下滑 0.3 個百分點。"
+   ],
+   "qaHighlights": [],
+   "tone": "持平",
+   "evidence": "僅簡報"
+  },
+  "analyzedAt": "2026-11-26T23:07:56+08:00",
+  "model": "gpt-6.2-sol",
+  "analyzedEvidence": 1,
   "firstSeen": "2026-11-26T22:54:38+08:00",
-  "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "state": "partial",
+  "pendingNote": "影音轉文字中"
  },
  "6442-2026-11-26": {
   "key": "6442-2026-11-26",
@@ -61101,17 +61244,68 @@
   "fileEn": "644220261124E001.pdf",
   "videoUrl": "http://irconference.twse.com.tw/6442_31_20261126_ch.mp4",
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "644220261124M001.pdf",
+   "pages": 21,
+   "chars": 4328,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "處理中",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,837 百萬元，YoY +83%，MoM -11%，累計 YoY +54%，YoY 83%，連6月YoY成長，同期歷史新高",
    "move": null
   },
-  "analysis": null,
+  "analysis": {
+   "industry": "光學與光通訊",
+   "subIndustry": "資料中心光纖互連與外部雷射光源模組",
+   "direction": "中性",
+   "headline": "光聖估全年營收續增，CPO模組量產時程未明",
+   "score": 3,
+   "verdict": "一般",
+   "reason": "對獲利預期中性，法說主要回顧已公布的前三季財報，全年營收續增符合近期營收趨勢，CPO模組也未揭露量產或訂單進度。",
+   "keyNumbers": [
+    {
+     "label": "2026年前三季營收",
+     "value": "新台幣113.07億元"
+    },
+    {
+     "label": "2026年前三季毛利率",
+     "value": "59.42%，去年同期57.81%"
+    },
+    {
+     "label": "2026年前三季營業淨利",
+     "value": "新台幣34.90億元"
+    },
+    {
+     "label": "2026年前三季EPS",
+     "value": "新台幣34.90元，去年同期13.87元"
+    },
+    {
+     "label": "Torpedo光纜規格上限",
+     "value": "6,912芯"
+    }
+   ],
+   "guidance": "公司預期2026年營收持續成長，未提供增幅或第四季財測。簡報將CPO外部雷射光源模組列為2026年預期項目，未說明實際出貨進度。",
+   "drivers": [
+    "大型AI資料中心擴建帶動機房間高密度光纖互連需求。",
+    "CPO外部雷射光源模組瞄準GPU高速、低功耗互連。"
+   ],
+   "risks": [
+    "CPO模組缺乏客戶、訂單金額與量產進度，營收貢獻時點難以估計。",
+    "前三季毛利率年增1.61個百分點，簡報未交代改善原因或能否延續。"
+   ],
+   "qaHighlights": [],
+   "tone": "持平",
+   "evidence": "僅簡報"
+  },
+  "analyzedAt": "2026-11-26T23:07:44+08:00",
+  "model": "gpt-6.2-sol",
+  "analyzedEvidence": 1,
   "firstSeen": "2026-11-26T22:54:38+08:00",
-  "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "state": "partial",
+  "pendingNote": "影音轉文字中"
  },
  "6515-2026-11-26": {
   "key": "6515-2026-11-26",
@@ -61126,17 +61320,73 @@
   "fileEn": "651520261126E001.pdf",
   "videoUrl": "https://www.youtube.com/watch?v=PwQ7bCADTDQ",
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "651520261126M001.pdf",
+   "pages": 50,
+   "chars": 9495,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "處理中",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,107 百萬元，YoY +63%，MoM -12%，累計 YoY +93%，YoY 63%，連12月YoY成長，同期歷史新高",
    "move": "2026-11-26 漲幅前 100（+9.950248756218906%）"
   },
-  "analysis": null,
+  "analysis": {
+   "industry": "半導體設備",
+   "subIndustry": "半導體測試介面（測試座、探針卡、自製探針）",
+   "direction": "利多",
+   "headline": "穎崴規劃2027下半年探針月產能達2,900萬支",
+   "score": 4,
+   "verdict": "值得留意",
+   "reason": "相較上次揭露的月產能1,400萬支，本次進一步列出2027年下半年2,900萬支的產能目標，有利供應量與成本結構，屬利多，但訂單承接與獲利貢獻仍未量化。",
+   "keyNumbers": [
+    {
+     "label": "2027年上半年自製探針月產能目標",
+     "value": "1,400萬支"
+    },
+    {
+     "label": "2027年下半年自製探針月產能目標",
+     "value": "2,900萬支"
+    },
+    {
+     "label": "2027年下半年探針卡植針產能目標",
+     "value": "1,800萬支／半年"
+    },
+    {
+     "label": "2026年前10月HPC與AI營收占比",
+     "value": "73%"
+    },
+    {
+     "label": "2026年第三季毛利率",
+     "value": "41%，第二季為38%"
+    },
+    {
+     "label": "2026年第三季EPS",
+     "value": "28.55元"
+    }
+   ],
+   "guidance": "公司規劃2027年上下半年自製探針月產能分別達1,400萬與2,900萬支，並擴充高階測試座與MEMS植針產能。未提供下一季或全年營收、獲利財測。",
+   "drivers": [
+    "AI與HPC晶片走向大封裝、高腳數與高功耗，帶動高階測試座、探針卡與系統級測試需求。",
+    "公司預期提高探針自製率可降低成本並改善毛利結構。"
+   ],
+   "risks": [
+    "10月營收年增62.62%，但月減11.51%，為連續第二個月下滑。",
+    "前10月北美客戶營收占80%，區域集中。",
+    "公司未揭露新增產能對應的訂單或預期利用率，獲利貢獻仍待驗證。"
+   ],
+   "qaHighlights": [],
+   "tone": "持平",
+   "evidence": "僅簡報"
+  },
+  "analyzedAt": "2026-11-26T23:09:11+08:00",
+  "model": "gpt-6.2-sol",
+  "analyzedEvidence": 1,
   "firstSeen": "2026-11-26T22:54:38+08:00",
-  "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "state": "partial",
+  "pendingNote": "影音轉文字中"
  },
  "6552-2026-11-26": {
   "key": "6552-2026-11-26",
@@ -61151,17 +61401,68 @@
   "fileEn": "655220261126E001.pdf",
   "videoUrl": "https://youtu.be/Jld5i9srR9Y",
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "655220261126M001.pdf",
+   "pages": 12,
+   "chars": 3903,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "處理中",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 52 百萬元，YoY -48%，MoM -19%，累計 YoY -30%",
    "move": null
   },
-  "analysis": null,
+  "analysis": {
+   "industry": "PCB與載板",
+   "subIndustry": "覆晶薄膜（COF）與雙面軟性IC載板",
+   "direction": "中性",
+   "headline": "易華電前三季每股虧1.95元，Micro LED放量時程未明",
+   "score": 3,
+   "verdict": "一般",
+   "reason": "中性，法說以已公布的虧損數字與產品布局為主，雙面載板缺乏新訂單與放量時程，尚不足以調整獲利預期。",
+   "keyNumbers": [
+    {
+     "label": "2026年前三季營收",
+     "value": "8.14億元"
+    },
+    {
+     "label": "2026年前三季稅後淨損",
+     "value": "1.62億元"
+    },
+    {
+     "label": "2026年前三季EPS",
+     "value": "-1.95元"
+    },
+    {
+     "label": "2026年前三季負債比率",
+     "value": "31.48%"
+    },
+    {
+     "label": "雙面載板可支援開發的Micro LED直顯點距",
+     "value": "低於0.7毫米"
+    }
+   ],
+   "guidance": "未提供明確展望",
+   "drivers": [
+    "筆電與平板的OLED滲透有望帶動細間距COF需求，穿戴裝置的窄邊框設計也支持COF用量成長。",
+    "雙面載板瞄準Micro LED直顯封裝，結合客戶巨量轉移製程，有望降低封裝成本。"
+   ],
+   "risks": [
+    "10月營收年減48%、月減19%，前10月累計年減30%，營收仍承壓。",
+    "傳統電視與顯示器需求成長放緩，手機採用COP／COG設計也壓縮COF用量。"
+   ],
+   "qaHighlights": [],
+   "tone": "持平",
+   "evidence": "僅簡報"
+  },
+  "analyzedAt": "2026-11-26T23:08:08+08:00",
+  "model": "gpt-6.2-sol",
+  "analyzedEvidence": 1,
   "firstSeen": "2026-11-26T22:54:38+08:00",
-  "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "state": "partial",
+  "pendingNote": "影音轉文字中"
  },
  "6573-2026-11-26": {
   "key": "6573-2026-11-26",
@@ -61176,17 +61477,72 @@
   "fileEn": "657320261126E001.PDF",
   "videoUrl": "http://irconference.twse.com.tw/6573_20_20261126_ch.mp4",
   "note": "報名網址：https://reurl.cc/NAGd66",
-  "deck": null,
+  "deck": {
+   "file": "657320261126M001.pdf",
+   "pages": 16,
+   "chars": 2659,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "處理中",
+  "deckStatus": "ok",
   "context": {
    "revenue": null,
    "move": null
   },
-  "analysis": null,
+  "analysis": {
+   "industry": "晶圓製造與記憶體",
+   "subIndustry": "離散功率半導體與整流二極體",
+   "direction": "中性",
+   "headline": "虹揚-KY第三季毛利率回升至17%，本業仍虧損",
+   "score": 3,
+   "verdict": "一般",
+   "reason": "對獲利預期中性，第三季毛利率年升約10個百分點，但簡報未交代改善原因與持續性，高壓功率元件及封裝擴產也缺少可估算的獲利貢獻。",
+   "keyNumbers": [
+    {
+     "label": "2026Q3營收",
+     "value": "2.14億元（去年同期1.90億元）"
+    },
+    {
+     "label": "2026Q3毛利率",
+     "value": "17%（去年同期7%）"
+    },
+    {
+     "label": "2026Q3營業虧損",
+     "value": "2,151萬元（去年同期3,574萬元）"
+    },
+    {
+     "label": "2026Q3 EPS",
+     "value": "−0.33元（去年同期2.59元）"
+    },
+    {
+     "label": "2026年前三季營收",
+     "value": "5.94億元（去年同期6.43億元）"
+    },
+    {
+     "label": "AI伺服器銷售占比",
+     "value": "7%"
+    }
+   ],
+   "guidance": "未提供明確展望。公司規劃持續擴充封裝產能、提高高價值元件比重，並列出2026至2028年產品藍圖，未揭露擴產規模或量產放量時程。",
+   "drivers": [
+    "公司看好AI伺服器轉向高壓直流供電，帶動高效率整流元件與MOSFET需求。",
+    "公司擬透過封裝擴產、垂直整合與策略投資，提高供貨能力、產品均價及整體毛利率。"
+   ],
+   "risks": [
+    "第三季營業虧損雖較去年同期收窄，前三季營收仍低於去年同期。",
+    "中國占銷售76.5%，橋式整流器占64.1%，地區與產品集中度高。"
+   ],
+   "qaHighlights": [],
+   "tone": "持平",
+   "evidence": "僅簡報"
+  },
+  "analyzedAt": "2026-11-26T23:08:21+08:00",
+  "model": "gpt-6.2-sol",
+  "analyzedEvidence": 1,
   "firstSeen": "2026-11-26T22:54:38+08:00",
-  "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "state": "partial",
+  "pendingNote": "影音轉文字中"
  },
  "6751-2026-11-26": {
   "key": "6751-2026-11-26",
@@ -61201,17 +61557,68 @@
   "fileEn": "675120261126E001.pdf",
   "videoUrl": "https://www.acer-ast.com/ir/",
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "675120261126M001.pdf",
+   "pages": 9,
+   "chars": 1193,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "處理中",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 307 百萬元，YoY +188%，MoM +16%，累計 YoY +12%，YoY 188%，連3月YoY成長，5年新高，比前三月加速 132pp",
    "move": "2026-11-26 跌幅前 100（-2.2757697456492636%）"
   },
-  "analysis": null,
+  "analysis": {
+   "industry": "軟體與資訊服務",
+   "subIndustry": "系統整合與運營科技（OT）",
+   "direction": "中性",
+   "headline": "智聯服務OT營收占比升至11%",
+   "score": 3,
+   "verdict": "一般",
+   "reason": "OT營收占比上升是營運利多，但本場以回顧業績為主，缺少新增訂單、放量時程與毛利率資訊，對獲利預期影響中性。",
+   "keyNumbers": [
+    {
+     "label": "2026年前三季系統整合收入",
+     "value": "9.06億元，年增25%"
+    },
+    {
+     "label": "2026年前三季人力服務收入",
+     "value": "4.99億元，年增34%"
+    },
+    {
+     "label": "2026年前三季OT產品營收",
+     "value": "1.58億元"
+    },
+    {
+     "label": "OT產品營收占比",
+     "value": "2025全年4%（扣除旭誼工程）→ 2026年前三季11%"
+    },
+    {
+     "label": "2026年前三季半導體客戶營收占比",
+     "value": "66%"
+    }
+   ],
+   "guidance": "未提供明確展望",
+   "drivers": [
+    "系統整合與人力服務收入雙雙成長，分別年增25%與34%。",
+    "OT智慧櫃業務涵蓋後台整合、到廠安裝與售後維運，應用包括線邊與晶圓檢驗。"
+   ],
+   "risks": [
+    "半導體客戶貢獻約三分之二營收，客戶產業集中。",
+    "旭誼工程自2025年8月起改採權益法，跨年比較合併營收須留意認列口徑。"
+   ],
+   "qaHighlights": [],
+   "tone": "持平",
+   "evidence": "僅簡報"
+  },
+  "analyzedAt": "2026-11-26T23:08:07+08:00",
+  "model": "gpt-6.2-sol",
+  "analyzedEvidence": 1,
   "firstSeen": "2026-11-26T22:54:38+08:00",
-  "state": "pending",
-  "pendingNote": "尚未判讀；等待富果整理"
+  "state": "partial",
+  "pendingNote": "等待富果整理"
  },
  "6908-2026-11-26": {
   "key": "6908-2026-11-26",
@@ -61226,9 +61633,15 @@
   "fileEn": "690820261126E001.pdf",
   "videoUrl": "https://www.acergaming.com/investors/investors-6_1",
   "note": "無",
-  "deck": null,
+  "deck": {
+   "file": "690820261126M001.pdf",
+   "pages": 20,
+   "chars": 3307,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "處理中",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 548 百萬元，YoY -3%，MoM +10%，累計 YoY -3%",
    "move": null
@@ -61251,17 +61664,73 @@
   "fileEn": "692920261126E001.pdf",
   "videoUrl": "http://irconference.twse.com.tw/6929_9_20261126_ch.mp4",
   "note": "無。",
-  "deck": null,
+  "deck": {
+   "file": "692920261126M001.pdf",
+   "pages": 24,
+   "chars": 3825,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "處理中",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 284 百萬元，YoY +4%，MoM +7%，累計 YoY +1%",
    "move": null
   },
-  "analysis": null,
+  "analysis": {
+   "industry": "觀光餐飲與零售",
+   "subIndustry": "連鎖藥局與藥妝零售",
+   "direction": "中性",
+   "headline": "佑全前三季虧損收窄，彰濱自動倉啟用",
+   "score": 3,
+   "verdict": "一般",
+   "reason": "對獲利預期中性，前三季虧損收窄屬已公布財報，彰濱自動倉的節省金額與效益顯現時程仍待確認。",
+   "keyNumbers": [
+    {
+     "label": "2026 年前三季營收",
+     "value": "24.11 億元，年增 0.29%"
+    },
+    {
+     "label": "2026 年前三季毛利率",
+     "value": "33%"
+    },
+    {
+     "label": "2026 年前三季營業損失",
+     "value": "3,362 萬元，年減 14.99%"
+    },
+    {
+     "label": "2026 年前三季淨損",
+     "value": "4,171 萬元，年減 8.0%"
+    },
+    {
+     "label": "2026 年前三季 EPS",
+     "value": "−0.92 元"
+    },
+    {
+     "label": "2026 年第三季末門市數",
+     "value": "168 家"
+    }
+   ],
+   "guidance": "未提供明確展望。公司將檢視門市租賃效益、提高自有品牌與獨家商品比重，並評估開放加盟。",
+   "drivers": [
+    "彰濱自動化物流中心已啟用，公司預期可降低單店物流與補貨人力成本。",
+    "擴大高毛利自有品牌與獨家商品，透過會員分眾行銷帶動回購。",
+    "推動藥局長照據點，拓展慢性病處方與樂齡照護服務。"
+   ],
+   "risks": [
+    "前三季仍虧損，營業毛利年減 1.14%。",
+    "藥師短缺與薪資上升持續帶來成本壓力。"
+   ],
+   "qaHighlights": [],
+   "tone": "持平",
+   "evidence": "僅簡報"
+  },
+  "analyzedAt": "2026-11-26T23:08:46+08:00",
+  "model": "gpt-6.2-sol",
+  "analyzedEvidence": 1,
   "firstSeen": "2026-11-26T22:54:38+08:00",
-  "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "state": "partial",
+  "pendingNote": "影音轉文字中"
  },
  "6988-2026-11-26": {
   "key": "6988-2026-11-26",
@@ -61279,6 +61748,7 @@
   "deck": null,
   "transcript": null,
   "videoStatus": "處理中",
+  "deckStatus": "尚未上傳",
   "context": {
    "revenue": "2026-10 月營收 60 百萬元，YoY -11%，MoM -8%，累計 YoY -11%",
    "move": null
@@ -61286,7 +61756,7 @@
   "analysis": null,
   "firstSeen": "2026-11-26T22:54:38+08:00",
   "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "pendingNote": "尚未判讀；簡報還沒上傳；影音轉文字中"
  },
  "7760-2026-11-26": {
   "key": "7760-2026-11-26",
@@ -61329,6 +61799,7 @@
   "deck": null,
   "transcript": null,
   "videoStatus": "處理中",
+  "deckStatus": "尚未上傳",
   "context": {
    "revenue": "2026-10 月營收 26 百萬元，YoY -40%，MoM -3%，累計 YoY -48%",
    "move": null
@@ -61336,7 +61807,7 @@
   "analysis": null,
   "firstSeen": "2026-11-26T22:54:38+08:00",
   "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "pendingNote": "尚未判讀；簡報還沒上傳；影音轉文字中"
  },
  "7821-2026-11-26": {
   "key": "7821-2026-11-26",
@@ -61404,6 +61875,7 @@
   "deck": null,
   "transcript": null,
   "videoStatus": "無影片",
+  "deckStatus": "尚未上傳",
   "context": {
    "revenue": "2026-10 月營收 105 百萬元，YoY -11%，MoM -13%，累計 YoY +2%",
    "move": null
@@ -61411,7 +61883,7 @@
   "analysis": null,
   "firstSeen": "2026-11-26T22:54:38+08:00",
   "state": "pending",
-  "pendingNote": "尚未判讀；等待富果整理"
+  "pendingNote": "尚未判讀；簡報還沒上傳；等待富果整理"
  },
  "8085-2026-11-26": {
   "key": "8085-2026-11-26",
