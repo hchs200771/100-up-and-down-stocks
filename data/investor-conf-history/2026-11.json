@@ -60865,17 +60865,72 @@
   "fileEn": "551120261126E001.pdf",
   "videoUrl": "https://www.tccon.com.tw/down/2026InvestorConference/InvestorConference2026.mp4",
   "note": "無。",
-  "deck": null,
+  "deck": {
+   "file": "551120261126M001.pdf",
+   "pages": 16,
+   "chars": 3079,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "處理中",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 881 百萬元，YoY +4%，MoM -14%，累計 YoY +10%",
    "move": null
   },
-  "analysis": null,
+  "analysis": {
+   "industry": "營建與資產",
+   "subIndustry": "土木營造與統包工程",
+   "direction": "中性",
+   "headline": "德昌前三季毛利率升至21.33%，未提後續展望",
+   "score": 3,
+   "verdict": "一般",
+   "reason": "中性，前三季毛利率年增4.43個百分點，但簡報未交代改善原因與持續性，且今年得標案未揭露合約金額或認列時程。",
+   "keyNumbers": [
+    {
+     "label": "2026年前三季合併營收",
+     "value": "84.24億元"
+    },
+    {
+     "label": "2026年前三季毛利率",
+     "value": "21.33%"
+    },
+    {
+     "label": "2025年前三季毛利率",
+     "value": "16.90%"
+    },
+    {
+     "label": "2026年前三季營業利益",
+     "value": "13.91億元"
+    },
+    {
+     "label": "2026年前三季EPS",
+     "value": "9.18元"
+    },
+    {
+     "label": "2025年前三季EPS（無償配股追溯調整後）",
+     "value": "5.47元"
+    }
+   ],
+   "guidance": "未提供明確展望",
+   "drivers": [
+    "2026年得標案包括台中捷運藍線BC21標、星宇航空停車棟及兩項醫療相關工程。",
+    "公司將機電整合列為提高工程自攬率、改善毛利率的經營方向。"
+   ],
+   "risks": [
+    "前三季毛利率提升的原因與能否延續仍待確認。",
+    "本次未揭露新得標案的合約金額及收入認列時程，難以估計獲利貢獻。"
+   ],
+   "qaHighlights": [],
+   "tone": "持平",
+   "evidence": "僅簡報"
+  },
+  "analyzedAt": "2026-11-26T23:06:53+08:00",
+  "model": "gpt-6.2-sol",
+  "analyzedEvidence": 1,
   "firstSeen": "2026-11-26T22:54:38+08:00",
-  "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "state": "partial",
+  "pendingNote": "影音轉文字中"
  },
  "6113-2026-11-26": {
   "key": "6113-2026-11-26",
@@ -60940,17 +60995,73 @@
   "fileEn": "619020261126E001.pdf",
   "videoUrl": "https://www.youtube.com/watch?v=lImkSQ40CYo",
   "note": "會議資料將於法說會後揭露於公開資訊觀測站及公司網站",
-  "deck": null,
+  "deck": {
+   "file": "619020261126M001.pdf",
+   "pages": 34,
+   "chars": 7926,
+   "imageHeavy": false
+  },
   "transcript": null,
   "videoStatus": "處理中",
+  "deckStatus": "ok",
   "context": {
    "revenue": "2026-10 月營收 1,097 百萬元，YoY +60%，MoM -1%，累計 YoY +35%，YoY 60%，連11月YoY成長，同期歷史新高，比前三月加速 2pp",
    "move": "2026-11-26 漲幅前 100（+9.946714031971581%）"
   },
-  "analysis": null,
+  "analysis": {
+   "industry": "重電與電線電纜",
+   "subIndustry": "客製化銅線與電纜",
+   "direction": "利多",
+   "headline": "衛星內用線明年首季出貨，衛星通訊營收目標翻倍",
+   "score": 5,
+   "verdict": "重點關注",
+   "reason": "利多，這次首次在所附兩場法說資料中列出衛星內用線的首批交貨季度及2027年衛星通訊營收翻倍目標，足以影響明年獲利預期。",
+   "keyNumbers": [
+    {
+     "label": "2026年第三季營收",
+     "value": "32.30億元，年增57.6%"
+    },
+    {
+     "label": "2026年第三季毛利率",
+     "value": "17.7%，年增1.5個百分點"
+    },
+    {
+     "label": "2026年第三季EPS",
+     "value": "1.25元，年增131.5%"
+    },
+    {
+     "label": "2026年第三季高毛利業務營收占比",
+     "value": "32%，上年同期24%"
+    },
+    {
+     "label": "2027年衛星通訊營收目標",
+     "value": "較2026年翻倍"
+    },
+    {
+     "label": "未來五年營收複合年增率目標",
+     "value": "20%至25%"
+    }
+   ],
+   "guidance": "公司預期2027年營收與獲利續創新高，維持雙位數成長。衛星內用線預計2026年底完成驗證，2027年第一季首批出貨。AI伺服器高速線、電源線與測漏線維持2026年底前陸續出貨的預期。",
+   "drivers": [
+    "地面接收站線材需求強勁，公司預期單價與出貨量同步成長。",
+    "衛星內用線預計自2027年第一季開始貢獻營收。",
+    "乙太網路供電線材（PoE）與其他高毛利線材的第三季營收占比由10.6%升至17.5%。"
+   ],
+   "risks": [
+    "衛星內用線仍待最終認證，首批出貨時程取決於驗證進度。",
+    "AI伺服器新線仍在客戶端驗證，出貨量與獲利貢獻尚未量化。"
+   ],
+   "qaHighlights": [],
+   "tone": "持平",
+   "evidence": "僅簡報"
+  },
+  "analyzedAt": "2026-11-26T23:06:52+08:00",
+  "model": "gpt-6.2-sol",
+  "analyzedEvidence": 1,
   "firstSeen": "2026-11-26T22:54:38+08:00",
-  "state": "pending",
-  "pendingNote": "尚未判讀；影音轉文字中"
+  "state": "partial",
+  "pendingNote": "影音轉文字中"
  },
  "6241-2026-11-26": {
   "key": "6241-2026-11-26",
