@@ -314,10 +314,10 @@
   "d60": {
    "status": "open"
   },
-  "lastClose": 172.5,
-  "lastDate": "2026-11-25",
-  "ret": 9.98,
-  "held": 20
+  "lastClose": 173,
+  "lastDate": "2026-11-26",
+  "ret": 10.3,
+  "held": 21
  },
  {
   "code": "6925",
@@ -558,5 +558,25 @@
   "lastDate": "2026-11-20",
   "ret": -7.09,
   "held": 5
+ },
+ {
+  "code": "6782",
+  "name": "視陽",
+  "market": "twse",
+  "date": "2026-11-26",
+  "entry": 310.5,
+  "stop": 287.21,
+  "risk": 7.5,
+  "gap": 2,
+  "ma20": {
+   "status": "open"
+  },
+  "d60": {
+   "status": "open"
+  },
+  "lastClose": 310.5,
+  "lastDate": "2026-11-26",
+  "ret": -0.6,
+  "held": 0
  }
 ]

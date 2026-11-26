@@ -7785,10 +7785,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 36.3,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -9.68,
-  "excess": 4.46,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -9.54,
+  "excess": 2.43,
   "backfill": true
  },
  {
@@ -7808,10 +7808,10 @@
   },
   "entryDate": "2026-11-11",
   "entry": 12.45,
-  "lastDate": "2026-11-25",
-  "held": 10,
+  "lastDate": "2026-11-26",
+  "held": 11,
   "ret": -9.82,
-  "excess": 2.22,
+  "excess": 0,
   "backfill": true
  },
  {
@@ -7831,10 +7831,10 @@
   },
   "entryDate": "2026-11-02",
   "entry": 104.5,
-  "lastDate": "2026-11-25",
-  "held": 17,
-  "ret": -2.98,
-  "excess": 12.79,
+  "lastDate": "2026-11-26",
+  "held": 18,
+  "ret": -2.5,
+  "excess": 11.15,
   "backfill": true
  },
  {
@@ -7854,10 +7854,10 @@
   },
   "entryDate": "2026-11-09",
   "entry": 27,
-  "lastDate": "2026-11-25",
-  "held": 12,
-  "ret": -13.73,
-  "excess": -7.81,
+  "lastDate": "2026-11-26",
+  "held": 13,
+  "ret": -13.36,
+  "excess": -9.81,
   "backfill": true
  },
  {
@@ -7877,10 +7877,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 315,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -28.68,
-  "excess": -14.55,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -23.12,
+  "excess": -11.16,
   "backfill": true
  },
  {
@@ -7900,10 +7900,10 @@
   },
   "entryDate": "2026-11-09",
   "entry": 29.8,
-  "lastDate": "2026-11-25",
-  "held": 12,
-  "ret": -16.52,
-  "excess": -10.61,
+  "lastDate": "2026-11-26",
+  "held": 13,
+  "ret": -15.18,
+  "excess": -11.63,
   "backfill": true
  },
  {
@@ -7923,10 +7923,10 @@
   },
   "entryDate": "2026-11-09",
   "entry": 64.2,
-  "lastDate": "2026-11-25",
-  "held": 12,
-  "ret": -8.53,
-  "excess": -2.61,
+  "lastDate": "2026-11-26",
+  "held": 13,
+  "ret": -2.61,
+  "excess": 0.94,
   "backfill": true
  },
  {
@@ -7946,10 +7946,10 @@
   },
   "entryDate": "2026-11-13",
   "entry": 18.55,
-  "lastDate": "2026-11-25",
-  "held": 8,
-  "ret": -22.15,
-  "excess": -8.93,
+  "lastDate": "2026-11-26",
+  "held": 9,
+  "ret": -22.69,
+  "excess": -11.65,
   "backfill": true
  },
  {
@@ -7969,10 +7969,10 @@
   },
   "entryDate": "2026-11-05",
   "entry": 72.9,
-  "lastDate": "2026-11-25",
-  "held": 14,
-  "ret": -32.96,
-  "excess": -21.89,
+  "lastDate": "2026-11-26",
+  "held": 15,
+  "ret": -31.59,
+  "excess": -22.76,
   "backfill": true
  },
  {
@@ -7992,10 +7992,10 @@
   },
   "entryDate": "2026-11-04",
   "entry": 65.8,
-  "lastDate": "2026-11-25",
-  "held": 15,
-  "ret": -21.56,
-  "excess": -8.88,
+  "lastDate": "2026-11-26",
+  "held": 16,
+  "ret": -15.63,
+  "excess": -5.15,
   "backfill": true
  },
  {
@@ -8015,10 +8015,10 @@
   },
   "entryDate": "2026-11-09",
   "entry": 32.55,
-  "lastDate": "2026-11-25",
-  "held": 12,
-  "ret": -14.56,
-  "excess": -8.65,
+  "lastDate": "2026-11-26",
+  "held": 13,
+  "ret": -10.88,
+  "excess": -7.33,
   "backfill": true
  },
  {
@@ -8038,10 +8038,10 @@
   },
   "entryDate": "2026-11-10",
   "entry": 31.25,
-  "lastDate": "2026-11-25",
-  "held": 11,
-  "ret": -17.39,
-  "excess": -7.46,
+  "lastDate": "2026-11-26",
+  "held": 12,
+  "ret": -14.19,
+  "excess": -6.53,
   "backfill": true
  },
  {
@@ -8061,10 +8061,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 53.4,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -27.55,
-  "excess": -13.42,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -26.43,
+  "excess": -14.46,
   "backfill": true
  },
  {
@@ -8084,10 +8084,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 15.7,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -22.56,
-  "excess": -8.43,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -18.42,
+  "excess": -6.45,
   "backfill": true
  },
  {
@@ -8107,10 +8107,10 @@
   },
   "entryDate": "2026-11-06",
   "entry": 44.65,
-  "lastDate": "2026-11-25",
-  "held": 13,
-  "ret": -10.22,
-  "excess": -7.78,
+  "lastDate": "2026-11-26",
+  "held": 14,
+  "ret": -9.21,
+  "excess": -9.23,
   "backfill": true
  },
  {
@@ -8130,10 +8130,10 @@
   },
   "entryDate": "2026-11-13",
   "entry": 152,
-  "lastDate": "2026-11-25",
-  "held": 8,
-  "ret": -35.45,
-  "excess": -22.23,
+  "lastDate": "2026-11-26",
+  "held": 9,
+  "ret": -34.8,
+  "excess": -23.76,
   "backfill": true
  },
  {
@@ -8153,10 +8153,10 @@
   },
   "entryDate": "2026-11-03",
   "entry": 64,
-  "lastDate": "2026-11-25",
-  "held": 16,
-  "ret": -6.99,
-  "excess": 7.73,
+  "lastDate": "2026-11-26",
+  "held": 17,
+  "ret": -7.3,
+  "excess": 5.26,
   "backfill": true
  },
  {
@@ -8176,10 +8176,10 @@
   },
   "entryDate": "2026-11-13",
   "entry": 23.25,
-  "lastDate": "2026-11-25",
-  "held": 8,
-  "ret": -16.28,
-  "excess": -3.06,
+  "lastDate": "2026-11-26",
+  "held": 9,
+  "ret": -14.78,
+  "excess": -3.75,
   "backfill": true
  },
  {
@@ -8199,10 +8199,10 @@
   },
   "entryDate": "2026-11-02",
   "entry": 90,
-  "lastDate": "2026-11-25",
-  "held": 17,
-  "ret": -10.81,
-  "excess": 4.96,
+  "lastDate": "2026-11-26",
+  "held": 18,
+  "ret": -8.92,
+  "excess": 4.73,
   "backfill": true
  },
  {
@@ -8222,10 +8222,10 @@
   },
   "entryDate": "2026-11-10",
   "entry": 35,
-  "lastDate": "2026-11-25",
-  "held": 11,
-  "ret": -18.87,
-  "excess": -8.95,
+  "lastDate": "2026-11-26",
+  "held": 12,
+  "ret": -16.01,
+  "excess": -8.36,
   "backfill": true
  },
  {
@@ -8245,10 +8245,10 @@
   },
   "entryDate": "2026-11-06",
   "entry": 21.8,
-  "lastDate": "2026-11-25",
-  "held": 13,
-  "ret": -4.03,
-  "excess": -1.59,
+  "lastDate": "2026-11-26",
+  "held": 14,
+  "ret": -2.42,
+  "excess": -2.44,
   "backfill": true
  },
  {
@@ -8268,10 +8268,10 @@
   },
   "entryDate": "2026-11-11",
   "entry": 25.55,
-  "lastDate": "2026-11-25",
-  "held": 10,
-  "ret": -18.98,
-  "excess": -6.94,
+  "lastDate": "2026-11-26",
+  "held": 11,
+  "ret": -17.81,
+  "excess": -7.99,
   "backfill": true
  },
  {
@@ -8291,10 +8291,10 @@
   },
   "entryDate": "2026-11-09",
   "entry": 43.6,
-  "lastDate": "2026-11-25",
-  "held": 12,
-  "ret": -9.3,
-  "excess": -3.38,
+  "lastDate": "2026-11-26",
+  "held": 13,
+  "ret": -8.04,
+  "excess": -4.49,
   "backfill": true
  },
  {
@@ -8314,10 +8314,10 @@
   },
   "entryDate": "2026-11-09",
   "entry": 21.65,
-  "lastDate": "2026-11-25",
-  "held": 12,
-  "ret": -6.36,
-  "excess": -0.44,
+  "lastDate": "2026-11-26",
+  "held": 13,
+  "ret": -3.82,
+  "excess": -0.27,
   "backfill": true
  },
  {
@@ -8337,10 +8337,10 @@
   },
   "entryDate": "2026-11-11",
   "entry": 301.5,
-  "lastDate": "2026-11-25",
-  "held": 10,
-  "ret": -13.19,
-  "excess": -1.15,
+  "lastDate": "2026-11-26",
+  "held": 11,
+  "ret": -8.88,
+  "excess": 0.94,
   "backfill": true
  },
  {
@@ -8360,10 +8360,10 @@
   },
   "entryDate": "2026-11-06",
   "entry": 23.5,
-  "lastDate": "2026-11-25",
-  "held": 13,
-  "ret": -9.1,
-  "excess": -6.66,
+  "lastDate": "2026-11-26",
+  "held": 14,
+  "ret": -7.18,
+  "excess": -7.2,
   "backfill": true
  },
  {
@@ -8383,10 +8383,10 @@
   },
   "entryDate": "2026-11-05",
   "entry": 115,
-  "lastDate": "2026-11-25",
-  "held": 14,
-  "ret": -38.85,
-  "excess": -27.78,
+  "lastDate": "2026-11-26",
+  "held": 15,
+  "ret": -37.11,
+  "excess": -28.28,
   "backfill": true
  },
  {
@@ -8406,10 +8406,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 28.4,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -8.33,
-  "excess": 5.8,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -7.45,
+  "excess": 4.52,
   "backfill": true
  },
  {
@@ -8429,10 +8429,10 @@
   },
   "entryDate": "2026-11-11",
   "entry": 51.3,
-  "lastDate": "2026-11-25",
-  "held": 10,
-  "ret": -4.68,
-  "excess": 7.36,
+  "lastDate": "2026-11-26",
+  "held": 11,
+  "ret": -3.8,
+  "excess": 6.02,
   "backfill": true
  },
  {
@@ -8452,10 +8452,10 @@
   },
   "entryDate": "2026-11-10",
   "entry": 142.5,
-  "lastDate": "2026-11-25",
-  "held": 11,
+  "lastDate": "2026-11-26",
+  "held": 12,
   "ret": -17.78,
-  "excess": -7.85,
+  "excess": -10.12,
   "backfill": true
  },
  {
@@ -8475,10 +8475,10 @@
   },
   "entryDate": "2026-11-05",
   "entry": 127.5,
-  "lastDate": "2026-11-25",
-  "held": 14,
-  "ret": -33.13,
-  "excess": -22.07,
+  "lastDate": "2026-11-26",
+  "held": 15,
+  "ret": -29.84,
+  "excess": -21.02,
   "backfill": true
  },
  {
@@ -8498,10 +8498,10 @@
   },
   "entryDate": "2026-11-11",
   "entry": 123,
-  "lastDate": "2026-11-25",
-  "held": 10,
-  "ret": -17.66,
-  "excess": -5.62,
+  "lastDate": "2026-11-26",
+  "held": 11,
+  "ret": -9.93,
+  "excess": -0.11,
   "backfill": true
  },
  {
@@ -8521,10 +8521,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 16.35,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -10.98,
-  "excess": 3.15,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -2.11,
+  "excess": 9.85,
   "backfill": true
  },
  {
@@ -8544,10 +8544,10 @@
   },
   "entryDate": "2026-11-04",
   "entry": 147.5,
-  "lastDate": "2026-11-25",
-  "held": 15,
-  "ret": -35.34,
-  "excess": -22.66,
+  "lastDate": "2026-11-26",
+  "held": 16,
+  "ret": -29.12,
+  "excess": -18.65,
   "backfill": true
  },
  {
@@ -8567,10 +8567,10 @@
   },
   "entryDate": "2026-11-10",
   "entry": 81.2,
-  "lastDate": "2026-11-25",
-  "held": 11,
-  "ret": -14.38,
-  "excess": -4.45,
+  "lastDate": "2026-11-26",
+  "held": 12,
+  "ret": -11.18,
+  "excess": -3.52,
   "backfill": true
  },
  {
@@ -8590,10 +8590,10 @@
   },
   "entryDate": "2026-11-16",
   "entry": 63.9,
-  "lastDate": "2026-11-25",
-  "held": 7,
-  "ret": -20.15,
-  "excess": -7.34,
+  "lastDate": "2026-11-26",
+  "held": 8,
+  "ret": -17.64,
+  "excess": -7.04,
   "backfill": true
  },
  {
@@ -8613,10 +8613,10 @@
   },
   "entryDate": "2026-11-09",
   "entry": 27,
-  "lastDate": "2026-11-25",
-  "held": 12,
-  "ret": -10.96,
-  "excess": -5.04,
+  "lastDate": "2026-11-26",
+  "held": 13,
+  "ret": -9.47,
+  "excess": -5.93,
   "backfill": true
  },
  {
@@ -8636,10 +8636,10 @@
   },
   "entryDate": "2026-11-06",
   "entry": 27.6,
-  "lastDate": "2026-11-25",
-  "held": 13,
-  "ret": -1.85,
-  "excess": 0.58,
+  "lastDate": "2026-11-26",
+  "held": 14,
+  "ret": -0.22,
+  "excess": -0.24,
   "backfill": true
  },
  {
@@ -8659,10 +8659,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 54.5,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -18.38,
-  "excess": -4.25,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -15.63,
+  "excess": -3.66,
   "backfill": true
  },
  {
@@ -8682,10 +8682,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 60.7,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -10.3,
-  "excess": 3.83,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -1.41,
+  "excess": 10.56,
   "backfill": true
  },
  {
@@ -8705,10 +8705,10 @@
   },
   "entryDate": "2026-11-11",
   "entry": 53.3,
-  "lastDate": "2026-11-25",
-  "held": 10,
-  "ret": -26.85,
-  "excess": -14.81,
+  "lastDate": "2026-11-26",
+  "held": 11,
+  "ret": -21.97,
+  "excess": -12.15,
   "backfill": true
  },
  {
@@ -8728,10 +8728,10 @@
   },
   "entryDate": "2026-11-13",
   "entry": 913,
-  "lastDate": "2026-11-25",
-  "held": 8,
-  "ret": -16.36,
-  "excess": -3.14,
+  "lastDate": "2026-11-26",
+  "held": 9,
+  "ret": -13.07,
+  "excess": -2.04,
   "backfill": true
  },
  {
@@ -8751,10 +8751,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 101,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -29.4,
-  "excess": -15.27,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -24.84,
+  "excess": -12.88,
   "backfill": true
  },
  {
@@ -8774,10 +8774,10 @@
   },
   "entryDate": "2026-11-11",
   "entry": 41.6,
-  "lastDate": "2026-11-25",
-  "held": 10,
-  "ret": -14.77,
-  "excess": -2.73,
+  "lastDate": "2026-11-26",
+  "held": 11,
+  "ret": -12.12,
+  "excess": -2.3,
   "backfill": true
  },
  {
@@ -8800,10 +8800,10 @@
   },
   "entryDate": "2026-10-28",
   "entry": 55,
-  "lastDate": "2026-11-25",
-  "held": 20,
-  "ret": -27.04,
-  "excess": -8.77,
+  "lastDate": "2026-11-26",
+  "held": 21,
+  "ret": -23.22,
+  "excess": -7.01,
   "backfill": true
  },
  {
@@ -8823,10 +8823,10 @@
   },
   "entryDate": "2026-11-11",
   "entry": 27.25,
-  "lastDate": "2026-11-25",
-  "held": 10,
-  "ret": -15.63,
-  "excess": -3.59,
+  "lastDate": "2026-11-26",
+  "held": 11,
+  "ret": -11.96,
+  "excess": -2.14,
   "backfill": true
  },
  {
@@ -8846,10 +8846,10 @@
   },
   "entryDate": "2026-11-16",
   "entry": 286,
-  "lastDate": "2026-11-25",
-  "held": 7,
-  "ret": -9.33,
-  "excess": 3.48,
+  "lastDate": "2026-11-26",
+  "held": 8,
+  "ret": -4.96,
+  "excess": 5.65,
   "backfill": true
  },
  {
@@ -8869,10 +8869,10 @@
   },
   "entryDate": "2026-11-13",
   "entry": 147,
-  "lastDate": "2026-11-25",
-  "held": 8,
-  "ret": -16.23,
-  "excess": -3.01,
+  "lastDate": "2026-11-26",
+  "held": 9,
+  "ret": -13.17,
+  "excess": -2.14,
   "backfill": true
  },
  {
@@ -8892,10 +8892,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 294,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -11.81,
-  "excess": 2.32,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -5.01,
+  "excess": 6.96,
   "backfill": true
  },
  {
@@ -8915,10 +8915,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 42.65,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -30.6,
-  "excess": -16.46,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -27.2,
+  "excess": -15.23,
   "backfill": true
  },
  {
@@ -8938,10 +8938,10 @@
   },
   "entryDate": "2026-11-16",
   "entry": 51.4,
-  "lastDate": "2026-11-25",
-  "held": 7,
-  "ret": -25.68,
-  "excess": -12.88,
+  "lastDate": "2026-11-26",
+  "held": 8,
+  "ret": -21.11,
+  "excess": -10.5,
   "backfill": true
  },
  {
@@ -8961,10 +8961,10 @@
   },
   "entryDate": "2026-11-05",
   "entry": 370,
-  "lastDate": "2026-11-25",
-  "held": 14,
-  "ret": -25.31,
-  "excess": -14.25,
+  "lastDate": "2026-11-26",
+  "held": 15,
+  "ret": -17.88,
+  "excess": -9.06,
   "backfill": true
  },
  {
@@ -8984,10 +8984,10 @@
   },
   "entryDate": "2026-11-10",
   "entry": 46.6,
-  "lastDate": "2026-11-25",
-  "held": 11,
-  "ret": -4.77,
-  "excess": 5.16,
+  "lastDate": "2026-11-26",
+  "held": 12,
+  "ret": 4.78,
+  "excess": 12.43,
   "backfill": true
  },
  {
@@ -9007,10 +9007,10 @@
   },
   "entryDate": "2026-11-10",
   "entry": 28.45,
-  "lastDate": "2026-11-25",
-  "held": 11,
-  "ret": -23.43,
-  "excess": -13.51,
+  "lastDate": "2026-11-26",
+  "held": 12,
+  "ret": -19.74,
+  "excess": -12.09,
   "backfill": true
  },
  {
@@ -9030,10 +9030,10 @@
   },
   "entryDate": "2026-11-11",
   "entry": 21.1,
-  "lastDate": "2026-11-25",
-  "held": 10,
-  "ret": -18.83,
-  "excess": -6.79,
+  "lastDate": "2026-11-26",
+  "held": 11,
+  "ret": -17.65,
+  "excess": -7.83,
   "backfill": true
  },
  {
@@ -9053,10 +9053,10 @@
   },
   "entryDate": "2026-10-30",
   "entry": 75.8,
-  "lastDate": "2026-11-25",
-  "held": 18,
-  "ret": -20.11,
-  "excess": -2.31,
+  "lastDate": "2026-11-26",
+  "held": 19,
+  "ret": -18.92,
+  "excess": -3.19,
   "backfill": true
  },
  {
@@ -9076,10 +9076,10 @@
   },
   "entryDate": "2026-11-06",
   "entry": 229.5,
-  "lastDate": "2026-11-25",
-  "held": 13,
-  "ret": -0.58,
-  "excess": 1.85,
+  "lastDate": "2026-11-26",
+  "held": 14,
+  "ret": 2.68,
+  "excess": 2.66,
   "backfill": true
  },
  {
@@ -9099,10 +9099,10 @@
   },
   "entryDate": "2026-11-04",
   "entry": 117,
-  "lastDate": "2026-11-25",
-  "held": 15,
-  "ret": -12.12,
-  "excess": 0.55,
+  "lastDate": "2026-11-26",
+  "held": 16,
+  "ret": -8.28,
+  "excess": 2.2,
   "backfill": true
  },
  {
@@ -9122,10 +9122,10 @@
   },
   "entryDate": "2026-11-10",
   "entry": 160,
-  "lastDate": "2026-11-25",
-  "held": 11,
-  "ret": -17.77,
-  "excess": -7.85,
+  "lastDate": "2026-11-26",
+  "held": 12,
+  "ret": -11.84,
+  "excess": -4.18,
   "backfill": true
  },
  {
@@ -9145,10 +9145,10 @@
   },
   "entryDate": "2026-11-13",
   "entry": 458.5,
-  "lastDate": "2026-11-25",
-  "held": 8,
-  "ret": -25.34,
-  "excess": -12.12,
+  "lastDate": "2026-11-26",
+  "held": 9,
+  "ret": -28.83,
+  "excess": -17.8,
   "backfill": true
  },
  {
@@ -9168,10 +9168,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 106,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -28.7,
-  "excess": -14.57,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -21.53,
+  "excess": -9.56,
   "backfill": true
  },
  {
@@ -9191,10 +9191,10 @@
   },
   "entryDate": "2026-11-09",
   "entry": 35.2,
-  "lastDate": "2026-11-25",
-  "held": 12,
-  "ret": -32.83,
-  "excess": -26.91,
+  "lastDate": "2026-11-26",
+  "held": 13,
+  "ret": -26.15,
+  "excess": -22.61,
   "backfill": true
  },
  {
@@ -9214,10 +9214,10 @@
   },
   "entryDate": "2026-11-06",
   "entry": 25.75,
-  "lastDate": "2026-11-25",
-  "held": 13,
-  "ret": -4.08,
-  "excess": -1.64,
+  "lastDate": "2026-11-26",
+  "held": 14,
+  "ret": -0.58,
+  "excess": -0.61,
   "backfill": true
  },
  {
@@ -9237,10 +9237,10 @@
   },
   "entryDate": "2026-11-03",
   "entry": 39.9,
-  "lastDate": "2026-11-25",
-  "held": 16,
-  "ret": -23.39,
-  "excess": -8.67,
+  "lastDate": "2026-11-26",
+  "held": 17,
+  "ret": -20.26,
+  "excess": -7.69,
   "backfill": true
  },
  {
@@ -9260,10 +9260,10 @@
   },
   "entryDate": "2026-11-05",
   "entry": 20.6,
-  "lastDate": "2026-11-25",
-  "held": 14,
-  "ret": 0.14,
-  "excess": 11.21,
+  "lastDate": "2026-11-26",
+  "held": 15,
+  "ret": 1.6,
+  "excess": 10.42,
   "backfill": true
  },
  {
@@ -9283,10 +9283,10 @@
   },
   "entryDate": "2026-11-09",
   "entry": 33.15,
-  "lastDate": "2026-11-25",
-  "held": 12,
-  "ret": -4.36,
-  "excess": 1.56,
+  "lastDate": "2026-11-26",
+  "held": 13,
+  "ret": -2.7,
+  "excess": 0.85,
   "backfill": true
  },
  {
@@ -9306,10 +9306,10 @@
   },
   "entryDate": "2026-11-10",
   "entry": 29.55,
-  "lastDate": "2026-11-25",
-  "held": 11,
-  "ret": -5.83,
-  "excess": 4.09,
+  "lastDate": "2026-11-26",
+  "held": 12,
+  "ret": -3.8,
+  "excess": 3.85,
   "backfill": true
  },
  {
@@ -9329,10 +9329,10 @@
   },
   "entryDate": "2026-11-09",
   "entry": 98,
-  "lastDate": "2026-11-25",
-  "held": 12,
-  "ret": -8.75,
-  "excess": -2.83,
+  "lastDate": "2026-11-26",
+  "held": 13,
+  "ret": -7.42,
+  "excess": -3.87,
   "backfill": true
  },
  {
@@ -9352,10 +9352,10 @@
   },
   "entryDate": "2026-11-16",
   "entry": 33.9,
-  "lastDate": "2026-11-25",
-  "held": 7,
-  "ret": -11.2,
-  "excess": 1.6,
+  "lastDate": "2026-11-26",
+  "held": 8,
+  "ret": -8.99,
+  "excess": 1.61,
   "backfill": true
  },
  {
@@ -9375,10 +9375,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 30.55,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -12.21,
-  "excess": 1.93,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -10.73,
+  "excess": 1.23,
   "backfill": true
  },
  {
@@ -9398,10 +9398,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 54.7,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -16.12,
-  "excess": -1.99,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -13.66,
+  "excess": -1.69,
   "backfill": true
  },
  {
@@ -9421,10 +9421,10 @@
   },
   "entryDate": "2026-11-13",
   "entry": 70.6,
-  "lastDate": "2026-11-25",
-  "held": 8,
-  "ret": -2.43,
-  "excess": 10.79,
+  "lastDate": "2026-11-26",
+  "held": 9,
+  "ret": -1.72,
+  "excess": 9.32,
   "backfill": true
  },
  {
@@ -9444,10 +9444,10 @@
   },
   "entryDate": "2026-11-16",
   "entry": 98.3,
-  "lastDate": "2026-11-25",
-  "held": 7,
-  "ret": -10.25,
-  "excess": 2.56,
+  "lastDate": "2026-11-26",
+  "held": 8,
+  "ret": -9.54,
+  "excess": 1.07,
   "backfill": true
  },
  {
@@ -9467,10 +9467,10 @@
   },
   "entryDate": "2026-11-09",
   "entry": 136.5,
-  "lastDate": "2026-11-25",
-  "held": 12,
-  "ret": -7.18,
-  "excess": -1.26,
+  "lastDate": "2026-11-26",
+  "held": 13,
+  "ret": -5.35,
+  "excess": -1.8,
   "backfill": true
  },
  {
@@ -9490,10 +9490,10 @@
   },
   "entryDate": "2026-11-13",
   "entry": 56.1,
-  "lastDate": "2026-11-25",
-  "held": 8,
-  "ret": -8.43,
-  "excess": 4.79,
+  "lastDate": "2026-11-26",
+  "held": 9,
+  "ret": -8.07,
+  "excess": 2.96,
   "backfill": true
  },
  {
@@ -9516,10 +9516,10 @@
   },
   "entryDate": "2026-10-28",
   "entry": 269.5,
-  "lastDate": "2026-11-25",
-  "held": 20,
-  "ret": -36.95,
-  "excess": -18.68,
+  "lastDate": "2026-11-26",
+  "held": 21,
+  "ret": -31.94,
+  "excess": -15.73,
   "backfill": true
  },
  {
@@ -9539,10 +9539,10 @@
   },
   "entryDate": "2026-11-04",
   "entry": 119,
-  "lastDate": "2026-11-25",
-  "held": 15,
-  "ret": -30.25,
-  "excess": -17.57,
+  "lastDate": "2026-11-26",
+  "held": 16,
+  "ret": -24.95,
+  "excess": -14.48,
   "backfill": true
  },
  {
@@ -9562,10 +9562,10 @@
   },
   "entryDate": "2026-11-05",
   "entry": 125.5,
-  "lastDate": "2026-11-25",
-  "held": 14,
-  "ret": -14.53,
-  "excess": -3.47,
+  "lastDate": "2026-11-26",
+  "held": 15,
+  "ret": -10.55,
+  "excess": -1.72,
   "backfill": true
  },
  {
@@ -9585,10 +9585,10 @@
   },
   "entryDate": "2026-11-09",
   "entry": 75,
-  "lastDate": "2026-11-25",
-  "held": 12,
-  "ret": -13.12,
-  "excess": -7.2,
+  "lastDate": "2026-11-26",
+  "held": 13,
+  "ret": -10.18,
+  "excess": -6.64,
   "backfill": true
  },
  {
@@ -9608,10 +9608,10 @@
   },
   "entryDate": "2026-11-05",
   "entry": 58.3,
-  "lastDate": "2026-11-25",
-  "held": 14,
-  "ret": -13.11,
-  "excess": -2.04,
+  "lastDate": "2026-11-26",
+  "held": 15,
+  "ret": -8.48,
+  "excess": 0.35,
   "backfill": true
  },
  {
@@ -9631,10 +9631,10 @@
   },
   "entryDate": "2026-11-13",
   "entry": 38.95,
-  "lastDate": "2026-11-25",
-  "held": 8,
-  "ret": -13.55,
-  "excess": -0.33,
+  "lastDate": "2026-11-26",
+  "held": 9,
+  "ret": -10.47,
+  "excess": 0.56,
   "backfill": true
  },
  {
@@ -9654,10 +9654,10 @@
   },
   "entryDate": "2026-11-06",
   "entry": 176,
-  "lastDate": "2026-11-25",
-  "held": 13,
-  "ret": -10.24,
-  "excess": -7.81,
+  "lastDate": "2026-11-26",
+  "held": 14,
+  "ret": -4.85,
+  "excess": -4.87,
   "backfill": true
  },
  {
@@ -9677,10 +9677,10 @@
   },
   "entryDate": "2026-11-11",
   "entry": 520,
-  "lastDate": "2026-11-25",
-  "held": 10,
-  "ret": -13.66,
-  "excess": -1.62,
+  "lastDate": "2026-11-26",
+  "held": 11,
+  "ret": -5.01,
+  "excess": 4.81,
   "backfill": true
  },
  {
@@ -9700,10 +9700,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 45.25,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -19.59,
-  "excess": -5.46,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -14.51,
+  "excess": -2.54,
   "backfill": true
  },
  {
@@ -9723,10 +9723,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 39.2,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -16.91,
-  "excess": -2.78,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -15.13,
+  "excess": -3.16,
   "backfill": true
  },
  {
@@ -9746,10 +9746,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 34.9,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -18.92,
-  "excess": -4.79,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -16.63,
+  "excess": -4.66,
   "backfill": true
  },
  {
@@ -9772,10 +9772,10 @@
   },
   "entryDate": "2026-10-21",
   "entry": 143,
-  "lastDate": "2026-11-25",
-  "held": 24,
-  "ret": -29.26,
-  "excess": -10.89,
+  "lastDate": "2026-11-26",
+  "held": 25,
+  "ret": -26.11,
+  "excess": -9.8,
   "backfill": true
  },
  {
@@ -9795,10 +9795,10 @@
   },
   "entryDate": "2026-11-02",
   "entry": 74.5,
-  "lastDate": "2026-11-25",
-  "held": 17,
-  "ret": -19.11,
-  "excess": -3.34,
+  "lastDate": "2026-11-26",
+  "held": 18,
+  "ret": -17.5,
+  "excess": -3.85,
   "backfill": true
  },
  {
@@ -9818,10 +9818,10 @@
   },
   "entryDate": "2026-11-13",
   "entry": 126,
-  "lastDate": "2026-11-25",
-  "held": 8,
-  "ret": -4.16,
-  "excess": 9.06,
+  "lastDate": "2026-11-26",
+  "held": 9,
+  "ret": -2.57,
+  "excess": 8.46,
   "backfill": true
  },
  {
@@ -9841,10 +9841,10 @@
   },
   "entryDate": "2026-11-11",
   "entry": 109,
-  "lastDate": "2026-11-25",
-  "held": 10,
-  "ret": -26.09,
-  "excess": -14.05,
+  "lastDate": "2026-11-26",
+  "held": 11,
+  "ret": -27.01,
+  "excess": -17.19,
   "backfill": true
  },
  {
@@ -9864,10 +9864,10 @@
   },
   "entryDate": "2026-10-30",
   "entry": 352,
-  "lastDate": "2026-11-25",
-  "held": 18,
-  "ret": -31.27,
-  "excess": -13.46,
+  "lastDate": "2026-11-26",
+  "held": 19,
+  "ret": -25.87,
+  "excess": -10.14,
   "backfill": true
  },
  {
@@ -9880,17 +9880,20 @@
   "after": "2026-10-28",
   "surp": -0.91,
   "d20": {
-   "status": "open"
+   "status": "closed",
+   "exitDate": "2026-11-26",
+   "ret": -15.76,
+   "excess": 3.07
   },
   "d60": {
    "status": "open"
   },
   "entryDate": "2026-10-29",
   "entry": 51.4,
-  "lastDate": "2026-11-25",
-  "held": 19,
-  "ret": -18.48,
-  "excess": 0.86,
+  "lastDate": "2026-11-26",
+  "held": 20,
+  "ret": -18.09,
+  "excess": -0.79,
   "backfill": true
  },
  {
@@ -9910,10 +9913,10 @@
   },
   "entryDate": "2026-11-11",
   "entry": 105,
-  "lastDate": "2026-11-25",
-  "held": 10,
-  "ret": -16.11,
-  "excess": -4.07,
+  "lastDate": "2026-11-26",
+  "held": 11,
+  "ret": -7.73,
+  "excess": 2.09,
   "backfill": true
  },
  {
@@ -9933,10 +9936,10 @@
   },
   "entryDate": "2026-11-06",
   "entry": 32.8,
-  "lastDate": "2026-11-25",
-  "held": 13,
-  "ret": 2.01,
-  "excess": 4.44,
+  "lastDate": "2026-11-26",
+  "held": 14,
+  "ret": 5.51,
+  "excess": 5.49,
   "backfill": true
  },
  {
@@ -9956,10 +9959,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 67,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -17.3,
-  "excess": -3.17,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -15.51,
+  "excess": -3.54,
   "backfill": true
  },
  {
@@ -9979,10 +9982,10 @@
   },
   "entryDate": "2026-11-13",
   "entry": 125.5,
-  "lastDate": "2026-11-25",
-  "held": 8,
-  "ret": -32.86,
-  "excess": -19.64,
+  "lastDate": "2026-11-26",
+  "held": 9,
+  "ret": -27.6,
+  "excess": -16.56,
   "backfill": true
  },
  {
@@ -10002,10 +10005,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 192,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -37.04,
-  "excess": -22.91,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -32.1,
+  "excess": -20.13,
   "backfill": true
  },
  {
@@ -10025,10 +10028,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 71,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -30.16,
-  "excess": -16.03,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -27.06,
+  "excess": -15.1,
   "backfill": true
  },
  {
@@ -10048,10 +10051,10 @@
   },
   "entryDate": "2026-11-11",
   "entry": 172.5,
-  "lastDate": "2026-11-25",
-  "held": 10,
-  "ret": -7.25,
-  "excess": 4.79,
+  "lastDate": "2026-11-26",
+  "held": 11,
+  "ret": -6.09,
+  "excess": 3.73,
   "backfill": true
  },
  {
@@ -10071,10 +10074,10 @@
   },
   "entryDate": "2026-11-11",
   "entry": 39.6,
-  "lastDate": "2026-11-25",
-  "held": 10,
-  "ret": -27.23,
-  "excess": -15.19,
+  "lastDate": "2026-11-26",
+  "held": 11,
+  "ret": -19.9,
+  "excess": -10.08,
   "backfill": true
  },
  {
@@ -10094,10 +10097,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 35.1,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -32.21,
-  "excess": -18.08,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -28.65,
+  "excess": -16.68,
   "backfill": true
  },
  {
@@ -10117,10 +10120,10 @@
   },
   "entryDate": "2026-11-09",
   "entry": 99.7,
-  "lastDate": "2026-11-25",
-  "held": 12,
-  "ret": -12.12,
-  "excess": -6.2,
+  "lastDate": "2026-11-26",
+  "held": 13,
+  "ret": -6.2,
+  "excess": -2.65,
   "backfill": true
  },
  {
@@ -10140,10 +10143,10 @@
   },
   "entryDate": "2026-11-09",
   "entry": 3110,
-  "lastDate": "2026-11-25",
-  "held": 12,
-  "ret": 15.33,
-  "excess": 21.25,
+  "lastDate": "2026-11-26",
+  "held": 13,
+  "ret": 19.51,
+  "excess": 23.06,
   "backfill": true
  },
  {
@@ -10163,10 +10166,10 @@
   },
   "entryDate": "2026-11-11",
   "entry": 63.5,
-  "lastDate": "2026-11-25",
-  "held": 10,
-  "ret": -24.68,
-  "excess": -12.64,
+  "lastDate": "2026-11-26",
+  "held": 11,
+  "ret": -20.59,
+  "excess": -10.76,
   "backfill": true
  },
  {
@@ -10186,10 +10189,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 40.5,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -17.87,
-  "excess": -3.74,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -14.04,
+  "excess": -2.07,
   "backfill": true
  },
  {
@@ -10209,10 +10212,10 @@
   },
   "entryDate": "2026-11-11",
   "entry": 94,
-  "lastDate": "2026-11-25",
-  "held": 10,
-  "ret": -21.97,
-  "excess": -9.93,
+  "lastDate": "2026-11-26",
+  "held": 11,
+  "ret": -17.29,
+  "excess": -7.47,
   "backfill": true
  },
  {
@@ -10232,10 +10235,10 @@
   },
   "entryDate": "2026-11-09",
   "entry": 21.5,
-  "lastDate": "2026-11-25",
-  "held": 12,
+  "lastDate": "2026-11-26",
+  "held": 13,
   "ret": -2.91,
-  "excess": 3.01,
+  "excess": 0.64,
   "backfill": true
  },
  {
@@ -10255,10 +10258,10 @@
   },
   "entryDate": "2026-11-03",
   "entry": 38.25,
-  "lastDate": "2026-11-25",
-  "held": 16,
-  "ret": -16.92,
-  "excess": -2.21,
+  "lastDate": "2026-11-26",
+  "held": 17,
+  "ret": -13.13,
+  "excess": -0.57,
   "backfill": true
  },
  {
@@ -10278,10 +10281,10 @@
   },
   "entryDate": "2026-11-11",
   "entry": 70.1,
-  "lastDate": "2026-11-25",
-  "held": 10,
-  "ret": -17.85,
-  "excess": -5.81,
+  "lastDate": "2026-11-26",
+  "held": 11,
+  "ret": -14.85,
+  "excess": -5.03,
   "backfill": true
  },
  {
@@ -10301,10 +10304,10 @@
   },
   "entryDate": "2026-11-13",
   "entry": 27.55,
-  "lastDate": "2026-11-25",
-  "held": 8,
-  "ret": -10.2,
-  "excess": 3.02,
+  "lastDate": "2026-11-26",
+  "held": 9,
+  "ret": -10.02,
+  "excess": 1.01,
   "backfill": true
  },
  {
@@ -10324,10 +10327,10 @@
   },
   "entryDate": "2026-11-13",
   "entry": 28.4,
-  "lastDate": "2026-11-25",
-  "held": 8,
-  "ret": -14.49,
-  "excess": -1.27,
+  "lastDate": "2026-11-26",
+  "held": 9,
+  "ret": -13.26,
+  "excess": -2.23,
   "backfill": true
  },
  {
@@ -10347,10 +10350,10 @@
   },
   "entryDate": "2026-11-16",
   "entry": 18.25,
-  "lastDate": "2026-11-25",
-  "held": 7,
-  "ret": -13.19,
-  "excess": -0.38,
+  "lastDate": "2026-11-26",
+  "held": 8,
+  "ret": -12.09,
+  "excess": -1.49,
   "backfill": true
  },
  {
@@ -10370,10 +10373,10 @@
   },
   "entryDate": "2026-11-06",
   "entry": 17.55,
-  "lastDate": "2026-11-25",
-  "held": 13,
+  "lastDate": "2026-11-26",
+  "held": 14,
   "ret": -7.14,
-  "excess": -4.7,
+  "excess": -7.16,
   "backfill": true
  },
  {
@@ -10393,10 +10396,10 @@
   },
   "entryDate": "2026-11-11",
   "entry": 148.5,
-  "lastDate": "2026-11-25",
-  "held": 10,
-  "ret": -13.38,
-  "excess": -1.34,
+  "lastDate": "2026-11-26",
+  "held": 11,
+  "ret": -12.37,
+  "excess": -2.55,
   "backfill": true
  },
  {
@@ -10416,10 +10419,10 @@
   },
   "entryDate": "2026-11-10",
   "entry": 28.1,
-  "lastDate": "2026-11-25",
-  "held": 11,
-  "ret": -22.65,
-  "excess": -12.72,
+  "lastDate": "2026-11-26",
+  "held": 12,
+  "ret": -18.38,
+  "excess": -10.72,
   "backfill": true
  },
  {
@@ -10439,10 +10442,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 11.1,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -21.4,
-  "excess": -7.26,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -19.14,
+  "excess": -7.18,
   "backfill": true
  },
  {
@@ -10462,10 +10465,10 @@
   },
   "entryDate": "2026-11-09",
   "entry": 17,
-  "lastDate": "2026-11-25",
-  "held": 12,
-  "ret": -24.7,
-  "excess": -18.78,
+  "lastDate": "2026-11-26",
+  "held": 13,
+  "ret": -24.41,
+  "excess": -20.86,
   "backfill": true
  },
  {
@@ -10485,10 +10488,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 130,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -9.05,
-  "excess": 5.09,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -7.12,
+  "excess": 4.84,
   "backfill": true
  },
  {
@@ -10508,10 +10511,10 @@
   },
   "entryDate": "2026-11-13",
   "entry": 46.5,
-  "lastDate": "2026-11-25",
-  "held": 8,
+  "lastDate": "2026-11-26",
+  "held": 9,
   "ret": -12.31,
-  "excess": 0.92,
+  "excess": -1.27,
   "backfill": true
  },
  {
@@ -10531,10 +10534,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 125,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -11.38,
-  "excess": 2.75,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -10.58,
+  "excess": 1.38,
   "backfill": true
  },
  {
@@ -10554,10 +10557,10 @@
   },
   "entryDate": "2026-11-16",
   "entry": 41.55,
-  "lastDate": "2026-11-25",
-  "held": 7,
-  "ret": -19.48,
-  "excess": -6.67,
+  "lastDate": "2026-11-26",
+  "held": 8,
+  "ret": -17.55,
+  "excess": -6.95,
   "backfill": true
  },
  {
@@ -10577,10 +10580,10 @@
   },
   "entryDate": "2026-11-10",
   "entry": 52.8,
-  "lastDate": "2026-11-25",
-  "held": 11,
-  "ret": -32.88,
-  "excess": -22.95,
+  "lastDate": "2026-11-26",
+  "held": 12,
+  "ret": -31.27,
+  "excess": -23.61,
   "backfill": true
  },
  {
@@ -10600,10 +10603,10 @@
   },
   "entryDate": "2026-11-06",
   "entry": 50,
-  "lastDate": "2026-11-25",
-  "held": 13,
-  "ret": -14.18,
-  "excess": -11.75,
+  "lastDate": "2026-11-26",
+  "held": 14,
+  "ret": -13.58,
+  "excess": -13.61,
   "backfill": true
  },
  {
@@ -10623,10 +10626,10 @@
   },
   "entryDate": "2026-11-13",
   "entry": 92.5,
-  "lastDate": "2026-11-25",
-  "held": 8,
-  "ret": -14.53,
-  "excess": -1.31,
+  "lastDate": "2026-11-26",
+  "held": 9,
+  "ret": -8.59,
+  "excess": 2.45,
   "backfill": true
  },
  {
@@ -10639,17 +10642,20 @@
   "after": "2026-10-28",
   "surp": 11.37,
   "d20": {
-   "status": "open"
+   "status": "closed",
+   "exitDate": "2026-11-26",
+   "ret": -20.93,
+   "excess": -2.1
   },
   "d60": {
    "status": "open"
   },
   "entryDate": "2026-10-29",
   "entry": 287.5,
-  "lastDate": "2026-11-25",
-  "held": 19,
-  "ret": -21.98,
-  "excess": -2.63,
+  "lastDate": "2026-11-26",
+  "held": 20,
+  "ret": -17.98,
+  "excess": -0.67,
   "backfill": true
  },
  {
@@ -10669,10 +10675,10 @@
   },
   "entryDate": "2026-10-30",
   "entry": 92.1,
-  "lastDate": "2026-11-25",
-  "held": 18,
-  "ret": -28.92,
-  "excess": -11.12,
+  "lastDate": "2026-11-26",
+  "held": 19,
+  "ret": -24.91,
+  "excess": -9.18,
   "backfill": true
  },
  {
@@ -10692,10 +10698,10 @@
   },
   "entryDate": "2026-11-09",
   "entry": 122.5,
-  "lastDate": "2026-11-25",
-  "held": 12,
-  "ret": -19.36,
-  "excess": -13.44,
+  "lastDate": "2026-11-26",
+  "held": 13,
+  "ret": -16.1,
+  "excess": -12.55,
   "backfill": true
  },
  {
@@ -10715,10 +10721,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 67.5,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -32.96,
-  "excess": -18.82,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -34.81,
+  "excess": -22.84,
   "backfill": true
  },
  {
@@ -10738,10 +10744,10 @@
   },
   "entryDate": "2026-11-10",
   "entry": 20.5,
-  "lastDate": "2026-11-25",
-  "held": 11,
-  "ret": -14.73,
-  "excess": -4.81,
+  "lastDate": "2026-11-26",
+  "held": 12,
+  "ret": -18.63,
+  "excess": -10.98,
   "backfill": true
  },
  {
@@ -10761,10 +10767,10 @@
   },
   "entryDate": "2026-11-09",
   "entry": 197,
-  "lastDate": "2026-11-25",
-  "held": 12,
-  "ret": -4.39,
-  "excess": 1.53,
+  "lastDate": "2026-11-26",
+  "held": 13,
+  "ret": -2.87,
+  "excess": 0.68,
   "backfill": true
  },
  {
@@ -10784,10 +10790,10 @@
   },
   "entryDate": "2026-11-10",
   "entry": 1230,
-  "lastDate": "2026-11-25",
-  "held": 11,
-  "ret": -14,
-  "excess": -4.07,
+  "lastDate": "2026-11-26",
+  "held": 12,
+  "ret": -9.12,
+  "excess": -1.47,
   "backfill": true
  },
  {
@@ -10807,10 +10813,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 80,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -22.09,
-  "excess": -7.95,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -20.58,
+  "excess": -8.62,
   "backfill": true
  },
  {
@@ -10830,10 +10836,10 @@
   },
   "entryDate": "2026-11-09",
   "entry": 882,
-  "lastDate": "2026-11-25",
-  "held": 12,
-  "ret": -13.51,
-  "excess": -7.59,
+  "lastDate": "2026-11-26",
+  "held": 13,
+  "ret": -10.45,
+  "excess": -6.9,
   "backfill": true
  },
  {
@@ -10853,10 +10859,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 28.6,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -26.81,
-  "excess": -12.68,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -22.96,
+  "excess": -11,
   "backfill": true
  },
  {
@@ -10879,10 +10885,10 @@
   },
   "entryDate": "2026-10-28",
   "entry": 100.5,
-  "lastDate": "2026-11-25",
-  "held": 20,
-  "ret": -32.43,
-  "excess": -14.15,
+  "lastDate": "2026-11-26",
+  "held": 21,
+  "ret": -28.45,
+  "excess": -12.23,
   "backfill": true
  },
  {
@@ -10902,10 +10908,10 @@
   },
   "entryDate": "2026-11-13",
   "entry": 45.4,
-  "lastDate": "2026-11-25",
-  "held": 8,
-  "ret": -33.18,
-  "excess": -19.96,
+  "lastDate": "2026-11-26",
+  "held": 9,
+  "ret": -29.11,
+  "excess": -18.08,
   "backfill": true
  },
  {
@@ -10925,10 +10931,10 @@
   },
   "entryDate": "2026-11-06",
   "entry": 57.5,
-  "lastDate": "2026-11-25",
-  "held": 13,
-  "ret": 20.81,
-  "excess": 23.24,
+  "lastDate": "2026-11-26",
+  "held": 14,
+  "ret": 26.02,
+  "excess": 26,
   "backfill": true
  },
  {
@@ -10948,10 +10954,10 @@
   },
   "entryDate": "2026-11-16",
   "entry": 48.55,
-  "lastDate": "2026-11-25",
-  "held": 7,
-  "ret": -14.49,
-  "excess": -1.68,
+  "lastDate": "2026-11-26",
+  "held": 8,
+  "ret": -12.74,
+  "excess": -2.13,
   "backfill": true
  },
  {
@@ -10971,10 +10977,10 @@
   },
   "entryDate": "2026-11-13",
   "entry": 56.9,
-  "lastDate": "2026-11-25",
-  "held": 8,
-  "ret": 7.5,
-  "excess": 20.72,
+  "lastDate": "2026-11-26",
+  "held": 9,
+  "ret": 8.03,
+  "excess": 19.06,
   "backfill": true
  },
  {
@@ -10997,10 +11003,10 @@
   },
   "entryDate": "2026-10-28",
   "entry": 73.5,
-  "lastDate": "2026-11-25",
-  "held": 20,
-  "ret": -7.12,
-  "excess": 11.16,
+  "lastDate": "2026-11-26",
+  "held": 21,
+  "ret": -5.89,
+  "excess": 10.32,
   "backfill": true
  },
  {
@@ -11020,10 +11026,10 @@
   },
   "entryDate": "2026-11-03",
   "entry": 49.3,
-  "lastDate": "2026-11-25",
-  "held": 16,
-  "ret": -10.73,
-  "excess": 3.99,
+  "lastDate": "2026-11-26",
+  "held": 17,
+  "ret": -12.55,
+  "excess": 0.01,
   "backfill": true
  },
  {
@@ -11043,10 +11049,10 @@
   },
   "entryDate": "2026-11-06",
   "entry": 10.9,
-  "lastDate": "2026-11-25",
-  "held": 13,
-  "ret": -1.96,
-  "excess": 0.47,
+  "lastDate": "2026-11-26",
+  "held": 14,
+  "ret": 2.17,
+  "excess": 2.15,
   "backfill": true
  },
  {
@@ -11066,10 +11072,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 49.9,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -34.05,
-  "excess": -19.92,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -29.04,
+  "excess": -17.07,
   "backfill": true
  },
  {
@@ -11089,10 +11095,10 @@
   },
   "entryDate": "2026-11-13",
   "entry": 79.8,
-  "lastDate": "2026-11-25",
-  "held": 8,
-  "ret": -22.89,
-  "excess": -9.67,
+  "lastDate": "2026-11-26",
+  "held": 9,
+  "ret": -18.25,
+  "excess": -7.22,
   "backfill": true
  },
  {
@@ -11112,10 +11118,10 @@
   },
   "entryDate": "2026-11-11",
   "entry": 59.4,
-  "lastDate": "2026-11-25",
-  "held": 10,
-  "ret": -33.24,
-  "excess": -21.21,
+  "lastDate": "2026-11-26",
+  "held": 11,
+  "ret": -28.78,
+  "excess": -18.96,
   "backfill": true
  },
  {
@@ -11135,10 +11141,10 @@
   },
   "entryDate": "2026-11-11",
   "entry": 42.95,
-  "lastDate": "2026-11-25",
-  "held": 10,
-  "ret": -3.73,
-  "excess": 8.31,
+  "lastDate": "2026-11-26",
+  "held": 11,
+  "ret": -2.45,
+  "excess": 7.37,
   "backfill": true
  },
  {
@@ -11158,10 +11164,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 58.6,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -4.51,
-  "excess": 9.62,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": 5.05,
+  "excess": 17.01,
   "backfill": true
  },
  {
@@ -11181,10 +11187,10 @@
   },
   "entryDate": "2026-11-06",
   "entry": 64.6,
-  "lastDate": "2026-11-25",
-  "held": 13,
-  "ret": 4.99,
-  "excess": 7.42,
+  "lastDate": "2026-11-26",
+  "held": 14,
+  "ret": 12.42,
+  "excess": 12.4,
   "backfill": true
  },
  {
@@ -11204,10 +11210,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 102.5,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -8.39,
-  "excess": 5.74,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -7.41,
+  "excess": 4.55,
   "backfill": true
  },
  {
@@ -11227,10 +11233,10 @@
   },
   "entryDate": "2026-11-09",
   "entry": 400,
-  "lastDate": "2026-11-25",
-  "held": 12,
-  "ret": -22.71,
-  "excess": -16.79,
+  "lastDate": "2026-11-26",
+  "held": 13,
+  "ret": -15.96,
+  "excess": -12.41,
   "backfill": true
  },
  {
@@ -11250,10 +11256,10 @@
   },
   "entryDate": "2026-11-13",
   "entry": 168.5,
-  "lastDate": "2026-11-25",
-  "held": 8,
-  "ret": 1.79,
-  "excess": 15.01,
+  "lastDate": "2026-11-26",
+  "held": 9,
+  "ret": 2.09,
+  "excess": 13.12,
   "backfill": true
  },
  {
@@ -11266,17 +11272,20 @@
   "after": "2026-10-28",
   "surp": 0.78,
   "d20": {
-   "status": "open"
+   "status": "closed",
+   "exitDate": "2026-11-26",
+   "ret": -29,
+   "excess": -10.17
   },
   "d60": {
    "status": "open"
   },
   "entryDate": "2026-10-29",
   "entry": 55.6,
-  "lastDate": "2026-11-25",
-  "held": 19,
-  "ret": -30.62,
-  "excess": -11.28,
+  "lastDate": "2026-11-26",
+  "held": 20,
+  "ret": -27.92,
+  "excess": -10.61,
   "backfill": true
  },
  {
@@ -11296,10 +11305,10 @@
   },
   "entryDate": "2026-11-09",
   "entry": 495.5,
-  "lastDate": "2026-11-25",
-  "held": 12,
-  "ret": -21.88,
-  "excess": -15.96,
+  "lastDate": "2026-11-26",
+  "held": 13,
+  "ret": -14.01,
+  "excess": -10.46,
   "backfill": true
  },
  {
@@ -11319,10 +11328,10 @@
   },
   "entryDate": "2026-11-13",
   "entry": 60.3,
-  "lastDate": "2026-11-25",
-  "held": 8,
-  "ret": -18.41,
-  "excess": -5.19,
+  "lastDate": "2026-11-26",
+  "held": 9,
+  "ret": -13.85,
+  "excess": -2.82,
   "backfill": true
  },
  {
@@ -11342,10 +11351,10 @@
   },
   "entryDate": "2026-11-11",
   "entry": 114,
-  "lastDate": "2026-11-25",
-  "held": 10,
-  "ret": -27.08,
-  "excess": -15.04,
+  "lastDate": "2026-11-26",
+  "held": 11,
+  "ret": -21.81,
+  "excess": -11.99,
   "backfill": true
  },
  {
@@ -11365,10 +11374,10 @@
   },
   "entryDate": "2026-11-05",
   "entry": 31.3,
-  "lastDate": "2026-11-25",
-  "held": 14,
-  "ret": -22.63,
-  "excess": -11.57,
+  "lastDate": "2026-11-26",
+  "held": 15,
+  "ret": -19.43,
+  "excess": -10.61,
   "backfill": true
  },
  {
@@ -11388,10 +11397,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 53,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -28.51,
-  "excess": -14.38,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -25.4,
+  "excess": -13.43,
   "backfill": true
  },
  {
@@ -11411,10 +11420,10 @@
   },
   "entryDate": "2026-11-09",
   "entry": 38.15,
-  "lastDate": "2026-11-25",
-  "held": 12,
-  "ret": -23.91,
-  "excess": -18,
+  "lastDate": "2026-11-26",
+  "held": 13,
+  "ret": -21.42,
+  "excess": -17.88,
   "backfill": true
  },
  {
@@ -11434,10 +11443,10 @@
   },
   "entryDate": "2026-11-11",
   "entry": 72.7,
-  "lastDate": "2026-11-25",
-  "held": 10,
-  "ret": -10.76,
-  "excess": 1.27,
+  "lastDate": "2026-11-26",
+  "held": 11,
+  "ret": -8.84,
+  "excess": 0.98,
   "backfill": true
  },
  {
@@ -11457,10 +11466,10 @@
   },
   "entryDate": "2026-11-05",
   "entry": 66.3,
-  "lastDate": "2026-11-25",
-  "held": 14,
-  "ret": -23.96,
-  "excess": -12.9,
+  "lastDate": "2026-11-26",
+  "held": 15,
+  "ret": -16.42,
+  "excess": -7.6,
   "backfill": true
  },
  {
@@ -11480,10 +11489,10 @@
   },
   "entryDate": "2026-11-05",
   "entry": 199,
-  "lastDate": "2026-11-25",
-  "held": 14,
-  "ret": -12.39,
-  "excess": -1.33,
+  "lastDate": "2026-11-26",
+  "held": 15,
+  "ret": -3.6,
+  "excess": 5.22,
   "backfill": true
  },
  {
@@ -11503,10 +11512,10 @@
   },
   "entryDate": "2026-11-05",
   "entry": 63,
-  "lastDate": "2026-11-25",
-  "held": 14,
-  "ret": -23.12,
-  "excess": -12.06,
+  "lastDate": "2026-11-26",
+  "held": 15,
+  "ret": -19.79,
+  "excess": -10.97,
   "backfill": true
  },
  {
@@ -11526,10 +11535,10 @@
   },
   "entryDate": "2026-11-11",
   "entry": 106.5,
-  "lastDate": "2026-11-25",
-  "held": 10,
-  "ret": -2.93,
-  "excess": 9.11,
+  "lastDate": "2026-11-26",
+  "held": 11,
+  "ret": 2.23,
+  "excess": 12.05,
   "backfill": true
  },
  {
@@ -11549,10 +11558,10 @@
   },
   "entryDate": "2026-11-11",
   "entry": 36.3,
-  "lastDate": "2026-11-25",
-  "held": 10,
-  "ret": -9.68,
-  "excess": 2.36,
+  "lastDate": "2026-11-26",
+  "held": 11,
+  "ret": -5.82,
+  "excess": 4,
   "backfill": true
  },
  {
@@ -11572,10 +11581,10 @@
   },
   "entryDate": "2026-11-16",
   "entry": 126.5,
-  "lastDate": "2026-11-25",
-  "held": 7,
-  "ret": -15.21,
-  "excess": -2.41,
+  "lastDate": "2026-11-26",
+  "held": 8,
+  "ret": -13.63,
+  "excess": -3.02,
   "backfill": true
  },
  {
@@ -11595,10 +11604,10 @@
   },
   "entryDate": "2026-11-06",
   "entry": 79.2,
-  "lastDate": "2026-11-25",
-  "held": 13,
-  "ret": 1.18,
-  "excess": 3.62,
+  "lastDate": "2026-11-26",
+  "held": 14,
+  "ret": 7.87,
+  "excess": 7.85,
   "backfill": true
  },
  {
@@ -11618,10 +11627,10 @@
   },
   "entryDate": "2026-11-09",
   "entry": 301,
-  "lastDate": "2026-11-25",
-  "held": 12,
-  "ret": -39.46,
-  "excess": -33.54,
+  "lastDate": "2026-11-26",
+  "held": 13,
+  "ret": -36.13,
+  "excess": -32.59,
   "backfill": true
  },
  {
@@ -11641,10 +11650,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 23.4,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -24.09,
-  "excess": -9.96,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -20.03,
+  "excess": -8.06,
   "backfill": true
  },
  {
@@ -11664,10 +11673,10 @@
   },
   "entryDate": "2026-11-06",
   "entry": 201.5,
-  "lastDate": "2026-11-25",
-  "held": 13,
-  "ret": -0.83,
-  "excess": 1.6,
+  "lastDate": "2026-11-26",
+  "held": 14,
+  "ret": 4.38,
+  "excess": 4.36,
   "backfill": true
  },
  {
@@ -11687,10 +11696,10 @@
   },
   "entryDate": "2026-11-06",
   "entry": 32.5,
-  "lastDate": "2026-11-25",
-  "held": 13,
+  "lastDate": "2026-11-26",
+  "held": 14,
   "ret": 43.41,
-  "excess": 45.85,
+  "excess": 43.39,
   "backfill": true
  },
  {
@@ -11710,10 +11719,10 @@
   },
   "entryDate": "2026-11-09",
   "entry": 147.5,
-  "lastDate": "2026-11-25",
-  "held": 12,
-  "ret": -20.58,
-  "excess": -14.67,
+  "lastDate": "2026-11-26",
+  "held": 13,
+  "ret": -12.79,
+  "excess": -9.24,
   "backfill": true
  },
  {
@@ -11733,10 +11742,10 @@
   },
   "entryDate": "2026-11-13",
   "entry": 284.5,
-  "lastDate": "2026-11-25",
-  "held": 8,
-  "ret": -17.28,
-  "excess": -4.06,
+  "lastDate": "2026-11-26",
+  "held": 9,
+  "ret": -13.41,
+  "excess": -2.38,
   "backfill": true
  },
  {
@@ -11756,10 +11765,10 @@
   },
   "entryDate": "2026-11-10",
   "entry": 247,
-  "lastDate": "2026-11-25",
-  "held": 11,
-  "ret": -1.8,
-  "excess": 8.13,
+  "lastDate": "2026-11-26",
+  "held": 12,
+  "ret": -3.62,
+  "excess": 4.03,
   "backfill": true
  },
  {
@@ -11779,10 +11788,10 @@
   },
   "entryDate": "2026-11-09",
   "entry": 1570,
-  "lastDate": "2026-11-25",
-  "held": 12,
-  "ret": -9.5,
-  "excess": -3.58,
+  "lastDate": "2026-11-26",
+  "held": 13,
+  "ret": -0.58,
+  "excess": 2.96,
   "backfill": true
  },
  {
@@ -11802,10 +11811,10 @@
   },
   "entryDate": "2026-11-10",
   "entry": 518,
-  "lastDate": "2026-11-25",
-  "held": 11,
-  "ret": -30.6,
-  "excess": -20.68,
+  "lastDate": "2026-11-26",
+  "held": 12,
+  "ret": -23.65,
+  "excess": -16,
   "backfill": true
  },
  {
@@ -11825,10 +11834,10 @@
   },
   "entryDate": "2026-11-05",
   "entry": 139,
-  "lastDate": "2026-11-25",
-  "held": 14,
-  "ret": -29.58,
-  "excess": -18.51,
+  "lastDate": "2026-11-26",
+  "held": 15,
+  "ret": -27.2,
+  "excess": -18.38,
   "backfill": true
  },
  {
@@ -11848,10 +11857,10 @@
   },
   "entryDate": "2026-11-09",
   "entry": 73.8,
-  "lastDate": "2026-11-25",
-  "held": 12,
-  "ret": -12.1,
-  "excess": -6.18,
+  "lastDate": "2026-11-26",
+  "held": 13,
+  "ret": -5.73,
+  "excess": -2.19,
   "backfill": true
  },
  {
@@ -11871,10 +11880,10 @@
   },
   "entryDate": "2026-11-13",
   "entry": 30.65,
-  "lastDate": "2026-11-25",
-  "held": 8,
-  "ret": 3.17,
-  "excess": 16.39,
+  "lastDate": "2026-11-26",
+  "held": 9,
+  "ret": 4.31,
+  "excess": 15.34,
   "backfill": true
  },
  {
@@ -11894,10 +11903,10 @@
   },
   "entryDate": "2026-11-04",
   "entry": 74,
-  "lastDate": "2026-11-25",
-  "held": 15,
-  "ret": 0.36,
-  "excess": 13.04,
+  "lastDate": "2026-11-26",
+  "held": 16,
+  "ret": -1.94,
+  "excess": 8.54,
   "backfill": true
  },
  {
@@ -11917,10 +11926,10 @@
   },
   "entryDate": "2026-11-05",
   "entry": 82.3,
-  "lastDate": "2026-11-25",
-  "held": 14,
-  "ret": -34.97,
-  "excess": -23.91,
+  "lastDate": "2026-11-26",
+  "held": 15,
+  "ret": -33.76,
+  "excess": -24.93,
   "backfill": true
  },
  {
@@ -11940,10 +11949,10 @@
   },
   "entryDate": "2026-11-13",
   "entry": 128.5,
-  "lastDate": "2026-11-25",
-  "held": 8,
-  "ret": -17.71,
-  "excess": -4.48,
+  "lastDate": "2026-11-26",
+  "held": 9,
+  "ret": -19.65,
+  "excess": -8.62,
   "backfill": true
  },
  {
@@ -11965,11 +11974,11 @@
   },
   "entryDate": "2026-10-27",
   "entry": 156,
-  "lastDate": "2026-11-25",
-  "held": 21,
-  "ret": -41.1,
+  "lastDate": "2026-11-26",
+  "held": 22,
+  "ret": -37.76,
   "backfill": true,
-  "excess": -23.17
+  "excess": -21.9
  },
  {
   "code": "6913",
@@ -11988,11 +11997,11 @@
   },
   "entryDate": "2026-11-11",
   "entry": 136,
-  "lastDate": "2026-11-25",
-  "held": 10,
-  "ret": -12.72,
+  "lastDate": "2026-11-26",
+  "held": 11,
+  "ret": -10.88,
   "backfill": true,
-  "excess": -0.68
+  "excess": -1.06
  },
  {
   "code": "6933",
@@ -12011,10 +12020,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 363,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -35.57,
-  "excess": -21.44,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -30.2,
+  "excess": -18.23,
   "backfill": true
  },
  {
@@ -12034,10 +12043,10 @@
   },
   "entryDate": "2026-11-04",
   "entry": 29.9,
-  "lastDate": "2026-11-25",
-  "held": 15,
-  "ret": -12.96,
-  "excess": -0.28,
+  "lastDate": "2026-11-26",
+  "held": 16,
+  "ret": -9.78,
+  "excess": 0.69,
   "backfill": true
  },
  {
@@ -12057,10 +12066,10 @@
   },
   "entryDate": "2026-11-11",
   "entry": 1240,
-  "lastDate": "2026-11-25",
-  "held": 10,
-  "ret": -37.52,
-  "excess": -25.48,
+  "lastDate": "2026-11-26",
+  "held": 11,
+  "ret": -31.23,
+  "excess": -21.41,
   "backfill": true
  },
  {
@@ -12080,10 +12089,10 @@
   },
   "entryDate": "2026-11-04",
   "entry": 599,
-  "lastDate": "2026-11-25",
-  "held": 15,
-  "ret": -37.48,
-  "excess": -24.8,
+  "lastDate": "2026-11-26",
+  "held": 16,
+  "ret": -33.72,
+  "excess": -23.25,
   "backfill": true
  },
  {
@@ -12103,10 +12112,10 @@
   },
   "entryDate": "2026-11-11",
   "entry": 1515,
-  "lastDate": "2026-11-25",
-  "held": 10,
-  "ret": -24.68,
-  "excess": -12.64,
+  "lastDate": "2026-11-26",
+  "held": 11,
+  "ret": -21.71,
+  "excess": -11.89,
   "backfill": true
  },
  {
@@ -12126,10 +12135,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 55.4,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": 3.75,
-  "excess": 17.88,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": 1.76,
+  "excess": 13.73,
   "backfill": true
  },
  {
@@ -12149,10 +12158,10 @@
   },
   "entryDate": "2026-11-09",
   "entry": 380,
-  "lastDate": "2026-11-25",
-  "held": 12,
-  "ret": -13.61,
-  "excess": -7.69,
+  "lastDate": "2026-11-26",
+  "held": 13,
+  "ret": -10.45,
+  "excess": -6.91,
   "backfill": true
  },
  {
@@ -12172,10 +12181,10 @@
   },
   "entryDate": "2026-11-06",
   "entry": 234.5,
-  "lastDate": "2026-11-25",
-  "held": 13,
-  "ret": -4,
-  "excess": -1.56,
+  "lastDate": "2026-11-26",
+  "held": 14,
+  "ret": 2.19,
+  "excess": 2.17,
   "backfill": true
  },
  {
@@ -12195,10 +12204,10 @@
   },
   "entryDate": "2026-11-09",
   "entry": 145,
-  "lastDate": "2026-11-25",
-  "held": 12,
-  "ret": -17.48,
-  "excess": -11.56,
+  "lastDate": "2026-11-26",
+  "held": 13,
+  "ret": -13,
+  "excess": -9.45,
   "backfill": true
  },
  {
@@ -12218,10 +12227,10 @@
   },
   "entryDate": "2026-11-05",
   "entry": 38.25,
-  "lastDate": "2026-11-25",
-  "held": 14,
-  "ret": -24.77,
-  "excess": -13.7,
+  "lastDate": "2026-11-26",
+  "held": 15,
+  "ret": -19.93,
+  "excess": -11.11,
   "backfill": true
  },
  {
@@ -12241,10 +12250,10 @@
   },
   "entryDate": "2026-11-11",
   "entry": 83.3,
-  "lastDate": "2026-11-25",
-  "held": 10,
-  "ret": -6.47,
-  "excess": 5.57,
+  "lastDate": "2026-11-26",
+  "held": 11,
+  "ret": -5.75,
+  "excess": 4.07,
   "backfill": true
  },
  {
@@ -12264,10 +12273,10 @@
   },
   "entryDate": "2026-11-05",
   "entry": 55,
-  "lastDate": "2026-11-25",
-  "held": 14,
-  "ret": -19.22,
-  "excess": -8.16,
+  "lastDate": "2026-11-26",
+  "held": 15,
+  "ret": -12.86,
+  "excess": -4.04,
   "backfill": true
  },
  {
@@ -12287,10 +12296,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 109,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -21.59,
-  "excess": -7.46,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -19.58,
+  "excess": -7.61,
   "backfill": true
  },
  {
@@ -12310,10 +12319,10 @@
   },
   "entryDate": "2026-11-11",
   "entry": 84.6,
-  "lastDate": "2026-11-25",
-  "held": 10,
-  "ret": -23.87,
-  "excess": -11.83,
+  "lastDate": "2026-11-26",
+  "held": 11,
+  "ret": -16.31,
+  "excess": -6.49,
   "backfill": true
  },
  {
@@ -12333,10 +12342,10 @@
   },
   "entryDate": "2026-11-04",
   "entry": 27.6,
-  "lastDate": "2026-11-25",
-  "held": 15,
-  "ret": -22.51,
-  "excess": -9.83,
+  "lastDate": "2026-11-26",
+  "held": 16,
+  "ret": -19.43,
+  "excess": -8.95,
   "backfill": true
  },
  {
@@ -12356,10 +12365,10 @@
   },
   "entryDate": "2026-11-11",
   "entry": 40.55,
-  "lastDate": "2026-11-25",
-  "held": 10,
-  "ret": -14.77,
-  "excess": -2.73,
+  "lastDate": "2026-11-26",
+  "held": 11,
+  "ret": -8.48,
+  "excess": 1.34,
   "backfill": true
  },
  {
@@ -12379,10 +12388,10 @@
   },
   "entryDate": "2026-10-30",
   "entry": 183.5,
-  "lastDate": "2026-11-25",
-  "held": 18,
-  "ret": -24.29,
-  "excess": -6.49,
+  "lastDate": "2026-11-26",
+  "held": 19,
+  "ret": -20.48,
+  "excess": -4.75,
   "backfill": true
  },
  {
@@ -12402,10 +12411,10 @@
   },
   "entryDate": "2026-11-09",
   "entry": 1645,
-  "lastDate": "2026-11-25",
-  "held": 12,
-  "ret": -10.31,
-  "excess": -4.39,
+  "lastDate": "2026-11-26",
+  "held": 13,
+  "ret": -1.5,
+  "excess": 2.05,
   "backfill": true
  },
  {
@@ -12425,10 +12434,10 @@
   },
   "entryDate": "2026-11-09",
   "entry": 74.8,
-  "lastDate": "2026-11-25",
-  "held": 12,
-  "ret": -3.26,
-  "excess": 2.66,
+  "lastDate": "2026-11-26",
+  "held": 13,
+  "ret": -2.99,
+  "excess": 0.56,
   "backfill": true
  },
  {
@@ -12448,10 +12457,10 @@
   },
   "entryDate": "2026-11-09",
   "entry": 78.17,
-  "lastDate": "2026-11-25",
-  "held": 12,
-  "ret": -14.87,
-  "excess": -8.95,
+  "lastDate": "2026-11-26",
+  "held": 13,
+  "ret": -13.21,
+  "excess": -9.66,
   "backfill": true
  },
  {
@@ -12471,10 +12480,10 @@
   },
   "entryDate": "2026-11-09",
   "entry": 23.25,
-  "lastDate": "2026-11-25",
-  "held": 12,
-  "ret": -9.4,
-  "excess": -3.48,
+  "lastDate": "2026-11-26",
+  "held": 13,
+  "ret": -8.54,
+  "excess": -4.99,
   "backfill": true
  },
  {
@@ -12494,10 +12503,10 @@
   },
   "entryDate": "2026-11-10",
   "entry": 125,
-  "lastDate": "2026-11-25",
-  "held": 11,
-  "ret": -22.11,
-  "excess": -12.18,
+  "lastDate": "2026-11-26",
+  "held": 12,
+  "ret": -20.58,
+  "excess": -12.93,
   "backfill": true
  },
  {
@@ -12517,10 +12526,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 50,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -13.89,
-  "excess": 0.25,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -11.58,
+  "excess": 0.38,
   "backfill": true
  },
  {
@@ -12540,10 +12549,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 78.1,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -35.67,
-  "excess": -21.54,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -34,
+  "excess": -22.04,
   "backfill": true
  },
  {
@@ -12563,10 +12572,10 @@
   },
   "entryDate": "2026-11-13",
   "entry": 39.75,
-  "lastDate": "2026-11-25",
-  "held": 8,
-  "ret": -18.07,
-  "excess": -4.85,
+  "lastDate": "2026-11-26",
+  "held": 9,
+  "ret": -17.06,
+  "excess": -6.03,
   "backfill": true
  },
  {
@@ -12586,10 +12595,10 @@
   },
   "entryDate": "2026-11-06",
   "entry": 60.7,
-  "lastDate": "2026-11-25",
-  "held": 13,
-  "ret": -12.45,
-  "excess": -10.01,
+  "lastDate": "2026-11-26",
+  "held": 14,
+  "ret": -11.95,
+  "excess": -11.97,
   "backfill": true
  },
  {
@@ -12609,10 +12618,10 @@
   },
   "entryDate": "2026-11-04",
   "entry": 14.6,
-  "lastDate": "2026-11-25",
-  "held": 15,
-  "ret": -8.46,
-  "excess": 4.22,
+  "lastDate": "2026-11-26",
+  "held": 16,
+  "ret": -8.12,
+  "excess": 2.36,
   "backfill": true
  },
  {
@@ -12632,10 +12641,10 @@
   },
   "entryDate": "2026-11-12",
   "entry": 60.5,
-  "lastDate": "2026-11-25",
-  "held": 9,
-  "ret": -5.38,
-  "excess": 8.75,
+  "lastDate": "2026-11-26",
+  "held": 10,
+  "ret": -4.55,
+  "excess": 7.42,
   "backfill": true
  },
  {
@@ -12655,10 +12664,10 @@
   },
   "entryDate": "2026-11-11",
   "entry": 50.2,
-  "lastDate": "2026-11-25",
-  "held": 10,
-  "ret": 4,
-  "excess": 16.03,
+  "lastDate": "2026-11-26",
+  "held": 11,
+  "ret": 8.78,
+  "excess": 18.6,
   "backfill": true
  },
  {
@@ -12678,10 +12687,10 @@
   },
   "entryDate": "2026-11-13",
   "entry": 28.05,
-  "lastDate": "2026-11-25",
-  "held": 8,
-  "ret": -8.61,
-  "excess": 4.61,
+  "lastDate": "2026-11-26",
+  "held": 9,
+  "ret": -7.72,
+  "excess": 3.32,
   "backfill": true
  },
  {
@@ -12701,10 +12710,10 @@
   },
   "entryDate": "2026-11-11",
   "entry": 76,
-  "lastDate": "2026-11-25",
-  "held": 10,
-  "ret": -29.8,
-  "excess": -17.76,
+  "lastDate": "2026-11-26",
+  "held": 11,
+  "ret": -29.01,
+  "excess": -19.19,
   "backfill": true
  },
  {
@@ -12780,9 +12789,9 @@
   },
   "entryDate": "2026-11-13",
   "entry": 34.5,
-  "lastDate": "2026-11-25",
-  "held": 8,
-  "ret": -14.93,
-  "excess": -1.71
+  "lastDate": "2026-11-26",
+  "held": 9,
+  "ret": -14.06,
+  "excess": -3.03
  }
 ]

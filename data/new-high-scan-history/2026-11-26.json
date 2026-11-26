@@ -1,0 +1,26 @@
+{
+ "tradingDate": "2026-11-26",
+ "universe": {
+  "candidates": 31,
+  "priced": 31
+ },
+ "signals": [
+  {
+   "code": "6782",
+   "name": "視陽",
+   "market": "twse",
+   "close": 310.5,
+   "chg": 6.34,
+   "prevHigh": 304.5,
+   "prevHighDate": "2026-11-24",
+   "gap": 2,
+   "stop": 287.21,
+   "risk": 7.5,
+   "ma20": 276.93,
+   "money20": 246,
+   "limitUp": false,
+   "dup": false
+  }
+ ],
+ "others": []
+}
