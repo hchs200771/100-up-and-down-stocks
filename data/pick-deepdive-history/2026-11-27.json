@@ -1,6 +1,6 @@
 {
   "date": "2026-11-27",
-  "generatedAt": "2026-11-27T16:00:29.795Z",
+  "generatedAt": "2026-11-27T16:02:27.693Z",
   "items": [
     {
       "pick": {
@@ -57,8 +57,103 @@
         },
         "side": "short"
       },
-      "status": "pending",
-      "analysis": null,
+      "status": "complete",
+      "analysis": {
+        "catalysts": [
+          {
+            "date": "2026-11-11",
+            "event": "新光證券營收統計顯示，大國鋼10月營收30.49億元、年增43.83%。這是營收成長數據，並非獲利預測。",
+            "sourceType": "研究報告",
+            "source": "新光證券",
+            "url": "https://www.skis.com.tw/skis/Doc/Report/insights/insights_20261111_082628.pdf"
+          },
+          {
+            "date": "2026-11-13",
+            "event": "公司公告子公司大成帝國工業取得大成鋼1,240.4萬股，交易金額約5.54億元；同日亦公告董事會通過取得大成鋼股份的金額上限。來源為公告內容轉載，非公司原站。",
+            "sourceType": "公告",
+            "source": "大國鋼公告，中央社財經轉載",
+            "url": "https://tw.finance.yahoo.com/quote/8415/announcement"
+          },
+          {
+            "date": "2026-11-18",
+            "event": "公司先前公告當日參加統一證券線上法說會，說明業務及營運概況；未取得完整會議逐字稿，無法確認會中全部說法。",
+            "sourceType": "公告",
+            "source": "大國鋼公告，中央社財經轉載",
+            "url": "https://tw.finance.yahoo.com/quote/8415/announcement"
+          },
+          {
+            "date": "2026-11-19",
+            "event": "時報新聞以標題報導大國鋼創5年新高及對明年營運樂觀；僅取得新聞列表標題，未取得完整內文，樂觀展望不等於已實現獲利。",
+            "sourceType": "新聞",
+            "source": "時報新聞，nStock轉載列表",
+            "url": "https://www.nstock.tw/8415"
+          }
+        ],
+        "shortTerm": "1–4週內，市場可能繼續消化10月營收年增43.83%及11月法說訊息；若後續銷售維持強勁，推論有助支撐短線評價，反之可能引發獲利了結。11月13日加碼母公司股份也使市場可能重新評估投資部位，但其股價風險同時增加，不宜單向解讀為利多。來源：https://www.skis.com.tw/skis/Doc/Report/insights/insights_20261111_082628.pdf 、https://tw.finance.yahoo.com/quote/8415/announcement",
+        "longTerm": "1–4季關注營收成長能否轉成穩定毛利與獲利，以及持有大成鋼股份帶來的投資風險。10月營收成長屬已公布事實；未來需求、毛利和投資收益均屬不確定推論。2026年第三季報表的核閱意見為保留結論，理由涉及非重要子公司或權益法投資未經查核或核閱，應持續檢視財報附註。來源：https://www.skis.com.tw/skis/Doc/Report/insights/insights_20261111_082628.pdf 、https://tw.finance.yahoo.com/quote/8415/announcement 、https://toalpha.tw/stock/8415/filings",
+        "expectedRange": {
+          "band": "資料不足，無法估算",
+          "basis": "可直接讀取的近期收盤價樣本為2026-11-05至11-27共17筆，只能形成16筆日報酬，不足至少20筆；另未核實該段價格的除權息及股數調整。故無法可靠計算日報酬標準差乘以√20，也不以區間高低價冒充統計預期。",
+          "urls": [
+            "https://stock.uurl.ws/stock/8415?days=180",
+            "https://toalpha.tw/stock/8415/technical"
+          ]
+        },
+        "pricedIn": [
+          "可觀察事實：2026-11-13收37.40元、11-27收42.50元，期間上漲約13.6%；推論部分營運及法說樂觀預期可能已反映，但無法量化價格反映程度。https://stock.uurl.ws/stock/8415?days=180",
+          "可觀察事實：11-27外資買超217張；這支持當日資金流入，但不足以單獨證明利多已反映或確認連三日買超。https://tweb.money-link.com.tw/TWStock/StockChips.aspx?SymId=8415&TWMId=Chips_STK04"
+        ],
+        "notPricedIn": [
+          "無法判定後續營收、毛利變化或大成鋼投資損益是否尚未反映；10月營收與取得股份均已公開，尚缺可比較的市場一致預期。https://www.skis.com.tw/skis/Doc/Report/insights/insights_20261111_082628.pdf 、https://tw.finance.yahoo.com/quote/8415/announcement"
+        ],
+        "horizonFit": {
+          "kind": "短線",
+          "reason": "營收與股價動能有近期佐證，但長期獲利持續性和投資部位風險仍需更多財報驗證。"
+        },
+        "positioning": "偏多觀察，暫不追價；近期上漲後仍有回檔風險，且輸入的20日高點42.60元與11月24日實際盤中高點44.40元矛盾，不能把42.60元視為20日突破位。非個人化投資建議。https://stock.uurl.ws/stock/8415?days=180",
+        "invalidation": [
+          "以2026-11-27的20日均線39.09元作為固定觀察位：其後若收盤跌破，原短線趨勢假設轉弱；均線會隨後續價格變動，39.09元不是未來動態均線值。https://toalpha.tw/stock/8415/technical",
+          "11月24日盤中高點44.40元為已確認的近期壓力參考；若價格接近該位後持續無法站穩，突破續強的推論需重新檢視，這不是必然反轉訊號。https://stock.uurl.ws/stock/8415?days=180"
+        ],
+        "sentiment": "可搜尋到的YouTube樣本偏正面，但僅找到較早影片，未觀看或取得逐字稿；其他社群搜尋樣本不足，無法判斷近期熱度及整體散戶方向。",
+        "sourceCoverage": [
+          {
+            "sourceType": "公告",
+            "status": "找到",
+            "note": "查詢「8415 大國鋼 2026 11 公告 取得 大成鋼」；找到中央社轉載的11月13日公告及法說安排，未直接取得MOPS原文。"
+          },
+          {
+            "sourceType": "新聞",
+            "status": "找到",
+            "note": "查詢「大國鋼 2026 11 13 取得 大成鋼 股票」及11月19日法說；找到MoneyDJ新聞列表與時報新聞標題，後者完整內文未取得。"
+          },
+          {
+            "sourceType": "YouTube",
+            "status": "找到",
+            "note": "查詢「8415 大國鋼 site:youtube.com」及2026年11月影片；找到2026-07-25影片 https://www.youtube.com/watch?v=74BOUFbpvwk ，但未找到可核實的近30日影片；僅讀搜尋標題與摘要，未觀看或取得逐字稿。"
+          },
+          {
+            "sourceType": "Threads",
+            "status": "查無結果",
+            "note": "查詢「8415 大國鋼 site:threads.com」及「大國鋼 8415 site:threads.com」；未找到可核實的相關貼文，不代表沒有討論。"
+          },
+          {
+            "sourceType": "PTT",
+            "status": "查無結果",
+            "note": "查詢「site:ptt.cc 大國鋼 2026」；未取得可核實的相關搜尋結果，不代表沒有討論。"
+          },
+          {
+            "sourceType": "Dcard",
+            "status": "查無結果",
+            "note": "查詢「site:dcard.tw 大國鋼 8415」；未取得可核實的相關搜尋結果，不代表沒有討論。"
+          },
+          {
+            "sourceType": "Mobile01",
+            "status": "查無結果",
+            "note": "查詢「site:mobile01.com 大國鋼 8415」；未取得可核實的相關搜尋結果，不代表沒有討論。"
+          }
+        ]
+      },
       "error": ""
     },
     {
@@ -116,8 +211,98 @@
         },
         "side": "short"
       },
-      "status": "pending",
-      "analysis": null,
+      "status": "complete",
+      "analysis": {
+        "catalysts": [
+          {
+            "date": "2026-11-24",
+            "event": "公司法說簡報揭露，2026 年前三季營收 203.2 億元、母公司淨利 36.8 億元、每股盈餘 4.70 元；9 月底存貨合計 910.1 億元，約占資產 76%。",
+            "sourceType": "公告",
+            "source": "遠雄建設法說簡報／公開資訊觀測站",
+            "url": "https://mopsov.twse.com.tw/nas/STR/552220261124M003.pdf"
+          },
+          {
+            "date": "2026-11-25",
+            "event": "媒體報導多個建案自 9 月陸續啟動交屋，並指出部分個案交屋進度優於原先預估；此為媒體轉述，實際認列仍取決於交屋。",
+            "sourceType": "新聞",
+            "source": "CMoney",
+            "url": "https://www.cmoney.tw/notes/note-detail.aspx?nid=1299173"
+          },
+          {
+            "date": "2026-11-26",
+            "event": "媒體轉述遠雄管理層對銀行放貸審核及撥款時間拉長的觀察，可能影響交屋與營收認列節奏。",
+            "sourceType": "新聞",
+            "source": "好房網 News",
+            "url": "https://news.housefun.com.tw/news/article/amp/811938491462.html"
+          }
+        ],
+        "shortTerm": "未來 1–4 週主要觀察交屋認列及買盤延續：若交屋順利，可能支撐營收與股價；若房貸撥款延遲，認列可能遞延，以上方向均屬推論。11/24 法說與交屋消息已公開，不能直接視為新利多（https://mopsov.twse.com.tw/nas/STR/552220261124M003.pdf；https://www.cmoney.tw/notes/note-detail.aspx?nid=1299173；https://news.housefun.com.tw/news/article/amp/811938491462.html）。技術資料顯示 11/27 收 63.5 元、站上 10 日及 20 日均線，但輸入的「20 日高點 63.6 元」與行情所載 11/24 盤中高點 64.8 元衝突；若其實指收盤高點，則須明確區分（https://histock.tw/stock/tchart.aspx?m=i&no=5522；https://hk.investing.com/equities/farglory-historical-data）。",
+        "longTerm": "未來 1–4 季，建案交屋與存貨去化是獲利能否延續的關鍵：推論若交屋如期且毛利維持，營收及獲利有支撐；反之，融資、貸款撥付或交屋延誤會使認列遞延。公司 9 月底存貨占資產約 76%，顯示對去化及資金週轉的依賴（https://mopsov.twse.com.tw/nas/STR/552220261124M003.pdf；https://news.housefun.com.tw/news/article/amp/811938491462.html）。",
+        "expectedRange": {
+          "band": "約 −8.2% 至 +8.2%",
+          "basis": "採遠雄 2026/10/30 至 11/27 共 21 筆收盤價，計算 11/2 至 11/27 共 20 個相鄰交易日的簡單報酬；10/30–11/26 取自 Investing.com，11/27 收盤 63.5 元取自 HiStock。以樣本標準差計算每日 σ 約 1.82%，乘以 √20 得約 8.16%，作為約 20 個交易日的 ±1σ 歷史波動尺度，非目標價或保證。樣本避開資料所載 10/29 除息日；區間內未見需調整的除權息或分割，但兩家報價來源及企業行動資料可能有差異，短樣本、非常態與未來波動變化均會限制估計。",
+          "urls": [
+            "https://hk.investing.com/equities/farglory-historical-data",
+            "https://histock.tw/stock/tchart.aspx?m=i&no=5522",
+            "https://superpy.kgieworld.com.tw/kgipythonapi/stockInfo/stockCalendar?stockCode=5522"
+          ]
+        },
+        "pricedIn": [
+          "可觀察事實：11/13 收 57.9 元，11/27 收 63.5 元，約上漲 9.7%；11/24 法說發生於這段漲勢中。推論市場可能已部分反映公開的交屋及獲利資訊，但無法從股價變化確認反映程度或原因。https://hk.investing.com/equities/farglory-historical-data；https://histock.tw/stock/tchart.aspx?m=i&no=5522",
+          "可觀察事實：外資 11/25、11/26 分別買超 48、31 張，11/27 買超 540 張，支持輸入的連三日買超訊號；但買超不等於後續買盤必定延續，也無法量化消息已反映多少。https://superpy.kgieworld.com.tw/kgipythonapi/stockInfo/dayIISBList?stockCode=5522；https://www.1458.com.tw/LawOutD_2026-11-27_5522.html"
+        ],
+        "notPricedIn": [
+          "無法判定後續交屋速度、貸款撥付延誤或認列結果是否已反映；截至 11/27 可核實的是管理層對撥款期拉長的觀察，後續實績仍待公告。https://news.housefun.com.tw/news/article/amp/811938491462.html",
+          "2026 年 10 月營收約 53.73 億元、年減 18.14%；營建業月營收受交屋時點影響，單月年減與近期股價動能並存，不能單憑其中一項判定市場尚未反映。https://stockwon.tw/stock/5522"
+        ],
+        "horizonFit": {
+          "kind": "短線",
+          "reason": "近期股價與外資買盤具短線動能，但交屋認列不穩、存貨占比高及融資風險使長線獲利延續仍需驗證。"
+        },
+        "positioning": "中立偏多、先觀察：股價站上均線且外資近期連買，但法說資訊已公開，且 20 日高點欄位與盤中高點有差異；待突破或回測後的價格及交屋資訊進一步確認。非個人化投資建議。",
+        "invalidation": [
+          "收盤跌破 60.15 元：這是 11/27 的 20 日均線，可作當時設定的固定觀察位；若採移動均線，須每日更新，不能將 60.15 元永久視為當日均線。https://histock.tw/stock/tchart.aspx?m=i&no=5522",
+          "11/24 的盤中高點為 64.8 元；若以突破前高驗證動能，應觀察後續能否收盤站上該價。輸入的 63.6 元是當日收盤價，不能直接稱為當日盤中高點。https://hk.investing.com/equities/farglory-historical-data"
+        ],
+        "sentiment": "搜尋樣本有限：可見較舊 YouTube 內容偏正面、PTT 與 Mobile01 亦有歷史討論，但未取得足夠的近期樣本，無法判斷截至交易日的整體熱度或多空方向。",
+        "sourceCoverage": [
+          {
+            "sourceType": "公告",
+            "status": "找到",
+            "note": "查詢「遠雄 5522 2026 11 法說會」找到公司 11/24 法說簡報原文；未以單一公告推論所有後續交屋均如期。https://mopsov.twse.com.tw/nas/STR/552220261124M003.pdf"
+          },
+          {
+            "sourceType": "新聞",
+            "status": "找到",
+            "note": "查詢「遠雄 5522 2026 11 法說 交屋」找到 11/25 CMoney 與 11/26 好房網報導；報導中的預期及管理層說法與已實現結果分開。"
+          },
+          {
+            "sourceType": "YouTube",
+            "status": "找到",
+            "note": "查詢「5522 遠雄 2026 11 法說」找到較早的相關影片，但未找到可確認為近 30 日的個股影片；僅取得搜尋標題與摘要，未觀看影片或取得逐字稿。https://www.youtube.com/watch?v=2L5enBx_rdo"
+          },
+          {
+            "sourceType": "Threads",
+            "status": "查無結果",
+            "note": "查詢「site:threads.com 遠雄 5522 股票 2026」及「site:threads.net 5522 遠雄」，未找到可核實的相關貼文；搜尋索引及登入限制可能造成遺漏。"
+          },
+          {
+            "sourceType": "PTT",
+            "status": "找到",
+            "note": "查詢「site:ptt.cc 5522 遠雄」找到 2025/12/10 的營收討論，非近期樣本，不能代表目前氛圍。https://www.ptt.cc/bbs/Stock/M.1765379009.A.0F1.html"
+          },
+          {
+            "sourceType": "Dcard",
+            "status": "查無結果",
+            "note": "查詢「site:dcard.tw 遠雄 5522 股票」及「site:dcard.tw 5522 遠雄」，未取得可核實的相關結果；不代表沒有討論。"
+          },
+          {
+            "sourceType": "Mobile01",
+            "status": "找到",
+            "note": "查詢「site:mobile01.com 5522 遠雄」找到歷史個股討論，未取得可代表近 30 日情緒的樣本。https://www.mobile01.com/topicdetail.php?f=291&t=4875795"
+          }
+        ]
+      },
       "error": ""
     },
     {
@@ -178,8 +363,114 @@
         },
         "side": "short"
       },
-      "status": "pending",
-      "analysis": null,
+      "status": "complete",
+      "analysis": {
+        "catalysts": [
+          {
+            "date": "2026-10-08",
+            "event": "長榮法說會上，總經理表示看好農曆年前美國線需求，並預期第四季營運較去年同期微幅成長；這是當時的公司展望，並非已實現結果。",
+            "sourceType": "新聞",
+            "source": "MoneyDJ 理財網",
+            "url": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=cad61bb8-9221-4935-ba97-88ac2cbe311a"
+          },
+          {
+            "date": "2026-11-12",
+            "event": "公司公告董事會通過第三季合併財報；前三季歸屬母公司業主淨利約 709.53 億元，每股盈餘 32.77 元。",
+            "sourceType": "公告",
+            "source": "臺灣證券交易所投資資訊中心",
+            "url": "https://wwwc.twse.com.tw/IIH2/zh/company/information.html?code=2603"
+          },
+          {
+            "date": "2026-11-22",
+            "event": "媒體報導長榮第三季稅後淨利 466.15 億元、每股盈餘 21.53 元，並指出港口壅塞及航線改道壓縮有效運力、推升運價。",
+            "sourceType": "新聞",
+            "source": "民報",
+            "url": "https://www.peoplenews.tw/articles/economic-news/68608"
+          },
+          {
+            "date": "2026-11-12",
+            "event": "PTT 財報討論串中，部分留言稱讚獲利，也有留言質疑股價反應與航運景氣持續性；屬個別網友意見。",
+            "sourceType": "社群",
+            "source": "PTT Stock 板",
+            "url": "https://www.ptt.cc/bbs/Stock/M.1794477729.A.46A.html"
+          },
+          {
+            "date": "2026-10-12",
+            "event": "《股民開講》影片標題提及長榮漲停及旺季可能延續至農曆年；僅取得標題與摘要，未觀看影片或取得逐字稿。",
+            "sourceType": "YouTube",
+            "source": "《股民開講》，搜尋結果未明列頻道名稱",
+            "url": "https://www.youtube.com/watch?v=vrbRflwNwVc"
+          }
+        ],
+        "shortTerm": "未來 1–4 週，觀察公司先前提及的年底拉貨與美國線需求能否延續；若需求及運價持穩，可能支撐營收預期，但若運價回落或需求不如預期，股價可能承壓，方向均屬推論。公司 10 月的樂觀看法已有時間差，不等於截至 11 月底的最新訂艙確認。https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=cad61bb8-9221-4935-ba97-88ac2cbe311a  股價 11 月 27 日收 249 元，低於輸入所列 MA20 254 元；原計畫要求先站回 MA20 才進場，不能同時將目前低於 MA20 視為已觸發的持倉停損。https://stock.uurl.ws/stock/2603?days=30",
+        "longTerm": "未來 1–4 季，獲利取決於航線需求、運價及有效運力。第三季受港口壅塞與航線改道支撐，但若壅塞緩解或新船供給增加，運價與利潤率可能回落；若需求持續強於有效供給，則可能延長獲利高峰，均為推論，不能將單季高獲利直接年化。https://www.peoplenews.tw/articles/economic-news/68608",
+        "expectedRange": {
+          "band": "約 ±15.2%",
+          "basis": "以 2026-10-30 至 2026-11-27 共 21 個收盤價，計算 2026-11-02 至 2026-11-27 的 20 個相鄰交易日簡單報酬率；樣本標準差約 3.39%，乘以 √20 約為 15.2%。2026-10-30 收盤 271.5 元，後續 20 個收盤價取自 StockU，其資料標示來源為 TWSE／TPEx。除息資料顯示 2026 年除息日在 7 月 17 日，位於取樣期之前，故本次採原始收盤價，未另作除息還原；仍無法完全排除來源未列出的資本變動。此為約 20 交易日歷史波動尺度，非保證區間或目標價，樣本短且包含大幅波動日。",
+          "urls": [
+            "https://stock.uurl.ws/stock/2603?days=30",
+            "https://www.peicheng.com.tw/asp/stockquery/2603.htm",
+            "https://goodinfo.tw/tw/StockDividendSchedule.asp?INITIALIZED=T&STOCK_ID=2603"
+          ]
+        },
+        "pricedIn": [
+          "2026-11-27 收盤 249 元，較 10-30 的 271.5 元下跌約 8.3%；11-13 至 11-27 由 257.5 元跌至 249 元，約跌 3.3%。因此「相對強度前 17%」即使成立也不代表絕對價格上漲；是否已充分反映景氣風險無法判定。https://stock.uurl.ws/stock/2603?days=30 https://www.peicheng.com.tw/asp/stockquery/2603.htm",
+          "2026-11-27 外資買超 12,914 張，但投信賣超 15,513 張、三大法人合計賣超 2,423 張；籌碼方向分歧，不能只憑外資連買認定市場全面看多。https://www.1458.com.tw/listingD2603.html",
+          "10 月營收年增 96.13% 與第三季財報均已在截止日前公開；推論市場已有機會交易這些資訊，但無法量化利多已反映多少。https://superpy.kgieworld.com.tw/kgipythonapi/stockInfo/finance/revenue?stockCode=2603 https://wwwc.twse.com.tw/IIH2/zh/company/information.html?code=2603"
+        ],
+        "notPricedIn": [
+          "截至 2026-11-27，未來運價、年底實際貨量與第四季獲利仍有不確定性；公司 10 月對需求的展望不等於結果，亦無證據可判定市場尚未反映。https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=cad61bb8-9221-4935-ba97-88ac2cbe311a",
+          "11-27 收盤本益比約 6.78 倍，屬以既有獲利計算的觀察值；航運獲利具週期性，低倍數本身不足以證明未來獲利或風險尚未反映。https://www.1458.com.tw/listingD2603.html"
+        ],
+        "horizonFit": {
+          "kind": "短線",
+          "reason": "營收與獲利動能強，但股價仍低於輸入所列月線、法人分歧且航運獲利週期風險較高，較適合等待短線轉強確認。"
+        },
+        "positioning": "中立觀察：短線清單代表做多候選，並非做空；等待股價站回當時的 MA20 且量價轉強後，再評估試單，現階段不預判落底。非個人化投資建議。",
+        "invalidation": [
+          "11-27 收盤 249 元低於輸入所列當日 MA20 254 元，原進場條件尚未滿足；後續應使用各交易日更新後的 MA20，不把 254 元永久視為固定均線。https://stock.uurl.ws/stock/2603?days=30",
+          "若之後依原計畫進場，收盤再跌破當日 MA20，或跌破實際進場價的 92%，代表原交易假設失效；進場價未知，無法先算出具體停損價。",
+          "11-27 盤中低點 247 元可作為可檢查的近期價格參考；若後續收盤跌破，代表近期支撐失守，但它不是已驗證的必然反轉價。https://stock.uurl.ws/stock/2603?days=30"
+        ],
+        "sentiment": "有限樣本中，PTT 財報串對獲利有正面反應，也有人質疑股價與週期；YouTube 找到較早的偏樂觀標題，但未觀看影片或取得逐字稿，無法據此推論整體市場熱度。",
+        "sourceCoverage": [
+          {
+            "sourceType": "公告",
+            "status": "找到",
+            "note": "以「2603 長榮 2026 10 月營收 法說 公告」搜尋，找到證交所公司資訊頁與 11 月 12 日第三季財報公告；公司頁會隨時間更新。"
+          },
+          {
+            "sourceType": "新聞",
+            "status": "找到",
+            "note": "以「長榮 2026 11月 第三季 獲利 航運」搜尋，找到 11 月 22 日民報財報報導，以及 10 月 8 日 MoneyDJ 法說報導。"
+          },
+          {
+            "sourceType": "YouTube",
+            "status": "找到",
+            "note": "以「長榮 2603 2026 11月 航運」等詞搜尋，找到 10 月 12 日《股民開講》相關影片；僅取得標題與摘要，未觀看、未取得逐字稿，11 月近期影片證據不足。"
+          },
+          {
+            "sourceType": "Threads",
+            "status": "查無結果",
+            "note": "以 site:threads.com 搭配「長榮 2603」「2026 11月 航運」搜尋，未取得可確認日期與內容的相關貼文；不代表沒有討論。"
+          },
+          {
+            "sourceType": "PTT",
+            "status": "找到",
+            "note": "以 site:ptt.cc 搭配「長榮 2603 2026 11」搜尋，找到 11 月 12 日第三季財報討論串；僅反映該串可見留言。"
+          },
+          {
+            "sourceType": "Dcard",
+            "status": "查無結果",
+            "note": "以 site:dcard.tw 搭配「長榮 2603 航運 2026 11」及較寬鬆條件搜尋，未取得符合截止日且可核實的近期貼文；不代表沒有討論。"
+          },
+          {
+            "sourceType": "Mobile01",
+            "status": "查無結果",
+            "note": "以 site:mobile01.com 搭配「長榮 2603 航運 2026 11」及較寬鬆條件搜尋，未取得符合截止日且可核實的近期貼文；不代表沒有討論。"
+          }
+        ]
+      },
       "error": ""
     },
     {
@@ -235,8 +526,99 @@
         },
         "side": "short"
       },
-      "status": "pending",
-      "analysis": null,
+      "status": "complete",
+      "analysis": {
+        "catalysts": [
+          {
+            "date": "2026-11-04",
+            "event": "華固董事會通過 2026 年第三季合併財報；公司財報揭露截至第三季的財務狀況與建案存貨。財報核閱報告有保留結論，涉及部分依未經會計師核閱財報評價的子公司及權益法投資。",
+            "sourceType": "公告",
+            "source": "華固建設",
+            "url": "https://www.huaku.com.tw/dl/file/V9Uu0lRKg30sxC7S"
+          },
+          {
+            "date": "2026-11-25",
+            "event": "東森引述公司公告，華固時代置地全部房屋及車位出售予全聯；全棟交易約 81 億元，華固分回約 66.33 億元，預估處分利潤率約 17% 至 18%。此為媒體轉述，未取得該筆重大訊息原文。",
+            "sourceType": "新聞",
+            "source": "東森新聞",
+            "url": "https://fnc.ebc.net.tw/fncnews/headline/223647"
+          },
+          {
+            "date": "2026-11-26",
+            "event": "MoneyDJ 報導華固預計於 2027 年 3 月認列時代置地約 66.33 億元營收；認列時間與利潤率均屬當時預估，仍待實際交付及財報確認。",
+            "sourceType": "新聞",
+            "source": "MoneyDJ 理財網",
+            "url": "https://tw.stock.yahoo.com/news/%E8%8F%AF%E5%9B%BA%E6%99%82%E4%BB%A3%E7%BD%AE%E5%9C%B0%E6%95%B4%E6%A3%9F%E8%B3%A3%E7%B5%A6%E5%85%A8%E8%81%AF-%E6%98%8E%E5%B9%B4%E8%AA%8D%E7%87%9F%E6%94%B666%E5%84%84-235400062.html"
+          }
+        ],
+        "shortTerm": "1–4 週內，時代置地交易可能持續影響市場對明年營收的預期；11 月營收及交易後續揭露若優於預期可能支撐股價，若認列條件或進度不如預期則有回吐風險，均為推論。出售報導見 https://fnc.ebc.net.tw/fncnews/headline/223647 。輸入的短線清單為做多候選；兩週報酬為負與一個月報酬為正並存，不能只憑「動能強」認定趨勢穩固。依 11 月每日收盤價重算 MA10 約 92.25 元、MA20 約 92.46 元，但近 20 個交易日盤中最高為 97.8 元，輸入的 95.3 元不能直接視為 20 日最高價：https://stock.wearn.com/cdata.asp?kind=2548 。",
+        "longTerm": "1–4 季的主要觀察是時代置地能否如報導所述於 2027 年 3 月認列，以及其他建案交屋、毛利和現金回收；順利認列可能改善營收與獲利，延遲、成本上升或房市需求疲弱則可能壓抑表現，屬推論。66.33 億元為預估營收，不能當成淨利。來源：https://tw.stock.yahoo.com/news/%E8%8F%AF%E5%9B%BA%E6%99%82%E4%BB%A3%E7%BD%AE%E5%9C%B0%E6%95%B4%E6%A3%9F%E8%B3%A3%E7%B5%A6%E5%85%A8%E8%81%AF-%E6%98%8E%E5%B9%B4%E8%AA%8D%E7%87%9F%E6%94%B666%E5%84%84-235400062.html 。第三季財報核閱保留結論亦應持續追蹤：https://www.huaku.com.tw/dl/file/V9Uu0lRKg30sxC7S 。",
+        "expectedRange": {
+          "band": "約 −10.4% 至 +10.4%",
+          "basis": "以 2026-10-30 至 2026-11-27 的 21 個收盤價，計算 11-02 至 11-27 共 20 筆日簡單報酬率；樣本標準差約 2.32%，乘以 √20 約為 10.4%。價格取自聚財網及 Investing.com；期間未查到除權息或分割，故未調整，7 月除權不在樣本內。此為未還原價格的短期歷史波動尺度，假設波動可按平方根縮放；不含事件跳空的可靠預測，並非保證或目標價。",
+          "urls": [
+            "https://stock.wearn.com/cdata.asp?kind=2548",
+            "https://hk.investing.com/equities/huaku-historical-data",
+            "https://guliu.tw/s/2548"
+          ]
+        },
+        "pricedIn": [
+          "可觀察事實：11 月 25 日盤後出售消息公布後，11 月 26 日收盤 93.3 元，較 25 日的 89.8 元上漲約 3.9%；27 日再收 93.7 元。推論：市場可能已反映部分交易消息，但同期間其他因素亦可能影響股價，無法量化已反映程度。https://fnc.ebc.net.tw/fncnews/headline/223647；https://stock.wearn.com/cdata.asp?kind=2548",
+          "可觀察事實：10 月 30 日收 90.4 元、11 月 27 日收 93.7 元，約漲 3.65%；這與輸入一個月 +3.7% 大致一致，但不足以證明未來交屋獲利已完全反映。https://hk.investing.com/equities/huaku-historical-data；https://stock.wearn.com/cdata.asp?kind=2548"
+        ],
+        "notPricedIn": [
+          "無法判定 2027 年 3 月預計認列時代置地的時間、最終毛利與金額是否尚未反映；截至交易日這些仍是報導中的預估，缺乏可比較的完整市場一致預期。https://tw.stock.yahoo.com/news/%E8%8F%AF%E5%9B%BA%E6%99%82%E4%BB%A3%E7%BD%AE%E5%9C%B0%E6%95%B4%E6%A3%9F%E8%B3%A3%E7%B5%A6%E5%85%A8%E8%81%AF-%E6%98%8E%E5%B9%B4%E8%AA%8D%E7%87%9F%E6%94%B666%E5%84%84-235400062.html",
+          "輸入稱外資連買 4 日及族群領先，但本次未取得足以獨立核對連續買超和族群排名的完整資料，無法據此判定籌碼或產業趨勢是否已反映。"
+        ],
+        "horizonFit": {
+          "kind": "短線",
+          "reason": "出售商辦提供近期事件與可觀察價位，但短期波動大，且未取得足夠證據確認未來數季交屋及獲利能持續超越市場預期。"
+        },
+        "positioning": "中立偏多、先觀察：商辦出售增加營收能見度，但消息公布後股價已有反彈，且輸入的 20 日高點與實際盤中高點不符；等待價格與認列進度確認。非個人化投資建議。",
+        "invalidation": [
+          "收盤跌破約 92.46 元：以截至 2026-11-27 的 20 個每日收盤價重算之固定 MA20 作為短線觀察失效位；後續均線會變動。https://stock.wearn.com/cdata.asp?kind=2548",
+          "收盤跌破 87.5 元：11 月 23 日近期盤中低點遭跌破，代表短線反彈結構轉弱，屬價格判斷而非公司基本面結論。https://stock.wearn.com/cdata.asp?kind=2548",
+          "待 2027 年第一季財報公布時，若公司揭露時代置地交易未如原先預估於 2027 年 3 月認列，或已公告延後交付，須重評獲利時點。原預估來源：https://tw.stock.yahoo.com/news/%E8%8F%AF%E5%9B%BA%E6%99%82%E4%BB%A3%E7%BD%AE%E5%9C%B0%E6%95%B4%E6%A3%9F%E8%B3%A3%E7%B5%A6%E5%85%A8%E8%81%AF-%E6%98%8E%E5%B9%B4%E8%AA%8D%E7%87%9F%E6%94%B666%E5%84%84-235400062.html"
+        ],
+        "sentiment": "可取得的 YouTube 搜尋摘要偏正面，PTT 可找到較舊且意見不一的討論；近期跨平台樣本不足，無法判斷整體熱度或方向，也無法認定過熱。",
+        "sourceCoverage": [
+          {
+            "sourceType": "公告",
+            "status": "找到",
+            "note": "查「華固 2548 2026 11 第三季 財報 法說」，取得公司第三季財報原文；11 月 25 日出售重大訊息僅找到索引及媒體轉述，未取得該筆公告原文。"
+          },
+          {
+            "sourceType": "新聞",
+            "status": "找到",
+            "note": "查「華固 2548 2026 11 25 時代置地 出售」，找到東森及 MoneyDJ 報導；預計認列與利潤率均區分為預估。"
+          },
+          {
+            "sourceType": "YouTube",
+            "status": "找到",
+            "note": "查「華固 2548 2026 11 site:youtube.com」，找到回溯一季的法說解析搜尋摘要：https://www.youtube.com/watch?v=G2in_2KtA0w；搜尋結果僅顯示約兩個月前，無法核實精確上架日；未觀看影片或取得逐字稿，影片頁面無法開啟。"
+          },
+          {
+            "sourceType": "Threads",
+            "status": "查無結果",
+            "note": "查「site:threads.net 華固 2548 2026 股票」及「site:threads.net 華固 2548 股票」，未找到截止日附近可核實的相關貼文；搜尋索引和登入限制可能影響結果。"
+          },
+          {
+            "sourceType": "PTT",
+            "status": "找到",
+            "note": "查「site:ptt.cc 華固 2548 2026 11」及相關代號查詢；找到 2026-05-29 房市新聞討論：https://www.ptt.cc/bbs/home-sale/M.1780030381.A.E30.html，但已超出近一季，不能代表近期情緒。"
+          },
+          {
+            "sourceType": "Dcard",
+            "status": "查無結果",
+            "note": "查「site:dcard.tw 華固 2548 股票 2026」；結果有舊貼文但未能核實截止日附近的近期討論，不代表沒有討論。"
+          },
+          {
+            "sourceType": "Mobile01",
+            "status": "找到",
+            "note": "查「site:mobile01.com 華固 2548 2026 股票」及「華固 2548 股票」；找到較舊的個股討論 https://www.mobile01.com/topicdetail.php?f=793&t=7073813 ，未找到足以代表近期投資情緒的樣本。"
+          }
+        ]
+      },
       "error": ""
     },
     {
@@ -289,8 +671,106 @@
         },
         "side": "short"
       },
-      "status": "pending",
-      "analysis": null,
+      "status": "complete",
+      "analysis": {
+        "catalysts": [
+          {
+            "date": "2026-11-03",
+            "event": "公司自結10月合併營收33.88億元，年增32.00%、月增1.19%，連續7個月創單月歷史新高；公司指出汽車及電子週邊銷售分別月增47.04%及3.63%。",
+            "sourceType": "公告",
+            "source": "信邦電子投資人訊息；公司頁面標示2026年11月，公告日參照公司營收公告",
+            "url": "https://www.sinbon.com/tw/investors-news/1"
+          },
+          {
+            "date": "2026-10-22",
+            "event": "公司公布第三季毛利率23.77%，較第二季下降0.77個百分點；前三季每股盈餘11.16元。公司將毛利率季減歸因於產品組合變化。",
+            "sourceType": "公告",
+            "source": "信邦電子投資人訊息",
+            "url": "https://www.sinbon.com/tw/investors-news/1"
+          },
+          {
+            "date": "2026-11-03",
+            "event": "公司公告將於2026年12月9日14:30舉行法說會，說明營運狀況；會中內容截至交易日尚未發生。",
+            "sourceType": "公告",
+            "source": "信邦電子公告，鉅亨網轉載",
+            "url": "https://m.cnyes.com/news/id/6645136"
+          },
+          {
+            "date": "2026-11-03",
+            "event": "中央社報導10月營收創高，並轉述公司所稱的汽車與電子週邊銷售成長；同期前10月綠能營收年減6.81%。",
+            "sourceType": "新聞",
+            "source": "中央社",
+            "url": "https://www.cna.com.tw/news/afe/202611030182.aspx"
+          }
+        ],
+        "shortTerm": "1–4週主要觀察12月9日法說。若公司對新產品出貨及毛利的說明改善市場預期，可能支撐股價；若產品組合壓力延續或展望不及預期，可能回落。這是事件傳導推論，並非已知法說結果。第三季毛利率季減0.77個百分點，與營收創高的正面訊號並存：https://www.sinbon.com/tw/investors-news/1 ；法說安排：https://m.cnyes.com/news/id/6645136 。截至11月27日收盤267.5元，低於10日均線268.65元、也低於60日均線296.53元，但高於20日均線262.23元，短線反彈與中期弱勢互相牴觸：https://histock.tw/stock/tchart.aspx?m=i&no=3023 。",
+        "longTerm": "1–4季觀察半導體設備、人形機器人及無人機相關產品能否實際放量，以及新苗栗廠預計2027年第二季投產的進度；若高附加價值產品占比提高，可能帶動營收及毛利，但這是依公司布局作出的推論，並非已確認的訂單或獲利預測。第三季毛利率季減及前10月綠能營收年減顯示產品組合、需求與匯率仍有風險。公司對新產品改善毛利及投產時程的說法：https://www.sinbon.com/tw/investors-news/1 。",
+        "expectedRange": {
+          "band": "約 −12.2% 至 +12.2%",
+          "basis": "使用MyMoney所列信邦2026-10-29至2026-11-26收盤價，加上Investing.com的2026-11-27收盤價，共22個收盤價、21筆相鄰交易日簡單報酬。以樣本標準差計算每日σ約2.74%，乘以√20約12.2%；這是以11月27日收盤價為基準的約20交易日±1σ歷史波動尺度，非機率保證或目標價。樣本期間未跨過最近一次2026-08-10除息，不需就該次除息調整；仍未獨立確認期間是否有其他公司行動。短樣本、波動群聚及事件跳空會使未來波動不同。",
+          "urls": [
+            "https://money.tend.tw/Stock/Details/3023",
+            "https://cn.investing.com/equities/sinbon-elec-historical-data",
+            "https://toalpha.tw/stock/3023"
+          ]
+        },
+        "pricedIn": [
+          "可觀察事實：11月3日公布10月營收後，股價由當日收盤237.5元升至11月27日267.5元，約漲12.6%；但同期間有其他影響因素。推論：部分營收成長資訊可能已反映，無法量化反映程度。https://www.cna.com.tw/news/afe/202611030182.aspx https://money.tend.tw/Stock/Details/3023 https://cn.investing.com/equities/sinbon-elec-historical-data",
+          "可觀察事實：11月27日三大法人合計買超198張，外資124張、投信52張；法人買盤不等於能證明利多已充分反映。https://toalpha.tw/stock/3023"
+        ],
+        "notPricedIn": [
+          "無法判定新產品放量或毛利改善是否尚未反映：公司已公開相關布局與改善毛利的期待，但未取得可比較的市場共識及個別產品訂單數據。https://www.sinbon.com/tw/investors-news/1",
+          "無法判定12月9日法說內容是否已反映；活動已公告，但截至11月27日其實際內容與市場預期差距未知。https://m.cnyes.com/news/id/6645136"
+        ],
+        "horizonFit": {
+          "kind": "短線",
+          "reason": "短期有已公告法說與營收動能可追蹤，但股價仍在季線下方、毛利承壓，長線新產品獲利貢獻尚待驗證。"
+        },
+        "positioning": "中立、觀察為主：營收成長及法人買盤有利，但11月27日收盤仍低於10日與60日均線，且第三季毛利率季減；等待法說及價格轉強確認。非個人化投資建議。",
+        "invalidation": [
+          "價格條件：以11月27日20日均線約262.23元作為固定觀察參考，後續若收盤跌破，短線反彈假設轉弱；此為根據當日均線設定的分析條件，並非保證支撐。https://histock.tw/stock/tchart.aspx?m=i&no=3023",
+          "輸入的278元雖為11月24日收盤價，但不是該日盤中高點：當日最高303元，因此不能直接稱278元為20日盤中高點；若把278元作為收盤突破參考，應標明口徑。https://cn.investing.com/equities/sinbon-elec-historical-data",
+          "事件條件：檢查12月9日法說；若公司明確下修既有新產品出貨或毛利改善展望，則成長假設轉弱。原公告僅說明將舉辦法說，不保證會提供量化指引。https://m.cnyes.com/news/id/6645136"
+        ],
+        "sentiment": "搜尋可見PTT第三季財報資訊帖，另有較早的YouTube影片以半導體設備與機器人為題；未找到可確認交易日前近30日的相關影片或足夠跨平台樣本，無法判斷整體熱度、方向或是否過熱；影片僅取得標題與摘要，未觀看或取得逐字稿。",
+        "sourceCoverage": [
+          {
+            "sourceType": "公告",
+            "status": "找到",
+            "note": "查詢「3023 信邦 2026 11 營收 法說」及法說日期；取得公司IR營收與財報內容，以及媒體轉載的公司法說公告。IR頁部分項目僅列年月。"
+          },
+          {
+            "sourceType": "新聞",
+            "status": "找到",
+            "note": "查詢「信邦 2026 11 3 10月營收」；找到中央社11月3日報導，屬媒體轉述公司說法。"
+          },
+          {
+            "sourceType": "YouTube",
+            "status": "找到",
+            "note": "查詢「3023 信邦 2026 11 site:youtube.com」及「信邦 3023 site:youtube.com 2026 營收」；找到較早個股影片，但未取得可確認近30日的相關影片。僅有搜尋標題與摘要，未觀看、未取得逐字稿；例如 https://www.youtube.com/watch?v=CPuxX1UYM2g 。"
+          },
+          {
+            "sourceType": "Threads",
+            "status": "查無結果",
+            "note": "查詢「3023 信邦 2026 11 site:threads.com」及「信邦 3023 site:threads.com 投資 2026」；未找到可核實的相關貼文，不代表沒有討論。"
+          },
+          {
+            "sourceType": "PTT",
+            "status": "找到",
+            "note": "查詢「信邦 3023 2026 11 site:ptt.cc」；找到2026-10-22第三季財報資訊帖，樣本不代表市場整體情緒：https://www.ptt.cc/bbs/Stock/M.1792655216.A.261.html 。"
+          },
+          {
+            "sourceType": "Dcard",
+            "status": "找到",
+            "note": "查詢「信邦 3023 2026 site:dcard.tw」及投資相關詞；找到8月31日財經日曆提及信邦，但非近30日專題討論，搜尋摘要不足以判斷整體情緒：https://www.dcard.tw/%40line_ahui030612/post/262056823 。"
+          },
+          {
+            "sourceType": "Mobile01",
+            "status": "找到",
+            "note": "查詢「信邦 3023 2026 site:mobile01.com」；找到約4個月前薪資討論中列及信邦，非近30日個股投資討論，不能推論該平台沒有其他討論：https://www.mobile01.com/topicdetail.php?f=638&t=7278334 。"
+          }
+        ]
+      },
       "error": ""
     }
   ]
